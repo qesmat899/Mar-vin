@@ -6,6 +6,31 @@ Research-Gespräch und finanziert die Rechtskosten für den Onlineshop.
 
 Abhaken hier oder per `python3 playbook.py status --brand azizam` (dieser Plan zählt mit).
 
+## Schritt −1 · SOFORT — die Seite ist live, das hier ist heute dran
+
+Recherche auf azizamfragrances.com (die Seite ist bereits online, Single-Page mit 7 Düften: Narcos, Midnight Café,
+Erba Bomb, Imaginary, Goldstaub II., Velvet Vanilla, Kings Perfume) hat zwei Dinge gefunden, die **nicht bis
+nächste Woche warten sollten**:
+
+- [ ] **„Handgefertigt in Deutschland“ und „eigene Herstellung/Komposition ohne Fokusgruppen“ von der Seite nehmen
+  oder umschreiben.** Das widerspricht dem echten Geschäftsmodell (Fertigparfum aus der Fabrik, in eigene Flakons
+  abgefüllt) und ist als Aussage gegenüber Kunden eine Irreführung nach § 5 UWG — abmahnfähig, sobald die ersten
+  Verkäufe laufen. Ersetzen durch etwas Wahres und trotzdem Starkes: „In Deutschland kuratiert und abgefüllt“,
+  „30 % Duftöl, von uns ausgewählt und abgefüllt“. Die 30-%-Aussage selbst darf bleiben (vom Inhaber bestätigt).
+- [ ] **Die 4,8/5 bei 247 Bewertungen prüfen.** Wenn das echte Käuferbewertungen sind: woher, aus welchem System,
+  seit wann? Wenn es Platzhalter/Demo-Daten des Theme-Templates sind: **runternehmen, bevor der Shop scharf
+  geschaltet wird** — erfundene oder nicht zuordenbare Bewertungen sind wettbewerbswidrig (§ 5 UWG) und zerstören
+  das Vertrauen, auf dem die ganze Marke aufbaut, wenn es auffliegt.
+- [ ] **Klären: passt die Positionierung „Duft der zweiten Generation / persische Duftkultur“ noch zu den echten
+  Produkten?** Narcos ist laut Seite „Honig, Tabak, mediterrane Würze — für Männer, die Authentizität ausstrahlen“ —
+  das ist eine andere Geschichte als Rose/Safran/Persien. Die Personas und Angles in `02-personas-pains.md` und
+  `03-angles-hooks.md` sind für die persische These geschrieben. Bevor dort weitergearbeitet wird: einmal
+  entscheiden, welche der beiden Richtungen (oder eine Kombination — z. B. bestimmte Düfte persisch positionieren,
+  andere generisch-premium) tatsächlich verfolgt wird.
+
+Alles andere unten (Kosmetik-VO, Versand, Rechtstexte) bleibt gültig — hier nur ergänzt um das, was die Seite
+inzwischen tatsächlich zeigt.
+
 ## Schritt 0 · Diese Woche: drei Dinge parallel anstoßen
 
 ### A · Rechtsfreigabe bei der Fabrik anfordern (blockiert den Onlineshop — nicht den Privatverkauf)

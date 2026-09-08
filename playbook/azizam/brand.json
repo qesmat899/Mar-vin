@@ -51,5 +51,43 @@
       "cogs": 10.45,
       "rolle": "Anker / Bestwert — höchster Deckungsbeitrag, Upsell-Ziel"
     }
-  ]
+  ],
+  "website": "https://azizamfragrances.com",
+  "rechtliche_daten": {
+    "firma": "Marvin Farienfar (Einzelunternehmer, Handelsname \"Azizam\")",
+    "adresse": "Lilienweg 8, 97084 Würzburg, Deutschland",
+    "telefon": "+49 155 60980879",
+    "email": "azizamfragrances@gmail.com",
+    "ust_idnr": "DE459609298",
+    "hinweis": "kein Registergericht/HR-Nummer → Einzelunternehmen; hat USt-IdNr. → KEINE Kleinunternehmerregelung, MwSt. wird ausgewiesen"
+  },
+  "shop_stand": {
+    "plattform": "Shopify (Shopify Payments) + Vercel-Hosting, Single-Page-Landingpage, #collection/#story-Anker, noch keine einzelnen Produktseiten mit ml/Preis live",
+    "zahlungsmethoden": [
+      "Shopify Payments (Kreditkarte)",
+      "PayPal",
+      "Klarna",
+      "Apple Pay",
+      "Google Pay"
+    ],
+    "versand": "Deutschland + Österreich, 2–4 Werktage, 4,95 € Standard, kostenlos ab 80 €",
+    "widerruf": "gesetzlich 14 Tage (entfällt bei geöffnetem Hygienesiegel); freiwillig 30 Tage Rückgabe, wenn Flakon ≥ 80 % gefüllt",
+    "gewaehrleistung": "gesetzlich 2 Jahre",
+    "produkte_live": [
+      "Narcos",
+      "Midnight Café",
+      "Erba Bomb",
+      "Imaginary",
+      "Goldstaub II.",
+      "Velvet Vanilla",
+      "Kings Perfume"
+    ],
+    "slogan": "Trage, was Worte nicht fassen können / Neue Kompositionen. Seltene Editionen.",
+    "bewertungen_live": "4,8/5 bei 247 Bewertungen angezeigt — Herkunft/Echtheit ungeklärt, siehe Rechtsflag",
+    "rechtsflags": [
+      "Seite behauptet 'Handgefertigt in Deutschland' und 'eigene Herstellung/Komposition ohne Fokusgruppen' — widerspricht dem Geschäftsmodell (Fertigparfum aus Fabrik, nur umgefüllt). Irreführung nach § 5 UWG, solange live.",
+      "247 Bewertungen bei praktisch neuem Shop ohne bisherige Verkäufe (laut Gründer) — Herkunft klären; wettbewerbswidrig, falls nicht echt.",
+      "Keine CPNP-Notifizierung/PIF/INCI/Sicherheitsdatenblatt auf der Seite erkennbar — weiterhin offen (siehe NAECHSTE-SCHRITTE.md)."
+    ]
+  }
 }

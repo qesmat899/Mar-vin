@@ -1,9 +1,36 @@
 # Recht & Retention
 
+## Die echten Firmendaten (von azizamfragrances.com, Stand 09/2026)
+
+| Feld | Wert |
+|---|---|
+| Inhaber / Rechtsform | Marvin Farienfar, Einzelunternehmer (Handelsname „Azizam“) — kein Registergericht/HR-Nummer im Impressum, also kein e.K./UG/GmbH |
+| Adresse | Lilienweg 8, 97084 Würzburg |
+| Telefon | +49 155 60980879 |
+| E-Mail | azizamfragrances@gmail.com |
+| USt-IdNr. | DE459609298 — **keine Kleinunternehmerregelung**, MwSt. wird ausgewiesen |
+| Plattform | Shopify (Shopify Payments) + Vercel-Hosting |
+| Zahlungsmethoden (live) | Shopify Payments/Kreditkarte, PayPal, Klarna, Apple Pay, Google Pay |
+| Versand (live) | Deutschland + **Österreich** (nicht Schweiz — Drittland, Zoll/EUSt), 2–4 Werktage, 4,95 € Standard, kostenlos ab 80 € |
+| Widerruf (live) | gesetzlich 14 Tage, entfällt bei geöffnetem Hygienesiegel; freiwillig 30 Tage, wenn Flakon ≥ 80 % gefüllt |
+
+Diese Werte ersetzen die bisherigen Schätzungen (Versand 6,50 €, Gratisversand ab 60 €, CH als Zielmarkt) in
+`05-offer-unit-economics.md` und `brand.json` — dort mit den echten 4,95 € nachrechnen, wenn der Versandpreis
+final steht.
+
 ## Rechtlicher Rahmen — Parfum (Kap. 5.3)
 
 Kein Ersatz für Rechtsberatung. Die Reihenfolge ist pragmatisch: Tag-1-Themen in Stunden erledigt,
 produktspezifische Zulassungen **vor dem ersten Verkauf**.
+
+### ⚠️ Zwei Dinge, die schon jetzt live falsch sind
+
+Die Seite ist online und behauptet bereits Dinge, die vor dem ersten echten Verkauf korrigiert werden sollten
+(Details und Formulierungsvorschlag in `NAECHSTE-SCHRITTE.md`, Schritt −1):
+
+1. **„Handgefertigt in Deutschland“ / „eigene Herstellung ohne Fokusgruppen“** widerspricht dem Geschäftsmodell
+   (Fertigparfum aus der Fabrik, umgefüllt) — Irreführung nach § 5 UWG.
+2. **4,8/5 bei 247 Bewertungen** auf einer noch nicht verkaufenden Seite — Herkunft klären, sonst wettbewerbswidrig.
 
 ### Der wichtigste Satz für dieses Geschäftsmodell
 
@@ -27,7 +54,7 @@ Das ist der eine Punkt, der vor dem ersten Onlineverkauf stehen muss; alles ande
 
 ### Shop-Pflichten Tag 1
 
-☐ Impressum (§ 5 DDG) · ☐ Datenschutzerklärung mit allen Tools (Meta Pixel, TikTok Pixel, Klaviyo, Shopify, Hotjar …) ·
+✅ Impressum (§ 5 DDG) · ⚠️ Datenschutzerklärung nennt bisher Vercel, Shopify, PayPal, Klarna, Apple, Google Ireland — **Meta-/TikTok-Pixel und Klaviyo ergänzen, sobald Tracking eingebaut ist** ·
 ☐ Cookie-Consent mit echter Ablehnung (TDDDG) · ☐ Widerrufsbelehrung + Musterformular (§ 355 BGB) · ☐ AGB ·
 ☐ PAngV: Endpreise inkl. MwSt. **und Grundpreis €/100 ml** (50 ml 44,99 € = 89,98 €/100 ml · 30 ml 29,99 € = 99,97 €/100 ml · 100 ml = 64,99 €/100 ml — Pflichtangabe, und zugleich das beste Argument für 100 ml) ·
 ☐ Streichpreise nur mit niedrigstem Preis der letzten 30 Tage · ☐ LUCID-Registrierung + Systembeteiligung (VerpackG) ·
