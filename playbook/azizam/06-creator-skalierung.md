@@ -39,7 +39,7 @@ Hey {Vorname},
 Dein Video über {konkreter Post — z. B. „das Nowruz-Essen bei Deiner Mutter“} — ich hab’s dreimal
 geschaut, weil es genau so bei uns riecht.
 
-Wir sind Azizam: ein Parfum für die zweite Generation. Persische Rose und Safran, 30 % Duftöl,
+Wir sind Azizam: ein Parfum für die zweite Generation. Narcos — Honig, Tabak, Zimt, 30 % Duftöl,
 leise statt laut — nichts mit Shisha-Bar.
 
 Du erzählst Herkunft, ohne sie zum Klischee zu machen. Genau dieses Gefühl soll Azizam tragen.
@@ -78,7 +78,7 @@ CTA:              „Link in Bio — Discovery-Set, 3 Düfte, 9,99 €.“
                C: „Ich habe aufgehört, Designer-Düfte zu tragen.“
 3–10 s  PROBLEM  Gesagt: „Drei Leute in meiner Bahn tragen meinen Duft. Und zuhause riecht es nach Safran und Rosenwasser — das gibt’s in keinem Flakon.“
                  Gezeigt: Bahn / Elternküche / Flakonreihe im Bad
-10–25 s LÖSUNG   Kernsatz: „Azizam. Persische Rose, Safran, 30 % Duftöl — deshalb nah statt laut. 100 ml für 65 €, weil kein Kaufhaus dazwischen ist. Meine Mutter hat den Flakon gesehen und nur gelacht: ‚azizam‘.“
+10–25 s LÖSUNG   Kernsatz: „Azizam. Narcos — Honig, Tabak, Zimt, 30 % Duftöl — deshalb nah statt laut. 100 ml für 65 €, weil kein Kaufhaus dazwischen ist. Meine Mutter hat den Flakon gesehen und nur gelacht: ‚azizam‘.“
                  Zu zeigen: Flakon mit Nastaliq-Schriftzug, Gedichtkarte, ein Sprüher aufs Handgelenk
 25–35 s CTA      „Für alle, die hier zu persisch und dort zu deutsch sind. Discovery-Set im Link.“
 
@@ -92,7 +92,7 @@ CTA:              „Link in Bio — Discovery-Set, 3 Düfte, 9,99 €.“
 Weitere Briefings: `python3 playbook.py prompt 5 --brand azizam --var FORMAT=GRWM --var PERSONA="Leon, 24" --var PAIN="..." --var ANGLE="Nicht lauter, näher"`
 
 **Formate nach Funnel:** Problem-Story, Day in my Life, Unboxing (Gedichtkarte!), Founder-Story → TOF · GRWM (Leon),
-Honest Review (Selin), Handgelenk-Demo, Mythen-Check „Rose ist nicht Oma“ → MOF · Reaktion auf Kommentar, Restock/Drop → BOF.
+Honest Review (Selin), Handgelenk-Demo, Mythen-Check (Editions-spezifisch, sobald Notenprofile stehen) → MOF · Reaktion auf Kommentar, Restock/Drop → BOF.
 
 ## Spark Ads & Auswertung (Kap. 4.6)
 

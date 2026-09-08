@@ -9,7 +9,11 @@
 - **Kategorie:** Eau de Parfum in 30 / 50 / 100 ml — 29,99 / 44,99 / 64,99 € (privat 25 / 40 / 60 €). Düfte aus einer Parfumfabrik, in Deutschland in eigene Flakons abgefüllt. Hero: 50 ml. Anker: 100 ml. Discovery-Set 3 × 2 ml für 9,99 € (anrechenbar).
 - **Der eine Satz:** „Azizam ist der Duft der zweiten Generation.“
 - **Mission:** Damit die zweite Generation ihre Herkunft tragen kann wie eine gute Uhr — nicht wie ein Kostüm.
-- **Gegner:** das Klischee („orientalisch = laut, süß, Shisha-Bar“), die Austauschbarkeit der Designer-Düfte, Nischenhäuser, die unsere Rose als exotisches Zitat für 250 € verkaufen.
+- **Gegner:** das Klischee („orientalisch = laut, süß, Shisha-Bar“), die Austauschbarkeit der Designer-Düfte, Nischenhäuser, die Herkunft als exotisches Zitat für 250 € verkaufen.
+- **Sortiment (live, azizamfragrances.com):** 7 Düfte in zwei Linien. **Heritage** (Persona Darius/Roya): Narcos —
+  bestätigte Noten Honig, Tabak, Zimt, Zitrus, Vanille; Kandidat Goldstaub II. ohne bestätigte Noten. **Editions**
+  (Personas Leon/Selin, generisch-premium): Kings Perfume, Velvet Vanilla, Erba Bomb, Midnight Café, Imaginary —
+  Notenprofile unbestätigt, **keine Noten erfinden**, bis echte Angaben vorliegen.
 - **Assoziationen:** Nähe · Herkunft · Stille.
 - **Gefühl:** erkannt werden — wie das Wort, das die Mutter sagt.
 
@@ -24,12 +28,18 @@ Haltbarkeits-Garantien in Stunden.
 2. **Leon, 24 — kein einziges Kompliment.** Trigger: zwei Dates ohne Kompliment. Pain Ebene 4: „Ich will der sein, an den man sich erinnert, nachdem ich den Raum verlassen habe.“ Einwand: „Habe ich schon probiert / hält nicht.“ Awareness 3–4.
 3. **Selin, 32 — sechs Flakons, kein Duft.** Trigger: Trennung, runder Geburtstag, Freundin mit Signature-Duft. Pain Ebene 4: „Ich will, dass jemand in zehn Jahren diesen Duft riecht und an mich denkt. Nicht an Douglas.“ Einwand: „Rose ist altmodisch, Orient zu schwer.“ Awareness 3.
 
+## Zwei Duftlinien (Entscheidung 09/2026)
+Azizam führt zwei Linien parallel: **Heritage** (persisch-diasporisch, Persona Darius/Roya, Duft **Narcos** —
+bestätigte Noten: Honig, Tabak, Zimt, Zitrus, Vanille; Kandidat Goldstaub II. ohne bestätigte Noten) und
+**Editions** (generisch-premium, Personas Leon/Selin, Düfte Kings Perfume/Velvet Vanilla/Erba Bomb/Midnight
+Café/Imaginary — Notenprofile bis auf Weiteres unbestätigt, keine Noten erfinden). Details: `04-produkt-marke.md`.
+
 ## Winning Angles (Stand: vor dem Testing — Reihenfolge nach Testdaten anpassen)
 - A1 Identität: „Für alle, die hier zu persisch und dort zu deutsch sind.“
 - A2 Ursprung/Founder: „Ich habe drei Jahre nach dem Geruch aus der Küche meiner Großmutter gesucht. Dann habe ich ihn gebaut.“
-- A3 Feindbild: „Orientalisch heißt nicht Shisha-Bar. Es heißt Rose, Safran und ein Garten in Shiraz.“
+- A3 Feindbild (Narcos): „Orientalisch heißt nicht Shisha-Bar. Es heißt Honig, Tabak und Zimt am Abend bei der Familie.“
 - B1 Gegen-Intuition: „Du bekommst keine Komplimente, weil Du zu viel sprühst — nicht zu wenig.“
-- C2 Gegen-Intuition: „Rose riecht nach Oma? Nur die aus der Seife.“
+- C2 Gegen-Intuition: **ausgesetzt** — war für Rose/Heritage geschrieben; Selin trägt jetzt Editions-Düfte ohne bestätigte Rosennote, Angle erst nach Notenbeleg wieder nutzen.
 
 ## Sprache
 - **Tonalität:** warm, selbstbewusst, poetisch-knapp. Kurze Sätze. Persische Kosewörter im deutschen Satz (azizam, joon, delbar) — so spricht die Community.

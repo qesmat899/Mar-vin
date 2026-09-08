@@ -21,12 +21,14 @@ nächste Woche warten sollten**:
   seit wann? Wenn es Platzhalter/Demo-Daten des Theme-Templates sind: **runternehmen, bevor der Shop scharf
   geschaltet wird** — erfundene oder nicht zuordenbare Bewertungen sind wettbewerbswidrig (§ 5 UWG) und zerstören
   das Vertrauen, auf dem die ganze Marke aufbaut, wenn es auffliegt.
-- [ ] **Klären: passt die Positionierung „Duft der zweiten Generation / persische Duftkultur“ noch zu den echten
-  Produkten?** Narcos ist laut Seite „Honig, Tabak, mediterrane Würze — für Männer, die Authentizität ausstrahlen“ —
-  das ist eine andere Geschichte als Rose/Safran/Persien. Die Personas und Angles in `02-personas-pains.md` und
-  `03-angles-hooks.md` sind für die persische These geschrieben. Bevor dort weitergearbeitet wird: einmal
-  entscheiden, welche der beiden Richtungen (oder eine Kombination — z. B. bestimmte Düfte persisch positionieren,
-  andere generisch-premium) tatsächlich verfolgt wird.
+- [x] **Entschieden: beide Linien parallel.** Azizam **Heritage** (persisch-diasporisch, Persona Darius/Roya,
+  Duft Narcos) und Azizam **Editions** (generisch-premium, Personas Leon/Selin, die übrigen sechs Düfte). Details
+  und Zuordnung: `04-produkt-marke.md`.
+- [ ] **Notenpyramiden der sechs unbestätigten Düfte einholen** (Kopf/Herz/Basis für Midnight Café, Erba Bomb,
+  Imaginary, Goldstaub II., Velvet Vanilla, Kings Perfume — von der Fabrik oder aus der eigenen Produktbeschreibung).
+  Nur Narcos ist mit „Honig & Tabakblatt, Zimt & Lavendel, Zitrischer Auftakt, Vanille-Fond“ vollständig bekannt.
+  Ohne die echten Noten bleibt die Linien-Zuordnung in `04-produkt-marke.md` eine Arbeitshypothese, und C2 in
+  `03-angles-hooks.md` (Selins Rose-Einwand) ist ausgesetzt.
 
 Alles andere unten (Kosmetik-VO, Versand, Rechtstexte) bleibt gültig — hier nur ergänzt um das, was die Seite
 inzwischen tatsächlich zeigt.

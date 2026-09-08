@@ -29,7 +29,7 @@
 - Website steht fast. Ziel: Umsatz.
 
 **Noch Annahme — bitte korrigieren:**
-1. **Positionierung „zweite Generation“** (persischer Kern) — abgeleitet aus dem Namen. Das ist die Category-of-One-These; Research in Woche 1–2 prüft sie.
+1. **Zwei Duftlinien, entschieden 09/2026:** Azizam **Heritage** (persisch-diasporisch, „Duft der zweiten Generation“, Persona Darius/Roya, Duft **Narcos**) und Azizam **Editions** (generisch-premium, Personas Leon/Selin, die übrigen sechs Düfte der Live-Seite). Zuordnung und offene Notenpyramiden: `04-produkt-marke.md`.
 2. **Duftkonzentration:** **30 % Duftöl bei jedem Duft** (bestätigt vom Inhaber, 09/2026) — branchenüblich bei Eau de Parfum sind 12–18 %. Kernmechanismus, siehe `04-produkt-marke.md`. Für Rückfragen von Kunden/Behörden lohnt sich trotzdem eine schriftliche Fabrikbestätigung (INCI, Konzentration, Sicherheitsdatenblatt).
 3. Etikett/Box 1,00 €, Versand 6,50 € (Gefahrgut-LQ) — Schätzwerte in `brand.json`.
 

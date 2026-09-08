@@ -14,7 +14,7 @@ Faustregel Start: 3 Personas × 2–3 Pains × 2 Angles = 12–18 Angles. Erwart
 |---|---|---|---|---|---|
 | A1 | Identität | Zweite Generation | „Für alle, die hier zu persisch und dort zu deutsch sind.“ | 1–2 | Benennt den Zustand, den niemand benennt. Wiedererkennung in einem Satz. |
 | A2 | Ursprung | Küche der Großmutter | „Ich habe drei Jahre nach dem Geruch aus der Küche meiner Großmutter gesucht. Dann habe ich ihn gebaut.“ | 1 | Founder-Story, TOF. Trigger A2, taktvoll über das Ergebnis erzählt. |
-| A3 | Feindbild | Kein Klischee | „Orientalisch heißt nicht Shisha-Bar. Es heißt Rose, Safran und ein Garten in Shiraz.“ | 2–3 | Gemeinsamer Gegner: das laute Klischee. Erzeugt ein Wir. |
+| A3 | Feindbild | Kein Klischee | „Orientalisch heißt nicht Shisha-Bar. Es heißt Honig, Tabak und Zimt am Abend bei der Familie.“ | 2–3 | Gemeinsamer Gegner: das laute Klischee. Erzeugt ein Wir — jetzt mit Narcos’ echten Noten statt erfundener Rose/Safran. |
 | A4 | Zugehörigkeit | Azizam heißt | „Azizam ist das Wort, das Deine Mutter sagt. Jetzt ist es ein Duft.“ | 1–2 | Gemeinsame Sprache — wer das Wort kennt, gehört dazu. |
 | A5 | Mechanismus | 30 statt 15 | „Warum unser Duft näher ist, nicht lauter: 30 % Duftöl statt 15 — und kein Kaufhaus dazwischen, deshalb 100 ml für 65 € statt 150.“ | 3 | Beantwortet „warum ausgerechnet Deins?“ auf Stufe 3 — doppelt belegt (Formulierung + Geschäftsmodell). |
 | A6 | Ritual | Nowruz-Drop | „Jedes Frühjahr ein Duft. Nur einmal. Für die, die wissen, wann das Jahr wirklich anfängt.“ | 4–5 | Wiederkehrendes Ritual, Verknappung echt (limitierte Charge). |
@@ -34,7 +34,7 @@ Faustregel Start: 3 Personas × 2–3 Pains × 2 Angles = 12–18 Angles. Erwart
 | # | Typ | Angle-Name | Kernbotschaft | Awareness | Warum er greift |
 |---|---|---|---|---|---|
 | C1 | Identität | Man erkennt Dich | „Der Duft, den man erkennt, bevor Du um die Ecke kommst.“ | 2–3 | Ihre Ebene 4 wörtlich. |
-| C2 | Gegen-Intuition | Rose ist nicht Oma | „Rose riecht nach Oma? Nur die aus der Seife. Die aus Damaskus riecht nach Dir.“ | 3 | Räumt den Haupteinwand aus. |
+| C2 | Gegen-Intuition | **ausgesetzt** | ~~„Rose riecht nach Oma?“~~ — **kein Angle mehr, bis feststeht, ob einer von Selins vier Editions-Düften (Velvet Vanilla, Erba Bomb, Midnight Café, Imaginary) tatsächlich Rosennoten hat.** Ohne Notenbeleg nicht verwenden. | — | war für die Heritage-Linie geschrieben, Selin trägt jetzt Editions |
 | C3 | Vergleich | Statt 150 € | „Nischenqualität — 30 % Duftöl — ohne den Nischenpreis. 100 ml für 64,99 € statt 150 € für 50 ml.“ | 4 | Preisanker gegen Nischenhäuser (ohne Markennamen); Grundpreis darf gezeigt werden. |
 | C4 | Zeugnis | Sechs Flakons | „Ich hatte sechs Flakons auf der Kommode und keinen eigenen Duft. Jetzt habe ich einen.“ | 3–4 | Echte Kundin, Honest-Review-Format. |
 
@@ -89,7 +89,7 @@ Ein Winning Angle bekommt eine eigene Landing Page. Struktur (Kap. 5.4): **Angle
 Beispiel LP für A1:
 1. Headline = Hook der Anzeige: „Für alle, die hier zu persisch und dort zu deutsch sind.“
 2. Pain in ihren Worten (3 Zitate aus dem Swipe-File)
-3. Mechanismus: 30 % Duftöl statt branchenüblich 15 % · kein Kaufhaus dazwischen (100 ml = 64,99 €) · kuratiert: Rose, Safran, Kardamom — je ein Satz, ein Bild
+3. Mechanismus: 30 % Duftöl statt branchenüblich 15 % · kein Kaufhaus dazwischen (100 ml = 64,99 €) · Narcos: Honig, Tabak, Zimt — je ein Satz, ein Bild
 4. Beweis: Rezensionen, Handgelenk-Demo-Video, Duftpyramide, Founder-Foto
 5. Offer: 50 ml 44,99 € · 100 ml 64,99 € (bester Preis pro ml, hervorgehoben) · Discovery-Set 3 × 2 ml 9,99 € (anrechenbar) — 30 Tage Rückgabe
 

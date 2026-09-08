@@ -1,5 +1,36 @@
 # Produkt & Marke — Winning Product, Unique Mechanism, Brand-Steckbrief
 
+## Das Sortiment — zwei Duftlinien parallel (Entscheidung 09/2026)
+
+Die sieben Düfte, die auf azizamfragrances.com live stehen, folgen keiner einheitlichen Linie — Narcos ist warm-
+orientalisch (Honig, Tabak, Zimt), Velvet Vanilla oder Kings Perfume sind generisch-premium. Statt alle sieben
+künstlich auf eine These zu pressen, führt Azizam **zwei Linien unter einem Dach**, verbunden durch den
+Markennamen und die zwei bestätigten Mechanismen (30 % Duftöl, kein Kaufhaus dazwischen) — getrennt durch
+Ansprache und Bildsprache je Duft.
+
+| Linie | Positionierung | Zielpersona | Zugeordnete Düfte | Status der Zuordnung |
+|---|---|---|---|---|
+| **Azizam Heritage** | Persisch-diasporische These: „Der Duft der zweiten Generation“ (siehe `02-personas-pains.md` Persona A) | Darius/Roya, 27 | **Narcos** (Honig, Tabak, Zimt, Zitrus, Vanille passt zur warmen orientalischen Gewürzfamilie) | ✅ Notenprofil bestätigt, passt |
+| Azizam Heritage | dito | Darius/Roya | **Goldstaub II.** — Name legt Gold/Bernstein/Safran-Ästhetik nahe | ⚠️ **Kandidat — Notenpyramide fehlt.** Nicht als Heritage bewerben, bis Noten vorliegen und wirklich zur Familie passen |
+| **Azizam Editions** | generisch-premium, literarisch-emotional (aktuelle Website-Tonalität: „Trage, was Worte nicht fassen können“) | Leon, 24 · Selin, 32 | **Kings Perfume** (Status/Identität → passt zu Leon B) | ⚠️ Noten unbekannt, Passung nach Name plausibel |
+| Azizam Editions | dito | Selin, 32 | **Velvet Vanilla** (weich, warm → Signature-Kandidat) | ⚠️ Noten unbekannt |
+| Azizam Editions | dito | Selin, 32 | **Erba Bomb** („Sommer im Flakon“ → grün-frisch, saisonal) | ⚠️ Noten unbekannt |
+| Azizam Editions | dito | offen | **Midnight Café** (Kaffee-Vanille, Abendritual) | ⚠️ Noten unbekannt |
+| Azizam Editions | dito | offen | **Imaginary** — Name zu abstrakt für eine Zuordnung ohne Notenprofil | ⚠️ Noten unbekannt |
+
+**Was noch fehlt, bevor Angles pro Duft final geschrieben werden:** die vollständige Notenpyramide (Kopf/Herz/
+Basis) für Midnight Café, Erba Bomb, Imaginary, Goldstaub II., Velvet Vanilla und Kings Perfume — nur Narcos ist
+mit „Honig & Tabakblatt, Zimt & Lavendel, Zitrischer Auftakt, Vanille-Fond“ vollständig bekannt. Diese Datei
+erfindet keine Noten für die anderen sechs; die Zuordnung oben ist eine **Arbeitshypothese nach Duftnamen**, kein
+Fakt. Sobald die echten Noten vorliegen (von der Fabrik oder aus der eigenen Produktbeschreibung), hier
+korrigieren — das ist derselbe Grundsatz wie bei Personas: nichts erfinden, was sich nicht belegen lässt.
+
+**Konsequenz für Personas/Angles:** `02-personas-pains.md` und `03-angles-hooks.md` bleiben in ihrer Struktur
+gültig — Persona A (Darius/Roya) trägt jetzt konkret Narcos (und ggf. Goldstaub II.), Persona B (Leon) und
+Persona C (Selin) tragen die Editions-Linie und ihre Angles brauchen **keine** persische Bildsprache mehr — das
+war ohnehin nie ihr Kern (Leons Pain ist „kein Kompliment“, Selins Pain ist „kein Signature-Duft“, beides
+funktioniert bei jedem Premium-Duft).
+
 ## Die vier Kriterien (Kap. 2.3)
 
 | Kriterium | Azizam | Status |
@@ -19,7 +50,7 @@
 | Nicht zerbrechlich | **Glasflakon** — Retourenrisiko | ⚠️ Kartonage mit Einlage, Bruchquote messen |
 | Wiederkauf | 4–6 Monate; plus Wardrobe (zweiter Duft), Discovery-Set → Full Size | ✅ |
 | Visuell demonstrierbar | Flakon, Handgelenk-Test, Reaktion anderer Menschen | ✅ (Duft selbst nicht — deshalb Reaktion zeigen) |
-| In 10 s erklärbar | „Persische Rose und Safran, 30 % Duftöl, 100 ml für 65 € — weil kein Kaufhaus dazwischen ist.“ | ✅ |
+| In 10 s erklärbar | „Narcos: Honig, Tabak und Zimt, 30 % Duftöl, 100 ml für 65 € — weil kein Kaufhaus dazwischen ist.“ | ✅ (Heritage-Linie, Narcos) |
 | Kein Monopol | fragmentiert | ✅ |
 
 ## Der Unique Mechanism — bestätigt: 30 % Duftöl
@@ -31,7 +62,7 @@ jedem Duft**. Branchenüblich bei Eau de Parfum sind 12–18 %. Das ist ein echt
 |---|---|---|
 | **Formulierung** | 30 % Duftöl statt branchenüblich 12–18 % | „Warum unser Duft näher hält, nicht lauter: 30 % Duftöl statt 15 — und nicht nach zwei Stunden weg.“ ✅ |
 | **Geschäftsmodell** | Direktvertrieb ohne Handelsmarge: 100 ml für 64,99 € | „Kein Kaufhaus, keine Werbemillionen, kein Zwischenhändler — deshalb kostet bei uns die große Flasche, was woanders die kleine kostet.“ ✅ |
-| **Kuration / Herkunft der Auswahl** | Aus hunderten Fabrikdüften die 3–5, die nach Zuhause riechen (Rose, Safran, Kardamom) | „Wir haben nicht die Düfte genommen, die sich am besten verkaufen, sondern die, bei denen unsere Mütter gelächelt haben.“ ✅ |
+| **Kuration / Herkunft der Auswahl** | Aus dem Fabriksortiment die Düfte gewählt, die zwei Geschichten tragen: Heritage (Narcos: Honig, Tabak, Zimt — warm, an Zuhause erinnernd) und Editions (generisch-premium) | „Wir haben nicht die Düfte genommen, die sich am besten verkaufen, sondern die, bei denen unsere Mütter gelächelt haben.“ ✅ (gilt für Narcos; für die anderen sechs erst nach Notenbeleg zu belegen) |
 | Ausschluss | kein Dupe-Marketing, keine Designer-Namen | ✅ (und rechtlich Pflicht) |
 
 **Doppelter Mechanismus ist stärker als einer:** 30 % Duftöl beantwortet „warum wirkt es?“, Direktvertrieb beantwortet
@@ -58,7 +89,7 @@ Wir existieren, damit die zweite Generation ihre Herkunft tragen kann wie eine g
 
 GEGNER
 Wir sind gegen das Klischee. Gegen „orientalisch = laut, süß, Shisha-Bar“. Gegen Designer-Düfte, die jeder
-zweite in der Bahn trägt. Gegen Nischenhäuser, die unsere Rose als exotisches Zitat für 250 € verkaufen.
+zweite in der Bahn trägt. Gegen Nischenhäuser, die Herkunft als exotisches Zitat für 250 € verkaufen.
 
 VERSPRECHEN
 Wer uns kauft, wird der Mensch, an den man sich erinnert — und erkennt sich zum ersten Mal in einem Duft wieder.
@@ -74,9 +105,10 @@ Wir klingen: warm / selbstbewusst / poetisch-knapp
 Wir klingen NIE: laut-rabattig („nur heute!“) / exotisierend („1001 Nacht“, „Orient-Zauber“)
 
 VISUELL
-Farben:        Tiefes Safran-Gold auf mattem Nacht-Blau — Begründung: Safran ist der Geruch der Elternküche
-               (Persona A2), Nachtblau ist die Farbe der Yalda-Nacht und wirkt im Feed nicht wie das
-               Gold-Schwarz der Dupe-Anbieter. Akzent: Rosé der Damaszener-Rose, sparsam.
+Farben:        Tiefes Safran-Gold auf mattem Nacht-Blau — Begründung: die Farbe steht für die Elternküche
+               (Persona A2) und die Yalda-Nacht, wirkt im Feed nicht wie das Gold-Schwarz der Dupe-Anbieter.
+               **Farbnamen, kein Duftnoten-Claim** — „Safran-Gold“ und „Rosé“ sind hier Ästhetik, nicht Inhaltsstoff.
+               Akzent: warmes Bernstein-Rosé, sparsam.
 Typografie:    Cormorant Garamond (bereits im Frontend) für Markenname und Zitate; klare Grotesk für Text.
                Nastaliq-Schriftzug „عزیزم“ als wiederkehrendes Detail (sichtbare Zugehörigkeit).
 Bildsprache:   Menschen, nicht Flakons: Hände, Küchen, Familienfeste, Bahnsteige. Warmes Licht, keine

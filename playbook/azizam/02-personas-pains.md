@@ -6,9 +6,14 @@
 
 Derselbe Markt — völlig verschiedene Menschen darin. Wir wählen die mit dem höchsten Schmerz.
 
+**Zwei Duftlinien, ab jetzt getrennt (siehe `04-produkt-marke.md`):** Persona A trägt **Azizam Heritage**
+(persisch-diasporische These, Duft: **Narcos**, Kandidat Goldstaub II.). Personas B und C tragen **Azizam
+Editions** (generisch-premium, Düfte: Kings Perfume, Velvet Vanilla, Erba Bomb, Midnight Café, Imaginary) —
+ihre Pains brauchten die persische Rahmung ohnehin nie.
+
 ---
 
-## Persona A · „Darius“, 27 — die zweite Generation
+## Persona A · „Darius“, 27 — die zweite Generation · **Linie: Azizam Heritage / Narcos**
 
 | Feld | Inhalt |
 |---|---|
@@ -65,11 +70,12 @@ Haupteinwand:          „Zu intim, um darüber zu reden“ → Schamgrenze: das
 
 ---
 
-## Persona B · „Leon“, 24 — kein einziges Kompliment
+## Persona B · „Leon“, 24 — kein einziges Kompliment · **Linie: Azizam Editions / Kings Perfume**
 
 Die Persona aus dem Playbook. Der größte und lauteste Pain im Männer-Duftmarkt — und der, um den sich
 tausend Marken prügeln (Sophistication 5). Für Azizam ein **Neben-Angle mit eigenem Gefühl**: Leon bekommt
-Komplimente, weil er nicht riecht wie jeder — nicht, weil er lauter riecht.
+Komplimente, weil er nicht riecht wie jeder — nicht, weil er lauter riecht. Trägt Kings Perfume (Status/
+Identität passt zum Namen); Notenprofil noch unbestätigt, siehe `04-produkt-marke.md`.
 
 | Feld | Inhalt |
 |---|---|
@@ -98,7 +104,10 @@ Haupteinwand:          „Habe ich schon probiert“ → zuerst die Enttäuschun
 
 ---
 
-## Persona C · „Selin“, 32 — die Signature-Suche
+## Persona C · „Selin“, 32 — die Signature-Suche · **Linie: Azizam Editions / Velvet Vanilla, Erba Bomb, Midnight Café, Imaginary**
+
+Trägt die übrigen vier Editions-Düfte — je nach Anlass (Velvet Vanilla als weicher Signature-Kandidat, Erba
+Bomb saisonal/sommerlich, Midnight Café als Abendduft, Imaginary offen). Notenprofile unbestätigt.
 
 | Feld | Inhalt |
 |---|---|
@@ -121,7 +130,7 @@ Typ:                   chronisch → Trigger: Trennung, Geburtstag, neuer Job
 Bewertung  Intensität 3/5   Frequenz 4/5
            Sichtbarkeit 4/5  Zahlungsbereitschaft 5/5
            GESAMT 16/20
-Haupteinwand:          „Rose/Orient = schwer/altmodisch“ → Gegen-Intuition: moderne, helle persische Rose, kein Oud-Nebel
+Haupteinwand:          „Rose/Orient = schwer/altmodisch“ → Gegen-Intuition: modern und weich statt schwer-orientalisch (Editions-Linie, kein Rose/Oud-Claim ohne bestätigte Note)
 3 wörtliche Zitate:    1. "[ZITAT FEHLT]" (Parfumo 'Signature-Duft finden')  2. "[ZITAT FEHLT]"  3. "[ZITAT FEHLT]"
 → Angle-Ansatz:        Identität + Vergleich: „Der Duft, den keine zweite im Büro trägt.“
 ```
