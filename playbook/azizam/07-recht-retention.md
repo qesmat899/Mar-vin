@@ -23,14 +23,20 @@ final steht.
 Kein Ersatz für Rechtsberatung. Die Reihenfolge ist pragmatisch: Tag-1-Themen in Stunden erledigt,
 produktspezifische Zulassungen **vor dem ersten Verkauf**.
 
-### ⚠️ Zwei Dinge, die schon jetzt live falsch sind
+### ⚠️ Zwei Dinge, die live falsch sind — Entfernung beschlossen (09/2026)
 
-Die Seite ist online und behauptet bereits Dinge, die vor dem ersten echten Verkauf korrigiert werden sollten
-(Details und Formulierungsvorschlag in `NAECHSTE-SCHRITTE.md`, Schritt −1):
+Die Seite ist online und behauptet zwei Dinge, die vor dem ersten echten Verkauf verschwinden müssen. Der Inhaber
+hat die Entfernung beider Punkte entschieden; die fertigen Ersatztexte stehen in
+[`website-korrekturen.md`](website-korrekturen.md).
 
-1. **„Handgefertigt in Deutschland“ / „eigene Herstellung ohne Fokusgruppen“** widerspricht dem Geschäftsmodell
-   (Fertigparfum aus der Fabrik, umgefüllt) — Irreführung nach § 5 UWG.
-2. **4,8/5 bei 247 Bewertungen** auf einer noch nicht verkaufenden Seite — Herkunft klären, sonst wettbewerbswidrig.
+1. **„Handgefertigt in Deutschland“, „Seltene Zutaten“, „Haute Parfumerie“ und der Komposition-Absatz im
+   Geschichte-Abschnitt** widersprechen dem Geschäftsmodell (Fertigparfum aus der Fabrik, umgefüllt) —
+   Irreführung über wesentliche Merkmale der Ware, § 5 Abs. 1 Nr. 1 UWG. → ersetzen durch „In Deutschland
+   abgefüllt“ und die Kurations-Fassung der Geschichte.
+2. **„4.8 von 5“ bei „247 Bewertungen“ plus drei Testimonials** auf einer Seite ohne bisherige Onlineverkäufe.
+   Bewertungen müssen echt und nachvollziehbar sein (§ 5 Abs. 1, § 5b Abs. 3 UWG; Nr. 23b Anhang zu § 3 Abs. 3
+   UWG). → kompletter Block raus, ersetzt durch Risikoumkehr (30 Tage Rückgabe ab 80 % Füllstand). Echte
+   Bewertungen kommen mit Einwilligung zurück, sobald die Privatverkäufe laufen.
 
 ### Der wichtigste Satz für dieses Geschäftsmodell
 

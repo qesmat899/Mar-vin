@@ -12,15 +12,15 @@ Recherche auf azizamfragrances.com (die Seite ist bereits online, Single-Page mi
 Erba Bomb, Imaginary, Goldstaub II., Velvet Vanilla, Kings Perfume) hat zwei Dinge gefunden, die **nicht bis
 nächste Woche warten sollten**:
 
-- [ ] **„Handgefertigt in Deutschland“ und „eigene Herstellung/Komposition ohne Fokusgruppen“ von der Seite nehmen
-  oder umschreiben.** Das widerspricht dem echten Geschäftsmodell (Fertigparfum aus der Fabrik, in eigene Flakons
-  abgefüllt) und ist als Aussage gegenüber Kunden eine Irreführung nach § 5 UWG — abmahnfähig, sobald die ersten
-  Verkäufe laufen. Ersetzen durch etwas Wahres und trotzdem Starkes: „In Deutschland kuratiert und abgefüllt“,
-  „30 % Duftöl, von uns ausgewählt und abgefüllt“. Die 30-%-Aussage selbst darf bleiben (vom Inhaber bestätigt).
-- [ ] **Die 4,8/5 bei 247 Bewertungen prüfen.** Wenn das echte Käuferbewertungen sind: woher, aus welchem System,
-  seit wann? Wenn es Platzhalter/Demo-Daten des Theme-Templates sind: **runternehmen, bevor der Shop scharf
-  geschaltet wird** — erfundene oder nicht zuordenbare Bewertungen sind wettbewerbswidrig (§ 5 UWG) und zerstören
-  das Vertrauen, auf dem die ganze Marke aufbaut, wenn es auffliegt.
+**Beides ist entschieden — raus. Fertige Vorher/Nachher-Texte stehen in [`website-korrekturen.md`](website-korrekturen.md).**
+
+- [ ] **Herstellungs-Aussagen entfernen:** „Handgefertigt in Deutschland“ → „In Deutschland abgefüllt“ ·
+  „Seltene Zutaten“ und „Haute Parfumerie“ streichen · den Komposition-Absatz im Geschichte-Abschnitt durch die
+  Kurations-Fassung ersetzen. „30 % Duftöl“ bleibt. Irreführung nach § 5 UWG, solange es live steht.
+- [ ] **Bewertungsblock komplett entfernen:** „4.8 von 5“, „247 Bewertungen“, die drei Testimonials (Karim A.,
+  Sarah K., Nina B.) und „Alle 247 Bewertungen ansehen“. Ersetzen durch den Risikoumkehr-Block (30 Tage Rückgabe
+  ab 80 % Füllstand) aus `website-korrekturen.md`. Echte Bewertungen kommen zurück, sobald die Privatverkäufe
+  laufen — mit Einwilligung und aus einem echten Bewertungssystem.
 - [x] **Entschieden: beide Linien parallel.** Azizam **Heritage** (persisch-diasporisch, Persona Darius/Roya,
   Duft Narcos) und Azizam **Editions** (generisch-premium, Personas Leon/Selin, die übrigen sechs Düfte). Details
   und Zuordnung: `04-produkt-marke.md`.

@@ -83,11 +83,12 @@
       "Kings Perfume"
     ],
     "slogan": "Trage, was Worte nicht fassen können / Neue Kompositionen. Seltene Editionen.",
-    "bewertungen_live": "4,8/5 bei 247 Bewertungen angezeigt — Herkunft/Echtheit ungeklärt, siehe Rechtsflag",
+    "bewertungen_live": "4,8/5 bei 247 Bewertungen — als nicht belegbar eingestuft, Entfernung beschlossen",
     "rechtsflags": [
-      "Seite behauptet 'Handgefertigt in Deutschland' und 'eigene Herstellung/Komposition ohne Fokusgruppen' — widerspricht dem Geschäftsmodell (Fertigparfum aus Fabrik, nur umgefüllt). Irreführung nach § 5 UWG, solange live.",
-      "247 Bewertungen bei praktisch neuem Shop ohne bisherige Verkäufe (laut Gründer) — Herkunft klären; wettbewerbswidrig, falls nicht echt.",
-      "Keine CPNP-Notifizierung/PIF/INCI/Sicherheitsdatenblatt auf der Seite erkennbar — weiterhin offen (siehe NAECHSTE-SCHRITTE.md)."
-    ]
+      "ENTSCHIEDEN 09/2026 (Entfernung beschlossen, noch nicht umgesetzt): 'Handgefertigt in Deutschland', 'Seltene Zutaten', 'Haute Parfumerie' und der Komposition-Absatz im Geschichte-Abschnitt — widersprechen dem Umfüll-Geschäftsmodell, § 5 UWG. Ersatztexte: website-korrekturen.md",
+      "ENTSCHIEDEN 09/2026 (Entfernung beschlossen, noch nicht umgesetzt): Bewertungsblock '4.8 von 5' / '247 Bewertungen' / drei Testimonials — ohne echte Verkäufe wettbewerbswidrig. Ersetzt durch Risikoumkehr (30 Tage Rückgabe). Ersatztexte: website-korrekturen.md",
+      "OFFEN: Keine CPNP-Notifizierung/PIF/INCI/Sicherheitsdatenblatt erkennbar — siehe NAECHSTE-SCHRITTE.md Schritt 0A."
+    ],
+    "website_quellcode": "nicht in diesem Repo; Vercel-Team 'MARN' zeigt keine Projekte — Zugriff für direkte Änderungen fehlt"
   }
 }
