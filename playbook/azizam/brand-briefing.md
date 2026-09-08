@@ -13,11 +13,11 @@
 - **Assoziationen:** Nähe · Herkunft · Stille.
 - **Gefühl:** erkannt werden — wie das Wort, das die Mutter sagt.
 
-## Unique Mechanism (nur behaupten, wenn belegt)
-**Direktvertrieb ohne Handelsmarge + Kuration:** 100 ml für 64,99 € statt 150 €+ im Handel — weil kein Zwischenhändler,
-keine Werbemillionen, kein Kaufhaus. Und: aus dem Sortiment der Fabrik die Düfte ausgewählt, die nach Zuhause riechen
-(Rose, Safran, Kardamom), nicht die, die nach Regal riechen. **Nicht:** Duftöl-Prozentangaben (bis Fabrikbeleg vorliegt),
-„Made in Germany“, „handgemacht“, „Manufaktur“ für den Duft. Erlaubt: „in Deutschland abgefüllt“.
+## Unique Mechanism (bestätigt)
+**30 % Duftöl bei jedem Duft** — branchenüblich sind 12–18 % bei Eau de Parfum, damit hält Azizam näher an der Haut
+und länger, ohne lauter zu sein. **Plus Direktvertrieb ohne Handelsmarge:** 100 ml für 64,99 € statt 150 €+ im Handel.
+**Nicht:** „Made in Germany“ (nur „in Deutschland abgefüllt“), „handgemacht“/„Manufaktur“ für den Duft selbst,
+Haltbarkeits-Garantien in Stunden.
 
 ## Personas (Status: Hypothesen bis Research-Belege vorliegen)
 1. **Darius/Roya, 27 — die zweite Generation (Haupt-Persona).** Trigger: Verlust eines Großelternteils, erste eigene Wohnung, Nowruz, „woher kommst Du eigentlich?“. Pain Ebene 4: „Ich bin hier zu persisch und dort zu deutsch. Ich will etwas tragen, das nach MIR riecht.“ Einwand: „Riecht das nach Klischee? Kann ich das im Büro tragen?“ Awareness 2–3. Identität: beides sein, sich für nichts entschuldigen.
@@ -42,6 +42,7 @@ Nastaliq-Schriftzug „عزیزم“ auf Flakon · #azizamduft.
 
 ## Zahlen (echt, Stand 09/2026)
 COGS: 0,076 €/ml Parfum + 1,85 € Flakon + ~1 € Etikett/Box → 30 ml 5,13 € · 50 ml 6,65 € · 100 ml 10,45 €.
+30 % Duftöl bei jedem Duft (branchenüblich 12–18 %) — Kernbehauptung für A5/B1/C3, siehe Mechanismus oben.
 Online 50 ml: netto 37,81 € · CM1 23,90 € · **max. CAC 22,94 €** · **Break-even-ROAS 1,58 (netto) / 1,88 (brutto)**.
 Online 100 ml: CM1 36,57 € · max. CAC 35,11 € · Break-even-ROAS 1,49. 30 ml online: CM1 13,07 € — **nicht bewerben**.
 Privat 50 ml: 26,96 € Deckungsbeitrag ohne CAC. Offer-Reihenfolge: 100 ml als Anker · Duo 2 × 50 ml 79,99 € · Trio 2+1 · Discovery 9,99 € · Post-Purchase-Upsell 30 ml 19,99 €. Kein Erstbestellrabatt, kostenloser Versand ab 60 €.

@@ -91,7 +91,7 @@ Typ:                   akut
 Bewertung  Intensität 5/5   Frequenz 4/5
            Sichtbarkeit 5/5  Zahlungsbereitschaft 4/5
            GESAMT 18/20
-Haupteinwand:          „Habe ich schon probiert“ → zuerst die Enttäuschung nehmen (Mechanismus: kuratierter Duft, nicht lauter, sondern näher — Konzentration nur nennen, wenn die Fabrik sie belegt)
+Haupteinwand:          „Habe ich schon probiert“ → zuerst die Enttäuschung nehmen (Mechanismus: 30 % Duftöl, nicht lauter, sondern näher)
 3 wörtliche Zitate:    1. "[ZITAT FEHLT]" (r/fragrance 'no compliments')  2. "[ZITAT FEHLT]"  3. "[ZITAT FEHLT]"
 → Angle-Ansatz:        Transformation + Mechanismus + Gegen-Intuition: „Nicht lauter. Näher.“
 ```

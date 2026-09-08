@@ -7,7 +7,7 @@
 | 1 · Nicht komplett saturiert | Parfum ist saturiert — **das Segment „persische Duftkultur für die zweite Generation“ ist es nicht.** Kein einziger D2C-Player besetzt es. | ✅ (Meta Ads Library bestätigt: ☐) |
 | 2 · Klarer, belegbarer Bedarf | Orientalische Düfte sind seit 2022 der stärkste Trend im Segment; Diaspora-Community in DACH zählt Millionen. Belege: Trends, Parfumo-Threads, TikTok-Volumen | ☐ Zahlen dokumentieren |
 | 3 · Löst genau diesen Pain | Ein Duft, der Herkunft trägt, ohne Klischee zu sein (A1) · der näher ist statt lauter (B1) · den keine zweite trägt (C1) | ✅ per Design |
-| 4 · Unique Mechanism | Direktvertrieb ohne Handelsmarge + Kuration (Details unten) | ✅ belegbar — Konzentrations-Claim erst nach Fabrikbeleg |
+| 4 · Unique Mechanism | 30 % Duftöl + Direktvertrieb ohne Handelsmarge (Details unten) | ✅ belegbar |
 
 ## Praxisfilter
 
@@ -19,28 +19,29 @@
 | Nicht zerbrechlich | **Glasflakon** — Retourenrisiko | ⚠️ Kartonage mit Einlage, Bruchquote messen |
 | Wiederkauf | 4–6 Monate; plus Wardrobe (zweiter Duft), Discovery-Set → Full Size | ✅ |
 | Visuell demonstrierbar | Flakon, Handgelenk-Test, Reaktion anderer Menschen | ✅ (Duft selbst nicht — deshalb Reaktion zeigen) |
-| In 10 s erklärbar | „Persische Rose und Safran, 100 ml für 65 € — weil kein Kaufhaus dazwischen ist.“ | ✅ |
+| In 10 s erklärbar | „Persische Rose und Safran, 30 % Duftöl, 100 ml für 65 € — weil kein Kaufhaus dazwischen ist.“ | ✅ |
 | Kein Monopol | fragmentiert | ✅ |
 
-## Der Unique Mechanism — korrigiert nach den echten Produktdaten
+## Der Unique Mechanism — bestätigt: 30 % Duftöl
 
-Die Düfte kommen fertig aus einer Parfumfabrik und werden in eigene Flakons abgefüllt. Damit fällt der Mechanismus
-„Formulierung“ weg, solange die Fabrik keine Konzentration schriftlich bestätigt. Das Playbook nennt neun Quellen für
-einen Mechanismus — zwei davon sind hier **wahr und belegbar**:
+Die Düfte kommen fertig aus einer Parfumfabrik und werden in eigene Flakons abgefüllt — mit **30 % Duftölanteil bei
+jedem Duft**. Branchenüblich bei Eau de Parfum sind 12–18 %. Das ist ein echter, belegbarer Mechanismus:
 
 | Quelle | Azizam | Ein-Satz-Test |
 |---|---|---|
+| **Formulierung** | 30 % Duftöl statt branchenüblich 12–18 % | „Warum unser Duft näher hält, nicht lauter: 30 % Duftöl statt 15 — und nicht nach zwei Stunden weg.“ ✅ |
 | **Geschäftsmodell** | Direktvertrieb ohne Handelsmarge: 100 ml für 64,99 € | „Kein Kaufhaus, keine Werbemillionen, kein Zwischenhändler — deshalb kostet bei uns die große Flasche, was woanders die kleine kostet.“ ✅ |
 | **Kuration / Herkunft der Auswahl** | Aus hunderten Fabrikdüften die 3–5, die nach Zuhause riechen (Rose, Safran, Kardamom) | „Wir haben nicht die Düfte genommen, die sich am besten verkaufen, sondern die, bei denen unsere Mütter gelächelt haben.“ ✅ |
-| Formulierung (Konzentration) | **offen** — Fabrik nach % Duftöl / Bezeichnung (EdP/Extrait) fragen, schriftlich | erst nach Beleg |
 | Ausschluss | kein Dupe-Marketing, keine Designer-Namen | ✅ (und rechtlich Pflicht) |
 
-**Ehrlich gesagt:** Dieses Produkt kann jeder in einer Woche nachbauen. Der Schutz ist nicht der Mechanismus, sondern
-Teil III — Persona, Gefühl, Sprache, Ritual. Deshalb ist der Brand-Steckbrief unten wichtiger als jede Produkteigenschaft.
+**Doppelter Mechanismus ist stärker als einer:** 30 % Duftöl beantwortet „warum wirkt es?“, Direktvertrieb beantwortet
+„warum ist es günstiger als vergleichbare Nischenqualität?“. Zusammen tragen sie A5, B1, B5 und C3 in `03-angles-hooks.md`.
 
-**Was die Fabrik liefern muss (schriftlich, vor dem Onlineverkauf):** INCI-Liste je Duft · Allergen-Deklaration ·
-Sicherheitsdatenblatt · Angabe zur Konzentration · ob und unter wessen Namen die Düfte bereits CPNP-notifiziert sind ·
-ob es sich um „inspired by“-Kompositionen handelt (dann: **nie** den Referenzduft nennen, auch nicht in DMs).
+**Rechtlich zu beachten:** Der 30-%-Wert kommt vom Inhaber, nicht von einer schriftlichen Fabrikbestätigung. Für die
+eigene Werbung reicht das (Sie sind die verantwortliche Person und bürgen für die Aussage) — für eine spätere
+Rückfrage von Kunden oder Behörden sollte die Fabrik es trotzdem schriftlich bestätigen (INCI, Konzentration,
+Sicherheitsdatenblatt — siehe `07-recht-retention.md`). Bis dahin: Aussage steht, aber ohne öffentlich einsehbares
+Prüfzertifikat.
 
 ---
 

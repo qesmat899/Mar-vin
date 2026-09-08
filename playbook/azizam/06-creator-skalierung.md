@@ -39,7 +39,7 @@ Hey {Vorname},
 Dein Video über {konkreter Post — z. B. „das Nowruz-Essen bei Deiner Mutter“} — ich hab’s dreimal
 geschaut, weil es genau so bei uns riecht.
 
-Wir sind Azizam: ein Parfum für die zweite Generation. Persische Rose und Safran,
+Wir sind Azizam: ein Parfum für die zweite Generation. Persische Rose und Safran, 30 % Duftöl,
 leise statt laut — nichts mit Shisha-Bar.
 
 Du erzählst Herkunft, ohne sie zum Klischee zu machen. Genau dieses Gefühl soll Azizam tragen.
@@ -69,7 +69,7 @@ Länge: 30–40 s · Plattform: TikTok + IG Reels · Deadline: ______
 Persona:          zweite Generation, 22–35, zwischen zwei Welten
 Pain:             „Ich rieche nach jedem — und nach niemandem, der ich bin.“
 Angle:            Der Duft der zweiten Generation
-Unique Mechanism: kein Kaufhaus dazwischen (100 ml = 64,99 €) · kuratiert: Rose, Safran, Kardamom · leise statt laut
+Unique Mechanism: 30 % Duftöl statt branchenüblich 15 % · kein Kaufhaus dazwischen (100 ml = 64,99 €) · leise statt laut
 CTA:              „Link in Bio — Discovery-Set, 3 Düfte, 9,99 €.“
 
 ── AUFBAU ──
@@ -78,7 +78,7 @@ CTA:              „Link in Bio — Discovery-Set, 3 Düfte, 9,99 €.“
                C: „Ich habe aufgehört, Designer-Düfte zu tragen.“
 3–10 s  PROBLEM  Gesagt: „Drei Leute in meiner Bahn tragen meinen Duft. Und zuhause riecht es nach Safran und Rosenwasser — das gibt’s in keinem Flakon.“
                  Gezeigt: Bahn / Elternküche / Flakonreihe im Bad
-10–25 s LÖSUNG   Kernsatz: „Azizam. Persische Rose, Safran — nah statt laut. 100 ml für 65 €, weil kein Kaufhaus dazwischen ist. Meine Mutter hat den Flakon gesehen und nur gelacht: ‚azizam‘.“
+10–25 s LÖSUNG   Kernsatz: „Azizam. Persische Rose, Safran, 30 % Duftöl — deshalb nah statt laut. 100 ml für 65 €, weil kein Kaufhaus dazwischen ist. Meine Mutter hat den Flakon gesehen und nur gelacht: ‚azizam‘.“
                  Zu zeigen: Flakon mit Nastaliq-Schriftzug, Gedichtkarte, ein Sprüher aufs Handgelenk
 25–35 s CTA      „Für alle, die hier zu persisch und dort zu deutsch sind. Discovery-Set im Link.“
 
@@ -113,7 +113,7 @@ Partnership-Freigabe vorab vereinbart.
 | Stufe | Zielgruppe | Azizam-Creatives | Budget | Kennzahl |
 |---|---|---|---|---|
 | TOF | kalt, breit (Advantage+) | Spark Ads Problem-Story, Founder-Story A2, GRWM | 60–70 % | Hook Rate, CPM |
-| MOF | Video-Viewer 50 %+, Engager, Seitenbesucher | Mechanismus „kein Kaufhaus dazwischen“, Handgelenk-Demo, Mythen-Check, Honest Review | 20–25 % | CTR, Add-to-Cart |
+| MOF | Video-Viewer 50 %+, Engager, Seitenbesucher | Mechanismus „30 % Duftöl“ + „kein Kaufhaus dazwischen“, Handgelenk-Demo, Mythen-Check, Honest Review | 20–25 % | CTR, Add-to-Cart |
 | BOF | Warenkorb-/Produktseiten-Besucher | Rezensions-Screenshots, Discovery-Set, Garantie, Drop-Verknappung | 10–15 % | ROAS, CR |
 
 ## Die Aufwärtsspirale — wo sie bei Azizam reißen kann

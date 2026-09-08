@@ -19,15 +19,15 @@
     "geschenk_cogs": 3.0,
     "kaeufe_pro_kunde": 2.2,
     "wiederkaufrate_ziel": 0.4,
-    "_herleitung": "COGS = ml × 0,076 €/ml (38 € je 500 ml fertiges Parfum) + 1,85 € Flakon + 1,00 € Etikett/Box; Versand DHL Paket als Gefahrgut-LQ inkl. Verpackung"
+    "_herleitung": "COGS = ml × 0,076 €/ml (38 € je 500 ml fertiges Parfum) + 1,85 € Flakon + 1,00 € Etikett/Box; Versand DHL Paket als Gefahrgut-LQ inkl. Verpackung · Konzentration: 30 % Duftöl bei jedem Duft (vom Inhaber bestätigt, 08/2026)."
   },
   "prompt_defaults": {
     "MARKE": "Azizam",
     "MARKT": "Parfum / Nischenduft DACH, Fokus persisch-orientalische Duftfamilie und zweite Generation der Diaspora",
     "PRODUKT": "Azizam Eau de Parfum, 30 / 50 / 100 ml (29,99 / 44,99 / 64,99 €), Düfte aus einer Parfumfabrik, in Deutschland in eigene Flakons abgefüllt",
-    "UNIQUE_MECHANISM": "Direktvertrieb ohne Handelsmarge und Kuration: aus dem Fabrik-Sortiment die Düfte, die nach Zuhause riechen — 100 ml für 64,99 € statt 150 €+ im Handel. (Konzentration in % nur nennen, wenn die Fabrik sie schriftlich bestätigt.)",
+    "UNIQUE_MECHANISM": "30 % Duftölanteil bei jedem Duft (branchenüblich 12–18 % bei Eau de Parfum) — plus Direktvertrieb ohne Handelsmarge: 100 ml für 64,99 € statt 150 €+ im Handel.",
     "TONALITAET": "warm / selbstbewusst / poetisch-knapp",
-    "VERBOTEN": "keine Designer-Namen (\"riecht wie Sauvage\", \"Dupe von X\"), keine Duftöl-%-Angabe ohne Fabrikbeleg, keine Haltbarkeits-Garantie in Stunden, keine Haut-/Gesundheitsaussagen, kein 'Made in Germany' (nur 'in Deutschland abgefüllt'), kein 'handgemacht/Manufaktur' für den Duft selbst"
+    "VERBOTEN": "keine Designer-Namen (\"riecht wie Sauvage\", \"Dupe von X\"), keine Haltbarkeits-Garantie in Stunden, keine Haut-/Gesundheitsaussagen, kein 'Made in Germany' (nur 'in Deutschland abgefüllt'), kein 'handgemacht/Manufaktur' für den Duft selbst"
   },
   "varianten": [
     {
