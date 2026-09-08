@@ -1,0 +1,30 @@
+{
+  "name": "Azizam",
+  "slug": "azizam",
+  "kategorie": "Parfum — Eau de Parfum 50 ml, persisch inspirierte Duftfamilie (Rose, Safran, Oud, Zitrus, Kardamom)",
+  "markt": "DACH · Fragrance D2C · Nischen-/Orient-Segment · Sophistication-Stufe 5",
+  "status": "Hypothesen — Research läuft (Woche 1–2 des 90-Tage-Plans)",
+  "economics": {
+    "preis_brutto": 69.0,
+    "mwst": 0.19,
+    "cogs": 13.5,
+    "versand_fulfillment": 6.9,
+    "gebuehren_pct": 0.02,
+    "cac_ziel": 22.0,
+    "retouren_pct": 0.05,
+    "abo_rabatt_pct": 0.15,
+    "abo_monate": 4,
+    "geschenk_wert": 12.0,
+    "geschenk_cogs": 2.5,
+    "kaeufe_pro_kunde": 2.2,
+    "wiederkaufrate_ziel": 0.4
+  },
+  "prompt_defaults": {
+    "MARKE": "Azizam",
+    "MARKT": "Parfum / Nischenduft DACH, Fokus persisch-orientalische Duftfamilie und zweite Generation der Diaspora",
+    "PRODUKT": "Azizam Eau de Parfum, 50 ml, 25 % Duftölanteil, in Deutschland abgefüllt",
+    "UNIQUE_MECHANISM": "25 % Duftöl statt der branchenüblichen 12–18 % — und Rohstoffe, die aus der persischen Duftkultur kommen (Damaszener-Rose, Safran, Oud), nicht aus dem Designer-Baukasten",
+    "TONALITAET": "warm / selbstbewusst / poetisch-knapp",
+    "VERBOTEN": "keine Designer-Namen als Vergleich (\"wie Baccarat Rouge\", \"Dior-Dupe\"), keine Haltbarkeits-Garantie in Stunden ohne Beleg, keine Aussagen zu Haut/Gesundheit, kein 'Made in Germany' für den Duft selbst, solange nur die Abfüllung in DE erfolgt"
+  }
+}

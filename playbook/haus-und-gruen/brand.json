@@ -1,0 +1,30 @@
+{
+  "name": "Haus & Grün",
+  "slug": "haus-und-gruen",
+  "kategorie": "Pflanzenpflege-System für Zimmerpflanzen — Bio-Flüssigdünger + Blattpflege + Pflegeplan (Verbrauchsset, 6–8 Wochen)",
+  "markt": "DACH · Zimmerpflanzen / Urban Gardening D2C · Sophistication-Stufe 3–4",
+  "status": "Hypothesen — Marktentscheidung zwischen drei Produktkandidaten offen (Woche 1–2)",
+  "economics": {
+    "preis_brutto": 44.9,
+    "mwst": 0.19,
+    "cogs": 7.0,
+    "versand_fulfillment": 4.5,
+    "gebuehren_pct": 0.02,
+    "cac_ziel": 14.0,
+    "retouren_pct": 0.03,
+    "abo_rabatt_pct": 0.15,
+    "abo_monate": 6,
+    "geschenk_wert": 9.9,
+    "geschenk_cogs": 1.5,
+    "kaeufe_pro_kunde": 3.0,
+    "wiederkaufrate_ziel": 0.45
+  },
+  "prompt_defaults": {
+    "MARKE": "Haus & Grün",
+    "MARKT": "Zimmerpflanzen und Urban Gardening im DACH-Raum, Fokus Stadtwohnungen ohne Garten",
+    "PRODUKT": "Haus & Grün Pflegesystem: Bio-Flüssigdünger, Blattpflege-Spray und ein Pflegeplan pro Pflanze — reicht 6–8 Wochen für 10–15 Pflanzen",
+    "UNIQUE_MECHANISM": "Ein System statt eines Produkts: Dünger + Blattpflege + Plan mit festen Terminen, abgestimmt auf die 20 häufigsten Zimmerpflanzen — weil Pflanzen nicht an fehlendem Dünger sterben, sondern an fehlendem Rhythmus",
+    "TONALITAET": "ruhig / ermutigend / konkret",
+    "VERBOTEN": "keine Pflanzenschutz-Aussagen ('gegen Schädlinge', 'gegen Trauermücken') ohne Zulassung, keine Garantie ('Deine Pflanze überlebt garantiert'), keine Vergleiche mit Baumarkt-Marken namentlich, keine 'Bio'-Kennzeichnung ohne belegte Grundlage"
+  }
+}
