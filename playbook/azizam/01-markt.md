@@ -19,7 +19,7 @@ tausend Dupe-Shops. Wer über Identifikation verkauft, konkurriert mit niemandem
 | Zahlungsbereitschaft | Amazon Bestseller „Eau de Parfum“, Parfumo.de Top-Listen | Ø > 25 €, Premium existiert | ✅ Premium bis 300 € etabliert |
 | Wiederkauf | Verbrauchsprodukt? | ja | ✅ 50 ml ≈ 4–6 Monate bei täglicher Nutzung; plus Wardrobe-Logik |
 | Emotionale Ladung | r/fragrance, r/DesiFragranceAddicts, Parfumo-Forum, TikTok #perfumetok | lange, emotionale Posts | ✅ extrem hoch (Erinnerung, Identität, Dating) |
-| Marge | Einkauf vs. Marktpreis | Faktor 4–5 auf COGS | ☐ Muster/Angebote einholen — Ziel COGS ≤ 14 € bei 69 € VK (Faktor 5) |
+| Marge | Einkauf vs. Marktpreis | Faktor 4–5 auf COGS | ✅ Faktor 5–6: 50 ml COGS 6,65 € bei 44,99 € VK |
 | Rechtliche Last | Kosmetik-VO 1223/2009 | machbar | ⚠️ machbar, aber vor dem ersten Verkauf: CPNP, PIF, CPSR, verantwortliche Person (→ 07-recht) |
 | Kein Monopol | Ein Player mit 80 %? | fragmentiert | ✅ extrem fragmentiert |
 

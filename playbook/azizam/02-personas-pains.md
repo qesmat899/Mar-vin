@@ -19,7 +19,7 @@ Derselbe Markt — völlig verschiedene Menschen darin. Wir wählen die mit dem 
 | **Trigger** | Tod oder Krankheit eines Großelternteils · erste eigene Wohnung („es riecht hier nach nichts“) · Nowruz ohne Familie · eine Reise ins Herkunftsland, die alles wieder hochholt · ein Kind, dem er etwas weitergeben will |
 | Bisherige Versuche | Designer-Düfte (austauschbar) · arabische Dupe-Düfte aus TikTok (laut, billig, „riecht nach Shisha-Bar“) · Nischenhäuser (200 €+, Rose/Oud als exotisches Zitat für Westler) |
 | Warum gescheitert | Nichts davon erzählt *seine* Geschichte. Entweder ist es westlich-neutral oder orientalisches Klischee. |
-| Einwände | „Kenne die Marke nicht“ · „Riecht das nach Moschee oder nach Mensch?“ · „Kann ich das im Büro tragen?“ · „69 € für eine unbekannte Marke?“ |
+| Einwände | „Kenne die Marke nicht“ · „Riecht das nach Moschee oder nach Mensch?“ · „Kann ich das im Büro tragen?“ · „45 € für eine unbekannte Marke?“ |
 | Awareness-Stufe | 2 → 3: Problem aware (weiß, dass ihm etwas fehlt), kennt keine Lösungskategorie |
 | Identität | Der, der beides ist und sich für keins entschuldigt. Der seine Herkunft trägt wie eine gute Uhr — nicht wie ein Kostüm. |
 | Sprache | `[ZITAT FEHLT]` — Quellen: r/DesiFragranceAddicts, r/iranian, TikTok-Kommentare unter Nowruz-/Yalda-Videos, Parfumo-Threads zu „Rose/Safran“ |
@@ -91,7 +91,7 @@ Typ:                   akut
 Bewertung  Intensität 5/5   Frequenz 4/5
            Sichtbarkeit 5/5  Zahlungsbereitschaft 4/5
            GESAMT 18/20
-Haupteinwand:          „Habe ich schon probiert“ → zuerst die Enttäuschung nehmen (Mechanismus: 25 % Duftöl, nicht lauter, sondern näher)
+Haupteinwand:          „Habe ich schon probiert“ → zuerst die Enttäuschung nehmen (Mechanismus: kuratierter Duft, nicht lauter, sondern näher — Konzentration nur nennen, wenn die Fabrik sie belegt)
 3 wörtliche Zitate:    1. "[ZITAT FEHLT]" (r/fragrance 'no compliments')  2. "[ZITAT FEHLT]"  3. "[ZITAT FEHLT]"
 → Angle-Ansatz:        Transformation + Mechanismus + Gegen-Intuition: „Nicht lauter. Näher.“
 ```

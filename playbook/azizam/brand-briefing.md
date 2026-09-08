@@ -6,7 +6,7 @@
 
 ## Marke
 - **Name:** Azizam (عزیزم, persisch „mein Schatz / meine Liebe“)
-- **Kategorie:** Eau de Parfum 50 ml, 69 €, D2C, DACH. Discovery-Set 3 × 2 ml für 12 € (anrechenbar).
+- **Kategorie:** Eau de Parfum in 30 / 50 / 100 ml — 29,99 / 44,99 / 64,99 € (privat 25 / 40 / 60 €). Düfte aus einer Parfumfabrik, in Deutschland in eigene Flakons abgefüllt. Hero: 50 ml. Anker: 100 ml. Discovery-Set 3 × 2 ml für 9,99 € (anrechenbar).
 - **Der eine Satz:** „Azizam ist der Duft der zweiten Generation.“
 - **Mission:** Damit die zweite Generation ihre Herkunft tragen kann wie eine gute Uhr — nicht wie ein Kostüm.
 - **Gegner:** das Klischee („orientalisch = laut, süß, Shisha-Bar“), die Austauschbarkeit der Designer-Düfte, Nischenhäuser, die unsere Rose als exotisches Zitat für 250 € verkaufen.
@@ -14,8 +14,10 @@
 - **Gefühl:** erkannt werden — wie das Wort, das die Mutter sagt.
 
 ## Unique Mechanism (nur behaupten, wenn belegt)
-25 % Duftölanteil statt 12–18 % → näher an der Haut, länger, nicht lauter. Damaszener-Rose, Safran, Kardamom,
-Oud nur in Spuren. In Deutschland abgefüllt. **Nicht:** „Made in Germany“, keine Stundenangaben als Garantie.
+**Direktvertrieb ohne Handelsmarge + Kuration:** 100 ml für 64,99 € statt 150 €+ im Handel — weil kein Zwischenhändler,
+keine Werbemillionen, kein Kaufhaus. Und: aus dem Sortiment der Fabrik die Düfte ausgewählt, die nach Zuhause riechen
+(Rose, Safran, Kardamom), nicht die, die nach Regal riechen. **Nicht:** Duftöl-Prozentangaben (bis Fabrikbeleg vorliegt),
+„Made in Germany“, „handgemacht“, „Manufaktur“ für den Duft. Erlaubt: „in Deutschland abgefüllt“.
 
 ## Personas (Status: Hypothesen bis Research-Belege vorliegen)
 1. **Darius/Roya, 27 — die zweite Generation (Haupt-Persona).** Trigger: Verlust eines Großelternteils, erste eigene Wohnung, Nowruz, „woher kommst Du eigentlich?“. Pain Ebene 4: „Ich bin hier zu persisch und dort zu deutsch. Ich will etwas tragen, das nach MIR riecht.“ Einwand: „Riecht das nach Klischee? Kann ich das im Büro tragen?“ Awareness 2–3. Identität: beides sein, sich für nichts entschuldigen.
@@ -38,9 +40,11 @@ Oud nur in Spuren. In Deutschland abgefüllt. **Nicht:** „Made in Germany“, 
 Nowruz-Drop (20./21. März) · Yalda-Drop (21. Dezember) · Gedichtkarte (Hafis/Rumi, zweisprachig) in jedem Paket ·
 Nastaliq-Schriftzug „عزیزم“ auf Flakon · #azizamduft.
 
-## Zahlen (Planwerte)
-VK 69 € (57,98 € netto) · COGS 13,50 € · CM1 36,42 € · Ziel-CAC 22 € · **max. CAC 34,60 €** · **Break-even-ROAS 1,59 (netto) / 1,89 (brutto)** · LTV:CAC 3,6.
-Offer-Reihenfolge: 2+1 (Wardrobe/Geschenk) · 1 + Reisegröße + Karte · Wardrobe-Abo (quartalsweise). Kein klassisches Abo, kein Erstbestellrabatt.
+## Zahlen (echt, Stand 09/2026)
+COGS: 0,076 €/ml Parfum + 1,85 € Flakon + ~1 € Etikett/Box → 30 ml 5,13 € · 50 ml 6,65 € · 100 ml 10,45 €.
+Online 50 ml: netto 37,81 € · CM1 23,90 € · **max. CAC 22,94 €** · **Break-even-ROAS 1,58 (netto) / 1,88 (brutto)**.
+Online 100 ml: CM1 36,57 € · max. CAC 35,11 € · Break-even-ROAS 1,49. 30 ml online: CM1 13,07 € — **nicht bewerben**.
+Privat 50 ml: 26,96 € Deckungsbeitrag ohne CAC. Offer-Reihenfolge: 100 ml als Anker · Duo 2 × 50 ml 79,99 € · Trio 2+1 · Discovery 9,99 € · Post-Purchase-Upsell 30 ml 19,99 €. Kein Erstbestellrabatt, kostenloser Versand ab 60 €.
 
 ## Rechtliche Leitplanken für alle Texte
 Werbekennzeichnung bei Creator-Content · keine fremden Markennamen · Verknappung nur bei echten Drops mit echter Stückzahl ·

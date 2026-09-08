@@ -7,41 +7,40 @@
 | 1 · Nicht komplett saturiert | Parfum ist saturiert — **das Segment „persische Duftkultur für die zweite Generation“ ist es nicht.** Kein einziger D2C-Player besetzt es. | ✅ (Meta Ads Library bestätigt: ☐) |
 | 2 · Klarer, belegbarer Bedarf | Orientalische Düfte sind seit 2022 der stärkste Trend im Segment; Diaspora-Community in DACH zählt Millionen. Belege: Trends, Parfumo-Threads, TikTok-Volumen | ☐ Zahlen dokumentieren |
 | 3 · Löst genau diesen Pain | Ein Duft, der Herkunft trägt, ohne Klischee zu sein (A1) · der näher ist statt lauter (B1) · den keine zweite trägt (C1) | ✅ per Design |
-| 4 · Unique Mechanism | 25 % Duftöl + Rohstoffe aus der persischen Duftkultur | ⚠️ **muss vom Lieferanten schriftlich belegt werden** |
+| 4 · Unique Mechanism | Direktvertrieb ohne Handelsmarge + Kuration (Details unten) | ✅ belegbar — Konzentrations-Claim erst nach Fabrikbeleg |
 
 ## Praxisfilter
 
 | Filter | Azizam EdP 50 ml | |
 |---|---|---|
-| VK 30–120 € | 69 € | ✅ |
-| Marge ≥ 65–70 % | 60 % bei COGS 13,50 € — **Ziel: COGS ≤ 12 € → 63 %**, oder VK 74 € | ⚠️ verhandeln |
+| VK 30–120 € | 44,99 € (50 ml) · 64,99 € (100 ml) — 30 ml mit 29,99 € knapp darunter | ✅ (30 ml nicht bewerben) |
+| Marge ≥ 65–70 % | 63 % (50 ml) · 67 % (100 ml) online; 80 % privat | ✅ |
 | Leicht & klein | 50 ml, ~250 g mit Box | ✅ |
 | Nicht zerbrechlich | **Glasflakon** — Retourenrisiko | ⚠️ Kartonage mit Einlage, Bruchquote messen |
 | Wiederkauf | 4–6 Monate; plus Wardrobe (zweiter Duft), Discovery-Set → Full Size | ✅ |
 | Visuell demonstrierbar | Flakon, Handgelenk-Test, Reaktion anderer Menschen | ✅ (Duft selbst nicht — deshalb Reaktion zeigen) |
-| In 10 s erklärbar | „Persische Rose, 25 % Duftöl, riecht nach niemandem sonst.“ | ✅ |
+| In 10 s erklärbar | „Persische Rose und Safran, 100 ml für 65 € — weil kein Kaufhaus dazwischen ist.“ | ✅ |
 | Kein Monopol | fragmentiert | ✅ |
 
-## Der Unique Mechanism
+## Der Unique Mechanism — korrigiert nach den echten Produktdaten
 
-**Ein-Satz-Test:** *„Unser Duft hält näher an der Haut und länger, weil 25 % Duftöl drin sind statt 15 — und
-er riecht nach Rose und Safran, wie sie in Iran seit tausend Jahren benutzt werden, nicht nach einem
-Laborbaukasten.“* — Versteht eine 60-jährige Nicht-Kundin das? Ja.
+Die Düfte kommen fertig aus einer Parfumfabrik und werden in eigene Flakons abgefüllt. Damit fällt der Mechanismus
+„Formulierung“ weg, solange die Fabrik keine Konzentration schriftlich bestätigt. Das Playbook nennt neun Quellen für
+einen Mechanismus — zwei davon sind hier **wahr und belegbar**:
 
-| Quelle des Mechanismus | Azizam |
-|---|---|
-| Formulierung | 25 % Duftölanteil (Extrait-de-Parfum-Nähe) statt 12–18 % EdP-Standard |
-| Inhaltsstoff | Damaszener-Rose (Rosa damascena), Safran, Kardamom, Oud in Spuren — nicht als Hauptnote |
-| Herkunft | Rezeptur aus persischer Duftkultur; Abfüllung in Deutschland |
-| Ausschluss | kein Oud-Nebel, keine Zuckerwatte, kein Dupe von irgendetwas |
-| Geschäftsmodell | Direktvertrieb: Nischenkonzentration ohne Nischenhandelsmarge |
+| Quelle | Azizam | Ein-Satz-Test |
+|---|---|---|
+| **Geschäftsmodell** | Direktvertrieb ohne Handelsmarge: 100 ml für 64,99 € | „Kein Kaufhaus, keine Werbemillionen, kein Zwischenhändler — deshalb kostet bei uns die große Flasche, was woanders die kleine kostet.“ ✅ |
+| **Kuration / Herkunft der Auswahl** | Aus hunderten Fabrikdüften die 3–5, die nach Zuhause riechen (Rose, Safran, Kardamom) | „Wir haben nicht die Düfte genommen, die sich am besten verkaufen, sondern die, bei denen unsere Mütter gelächelt haben.“ ✅ |
+| Formulierung (Konzentration) | **offen** — Fabrik nach % Duftöl / Bezeichnung (EdP/Extrait) fragen, schriftlich | erst nach Beleg |
+| Ausschluss | kein Dupe-Marketing, keine Designer-Namen | ✅ (und rechtlich Pflicht) |
 
-**Wahrheitspflicht:** Jeder dieser Punkte wird im Lieferantenvertrag festgehalten (Duftölanteil in %,
-Herkunftsnachweis der Rose). Was nicht belegt ist, wird nicht behauptet. „Made in Germany“ nur, wenn Juice
-*und* Abfüllung in DE — sonst „in Deutschland abgefüllt“.
+**Ehrlich gesagt:** Dieses Produkt kann jeder in einer Woche nachbauen. Der Schutz ist nicht der Mechanismus, sondern
+Teil III — Persona, Gefühl, Sprache, Ritual. Deshalb ist der Brand-Steckbrief unten wichtiger als jede Produkteigenschaft.
 
-**Prompt 6 (Rezensions-Mining)** auf 100 Wettbewerber-Rezensionen laufen lassen, um zu prüfen, ob der Markt
-den Mechanismus „näher statt lauter“ tatsächlich vermisst: `python3 playbook.py prompt 6 --brand azizam --data research/amazon-2-3-sterne.txt`
+**Was die Fabrik liefern muss (schriftlich, vor dem Onlineverkauf):** INCI-Liste je Duft · Allergen-Deklaration ·
+Sicherheitsdatenblatt · Angabe zur Konzentration · ob und unter wessen Namen die Düfte bereits CPNP-notifiziert sind ·
+ob es sich um „inspired by“-Kompositionen handelt (dann: **nie** den Referenzduft nennen, auch nicht in DMs).
 
 ---
 

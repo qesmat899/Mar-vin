@@ -16,7 +16,7 @@ Faustregel Start: 3 Personas × 2–3 Pains × 2 Angles = 12–18 Angles. Erwart
 | A2 | Ursprung | Küche der Großmutter | „Ich habe drei Jahre nach dem Geruch aus der Küche meiner Großmutter gesucht. Dann habe ich ihn gebaut.“ | 1 | Founder-Story, TOF. Trigger A2, taktvoll über das Ergebnis erzählt. |
 | A3 | Feindbild | Kein Klischee | „Orientalisch heißt nicht Shisha-Bar. Es heißt Rose, Safran und ein Garten in Shiraz.“ | 2–3 | Gemeinsamer Gegner: das laute Klischee. Erzeugt ein Wir. |
 | A4 | Zugehörigkeit | Azizam heißt | „Azizam ist das Wort, das Deine Mutter sagt. Jetzt ist es ein Duft.“ | 1–2 | Gemeinsame Sprache — wer das Wort kennt, gehört dazu. |
-| A5 | Mechanismus | 25 statt 15 | „Warum unser Duft näher ist, nicht lauter: 25 % Duftöl statt 15 — und Rose aus Damaskus statt Aromachemie.“ | 3 | Beantwortet „warum ausgerechnet Deins?“ auf Stufe 3. |
+| A5 | Mechanismus | Kein Kaufhaus dazwischen | „Warum 100 ml bei uns 65 € kosten und woanders 150: kein Kaufhaus, keine Werbemillionen — nur der Duft und der Flakon.“ | 3 | Beantwortet „warum ausgerechnet Deins?“ auf Stufe 3 mit einem belegbaren Mechanismus (Direktvertrieb). |
 | A6 | Ritual | Nowruz-Drop | „Jedes Frühjahr ein Duft. Nur einmal. Für die, die wissen, wann das Jahr wirklich anfängt.“ | 4–5 | Wiederkehrendes Ritual, Verknappung echt (limitierte Charge). |
 
 ### Persona B · Leon — „kein einziges Kompliment“
@@ -35,14 +35,15 @@ Faustregel Start: 3 Personas × 2–3 Pains × 2 Angles = 12–18 Angles. Erwart
 |---|---|---|---|---|---|
 | C1 | Identität | Man erkennt Dich | „Der Duft, den man erkennt, bevor Du um die Ecke kommst.“ | 2–3 | Ihre Ebene 4 wörtlich. |
 | C2 | Gegen-Intuition | Rose ist nicht Oma | „Rose riecht nach Oma? Nur die aus der Seife. Die aus Damaskus riecht nach Dir.“ | 3 | Räumt den Haupteinwand aus. |
-| C3 | Vergleich | Statt 220 € | „Nischenqualität — 25 % Duftöl — ohne den Nischenpreis. 69 € statt 220 €.“ | 4 | Preisanker gegen Nischenhäuser (ohne Markennamen). |
+| C3 | Vergleich | Statt 150 € | „Der Duft, den keine zweite trägt — 100 ml für 64,99 € statt 150 € für 50 ml beim Nischenhaus.“ | 4 | Preisanker gegen Nischenhäuser (ohne Markennamen); Grundpreis darf gezeigt werden. |
 | C4 | Zeugnis | Sechs Flakons | „Ich hatte sechs Flakons auf der Kommode und keinen eigenen Duft. Jetzt habe ich einen.“ | 3–4 | Echte Kundin, Honest-Review-Format. |
 
 ## Die zwei Regeln — geprüft
 
 - **Ein Angle, eine Botschaft:** Jede Zeile oben sagt genau eine Sache. ✅
-- **Überprüfbar:** A5, B1, B5, C3 hängen am Mechanismus „25 % Duftöl“ — **der muss vom Lieferanten
-  schriftlich belegt sein, bevor einer dieser Angles live geht.** Sonst werden sie gestrichen.
+- **Überprüfbar:** A5 und C3 hängen am Mechanismus „Direktvertrieb ohne Handelsmarge“ — belegbar über den Grundpreis.
+  B1 und B5 (näher statt lauter, Handgelenk-Demo) sind Demonstrationen, keine Konzentrations-Claims — **keine Prozentangabe,
+  bis die Fabrik sie schriftlich bestätigt.**
 
 ## Hooks — die ersten drei Sekunden (Prompt 4, Startbestand)
 
@@ -88,9 +89,9 @@ Ein Winning Angle bekommt eine eigene Landing Page. Struktur (Kap. 5.4): **Angle
 Beispiel LP für A1:
 1. Headline = Hook der Anzeige: „Für alle, die hier zu persisch und dort zu deutsch sind.“
 2. Pain in ihren Worten (3 Zitate aus dem Swipe-File)
-3. Mechanismus: 25 % Duftöl · Damaszener-Rose · Safran · in Deutschland abgefüllt — je ein Satz, ein Bild
+3. Mechanismus: kein Kaufhaus dazwischen (100 ml = 64,99 €) · kuratiert: Rose, Safran, Kardamom · in Deutschland abgefüllt — je ein Satz, ein Bild
 4. Beweis: Rezensionen, Handgelenk-Demo-Video, Duftpyramide, Founder-Foto
-5. Offer: Discovery-Set 3 × 2 ml für 12 € (anrechenbar) oder 50 ml für 69 € — 30 Tage Rückgabe
+5. Offer: 50 ml 44,99 € · 100 ml 64,99 € (bester Preis pro ml, hervorgehoben) · Discovery-Set 3 × 2 ml 9,99 € (anrechenbar) — 30 Tage Rückgabe
 
 **Verboten auf der LP:** „hält 12 Stunden“ als Garantie · fremde Markennamen · „Made in Germany“, solange nur
 abgefüllt wird · Vorher/Nachher-Logik.

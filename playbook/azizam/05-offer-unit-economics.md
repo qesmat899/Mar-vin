@@ -1,81 +1,60 @@
-# Offer-Engineering & Unit Economics
+# Offer-Engineering & Unit Economics — echte Zahlen
 
-> Alle Zahlen sind **Planwerte** aus `brand.json` — sie werden durch Lieferantenangebote (Woche 3–4) und
-> Testdaten (Woche 7–8) ersetzt. Neu rechnen: `python3 playbook.py economics --brand azizam --cogs 12 --cac 25`
+> Quelle: eigene Angaben (Stand September 2026). Fertiges Parfum 38 € je 500 ml = **0,076 €/ml**, Flakon 1,85 €,
+> Etikett/Box angenommen 1,00 €, Versand als Gefahrgut-LQ inkl. Verpackung angenommen 6,50 €. Neu rechnen:
+> `python3 playbook.py economics --brand azizam --all` · Szenario: `--variant 100ml --cac 25 --shipping 5.5`
 
-## Die vollständige Rechnung (Kap. 4.3) — Einmalkauf 50 ml
+## Alle Größen und Kanäle
 
-```
-   Verkaufspreis (netto)                         57,98 €   (69,00 € brutto)
- − COGS (Juice, Flakon, Box, Karte)         −    13,50 €
- − Versand + Fulfillment (Gefahrgut LQ)     −     6,90 €
- − Zahlungsgebühren (2 %)                   −     1,16 €
- ──────────────────────────────────────────────────────────
- = Deckungsbeitrag I (CM1)                        36,42 €   (63 % Marge · Faktor 4,3 auf COGS)
- − CAC (Ziel)                               −    22,00 €
- ──────────────────────────────────────────────────────────
- = Deckungsbeitrag II (CM2)                       14,42 €
- − Retouren/Ausfall (5 % von CM1)           −     1,82 €
- ──────────────────────────────────────────────────────────
- = Beitrag zum Fixkostenblock                     12,60 €   ✅ positiv → skalierbar, sobald stabil über 7 Tage
-```
+| Variante | Kanal | Preis | netto | COGS | CM1 | Marge | Break-even-ROAS | max. CAC | Rolle |
+|---|---|---|---|---|---|---|---|---|---|
+| 30 ml | online | 29,99 € | 25,20 € | 5,13 € | 13,07 € | 52 % | 1,93 | 12,54 € | Einstieg / Probe — **nicht bewerben** |
+| 30 ml | privat | 25,00 € | 21,01 € | 5,13 € | 15,88 € | 76 % | — | — | |
+| **50 ml** | **online** | **44,99 €** | 37,81 € | 6,65 € | **23,90 €** | 63 % | **1,58** | **22,94 €** | **Hero — Standard in Ads** |
+| 50 ml | privat | 40,00 € | 33,61 € | 6,65 € | 26,96 € | 80 % | — | — | |
+| **100 ml** | **online** | **64,99 €** | 54,61 € | 10,45 € | **36,57 €** | 67 % | **1,49** | **35,11 €** | **Anker — Upsell-Ziel** |
+| 100 ml | privat | 60,00 € | 50,42 € | 10,45 € | 39,97 € | 79 % | — | — | |
 
-| Kennzahl | Wert | Bedeutung |
-|---|---|---|
-| **Break-even-ROAS (netto)** | **1,59** | Darunter verlierst Du Geld. Auswendig kennen. |
-| Break-even-ROAS (brutto, wie die Plattform rechnet) | 1,89 | Zum Abgleich mit dem Ads Manager |
-| Max. tragbarer CAC beim Erstkauf | 34,60 € | Oberhalb kein Winner, egal wie gut der Hook |
-| LTV (2,2 Käufe × 57,98 € × 63 %) | 80,13 € | |
-| LTV:CAC | 3,6:1 | Ziel ≥ 3:1 ✅ |
-| Payback | 0,64 Käufe → beim ersten Kauf | Ziel < 60 Tage ✅ |
+Netto = brutto ÷ 1,19. Wer als Kleinunternehmer (§ 19 UStG) verkauft, hat keine MwSt. abzuführen — dann ist die Marge
+höher, aber die Vorsteuer aus Ads geht verloren (Playbook: bei Paid Media meist nachteilig).
 
-**Was die Rechnung sagt:** Marge liegt mit 63 % knapp unter der Playbook-Schwelle (65–70 %). Zwei Hebel:
-COGS auf ≤ 12 € verhandeln (Abfüller, Flakon-Menge) **oder** VK auf 74 €. Bei 12 € COGS: CM1 37,92 €, Marge 65 %.
+## Was die Zahlen sagen
 
-**MER statt ROAS:** Gesteuert wird auf Marketing Efficiency Ratio = Gesamtumsatz Shop ÷ Gesamtwerbeausgaben.
-Plattform-ROAS nur als Vergleich zwischen Creatives.
+1. **Die Marge ist exzellent, die Ware ist billig.** Faktor 5–6 auf COGS bei jeder Größe. Das ist das Beste an diesem Geschäft — und gleichzeitig der Grund, warum es jeder kopieren kann. Der Schutz kommt nicht aus dem Produkt, sondern aus Teil III (Marke).
+2. **30 ml online ist kein Ads-Produkt.** Versand frisst die Hälfte des Deckungsbeitrags; 12,54 € tragbarer CAC reicht bei Parfum nicht. 30 ml bleibt im Shop als Probe/Einstieg und als **Upsell-Baustein** (30 + 50 im Set), wird aber nie beworben.
+3. **50 ml ist der Hero.** 22,94 € tragbarer CAC ist für Parfum-Ads realistisch, aber nicht üppig — deshalb muss jede Kampagne den **AOV** heben (siehe Offer unten).
+4. **100 ml ist der Anker und der Gewinnbringer.** 36,57 € CM1, 35 € tragbarer CAC. Jeder Kunde, der von 50 auf 100 ml wechselt, bringt 12,67 € mehr Deckungsbeitrag bei null zusätzlichem CAC. Die Produktseite zeigt 100 ml als „beliebteste Wahl / bester Preis pro ml“ (Grundpreis: 64,99 €/100 ml vs. 89,98 €/100 ml bei 50 ml — das darf man zeigen, es ist die PAngV-Pflichtangabe).
+5. **Privatverkauf ist die Cash-Maschine für die ersten 90 Tage.** 26,96 € pro 50 ml ohne Versand, ohne Gebühren, ohne CAC — und jeder Käufer ist ein Research-Gespräch (die drei Fragen aus Kapitel 1.4).
 
-## Die drei Offer-Varianten (Kap. 4.2) — bei identischem CAC von 22 €
+## Die drei Offer-Varianten — 50 ml, CAC 15 €
 
 | Offer | Umsatz netto | CM1 | CM2 | nach Retouren | max. CAC |
 |---|---|---|---|---|---|
-| Einmalkauf 50 ml | 57,98 € | 36,42 € | 14,42 € | 12,60 € | 34,60 € |
-| **Wardrobe-Abo** (4 Quartale, −15 %) | 197,14 € | 111,60 € | 89,60 € | 84,02 € | **106,02 €** |
-| **2+1** (drei Düfte, einer gratis) | 115,97 € | 64,18 € | 42,18 € | 38,97 € | 60,97 € |
-| 1+1+Geschenk (zweiter 50 ml gratis) | 57,98 € | 19,04 € | −2,96 € | −3,91 € | 18,09 € |
+| Einmalkauf 50 ml | 37,81 € | 23,90 € | 8,90 € | 7,94 € | 22,94 € |
+| **2+1** (drei × 50 ml, einer gratis) | 75,61 € | 45,70 € | 30,70 € | 28,87 € | **43,87 €** |
+| Wardrobe-Abo (4 Quartale, −15 %) | 128,54 € | 73,37 € | 58,37 € | 55,44 € | 70,44 € |
+| 1+1 (zweiter 50 ml gratis) | 37,81 € | 12,95 € | −2,05 € | −2,57 € | 12,43 € ❌ |
 
-### Was das für Azizam heißt
+### Offer-Struktur für den Start
 
-1. **1+1 mit vollem zweiten Flakon rechnet sich nicht** (COGS zu hoch relativ zum Preis). Die Azizam-Variante:
-   **„1 + Reise-Zerstäuber 10 ml + Gedichtkarte“** — der +1 kostet ~3 €, hat einen belegbaren Wert von 19 €
-   (wenn der 10 ml separat für 19 € verkauft wird). Dann bleibt CM2 positiv und der Ankerwert steht: „Du zahlst 69 €, bekommst 88 € Wert.“
-2. **2+1 ist der stärkste Erstkauf-Hebel** — passt zur Wardrobe-Logik (drei Düfte: Tag, Abend, Nowruz) und zu
-   Geschenkanlässen (Nowruz, Yalda, Hochzeiten — in der Community wird viel verschenkt). AOV verdoppelt sich, CAC bleibt.
-3. **Klassisches Abo funktioniert bei Parfum schlecht** (Playbook). Die richtige Form: **Wardrobe-Abo** — ein Duft
-   pro Quartal, jederzeit kündbar, Kündigungsbutton. Darf 106 € CAC tragen — das ist der Grund, warum die
-   Culture Brand jede Auktion gewinnt.
-4. **Discovery-Set (3 × 2 ml, 12 €, anrechenbar)** ist kein Offer im Sinne der drei Varianten, sondern der
-   Einwand-Killer („unbekannte Marke“, „was, wenn es nicht passt“). Wird als BOF-Angebot getestet.
-
-**Testrahmen:** Alle drei Varianten bauen, gleiches Budget, gleiche Creatives, 7 Tage. Zahlen entscheiden, nicht Geschmack.
-
-## Weitere Offer-Hebel (Baukasten)
-
-| Hebel | Azizam-Einstellung | Achtung |
+| Offer | Preis | Warum |
 |---|---|---|
-| Kostenloser Versand ab X | X = AOV × 1,2 → ab 85 € (zieht zum 2er) | |
-| Mengenrabatt-Staffel | 1 / 2 / 3 Düfte nebeneinander, mittlere Option hervorgehoben | Decoy |
-| Geld-zurück-Garantie | 30 Tage, auch angebrochen (Duft muss man tragen, um ihn zu kennen) | Retourenquote beobachten; Gefahrgut-Rückversand regeln |
-| Erstbestellrabatt | **nicht** — gewöhnt an Rabatt, widerspricht „Preis ist Teil des Signals“ | stattdessen Discovery-Set |
-| Zeitliche Verknappung | nur bei echten Drops (Nowruz/Yalda) mit echter Stückzahl | UWG |
-| Post-Purchase-Upsell | 10 ml Reisegröße oder zweiter Duft −20 %, ein Klick | höchster ROI, 10–25 % Annahme |
-| Gratis-Probe im Paket | 1,5 ml des zweiten Dufts | Cross-Sell für den nächsten Kauf |
+| **Hero:** 50 ml | 44,99 € | Standard in Ads |
+| **Anker:** 100 ml | 64,99 € | „bester Preis pro ml“, hervorgehoben |
+| **Duo-Set:** 2 × 50 ml (zwei Düfte) | 79,99 € | Wardrobe-Logik (Tag/Abend), Geschenk; CM1 ≈ 52 € bei einem Versand |
+| **Trio 2+1:** 3 × 50 ml | 89,98 € | der stärkste AOV-Hebel; für Nowruz/Yalda/Hochzeiten |
+| **Discovery:** 3 × 2 ml | 9,99 €, anrechenbar | Einwand „unbekannte Marke“ — **kein 30 ml als Probe bewerben** |
+| **Post-Purchase-Upsell** | 30 ml eines zweiten Dufts für 19,99 € mit einem Klick | AOV ohne CAC; hier hat 30 ml seinen Platz |
+| Kostenloser Versand | ab 60 € | zieht von 50 ml zu 100 ml oder Duo |
+| Erstbestellrabatt | **keiner** | Preis ist Teil des Signals; Discovery-Set statt Rabatt |
 
-## Liquidität ≠ Umsatz (Kap. 4.7)
+Alle drei Playbook-Varianten (Einmal, 2+1, Duo/Abo) mit gleichem Budget testen — Woche 7–8.
 
-Gebundenes Geld bei Azizam: Erstcharge (Mindestmenge Abfüller, oft 500–1.000 Stück × 13,50 € = 6.750–13.500 €) ·
-CPSR/CPNP (~1.000–2.500 €) · Flakon-Werkzeug, falls eigene Form · PayPal-/Klarna-Reserven (Auszahlung 3–14 Tage).
-→ Liquiditätsplan über 6 Monate führen, bevor das erste Ads-Budget läuft.
+## Liquidität
+
+Bei 0,076 €/ml und 1,85 € Flakon bindet eine Charge von 100 Flakons à 50 ml nur ~665 € Ware — das Risiko liegt nicht
+in der Ware, sondern in **Rechtskosten (CPSR pro Duft ~300–800 €)** und im Ads-Budget. Reihenfolge deshalb: erst
+Privatverkauf finanziert die Sicherheitsbewertungen, dann Ads.
 
 ## Skalierungsregel
-Budget +20–30 % alle 2–3 Tage, nur wenn CM2 nach Retouren ≥ 7 Tage positiv. Keine Sprünge.
+Budget +20–30 % alle 2–3 Tage, nur wenn CM2 nach Retouren ≥ 7 Tage positiv — gemessen auf **MER** (Shop-Umsatz ÷ Werbeausgaben), Ziel ≥ 2,5 bei 50/100-ml-Mix.

@@ -39,7 +39,8 @@ Jede Marke hat einen `90-tage-plan.md` mit allen Schritten als Checkliste. `pyth
 python3 playbook.py brands                                   # welche Marken gibt es
 python3 playbook.py status                                   # Fortschritt beider 90-Tage-Pläne
 python3 playbook.py economics --brand azizam                 # CM1, CM2, Break-even-ROAS, max. CAC, LTV:CAC
-python3 playbook.py economics --brand azizam --cogs 12 --cac 28   # Szenario mit echten Angeboten
+python3 playbook.py economics --brand azizam --all           # alle Größen × Kanäle (online/privat)
+python3 playbook.py economics --brand azizam --variant 100ml --cac 28   # Szenario je Größe
 python3 playbook.py offers --brand haus-und-gruen            # Abo vs. 2+1 vs. 1+1+Geschenk
 python3 playbook.py prompt 1 --brand azizam --data research/zitate.txt          # Prompt ausgeben
 python3 playbook.py prompt 3 --brand azizam --var PERSONA="Darius, 27" --run    # an Claude schicken

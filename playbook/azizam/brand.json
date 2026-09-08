@@ -1,30 +1,55 @@
 {
   "name": "Azizam",
   "slug": "azizam",
-  "kategorie": "Parfum — Eau de Parfum 50 ml, persisch inspirierte Duftfamilie (Rose, Safran, Oud, Zitrus, Kardamom)",
+  "kategorie": "Parfum — fertige Düfte aus Parfumfabrik, in eigene Flakons abgefüllt (30 / 50 / 100 ml)",
   "markt": "DACH · Fragrance D2C · Nischen-/Orient-Segment · Sophistication-Stufe 5",
-  "status": "Hypothesen — Research läuft (Woche 1–2 des 90-Tage-Plans)",
+  "status": "Produkt & Flakons da, Website fast fertig — Rechtsfreigabe und erste Verkäufe stehen an",
   "economics": {
-    "preis_brutto": 69.0,
+    "preis_brutto": 44.99,
+    "preis_privat": 40.0,
     "mwst": 0.19,
-    "cogs": 13.5,
-    "versand_fulfillment": 6.9,
+    "cogs": 6.65,
+    "versand_fulfillment": 6.5,
     "gebuehren_pct": 0.02,
-    "cac_ziel": 22.0,
-    "retouren_pct": 0.05,
+    "cac_ziel": 15.0,
+    "retouren_pct": 0.04,
     "abo_rabatt_pct": 0.15,
     "abo_monate": 4,
-    "geschenk_wert": 12.0,
-    "geschenk_cogs": 2.5,
+    "geschenk_wert": 9.99,
+    "geschenk_cogs": 3.0,
     "kaeufe_pro_kunde": 2.2,
-    "wiederkaufrate_ziel": 0.4
+    "wiederkaufrate_ziel": 0.4,
+    "_herleitung": "COGS = ml × 0,076 €/ml (38 € je 500 ml fertiges Parfum) + 1,85 € Flakon + 1,00 € Etikett/Box; Versand DHL Paket als Gefahrgut-LQ inkl. Verpackung"
   },
   "prompt_defaults": {
     "MARKE": "Azizam",
     "MARKT": "Parfum / Nischenduft DACH, Fokus persisch-orientalische Duftfamilie und zweite Generation der Diaspora",
-    "PRODUKT": "Azizam Eau de Parfum, 50 ml, 25 % Duftölanteil, in Deutschland abgefüllt",
-    "UNIQUE_MECHANISM": "25 % Duftöl statt der branchenüblichen 12–18 % — und Rohstoffe, die aus der persischen Duftkultur kommen (Damaszener-Rose, Safran, Oud), nicht aus dem Designer-Baukasten",
+    "PRODUKT": "Azizam Eau de Parfum, 30 / 50 / 100 ml (29,99 / 44,99 / 64,99 €), Düfte aus einer Parfumfabrik, in Deutschland in eigene Flakons abgefüllt",
+    "UNIQUE_MECHANISM": "Direktvertrieb ohne Handelsmarge und Kuration: aus dem Fabrik-Sortiment die Düfte, die nach Zuhause riechen — 100 ml für 64,99 € statt 150 €+ im Handel. (Konzentration in % nur nennen, wenn die Fabrik sie schriftlich bestätigt.)",
     "TONALITAET": "warm / selbstbewusst / poetisch-knapp",
-    "VERBOTEN": "keine Designer-Namen als Vergleich (\"wie Baccarat Rouge\", \"Dior-Dupe\"), keine Haltbarkeits-Garantie in Stunden ohne Beleg, keine Aussagen zu Haut/Gesundheit, kein 'Made in Germany' für den Duft selbst, solange nur die Abfüllung in DE erfolgt"
-  }
+    "VERBOTEN": "keine Designer-Namen (\"riecht wie Sauvage\", \"Dupe von X\"), keine Duftöl-%-Angabe ohne Fabrikbeleg, keine Haltbarkeits-Garantie in Stunden, keine Haut-/Gesundheitsaussagen, kein 'Made in Germany' (nur 'in Deutschland abgefüllt'), kein 'handgemacht/Manufaktur' für den Duft selbst"
+  },
+  "varianten": [
+    {
+      "name": "30 ml",
+      "preis_brutto": 29.99,
+      "preis_privat": 25.0,
+      "cogs": 5.13,
+      "rolle": "Einstieg / Probe — unter 30 € trägt kein Paid Media"
+    },
+    {
+      "name": "50 ml",
+      "preis_brutto": 44.99,
+      "preis_privat": 40.0,
+      "cogs": 6.65,
+      "rolle": "Hero — Standard in Ads und auf der Produktseite"
+    },
+    {
+      "name": "100 ml",
+      "preis_brutto": 64.99,
+      "preis_privat": 60.0,
+      "cogs": 10.45,
+      "rolle": "Anker / Bestwert — höchster Deckungsbeitrag, Upsell-Ziel"
+    }
+  ]
 }

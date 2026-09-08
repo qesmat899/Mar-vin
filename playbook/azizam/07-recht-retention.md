@@ -5,6 +5,13 @@
 Kein Ersatz für Rechtsberatung. Die Reihenfolge ist pragmatisch: Tag-1-Themen in Stunden erledigt,
 produktspezifische Zulassungen **vor dem ersten Verkauf**.
 
+### Der wichtigste Satz für dieses Geschäftsmodell
+
+Wer fertiges Parfum kauft und **unter eigenem Namen** in eigene Flakons abfüllt, bringt ein kosmetisches Mittel in
+Verkehr und ist damit selbst die **verantwortliche Person** nach Art. 4 Kosmetik-VO — mit allen Pflichten unten. Die
+Notifizierung der Fabrik (falls vorhanden) deckt das nicht ab, weil Name, Verpackung und Inverkehrbringer andere sind.
+Das ist der eine Punkt, der vor dem ersten Onlineverkauf stehen muss; alles andere wächst mit.
+
 ### Produktspezifisch — Kosmetik-VO (EG) 1223/2009
 
 | Pflicht | Was konkret | Status |
@@ -22,7 +29,7 @@ produktspezifische Zulassungen **vor dem ersten Verkauf**.
 
 ☐ Impressum (§ 5 DDG) · ☐ Datenschutzerklärung mit allen Tools (Meta Pixel, TikTok Pixel, Klaviyo, Shopify, Hotjar …) ·
 ☐ Cookie-Consent mit echter Ablehnung (TDDDG) · ☐ Widerrufsbelehrung + Musterformular (§ 355 BGB) · ☐ AGB ·
-☐ PAngV: Endpreise inkl. MwSt. **und Grundpreis €/100 ml** (69 € / 50 ml = 138 €/100 ml — Pflichtangabe!) ·
+☐ PAngV: Endpreise inkl. MwSt. **und Grundpreis €/100 ml** (50 ml 44,99 € = 89,98 €/100 ml · 30 ml 29,99 € = 99,97 €/100 ml · 100 ml = 64,99 €/100 ml — Pflichtangabe, und zugleich das beste Argument für 100 ml) ·
 ☐ Streichpreise nur mit niedrigstem Preis der letzten 30 Tage · ☐ LUCID-Registrierung + Systembeteiligung (VerpackG) ·
 ☐ GPSR: Herstellerangaben, verantwortliche Person, Sicherheitshinweise auf Produktseite · ☐ Kündigungsbutton (§ 312k BGB) sobald Wardrobe-Abo live.
 

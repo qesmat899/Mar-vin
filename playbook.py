@@ -116,6 +116,41 @@ def print_economics(brand: dict, r: dict) -> None:
         print("\n  Nicht skalieren. Erst CM2 nach Retouren dauerhaft positiv — sonst verstärkt jeder Euro Budget den Verlust.")
 
 
+def variant_rows(brand: dict) -> list[dict]:
+    """Alle Größen × Kanäle (Onlineshop mit Versand/Gebühren, Direktverkauf ohne beides)."""
+    base = brand["economics"]
+    rows = []
+    for v in brand.get("varianten", []):
+        for kanal, preis, versand, fee in (
+            ("online", v["preis_brutto"], base["versand_fulfillment"], base["gebuehren_pct"]),
+            ("privat", v.get("preis_privat"), 0.0, 0.0),
+        ):
+            if preis is None:
+                continue
+            e = dict(base, preis_brutto=preis, cogs=v["cogs"], versand_fulfillment=versand, gebuehren_pct=fee)
+            r = unit_economics(e)
+            r.update(variante=v["name"], kanal=kanal, rolle=v.get("rolle", ""))
+            rows.append(r)
+    return rows
+
+
+def print_variants(brand: dict) -> None:
+    rows = variant_rows(brand)
+    if not rows:
+        print(f"{brand['name']}: keine 'varianten' in brand.json")
+        return
+    print(f"\n{brand['name']} — alle Größen und Kanäle (CAC-Ziel {eur(brand['economics']['cac_ziel'])})\n")
+    print(f"{'Variante':<9}{'Kanal':<8}{'Preis':>9}{'netto':>9}{'COGS':>8}{'CM1':>9}{'Marge':>7}{'BE-ROAS':>9}{'max CAC':>9}  Rolle")
+    for r in rows:
+        print(f"{r['variante']:<9}{r['kanal']:<8}{eur(r['preis_brutto']):>9}{eur(r['netto']):>9}{eur(r['cogs']):>8}"
+              f"{eur(r['cm1']):>9}{r['marge_pct']:>6.0f}%{r['break_even_roas_netto']:>9.2f}{eur(r['max_cac']):>9}  {r['rolle'] if r['kanal']=='online' else ''}")
+    print("\n  online = Shop-Preis inkl. Versand/Fulfillment und Zahlungsgebühren · privat = Abholpreis, kein Versand, keine Gebühren")
+    print("  BE-ROAS = Break-even-ROAS auf Nettoumsatz · max CAC = CM1 nach Retouren (was ein Kunde beim Erstkauf kosten darf)")
+    weak = [r for r in rows if r["kanal"] == "online" and r["preis_brutto"] < 30]
+    for r in weak:
+        print(f"  ⚠️  {r['variante']} online liegt unter 30 € — trägt laut Playbook kein Paid Media; als Einstieg/Probe führen, nicht bewerben.")
+
+
 # ---------------------------------------------------------------- Offer-Engineering (Kap. 4.2)
 
 def offers(e: dict) -> list[dict]:
@@ -166,12 +201,16 @@ def print_offers(brand: dict, rows: list[dict]) -> None:
 
 def status(slug: str) -> None:
     brand = load_brand(slug)
-    plan = brand["_dir"] / "90-tage-plan.md"
-    if not plan.exists():
+    plans = [p for p in (brand["_dir"] / "NAECHSTE-SCHRITTE.md", brand["_dir"] / "90-tage-plan.md") if p.exists()]
+    if not plans:
         print(f"{brand['name']}: kein 90-tage-plan.md gefunden")
         return
     section, sections, order = "Allgemein", {}, []
-    for line in plan.read_text(encoding="utf-8").splitlines():
+    lines = []
+    for plan in plans:
+        lines.append(f"## {plan.stem.replace('-', ' ').replace('_', ' ')}")
+        lines.extend(plan.read_text(encoding="utf-8").splitlines())
+    for line in lines:
         if line.startswith("## "):
             section = line[3:].strip()
             if section not in sections:
@@ -299,6 +338,8 @@ def main() -> None:
 
     s = sub.add_parser("economics", help="Unit Economics (Kap. 4.3)")
     s.add_argument("--brand", required=True)
+    s.add_argument("--variant", help="Größe aus brand.json 'varianten', z. B. '100 ml'")
+    s.add_argument("--all", action="store_true", help="Tabelle aller Größen × Kanäle")
     for key in ("price", "cogs", "shipping", "cac", "fee-pct", "returns-pct", "repeat"):
         s.add_argument(f"--{key}", type=float)
 
@@ -331,7 +372,16 @@ def main() -> None:
             status(slug)
     elif args.cmd == "economics":
         brand = load_brand(args.brand)
+        if args.all:
+            print_variants(brand)
+            return
         e = dict(brand["economics"])
+        if args.variant:
+            match = [v for v in brand.get("varianten", []) if v["name"].replace(" ", "") == args.variant.replace(" ", "")]
+            if not match:
+                sys.exit(f"Variante '{args.variant}' nicht gefunden. Vorhanden: {', '.join(v['name'] for v in brand.get('varianten', []))}")
+            e.update(preis_brutto=match[0]["preis_brutto"], cogs=match[0]["cogs"])
+            brand = dict(brand, kategorie=f"{brand['kategorie']} — {match[0]['name']}")
         overrides = {"price": "preis_brutto", "cogs": "cogs", "shipping": "versand_fulfillment",
                      "fee_pct": "gebuehren_pct", "returns_pct": "retouren_pct", "repeat": "kaeufe_pro_kunde"}
         for flag, key in overrides.items():

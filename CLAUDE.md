@@ -51,6 +51,7 @@ Offer & Unit Economics, Creator-System, Recht & Retention, 90-Tage-Plan, Swipe-D
 ```bash
 python3 playbook.py status                          # Fortschritt der 90-Tage-Pläne
 python3 playbook.py economics --brand azizam        # CM1/CM2/Break-even-ROAS/LTV:CAC
+python3 playbook.py economics --brand azizam --all  # alle Größen (30/50/100 ml) × Kanäle (online/privat)
 python3 playbook.py offers --brand haus-und-gruen   # Abo / 2+1 / 1+1+Geschenk
 python3 playbook.py prompt 1 --brand azizam --data zitate.txt [--run]   # Prompts 1–6 aus playbook/prompts.md
 python3 playbook.py swipe --brand azizam --source "Quelle" "Zitat"
