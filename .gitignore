@@ -7,3 +7,6 @@ __pycache__/
 
 # Playbook: KI-Antworten
 playbook/*/output/
+
+# Generierter Playbook-Export (jederzeit neu erzeugbar: python3 playbook.py export)
+playbook-export.md

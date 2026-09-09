@@ -55,7 +55,11 @@ python3 playbook.py economics --brand azizam --all  # alle Größen (30/50/100 m
 python3 playbook.py offers --brand haus-und-gruen   # Abo / 2+1 / 1+1+Geschenk
 python3 playbook.py prompt 1 --brand azizam --data zitate.txt [--run]   # Prompts 1–6 aus playbook/prompts.md
 python3 playbook.py swipe --brand azizam --source "Quelle" "Zitat"
+python3 playbook.py export                          # alles in EINE Markdown-Datei bündeln (für andere Sitzungen)
 ```
+
+`playbook/KONTEXT-EXPORT.md` ist die Kontext-Übergabe für eine Sitzung ohne Vorgeschichte: belegte Fakten,
+getroffene Entscheidungen mit Datum, offene Punkte, Arbeitsregeln. Bei neuen Erkenntnissen dort nachziehen.
 
 Regeln beim Weiterarbeiten: `playbook/SYSTEM.md` ist die Kurzfassung des Playbooks und gilt als Kontext für
 alle Marketing-Aufgaben. Personas/Pains ohne wörtliches Zitat bleiben als Hypothese markiert (`[ZITAT FEHLT]`).

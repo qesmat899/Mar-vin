@@ -18,6 +18,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import pathlib
 import re
 import sys
 from datetime import date
@@ -325,6 +326,70 @@ def swipe_cmd(args) -> None:
     print(f"Gespeichert ({count} Zitate in {path.relative_to(ROOT.parent)}). Nach 100 schreiben sich die Anzeigen fast von selbst.")
 
 
+# ---------------------------------------------------------------- Export (für andere Claude-Sitzungen)
+
+def _export_files(brands: list[str]) -> list[pathlib.Path]:
+    """Alle Playbook-Dateien in sinnvoller Lesereihenfolge."""
+    files: list[pathlib.Path] = []
+    for name in ("KONTEXT-EXPORT.md", "README.md", "SYSTEM.md", "prompts.md"):
+        files.append(ROOT / name)
+    files += sorted((ROOT / "templates").glob("*.md"))
+    for slug in brands:
+        d = ROOT / slug
+        files.append(d / "README.md")
+        files.append(d / "brand.json")
+        files += sorted(p for p in d.glob("*.md") if p.name != "README.md")
+    return [f for f in files if f.exists()]
+
+
+def export_cmd(args) -> None:
+    """Bündelt das komplette Playbook in EINE Markdown-Datei zum Weitergeben."""
+    brands = [args.brand] if args.brand else list_brands()
+    out = pathlib.Path(args.out)
+    parts = [
+        "# Azizam & Haus & Grün — komplettes Playbook (Einzeldatei-Export)",
+        "",
+        f"Automatisch gebündelt am {date.today():%Y-%m-%d} aus dem Repository `Mar-vin`, Verzeichnis `playbook/`.",
+        "Erzeugt mit `python3 playbook.py export`. Diese Datei ist eine Kopie — Änderungen gehören ins Repository,",
+        "nicht hierher, sonst laufen beide auseinander.",
+        "",
+        "Diese Datei enthält alles, was eine neue Claude-Sitzung braucht: Kontext, Regeln, beide Marken,",
+        "Vorlagen und die Prompt-Bibliothek. Zum Einlesen einfach vollständig hochladen oder einfügen.",
+        "",
+        "---",
+        "",
+        "## Inhalt dieses Exports",
+        "",
+    ]
+    included = _export_files(brands)
+    for f in included:
+        parts.append(f"- `{f.relative_to(ROOT.parent)}`")
+    parts.append("")
+    csvs = sorted(ROOT.rglob("*.csv"))
+    if csvs:
+        parts += ["Nicht enthalten (Tabellen, im Repository):", ""]
+        parts += [f"- `{c.relative_to(ROOT.parent)}`" for c in csvs] + [""]
+
+    for f in included:
+        rel = f.relative_to(ROOT.parent)
+        parts += ["", "=" * 100, "", f"# DATEI: `{rel}`", ""]
+        text = f.read_text(encoding="utf-8").strip()
+        if f.suffix == ".json":
+            parts += ["```json", text, "```"]
+        else:
+            parts.append(text)
+
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text("\n".join(parts) + "\n", encoding="utf-8")
+    kb = out.stat().st_size / 1024
+    print(f"Export geschrieben: {out}  ({len(included)} Dateien, {kb:.0f} KB)")
+    print()
+    print("So nutzt Du ihn in einer anderen Claude-Sitzung:")
+    print("  1. Diese Datei dort hochladen — sie enthält den kompletten Kontext.")
+    print("  2. Oder besser: das Repository klonen, dann liest Claude CLAUDE.md automatisch")
+    print("     und arbeitet direkt auf den echten Dateien statt auf einer Kopie.")
+
+
 # ---------------------------------------------------------------- CLI
 
 def main() -> None:
@@ -353,6 +418,10 @@ def main() -> None:
     s.add_argument("--var", action="append", help="NAME=Wert (mehrfach)")
     s.add_argument("--run", action="store_true", help="an Claude schicken und Antwort speichern")
     s.add_argument("--model", default=DEFAULT_MODEL)
+
+    s = sub.add_parser("export", help="Alles in eine Markdown-Datei bündeln (für andere Claude-Sitzungen)")
+    s.add_argument("--brand", help="nur eine Marke (Standard: alle)")
+    s.add_argument("--out", default="playbook-export.md", help="Zieldatei (Standard: playbook-export.md)")
 
     s = sub.add_parser("swipe", help="Wörtliches Zitat in die Swipe-Datei schreiben")
     s.add_argument("--brand", required=True)
@@ -394,6 +463,8 @@ def main() -> None:
         print_offers(brand, offers(brand["economics"]))
     elif args.cmd == "prompt":
         prompt_cmd(args)
+    elif args.cmd == "export":
+        export_cmd(args)
     elif args.cmd == "swipe":
         swipe_cmd(args)
 
