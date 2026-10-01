@@ -5,6 +5,8 @@ tiktok_work/*.deb
 tiktok_work/
 __pycache__/
 
+# Zwischenstand des PDF-Builds
+docs/_playbook.html
 # Playbook: KI-Antworten
 playbook/*/output/
 
