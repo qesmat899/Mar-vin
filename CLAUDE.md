@@ -1,66 +1,43 @@
 # Mar-vin – Projekt-Kontext für Claude
 
-## Was ist dieses Projekt?
-Mar-vin ist ein automatisiertes Pipeline-Tool: TikTok/YouTube-Video → Audio → Whisper-Transkript → KI-Zusammenfassung.
+## Worum es geht
+Arbeits-Repository für die zwei Marken von Mar (Inhaber):
+- **Azizam Fragrance** — Parfum-Marke (persisch inspiriert, „Duft der zweiten Generation“), Shop: azizamfragrances.com
+- **Haus & Grün Konzept** — Gebäudereinigung und Gartenpflege in Würzburg & Umgebung
 
-## Haupttool
-`marvin.py` — nimmt eine URL, lädt das Video, transkribiert es und fasst es zusammen.
+Grundlage für jede Analyse und Strategie ist das **E-Commerce Brand-Playbook** („Vom Markt zur Culture Brand“).
 
-```bash
-# Grundnutzung
-python3 marvin.py <URL>
+## Wo was liegt
+| Ordner / Datei | Inhalt |
+|---|---|
+| `playbook/KONTEXT-EXPORT.md` | **Zuerst lesen.** Belegte Fakten, Entscheidungen mit Datum, offene Punkte |
+| `playbook/SYSTEM.md` | Das Playbook auf einer Seite — fester Denkrahmen für alle Marketing-Aufgaben |
+| `playbook/azizam/` | Azizam: Markt, Personas, Angles, Marke, Unit Economics, Creator, Recht, 90-Tage-Plan |
+| `playbook/haus-und-gruen/` | Haus & Grün: dieselbe Struktur |
+| `playbook/templates/` | Vorlagen (Persona-/Pain-Karte, Creator-Briefing, Verträge, CSVs) |
+| `playbook.py` | Werkzeug: Status, Rechner, Prompts (siehe unten) |
+| `docs/` | Original-Playbook als Markdown + PDF (64 Seiten) |
+| `frontend/` | 3D-Flakon-Komponenten für die Azizam-Website (Next.js) |
+| `.claude/skills/` | Marketing-Skills (coreyhaines31/marketingskills) |
 
-# Mit Claude-Zusammenfassung (wenn API-Key verfügbar)
-ANTHROPIC_API_KEY=sk-... python3 marvin.py <URL> --model small --lang de
-
-# Ausgabe landet in: output/<slug>/
-#   transcript.txt               – Rohtext
-#   transcript_timestamped.txt   – Mit Zeitstempeln [MM:SS]
-#   summary.md                   – KI-Zusammenfassung oder Extrakt
-```
-
-## Abhängigkeiten
-```bash
-pip install yt-dlp openai-whisper anthropic
-apt install ffmpeg
-```
-
-## Wichtig: Whisper-Modellgrößen
-- `tiny` / `base`: schnell, CPU-tauglich, für kurze Videos
-- `small` / `medium`: besser bei gemischten Sprachen (DE+EN)
-- `large`: beste Qualität, braucht viel RAM
-
-## Bekannte Eigenheit
-Videos mit mehrsprachigem Inhalt (DE/EN mix) führen bei `base` zu Halluzinationen.
-Empfehlung: `--model small` für bessere Ergebnisse.
-
-## Nächste sinnvolle Erweiterungen
-- Batch-Verarbeitung: `marvin.py urls.txt` (mehrere URLs aus Datei)
-- YouTube-Kanal-Tracking: Neueste Videos von Liste von Kanälen automatisch verarbeiten
-- Web-Dashboard: Output-Verzeichnis als Browse-fähige HTML-Seite rendern
-
-## E-Commerce Brand-Playbook (`playbook/`, `playbook.py`)
-Umsetzung des E-Commerce Brand-Playbooks („Vom Markt zur Culture Brand“) für zwei Marken:
-- `playbook/azizam/` — Parfum-Marke (persisch inspiriert, „Duft der zweiten Generation“)
-- `playbook/haus-und-gruen/` — Pflanzenpflege-System („Grüner Daumen ist ein Sonntag“)
-
-Pro Marke: Schicht 1–5 des Zwiebelmodells (Markt → Personas → Pains → Angles → Ads), Produkt & Marke,
-Offer & Unit Economics, Creator-System, Recht & Retention, 90-Tage-Plan, Swipe-Datei, `brand.json`
-(Zahlen + Prompt-Defaults) und `brand-briefing.md` (fester KI-Kontext).
-
+## Befehle
 ```bash
 python3 playbook.py status                          # Fortschritt der 90-Tage-Pläne
 python3 playbook.py economics --brand azizam        # CM1/CM2/Break-even-ROAS/LTV:CAC
-python3 playbook.py economics --brand azizam --all  # alle Größen (30/50/100 ml) × Kanäle (online/privat)
-python3 playbook.py offers --brand haus-und-gruen   # Abo / 2+1 / 1+1+Geschenk
-python3 playbook.py prompt 1 --brand azizam --data zitate.txt [--run]   # Prompts 1–6 aus playbook/prompts.md
+python3 playbook.py economics --brand azizam --all  # alle Größen × Kanäle
+python3 playbook.py offers --brand haus-und-gruen   # Angebotsvarianten
+python3 playbook.py prompt 1 --brand azizam --data zitate.txt [--run]
 python3 playbook.py swipe --brand azizam --source "Quelle" "Zitat"
-python3 playbook.py export                          # alles in EINE Markdown-Datei bündeln (für andere Sitzungen)
+python3 playbook.py export                          # alles in eine Markdown-Datei bündeln
 ```
 
-`playbook/KONTEXT-EXPORT.md` ist die Kontext-Übergabe für eine Sitzung ohne Vorgeschichte: belegte Fakten,
-getroffene Entscheidungen mit Datum, offene Punkte, Arbeitsregeln. Bei neuen Erkenntnissen dort nachziehen.
+## Feste Arbeitsregeln
+1. **Nichts erfinden.** Personas/Pains ohne wörtliches Kundenzitat bleiben Hypothese (`[ZITAT FEHLT]`).
+2. **Kein Angle ohne belegbaren Mechanismus.**
+3. **Rechtliche Verbotslisten** im jeweiligen `brand-briefing.md` gelten für jeden Text, auch Creator-Skripte.
+4. **Marktentscheidungen trifft Mar**, nicht die KI.
+5. Neue Erkenntnisse und Entscheidungen in `playbook/KONTEXT-EXPORT.md` nachziehen.
 
-Regeln beim Weiterarbeiten: `playbook/SYSTEM.md` ist die Kurzfassung des Playbooks und gilt als Kontext für
-alle Marketing-Aufgaben. Personas/Pains ohne wörtliches Zitat bleiben als Hypothese markiert (`[ZITAT FEHLT]`).
-Kein Angle ohne belegbaren Mechanismus. Rechtliche Verbotslisten stehen im jeweiligen `brand-briefing.md`.
+## Git
+- Haupt-Branch heißt `Azizam`. Arbeit von Claude läuft auf einem eigenen Branch und kommt per Pull Request zurück.
+- Nach dem Mergen den Arbeits-Branch löschen, damit keine alten Branches liegen bleiben.
