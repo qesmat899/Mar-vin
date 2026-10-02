@@ -43,4 +43,4 @@ python3 playbook.py export                          # alles in eine Markdown-Dat
 - Nach dem Mergen den Arbeits-Branch löschen, damit keine alten Branches liegen bleiben.
 
 ## Synchronisation
-Siehe `SYNC.md` für den Abgleich zwischen Branches und Werkzeugen.
+**Zu Beginn jeder Session `SYNC.md` komplett lesen** und am Ende bzw. nach wichtigen Entscheidungen aktualisieren. Sie ist die gemeinsame Übergabe-Datei zwischen Claude Chat und Claude Code (nur Azizam; Regeln stehen in der Datei selbst).
