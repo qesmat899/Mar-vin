@@ -41,3 +41,6 @@ python3 playbook.py export                          # alles in eine Markdown-Dat
 ## Git
 - Haupt-Branch heißt `Azizam`. Arbeit von Claude läuft auf einem eigenen Branch und kommt per Pull Request zurück.
 - Nach dem Mergen den Arbeits-Branch löschen, damit keine alten Branches liegen bleiben.
+
+## Synchronisation
+Siehe `SYNC.md` für den Abgleich zwischen Branches und Werkzeugen.
