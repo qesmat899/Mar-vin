@@ -5,7 +5,8 @@
 
 > **Stand 03.10.2026 (gilt vor den Kapiteln):** Kleinunternehmer (keine MwSt.) · nur 30 und 50 ml, 100 ml entfällt ·
 > Preise, Flakon und Verpackung offen · Website offline, Neustart nach Flakonwahl · aktuell kein Verkauf.
-> Kapitel 03, 04, 06 und der 90-Tage-Plan nennen teils noch 100 ml und alte Preise — im Zweifel gilt `SYNC.md`.
+> Konkrete Preise in den Kapiteln stehen als `[Preis offen]`. `05-offer-unit-economics.md` ist als Ganzes veraltet
+> (Stand 09/2026) — aktuelle Zahlen nur über `playbook.py economics`. Im Zweifel gilt `SYNC.md`.
 > Die Zuordnung der zwei Duftlinien (Heritage/Editions) ist wieder offen.
 
 ## Was hier liegt
@@ -29,9 +30,9 @@
 ## Fakten (Stand September 2026) und offene Annahmen
 
 **Bekannt:**
-- Produkt: fertige Düfte aus einer Parfumfabrik (38 € je 500 ml), in eigene Flakons (1,85 €) abgefüllt. Neue Flakons sind da; die alten im 3D-Frontend müssen ausgetauscht werden.
-- Preise online: 30 ml 29,99 € · 50 ml 44,99 € · 100 ml 64,99 €. Privat/Abholung: 25 / 40 / 60 €.
-- Website steht fast. Ziel: Umsatz.
+- Produkt: fertige Düfte aus einer Parfumfabrik (38 € je 500 ml), in eigene Flakons abgefüllt. Flakon und Verpackung werden gesucht (Obergrenze ca. 3 €); danach muss das 3D-Frontend angepasst werden.
+- Größen 30 und 50 ml, Preise offen (alte Werte online 29,99 / 44,99 €, privat 25 / 40 €). Kleinunternehmer, keine MwSt.
+- Website seit ca. 25.09.2026 offline, Neustart nach Flakonwahl. Aktuell kein Verkauf.
 
 **Noch Annahme — bitte korrigieren:**
 1. **Zwei Duftlinien, entschieden 09/2026:** Azizam **Heritage** (persisch-diasporisch, „Duft der zweiten Generation“, Persona Darius/Roya, Duft **Narcos**) und Azizam **Editions** (generisch-premium, Personas Leon/Selin, die übrigen sechs Düfte der Live-Seite). Zuordnung und offene Notenpyramiden: `04-produkt-marke.md`.

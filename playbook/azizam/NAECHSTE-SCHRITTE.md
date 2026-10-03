@@ -60,10 +60,10 @@ Das ist der schnellste Umsatz und das einzige Research, das zählt. 50 ml privat
 
 ### C · Website fertigstellen — Flakons tauschen, Pflichtangaben rein
 - [ ] **Neue Flakons ins Frontend:** Der 3D-Flakon in `frontend/components/FlaconsScene.tsx` ist eine Drehform (`bodyPoints`, Lathe-Geometrie) — funktioniert nur für runde Flakons. Ich brauche: 2 Fotos (frontal, seitlich, neutraler Hintergrund) + Maße (Höhe, Breite, Tiefe, Kappenhöhe). Rund → ich passe `bodyPoints`, Glas- und Kappenfarbe an. Eckig → Umstieg auf ein GLB-Modell oder Foto-Hero. **Für den Launch reichen gute Produktfotos; 3D ist Kür.**
-- [ ] Produktfotos neuer Flakon: 3 × Freisteller (30/50/100 ml), 3 × in der Hand, 3 × Lifestyle (Küche, Fensterbank, Bahnsteig — Bildsprache aus `04-produkt-marke.md`)
-- [ ] Produktseite nach `03-angles-hooks.md` (Angle → Pain → Mechanismus → Beweis → Offer); 100 ml als „bester Preis pro ml“ hervorheben
+- [ ] Produktfotos neuer Flakon: 2 × Freisteller (30/50 ml), 3 × in der Hand, 3 × Lifestyle (Küche, Fensterbank, Bahnsteig — Bildsprache aus `04-produkt-marke.md`)
+- [ ] Produktseite nach `03-angles-hooks.md` (Angle → Pain → Mechanismus → Beweis → Offer); 50 ml als Hero
 - [ ] Pflichtangaben: Impressum · Datenschutz (Shopify, Pixel, Klaviyo) · Widerruf · AGB · Cookie-Consent · **Grundpreis €/100 ml** an jedem Preis · GPSR-Angaben (verantwortliche Person mit Adresse)
-- [ ] Preise im Shop: 30 ml 29,99 € · 50 ml 44,99 € · 100 ml 64,99 € · Duo 2 × 50 ml 79,99 € · Trio 2+1 89,98 € · Discovery 3 × 2 ml 9,99 € (Gutschein 9,99 € auf 50/100 ml) · kostenloser Versand ab 60 €
+- [ ] Preise im Shop festlegen (offen): 30 ml · 50 ml · Duo 2 × 50 ml · Trio 2+1 · Discovery 3 × 2 ml (Gutschein auf 50 ml) · Versandkostenfrei-Grenze · Hinweis § 19 UStG
 - [ ] Post-Purchase-Upsell einrichten: 30 ml eines zweiten Dufts für 19,99 € mit einem Klick
 - [ ] LUCID-Registrierung (Verpackungsregister) — Pflicht ab dem ersten Paket
 - [ ] Versand klären: Parfum ist Gefahrgut UN 1266 → DHL Paket als „Begrenzte Menge (LQ)“ mit LQ-Kennzeichen, kein Päckchen, keine Luftfracht; Verpackung mit Polster; Kosten real messen (Annahme 6,50 €)
@@ -75,15 +75,15 @@ Das ist der schnellste Umsatz und das einzige Research, das zählt. 50 ml privat
 - [ ] Instagram + TikTok: 3 Videos pro Woche mit den Hooks aus `03-angles-hooks.md` — je Video **ein** Angle (A1 Zweite Generation · A2 Küche der Großmutter · B1 Nicht lauter, näher · A5 Kein Kaufhaus dazwischen)
 - [ ] Jedes Video: gleiche Struktur — Hook 0–3 s, Problem, Flakon + Mechanismus, „Link in Bio“
 - [ ] Messen: welche Hooks halten (3-Sekunden-Rate in den Insights), welche Kommentare kommen → wörtlich in die Swipe-Datei
-- [ ] 5 Nano-Creator aus dem eigenen Umfeld (1–10 K Follower, Diaspora-Lifestyle) per Barter: ein 50-ml-Flakon (6,65 € Einsatz), Briefing aus `06-creator-skalierung.md`, schriftlich mit Spark-Code und Werbekennzeichnung
+- [ ] 5 Nano-Creator aus dem eigenen Umfeld (1–10 K Follower, Diaspora-Lifestyle) per Barter: ein 50-ml-Flakon (ca. 7,80 € Einsatz, Annahme), Briefing aus `06-creator-skalierung.md`, schriftlich mit Spark-Code und Werbekennzeichnung
 - [ ] Prompt 1 + 2 auf die ersten 50 Zitate laufen lassen, Personas korrigieren (`02-personas-pains.md`)
 
 ## Schritt 2 · Woche 4–6: Onlineshop live, erste bezahlte Tests
 Voraussetzung: **CPNP-Notifizierung und PIF liegen vor** (Schritt 0A). Vorher keine Anzeige, kein Onlineverkauf.
 - [ ] Shop live, Grundpreise sichtbar, Rechtstexte final
 - [ ] 8–12 Creatives aus den organischen Winnern + Creator-Videos; Testkampagne breit (Advantage+), TikTok parallel
-- [ ] Budget pro Creative 3–5 × Ziel-CPA (15 €) = 45–75 €, 5–7 Tage laufen lassen — nur 50 ml und 100 ml bewerben
-- [ ] Erfolgskriterium: CPA unter **22,94 €** (50 ml) bzw. **35,11 €** (100 ml); Break-even-ROAS **1,58** netto / 1,88 brutto
+- [ ] Budget pro Creative 3–5 × Ziel-CPA (15 €) = 45–75 €, 5–7 Tage laufen lassen — nur 50 ml bewerben
+- [ ] Erfolgskriterium: CPA unter max. CAC aus `playbook.py economics` (mit alten Preisen **28,60 €** für 50 ml, Break-even-ROAS **1,51**) — Ads-Kosten wegen Reverse Charge ×1,19 einrechnen
 - [ ] Offer-Test: Einmalkauf vs. Duo vs. Trio 2+1, gleiches Budget
 - [ ] Testing-Log führen (`../templates/testing-log.csv`); Verlierer analysieren: „und warum nicht?“
 

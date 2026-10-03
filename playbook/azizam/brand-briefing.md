@@ -6,7 +6,7 @@
 
 ## Marke
 - **Name:** Azizam (عزیزم, persisch „mein Schatz / meine Liebe“)
-- **Kategorie:** Eau de Parfum in 30 / 50 / 100 ml — 29,99 / 44,99 / 64,99 € (privat 25 / 40 / 60 €). Düfte aus einer Parfumfabrik, in Deutschland in eigene Flakons abgefüllt. Hero: 50 ml. Anker: 100 ml. Discovery-Set 3 × 2 ml für 9,99 € (anrechenbar).
+- **Kategorie:** Eau de Parfum in 30 / 50 ml — Preise offen (alte Werte 29,99 / 44,99 €, privat 25 / 40 €). Düfte aus einer Parfumfabrik, in Deutschland in eigene Flakons abgefüllt. Hero: 50 ml. Flakon und Verpackung werden gesucht. Discovery-Set 3 × 2 ml für 9,99 € (anrechenbar).
 - **Der eine Satz:** „Azizam ist der Duft der zweiten Generation.“
 - **Mission:** Damit die zweite Generation ihre Herkunft tragen kann wie eine gute Uhr — nicht wie ein Kostüm.
 - **Gegner:** das Klischee („orientalisch = laut, süß, Shisha-Bar“), die Austauschbarkeit der Designer-Düfte, Nischenhäuser, die Herkunft als exotisches Zitat für 250 € verkaufen.
@@ -19,7 +19,7 @@
 
 ## Unique Mechanism (bestätigt)
 **30 % Duftöl bei jedem Duft** — branchenüblich sind 12–18 % bei Eau de Parfum, damit hält Azizam näher an der Haut
-und länger, ohne lauter zu sein. **Plus Direktvertrieb ohne Handelsmarge:** 100 ml für 64,99 € statt 150 €+ im Handel.
+und länger, ohne lauter zu sein. **Plus Direktvertrieb ohne Handelsmarge** (Preisvergleich erst, wenn Preise feststehen).
 **Nicht:** „Made in Germany“ (nur „in Deutschland abgefüllt“), „handgemacht“/„Manufaktur“ für den Duft selbst,
 Haltbarkeits-Garantien in Stunden.
 
@@ -51,11 +51,11 @@ Nowruz-Drop (20./21. März) · Yalda-Drop (21. Dezember) · Gedichtkarte (Hafis/
 Nastaliq-Schriftzug „عزیزم“ auf Flakon · #azizamduft.
 
 ## Zahlen (echt, Stand 09/2026)
-COGS: 0,076 €/ml Parfum + 1,85 € Flakon + ~1 € Etikett/Box → 30 ml 5,13 € · 50 ml 6,65 € · 100 ml 10,45 €.
+COGS (Annahme): 0,076 €/ml Parfum + max. 3,00 € Flakon + ~1 € Etikett/Box → 30 ml 6,28 € · 50 ml 7,80 €. Kleinunternehmer: keine MwSt., Ads durch Reverse Charge effektiv ×1,19.
 30 % Duftöl bei jedem Duft (branchenüblich 12–18 %) — Kernbehauptung für A5/B1/C3, siehe Mechanismus oben.
-Online 50 ml: netto 37,81 € · CM1 23,90 € · **max. CAC 22,94 €** · **Break-even-ROAS 1,58 (netto) / 1,88 (brutto)**.
-Online 100 ml: CM1 36,57 € · max. CAC 35,11 € · Break-even-ROAS 1,49. 30 ml online: CM1 13,07 € — **nicht bewerben**.
-Privat 50 ml: 26,96 € Deckungsbeitrag ohne CAC. Offer-Reihenfolge: 100 ml als Anker · Duo 2 × 50 ml 79,99 € · Trio 2+1 · Discovery 9,99 € · Post-Purchase-Upsell 30 ml 19,99 €. Kein Erstbestellrabatt, kostenloser Versand ab 60 €.
+Zahlen immer mit `python3 playbook.py economics --brand azizam --all` holen. Mit alten Preisen: Online 50 ml CM1 29,79 € · **max. CAC 28,60 €** · **Break-even-ROAS 1,51**.
+30 ml online: CM1 16,61 € (alte Preise) — **nicht bewerben**.
+Privat 50 ml: 32,20 € Deckungsbeitrag ohne CAC (alte Preise). Offer-Ideen (Preise offen): Duo 2 × 50 ml · Trio 2+1 · Discovery 9,99 € · Post-Purchase-Upsell 30 ml 19,99 €. Kein Erstbestellrabatt, kostenloser Versand ab 60 €.
 
 ## Rechtliche Leitplanken für alle Texte
 Werbekennzeichnung bei Creator-Content · keine fremden Markennamen · Verknappung nur bei echten Drops mit echter Stückzahl ·

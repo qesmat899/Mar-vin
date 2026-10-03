@@ -39,7 +39,7 @@ Fortschritt: `python3 playbook.py status --brand azizam` (zählt die Kästchen).
 - [ ] Testkampagne breit, Advantage+ Placements; eine Kampagne, viele Creatives; TikTok parallel
 - [ ] Budget 3–5 × Ziel-CPA (22 €) = 66–110 € pro Creative, 5–7 Tage laufen lassen
 - [ ] Täglich Hook Rate, Hold Rate, CTR, CPA in `../templates/testing-log.csv` — nicht täglich abschalten
-- [ ] Nach 7 Tagen: Winner (CPA < 34,60 €) und Verlierer analysieren — „und warum nicht?“
+- [ ] Nach 7 Tagen: Winner (CPA unter max. CAC laut `playbook.py economics`, mit alten Preisen ca. 28,60 € für 50 ml) und Verlierer analysieren — „und warum nicht?“
 - [ ] Offer-Test: Einmalkauf vs. 2+1 vs. 1 + Reisegröße + Karte, gleiches Budget
 - [ ] Entscheidung Haupt-Persona bestätigen (Darius-Angles vs. Leon-Angles nach CPA)
 
