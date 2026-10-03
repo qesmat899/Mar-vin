@@ -1,14 +1,14 @@
 {
   "name": "Azizam",
   "slug": "azizam",
-  "kategorie": "Parfum — fertige Düfte aus Parfumfabrik, in eigene Flakons abgefüllt (30 / 50 / 100 ml)",
+  "kategorie": "Parfum — fertige Düfte aus Parfumfabrik, in eigene Flakons abgefüllt (30 / 50 ml)",
   "markt": "DACH · Fragrance D2C · Nischen-/Orient-Segment · Sophistication-Stufe 5",
-  "status": "Produkt & Flakons da, Website fast fertig — Rechtsfreigabe und erste Verkäufe stehen an",
+  "status": "Flakon und Verpackung werden gesucht; Website seit ca. 25.09.2026 offline, Shop-Neustart wartet auf den Flakon (Stand 03.10.2026)",
   "economics": {
     "preis_brutto": 44.99,
     "preis_privat": 40.0,
-    "mwst": 0.19,
-    "cogs": 6.65,
+    "mwst": 0.0,
+    "cogs": 7.8,
     "versand_fulfillment": 6.5,
     "gebuehren_pct": 0.02,
     "cac_ziel": 15.0,
@@ -19,13 +19,14 @@
     "geschenk_cogs": 3.0,
     "kaeufe_pro_kunde": 2.2,
     "wiederkaufrate_ziel": 0.4,
-    "_herleitung": "COGS = ml × 0,076 €/ml (38 € je 500 ml fertiges Parfum) + 1,85 € Flakon + 1,00 € Etikett/Box; Versand DHL Paket als Gefahrgut-LQ inkl. Verpackung · Konzentration: 30 % Duftöl bei jedem Duft (vom Inhaber bestätigt, 08/2026)."
+    "_herleitung": "COGS = ml × 0,076 €/ml (38 € je 500 ml fertiges Parfum) + 3,00 € Flakon (Obergrenze, Flakon noch nicht gewählt) + 1,00 € Etikett/Box (Annahme, Verpackung noch nicht gewählt); Versand DHL Paket als Gefahrgut-LQ inkl. Verpackung · Kleinunternehmer nach § 19 UStG → mwst 0, Bruttopreis = Erlös · Konzentration: 30 % Duftöl bei jedem Duft (vom Inhaber bestätigt, 08/2026).",
+    "_preis_status": "Preise NICHT entschieden (Mar, 03.10.2026). Die Werte sind die alten Preise und dienen nur als Rechengrundlage."
   },
   "prompt_defaults": {
     "MARKE": "Azizam",
     "MARKT": "Parfum / Nischenduft DACH, Fokus persisch-orientalische Duftfamilie und zweite Generation der Diaspora",
-    "PRODUKT": "Azizam Eau de Parfum, 30 / 50 / 100 ml (29,99 / 44,99 / 64,99 €), Düfte aus einer Parfumfabrik, in Deutschland in eigene Flakons abgefüllt",
-    "UNIQUE_MECHANISM": "30 % Duftölanteil bei jedem Duft (branchenüblich 12–18 % bei Eau de Parfum) — plus Direktvertrieb ohne Handelsmarge: 100 ml für 64,99 € statt 150 €+ im Handel.",
+    "PRODUKT": "Azizam Eau de Parfum, 30 / 50 ml (Preise noch offen), Düfte aus einer Parfumfabrik, in Deutschland in eigene Flakons abgefüllt",
+    "UNIQUE_MECHANISM": "30 % Duftölanteil bei jedem Duft (branchenüblich 12–18 % bei Eau de Parfum) — plus Direktvertrieb ohne Handelsmarge.",
     "TONALITAET": "warm / selbstbewusst / poetisch-knapp",
     "VERBOTEN": "keine Designer-Namen (\"riecht wie Sauvage\", \"Dupe von X\"), keine Haltbarkeits-Garantie in Stunden, keine Haut-/Gesundheitsaussagen, kein 'Made in Germany' (nur 'in Deutschland abgefüllt'), kein 'handgemacht/Manufaktur' für den Duft selbst"
   },
@@ -34,22 +35,15 @@
       "name": "30 ml",
       "preis_brutto": 29.99,
       "preis_privat": 25.0,
-      "cogs": 5.13,
+      "cogs": 6.28,
       "rolle": "Einstieg / Probe — unter 30 € trägt kein Paid Media"
     },
     {
       "name": "50 ml",
       "preis_brutto": 44.99,
       "preis_privat": 40.0,
-      "cogs": 6.65,
+      "cogs": 7.8,
       "rolle": "Hero — Standard in Ads und auf der Produktseite"
-    },
-    {
-      "name": "100 ml",
-      "preis_brutto": 64.99,
-      "preis_privat": 60.0,
-      "cogs": 10.45,
-      "rolle": "Anker / Bestwert — höchster Deckungsbeitrag, Upsell-Ziel"
     }
   ],
   "website": "https://azizamfragrances.com",
@@ -59,10 +53,10 @@
     "telefon": "+49 155 60980879",
     "email": "azizamfragrances@gmail.com",
     "ust_idnr": "DE459609298",
-    "hinweis": "kein Registergericht/HR-Nummer → Einzelunternehmen; hat USt-IdNr. → KEINE Kleinunternehmerregelung, MwSt. wird ausgewiesen"
+    "hinweis": "kein Registergericht/HR-Nummer → Einzelunternehmen; Kleinunternehmer nach § 19 UStG (Mar, 03.10.2026) → keine MwSt. auf Rechnungen, Hinweis auf § 19 UStG nötig. USt-IdNr. vorhanden (z. B. für Reverse Charge bei Meta/Google Ireland)."
   },
   "shop_stand": {
-    "plattform": "Shopify (Shopify Payments) + Vercel-Hosting, Single-Page-Landingpage, #collection/#story-Anker, noch keine einzelnen Produktseiten mit ml/Preis live",
+    "plattform": "Bis ca. 25.09.2026 live: Shopify (Shopify Payments) + Vercel-Hosting, Single-Page-Landingpage. Jetzt offline; Neustart erst, wenn der Flakon feststeht (Flakon ist Teil der Website).",
     "zahlungsmethoden": [
       "Shopify Payments (Kreditkarte)",
       "PayPal",

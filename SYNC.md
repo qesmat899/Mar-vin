@@ -28,7 +28,7 @@
 
 ## Projekt in Kürze (stabil, nur bei echten Änderungen anpassen)
 
-- **Was:** Azizam Fragrance, nebenberuflich, als Kleinunternehmer angemeldet.
+- **Was:** Azizam Fragrance, nebenberuflich, Kleinunternehmer nach § 19 UStG (keine MwSt.).
 - **Produkt:** Nachmach-Düfte als Tubes mit ca. 30 % Duftöl, Lieferant ist eine Parfumfabrik (Sicherheitsbewertung und CPNP laufen darüber). Alle Düfte haben eigene Azizam-Namen.
 - **Zielgruppe:** 17,5 bis 25 Jahre. Bisherige Käufer ca. 19–23, kaufen für den Abend bzw. einen Duft, „der was bewirkt“.
 - **Rückmeldungen bisher:** Viele Komplimente, gute Haltbarkeit. Meistgelobt: Velvet Vanilla.
@@ -41,15 +41,16 @@
 ## Aktueller Stand (überschreiben, nicht anhängen)
 
 - Verkauf bisher nur per persönlicher Auslieferung, überwiegend im Freundeskreis. Nicht konstant.
-- Positionierung noch nicht vorhanden. Website veraltet. Store bleibt erstmal stehen.
+- Positionierung noch nicht vorhanden. Website (Single-Page, Shopify, Vercel) war bis ca. 25.09.2026 live, jetzt offline und veraltet.
+- Website kann erst gebaut werden, wenn der Flakon feststeht (Flakon ist Teil der Website).
 - Ziel: In den nächsten 3 Monaten deutschlandweit online verkaufen, Shop komplett neu starten.
-- **Wichtigste und dringendste Aufgabe:** passender Flakon (bestenfalls zylindrisch).
+- **Wichtigste und dringendste Aufgabe:** passender Flakon (bestenfalls zylindrisch) und Verpackung.
 
 ---
 
 ## Entscheidungen (dauerhaft, mit Datum)
 
-- Flakon nur noch in **50 ml** (vorher 30 + 50 ml geplant). [Chat, 2026-10]
+- Verkauf in **30 ml und 50 ml**, 100 ml entfällt. [Mar, 2026-10-03]
 - Stil: luxuriös mit Goldakzent, hohe schlanke Form, Glas nicht foliert, Magnetkappe gewünscht. Max. ca. 3 € pro Flakon, erste Bestellung 100–200 Stück. [Chat, 2026-10]
 - Drei zuvor vorgeschlagene Standardflakons (schwarz/kantig, mattschwarz mit Goldkappe, schwer quadratisch mit Box) wurden abgelehnt.
 - Eigene Kreation/Sample erst später.
@@ -58,14 +59,11 @@
 
 ## Offene Fragen
 
-- Welcher Flakon wird es? (Hängt davon ab: Verpackung, Etikett, Shop-Neustart)
+- Welcher Flakon wird es (in 30 und 50 ml)? (Hängt davon ab: Verpackung, Etikett, Shop-Neustart)
+- Verpackung: wird gesucht.
+- Preise für 30 und 50 ml: offen. Rechengrundlage in `brand.json` sind die alten Preise.
 - Etikettierung: Zum Etikett ist nichts geklärt.
 - Positionierung und Markenauftritt für die Zielgruppe.
-- **Widersprüche zwischen dieser Datei und `playbook/` (Stand 09.09.2026) — Mar muss klären, was gilt:** [Code, 2026-10-03]
-  - Steuer: hier „Kleinunternehmer“, im Playbook „USt-IdNr., keine Kleinunternehmerregelung, MwSt. wird ausgewiesen“ (ändert alle Margen in `brand.json`).
-  - Größen: hier „nur noch 50 ml“, im Playbook 30/50/100 ml mit Preisen und Kernzahlen.
-  - Produkt: hier „Tubes“ und Flakon gesucht, im Playbook „Flakons vorhanden (1,85 €)“.
-  - Website: hier „veraltet, Shop neu starten“, im Playbook „live, Single-Page, Shopify-Zahlungen, Vercel“.
 
 ---
 
@@ -73,9 +71,9 @@
 
 | Wer | Aufgabe | Status |
 |-----|---------|--------|
-| Chat | Flakon-Optionen recherchieren und bewerten | offen |
-| Mar | Widersprüche oben klären (danach passt Code `brand.json` und Playbook an) | offen |
+| Chat | Flakon-Optionen recherchieren und bewerten (30 + 50 ml) | offen |
 | Code | Struktur für Marketing-/Wachstums-Skills im Repo vorbereiten | offen |
+| Code | Restliche Playbook-Kapitel (`playbook/azizam/03–07`, Plan, Briefing) auf Kleinunternehmer + 30/50 ml umstellen | offen |
 
 Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächsten Log-Eintrag löschen)
 
@@ -83,6 +81,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-10-03 [Code]** Mars Klärung eingearbeitet (Kleinunternehmer, 30 + 50 ml, Preise offen, Website offline): `brand.json` und `playbook/KONTEXT-EXPORT.md` angepasst, Economics neu gerechnet.
 - **2026-10-03 [Code]** Geprüft: Playbook (`docs/ECommerceBrandPlaybook.md`) und `playbook/KONTEXT-EXPORT.md` lagen schon im Repo, hochgeladene Fassung identisch. Widersprüche zu dieser Datei unter „Offene Fragen“ eingetragen.
 - **2026-10-02 [Code]** SYNC.md ins Repo (Branch `Azizam`) gelegt, Verweis in `CLAUDE.md` ergänzt.
 - **2026-10-02 [Chat]** SYNC.md angelegt, Stand aus bisherigen Gesprächen übernommen.

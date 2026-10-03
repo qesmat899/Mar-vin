@@ -2,7 +2,7 @@
 
 > **Lies mich zuerst.** Diese Datei fasst zusammen, was in diesem Projekt entschieden, belegt und noch offen ist —
 > damit eine Sitzung ohne Vorgeschichte sofort mitarbeiten kann, ohne dass die Entscheidungen erneut getroffen
-> werden müssen. Stand: 09.09.2026.
+> werden müssen. Stand: 09.09.2026, Korrekturen vom 03.10.2026 eingearbeitet (Mar). Für den Tagesstand gilt `SYNC.md` im Repo-Root.
 
 ## Was das hier ist
 
@@ -34,21 +34,21 @@ der Grund, warum manche Felder absichtlich leer sind:
 
 ## Marke 1 · Azizam — Parfum (aktiver Schwerpunkt)
 
-Website **azizamfragrances.com** ist live (Single-Page, Shopify-Zahlungen, Vercel-Hosting). Produkt und Flakons
-sind vorhanden. Es geht um Umsatz, nicht um Konzeptarbeit.
+Website **azizamfragrances.com** war bis ca. 25.09.2026 live (Single-Page, Shopify-Zahlungen, Vercel-Hosting) und
+ist jetzt offline. Der Shop startet komplett neu, aber erst, wenn der Flakon feststeht — der Flakon ist ein Teil
+der Website. **Flakon und Verpackung werden gesucht** (Stand 03.10.2026).
 
 ### Belegte Fakten
 
 | Thema | Stand |
 |---|---|
-| Geschäftsmodell | Fertige Düfte aus einer Parfumfabrik (38 € je 500 ml = 0,076 €/ml), in eigene Flakons (1,85 €) abgefüllt |
+| Geschäftsmodell | Fertige Düfte aus einer Parfumfabrik (38 € je 500 ml = 0,076 €/ml), in eigene Flakons abgefüllt — Flakon noch nicht gewählt, Obergrenze ca. 3 € |
 | Konzentration | **30 % Duftöl bei jedem Duft** (vom Inhaber bestätigt; branchenüblich 12–18 %) |
-| Preise online | 30 ml 29,99 € · 50 ml 44,99 € · 100 ml 64,99 € |
-| Preise privat | 30 ml 25 € · 50 ml 40 € · 100 ml 60 € |
-| Warenkosten | 30 ml 5,13 € · 50 ml 6,65 € · 100 ml 10,45 € |
-| Kernzahlen 50 ml online | CM1 23,90 € · Break-even-ROAS 1,58 · max. CAC 22,94 € |
-| Kernzahlen 100 ml online | CM1 36,57 € · Break-even-ROAS 1,49 · max. CAC 35,11 € |
-| Firma | Marvin Farienfar, Einzelunternehmer, Lilienweg 8, 97084 Würzburg · USt-IdNr. DE459609298 (keine Kleinunternehmerregelung) |
+| Größen | **30 ml und 50 ml** (100 ml entfällt, Mar 03.10.2026) |
+| Preise | **noch nicht entschieden.** Rechengrundlage sind die alten Preise: online 29,99 / 44,99 €, privat 25 / 40 € |
+| Warenkosten (Annahme) | 30 ml 6,28 € · 50 ml 7,80 € — mit 3,00 € Flakon (Obergrenze) + 1,00 € Etikett/Box |
+| Kernzahlen 50 ml online | mit alten Preisen: `playbook.py economics --brand azizam --all` ausführen, nicht von Hand rechnen |
+| Firma | Marvin Farienfar, Einzelunternehmer, Würzburg · **Kleinunternehmer nach § 19 UStG** (Mar 03.10.2026), keine MwSt. · USt-IdNr. vorhanden |
 | Versand | Deutschland + Österreich, 2–4 Werktage, 4,95 €, kostenlos ab 80 € |
 | Rückgabe | gesetzlich 14 Tage; freiwillig 30 Tage, wenn Flakon ≥ 80 % gefüllt |
 | Sortiment | 7 Düfte: Narcos, Midnight Café, Erba Bomb, Imaginary, Goldstaub II., Velvet Vanilla, Kings Perfume |
