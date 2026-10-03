@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sprite Konzeptseite (inoffiziell)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Work+Sans:wght@400;500&display=swap">
+<style>
+/* Layout: dunkles Flaschengrün, Limettengelb als einzige laute Farbe, Hero links, Blasen als Canvas rechts */
+:root{--bg:#0c2a1e;--fg:#eef6df;--muted:#9db8a4;--lime:#cdf23c;--lime-fg:#0c2a1e;--panel:#123826;--line:#245a3f;
+ --display:'Outfit','Helvetica Neue',Arial,sans-serif;--body:'Work Sans','Helvetica Neue',Arial,sans-serif}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f3f8e6;--fg:#0c2a1e;--muted:#4b6656;--lime:#b6dc1f;--lime-fg:#0c2a1e;--panel:#e6efcf;--line:#c3d3a0;color-scheme:light}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 1.0625rem/1.6 var(--body);padding-inline:clamp(1rem,5vw,4rem)}
+.wrap{max-width:70rem;margin-inline:auto}
+:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+header{display:flex;justify-content:space-between;align-items:center;padding-block:1.25rem;font:600 .9375rem var(--display)}
+header a{text-decoration:none;color:inherit;margin-left:1.25rem}
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:2rem;align-items:center;padding-block:clamp(2rem,6vw,4rem)}
+@media(max-width:46rem){.hero{grid-template-columns:minmax(0,1fr)}}
+h1{font:800 clamp(3rem,10vw,7.5rem)/.92 var(--display);letter-spacing:-.04em;margin:0;text-wrap:balance}
+h1 span{color:var(--lime)}
+.lead{max-width:30rem;color:var(--muted);font-size:1.1875rem;margin:1.5rem 0 0}
+.cta{display:inline-block;margin-top:2rem;padding:1rem 1.75rem;background:var(--lime);color:var(--lime-fg);font:600 1rem var(--display);text-decoration:none;border-radius:999px;transition:transform .2s}
+.cta:hover{transform:translateY(-2px)}
+canvas{width:100%;aspect-ratio:1/1.1;max-width:100%;display:block;border-radius:1.5rem;background:var(--panel)}
+section{padding-block:clamp(2.5rem,6vw,4.5rem);border-top:1px solid var(--line)}
+h2{font:800 clamp(1.8rem,4vw,2.8rem)/1.05 var(--display);letter-spacing:-.03em;margin:0 0 2rem}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.opt{background:var(--panel);padding:1.5rem;border-radius:1rem;min-width:0}
+.opt h3{font:600 1.375rem var(--display);margin:0 0 .5rem}
+.opt p{margin:0;color:var(--muted)}
+.tips{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.tips li{display:flex;gap:1.5rem;padding-block:1rem;border-bottom:1px solid var(--line);align-items:baseline}
+.tips b{font:600 1.25rem var(--display);flex:0 0 9rem;color:var(--lime)}
+@media(max-width:34rem){.tips li{flex-direction:column;gap:.25rem}.tips b{flex:none}}
+footer{border-top:1px solid var(--line);padding-block:1.5rem 2.5rem;font-size:.8125rem;color:var(--muted)}
+@media(prefers-reduced-motion:reduce){.cta{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><strong>Zitrone-Limette</strong><nav><a href="#sorten">Sorten</a><a href="#tipps">Tipps</a></nav></header>
+<main>
+<div class="hero">
+  <div>
+    <h1>Eiskalt.<br><span>Klar.</span><br>Prickelnd.</h1>
+    <p class="lead">Ein Konzeptentwurf für eine Produktseite einer Zitrone-Limette-Limonade. Große Typo, eine Farbe, Blasen, die wirklich aufsteigen.</p>
+    <a class="cta" href="#sorten">Sorten ansehen</a>
+  </div>
+  <canvas id="bubbles" aria-label="Aufsteigende Kohlensäure-Blasen" role="img"></canvas>
+</div>
+<section id="sorten">
+  <h2>Sorten</h2>
+  <div class="opts">
+    <div class="opt"><h3>Original</h3><p>Zitrone und Limette, klar und kalt serviert.</p></div>
+    <div class="opt"><h3>Ohne Zucker</h3><p>Gleiche Richtung, ohne Zucker.</p></div>
+    <div class="opt"><h3>Mit Minze</h3><p>Platzhalter für eine mögliche Sonderedition.</p></div>
+  </div>
+</section>
+<section id="tipps">
+  <h2>So schmeckt es am besten</h2>
+  <ul class="tips">
+    <li><b>Temperatur</b><span>Gut gekühlt, kurz vor dem Einschenken aus dem Kühlschrank.</span></li>
+    <li><b>Eis</b><span>Große Eiswürfel schmelzen langsamer und verwässern weniger.</span></li>
+    <li><b>Garnitur</b><span>Eine Limettenscheibe und ein Zweig Minze.</span></li>
+  </ul>
+</section>
+</main>
+<footer>Inoffizielles Konzept, nicht von der Markeninhaberin. Keine Originallogos, keine Originaltexte, alle Inhalte sind Platzhalter.</footer>
+</div>
+<script>
+(function(){
+  var c=document.getElementById('bubbles'),x=c.getContext('2d'),bs=[],W,H,dpr=Math.min(devicePixelRatio||1,2);
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function size(){var r=c.getBoundingClientRect();W=r.width;H=r.height;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0)}
+  function mk(init){return{x:Math.random()*W,y:init?Math.random()*H:H+10,r:2+Math.random()*7,v:.3+Math.random()*.9,p:Math.random()*6}}
+  size();addEventListener('resize',size);
+  for(var i=0;i<45;i++)bs.push(mk(true));
+  function col(a){return getComputedStyle(document.documentElement).getPropertyValue('--lime').trim()||'#cdf23c'}
+  function draw(t){
+    x.clearRect(0,0,W,H);var l=col();
+    bs.forEach(function(b,i){
+      if(!reduce){b.y-=b.v;b.x+=Math.sin(t/700+b.p)*.25;if(b.y<-10)bs[i]=mk(false)}
+      x.beginPath();x.arc(b.x,b.y,b.r,0,7);x.strokeStyle=l;x.globalAlpha=.75;x.lineWidth=1.5;x.stroke();
+      x.globalAlpha=.25;x.fillStyle=l;x.fill();
+    });
+    x.globalAlpha=1;
+    if(!reduce)requestAnimationFrame(draw);
+  }
+  draw(0);
+})();
+</script>
+</body>
+</html>

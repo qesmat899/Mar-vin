@@ -86,6 +86,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-10-03 [Code]** Neutrale, inoffizielle Konzeptseite (Zitrone-Limette-Limonade) als lokale Datei `website-demos/sprite-konzept.html` gebaut, nicht veröffentlicht, weil „Sprite“ eine fremde Marke ist. Kein Bezug zu Azizam.
 - **2026-10-03 [Code]** Demo-Website (fiktive Tischlerei, mit Terminbuchung und Kalender-Export) als privaten Claude-Artifact veröffentlicht, nur zum Zeigen an einen Kollegen, keine Markenseite. Skill `ui-ux-pro-max` nach `.claude/skills/` installiert.
 - **2026-10-03 [Code]** 100 ml als spätere Größe wieder aufgenommen (nach ersten 30/50-Verkäufen): `SYNC.md`, `brand.json`, Kontext-Export, README, Briefing.
 - **2026-10-03 [Code]** `ARBEITSWEISE.md` (Werkzeug-Kompass) angelegt; wird beim Sessionstart mitgeladen, Claude Code erinnert Mar aktiv daran.
