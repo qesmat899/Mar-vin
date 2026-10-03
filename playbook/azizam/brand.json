@@ -1,7 +1,7 @@
 {
   "name": "Azizam",
   "slug": "azizam",
-  "kategorie": "Parfum — fertige Düfte aus Parfumfabrik, in eigene Flakons abgefüllt (30 / 50 ml)",
+  "kategorie": "Parfum — fertige Düfte aus Parfumfabrik, in eigene Flakons abgefüllt (30 / 50 ml zum Start, 100 ml später)",
   "markt": "DACH · Fragrance D2C · Nischen-/Orient-Segment · Sophistication-Stufe 5",
   "status": "Flakon und Verpackung werden gesucht; Website seit ca. 25.09.2026 offline, Shop-Neustart wartet auf den Flakon (Stand 03.10.2026)",
   "economics": {
@@ -44,6 +44,13 @@
       "preis_privat": 40.0,
       "cogs": 7.8,
       "rolle": "Hero — Standard in Ads und auf der Produktseite"
+    },
+    {
+      "name": "100 ml",
+      "preis_brutto": 64.99,
+      "preis_privat": 60.0,
+      "cogs": 11.6,
+      "rolle": "SPÄTER — erst wenn sich einige 30/50 ml verkauft haben (Mar, 03.10.2026); Preis offen, alter Wert als Rechengrundlage"
     }
   ],
   "website": "https://azizamfragrances.com",

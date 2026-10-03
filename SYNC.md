@@ -50,7 +50,7 @@
 
 ## Entscheidungen (dauerhaft, mit Datum)
 
-- Verkauf in **30 ml und 50 ml**, 100 ml entfällt. [Mar, 2026-10-03]
+- Start mit **30 ml und 50 ml**. **100 ml kommt später**, wenn sich einige 30/50-ml-Flaschen verkauft haben. [Mar, 2026-10-03]
 - Stil: luxuriös mit Goldakzent, hohe schlanke Form, Glas nicht foliert, Magnetkappe gewünscht. Max. ca. 3 € pro Flakon, erste Bestellung 100–200 Stück. [Chat, 2026-10]
 - Drei zuvor vorgeschlagene Standardflakons (schwarz/kantig, mattschwarz mit Goldkappe, schwer quadratisch mit Box) wurden abgelehnt.
 - Eigene Kreation/Sample erst später.
@@ -63,6 +63,7 @@
 
 - Welcher Flakon wird es (in 30 und 50 ml)? (Hängt davon ab: Verpackung, Etikett, Shop-Neustart)
 - Verpackung: wird gesucht.
+- Ab wie vielen Verkäufen kommt 100 ml (und im selben Flakon-Design)? Offen.
 - Preise für 30 und 50 ml: offen. Rechengrundlage in `brand.json` sind die alten Preise.
 - Etikettierung: Zum Etikett ist nichts geklärt.
 - Kosmetikrecht (CPNP, Sicherheitsbewertung, INCI): Fabrik soll es übernehmen, schriftliche Bestätigung fehlt. Muss vor dem ersten Onlineverkauf stehen.
@@ -85,6 +86,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-10-03 [Code]** 100 ml als spätere Größe wieder aufgenommen (nach ersten 30/50-Verkäufen): `SYNC.md`, `brand.json`, Kontext-Export, README, Briefing.
 - **2026-10-03 [Code]** `ARBEITSWEISE.md` (Werkzeug-Kompass) angelegt; wird beim Sessionstart mitgeladen, Claude Code erinnert Mar aktiv daran.
 - **2026-10-03 [Code]** Playbook-Kapitel 01, 03, 04, 06, 90-Tage-Plan, Briefing, Nächste Schritte und README bereinigt: 100 ml raus, Preise als `[Preis offen]`, Zahlen auf Kleinunternehmer/Flakon-Annahme; Kapitel 05 als Ganzes als veraltet markiert.
 - **2026-10-03 [Code]** Mars Antworten eingearbeitet (kein Verkauf aktuell, CPNP offen, 09/2026-Regeln gelten außer Duftlinien), Adresse/Telefon/USt-IdNr. aus dem Repo entfernt, Steuerteil in `07-recht-retention.md` auf Kleinunternehmer umgestellt.

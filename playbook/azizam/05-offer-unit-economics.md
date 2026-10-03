@@ -1,7 +1,7 @@
 # Offer-Engineering & Unit Economics — echte Zahlen
 
-> ⚠️ **Ganzes Kapitel veraltet (Stand 09/2026).** Seit 03.10.2026: Kleinunternehmer (keine MwSt.), nur 30 und 50 ml,
-> Preise und Flakon offen. Die Tabellen und Offers unten (inkl. 100 ml) sind nur noch Referenz. Aktuelle Zahlen:
+> ⚠️ **Ganzes Kapitel veraltet (Stand 09/2026).** Seit 03.10.2026: Kleinunternehmer (keine MwSt.), Start mit 30 und 50 ml
+> (100 ml später, nach den ersten Verkäufen), Preise und Flakon offen. Die Tabellen und Offers unten sind nur noch Referenz. Aktuelle Zahlen:
 > `python3 playbook.py economics --brand azizam --all`.
 
 > Quelle: eigene Angaben (Stand September 2026). Fertiges Parfum 38 € je 500 ml = **0,076 €/ml**, Flakon 1,85 €,

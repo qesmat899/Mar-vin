@@ -39,3 +39,4 @@ Faustregel: **Am Ende soll eine Entscheidung stehen → Chat. Am Ende soll eine 
 - Flakon + Verpackung finden → **Chat**
 - CPNP/Sicherheitsbewertung bei der Fabrik schriftlich bestätigen → **Mar**
 - Preise festlegen, sobald Flakonpreis steht → **Chat**, dann **Code** (`brand.json` + Rechner)
+- 100 ml erst nach den ersten 30/50-ml-Verkäufen wieder aufgreifen

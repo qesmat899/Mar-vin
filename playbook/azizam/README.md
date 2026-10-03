@@ -3,7 +3,7 @@
 > **azizam** (عزیزم) — „mein Schatz“, „meine Liebe“. Das Wort, das man im Persischen zu Menschen sagt, die man
 > nicht verlieren will.
 
-> **Stand 03.10.2026 (gilt vor den Kapiteln):** Kleinunternehmer (keine MwSt.) · nur 30 und 50 ml, 100 ml entfällt ·
+> **Stand 03.10.2026 (gilt vor den Kapiteln):** Kleinunternehmer (keine MwSt.) · Start mit 30 und 50 ml, 100 ml erst nach den ersten Verkäufen ·
 > Preise, Flakon und Verpackung offen · Website offline, Neustart nach Flakonwahl · aktuell kein Verkauf.
 > Konkrete Preise in den Kapiteln stehen als `[Preis offen]`. `05-offer-unit-economics.md` ist als Ganzes veraltet
 > (Stand 09/2026) — aktuelle Zahlen nur über `playbook.py economics`. Im Zweifel gilt `SYNC.md`.
@@ -31,7 +31,7 @@
 
 **Bekannt:**
 - Produkt: fertige Düfte aus einer Parfumfabrik (38 € je 500 ml), in eigene Flakons abgefüllt. Flakon und Verpackung werden gesucht (Obergrenze ca. 3 €); danach muss das 3D-Frontend angepasst werden.
-- Größen 30 und 50 ml, Preise offen (alte Werte online 29,99 / 44,99 €, privat 25 / 40 €). Kleinunternehmer, keine MwSt.
+- Größen zum Start 30 und 50 ml, 100 ml später; Preise offen (alte Werte online 29,99 / 44,99 €, privat 25 / 40 €). Kleinunternehmer, keine MwSt.
 - Website seit ca. 25.09.2026 offline, Neustart nach Flakonwahl. Aktuell kein Verkauf.
 
 **Noch Annahme — bitte korrigieren:**

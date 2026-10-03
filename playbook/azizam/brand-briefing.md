@@ -6,7 +6,7 @@
 
 ## Marke
 - **Name:** Azizam (عزیزم, persisch „mein Schatz / meine Liebe“)
-- **Kategorie:** Eau de Parfum in 30 / 50 ml — Preise offen (alte Werte 29,99 / 44,99 €, privat 25 / 40 €). Düfte aus einer Parfumfabrik, in Deutschland in eigene Flakons abgefüllt. Hero: 50 ml. Flakon und Verpackung werden gesucht. Discovery-Set 3 × 2 ml für 9,99 € (anrechenbar).
+- **Kategorie:** Eau de Parfum in 30 / 50 ml zum Start (100 ml später, nach den ersten Verkäufen) — Preise offen (alte Werte 29,99 / 44,99 €, privat 25 / 40 €). Düfte aus einer Parfumfabrik, in Deutschland in eigene Flakons abgefüllt. Hero: 50 ml. Flakon und Verpackung werden gesucht. Discovery-Set 3 × 2 ml für 9,99 € (anrechenbar).
 - **Der eine Satz:** „Azizam ist der Duft der zweiten Generation.“
 - **Mission:** Damit die zweite Generation ihre Herkunft tragen kann wie eine gute Uhr — nicht wie ein Kostüm.
 - **Gegner:** das Klischee („orientalisch = laut, süß, Shisha-Bar“), die Austauschbarkeit der Designer-Düfte, Nischenhäuser, die Herkunft als exotisches Zitat für 250 € verkaufen.

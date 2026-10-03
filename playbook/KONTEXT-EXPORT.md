@@ -44,7 +44,7 @@ der Website. **Flakon und Verpackung werden gesucht** (Stand 03.10.2026).
 |---|---|
 | Geschäftsmodell | Fertige Düfte aus einer Parfumfabrik (38 € je 500 ml = 0,076 €/ml), in eigene Flakons abgefüllt — Flakon noch nicht gewählt, Obergrenze ca. 3 € |
 | Konzentration | **30 % Duftöl bei jedem Duft** (vom Inhaber bestätigt; branchenüblich 12–18 %) |
-| Größen | **30 ml und 50 ml** (100 ml entfällt, Mar 03.10.2026) |
+| Größen | **Start mit 30 ml und 50 ml**; 100 ml kommt später, wenn sich einige 30/50 ml verkauft haben (Mar 03.10.2026) |
 | Preise | **noch nicht entschieden.** Rechengrundlage sind die alten Preise: online 29,99 / 44,99 €, privat 25 / 40 € |
 | Warenkosten (Annahme) | 30 ml 6,28 € · 50 ml 7,80 € — mit 3,00 € Flakon (Obergrenze) + 1,00 € Etikett/Box |
 | Kernzahlen 50 ml online | mit alten Preisen: `playbook.py economics --brand azizam --all` ausführen, nicht von Hand rechnen |
