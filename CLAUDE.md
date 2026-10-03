@@ -44,3 +44,6 @@ python3 playbook.py export                          # alles in eine Markdown-Dat
 
 ## Synchronisation
 **Zu Beginn jeder Session `SYNC.md` komplett lesen** und am Ende bzw. nach wichtigen Entscheidungen aktualisieren. Sie ist die gemeinsame Übergabe-Datei zwischen Claude Chat und Claude Code (nur Azizam; Regeln stehen in der Datei selbst).
+
+## Werkzeug-Kompass
+`ARBEITSWEISE.md` sagt, wofür Chat, Code, Cowork, Konnektoren und Automatik da sind. **Erinnere Mar aktiv daran:** Wenn eine Bitte woanders besser oder günstiger erledigt wäre, sag es in einem Satz, bevor du loslegst, und am Ende einer Session kurz, was als Nächstes wo passiert. Halte den Abschnitt „Gerade dran“ in `ARBEITSWEISE.md` aktuell.
