@@ -3,6 +3,11 @@
 > **azizam** (عزیزم) — „mein Schatz“, „meine Liebe“. Das Wort, das man im Persischen zu Menschen sagt, die man
 > nicht verlieren will.
 
+> **Stand 03.10.2026 (gilt vor den Kapiteln):** Kleinunternehmer (keine MwSt.) · nur 30 und 50 ml, 100 ml entfällt ·
+> Preise, Flakon und Verpackung offen · Website offline, Neustart nach Flakonwahl · aktuell kein Verkauf.
+> Kapitel 03, 04, 06 und der 90-Tage-Plan nennen teils noch 100 ml und alte Preise — im Zweifel gilt `SYNC.md`.
+> Die Zuordnung der zwei Duftlinien (Heritage/Editions) ist wieder offen.
+
 ## Was hier liegt
 
 | Datei | Schicht / Kapitel | Inhalt |

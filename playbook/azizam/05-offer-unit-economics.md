@@ -15,8 +15,9 @@
 | **100 ml** | **online** | **64,99 €** | 54,61 € | 10,45 € | **36,57 €** | 67 % | **1,49** | **35,11 €** | **Anker — Upsell-Ziel** |
 | 100 ml | privat | 60,00 € | 50,42 € | 10,45 € | 39,97 € | 79 % | — | — | |
 
-Netto = brutto ÷ 1,19. Wer als Kleinunternehmer (§ 19 UStG) verkauft, hat keine MwSt. abzuführen — dann ist die Marge
-höher, aber die Vorsteuer aus Ads geht verloren (Playbook: bei Paid Media meist nachteilig).
+> **Veraltet seit 03.10.2026:** Die Tabelle oben rechnet mit MwSt., alten Flakonkosten und 100 ml. Mar ist Kleinunternehmer
+> (§ 19 UStG, netto = brutto), verkauft nur 30 und 50 ml, Preise und Flakon sind offen. Aktuelle Zahlen immer mit
+> `python3 playbook.py economics --brand azizam --all`. Achtung: Ads kosten durch Reverse Charge effektiv ×1,19.
 
 ## Was die Zahlen sagen
 

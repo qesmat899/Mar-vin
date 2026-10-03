@@ -5,10 +5,10 @@
 | Feld | Wert |
 |---|---|
 | Inhaber / Rechtsform | Marvin Farienfar, Einzelunternehmer (Handelsname „Azizam“) — kein Registergericht/HR-Nummer im Impressum, also kein e.K./UG/GmbH |
-| Adresse | Lilienweg 8, 97084 Würzburg |
-| Telefon | +49 155 60980879 |
+| Adresse | [nicht im Repo — steht im Impressum] |
+| Telefon | [nicht im Repo — steht im Impressum] |
 | E-Mail | azizamfragrances@gmail.com |
-| USt-IdNr. | DE459609298 — **keine Kleinunternehmerregelung**, MwSt. wird ausgewiesen |
+| USt-IdNr. | [nicht im Repo — steht im Impressum] — **Kleinunternehmer nach § 19 UStG** (Mar, 03.10.2026), keine MwSt. auf Rechnungen |
 | Plattform | Shopify (Shopify Payments) + Vercel-Hosting |
 | Zahlungsmethoden (live) | Shopify Payments/Kreditkarte, PayPal, Klarna, Apple Pay, Google Pay |
 | Versand (live) | Deutschland + **Österreich** (nicht Schweiz — Drittland, Zoll/EUSt), 2–4 Werktage, 4,95 € Standard, kostenlos ab 80 € |
@@ -62,7 +62,7 @@ Das ist der eine Punkt, der vor dem ersten Onlineverkauf stehen muss; alles ande
 
 ✅ Impressum (§ 5 DDG) · ⚠️ Datenschutzerklärung nennt bisher Vercel, Shopify, PayPal, Klarna, Apple, Google Ireland — **Meta-/TikTok-Pixel und Klaviyo ergänzen, sobald Tracking eingebaut ist** ·
 ☐ Cookie-Consent mit echter Ablehnung (TDDDG) · ☐ Widerrufsbelehrung + Musterformular (§ 355 BGB) · ☐ AGB ·
-☐ PAngV: Endpreise inkl. MwSt. **und Grundpreis €/100 ml** (50 ml 44,99 € = 89,98 €/100 ml · 30 ml 29,99 € = 99,97 €/100 ml · 100 ml = 64,99 €/100 ml — Pflichtangabe, und zugleich das beste Argument für 100 ml) ·
+☐ PAngV: Endpreise **und Grundpreis €/100 ml** (Pflichtangabe; mit alten Preisen: 50 ml 44,99 € = 89,98 €/100 ml · 30 ml 29,99 € = 99,97 €/100 ml — Preise noch offen) · ☐ Hinweis „Gemäß § 19 UStG wird keine Umsatzsteuer berechnet“ an Preisen/Rechnungen ·
 ☐ Streichpreise nur mit niedrigstem Preis der letzten 30 Tage · ☐ LUCID-Registrierung + Systembeteiligung (VerpackG) ·
 ☐ GPSR: Herstellerangaben, verantwortliche Person, Sicherheitshinweise auf Produktseite · ☐ Kündigungsbutton (§ 312k BGB) sobald Wardrobe-Abo live.
 
@@ -81,7 +81,7 @@ Das ist der eine Punkt, der vor dem ersten Onlineverkauf stehen muss; alles ande
 
 ### Steuern & Struktur
 
-☐ Kleinunternehmerregelung **nicht** wählen (Paid Media → Vorsteuer) · ☐ USt-IdNr. für Reverse Charge (Meta/TikTok/Google Ireland) ·
+☑ Kleinunternehmerregelung gewählt (Mar, 03.10.2026) · ☐ Reverse Charge auf Ads (Meta/TikTok/Google Ireland): 19 % ans Finanzamt, **kein Vorsteuerabzug** → Werbung effektiv ×1,19 · ☐ Umsatzgrenzen § 19 UStG im Blick behalten · ☐ mit Steuerberater bestätigen ·
 ☐ OSS ab 10.000 € EU-Versand (AT/CH: CH ist Drittland → Zoll/EUSt, Alkohol!) · ☐ Einfuhr aus Drittland: Zoll + EUSt + Gefahrgut ·
 ☐ Rechtsform: Einzelunternehmen zum Start, UG/GmbH bei Volumen (Produkthaftung Kosmetik!).
 
