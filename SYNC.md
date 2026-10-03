@@ -1,7 +1,7 @@
 # SYNC.md – Übergabe zwischen Claude Chat und Claude Code (Azizam)
 
 > Gemeinsame Datei für **Claude Chat** und **Claude Code**. Sie ist die einzige Brücke zwischen beiden.
-> Zuletzt aktualisiert: 2026-10-02 [Chat]
+> Zuletzt aktualisiert: 2026-10-03 [Code]
 
 ---
 
@@ -34,7 +34,7 @@
 - **Rückmeldungen bisher:** Viele Komplimente, gute Haltbarkeit. Meistgelobt: Velvet Vanilla.
 - **Rahmen (nächste 3 Monate):** Investitionsbudget 500–1.500 €, unter 5 Std./Woche Zeit.
 - **Repo:** `github.com/qesmat899/Mar-vin`, Haupt-Branch heißt `Azizam` und bleibt so.
-- **Grundlage für Marketing/Wachstum:** E-Commerce-Playbook (als Datei im Repo ablegen, z. B. `docs/ecommerce-playbook.md`).
+- **Grundlage für Marketing/Wachstum:** E-Commerce-Playbook liegt im Repo: Original unter `docs/ECommerceBrandPlaybook.md` (+ PDF), Umsetzung für Azizam unter `playbook/` (Einstieg: `playbook/KONTEXT-EXPORT.md`, Stand 09.09.2026).
 
 ---
 
@@ -61,6 +61,11 @@
 - Welcher Flakon wird es? (Hängt davon ab: Verpackung, Etikett, Shop-Neustart)
 - Etikettierung: Zum Etikett ist nichts geklärt.
 - Positionierung und Markenauftritt für die Zielgruppe.
+- **Widersprüche zwischen dieser Datei und `playbook/` (Stand 09.09.2026) — Mar muss klären, was gilt:** [Code, 2026-10-03]
+  - Steuer: hier „Kleinunternehmer“, im Playbook „USt-IdNr., keine Kleinunternehmerregelung, MwSt. wird ausgewiesen“ (ändert alle Margen in `brand.json`).
+  - Größen: hier „nur noch 50 ml“, im Playbook 30/50/100 ml mit Preisen und Kernzahlen.
+  - Produkt: hier „Tubes“ und Flakon gesucht, im Playbook „Flakons vorhanden (1,85 €)“.
+  - Website: hier „veraltet, Shop neu starten“, im Playbook „live, Single-Page, Shopify-Zahlungen, Vercel“.
 
 ---
 
@@ -69,8 +74,7 @@
 | Wer | Aufgabe | Status |
 |-----|---------|--------|
 | Chat | Flakon-Optionen recherchieren und bewerten | offen |
-| Mar | Playbook als `docs/ecommerce-playbook.md` ins Repo legen | offen |
-| Code | `CLAUDE.md` mit Verweis auf diese Datei anlegen | erledigt |
+| Mar | Widersprüche oben klären (danach passt Code `brand.json` und Playbook an) | offen |
 | Code | Struktur für Marketing-/Wachstums-Skills im Repo vorbereiten | offen |
 
 Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächsten Log-Eintrag löschen)
@@ -79,6 +83,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-10-03 [Code]** Geprüft: Playbook (`docs/ECommerceBrandPlaybook.md`) und `playbook/KONTEXT-EXPORT.md` lagen schon im Repo, hochgeladene Fassung identisch. Widersprüche zu dieser Datei unter „Offene Fragen“ eingetragen.
 - **2026-10-02 [Code]** SYNC.md ins Repo (Branch `Azizam`) gelegt, Verweis in `CLAUDE.md` ergänzt.
 - **2026-10-02 [Chat]** SYNC.md angelegt, Stand aus bisherigen Gesprächen übernommen.
 
