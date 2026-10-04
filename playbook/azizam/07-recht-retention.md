@@ -54,7 +54,7 @@ Das ist der eine Punkt, der vor dem ersten Onlineverkauf stehen muss; alles ande
 | Sicherheitsbewertung (CPSR) | Durch qualifizierten Safety Assessor, pro Duft | ☐ (Kosten ~300–800 € pro Duft einplanen) |
 | CPNP-Notifizierung | Vor Inverkehrbringen im EU-Portal | ☐ |
 | Kennzeichnung | INCI-Liste, Chargennummer, Nennfüllmenge (50 ml ℮), Haltbarkeit/PAO, Warnhinweise, verantwortliche Person mit Anschrift | ☐ |
-| 26 deklarationspflichtige Duftallergene | Über Schwellenwert in INCI ausweisen (bei Rose/Safran-Kompositionen relevant: Geraniol, Citronellol, Linalool, Eugenol …). **Ab 2026/27 erweiterte Liste (80+ Allergene) — mit dem Hersteller klären.** | ☐ |
+| 26 deklarationspflichtige Duftallergene | Über Schwellenwert in INCI ausweisen (bei Rose/Safran-Kompositionen relevant: Geraniol, Citronellol, Linalool, Eugenol …). **Erweiterte Liste (80+ Allergene) nach VO (EU) 2023/1545: gilt für Produkte, die ab 31.07.2026 in Verkehr gebracht werden; ältere Ware darf bis 31.07.2028 abverkauft werden — mit dem Hersteller klären.** | ☐ |
 | Gefahrgut UN 1266 | Alkoholhaltiges Parfum = Gefahrgut im Versand. Begrenzte Menge (LQ) möglich; **Luftfracht eingeschränkt**, Versanddienstleister und Verpackung entsprechend wählen; kein Standardversand ins Nicht-EU-Ausland ohne Prüfung | ☐ |
 | Tierversuchsverbot / Claims | „ohne Tierversuche“ ist in der EU ohnehin Pflicht — als Werbeaussage irreführend (UWG) | ✅ nicht bewerben |
 

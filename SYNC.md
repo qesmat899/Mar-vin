@@ -1,7 +1,7 @@
 # SYNC.md – Übergabe zwischen Claude Chat und Claude Code (Azizam)
 
 > Gemeinsame Datei für **Claude Chat** und **Claude Code**. Sie ist die einzige Brücke zwischen beiden.
-> Zuletzt aktualisiert: 2026-10-03 [Code]
+> Zuletzt aktualisiert: 2026-10-04 [Code]
 
 ---
 
@@ -66,7 +66,8 @@
 - Ab wie vielen Verkäufen kommt 100 ml (und im selben Flakon-Design)? Offen.
 - Preise für 30 und 50 ml: offen. Rechengrundlage in `brand.json` sind die alten Preise.
 - Etikettierung: Zum Etikett ist nichts geklärt.
-- Kosmetikrecht (CPNP, Sicherheitsbewertung, INCI): Fabrik soll es übernehmen, schriftliche Bestätigung fehlt. Muss vor dem ersten Onlineverkauf stehen.
+- Kosmetikrecht (CPNP, Sicherheitsbewertung, INCI): Fabrik soll es übernehmen, schriftliche Bestätigung fehlt. Muss vor dem ersten Onlineverkauf stehen. Dabei auch die erweiterte Duftallergen-Kennzeichnung nach VO (EU) 2023/1545 klären (gilt für Produkte, die ab 31.07.2026 in Verkehr gebracht werden).
+- Vorschlag: Welcher Claude-Plan (Pro, Max 5x, Max 20x) passt zu 500–1.500 € Budget und unter 5 Std./Woche? Abwägung in `CLAUDE-MASTER.md` §4. Offen.
 - Zwei Duftlinien (Heritage/Editions) aus dem Playbook: Mar ist unsicher, offen.
 - Positionierung und Markenauftritt für die Zielgruppe.
 
@@ -79,6 +80,7 @@
 | Chat | Flakon-Optionen recherchieren und bewerten (30 + 50 ml) | offen |
 | Code | Struktur für Marketing-/Wachstums-Skills im Repo vorbereiten | offen |
 | Mar | Bei der Fabrik schriftlich bestätigen lassen: CPNP, Sicherheitsbewertung, INCI für die Azizam-Namen | offen |
+| Mar | `CLAUDE-MASTER.md` ins Chat-Projekt „Azizam“ hochladen; globale Anweisung und Memory aus `playbook/templates/claude-anweisungen.md` in claude.ai setzen | offen |
 
 Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächsten Log-Eintrag löschen)
 
@@ -86,6 +88,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-10-04 [Code]** `CLAUDE-MASTER.md` angelegt: Wissensbasis aus Mars sechs Recherche-Texten (Claude-Funktionen, Modelle, Compliance-System, Agenten, Freigaben, Routinen), auf Azizam zugeschnitten, Ungeprüftes markiert. Wird über `CLAUDE.md` immer geladen. Fertige Anweisungen in `playbook/templates/claude-anweisungen.md`.
 - **2026-10-03 [Code]** 100 ml als spätere Größe wieder aufgenommen (nach ersten 30/50-Verkäufen): `SYNC.md`, `brand.json`, Kontext-Export, README, Briefing.
 - **2026-10-03 [Code]** `ARBEITSWEISE.md` (Werkzeug-Kompass) angelegt; wird beim Sessionstart mitgeladen, Claude Code erinnert Mar aktiv daran.
 - **2026-10-03 [Code]** Playbook-Kapitel 01, 03, 04, 06, 90-Tage-Plan, Briefing, Nächste Schritte und README bereinigt: 100 ml raus, Preise als `[Preis offen]`, Zahlen auf Kleinunternehmer/Flakon-Annahme; Kapitel 05 als Ganzes als veraltet markiert.

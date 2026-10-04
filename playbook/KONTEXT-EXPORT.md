@@ -70,7 +70,8 @@ nie von Hand nachrechnen, sondern den Befehl nutzen.
 
 1. **Kosmetikrecht vor dem ersten Onlineverkauf.** Wer fertiges Parfum unter eigenem Namen abfüllt, ist selbst die
    verantwortliche Person nach Art. 4 Kosmetik-VO: CPNP-Notifizierung, PIF, Sicherheitsbewertung (CPSR), INCI-
-   Kennzeichnung. Anfrage an die Fabrik steht in `azizam/NAECHSTE-SCHRITTE.md`, Schritt 0A.
+   Kennzeichnung, dazu die erweiterte Duftallergen-Kennzeichnung nach VO (EU) 2023/1545 (für Produkte, die ab
+   31.07.2026 in Verkehr gebracht werden). Anfrage an die Fabrik steht in `azizam/NAECHSTE-SCHRITTE.md`, Schritt 0A.
 2. **Notenpyramiden für sechs der sieben Düfte.** Nur Narcos ist bekannt (Honig, Tabakblatt, Zimt, Lavendel,
    Zitrus, Vanille). Ohne die echten Noten bleibt die Linienzuordnung Hypothese — **keine Noten erfinden.**
 3. **Website-Quellcode ist nicht zugänglich.** Nicht in diesem Repo (dort nur 3D-Flakon-Komponenten unter
@@ -136,3 +137,5 @@ python3 playbook.py export                          # alles in eine Datei bünde
 2. Vor jeder Zahl: `playbook.py economics` laufen lassen, statt aus dem Text zu rechnen.
 3. Vor jedem Text: die Verbotsliste im `brand-briefing.md` prüfen.
 4. Neue Erkenntnisse gehören in die Dateien, nicht nur in die Antwort — sonst sind sie in der nächsten Sitzung weg.
+5. Wie Claude für Azizam arbeitet (Funktionen, Modelle, Compliance-System, Agenten, Freigaben, Routinen): `CLAUDE-MASTER.md`
+   im Repo-Root (Stand 04.10.2026). Fertige Texte für claude.ai: `templates/claude-anweisungen.md`.

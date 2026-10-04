@@ -7,7 +7,7 @@
 
 | Baustein | Was es ist | Bei Azizam |
 |---|---|---|
-| **Kontext** | Was Claude über das Business immer weiß | `SYNC.md`, `CLAUDE.md`, `playbook/`, Projekt-Anweisungen in claude.ai |
+| **Kontext** | Was Claude über das Business immer weiß | `SYNC.md`, `CLAUDE.md`, `CLAUDE-MASTER.md` (Wissensbasis), `playbook/`, Projekt-Anweisungen in claude.ai |
 | **Skills** | Anleitungen für wiederkehrende Aufgaben | z. B. Produkttext mit Verbotsliste, Wochenreport |
 | **Konnektoren** | Zugriff auf Tools | Shopify, Gmail, Kalender, Drive, Canva, GitHub |
 | **Automatik** | Läuft ohne Mar | Hooks (Code), geplante Aufgaben (Cowork), Routinen (Cloud) |
@@ -34,9 +34,10 @@ Faustregel: **Am Ende soll eine Entscheidung stehen → Chat. Am Ende soll eine 
 5. **Wiederholt sich etwas dreimal → Skill oder Automatik daraus machen.**
 6. **Entscheiden tut Mar.** Claude liefert Optionen mit Begründung.
 
-## Gerade dran (Stand 03.10.2026)
+## Gerade dran (Stand 04.10.2026)
 
 - Flakon + Verpackung finden → **Chat**
+- `CLAUDE-MASTER.md` ins Projekt „Azizam“ hochladen, globale Anweisung + Memory aus `playbook/templates/claude-anweisungen.md` setzen → **Mar** (claude.ai)
 - CPNP/Sicherheitsbewertung bei der Fabrik schriftlich bestätigen → **Mar**
 - Preise festlegen, sobald Flakonpreis steht → **Chat**, dann **Code** (`brand.json` + Rechner)
 - 100 ml erst nach den ersten 30/50-ml-Verkäufen wieder aufgreifen

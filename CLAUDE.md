@@ -11,6 +11,8 @@ Grundlage für jede Analyse und Strategie ist das **E-Commerce Brand-Playbook** 
 | Ordner / Datei | Inhalt |
 |---|---|
 | `playbook/KONTEXT-EXPORT.md` | **Zuerst lesen.** Belegte Fakten, Entscheidungen mit Datum, offene Punkte |
+| `CLAUDE-MASTER.md` | **Wissensbasis, immer geladen:** wie Claude für Azizam arbeitet (Funktionen, Modelle, Compliance-System, Agenten, Freigaben, Automatik) |
+| `playbook/templates/claude-anweisungen.md` | Fertige Texte für claude.ai: globale Anweisung, Memory, Projekt-Anweisung, Routinen-Prompts |
 | `playbook/SYSTEM.md` | Das Playbook auf einer Seite — fester Denkrahmen für alle Marketing-Aufgaben |
 | `playbook/azizam/` | Azizam: Markt, Personas, Angles, Marke, Unit Economics, Creator, Recht, 90-Tage-Plan |
 | `playbook/haus-und-gruen/` | Haus & Grün: dieselbe Struktur |
@@ -44,6 +46,11 @@ python3 playbook.py export                          # alles in eine Markdown-Dat
 
 ## Synchronisation
 **Zu Beginn jeder Session `SYNC.md` komplett lesen** und am Ende bzw. nach wichtigen Entscheidungen aktualisieren. Sie ist die gemeinsame Übergabe-Datei zwischen Claude Chat und Claude Code (nur Azizam; Regeln stehen in der Datei selbst).
+
+## Wissensbasis (wird automatisch mitgeladen)
+Zusätzliches Wissen zur Arbeitsweise mit Claude kommt immer aus dieser Datei. Bei Widerspruch gelten `SYNC.md` und `playbook/KONTEXT-EXPORT.md`. Neues Wissen über Claude-Funktionen, Agenten oder Compliance dort nachziehen.
+
+@CLAUDE-MASTER.md
 
 ## Werkzeug-Kompass
 `ARBEITSWEISE.md` sagt, wofür Chat, Code, Cowork, Konnektoren und Automatik da sind. **Erinnere Mar aktiv daran:** Wenn eine Bitte woanders besser oder günstiger erledigt wäre, sag es in einem Satz, bevor du loslegst, und am Ende einer Session kurz, was als Nächstes wo passiert. Halte den Abschnitt „Gerade dran“ in `ARBEITSWEISE.md` aktuell.
