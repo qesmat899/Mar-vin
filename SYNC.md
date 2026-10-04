@@ -56,7 +56,7 @@
 - Eigene Kreation/Sample erst später.
 - Bleiben gültig aus dem Playbook (09/2026): 30 % Duftöl als Kernversprechen; keine erfundenen Bewertungen; keine Herstellungsaussagen wie „Handgefertigt in Deutschland“, „Seltene Zutaten“, „Haute Parfumerie“. [Mar, 2026-10-03]
 - Kein Privatkram im Repo: Adresse, Telefon, USt-IdNr. stehen nur im Impressum. [Mar, 2026-10-03]
-- Shop-Neustart im Shopify-Shop „My Store 3“ (pbznmb-fy.myshopify.com; Stand 04.10.: 0 Produkte, 0 Bestellungen). Buchhaltung macht der Steuerberater (kein Buchhaltungsprogramm). Geschäftsjahr = Kalenderjahr. Wochenüberblick montags. Geschäfts-E-Mail ist `azizamfragrance@gmail.com` (ohne „s“). [Mar, 2026-10-04]
+- Shop-Neustart im Shopify-Shop „My Store 3“ (pbznmb-fy.myshopify.com; Stand 04.10.: 0 Produkte, 0 Bestellungen). Buchhaltung macht der Steuerberater (kein Buchhaltungsprogramm). Geschäftsjahr = Kalenderjahr. Wochenüberblick montags. Claude-Plan: Pro. Geschäfts-E-Mail ist `azizamfragrance@gmail.com` (ohne „s“). [Mar, 2026-10-04]
 
 ---
 
@@ -67,8 +67,7 @@
 - Ab wie vielen Verkäufen kommt 100 ml (und im selben Flakon-Design)? Offen.
 - Preise für 30 und 50 ml: offen. Rechengrundlage in `brand.json` sind die alten Preise.
 - Etikettierung: Zum Etikett ist nichts geklärt.
-- Kosmetikrecht (CPNP, Sicherheitsbewertung, INCI): Fabrik soll es übernehmen, schriftliche Bestätigung fehlt. Muss vor dem ersten Onlineverkauf stehen. Dabei auch die erweiterte Duftallergen-Kennzeichnung nach VO (EU) 2023/1545 klären (gilt für Produkte, die ab 31.07.2026 in Verkehr gebracht werden).
-- Vorschlag: Welcher Claude-Plan (Pro, Max 5x, Max 20x) passt zu 500–1.500 € Budget und unter 5 Std./Woche? Abwägung in `CLAUDE-MASTER.md` §4. Offen.
+- Kosmetikrecht: Die Fabrik stellt die nötigen Dokumente bereit (Sicherheitsbewertung, INCI u. a.), Mar trägt die Produkte selbst im CPNP-Portal der EU ein (Mar, 04.10.). Offen: Liste der Fabrik-Dokumente prüfen (deckt sie CPSR/PIF-Inhalte und die erweiterte Allergen-Kennzeichnung nach VO (EU) 2023/1545 ab?), CPNP-Eintrag je Duft vor dem ersten Onlineverkauf.
 - Zwei Duftlinien (Heritage/Editions) aus dem Playbook: Mar ist unsicher, offen.
 - Positionierung und Markenauftritt für die Zielgruppe.
 
@@ -80,7 +79,7 @@
 |-----|---------|--------|
 | Chat | Flakon-Optionen recherchieren und bewerten (30 + 50 ml) | offen |
 | Code | Struktur für Marketing-/Wachstums-Skills im Repo vorbereiten | offen |
-| Mar | Bei der Fabrik schriftlich bestätigen lassen: CPNP, Sicherheitsbewertung, INCI für die Azizam-Namen | offen |
+| Mar | Dokumente der Fabrik je Duft sammeln und ins Repo/Drive legen; danach jeden Duft im CPNP-Portal eintragen | offen |
 | Mar | `CLAUDE-MASTER.md` ins Chat-Projekt „Azizam“ hochladen; globale Anweisung und Memory aus `playbook/templates/claude-anweisungen.md` in claude.ai setzen | offen |
 
 Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächsten Log-Eintrag löschen)
@@ -89,6 +88,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-10-04 [Code]** Mar: Claude Pro; Fabrik liefert die Rechtsdokumente, Mar trägt die Produkte selbst im CPNP-Portal ein. Offene Fragen und Aufgaben angepasst.
 - **2026-10-04 [Code]** E-Mail-Adresse korrigiert auf `azizamfragrance@gmail.com` (`brand.json`, `07-recht-retention.md`).
 - **2026-10-04 [Code]** Small-Business-Plugin eingerichtet: Profil `BUSINESS-CONTEXT.md` (von Mar bestätigt, über `CLAUDE.md` immer geladen), Aufbauplan in Stufen mit passenden Plugin-Skills in `playbook/azizam/SYSTEM-AUFBAU.md`. Shopify geprüft (nur gelesen).
 - **2026-10-04 [Code]** `CLAUDE-MASTER.md` angelegt: Wissensbasis aus Mars sechs Recherche-Texten (Claude-Funktionen, Modelle, Compliance-System, Agenten, Freigaben, Routinen), auf Azizam zugeschnitten, Ungeprüftes markiert. Wird über `CLAUDE.md` immer geladen. Fertige Anweisungen in `playbook/templates/claude-anweisungen.md`.
@@ -98,7 +98,6 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 - **2026-10-03 [Code]** Mars Antworten eingearbeitet (kein Verkauf aktuell, CPNP offen, 09/2026-Regeln gelten außer Duftlinien), Adresse/Telefon/USt-IdNr. aus dem Repo entfernt, Steuerteil in `07-recht-retention.md` auf Kleinunternehmer umgestellt.
 - **2026-10-03 [Code]** Mars Klärung eingearbeitet (Kleinunternehmer, 30 + 50 ml, Preise offen, Website offline): `brand.json` und `playbook/KONTEXT-EXPORT.md` angepasst, Economics neu gerechnet.
 - **2026-10-03 [Code]** Geprüft: Playbook (`docs/ECommerceBrandPlaybook.md`) und `playbook/KONTEXT-EXPORT.md` lagen schon im Repo, hochgeladene Fassung identisch. Widersprüche zu dieser Datei unter „Offene Fragen“ eingetragen.
-- **2026-10-02 [Code]** SYNC.md ins Repo (Branch `Azizam`) gelegt, Verweis in `CLAUDE.md` ergänzt.
 
 ### Verlauf (zusammengefasst)
 

@@ -9,7 +9,7 @@
 
 - **Business:** Azizam Fragrance – Parfum unter eigener Marke (Fertigparfum aus einer Parfumfabrik, in eigene Flakons abgefüllt), nebenberuflich, Kleinunternehmer nach § 19 UStG (keine Umsatzsteuer auf Rechnungen), Onlineshop im Neuaufbau, aktuell kein Verkauf
 - **Size:** 1 (Mar, Inhaber)
-- **Top headaches:** Flakon und Verpackung finden · Kosmetikrecht (CPNP, Sicherheitsbewertung, INCI) bei der Fabrik schriftlich klären · Shop-Neustart mit unter 5 Std./Woche
+- **Top headaches:** Flakon und Verpackung finden · Produkte im CPNP-Portal eintragen (Dokumente liefert die Fabrik) · Shop-Neustart mit unter 5 Std./Woche
 - **Connected tools:** Shopify, Gmail, Google Calendar, Google Drive, GitHub
 - **Country:** DE
 - **Currency:** EUR
