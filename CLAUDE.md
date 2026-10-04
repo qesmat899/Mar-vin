@@ -13,6 +13,8 @@ Grundlage für jede Analyse und Strategie ist das **E-Commerce Brand-Playbook** 
 | `playbook/KONTEXT-EXPORT.md` | **Zuerst lesen.** Belegte Fakten, Entscheidungen mit Datum, offene Punkte |
 | `CLAUDE-MASTER.md` | **Wissensbasis, immer geladen:** wie Claude für Azizam arbeitet (Funktionen, Modelle, Compliance-System, Agenten, Freigaben, Automatik) |
 | `playbook/templates/claude-anweisungen.md` | Fertige Texte für claude.ai: globale Anweisung, Memory, Projekt-Anweisung, Routinen-Prompts |
+| `BUSINESS-CONTEXT.md` | Profil für das Small-Business-Plugin, immer geladen |
+| `playbook/azizam/SYSTEM-AUFBAU.md` | Aufbauplan des Azizam-Systems in Stufen, mit den passenden Plugin-Skills |
 | `playbook/SYSTEM.md` | Das Playbook auf einer Seite — fester Denkrahmen für alle Marketing-Aufgaben |
 | `playbook/azizam/` | Azizam: Markt, Personas, Angles, Marke, Unit Economics, Creator, Recht, 90-Tage-Plan |
 | `playbook/haus-und-gruen/` | Haus & Grün: dieselbe Struktur |
@@ -51,6 +53,10 @@ python3 playbook.py export                          # alles in eine Markdown-Dat
 Zusätzliches Wissen zur Arbeitsweise mit Claude kommt immer aus dieser Datei. Bei Widerspruch gelten `SYNC.md` und `playbook/KONTEXT-EXPORT.md`. Neues Wissen über Claude-Funktionen, Agenten oder Compliance dort nachziehen.
 
 @CLAUDE-MASTER.md
+
+Profil für das Small-Business-Plugin (`## Business context`), Aufbauplan in `playbook/azizam/SYSTEM-AUFBAU.md`:
+
+@BUSINESS-CONTEXT.md
 
 ## Werkzeug-Kompass
 `ARBEITSWEISE.md` sagt, wofür Chat, Code, Cowork, Konnektoren und Automatik da sind. **Erinnere Mar aktiv daran:** Wenn eine Bitte woanders besser oder günstiger erledigt wäre, sag es in einem Satz, bevor du loslegst, und am Ende einer Session kurz, was als Nächstes wo passiert. Halte den Abschnitt „Gerade dran“ in `ARBEITSWEISE.md` aktuell.

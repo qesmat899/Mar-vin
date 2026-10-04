@@ -50,6 +50,7 @@ der Website. **Flakon und Verpackung werden gesucht** (Stand 03.10.2026).
 | Kernzahlen 50 ml online | mit alten Preisen: `playbook.py economics --brand azizam --all` ausführen, nicht von Hand rechnen |
 | Firma | Marvin Farienfar, Einzelunternehmer, Würzburg · **Kleinunternehmer nach § 19 UStG** (Mar 03.10.2026), keine MwSt. · USt-IdNr. vorhanden |
 | Versand | Deutschland + Österreich, 2–4 Werktage, 4,95 €, kostenlos ab 80 € |
+| Shop & Buchhaltung | Neustart im Shopify-Shop „My Store 3“ (04.10.2026: 0 Produkte, 0 Bestellungen); Buchhaltung beim Steuerberater, Geschäftsjahr = Kalenderjahr (Mar 04.10.2026) |
 | Rückgabe | gesetzlich 14 Tage; freiwillig 30 Tage, wenn Flakon ≥ 80 % gefüllt |
 | Sortiment | 7 Düfte: Narcos, Midnight Café, Erba Bomb, Imaginary, Goldstaub II., Velvet Vanilla, Kings Perfume |
 

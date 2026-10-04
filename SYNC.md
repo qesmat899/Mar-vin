@@ -56,6 +56,7 @@
 - Eigene Kreation/Sample erst später.
 - Bleiben gültig aus dem Playbook (09/2026): 30 % Duftöl als Kernversprechen; keine erfundenen Bewertungen; keine Herstellungsaussagen wie „Handgefertigt in Deutschland“, „Seltene Zutaten“, „Haute Parfumerie“. [Mar, 2026-10-03]
 - Kein Privatkram im Repo: Adresse, Telefon, USt-IdNr. stehen nur im Impressum. [Mar, 2026-10-03]
+- Shop-Neustart im Shopify-Shop „My Store 3“ (pbznmb-fy.myshopify.com; Stand 04.10.: 0 Produkte, 0 Bestellungen). Buchhaltung macht der Steuerberater (kein Buchhaltungsprogramm). Geschäftsjahr = Kalenderjahr. Wochenüberblick montags. [Mar, 2026-10-04]
 
 ---
 
@@ -68,6 +69,7 @@
 - Etikettierung: Zum Etikett ist nichts geklärt.
 - Kosmetikrecht (CPNP, Sicherheitsbewertung, INCI): Fabrik soll es übernehmen, schriftliche Bestätigung fehlt. Muss vor dem ersten Onlineverkauf stehen. Dabei auch die erweiterte Duftallergen-Kennzeichnung nach VO (EU) 2023/1545 klären (gilt für Produkte, die ab 31.07.2026 in Verkehr gebracht werden).
 - Vorschlag: Welcher Claude-Plan (Pro, Max 5x, Max 20x) passt zu 500–1.500 € Budget und unter 5 Std./Woche? Abwägung in `CLAUDE-MASTER.md` §4. Offen.
+- E-Mail-Adresse: Shopify nennt `azizamfragrance@gmail.com`, Repo/Impressum-Daten nennen `azizamfragrances@gmail.com`. Welche ist richtig?
 - Zwei Duftlinien (Heritage/Editions) aus dem Playbook: Mar ist unsicher, offen.
 - Positionierung und Markenauftritt für die Zielgruppe.
 
@@ -88,6 +90,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-10-04 [Code]** Small-Business-Plugin eingerichtet: Profil `BUSINESS-CONTEXT.md` (von Mar bestätigt, über `CLAUDE.md` immer geladen), Aufbauplan in Stufen mit passenden Plugin-Skills in `playbook/azizam/SYSTEM-AUFBAU.md`. Shopify geprüft (nur gelesen).
 - **2026-10-04 [Code]** `CLAUDE-MASTER.md` angelegt: Wissensbasis aus Mars sechs Recherche-Texten (Claude-Funktionen, Modelle, Compliance-System, Agenten, Freigaben, Routinen), auf Azizam zugeschnitten, Ungeprüftes markiert. Wird über `CLAUDE.md` immer geladen. Fertige Anweisungen in `playbook/templates/claude-anweisungen.md`.
 - **2026-10-03 [Code]** 100 ml als spätere Größe wieder aufgenommen (nach ersten 30/50-Verkäufen): `SYNC.md`, `brand.json`, Kontext-Export, README, Briefing.
 - **2026-10-03 [Code]** `ARBEITSWEISE.md` (Werkzeug-Kompass) angelegt; wird beim Sessionstart mitgeladen, Claude Code erinnert Mar aktiv daran.
