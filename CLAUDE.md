@@ -1,9 +1,9 @@
 # Mar-vin – Projekt-Kontext für Claude
 
 ## Worum es geht
-Arbeits-Repository für die zwei Marken von Mar (Inhaber):
-- **Azizam Fragrance** — Parfum-Marke (persisch inspiriert, „Duft der zweiten Generation“), Shop: azizamfragrances.com
-- **Haus & Grün Konzept** — Gebäudereinigung und Gartenpflege in Würzburg & Umgebung
+Arbeits-Repository für **Azizam Fragrance**, die Parfum-Marke von Mar (Inhaber): persisch inspiriert, „Duft der zweiten Generation“, Shop: azizamfragrances.com
+
+Mars zweites Geschäft (Haus & Grün Konzept, Gebäudereinigung und Gartenpflege in Würzburg) ist nicht Teil dieses Repos. Sein Playbook wurde am 04.10.2026 entfernt, es bleibt in der Git-Historie.
 
 Grundlage für jede Analyse und Strategie ist das **E-Commerce Brand-Playbook** („Vom Markt zur Culture Brand“).
 
@@ -13,7 +13,6 @@ Grundlage für jede Analyse und Strategie ist das **E-Commerce Brand-Playbook** 
 | `playbook/KONTEXT-EXPORT.md` | **Zuerst lesen.** Belegte Fakten, Entscheidungen mit Datum, offene Punkte |
 | `playbook/SYSTEM.md` | Das Playbook auf einer Seite — fester Denkrahmen für alle Marketing-Aufgaben |
 | `playbook/azizam/` | Azizam: Markt, Personas, Angles, Marke, Unit Economics, Creator, Recht, 90-Tage-Plan |
-| `playbook/haus-und-gruen/` | Haus & Grün: dieselbe Struktur |
 | `playbook/templates/` | Vorlagen (Persona-/Pain-Karte, Creator-Briefing, Verträge, CSVs) |
 | `playbook.py` | Werkzeug: Status, Rechner, Prompts (siehe unten) |
 | `docs/` | Original-Playbook als Markdown + PDF (64 Seiten) |
@@ -26,10 +25,10 @@ Grundlage für jede Analyse und Strategie ist das **E-Commerce Brand-Playbook** 
 
 ## Befehle
 ```bash
-python3 playbook.py status                          # Fortschritt der 90-Tage-Pläne
+python3 playbook.py status                          # Fortschritt des 90-Tage-Plans
 python3 playbook.py economics --brand azizam        # CM1/CM2/Break-even-ROAS/LTV:CAC
 python3 playbook.py economics --brand azizam --all  # alle Größen × Kanäle
-python3 playbook.py offers --brand haus-und-gruen   # Angebotsvarianten
+python3 playbook.py offers --brand azizam           # Angebotsvarianten
 python3 playbook.py prompt 1 --brand azizam --data zitate.txt [--run]
 python3 playbook.py swipe --brand azizam --source "Quelle" "Zitat"
 python3 playbook.py export                          # alles in eine Markdown-Datei bündeln

@@ -18,4 +18,4 @@ Hier liegen die **Ergebnisse** der laufenden Arbeit, getrennt nach Bereich. Das 
 4. Wichtige Entscheidungen zusätzlich in `SYNC.md` und `playbook/KONTEXT-EXPORT.md` nachziehen.
 
 ## Bewusst nicht verschoben
-`playbook/azizam/` bleibt, wo es ist. `playbook.py`, `SYNC.md` und die Hooks greifen auf diese Pfade zu. Haus & Grün Konzept liegt unverändert in `playbook/haus-und-gruen/`.
+`playbook/azizam/` bleibt, wo es ist. `playbook.py`, `SYNC.md` und die Hooks greifen auf diese Pfade zu. Das Haus-&-Grün-Playbook wurde am 04.10.2026 entfernt.

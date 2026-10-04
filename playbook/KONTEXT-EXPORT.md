@@ -11,7 +11,7 @@ Zwei Dinge im selben Repository (`qesmat899/Mar-vin`):
 1. **`marvin.py`** — das ursprüngliche Werkzeug: Video-URL → Whisper-Transkript → KI-Zusammenfassung. Für das
    Playbook nützlich, um die Sprache der Zielgruppe aus TikTok-Videos wörtlich zu gewinnen.
 2. **`playbook/`** — die Umsetzung des „E-Commerce Brand-Playbook" (Vom Markt zur Culture Brand, Ausgabe 09/2026,
-   64 Seiten) für zwei Marken des Inhabers. Nicht als Zusammenfassung, sondern als Arbeitssystem mit Rechner,
+   64 Seiten) für die Marke des Inhabers. Nicht als Zusammenfassung, sondern als Arbeitssystem mit Rechner,
    Prompts und Checklisten. Bedient über `playbook.py`.
 
 Die Kurzfassung des Playbooks steht in `playbook/SYSTEM.md` — das ist der Denkrahmen für alle Marketing-Aufgaben
@@ -86,22 +86,6 @@ Rechtsfreigabe bei der Fabrik anstoßen, und **die ersten 50 Flakons privat verk
 (26,96 € Deckungsbeitrag je 50 ml ohne Werbekosten) und liefert die echten Kundenzitate, die dem ganzen System
 bisher fehlen.
 
-## Marke 2 · Haus & Grün — Pflanzenpflege (ausgearbeitet, noch nicht gestartet)
-
-Konzept, kein fertiges Produkt. Die Marktdatei stellt drei Kandidaten gegeneinander und empfiehlt ein
-**Pflegesystem** (organischer Flüssigdünger + Blattpflege + Pflegeplan, 44,90 €, Abo 38,17 €), weil es als
-einziges alle Playbook-Filter erfüllt: Verbrauch, leicht, nicht zerbrechlich, demonstrierbar.
-
-Kernthese: *„Grüner Daumen ist kein Talent. Er ist ein Sonntag."* Pflanzen sterben am fehlenden Rhythmus, nicht
-am fehlenden Dünger — deshalb liegt der Plan im Karton und die nächste Box kommt, wenn die alte leer ist.
-
-Zahlen: CM1 25,48 € (68 % Marge) · Break-even-ROAS 1,48 · max. CAC 24,71 € · LTV:CAC 5,5. Das Abo darf 116 € CAC
-tragen — der eigentliche Hebel.
-
-**Die harte Rechtsgrenze:** Nie „gegen Trauermücken / Blattläuse / Schädlinge" behaupten. Das wäre ein
-Pflanzenschutzmittel und braucht eine BVL-Zulassung. Der Pain darf benannt werden, das Produkt darf nicht dagegen
-wirken. Steht in `haus-und-gruen/brand-briefing.md`.
-
 ## Die Dateien
 
 ```
@@ -116,15 +100,14 @@ playbook/
 │   ├── brand-briefing.md       ← fester KI-Kontext dieser Marke (Verbotsliste!)
 │   ├── brand.json              ← alle Zahlen, maschinenlesbar
 │   └── 01-markt … 07-recht-retention, 90-tage-plan, swipe-file
-└── haus-und-gruen/        dieselbe Struktur
 ```
 
 ## Befehle
 
 ```bash
-python3 playbook.py status                          # Fortschritt beider Pläne
+python3 playbook.py status                          # Fortschritt des 90-Tage-Plans
 python3 playbook.py economics --brand azizam --all  # alle Größen × Kanäle (online/privat)
-python3 playbook.py offers --brand haus-und-gruen   # Abo / 2+1 / 1+1+Geschenk
+python3 playbook.py offers --brand azizam           # Angebotsvarianten
 python3 playbook.py prompt 1 --brand azizam --data zitate.txt [--run]
 python3 playbook.py swipe --brand azizam --source "Parfumo" "wörtliches Zitat"
 python3 playbook.py export                          # alles in eine Datei bündeln

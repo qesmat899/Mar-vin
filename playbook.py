@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-playbook.py — Werkzeugkasten für das E-Commerce Brand-Playbook (Azizam, Haus & Grün).
+playbook.py — Werkzeugkasten für das E-Commerce Brand-Playbook (Azizam).
 
     python3 playbook.py brands
     python3 playbook.py status    [--brand azizam]
@@ -347,13 +347,13 @@ def export_cmd(args) -> None:
     brands = [args.brand] if args.brand else list_brands()
     out = pathlib.Path(args.out)
     parts = [
-        "# Azizam & Haus & Grün — komplettes Playbook (Einzeldatei-Export)",
+        "# Azizam — komplettes Playbook (Einzeldatei-Export)",
         "",
         f"Automatisch gebündelt am {date.today():%Y-%m-%d} aus dem Repository `Mar-vin`, Verzeichnis `playbook/`.",
         "Erzeugt mit `python3 playbook.py export`. Diese Datei ist eine Kopie — Änderungen gehören ins Repository,",
         "nicht hierher, sonst laufen beide auseinander.",
         "",
-        "Diese Datei enthält alles, was eine neue Claude-Sitzung braucht: Kontext, Regeln, beide Marken,",
+        "Diese Datei enthält alles, was eine neue Claude-Sitzung braucht: Kontext, Regeln, Marke,",
         "Vorlagen und die Prompt-Bibliothek. Zum Einlesen einfach vollständig hochladen oder einfügen.",
         "",
         "---",

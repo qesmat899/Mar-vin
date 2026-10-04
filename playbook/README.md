@@ -1,7 +1,7 @@
-# E-Commerce Brand-Playbook — Umsetzung für Azizam und Haus & Grün
+# E-Commerce Brand-Playbook — Umsetzung für Azizam
 
 Dieses Verzeichnis setzt das **E-Commerce Brand-Playbook** („Vom Markt zur Culture Brand“, Ausgabe 09/2026,
-64 Seiten) für zwei Marken um. Nicht als Zusammenfassung, sondern als **Arbeitssystem**: jede Schicht des
+64 Seiten) für Azizam um. Nicht als Zusammenfassung, sondern als **Arbeitssystem**: jede Schicht des
 Zwiebelmodells hat eine Datei, jede Zahl einen Rechner, jeder Prompt einen Befehl, jeder Schritt ein Kästchen.
 
 ```
@@ -10,7 +10,6 @@ playbook/
 ├── prompts.md             Die sechs Prompts aus Kap. 2.2 mit Platzhaltern
 ├── templates/             Pain-Karte, Persona-Karte, Brand-Steckbrief, Creator-Briefing, Anschreiben, Vereinbarung, CSVs
 ├── azizam/                Parfum-Marke — 12 Dateien, Schicht 1–5 + Zahlen + Creator + Recht + 90-Tage-Plan
-└── haus-und-gruen/        Pflanzenpflege-Marke — dieselbe Struktur
 ```
 
 Werkzeug: [`../playbook.py`](../playbook.py) (nur Standardbibliothek; `anthropic` optional für `--run`).
@@ -31,17 +30,17 @@ Das Playbook ist eindeutig in der Reihenfolge. Wer eine Schicht überspringt, r�
 | **8 · Creator** | 9–10 | 100+ anschreiben, Barter, Briefings | `06-creator-skalierung.md`, `creator-outreach.csv` | `playbook.py prompt 5` |
 | **9 · Skalierung** | 11–12 | Spark Ads, Funnel, +20–30 % alle 2–3 Tage bei CM2 > 0 | `06-…` | `playbook.py status` |
 
-Jede Marke hat einen `90-tage-plan.md` mit allen Schritten als Checkliste. `python3 playbook.py status` zeigt beide Marken.
+Die Marke hat einen `90-tage-plan.md` mit allen Schritten als Checkliste. `python3 playbook.py status` zeigt den Fortschritt.
 
 ## Die Befehle
 
 ```bash
 python3 playbook.py brands                                   # welche Marken gibt es
-python3 playbook.py status                                   # Fortschritt beider 90-Tage-Pläne
+python3 playbook.py status                                   # Fortschritt des 90-Tage-Plans
 python3 playbook.py economics --brand azizam                 # CM1, CM2, Break-even-ROAS, max. CAC, LTV:CAC
 python3 playbook.py economics --brand azizam --all           # alle Größen × Kanäle (online/privat)
 python3 playbook.py economics --brand azizam --variant 100ml --cac 28   # Szenario je Größe
-python3 playbook.py offers --brand haus-und-gruen            # Abo vs. 2+1 vs. 1+1+Geschenk
+python3 playbook.py offers --brand azizam                   # Angebotsvarianten
 python3 playbook.py prompt 1 --brand azizam --data research/zitate.txt          # Prompt ausgeben
 python3 playbook.py prompt 3 --brand azizam --var PERSONA="Darius, 27" --run    # an Claude schicken
 python3 playbook.py swipe --brand azizam --source "Parfumo" --persona Darius "wörtliches Zitat"
