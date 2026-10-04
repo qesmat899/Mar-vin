@@ -7,7 +7,7 @@
 | Inhaber / Rechtsform | Marvin Farienfar, Einzelunternehmer (Handelsname „Azizam“) — kein Registergericht/HR-Nummer im Impressum, also kein e.K./UG/GmbH |
 | Adresse | [nicht im Repo — steht im Impressum] |
 | Telefon | [nicht im Repo — steht im Impressum] |
-| E-Mail | azizamfragrances@gmail.com |
+| E-Mail | azizamfragrance@gmail.com |
 | USt-IdNr. | [nicht im Repo — steht im Impressum] — **Kleinunternehmer nach § 19 UStG** (Mar, 03.10.2026), keine MwSt. auf Rechnungen |
 | Plattform | Shopify (Shopify Payments) + Vercel-Hosting |
 | Zahlungsmethoden (live) | Shopify Payments/Kreditkarte, PayPal, Klarna, Apple Pay, Google Pay |
