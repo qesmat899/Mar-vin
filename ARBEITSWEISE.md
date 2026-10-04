@@ -34,6 +34,12 @@ Faustregel: **Am Ende soll eine Entscheidung stehen → Chat. Am Ende soll eine 
 5. **Wiederholt sich etwas dreimal → Skill oder Automatik daraus machen.**
 6. **Entscheiden tut Mar.** Claude liefert Optionen mit Begründung.
 
+## Rollen und Skills in Claude Code (neu 04.10.2026)
+
+Rollen (`.claude/agents/`): `ceo`, `cfo`, `marketing`, `inventory`, `research`.
+Skills: `perfume-ceo`, `perfume-compliance`, `perfume-finance`, `perfume-procurement`, `perfume-growth`.
+Ergebnisse liegen in `company/`, Routinen werden in `automation/` beschrieben (noch keine aktiv).
+
 ## Gerade dran (Stand 03.10.2026)
 
 - Flakon + Verpackung finden → **Chat**

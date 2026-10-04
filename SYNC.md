@@ -1,7 +1,7 @@
 # SYNC.md – Übergabe zwischen Claude Chat und Claude Code (Azizam)
 
 > Gemeinsame Datei für **Claude Chat** und **Claude Code**. Sie ist die einzige Brücke zwischen beiden.
-> Zuletzt aktualisiert: 2026-10-03 [Code]
+> Zuletzt aktualisiert: 2026-10-04 [Code]
 
 ---
 
@@ -68,6 +68,7 @@
 - Etikettierung: Zum Etikett ist nichts geklärt.
 - Kosmetikrecht (CPNP, Sicherheitsbewertung, INCI): Fabrik soll es übernehmen, schriftliche Bestätigung fehlt. Muss vor dem ersten Onlineverkauf stehen.
 - Zwei Duftlinien (Heritage/Editions) aus dem Playbook: Mar ist unsicher, offen.
+- Vorschlag: `playbook/azizam/` später nach `company/` umziehen, dann aber `playbook.py`, Hooks und Verweise in `SYNC.md`/`CLAUDE.md` gemeinsam anpassen. Bis dahin bleibt alles am alten Ort. Haus & Grün ist in der Struktur nicht vorgesehen und bleibt in `playbook/haus-und-gruen/`.
 - Positionierung und Markenauftritt für die Zielgruppe.
 
 ---
@@ -77,7 +78,7 @@
 | Wer | Aufgabe | Status |
 |-----|---------|--------|
 | Chat | Flakon-Optionen recherchieren und bewerten (30 + 50 ml) | offen |
-| Code | Struktur für Marketing-/Wachstums-Skills im Repo vorbereiten | offen |
+| Code | Struktur für Marketing-/Wachstums-Skills im Repo vorbereiten | erledigt (2026-10-04, siehe Log) |
 | Mar | Bei der Fabrik schriftlich bestätigen lassen: CPNP, Sicherheitsbewertung, INCI für die Azizam-Namen | offen |
 
 Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächsten Log-Eintrag löschen)
@@ -85,6 +86,8 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 ---
 
 ## Log (neueste oben, max. 10)
+
+- **2026-10-04 [Code]** Mars Wunsch-Struktur angelegt, nichts verschoben: `.claude/agents/` (ceo, cfo, marketing, inventory, research), `.claude/skills/perfume-*` (ceo, compliance, finance, procurement, growth), `company/` (6 Bereiche), `automation/` (daily/weekly/monthly, keine Routine aktiv). `playbook/` bleibt, weil `playbook.py` und die Hooks darauf zeigen.
 
 - **2026-10-03 [Code]** 100 ml als spätere Größe wieder aufgenommen (nach ersten 30/50-Verkäufen): `SYNC.md`, `brand.json`, Kontext-Export, README, Briefing.
 - **2026-10-03 [Code]** `ARBEITSWEISE.md` (Werkzeug-Kompass) angelegt; wird beim Sessionstart mitgeladen, Claude Code erinnert Mar aktiv daran.
