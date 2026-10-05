@@ -1,5 +1,12 @@
 # Schicht 4 + 5 — Angles und Ads
 
+> **Zahlenstatus (05.10.2026):** Preise, Kosten, COGS, Versand, Gebühren, CAC, ROAS, Margen, Offer- und Absatzwerte
+> in dieser Datei sind alte Modellwerte (`OUTDATED` / `EXAMPLE` / `ASSUMPTION`) oder ohne Quelle (`UNKNOWN`) und von
+> Mar ausdrücklich **nicht bestätigt**. Markt-, Wettbewerbs- und Persona-Zahlen ohne Quelle sind `UNKNOWN`,
+> Playbook-Richtwerte (Hook Rate, CTR, Wiederkaufrate …) `EXAMPLE`. Belegt (`RECORDED (Mar)`, `SYNC.md`) sind nur:
+> 30 % Duftöl · Start 30 und 50 ml · Flakon max. ca. 3 € (Obergrenze, keine Kostenangabe) · erste Flakonbestellung
+> 100–200 Stück · Investitionsbudget 500–1.500 € für 3 Monate. Nichts davon als Fakt verwenden oder daraus ableiten.
+
 **Angle = Persona + Pain + Transformation + Mechanismus + Beweis.** Ein Angle, eine Botschaft. Der Angle muss
 überprüfbar sein — der Mechanismus ist die Erlaubnis, überhaupt etwas zu behaupten.
 
@@ -91,7 +98,7 @@ Beispiel LP für A1:
 2. Pain in ihren Worten (3 Zitate aus dem Swipe-File)
 3. Mechanismus: 30 % Duftöl statt branchenüblich 15 % · kein Kaufhaus dazwischen (50 ml = [Preis offen]) · Narcos: Honig, Tabak, Zimt — je ein Satz, ein Bild
 4. Beweis: Rezensionen, Handgelenk-Demo-Video, Duftpyramide, Founder-Foto
-5. Offer: 50 ml [Preis offen] · 30 ml [Preis offen] (nicht bewerben, als Einstieg) · Discovery-Set 3 × 2 ml 9,99 € (anrechenbar) — 30 Tage Rückgabe
+5. Offer: 50 ml [Preis offen] · 30 ml [Preis offen] (nicht bewerben, als Einstieg) · Discovery-Set 3 × 2 ml [Preis offen; alter Wert 9,99 € `EXAMPLE`] (anrechenbar) — 30 Tage Rückgabe
 
 **Verboten auf der LP:** „hält 12 Stunden“ als Garantie · fremde Markennamen · „Made in Germany“, solange nur
 abgefüllt wird · Vorher/Nachher-Logik.

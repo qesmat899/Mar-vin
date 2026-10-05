@@ -1,9 +1,10 @@
 # Mar-vin – Projekt-Kontext für Claude
 
 ## Worum es geht
-Arbeits-Repository für die zwei Marken von Mar (Inhaber):
+Arbeits-Repository für die Marke von Mar (Inhaber):
 - **Azizam Fragrance** — Parfum-Marke (persisch inspiriert, „Duft der zweiten Generation“), Shop: azizamfragrances.com
-- **Haus & Grün Konzept** — Gebäudereinigung und Gartenpflege in Würzburg & Umgebung
+
+Das Repo enthält ausschließlich Azizam als Geschäftskontext.
 
 Grundlage für jede Analyse und Strategie ist das **E-Commerce Brand-Playbook** („Vom Markt zur Culture Brand“).
 
@@ -17,7 +18,6 @@ Grundlage für jede Analyse und Strategie ist das **E-Commerce Brand-Playbook** 
 | `playbook/azizam/SYSTEM-AUFBAU.md` | Aufbauplan des Azizam-Systems in Stufen, mit den passenden Plugin-Skills |
 | `playbook/SYSTEM.md` | Das Playbook auf einer Seite — fester Denkrahmen für alle Marketing-Aufgaben |
 | `playbook/azizam/` | Azizam: Markt, Personas, Angles, Marke, Unit Economics, Creator, Recht, 90-Tage-Plan |
-| `playbook/haus-und-gruen/` | Haus & Grün: dieselbe Struktur |
 | `playbook/templates/` | Vorlagen (Persona-/Pain-Karte, Creator-Briefing, Verträge, CSVs) |
 | `AI-REVIEW-CONTRACT.md` | Schnittstelle zu einem optionalen unabhängigen AI Review (siehe „Independent AI Review“) |
 | `playbook.py` | Werkzeug: Status, Rechner, Prompts (siehe unten) |
@@ -30,7 +30,9 @@ Grundlage für jede Analyse und Strategie ist das **E-Commerce Brand-Playbook** 
 python3 playbook.py status                          # Fortschritt der 90-Tage-Pläne
 python3 playbook.py economics --brand azizam        # CM1/CM2/Break-even-ROAS/LTV:CAC
 python3 playbook.py economics --brand azizam --all  # alle Größen × Kanäle
-python3 playbook.py offers --brand haus-und-gruen   # Angebotsvarianten
+python3 playbook.py economics --brand azizam --ad-factor 1.19  # zusätzlich Plattform-Perspektive B (nur wenn f belegt)
+python3 playbook.py offers --brand azizam           # Angebotsvarianten (Modellrechnung, Eingaben nicht belegt)
+python3 -m unittest discover -s tests               # Tests für den Rechner
 python3 playbook.py prompt 1 --brand azizam --data zitate.txt [--run]
 python3 playbook.py swipe --brand azizam --source "Quelle" "Zitat"
 python3 playbook.py export                          # alles in eine Markdown-Datei bündeln

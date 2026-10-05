@@ -12,6 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import playbook  # noqa: E402
 
+# Fiktive Testwerte (EXAMPLE) nur zur Prüfung der Formeln — keine Azizam-Geschäftsdaten.
 BASE = {
     "preis_brutto": 40.0, "mwst": 0.0, "cogs": 8.0, "versand_fulfillment": 6.0,
     "gebuehren_pct": 0.02, "cac_ziel": 10.0, "retouren_pct": 0.05, "kaeufe_pro_kunde": 2.0,

@@ -2,7 +2,7 @@
 
 > Kondensierte Fassung des 64-seitigen Playbooks (Ausgabe 09/2026). Diese Datei ist der
 > **feste Kontext**, den die KI bei jeder Aufgabe mitbekommt (Kapitel 5.1: „Marken-Briefingdokument“).
-> Die markenspezifischen Daten liegen in `azizam/brand-briefing.md` und `haus-und-gruen/brand-briefing.md`.
+> Die markenspezifischen Daten liegen in `azizam/brand-briefing.md`.
 
 ## Die drei Sätze
 

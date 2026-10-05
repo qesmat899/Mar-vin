@@ -414,7 +414,9 @@ Abschnitte ohne Inhalt nicht weglassen, sondern mit „nicht relevant“ oder �
 ## 13 · Nutzung von `playbook.py economics`
 
 - Der Rechner nutzt dieselben Definitionen (Abschnitt 5) und liest seine Werte aus `playbook/azizam/brand.json`
-  (Klasse S; Teile davon sind dort selbst als Annahme, Obergrenze oder alter Preis markiert → ASSUMPTION bzw. RECORDED).
+  (Klasse S). Status je Wert steht dort in `_status`: fast alle Zahlen sind OUTDATED, EXAMPLE oder UNKNOWN und von Mar
+  nicht bestätigt (05.10.2026). Ergebnisse daraus sind Modellrechnungen, nie FACT; ohne belegte Eingaben ist der
+  Economics-Status NOT READY.
 - Einzelwerte lassen sich überschreiben (`--price`, `--cogs`, `--shipping`, `--cac`, `--fee-pct`, `--returns-pct`,
   `--repeat`, `--variant`, `--all`). Wer überschreibt, nennt Wert und Quelle in INPUTS.
 - Seit 05.10.2026 rechnet der Rechner auch mit Rabatt (`--discount`), Versandentgelt des Kunden (`--shipping-fee`),

@@ -1,5 +1,12 @@
 # Creator, Spark Ads & die Aufwärtsspirale
 
+> **Zahlenstatus (05.10.2026):** Preise, Kosten, COGS, Versand, Gebühren, CAC, ROAS, Margen, Offer- und Absatzwerte
+> in dieser Datei sind alte Modellwerte (`OUTDATED` / `EXAMPLE` / `ASSUMPTION`) oder ohne Quelle (`UNKNOWN`) und von
+> Mar ausdrücklich **nicht bestätigt**. Markt-, Wettbewerbs- und Persona-Zahlen ohne Quelle sind `UNKNOWN`,
+> Playbook-Richtwerte (Hook Rate, CTR, Wiederkaufrate …) `EXAMPLE`. Belegt (`RECORDED (Mar)`, `SYNC.md`) sind nur:
+> 30 % Duftöl · Start 30 und 50 ml · Flakon max. ca. 3 € (Obergrenze, keine Kostenangabe) · erste Flakonbestellung
+> 100–200 Stück · Investitionsbudget 500–1.500 € für 3 Monate. Nichts davon als Fakt verwenden oder daraus ableiten.
+
 **Phase 3, nicht Phase 1.** Erst validierte Angles (Woche 7–8), dann getestetes Offer, dann Creator.
 Wer Creator vor der Validierung bucht, bezahlt Reichweite für eine Botschaft, von der er nicht weiß, ob sie trägt.
 
@@ -27,7 +34,7 @@ Größenklassen: Nano (1–10 K) und Micro (10–100 K) in der Breite. 100 Nano 
 
 ## Der Barter-Deal
 
-Einsatz: ca. 7,80 € COGS für 50 ml (Annahme, Flakon offen; + Versand). Wahrgenommener Wert: [Preis offen]. Ein verkaufter Flakon deckt den Deal.
+Einsatz: COGS für 50 ml `UNKNOWN` (alter Modellwert 7,80 € `OUTDATED`; + Versand). Wahrgenommener Wert: [Preis offen]. Ein verkaufter Flakon deckt den Deal.
 Bei bezahlten Creators: Zahlungsziel 14 Tage — Sales laufen vorher rein (negatives Working Capital;
 **Vorsicht PayPal-/Klarna-Reserven**, Auszahlungszyklen prüfen).
 
@@ -70,7 +77,7 @@ Persona:          zweite Generation, 22–35, zwischen zwei Welten
 Pain:             „Ich rieche nach jedem — und nach niemandem, der ich bin.“
 Angle:            Der Duft der zweiten Generation
 Unique Mechanism: 30 % Duftöl statt branchenüblich 15 % · kein Kaufhaus dazwischen (50 ml = [Preis offen]) · leise statt laut
-CTA:              „Link in Bio — Discovery-Set, 3 Düfte, 9,99 €.“
+CTA:              „Link in Bio — Discovery-Set, 3 Düfte, [Preis offen].“
 
 ── AUFBAU ──
 0–3 s   HOOK   A: „Wenn Du zuhause Farsi sprichst und draußen Deutsch —“

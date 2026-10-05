@@ -118,7 +118,7 @@ Diese Zustände nie vermischen:
 | Status | Bedeutung | Beispiel |
 |---|---|---|
 | **CONFIRMED** | belegt durch P-Quelle, aktuell, eindeutig, der Produktversion zugeordnet | Füllmenge laut finaler Flakonspezifikation |
-| **RECORDED** | belegt durch S-Quelle, aber nicht durch P bestätigt | Preis steht in `brand.json`, ohne Angebot/Rechnung |
+| **RECORDED** | belegt durch S-Quelle, aber nicht durch P bestätigt | Wert aus einer internen Notiz mit Quelle, ohne Angebot/Rechnung (die alten Zahlen in `brand.json` sind nicht RECORDED, sondern laut `_status` OUTDATED/EXAMPLE/UNKNOWN) |
 | **MISSING** | die Information existiert (noch) nicht | Flakon ist noch nicht ausgewählt |
 | **UNKNOWN** | könnte existieren, liegt aber nicht ausreichend belegt vor | Fabrik hat eine Allergenerklärung, sie liegt hier nicht vor |
 | **CONFLICT** | mehrere Quellen nennen unterschiedliche Werte | Füllmenge 50 ml in A, 30 ml in B |
