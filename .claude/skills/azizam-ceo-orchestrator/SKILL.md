@@ -463,7 +463,10 @@ FOLLOW-UP   – nächster Prüfpunkt
 ```
 
 Du stellst den Eintrag nur dar. Du schreibst ihn **nicht** selbst in `SYNC.md` oder eine andere Datei, außer Mar
-verlangt das ausdrücklich. Eine Empfehlung wird nie als Entscheidung geloggt.
+verlangt das ausdrücklich. Eine Empfehlung wird nie als Entscheidung geloggt. Einzige Quelle für kommerzielle
+Entscheidungen ist der Decision Ledger `playbook/azizam/commercial/entscheidungen.csv` (Regeln in der dortigen
+`README.md`); eine Zeile entsteht nur, wenn Mar entschieden hat (`entschieden_von` = Mar). Test-Ergebnisse liest du
+aus `experimente.csv` und kennzeichnest Evidenz (`KONTROLLIERT` / `KORRELATION` / `ZU_WENIG_DATEN`).
 
 ---
 

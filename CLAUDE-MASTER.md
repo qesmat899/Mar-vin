@@ -43,8 +43,9 @@ macht Strategie, Freigaben, Beziehungen und Sonderfälle. Mar ist der CEO, die A
    Meinung und eigene Auslegung trennen; Unsicherheit markieren; **nie „konform“ behaupten, wenn ein Nachweis fehlt** (§7).
 6. **Vertraulich und sparsam:** Personenbezogene Daten nur, wenn nötig. Keine Passwörter, Keys oder Kundendaten in
    Prompts oder ins Repo.
-7. **Nachvollziehbar rechnen:** Azizam-Zahlen mit `python3 playbook.py economics` holen; in Tabellen Formeln statt
-   fester Werte.
+7. **Nachvollziehbar rechnen:** Mit `python3 playbook.py economics` rechnen; in Tabellen Formeln statt fester Werte.
+   Die Eingaben in `brand.json` sind heute alte, nicht bestätigte Werte (Status in `_status`), die Ergebnisse also
+   Modellrechnungen.
 8. **Entscheidungen vorbereiten, nicht treffen:** Optionen mit Zahlen, Annahmen und Folgen zeigen. Entscheiden tut Mar.
 9. **Widersprüche melden**, nicht still eine „passende“ Lösung wählen.
 10. **Ergebnis liefern:** Wird eine Datei gebraucht, sie erstellen statt beschreiben.
@@ -121,7 +122,7 @@ Die Texte raten zu getrennten Bereichen statt einem Riesen-Chat. Bei Azizam lieg
 | 04 Marketing & Marke | Personas, Angles, Creator, Content | `playbook/azizam/01–06`, `.claude/skills/` | vorhanden |
 | 05 Shop & Verkauf | Produktseiten, SEO, Bundles, Conversion | `frontend/`, `website-korrekturen.md`, Shopify | Shop offline |
 | 06 Kundenservice | FAQ, Antwortvorlagen, Reklamationen | – | erst ab Verkaufsstart |
-| 07 Finanzen | Deckungsbeitrag, Margen, Cashflow, Break-even | `brand.json`, `playbook.py economics` | vorhanden (alte Preise) |
+| 07 Finanzen | Deckungsbeitrag, Margen, Cashflow, Break-even | `brand.json`, `playbook.py economics` | nur alte, nicht bestätigte Werte (`UNKNOWN`/`OUTDATED`) |
 | 08 Markt & Wettbewerb | Trends, Wettbewerber, Preise, Kundensprache | `01-markt.md`, `swipe-file.md` | vorhanden |
 
 **Vorschlag (Mar entscheidet):** Ein Chat-Projekt „Azizam“ reicht vorerst, die Bereiche leben als Ordner im Repo.
@@ -141,7 +142,8 @@ Grundpreis €/100 ml · Versand · Zahlungsgebühr · Werbekosten · Deckungsbe
 SEO-Text · Bilder · Status.
 
 Azizam-Besonderheit: keine MwSt.-Spalte (Kleinunternehmer nach § 19 UStG), stattdessen der Hinweis nach § 19 UStG.
-Heute ist `playbook/azizam/brand.json` die Quelle für Zahlen. Ein vollständiger Datensatz je Duft fehlt noch.
+Heute stehen in `playbook/azizam/brand.json` nur alte Zahlen, von Mar am 05.10.2026 nicht bestätigt; Status je Wert in
+`_status`. Ein Datensatz je Duft fehlt noch und wird aus echten Quellen neu erfasst.
 
 ---
 
@@ -417,7 +419,8 @@ Fabrik-Bestätigung zu CPNP, CPSR und INCI.
 - **Unternehmen:** Umsatz · Rohmarge · Cashflow · Fixkosten · Gewinn · Prognose
 
 Immer mit dem Warum: nicht „Umsatz gestiegen“, sondern „Umsatz gestiegen, aber Deckungsbeitrag je Bestellung gesunken,
-weil …“. Grenzwerte (max. CAC, Break-even-ROAS) kommen aus `playbook.py economics`.
+weil …“. Grenzwerte (max. CAC, Break-even-ROAS) rechnet `playbook.py economics` (Perspektive A/B, siehe Skill
+`azizam-unit-economics` §5) — belastbar erst mit belegten Eingaben.
 
 ---
 

@@ -1,5 +1,12 @@
 # Schicht 1 — Der Markt
 
+> **Zahlenstatus (05.10.2026):** Preise, Kosten, COGS, Versand, Gebühren, CAC, ROAS, Margen, Offer- und Absatzwerte
+> in dieser Datei sind alte Modellwerte (`OUTDATED` / `EXAMPLE` / `ASSUMPTION`) oder ohne Quelle (`UNKNOWN`) und von
+> Mar ausdrücklich **nicht bestätigt**. Markt-, Wettbewerbs- und Persona-Zahlen ohne Quelle sind `UNKNOWN`,
+> Playbook-Richtwerte (Hook Rate, CTR, Wiederkaufrate …) `EXAMPLE`. Belegt (`RECORDED (Mar)`, `SYNC.md`) sind nur:
+> 30 % Duftöl · Start 30 und 50 ml · Flakon max. ca. 3 € (Obergrenze, keine Kostenangabe) · erste Flakonbestellung
+> 100–200 Stück · Investitionsbudget 500–1.500 € für 3 Monate. Nichts davon als Fakt verwenden oder daraus ableiten.
+
 **Kern (Kap. 1.2):** Es gibt nachweislich Nachfrage · der Markt beweist sich selbst (Anzeigen laufen lange) ·
 er ist kaufkräftig · Konkurrenz ist ein Kaufsignal.
 
@@ -19,7 +26,7 @@ tausend Dupe-Shops. Wer über Identifikation verkauft, konkurriert mit niemandem
 | Zahlungsbereitschaft | Amazon Bestseller „Eau de Parfum“, Parfumo.de Top-Listen | Ø > 25 €, Premium existiert | ✅ Premium bis 300 € etabliert |
 | Wiederkauf | Verbrauchsprodukt? | ja | ✅ 50 ml ≈ 4–6 Monate bei täglicher Nutzung; plus Wardrobe-Logik |
 | Emotionale Ladung | r/fragrance, r/DesiFragranceAddicts, Parfumo-Forum, TikTok #perfumetok | lange, emotionale Posts | ✅ extrem hoch (Erinnerung, Identität, Dating) |
-| Marge | Einkauf vs. Marktpreis | Faktor 4–5 auf COGS | ✅ Faktor ca. 5–6: 50 ml COGS ca. 7,80 € (Annahme) bei alter Preis 44,99 € VK |
+| Marge | Einkauf vs. Marktpreis | Faktor 4–5 auf COGS | ⏳ UNKNOWN — alter Modellwert Faktor ca. 5–6 (COGS 7,80 €, Preis 44,99 €, beide `OUTDATED`) |
 | Rechtliche Last | Kosmetik-VO 1223/2009 | machbar | ⚠️ machbar, aber vor dem ersten Verkauf: CPNP, PIF, CPSR, verantwortliche Person (→ 07-recht) |
 | Kein Monopol | Ein Player mit 80 %? | fragmentiert | ✅ extrem fragmentiert |
 

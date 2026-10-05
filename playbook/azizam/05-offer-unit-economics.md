@@ -1,12 +1,19 @@
 # Offer-Engineering & Unit Economics — echte Zahlen
 
+> **Zahlenstatus (05.10.2026):** Preise, Kosten, COGS, Versand, Gebühren, CAC, ROAS, Margen, Offer- und Absatzwerte
+> in dieser Datei sind alte Modellwerte (`OUTDATED` / `EXAMPLE` / `ASSUMPTION`) oder ohne Quelle (`UNKNOWN`) und von
+> Mar ausdrücklich **nicht bestätigt**. Markt-, Wettbewerbs- und Persona-Zahlen ohne Quelle sind `UNKNOWN`,
+> Playbook-Richtwerte (Hook Rate, CTR, Wiederkaufrate …) `EXAMPLE`. Belegt (`RECORDED (Mar)`, `SYNC.md`) sind nur:
+> 30 % Duftöl · Start 30 und 50 ml · Flakon max. ca. 3 € (Obergrenze, keine Kostenangabe) · erste Flakonbestellung
+> 100–200 Stück · Investitionsbudget 500–1.500 € für 3 Monate. Nichts davon als Fakt verwenden oder daraus ableiten.
+
 > ⚠️ **Ganzes Kapitel veraltet (Stand 09/2026).** Seit 03.10.2026: Kleinunternehmer (keine MwSt.), Start mit 30 und 50 ml
 > (100 ml später, nach den ersten Verkäufen), Preise und Flakon offen. Die Tabellen und Offers unten sind nur noch Referenz. Aktuelle Zahlen:
 > `python3 playbook.py economics --brand azizam --all`.
 
-> Quelle: eigene Angaben (Stand September 2026). Fertiges Parfum 38 € je 500 ml = **0,076 €/ml**, Flakon 1,85 €,
+> Quelle laut altem Claude-Commit: „eigene Angaben (Stand September 2026)“ — **kein Beleg, von Mar am 05.10.2026 nicht bestätigt; alle Werte `UNKNOWN` / `OUTDATED`**. Fertiges Parfum 38 € je 500 ml = **0,076 €/ml**, Flakon 1,85 €,
 > Etikett/Box angenommen 1,00 €, Versand als Gefahrgut-LQ inkl. Verpackung angenommen 6,50 €. Neu rechnen:
-> `python3 playbook.py economics --brand azizam --all` · Szenario: `--variant 100ml --cac 25 --shipping 5.5`
+> `python3 playbook.py economics --brand azizam --all` · Szenario: `--variant 50ml --cac <€> --shipping <€>`
 
 ## Alle Größen und Kanäle
 

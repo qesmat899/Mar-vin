@@ -1,5 +1,12 @@
 # Azizam — Der 90-Tage-Fahrplan
 
+> **Zahlenstatus (05.10.2026):** Preise, Kosten, COGS, Versand, Gebühren, CAC, ROAS, Margen, Offer- und Absatzwerte
+> in dieser Datei sind alte Modellwerte (`OUTDATED` / `EXAMPLE` / `ASSUMPTION`) oder ohne Quelle (`UNKNOWN`) und von
+> Mar ausdrücklich **nicht bestätigt**. Markt-, Wettbewerbs- und Persona-Zahlen ohne Quelle sind `UNKNOWN`,
+> Playbook-Richtwerte (Hook Rate, CTR, Wiederkaufrate …) `EXAMPLE`. Belegt (`RECORDED (Mar)`, `SYNC.md`) sind nur:
+> 30 % Duftöl · Start 30 und 50 ml · Flakon max. ca. 3 € (Obergrenze, keine Kostenangabe) · erste Flakonbestellung
+> 100–200 Stück · Investitionsbudget 500–1.500 € für 3 Monate. Nichts davon als Fakt verwenden oder daraus ableiten.
+
 Fortschritt: `python3 playbook.py status --brand azizam` (zählt die Kästchen). Start: ______ · Tag 90: ______
 
 ## Woche 1–2 · Markt & Persona
@@ -16,7 +23,7 @@ Fortschritt: `python3 playbook.py status --brand azizam` (zählt die Kästchen).
 - [ ] Produkt gegen die vier Kriterien in `04-produkt-marke.md` prüfen
 - [ ] Unique Mechanism belegen: Duftölanteil (%) und Rohstoffherkunft schriftlich vom Lieferanten
 - [ ] 3–5 Abfüller/Parfümeure anfragen (DE/FR), Muster für 2–3 Düfte bestellen (Tag/Abend/Nowruz)
-- [ ] Unit Economics mit echten Angeboten rechnen — Ziel COGS ≤ 12 €, Marge ≥ 65 %
+- [ ] Unit Economics mit echten Angeboten rechnen — Ziel COGS ≤ 12 € `UNKNOWN` (ohne Quelle), Marge ≥ 65 % `EXAMPLE` (Playbook-Richtwert)
 - [ ] Brand-Steckbrief finalisieren (Farben, Nastaliq-Schriftzug, Gedichtkarte, Flakon)
 - [ ] Markenrecherche DPMA/EUIPO „Azizam“ Klasse 3, Domain + Handles sichern, Wortmarke anmelden
 - [ ] Rechtliches starten: verantwortliche Person klären, Safety Assessor für CPSR beauftragen, Gefahrgut-Versand (UN 1266 LQ) mit Versanddienstleister klären
@@ -37,9 +44,9 @@ Fortschritt: `python3 playbook.py status --brand azizam` (zählt die Kästchen).
 ## Woche 7–8 · Testing
 - [ ] 10–15 Creatives produzieren: eigene UGC + Founder-Story + 3–5 Nano-Creator (Barter)
 - [ ] Testkampagne breit, Advantage+ Placements; eine Kampagne, viele Creatives; TikTok parallel
-- [ ] Budget 3–5 × Ziel-CPA (22 €) = 66–110 € pro Creative, 5–7 Tage laufen lassen
+- [ ] Budget 3–5 × Ziel-CPA (Ziel-CPA `UNKNOWN`; alter Wert 22 € `OUTDATED`) pro Creative, 5–7 Tage laufen lassen
 - [ ] Täglich Hook Rate, Hold Rate, CTR, CPA in `../templates/testing-log.csv` — nicht täglich abschalten
-- [ ] Nach 7 Tagen: Winner (CPA unter max. CAC laut `playbook.py economics`, mit alten Preisen ca. 28,60 € für 50 ml) und Verlierer analysieren — „und warum nicht?“
+- [ ] Nach 7 Tagen: Winner (CPA unter max. CAC laut `playbook.py economics`, alter Modellwert 28,60 € für 50 ml `OUTDATED`) und Verlierer analysieren — „und warum nicht?“
 - [ ] Offer-Test: Einmalkauf vs. 2+1 vs. 1 + Reisegröße + Karte, gleiches Budget
 - [ ] Entscheidung Haupt-Persona bestätigen (Darius-Angles vs. Leon-Angles nach CPA)
 

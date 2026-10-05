@@ -118,7 +118,7 @@ Diese Zustände nie vermischen:
 | Status | Bedeutung | Beispiel |
 |---|---|---|
 | **CONFIRMED** | belegt durch P-Quelle, aktuell, eindeutig, der Produktversion zugeordnet | Füllmenge laut finaler Flakonspezifikation |
-| **RECORDED** | belegt durch S-Quelle, aber nicht durch P bestätigt | Preis steht in `brand.json`, ohne Angebot/Rechnung |
+| **RECORDED** | belegt durch S-Quelle, aber nicht durch P bestätigt | Wert aus einer internen Notiz mit Quelle, ohne Angebot/Rechnung (die alten Zahlen in `brand.json` sind nicht RECORDED, sondern laut `_status` OUTDATED/EXAMPLE/UNKNOWN) |
 | **MISSING** | die Information existiert (noch) nicht | Flakon ist noch nicht ausgewählt |
 | **UNKNOWN** | könnte existieren, liegt aber nicht ausreichend belegt vor | Fabrik hat eine Allergenerklärung, sie liegt hier nicht vor |
 | **CONFLICT** | mehrere Quellen nennen unterschiedliche Werte | Füllmenge 50 ml in A, 30 ml in B |
@@ -171,9 +171,10 @@ Bekannte Quellen im Repo (alle Klasse S, außer sie enthalten bzw. verlinken Ori
 (Sortiment, Linien, Notenstatus) · `playbook/azizam/brand-briefing.md` · `playbook/KONTEXT-EXPORT.md` · `SYNC.md` ·
 `BUSINESS-CONTEXT.md` · Shopify-Produkte (nur lesen) · Lieferantendokumente in Drive/Repo, sobald vorhanden.
 
-Ein eigener Produktdatensatz ist geplant (`playbook/azizam/SYSTEM-AUFBAU.md`, Stufe 2: Datensatz je Duft und
-Master-Index). Existiert er noch nicht, legst du ihn **nicht eigenmächtig** an, sondern schlägst die Ablage als
-RECOMMENDATION vor und wartest auf Mars Zustimmung. Ein angelegter Datensatz ist selbst nur Klasse S; er verweist für
+Die Struktur für den Produktdatensatz liegt in `playbook/azizam/commercial/` (`duefte.csv`, `produkte.csv`,
+`komponenten.csv`, `stueckliste.csv`, `lieferanten.csv`; Regeln in der dortigen `README.md`, Prüfung mit
+`python3 playbook.py daten --brand azizam`). Stand 05.10.2026 ist sie leer. Werte trägst du dort nur ein, wenn Mar
+sie liefert oder ein Beleg vorliegt, jeweils mit Status und Quelle; nie eigenmächtig. Ein angelegter Datensatz ist selbst nur Klasse S; er verweist für
 jeden Wert auf seine Quelle und ersetzt die Originaldokumente nicht.
 
 ---

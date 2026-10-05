@@ -1,5 +1,12 @@
 # Azizam — E-Commerce Brand-Playbook (Umsetzung)
 
+> **Zahlenstatus (05.10.2026):** Preise, Kosten, COGS, Versand, Gebühren, CAC, ROAS, Margen, Offer- und Absatzwerte
+> in dieser Datei sind alte Modellwerte (`OUTDATED` / `EXAMPLE` / `ASSUMPTION`) oder ohne Quelle (`UNKNOWN`) und von
+> Mar ausdrücklich **nicht bestätigt**. Markt-, Wettbewerbs- und Persona-Zahlen ohne Quelle sind `UNKNOWN`,
+> Playbook-Richtwerte (Hook Rate, CTR, Wiederkaufrate …) `EXAMPLE`. Belegt (`RECORDED (Mar)`, `SYNC.md`) sind nur:
+> 30 % Duftöl · Start 30 und 50 ml · Flakon max. ca. 3 € (Obergrenze, keine Kostenangabe) · erste Flakonbestellung
+> 100–200 Stück · Investitionsbudget 500–1.500 € für 3 Monate. Nichts davon als Fakt verwenden oder daraus ableiten.
+
 > **azizam** (عزیزم) — „mein Schatz“, „meine Liebe“. Das Wort, das man im Persischen zu Menschen sagt, die man
 > nicht verlieren will.
 
@@ -30,14 +37,14 @@
 ## Fakten (Stand September 2026) und offene Annahmen
 
 **Bekannt:**
-- Produkt: fertige Düfte aus einer Parfumfabrik (38 € je 500 ml), in eigene Flakons abgefüllt. Flakon und Verpackung werden gesucht (Obergrenze ca. 3 €); danach muss das 3D-Frontend angepasst werden.
-- Größen zum Start 30 und 50 ml, 100 ml später; Preise offen (alte Werte online 29,99 / 44,99 €, privat 25 / 40 €). Kleinunternehmer, keine MwSt.
+- Produkt: fertige Düfte aus einer Parfumfabrik (alter Einkaufswert 38 € je 500 ml `UNKNOWN`, nicht bestätigt), in eigene Flakons abgefüllt. Flakon und Verpackung werden gesucht (Obergrenze ca. 3 €); danach muss das 3D-Frontend angepasst werden.
+- Größen zum Start 30 und 50 ml, 100 ml später; Preise offen (alte Werte online 29,99 / 44,99 €, privat 25 / 40 € `OUTDATED`, nicht bestätigt). Kleinunternehmer, keine MwSt.
 - Website seit ca. 25.09.2026 offline, Neustart nach Flakonwahl. Aktuell kein Verkauf.
 
 **Noch Annahme — bitte korrigieren:**
 1. **Zwei Duftlinien, entschieden 09/2026:** Azizam **Heritage** (persisch-diasporisch, „Duft der zweiten Generation“, Persona Darius/Roya, Duft **Narcos**) und Azizam **Editions** (generisch-premium, Personas Leon/Selin, die übrigen sechs Düfte der Live-Seite). Zuordnung und offene Notenpyramiden: `04-produkt-marke.md`.
 2. **Duftkonzentration:** **30 % Duftöl bei jedem Duft** (bestätigt vom Inhaber, 09/2026) — branchenüblich bei Eau de Parfum sind 12–18 %. Kernmechanismus, siehe `04-produkt-marke.md`. Für Rückfragen von Kunden/Behörden lohnt sich trotzdem eine schriftliche Fabrikbestätigung (INCI, Konzentration, Sicherheitsdatenblatt).
-3. Etikett/Box 1,00 €, Versand 6,50 € (Gefahrgut-LQ) — Schätzwerte in `brand.json`.
+3. Etikett/Box 1,00 € `ASSUMPTION`, Versand 6,50 € (Gefahrgut-LQ) `UNKNOWN` — alte Schätzwerte in `brand.json`, nicht bestätigt.
 
 Was als Nächstes zu tun ist, steht in [`NAECHSTE-SCHRITTE.md`](NAECHSTE-SCHRITTE.md).
 

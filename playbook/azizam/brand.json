@@ -19,8 +19,24 @@
     "geschenk_cogs": 3.0,
     "kaeufe_pro_kunde": 2.2,
     "wiederkaufrate_ziel": 0.4,
-    "_herleitung": "COGS = ml × 0,076 €/ml (38 € je 500 ml fertiges Parfum) + 3,00 € Flakon (Obergrenze, Flakon noch nicht gewählt) + 1,00 € Etikett/Box (Annahme, Verpackung noch nicht gewählt); Versand DHL Paket als Gefahrgut-LQ inkl. Verpackung · Kleinunternehmer nach § 19 UStG → mwst 0, Bruttopreis = Erlös · Konzentration: 30 % Duftöl bei jedem Duft (vom Inhaber bestätigt, 08/2026).",
-    "_preis_status": "Preise NICHT entschieden (Mar, 03.10.2026). Die Werte sind die alten Preise und dienen nur als Rechengrundlage."
+    "_herleitung": "Historisch, OUTDATED: COGS = ml × 0,076 €/ml (38 € je 500 ml fertiges Parfum, UNKNOWN, von Mar am 05.10.2026 ausdrücklich NICHT bestätigt) + 3,00 € Flakon (Obergrenze laut SYNC.md, keine Kostenangabe) + 1,00 € Etikett/Box (ASSUMPTION); Versand DHL Paket als Gefahrgut-LQ inkl. Verpackung (Schätzung, UNKNOWN) · Kleinunternehmer nach § 19 UStG → mwst 0, Bruttopreis = Erlös (RECORDED Mar) · Konzentration: 30 % Duftöl bei jedem Duft (RECORDED Mar, SYNC.md).",
+    "_preis_status": "Preise NICHT entschieden (Mar, 03.10.2026). Alle Zahlen in diesem Block sind alte Modellwerte ohne belegte Herkunft (von Mar am 05.10.2026 ausdrücklich NICHT bestätigt). Sie dienen nur als Rechengrundlage für playbook.py; Ergebnisse daraus sind Modellrechnungen, keine Geschäftsdaten. Status je Wert: _status.",
+    "_status": {
+      "preis_brutto": "OUTDATED — alter Preis aus Claude-Commit 53ef06e (08.09.2026, Vermerk 'eigene Angaben' ohne Beleg), von Mar am 05.10.2026 ausdrücklich NICHT bestätigt",
+      "preis_privat": "OUTDATED — Herkunft wie preis_brutto, von Mar am 05.10.2026 ausdrücklich NICHT bestätigt",
+      "mwst": "RECORDED (Mar) — Kleinunternehmer nach § 19 UStG, SYNC.md 03.10.2026",
+      "cogs": "OUTDATED / ASSUMPTION — abgeleitet aus 38 €/500 ml (UNKNOWN), 3 € Flakon-Obergrenze (keine Kostenangabe) und 1,00 € Etikett/Box (ASSUMPTION); Verschluss fehlt. Echte COGS UNKNOWN",
+      "versand_fulfillment": "UNKNOWN — Schätzung aus Claude-Commit 53ef06e, nie gemessen, von Mar am 05.10.2026 ausdrücklich NICHT bestätigt",
+      "gebuehren_pct": "EXAMPLE — Playbook-Beispiel 'ca. 2 %'; echte Zahlungsgebühren UNKNOWN, von Mar am 05.10.2026 ausdrücklich NICHT bestätigt",
+      "cac_ziel": "UNKNOWN — ohne Quelle (Claude-Commit 53ef06e), von Mar am 05.10.2026 ausdrücklich NICHT bestätigt",
+      "retouren_pct": "UNKNOWN — ohne Quelle (Claude-Commit 53ef06e), von Mar am 05.10.2026 ausdrücklich NICHT bestätigt",
+      "abo_rabatt_pct": "EXAMPLE — Modellwert aus dem Grundgerüst (d92de49), kein Azizam-Angebot",
+      "abo_monate": "EXAMPLE — Modellwert aus dem Grundgerüst (d92de49), kein Azizam-Angebot",
+      "geschenk_wert": "UNKNOWN — ohne Quelle (Claude-Commit 53ef06e), von Mar am 05.10.2026 ausdrücklich NICHT bestätigt",
+      "geschenk_cogs": "UNKNOWN — ohne Quelle (Claude-Commit 53ef06e), von Mar am 05.10.2026 ausdrücklich NICHT bestätigt",
+      "kaeufe_pro_kunde": "EXAMPLE — Modellwert aus dem Grundgerüst (d92de49), keine Kohortendaten",
+      "wiederkaufrate_ziel": "EXAMPLE — Playbook-Richtwert (Culture Brand 40–60 %), keine Azizam-Zahl"
+    }
   },
   "prompt_defaults": {
     "MARKE": "Azizam",
@@ -36,21 +52,24 @@
       "preis_brutto": 29.99,
       "preis_privat": 25.0,
       "cogs": 6.28,
-      "rolle": "Einstieg / Probe — unter 30 € trägt kein Paid Media"
+      "rolle": "Einstieg / Probe — unter 30 € trägt kein Paid Media",
+      "_status": "OUTDATED — preis_brutto, preis_privat und cogs sind alte Modellwerte ohne belegte Herkunft, von Mar am 05.10.2026 ausdrücklich NICHT bestätigt; cogs abgeleitet aus unbelegten Komponenten"
     },
     {
       "name": "50 ml",
       "preis_brutto": 44.99,
       "preis_privat": 40.0,
       "cogs": 7.8,
-      "rolle": "Hero — Standard in Ads und auf der Produktseite"
+      "rolle": "Hero — Standard in Ads und auf der Produktseite",
+      "_status": "OUTDATED — preis_brutto, preis_privat und cogs sind alte Modellwerte ohne belegte Herkunft, von Mar am 05.10.2026 ausdrücklich NICHT bestätigt; cogs abgeleitet aus unbelegten Komponenten"
     },
     {
       "name": "100 ml",
       "preis_brutto": 64.99,
       "preis_privat": 60.0,
       "cogs": 11.6,
-      "rolle": "SPÄTER — erst wenn sich einige 30/50 ml verkauft haben (Mar, 03.10.2026); Preis offen, alter Wert als Rechengrundlage"
+      "rolle": "SPÄTER — erst wenn sich einige 30/50 ml verkauft haben (Mar, 03.10.2026); Preis offen, alter Wert als Rechengrundlage",
+      "_status": "OUTDATED — preis_brutto, preis_privat und cogs sind alte Modellwerte ohne belegte Herkunft, von Mar am 05.10.2026 ausdrücklich NICHT bestätigt; cogs abgeleitet aus unbelegten Komponenten"
     }
   ],
   "website": "https://azizamfragrances.com",
@@ -71,8 +90,8 @@
       "Apple Pay",
       "Google Pay"
     ],
-    "versand": "Deutschland + Österreich, 2–4 Werktage, 4,95 € Standard, kostenlos ab 80 €",
-    "widerruf": "gesetzlich 14 Tage (entfällt bei geöffnetem Hygienesiegel); freiwillig 30 Tage Rückgabe, wenn Flakon ≥ 80 % gefüllt",
+    "versand": "OBSERVED (alte Website, 08.09.2026), für den Neustart nicht entschieden: Deutschland + Österreich, 2–4 Werktage, 4,95 € Standard, kostenlos ab 80 €",
+    "widerruf": "gesetzlich 14 Tage (entfällt bei geöffnetem Hygienesiegel); alte Website (OBSERVED, für den Neustart nicht entschieden): freiwillig 30 Tage Rückgabe, wenn Flakon ≥ 80 % gefüllt",
     "gewaehrleistung": "gesetzlich 2 Jahre",
     "produkte_live": [
       "Narcos",

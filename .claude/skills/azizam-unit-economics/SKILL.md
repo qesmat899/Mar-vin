@@ -37,7 +37,10 @@ Nie: „Lieferant B muss genommen werden.“ · „Das Produkt kann verkauft wer
 
 ## 2 · Aussagetypen und Quellen
 
-Gleiche Logik wie `azizam-product-data`.
+Gleiche Logik wie `azizam-product-data`. Kostenkomponenten und Stücklisten, Offers, Transaktionen und
+Experimente liegen in `playbook/azizam/commercial/` (Stand 05.10.2026 leer). COGS und Ist-CM1 je Transaktion
+rechnet `python3 playbook.py daten` daraus, mit echten Erstattungen statt Retourenquote; gespeichert wird nichts
+Abgeleitetes.
 
 | Typ | Bedeutung |
 |---|---|
@@ -414,12 +417,17 @@ Abschnitte ohne Inhalt nicht weglassen, sondern mit „nicht relevant“ oder �
 ## 13 · Nutzung von `playbook.py economics`
 
 - Der Rechner nutzt dieselben Definitionen (Abschnitt 5) und liest seine Werte aus `playbook/azizam/brand.json`
-  (Klasse S; Teile davon sind dort selbst als Annahme, Obergrenze oder alter Preis markiert → ASSUMPTION bzw. RECORDED).
+  (Klasse S). Status je Wert steht dort in `_status`: fast alle Zahlen sind OUTDATED, EXAMPLE oder UNKNOWN und von Mar
+  nicht bestätigt (05.10.2026). Ergebnisse daraus sind Modellrechnungen, nie FACT; ohne belegte Eingaben ist der
+  Economics-Status NOT READY.
 - Einzelwerte lassen sich überschreiben (`--price`, `--cogs`, `--shipping`, `--cac`, `--fee-pct`, `--returns-pct`,
   `--repeat`, `--variant`, `--all`). Wer überschreibt, nennt Wert und Quelle in INPUTS.
+- Seit 05.10.2026 rechnet der Rechner auch mit Rabatt (`--discount`), Versandentgelt des Kunden (`--shipping-fee`),
+  fester Gebühr je Transaktion (`--fee-fixed`) und gibt Perspektive B nur mit Faktor f aus (`--ad-factor`). Ohne diese
+  Angaben rechnet er mit 0 bzw. gibt B als UNKNOWN aus und nennt das in der Ausgabe. Eine 0 ist dann kein Beleg.
 - Was der Rechner **nicht** abbildet und du deshalb selbst ergänzen oder als Einschränkung nennen musst:
-  Versandentgelt des Kunden und Gratisversand-Schwelle · feste Transaktionsgebühren · Reverse-Charge-Aufschlag auf CAC ·
-  Ausschuss und verkaufsfähige Menge · Einmalkosten · MOQ und Kapitalbindung · Quellen und Datenstatus.
+  Gratisversand-Schwelle · echte Retourenkosten je Fall · Ausschuss und verkaufsfähige Menge · Einmalkosten ·
+  MOQ und Kapitalbindung · Quellen und Datenstatus je Wert.
 - `brand.json` und `playbook.py` werden von diesem Skill **nicht verändert**. Abweichungen werden gemeldet.
 
 ---

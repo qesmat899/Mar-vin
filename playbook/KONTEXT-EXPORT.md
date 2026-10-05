@@ -11,7 +11,7 @@ Im Repository (`qesmat899/Mar-vin`):
 1. **`marvin.py`** — früheres Video-Transkriptions-Werkzeug aus der Zeit vor Azizam; am 05.10.2026 entfernt, nicht
    mehr Teil des Repositorys.
 2. **`playbook/`** — die Umsetzung des „E-Commerce Brand-Playbook" (Vom Markt zur Culture Brand, Ausgabe 09/2026,
-   64 Seiten) für zwei Marken des Inhabers. Nicht als Zusammenfassung, sondern als Arbeitssystem mit Rechner,
+   64 Seiten) für Azizam. Nicht als Zusammenfassung, sondern als Arbeitssystem mit Rechner,
    Prompts und Checklisten. Bedient über `playbook.py`.
 
 Die Kurzfassung des Playbooks steht in `playbook/SYSTEM.md` — das ist der Denkrahmen für alle Marketing-Aufgaben
@@ -32,32 +32,42 @@ der Grund, warum manche Felder absichtlich leer sind:
 5. **Die KI entscheidet den Markt nicht.** Modelle empfehlen bekannte, also überfüllte Märkte. Prüflisten werden
    ausgefüllt, entschieden wird vom Inhaber.
 
-## Marke 1 · Azizam — Parfum (aktiver Schwerpunkt)
+## Azizam — Parfum
 
 Website **azizamfragrances.com** war bis ca. 25.09.2026 live (Single-Page, Shopify-Zahlungen, Vercel-Hosting) und
 ist jetzt offline. Der Shop startet komplett neu, aber erst, wenn der Flakon feststeht — der Flakon ist ein Teil
 der Website. **Flakon und Verpackung werden gesucht** (Stand 03.10.2026).
 
-### Belegte Fakten
+### Fakten und Zahlen mit Status
+
+**Zahlenstatus (gilt für das ganze Repo):** `RECORDED (Mar)` = in `SYNC.md` als Mars Aussage/Entscheidung
+dokumentiert · `OBSERVED` = beobachtet (alte Website 08.09.2026 bzw. Shopify-Abfrage) · `ASSUMPTION` = bewusst
+formulierte Annahme · `OUTDATED` / `EXAMPLE` = altes Modell oder Beispiel · `UNKNOWN` = Herkunft nicht belegt.
+Ein Vermerk „eigene Angaben“ in alten Claude-Commits ist **kein** Beleg; Mar hat diese Werte am 05.10.2026
+ausdrücklich nicht bestätigt. Aus `UNKNOWN`-Werten wird nichts Neues abgeleitet.
 
 | Thema | Stand |
 |---|---|
-| Geschäftsmodell | Fertige Düfte aus einer Parfumfabrik (38 € je 500 ml = 0,076 €/ml), in eigene Flakons abgefüllt — Flakon noch nicht gewählt, Obergrenze ca. 3 € |
-| Konzentration | **30 % Duftöl bei jedem Duft** (vom Inhaber bestätigt; branchenüblich 12–18 %) |
-| Größen | **Start mit 30 ml und 50 ml**; 100 ml kommt später, wenn sich einige 30/50 ml verkauft haben (Mar 03.10.2026) |
-| Preise | **noch nicht entschieden.** Rechengrundlage sind die alten Preise: online 29,99 / 44,99 €, privat 25 / 40 € |
-| Warenkosten (Annahme) | 30 ml 6,28 € · 50 ml 7,80 € — mit 3,00 € Flakon (Obergrenze) + 1,00 € Etikett/Box |
-| Kernzahlen 50 ml online | mit alten Preisen: `playbook.py economics --brand azizam --all` ausführen, nicht von Hand rechnen |
+| Geschäftsmodell | Fertige Düfte aus einer Parfumfabrik, in eigene Flakons abgefüllt (`SYNC.md`). Einkaufspreis: alter Wert 38 € je 500 ml (= 0,076 €/ml) `UNKNOWN`, nicht bestätigt |
+| Flakon | noch nicht gewählt; max. ca. 3 € je Flakon `RECORDED (Mar)` — eine **Obergrenze, keine Kostenangabe** |
+| Konzentration | **30 % Duftöl bei jedem Duft** `RECORDED (Mar)` (branchenüblich 12–18 %) |
+| Größen | **Start mit 30 ml und 50 ml**; 100 ml kommt später, wenn sich einige 30/50 ml verkauft haben `RECORDED (Mar)` 03.10.2026 |
+| Preise | **noch nicht entschieden** `RECORDED (Mar)` 03.10.2026. Alte Werte online 29,99 / 44,99 €, privat 25 / 40 € `OUTDATED`, Herkunft unbelegt, nicht bestätigt |
+| Warenkosten (COGS) | `UNKNOWN`. Alte Werte 30 ml 6,28 € · 50 ml 7,80 € `OUTDATED` — abgeleitet aus unbelegten Komponenten (38 €/500 ml, 3 €-Obergrenze, 1,00 € Etikett/Box `ASSUMPTION`), Verschluss fehlt |
+| Rechner | `playbook.py economics` rechnet nur mit den alten Werten aus `brand.json` — Ergebnisse sind Modellrechnungen, keine Geschäftsdaten |
 | Firma | Marvin Farienfar, Einzelunternehmer, Würzburg · **Kleinunternehmer nach § 19 UStG** (Mar 03.10.2026), keine MwSt. · USt-IdNr. vorhanden |
-| Versand | Deutschland + Österreich, 2–4 Werktage, 4,95 €, kostenlos ab 80 € |
-| Shop & Buchhaltung | Neustart im Shopify-Shop „My Store 3“ (04.10.2026: 0 Produkte, 0 Bestellungen); Buchhaltung beim Steuerberater, Geschäftsjahr = Kalenderjahr (Mar 04.10.2026) |
-| Rückgabe | gesetzlich 14 Tage; freiwillig 30 Tage, wenn Flakon ≥ 80 % gefüllt |
-| Sortiment | 7 Düfte: Narcos, Midnight Café, Erba Bomb, Imaginary, Goldstaub II., Velvet Vanilla, Kings Perfume |
+| Versand | alte Website: Deutschland + Österreich, 2–4 Werktage, 4,95 €, kostenlos ab 80 € `OBSERVED (alte Website)`; für den Neustart nicht entschieden. Versandkosten für Azizam `UNKNOWN` |
+| Shop & Buchhaltung | Neustart im Shopify-Shop „My Store 3“ (04.10.2026: 0 Produkte, 0 Bestellungen `OBSERVED`); Buchhaltung beim Steuerberater, Geschäftsjahr = Kalenderjahr (Mar 04.10.2026) |
+| Rückgabe | gesetzlich 14 Tage; alte Website: freiwillig 30 Tage, wenn Flakon ≥ 80 % gefüllt `OBSERVED (alte Website)`, für den Neustart nicht entschieden |
+| Sortiment | 7 Düfte laut alter Website `OBSERVED`: Narcos, Midnight Café, Erba Bomb, Imaginary, Goldstaub II., Velvet Vanilla, Kings Perfume |
 
-Alle Zahlen sind in `playbook/azizam/brand.json` hinterlegt und werden von `playbook.py economics` gerechnet —
-nie von Hand nachrechnen, sondern den Befehl nutzen.
+Die alten Zahlen stehen in `playbook/azizam/brand.json`, jede mit Status im Feld `_status`. Sie bleiben dort nur als
+Rechengrundlage für den Rechner, bis echte Werte vorliegen.
 
 ### Getroffene Entscheidungen
+
+Historischer Stand 09/2026. **Neue kommerzielle Entscheidungen** (Preis, Rabatt, Offer, Bestellung, Sortiment,
+Experimente) stehen nur im Decision Ledger `azizam/commercial/entscheidungen.csv`.
 
 | Datum | Entscheidung |
 |---|---|
@@ -65,7 +75,7 @@ nie von Hand nachrechnen, sondern den Befehl nutzen.
 | 09/2026 | **30 % Duftöl ist der Kernmechanismus**, zusammen mit Direktvertrieb ohne Handelsmarge. |
 | 09/2026 | **Herstellungs-Aussagen kommen von der Website runter** („Handgefertigt in Deutschland", „Seltene Zutaten", „Haute Parfumerie", der Komposition-Absatz). Ersatztexte fertig in `azizam/website-korrekturen.md`. |
 | 09/2026 | **Der Bewertungsblock kommt runter** (4.8 von 5, 247 Bewertungen, drei Testimonials) — ohne echte Verkäufe wettbewerbswidrig. Ersetzt durch Risikoumkehr über das 30-Tage-Rückgaberecht. |
-| 09/2026 | **30 ml wird online nicht beworben** — unter 30 € trägt der Preis kein Paid Media. Bleibt als Einstieg und Post-Purchase-Upsell. |
+| 09/2026 | **30 ml wird online nicht beworben** — unter 30 € trägt der Preis kein Paid Media. Bleibt als Einstieg und Post-Purchase-Upsell. Beruht auf dem alten Preis 29,99 € `OUTDATED`; mit echten Preisen neu prüfen. |
 
 ### Was offen ist
 
@@ -85,24 +95,8 @@ nie von Hand nachrechnen, sondern den Befehl nutzen.
 
 `azizam/NAECHSTE-SCHRITTE.md` ist der Fahrplan. Kern: die beiden Website-Korrekturen umsetzen, parallel die
 Rechtsfreigabe bei der Fabrik anstoßen, und **die ersten 50 Flakons privat verkaufen** — das bringt sofort Geld
-(26,96 € Deckungsbeitrag je 50 ml ohne Werbekosten) und liefert die echten Kundenzitate, die dem ganzen System
+(alter Modellwert 26,96 € Deckungsbeitrag je 50 ml `OUTDATED`, aus unbelegten Zahlen) und liefert die echten Kundenzitate, die dem ganzen System
 bisher fehlen.
-
-## Marke 2 · Haus & Grün — Pflanzenpflege (ausgearbeitet, noch nicht gestartet)
-
-Konzept, kein fertiges Produkt. Die Marktdatei stellt drei Kandidaten gegeneinander und empfiehlt ein
-**Pflegesystem** (organischer Flüssigdünger + Blattpflege + Pflegeplan, 44,90 €, Abo 38,17 €), weil es als
-einziges alle Playbook-Filter erfüllt: Verbrauch, leicht, nicht zerbrechlich, demonstrierbar.
-
-Kernthese: *„Grüner Daumen ist kein Talent. Er ist ein Sonntag."* Pflanzen sterben am fehlenden Rhythmus, nicht
-am fehlenden Dünger — deshalb liegt der Plan im Karton und die nächste Box kommt, wenn die alte leer ist.
-
-Zahlen: CM1 25,48 € (68 % Marge) · Break-even-ROAS 1,48 · max. CAC 24,71 € · LTV:CAC 5,5. Das Abo darf 116 € CAC
-tragen — der eigentliche Hebel.
-
-**Die harte Rechtsgrenze:** Nie „gegen Trauermücken / Blattläuse / Schädlinge" behaupten. Das wäre ein
-Pflanzenschutzmittel und braucht eine BVL-Zulassung. Der Pain darf benannt werden, das Produkt darf nicht dagegen
-wirken. Steht in `haus-und-gruen/brand-briefing.md`.
 
 ## Die Dateien
 
@@ -112,21 +106,20 @@ playbook/
 ├── SYSTEM.md              Playbook auf einer Seite — fester Kontext für alle Marketing-Aufgaben
 ├── prompts.md             Die sechs Prompts (Persona-Extraktion bis Rezensions-Mining)
 ├── templates/             Pain-Karte, Persona-Karte, Brand-Steckbrief, Creator-Briefing, Anschreiben, Vereinbarung, CSVs
-├── azizam/
-│   ├── NAECHSTE-SCHRITTE.md    ← hier steht, was als Nächstes zu tun ist
-│   ├── website-korrekturen.md  ← fertige Vorher/Nachher-Texte für die Live-Seite
-│   ├── brand-briefing.md       ← fester KI-Kontext dieser Marke (Verbotsliste!)
-│   ├── brand.json              ← alle Zahlen, maschinenlesbar
-│   └── 01-markt … 07-recht-retention, 90-tage-plan, swipe-file
-└── haus-und-gruen/        dieselbe Struktur
+└── azizam/
+    ├── NAECHSTE-SCHRITTE.md    ← hier steht, was als Nächstes zu tun ist
+    ├── website-korrekturen.md  ← fertige Vorher/Nachher-Texte für die Live-Seite
+    ├── brand-briefing.md       ← fester KI-Kontext dieser Marke (Verbotsliste!)
+    ├── brand.json              ← alte Zahlen mit Status (`_status`), maschinenlesbar
+    └── 01-markt … 07-recht-retention, 90-tage-plan, swipe-file
 ```
 
 ## Befehle
 
 ```bash
-python3 playbook.py status                          # Fortschritt beider Pläne
+python3 playbook.py status                          # Fortschritt der Pläne
 python3 playbook.py economics --brand azizam --all  # alle Größen × Kanäle (online/privat)
-python3 playbook.py offers --brand haus-und-gruen   # Abo / 2+1 / 1+1+Geschenk
+python3 playbook.py offers --brand azizam           # Abo / 2+1 / 1+1+Geschenk (Modellrechnung)
 python3 playbook.py prompt 1 --brand azizam --data zitate.txt [--run]
 python3 playbook.py swipe --brand azizam --source "Parfumo" "wörtliches Zitat"
 python3 playbook.py export                          # alles in eine Datei bündeln
@@ -134,8 +127,8 @@ python3 playbook.py export                          # alles in eine Datei bünde
 
 ## Wenn Du in einer neuen Sitzung weiterarbeitest
 
-1. Diese Datei lesen, dann `SYSTEM.md`, dann das `brand-briefing.md` der Marke, um die es geht.
-2. Vor jeder Zahl: `playbook.py economics` laufen lassen, statt aus dem Text zu rechnen.
+1. Diese Datei lesen, dann `SYSTEM.md`, dann `azizam/brand-briefing.md`.
+2. Vor jeder Zahl: Status prüfen. `UNKNOWN`/`OUTDATED` bleibt so; nie als Fakt verwenden, nichts daraus ableiten.
 3. Vor jedem Text: die Verbotsliste im `brand-briefing.md` prüfen.
 4. Neue Erkenntnisse gehören in die Dateien, nicht nur in die Antwort — sonst sind sie in der nächsten Sitzung weg.
 5. Wie Claude für Azizam arbeitet (Funktionen, Modelle, Compliance-System, Agenten, Freigaben, Routinen): `CLAUDE-MASTER.md`

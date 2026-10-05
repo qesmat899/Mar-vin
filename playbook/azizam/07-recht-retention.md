@@ -1,5 +1,12 @@
 # Recht & Retention
 
+> **Zahlenstatus (05.10.2026):** Preise, Kosten, COGS, Versand, Gebühren, CAC, ROAS, Margen, Offer- und Absatzwerte
+> in dieser Datei sind alte Modellwerte (`OUTDATED` / `EXAMPLE` / `ASSUMPTION`) oder ohne Quelle (`UNKNOWN`) und von
+> Mar ausdrücklich **nicht bestätigt**. Markt-, Wettbewerbs- und Persona-Zahlen ohne Quelle sind `UNKNOWN`,
+> Playbook-Richtwerte (Hook Rate, CTR, Wiederkaufrate …) `EXAMPLE`. Belegt (`RECORDED (Mar)`, `SYNC.md`) sind nur:
+> 30 % Duftöl · Start 30 und 50 ml · Flakon max. ca. 3 € (Obergrenze, keine Kostenangabe) · erste Flakonbestellung
+> 100–200 Stück · Investitionsbudget 500–1.500 € für 3 Monate. Nichts davon als Fakt verwenden oder daraus ableiten.
+
 ## Die echten Firmendaten (von azizamfragrances.com, Stand 09/2026)
 
 | Feld | Wert |
@@ -11,12 +18,11 @@
 | USt-IdNr. | [nicht im Repo — steht im Impressum] — **Kleinunternehmer nach § 19 UStG** (Mar, 03.10.2026), keine MwSt. auf Rechnungen |
 | Plattform | Shopify (Shopify Payments) + Vercel-Hosting |
 | Zahlungsmethoden (live) | Shopify Payments/Kreditkarte, PayPal, Klarna, Apple Pay, Google Pay |
-| Versand (live) | Deutschland + **Österreich** (nicht Schweiz — Drittland, Zoll/EUSt), 2–4 Werktage, 4,95 € Standard, kostenlos ab 80 € |
-| Widerruf (live) | gesetzlich 14 Tage, entfällt bei geöffnetem Hygienesiegel; freiwillig 30 Tage, wenn Flakon ≥ 80 % gefüllt |
+| Versand (alte Website, `OBSERVED`, für den Neustart nicht entschieden) | Deutschland + **Österreich** (nicht Schweiz — Drittland, Zoll/EUSt), 2–4 Werktage, 4,95 € Standard, kostenlos ab 80 € |
+| Widerruf (alte Website, `OBSERVED`, für den Neustart nicht entschieden) | gesetzlich 14 Tage, entfällt bei geöffnetem Hygienesiegel; freiwillig 30 Tage, wenn Flakon ≥ 80 % gefüllt |
 
-Diese Werte ersetzen die bisherigen Schätzungen (Versand 6,50 €, Gratisversand ab 60 €, CH als Zielmarkt) in
-`05-offer-unit-economics.md` und `brand.json` — dort mit den echten 4,95 € nachrechnen, wenn der Versandpreis
-final steht.
+Die alte Website zeigte andere Werte als die bisherigen Schätzungen (Versand 6,50 € `UNKNOWN`, Gratisversand ab 60 € `OUTDATED`, CH als Zielmarkt). Achtung: 4,95 € war das Versandentgelt des Kunden, nicht Azizams Versandkosten (`UNKNOWN`). Versandentgelt und
+Gratisversand-Schwelle für den Neustart sind nicht entschieden.
 
 ## Rechtlicher Rahmen — Parfum (Kap. 5.3)
 
@@ -51,7 +57,7 @@ Das ist der eine Punkt, der vor dem ersten Onlineverkauf stehen muss; alles ande
 |---|---|---|
 | Verantwortliche Person in der EU | Wer unter eigenem Namen verkauft, ist es in aller Regel selbst. Keine Formalie: haftet für Sicherheit, Kennzeichnung, PIF. | ☐ |
 | Produktinformationsdatei (PIF) | Rezeptur, Rohstoffdaten, Herstellverfahren, Stabilitätsdaten — vom Hersteller/Abfüller liefern lassen | ☐ |
-| Sicherheitsbewertung (CPSR) | Durch qualifizierten Safety Assessor, pro Duft | ☐ (Kosten ~300–800 € pro Duft einplanen) |
+| Sicherheitsbewertung (CPSR) | Durch qualifizierten Safety Assessor, pro Duft | ☐ (Kosten je Duft `UNKNOWN` — alte Schätzung ~300–800 € ohne Quelle; Angebot einholen) |
 | CPNP-Notifizierung | Vor Inverkehrbringen im EU-Portal | ☐ |
 | Kennzeichnung | INCI-Liste, Chargennummer, Nennfüllmenge (50 ml ℮), Haltbarkeit/PAO, Warnhinweise, verantwortliche Person mit Anschrift | ☐ |
 | 26 deklarationspflichtige Duftallergene | Über Schwellenwert in INCI ausweisen (bei Rose/Safran-Kompositionen relevant: Geraniol, Citronellol, Linalool, Eugenol …). **Erweiterte Liste (80+ Allergene) nach VO (EU) 2023/1545: gilt für Produkte, die ab 31.07.2026 in Verkehr gebracht werden; ältere Ware darf bis 31.07.2028 abverkauft werden — mit dem Hersteller klären.** | ☐ |
@@ -62,7 +68,7 @@ Das ist der eine Punkt, der vor dem ersten Onlineverkauf stehen muss; alles ande
 
 ✅ Impressum (§ 5 DDG) · ⚠️ Datenschutzerklärung nennt bisher Vercel, Shopify, PayPal, Klarna, Apple, Google Ireland — **Meta-/TikTok-Pixel und Klaviyo ergänzen, sobald Tracking eingebaut ist** ·
 ☐ Cookie-Consent mit echter Ablehnung (TDDDG) · ☐ Widerrufsbelehrung + Musterformular (§ 355 BGB) · ☐ AGB ·
-☐ PAngV: Endpreise **und Grundpreis €/100 ml** (Pflichtangabe; mit alten Preisen: 50 ml 44,99 € = 89,98 €/100 ml · 30 ml 29,99 € = 99,97 €/100 ml — Preise noch offen) · ☐ Hinweis „Gemäß § 19 UStG wird keine Umsatzsteuer berechnet“ an Preisen/Rechnungen ·
+☐ PAngV: Endpreise **und Grundpreis €/100 ml** (Pflichtangabe; Preise noch offen — alte Beispielrechnung 89,98 / 99,97 €/100 ml `OUTDATED`) · ☐ Hinweis „Gemäß § 19 UStG wird keine Umsatzsteuer berechnet“ an Preisen/Rechnungen ·
 ☐ Streichpreise nur mit niedrigstem Preis der letzten 30 Tage · ☐ LUCID-Registrierung + Systembeteiligung (VerpackG) ·
 ☐ GPSR: Herstellerangaben, verantwortliche Person, Sicherheitshinweise auf Produktseite · ☐ Kündigungsbutton (§ 312k BGB) sobald Wardrobe-Abo live.
 
@@ -107,7 +113,7 @@ Das ist der eine Punkt, der vor dem ersten Onlineverkauf stehen muss; alles ande
 
 | Hebel | Umsetzung | Priorität |
 |---|---|---|
-| Discovery-Set → Full Size | 3 × 2 ml für 12 €, Gutschein 12 € auf 50 ml — nimmt Einwand „unbekannte Marke“ und „was, wenn es nicht passt“ | 1 |
+| Discovery-Set → Full Size | 3 × 2 ml [Preis offen; alter Wert 12 € `EXAMPLE`, widerspricht 9,99 €], Gutschein auf 50 ml — nimmt Einwand „unbekannte Marke“ und „was, wenn es nicht passt“ | 1 |
 | Post-Purchase-Upsell | Nach Kauf 50 ml: zweiter Duft −20 % mit einem Klick; oder Reise-Zerstäuber 10 ml | 1 |
 | Wardrobe-Abo | Nicht klassisches Abo (Kap. 4.2: bei Parfum schlecht) — sondern „ein Duft pro Quartal“, jederzeit kündbar | 2 |
 | Drops als Ritual | Nowruz, Yalda — Vorverkauf nur für Newsletter/Community | 1 |

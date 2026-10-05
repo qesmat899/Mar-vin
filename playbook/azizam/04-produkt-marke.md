@@ -1,5 +1,12 @@
 # Produkt & Marke — Winning Product, Unique Mechanism, Brand-Steckbrief
 
+> **Zahlenstatus (05.10.2026):** Preise, Kosten, COGS, Versand, Gebühren, CAC, ROAS, Margen, Offer- und Absatzwerte
+> in dieser Datei sind alte Modellwerte (`OUTDATED` / `EXAMPLE` / `ASSUMPTION`) oder ohne Quelle (`UNKNOWN`) und von
+> Mar ausdrücklich **nicht bestätigt**. Markt-, Wettbewerbs- und Persona-Zahlen ohne Quelle sind `UNKNOWN`,
+> Playbook-Richtwerte (Hook Rate, CTR, Wiederkaufrate …) `EXAMPLE`. Belegt (`RECORDED (Mar)`, `SYNC.md`) sind nur:
+> 30 % Duftöl · Start 30 und 50 ml · Flakon max. ca. 3 € (Obergrenze, keine Kostenangabe) · erste Flakonbestellung
+> 100–200 Stück · Investitionsbudget 500–1.500 € für 3 Monate. Nichts davon als Fakt verwenden oder daraus ableiten.
+
 ## Das Sortiment — zwei Duftlinien parallel (Entscheidung 09/2026)
 
 Die sieben Düfte, die auf azizamfragrances.com live stehen, folgen keiner einheitlichen Linie — Narcos ist warm-
@@ -44,8 +51,8 @@ funktioniert bei jedem Premium-Duft).
 
 | Filter | Azizam EdP 50 ml | |
 |---|---|---|
-| VK 30–120 € | Preise 30/50 ml offen — mit alten Preisen 44,99 € (50 ml), 30 ml mit 29,99 € knapp darunter | ⏳ (30 ml nicht bewerben) |
-| Marge ≥ 65–70 % | `playbook.py economics --brand azizam --all` (Kleinunternehmer, Flakon offen; mit alten Preisen ca. 66 % für 50 ml online) | ⏳ |
+| VK 30–120 € | Preise 30/50 ml offen — alte Werte 44,99 € (50 ml) / 29,99 € (30 ml) `OUTDATED` | ⏳ (30 ml nicht bewerben) |
+| Marge ≥ 65–70 % | `playbook.py economics --brand azizam --all` (Kleinunternehmer, Flakon offen; alter Modellwert ca. 66 % für 50 ml online `OUTDATED`) | ⏳ |
 | Leicht & klein | 50 ml, ~250 g mit Box | ✅ |
 | Nicht zerbrechlich | **Glasflakon** — Retourenrisiko | ⚠️ Kartonage mit Einlage, Bruchquote messen |
 | Wiederkauf | 4–6 Monate; plus Wardrobe (zweiter Duft), Discovery-Set → Full Size | ✅ |

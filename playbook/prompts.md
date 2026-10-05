@@ -8,7 +8,7 @@ aus `brand.json` gefüllt; fehlende Werte gibst Du mit `--var NAME=Wert` mit, Ro
 
 ```bash
 python3 playbook.py prompt 1 --brand azizam --data research/rohzitate.txt
-python3 playbook.py prompt 3 --brand haus-und-gruen --var PERSONA="Mia, 29" --var PAIN_EBENE_4="..." --run
+python3 playbook.py prompt 3 --brand azizam --var PERSONA="Darius, 27" --var PAIN_EBENE_4="..." --run
 ```
 
 Mit `--run` wird der Prompt zusammen mit `SYSTEM.md` und dem `brand-briefing.md` der Marke an Claude geschickt
