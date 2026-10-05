@@ -324,9 +324,11 @@ Mar nicht selbst wegfreigeben.
 | `PASS` / `REVIEW` / `BLOCK` | Compliance-Gate | darf weiter / Klärung oder Mars Freigabe nötig / blockiert | nur `azizam-compliance-auditor` |
 | `GO` / `HOLD` / `REVIEW` / `BLOCK` | Entscheidungsvorlage | empfohlen / zu wenig Grundlage / Entscheidung oder Prüfung nötig / notwendige Voraussetzung fehlt | nur `azizam-ceo-orchestrator`, als Empfehlung an Mar |
 | `UNKNOWN` | Einzelwert | nicht belegt; wird nie zu Fakt, `PASS` oder `READY` | alle Skills |
+| `EXTERNAL_REVIEW:` `PASS` / `PASS_WITH_FINDINGS` / `REVIEW_REQUIRED` / `BLOCKED` / `NOT_PERFORMED` | optionaler unabhängiger AI Review | Prüfergebnis ohne Entscheidungs- oder Freigabewirkung; kein Compliance-`PASS`, kein `GO` | External AI Reviewer; `NOT_PERFORMED` dokumentiert Claude (`AI-REVIEW-CONTRACT.md`) |
 
 `REVIEW` und `BLOCK` kommen auf zwei Ebenen vor. Darum immer mit Ebene nennen: „Compliance BLOCK“ bzw. „CEO DECISION
-BLOCK“. Ein Compliance BLOCK führt bei Verkauf oder Launch immer zu CEO DECISION BLOCK, umgekehrt nicht.
+BLOCK“. Ein Compliance BLOCK führt bei Verkauf oder Launch immer zu CEO DECISION BLOCK, umgekehrt nicht. Werte des
+externen Reviews stehen immer mit Präfix `EXTERNAL_REVIEW:`.
 
 **Zuordnung zu den Rollen oben:** Compliance → `azizam-compliance-auditor` · Procurement und Inventory →
 `azizam-procurement-inventory` · der Kosten- und Margenteil von Finance → `azizam-unit-economics` · CEO / Orchestrator
