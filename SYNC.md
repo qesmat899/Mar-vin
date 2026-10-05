@@ -88,7 +88,6 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
-- **2026-10-05 [Code]** PR #3 von Mar freigegeben und in `Azizam` gemergt (`f9243b6`). `playbook.py economics` am Unit-Economics-Skill ausgerichtet (Net Revenue mit Rabatt, Versandentgelt, Fixgebühr; Werbegrenzen Perspektive A/B getrennt). Commercial-Daten als CSV in `playbook/azizam/commercial/` angelegt (Produkt, Komponenten, Stückliste, Bestand, Offers, Transaktionen, Kunden pseudonym, Experimente, Entscheidungen), Prüfung mit `playbook.py daten`. Keine neuen Geschäftszahlen; alte Preise in `brand.json` bleiben als veraltet markiert, Verschlusspreis UNKNOWN.
 - **2026-10-05 [Code]** Legacy-Cleanup: `marvin.py` (alter TikTok-/Video-Transcriber) entfernt, veraltete Verweise in `playbook/README.md` und `playbook/KONTEXT-EXPORT.md` bereinigt. Keine technischen Abhängigkeiten entfernt (es bestanden keine). Azizam-Skills und Decision Architecture unverändert. Commit `d892fd5`, PR #3.
 - **2026-10-04 [Code]** Mar: Claude Pro; Fabrik liefert die Rechtsdokumente, Mar trägt die Produkte selbst im CPNP-Portal ein. Offene Fragen und Aufgaben angepasst.
 - **2026-10-04 [Code]** E-Mail-Adresse korrigiert auf `azizamfragrance@gmail.com` (`brand.json`, `07-recht-retention.md`).
@@ -98,11 +97,12 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 - **2026-10-03 [Code]** `ARBEITSWEISE.md` (Werkzeug-Kompass) angelegt; wird beim Sessionstart mitgeladen, Claude Code erinnert Mar aktiv daran.
 - **2026-10-03 [Code]** Playbook-Kapitel 01, 03, 04, 06, 90-Tage-Plan, Briefing, Nächste Schritte und README bereinigt: 100 ml raus, Preise als `[Preis offen]`, Zahlen auf Kleinunternehmer/Flakon-Annahme; Kapitel 05 als Ganzes als veraltet markiert.
 - **2026-10-03 [Code]** Mars Antworten eingearbeitet (kein Verkauf aktuell, CPNP offen, 09/2026-Regeln gelten außer Duftlinien), Adresse/Telefon/USt-IdNr. aus dem Repo entfernt, Steuerteil in `07-recht-retention.md` auf Kleinunternehmer umgestellt.
+- **2026-10-03 [Code]** Mars Klärung eingearbeitet (Kleinunternehmer, 30 + 50 ml, Preise offen, Website offline): `brand.json` und `playbook/KONTEXT-EXPORT.md` angepasst, Economics neu gerechnet.
 
 ### Verlauf (zusammengefasst)
 
 - 2026-10-02: SYNC.md im Chat angelegt und ins Repo gelegt.
-- 2026-10-03: Playbook (`docs/ECommerceBrandPlaybook.md`) und `playbook/KONTEXT-EXPORT.md` lagen schon im Repo, hochgeladene Fassung identisch; Widersprüche zu dieser Datei unter „Offene Fragen“ eingetragen. Mars Klärung (Kleinunternehmer, 30 + 50 ml, Preise offen, Website offline) in `brand.json` und Kontext-Export eingearbeitet.
+- 2026-10-03: Playbook (`docs/ECommerceBrandPlaybook.md`) und `playbook/KONTEXT-EXPORT.md` lagen schon im Repo, hochgeladene Fassung identisch; Widersprüche zu dieser Datei unter „Offene Fragen“ eingetragen.
 
 ---
 

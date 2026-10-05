@@ -37,9 +37,7 @@ Nie: „Lieferant B muss genommen werden.“ · „Das Produkt kann verkauft wer
 
 ## 2 · Aussagetypen und Quellen
 
-Gleiche Logik wie `azizam-product-data`. Kostenkomponenten und Stücklisten liegen in `playbook/azizam/commercial/`
-(COGS werden daraus gerechnet, nicht gespeichert), ebenso Offers, Transaktionen und pseudonyme Kunden für die
-Ist-Auswertung.
+Gleiche Logik wie `azizam-product-data`.
 
 | Typ | Bedeutung |
 |---|---|

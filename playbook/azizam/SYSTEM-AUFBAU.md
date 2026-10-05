@@ -49,7 +49,7 @@
 | Aufgabe | Werkzeug | Wer |
 |---|---|---|
 | Preise für 30/50 ml entscheiden | Chat, dann `brand.json` + `python3 playbook.py economics`; Bewertung mit `azizam-unit-economics` | Chat → Code, Mar entscheidet |
-| Datensatz je Duft + Master-Index (Master §6) | Code (`playbook/azizam/commercial/`, Struktur seit 05.10.2026 angelegt), geprüft mit `azizam-product-data` und `playbook.py daten` | Code |
+| Datensatz je Duft + Master-Index (Master §6) | Code (`playbook/azizam/produkte.csv`), geprüft mit `azizam-product-data` | Code |
 | Compliance-Matrix je Duft, Status je Dokument FEHLT / PRÜFUNG ERFORDERLICH / DOKUMENTARISCH KONSISTENT, Gate je Produkt PASS / REVIEW / BLOCK | `azizam-compliance-auditor` | Code |
 | Farben und Logo final | `brand-style` | Mar |
 
