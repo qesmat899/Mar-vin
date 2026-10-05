@@ -88,6 +88,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-10-05 [Code]** Legacy-Cleanup: `marvin.py` (alter TikTok-/Video-Transcriber) entfernt, veraltete Verweise in `playbook/README.md` und `playbook/KONTEXT-EXPORT.md` bereinigt. Keine technischen Abhängigkeiten entfernt (es bestanden keine). Azizam-Skills und Decision Architecture unverändert. Commit `d892fd5`, PR #3.
 - **2026-10-04 [Code]** Mar: Claude Pro; Fabrik liefert die Rechtsdokumente, Mar trägt die Produkte selbst im CPNP-Portal ein. Offene Fragen und Aufgaben angepasst.
 - **2026-10-04 [Code]** E-Mail-Adresse korrigiert auf `azizamfragrance@gmail.com` (`brand.json`, `07-recht-retention.md`).
 - **2026-10-04 [Code]** Small-Business-Plugin eingerichtet: Profil `BUSINESS-CONTEXT.md` (von Mar bestätigt, über `CLAUDE.md` immer geladen), Aufbauplan in Stufen mit passenden Plugin-Skills in `playbook/azizam/SYSTEM-AUFBAU.md`. Shopify geprüft (nur gelesen).
