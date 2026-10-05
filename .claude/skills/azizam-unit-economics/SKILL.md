@@ -4,7 +4,7 @@ description: "Wirtschaftliche Analyse für Azizam-Produkte, Varianten, Bestellun
 metadata:
   version: 1.0.0
   owner: Azizam (Mar)
-  related: azizam-product-data, azizam-compliance-auditor, azizam-procurement-inventory (geplant), azizam-ceo-orchestrator (geplant), playbook.py economics
+  related: azizam-product-data, azizam-compliance-auditor, azizam-procurement-inventory, azizam-ceo-orchestrator, playbook.py economics
 ---
 
 # Azizam Unit Economics
@@ -25,8 +25,8 @@ Geschäfts-, Beschaffungs- oder Compliance-Entscheidung.
 |---|---|---|
 | `azizam-product-data` | Produktidentität, Version, Füllmenge, Verpackung, Lieferant, Datenstatus, Konflikte | **Eingangsquelle.** Produktdaten werden dort geführt, nicht hier. Meldet Product Data CONFLICT, UNKNOWN, MISSING oder OUTDATED für ein Feld, übernimmst du diesen Status. |
 | `azizam-compliance-auditor` | regulatorische Bewertung, PASS / REVIEW / BLOCK | Wird nicht ersetzt. Ein BLOCK bleibt ein BLOCK, egal wie gut die Zahlen sind. |
-| `azizam-procurement-inventory` (geplant; bis dahin `small-business:inventory-planner` / `restock`) | Lieferantenwahl, Bestellmenge, Bestand, Zeitpunkt | Du lieferst die wirtschaftlichen Auswirkungen (Stückkosten, Kapitalbindung, Absatzbedarf). Die Entscheidung trifft Procurement bzw. Mar. |
-| `azizam-ceo-orchestrator` (geplant) | Geschäftsentscheidung aus Economics + Compliance + Procurement | Nutzt dein Ergebnis und deinen Economics-Status. |
+| `azizam-procurement-inventory` | Lieferantenwahl, Bestellmenge, Bestand, Zeitpunkt | Du lieferst die wirtschaftlichen Auswirkungen (Stückkosten, Kapitalbindung, Absatzbedarf). Die Bestellempfehlung gibt Procurement, die Entscheidung trifft Mar. |
+| `azizam-ceo-orchestrator` | Entscheidungsvorlage für Mar aus Economics + Compliance + Procurement | Nutzt dein Ergebnis und deinen Economics-Status. |
 | `python3 playbook.py economics` | bestehender Rechner nach Playbook Kap. 4.3 | Gleiche Definitionen (Abschnitt 5). Du darfst ihn zum Nachrechnen nutzen, musst aber jede Eingabe mit Quelle ausweisen (Abschnitt 13). |
 
 Erlaubt: „Unter den belegten Annahmen ist Lieferant B günstiger.“ · „Wirtschaftlich attraktiv; die regulatorische

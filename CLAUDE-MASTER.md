@@ -183,6 +183,11 @@ Sicherheitsunterlagen · Lieferantendokumente gegen aktuelle Produktversion.
 Claudes Rolle: **Prüf- und Rechercheassistent**, nicht Sicherheitsbewerter und nicht Anwalt.
 Die vollständige Projekt-Anweisung steht in `playbook/templates/claude-anweisungen.md`.
 
+**Zwei Ebenen von Status, nicht verwechseln:** `FEHLT` / `PRÜFUNG ERFORDERLICH` / `DOKUMENTARISCH KONSISTENT` beschreiben
+**ein einzelnes Dokument** (Chat-Prüfung, Compliance-Matrix). Das **Gate für ein Produkt oder eine Änderung** vergibt in
+Claude Code nur der Skill `azizam-compliance-auditor`: `PASS` / `REVIEW` / `BLOCK` (Definition und Gate-Regel dort,
+Abschnitt 3). `DOKUMENTARISCH KONSISTENT` ist kein `PASS`.
+
 ---
 
 ## 8 · Autonomie, Freigaben, Eskalation
@@ -228,7 +233,7 @@ Browser-Agenten).
 
 | Rolle | Aufgabe | Auslöser | Sinnvoll bei Azizam ab |
 |---|---|---|---|
-| CEO / Orchestrator | Hält das Geschäft in Zielen und Grenzen, verteilt an Spezialisten, bündelt zu **einer** Meldung | täglich, Trigger | Verkaufsstart |
+| CEO / Orchestrator | Hält das Geschäft in Zielen und Grenzen, verteilt an Spezialisten, bündelt zu **einer** Meldung | täglich, Trigger | als automatischer Agent: Verkaufsstart. Als Entscheidungsschicht ohne Ausführung gibt es ihn schon: Skill `azizam-ceo-orchestrator` (§9.1) |
 | Board | Monatlicher Rückblick: Was hat sich verändert, was funktioniert, was nicht, Risiken, Chancen, Entscheidungen für Mar, was Agenten selbst erledigen | monatlich | 2–3 Monate nach Verkaufsstart |
 | Research | Wettbewerber, Preise, neue Produkte, Duft- und Verpackungstrends, Rechtsänderungen | wöchentlich | **jetzt** |
 | Compliance | Dokumente je Duft, Rechtsänderungen, meldet „Duft X braucht Prüfung“ | neuer Duft, neue EU-Regel | **jetzt**, sobald Fabrik-Unterlagen da sind |
@@ -261,6 +266,8 @@ Die Schwellen sind Beispiele. Mar legt sie fest.
 **Architektur:** Claude ist das Gehirn. Shop, Zahlung, E-Mail, Drive, Buchhaltung und Datenbank sind Hände und Augen,
 bei Bedarf verbunden über Zapier, Make oder n8n ⚠️.
 Ablauf: Trigger → Orchestrator → Spezial-Agent → Werkzeuge → Kontrolle → Aktion oder Freigabe → Ergebnis → Log.
+(Zielbild aus den Quelltexten. Heute gilt der Datenfluss in §9.1: Der Orchestrator steht **vor** Mars Entscheidung,
+nicht zwischen Entscheidung und Ausführung; „Aktion“ ohne Freigabe gibt es erst ab Autonomiestufe 3, §8.)
 Drei Ebenen: **A** Claude selbst (Projekte, Memory, Skills, Plugins, Research, Zeitpläne, Browser) · **B** Firmensysteme
 (Shop, Buchhaltung, Lager, Mail, Dateien) · **C** Orchestrierung.
 
@@ -269,17 +276,76 @@ MCP-Server für Daten, strukturierte Ausgabe mit Pydantic oder Zod, Datenbereini
 Managed Agents über die API (mit geplanten Läufen und mehreren Agenten) ✅. Der im Quelltext erwähnte SDK-Leitfaden
 liegt **nicht** im Repo, bekannt ist nur seine Inhaltsliste.
 
+### 9.1 · Decision Architecture (umgesetzt als Skills, Stand 05.10.2026)
+
+Fünf Skills in `.claude/skills/` bilden heute den Kern des Agenten-Teams. Jeder Fach-Skill behält seine eigene Logik,
+Definitionen und Verantwortung. Nichts davon wird hier wiederholt; maßgeblich ist die jeweilige `SKILL.md`.
+
+```text
+azizam-product-data                     Was wissen wir?        Produktinformationen, Version, Datenstatus
+        ↓
+azizam-compliance-auditor               Darf es?               harte Compliance-Gates: PASS / REVIEW / BLOCK
+azizam-unit-economics                   Lohnt es?              Kosten, Margen, CM1/CM2, Break-even
+azizam-procurement-inventory            Können wir es?         Lieferanten, MOQ, Preise, Lieferzeit, Bestand
+        ↓
+azizam-ceo-orchestrator  (Decision Layer)   Was folgt daraus?  Entscheidungsvorlage GO / HOLD / REVIEW / BLOCK
+        ↓
+Mar (CEO)                               entscheidet final
+        ↓
+Ausführung                              erst nach Mars Entscheidung bzw. Freigabe (§8)
+```
+
+**Der CEO Orchestrator ist die Decision Layer.** Er
+- sammelt die Ergebnisse der Fach-Skills,
+- strukturiert die Entscheidungsoptionen,
+- identifiziert Konflikte zwischen Skills und Quellen,
+- identifiziert fehlende Informationen und gibt sie als Rückfrage an den zuständigen Fach-Skill zurück,
+- kennzeichnet harte Gates,
+- trennt Fakten, Bewertungen und Empfehlungen,
+- bereitet die Entscheidung für Mar vor.
+
+Er darf **nicht**: eine Fachprüfung simulieren, die ein Fach-Skill durchführen müsste · Compliance-Gates umgehen ·
+fehlende Daten erfinden · eine operative Änderung selbst ausführen (bestellen, veröffentlichen, senden, Dateien des
+Systems ändern) · Mars finale Entscheidung ersetzen. Seine Ausgabe GO / HOLD / REVIEW / BLOCK ist eine **Empfehlung**,
+keine Entscheidung.
+
+**Harte Compliance-Gates.** Liefert `azizam-compliance-auditor` `BLOCK`, ist das Produkt bzw. die Änderung
+**blockiert / nicht freigegeben**. Kein wirtschaftlicher Vorteil, kein Beschaffungsargument, keine Datenbereitschaft
+und keine Gesamtbewertung hebt das auf; auch der Orchestrator nicht. Aufheben kann es nur ein neues Audit, nachdem die
+Blocker nachweislich geschlossen sind. Davon zu unterscheiden sind **offene Fachpunkte**: Sie führen beim Auditor zu
+`REVIEW` und brauchen eine Klärung bzw. Mars ausdrückliche Freigabe. Fachliche Punkte wie die Sicherheitsbewertung kann
+Mar nicht selbst wegfreigeben.
+
+**Statusbegriffe, eindeutig je Ebene:**
+
+| Begriff | Ebene | Bedeutung | vergibt |
+|---|---|---|---|
+| `READY` / `PARTIAL` / `NOT READY` | Daten bzw. Berechnung | Wie belastbar sind die Eingaben? Keine Freigabe | Product Data, Economics, Procurement (je für sich) |
+| `PASS` / `REVIEW` / `BLOCK` | Compliance-Gate | darf weiter / Klärung oder Mars Freigabe nötig / blockiert | nur `azizam-compliance-auditor` |
+| `GO` / `HOLD` / `REVIEW` / `BLOCK` | Entscheidungsvorlage | empfohlen / zu wenig Grundlage / Entscheidung oder Prüfung nötig / notwendige Voraussetzung fehlt | nur `azizam-ceo-orchestrator`, als Empfehlung an Mar |
+| `UNKNOWN` | Einzelwert | nicht belegt; wird nie zu Fakt, `PASS` oder `READY` | alle Skills |
+
+`REVIEW` und `BLOCK` kommen auf zwei Ebenen vor. Darum immer mit Ebene nennen: „Compliance BLOCK“ bzw. „CEO DECISION
+BLOCK“. Ein Compliance BLOCK führt bei Verkauf oder Launch immer zu CEO DECISION BLOCK, umgekehrt nicht.
+
+**Zuordnung zu den Rollen oben:** Compliance → `azizam-compliance-auditor` · Procurement und Inventory →
+`azizam-procurement-inventory` · der Kosten- und Margenteil von Finance → `azizam-unit-economics` · CEO / Orchestrator
+→ `azizam-ceo-orchestrator` (ohne Ausführung und ohne Trigger). Product Data ist die gemeinsame Datengrundlage (§6).
+Die übrigen Rollen (Research, Marketing, Sales, Customer, Launch, Board) sind weiter Zielbild.
+
 ---
 
 ## 10 · Skills und Plugins
 
-**Eigene Skills (Vorschläge, noch nicht gebaut):**
+**Eigene Skills:** Gebaut sind die fünf Skills der Decision Architecture (§9.1): `azizam-product-data`,
+`azizam-compliance-auditor`, `azizam-unit-economics`, `azizam-procurement-inventory`, `azizam-ceo-orchestrator`.
+Ursprüngliche Vorschläge und ihr Stand:
 
-| Skill | Eingabe → Ausgabe |
-|---|---|
-| Compliance-Auditor | Dateien eines Dufts → Ampel je Dokument (PIF, CPSR, CPNP, INCI, Allergene, IFRA, Etikett, Claims), offene Punkte, Hinweis „nicht automatisch als konform eingestuft“ |
-| Produktlisting | freigegebener Datensatz → Shoptitel, Kurz- und Langtext, Bullets, SEO-Titel, Meta-Description, FAQ, Instagram-Caption, TikTok-Hook, Anzeigenvarianten, Bildbriefing, E-Mail, Cross-Selling; immer mit Verbotsliste aus `brand-briefing.md` |
-| Margen-Analyse | EK, Flakon, Verpackung, Versand, Gebühren, Retouren, Werbung → Stückkosten, Deckungsbeitrag, Preisuntergrenze, max. CAC, Break-even, Szenarien. **Gibt es schon:** `python3 playbook.py economics` |
+| Skill | Eingabe → Ausgabe | Stand |
+|---|---|---|
+| Compliance-Auditor | Dateien eines Dufts → Ampel je Dokument (PIF, CPSR, CPNP, INCI, Allergene, IFRA, Etikett, Claims), offene Punkte, Hinweis „nicht automatisch als konform eingestuft“ | gebaut als `azizam-compliance-auditor` (Gate PASS / REVIEW / BLOCK) |
+| Produktlisting | freigegebener Datensatz → Shoptitel, Kurz- und Langtext, Bullets, SEO-Titel, Meta-Description, FAQ, Instagram-Caption, TikTok-Hook, Anzeigenvarianten, Bildbriefing, E-Mail, Cross-Selling; immer mit Verbotsliste aus `brand-briefing.md` | Vorschlag, noch nicht gebaut |
+| Margen-Analyse | EK, Flakon, Verpackung, Versand, Gebühren, Retouren, Werbung → Stückkosten, Deckungsbeitrag, Preisuntergrenze, max. CAC, Break-even, Szenarien | gebaut als `azizam-unit-economics`; Rechner bleibt `python3 playbook.py economics` |
 
 **Mögliches eigenes Plugin „Azizam OS“:** `/product-audit` · `/product-description` · `/compliance-check` ·
 `/margin-analysis` · `/supplier-comparison` · `/competitor-scan` · `/customer-reply` · `/weekly-report` ·

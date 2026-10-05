@@ -1,7 +1,8 @@
 # Azizam-System – Aufbauplan mit dem Small-Business-Plugin
 
 > Setzt `CLAUDE-MASTER.md` §16 (Ausbau in Stufen) konkret um und ordnet jeder Stufe die passenden Skills des
-> Small-Business-Plugins zu. **Vorschlag, die Reihenfolge entscheidet Mar.** Stand: 04.10.2026 [Code].
+> Small-Business-Plugins zu. **Vorschlag, die Reihenfolge entscheidet Mar.** Stand: 04.10.2026 [Code], Decision
+> Architecture der fünf Azizam-Skills ergänzt am 05.10.2026 [Code].
 > Regel für jede Stufe (Master §8): Claude bereitet vor, Mar gibt frei. Kein Skill bestellt, zahlt, veröffentlicht
 > oder sendet ohne Freigabe. Das Plugin hat dieselben Sperren eingebaut.
 
@@ -16,6 +17,7 @@
 | Rhythmus | Wochenüberblick montags („Monday brief“) |
 | Canva | nicht verbunden; Content-Skills liefern dann Briefings statt fertiger Grafiken |
 | Verkauf | keiner, bis Flakon und Verpackung feststehen |
+| Eigene Skills | fünf Azizam-Skills in `.claude/skills/azizam-*` (Stand 05.10.2026), siehe „Decision Architecture“ unten |
 
 **Folge:** Skills, die von Verkaufsdaten leben (`inventory-planner`, `business-pulse`, `cash-flow-snapshot`,
 `review-reputation`), bringen vor dem Shop-Start nichts. Leere Daten sind kein Ergebnis.
@@ -40,15 +42,15 @@
 | Kosmetikrecht beobachten | Prompt §11 aus `claude-anweisungen.md` | monatlich | Routine |
 | Fabrik-Anfrage CPNP/CPSR/INCI + Duftallergene als **Entwurf** in Gmail | Gmail-Konnektor (nur Entwurf, Mar sendet) | einmalig | Code → Mar |
 | Flakon- und Verpackungsangebote vergleichen | Chat (Abwägung), Angebote als Tabelle in Code | laufend | Chat |
-| Eigene Skills vorbereiten: Compliance-Auditor, Produktlisting | `build-agent` („make this a thing I can just ask for“) | einmalig | Code |
+| ✅ Fünf Azizam-Skills gebaut (05.10.2026), siehe „Decision Architecture“. Offen: Skill Produktlisting | Code; `build-agent` („make this a thing I can just ask for“) möglich | einmalig | Code |
 
 ## Stufe 2 · Flakon steht – Produktdaten
 
 | Aufgabe | Werkzeug | Wer |
 |---|---|---|
-| Preise für 30/50 ml entscheiden | Chat, dann `brand.json` + `python3 playbook.py economics` | Chat → Code |
-| Datensatz je Duft + Master-Index (Master §6) | Code (`playbook/azizam/produkte.csv`) | Code |
-| Compliance-Matrix je Duft, Status FEHLT / PRÜFUNG ERFORDERLICH / DOKUMENTARISCH KONSISTENT | eigener Skill Compliance-Auditor | Code |
+| Preise für 30/50 ml entscheiden | Chat, dann `brand.json` + `python3 playbook.py economics`; Bewertung mit `azizam-unit-economics` | Chat → Code, Mar entscheidet |
+| Datensatz je Duft + Master-Index (Master §6) | Code (`playbook/azizam/produkte.csv`), geprüft mit `azizam-product-data` | Code |
+| Compliance-Matrix je Duft, Status je Dokument FEHLT / PRÜFUNG ERFORDERLICH / DOKUMENTARISCH KONSISTENT, Gate je Produkt PASS / REVIEW / BLOCK | `azizam-compliance-auditor` | Code |
 | Farben und Logo final | `brand-style` | Mar |
 
 ## Stufe 3 · Shop-Neustart
@@ -69,7 +71,7 @@
 | Wochenbriefing: Verkäufe, Termine, Postfach, das Wichtigste der Woche | `/monday-brief` („Monday brief“) | Montag |
 | Wachstumsbriefing: Marketing, Kundenstimmen, Wettbewerb, 3 Maßnahmen | `/marketing-monday` | Montag |
 | Bestellungen im Blick, Kundenmails beantworten (Entwurf), Erstattung nur mit Freigabe | `ticket-deflector` („check my orders“) | täglich/bei Bedarf |
-| Nachbestellen: Fertigware aus Shopify, **Flakons, Verschlüsse, Etiketten, Boxen per CSV-Liste** (stehen nicht in Shopify) | `inventory-planner` bzw. `/restock` | Freitag |
+| Nachbestellen: Fertigware aus Shopify, **Flakons, Verschlüsse, Etiketten, Boxen per CSV-Liste** (stehen nicht in Shopify) | `azizam-procurement-inventory` (RECOMMENDED ORDER); Rechenhilfe `inventory-planner` bzw. `/restock`; bestellt wird erst nach Mars Freigabe | Freitag |
 | Bewertungen sammeln und beantworten (Entwurf); nur echte, mit Einwilligung | `review-reputation` | wöchentlich |
 | Werbung auswerten, sobald Anzeigen laufen | `ad-manager`, `growth-pulse` | wöchentlich |
 
@@ -81,6 +83,37 @@
 | Monatsunterlagen für den Steuerberater (Shopify-Export, Belege aus Gmail/Drive sortiert) | `report-builder` bzw. eigener Skill über `build-agent`; `/close-month` erst mit Buchhaltungs-Konnektor |
 | Board-Report monatlich (Master §9) | Prompt §10 aus `claude-anweisungen.md` als Routine |
 | Agenten mit Freigabegrenzen, die Mar festlegt | `build-agent`, später eigenes Plugin „Azizam OS“ |
+
+---
+
+## Decision Architecture – die fünf Azizam-Skills als System
+
+Die fünf Skills in `.claude/skills/` arbeiten in festen Schichten. Gilt für alle Stufen oben; die Regeln zu Gates und
+Status stehen in `CLAUDE-MASTER.md` §9.1, die Fachlogik nur in der jeweiligen `SKILL.md`.
+
+```text
+Product Data                        azizam-product-data
+        ↓
+Compliance / Economics / Procurement
+                                    azizam-compliance-auditor · azizam-unit-economics · azizam-procurement-inventory
+        ↓
+CEO / Decision Orchestrator         azizam-ceo-orchestrator
+        ↓
+CEO / Mar Decision                  Mar
+        ↓
+Operational Execution               Shopify, Bestellung, Mail, Veröffentlichung – nur nach Freigabe
+```
+
+| Schicht | Rolle | Was sie nicht tut |
+|---|---|---|
+| **Product Data** | Liefert die Grundlage: welche Produktversion, welche Angaben mit welcher Quelle, was fehlt, widerspricht sich oder ist veraltet. Sagt je Fach-Skill, ob die Daten READY / PARTIAL / NOT READY sind | keine Compliance-Freigabe, keine Wirtschaftlichkeit, keine Bestellentscheidung |
+| **Fachbewertung** | Drei Fach-Skills bewerten unabhängig, jeder in seiner Domäne und mit eigener Logik: **Compliance** (harte Gates PASS / REVIEW / BLOCK), **Economics** (Kosten, Margen, CM1/CM2, Break-even), **Procurement** (Lieferanten, MOQ, Preise, Lieferzeit, Bestand, nur RECOMMENDED ORDER) | keine übergreifende Geschäftsentscheidung; kein Fach-Skill überstimmt einen anderen |
+| **Decision Layer** | Der Orchestrator führt die Ergebnisse zusammen, zeigt Konflikte, offene Punkte und harte Gates, stellt Optionen dar und empfiehlt GO / HOLD / REVIEW / BLOCK mit dem kleinsten sicheren nächsten Schritt. Fehlende Inputs gehen als Rückfrage an den zuständigen Fach-Skill zurück | keine Fachprüfung, keine erfundenen Daten, kein Überstimmen eines Compliance-BLOCK, keine Entscheidung anstelle von Mar, keine Ausführung |
+| **CEO / Mar** | Entscheidet final und gibt frei | – |
+| **Operational Execution** | Setzt die Entscheidung um (Produkt in Shopify, Bestellung, Mail, Veröffentlichung), heute durch Mar oder durch Claude als Entwurf mit Freigabe (Autonomiestufe 0–1) | startet nie ohne Entscheidung bzw. Freigabe |
+
+Wichtig: Der Orchestrator sitzt **zwischen Fachbewertung und Mars Entscheidung**, nicht zwischen Entscheidung und
+Ausführung. Aus einer Orchestrator-Empfehlung folgt keine Aktion, erst aus Mars Entscheidung.
 
 ---
 
@@ -102,6 +135,11 @@
 | „Marketing Monday“ / „growth check“ | `/marketing-monday` |
 | „check my orders“ / „answer this customer“ | `ticket-deflector` |
 | „what do I need to reorder“ | `inventory-planner` |
+| „was wissen wir über Duft X“ / „Produktdaten prüfen“ | `azizam-product-data` |
+| „Compliance prüfen“ / „darf ich launchen“ | `azizam-compliance-auditor` |
+| „lohnt sich das“ / „Marge“ / „Break-even“ | `azizam-unit-economics` |
+| „was muss ich bestellen“ / „Lieferant vergleichen“ | `azizam-procurement-inventory` |
+| „was soll ich als Nächstes tun“ / „CEO-Brief“ | `azizam-ceo-orchestrator` |
 | „what are people saying about us“ | `review-reputation` |
 | „make the content“ / „give me a month of posts“ | `social-content-engine` |
 | „SEO audit“ / „fix my product listings“ | `seo-ai-visibility` |

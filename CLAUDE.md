@@ -22,7 +22,7 @@ Grundlage für jede Analyse und Strategie ist das **E-Commerce Brand-Playbook** 
 | `playbook.py` | Werkzeug: Status, Rechner, Prompts (siehe unten) |
 | `docs/` | Original-Playbook als Markdown + PDF (64 Seiten) |
 | `frontend/` | 3D-Flakon-Komponenten für die Azizam-Website (Next.js) |
-| `.claude/skills/` | Marketing-Skills (coreyhaines31/marketingskills) |
+| `.claude/skills/` | Marketing-Skills (coreyhaines31/marketingskills) und die fünf Azizam-Skills `azizam-*` (siehe „Azizam Decision Architecture“) |
 
 ## Befehle
 ```bash
@@ -41,6 +41,27 @@ python3 playbook.py export                          # alles in eine Markdown-Dat
 3. **Rechtliche Verbotslisten** im jeweiligen `brand-briefing.md` gelten für jeden Text, auch Creator-Skripte.
 4. **Marktentscheidungen trifft Mar**, nicht die KI.
 5. Neue Erkenntnisse und Entscheidungen in `playbook/KONTEXT-EXPORT.md` nachziehen.
+
+## Azizam Decision Architecture (fünf Skills)
+Für Produkt-, Compliance-, Wirtschaftlichkeits-, Beschaffungs- und Geschäftsentscheidungen bei Azizam arbeiten fünf
+Skills als ein System. Jeder ist für genau eine Frage zuständig; die Fachlogik steht nur im jeweiligen Skill.
+
+| Skill | Pfad | Zuständig für | Ergebnis |
+|---|---|---|---|
+| Product Data | `.claude/skills/azizam-product-data/SKILL.md` | Produktinformationen liefern und strukturieren: Produktversion, Quellen, Datenstatus, Konflikte, Änderungen | Datenbereitschaft je Skill: READY / PARTIAL / NOT READY |
+| Compliance | `.claude/skills/azizam-compliance-auditor/SKILL.md` | rechtliche/regulatorische Anforderungen (Kosmetik-VO) und harte Compliance-Gates | PASS / REVIEW / BLOCK |
+| Economics | `.claude/skills/azizam-unit-economics/SKILL.md` | wirtschaftliche Tragfähigkeit: Kosten, Margen, CM1/CM2, Break-even, Kapitalbindung | Economics-Status READY / PARTIAL / NOT READY |
+| Procurement | `.claude/skills/azizam-procurement-inventory/SKILL.md` | Beschaffung und Bestand: Lieferanten, MOQ, Preise, Lieferzeit, Verfügbarkeit, Beschaffungsrisiken | Procurement-Status READY / PARTIAL / NOT READY, nur RECOMMENDED ORDER |
+| CEO / Decision Orchestrator | `.claude/skills/azizam-ceo-orchestrator/SKILL.md` | Ergebnisse der Fach-Skills zusammenführen, Konflikte und offene Punkte sichtbar machen, die Entscheidung für Mar strukturieren | Entscheidungsvorlage GO / HOLD / REVIEW / BLOCK mit nächstem Schritt |
+
+**Reihenfolge:** `Product Data → Compliance / Economics / Procurement → CEO Orchestrator → Entscheidung Mar`.
+Fehlt einem Fach-Skill oder dem Orchestrator ein Input, geht die Rückfrage an den zuständigen Fach-Skill zurück; der
+Orchestrator füllt Lücken nicht selbst.
+
+**Mar ist die finale Entscheidungsinstanz.** Der Orchestrator entscheidet nicht anstelle von Mar und ist keine
+Ausführungsschicht: Er bestellt, veröffentlicht, sendet und ändert nichts. Umgesetzt wird erst nach Mars
+Entscheidung bzw. Freigabe. Ein Compliance-BLOCK ist durch keine andere Bewertung überstimmbar.
+Details: `CLAUDE-MASTER.md` §9.1, Datenfluss: `playbook/azizam/SYSTEM-AUFBAU.md`.
 
 ## Git
 - Haupt-Branch heißt `Azizam`. Arbeit von Claude läuft auf einem eigenen Branch und kommt per Pull Request zurück.

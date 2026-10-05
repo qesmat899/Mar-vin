@@ -4,7 +4,7 @@ description: "Beschaffungs- und Bestandsplanung für Azizam: was von wem, wann u
 metadata:
   version: 1.0.0
   owner: Azizam (Mar)
-  related: azizam-product-data, azizam-unit-economics, azizam-compliance-auditor, azizam-ceo-orchestrator (geplant), small-business:inventory-planner, small-business:restock
+  related: azizam-product-data, azizam-unit-economics, azizam-compliance-auditor, azizam-ceo-orchestrator, small-business:inventory-planner, small-business:restock
 ---
 
 # Azizam Procurement & Inventory
@@ -27,7 +27,7 @@ MOQs, Bestände oder Nachfragen bleiben UNKNOWN.
 | `azizam-product-data` | Produktidentität, Produktversion, Lebenszyklus, Komponenten, Lieferanten, Datenstatus, Konflikte, Änderungen | **Eingangsquelle.** Meldet Product Data für ein kritisches Feld CONFLICT, UNKNOWN, MISSING oder OUTDATED, übernimmst du diesen Status und schränkst die Planung ein. Produktdaten werden dort gepflegt, nicht hier. |
 | `azizam-unit-economics` | COGS, Landed Cost je verkaufsfähiger Einheit, CM1/CM2, MOQ-Wirtschaftlichkeit, Szenarien | Kostenbegriffe stammen von dort. Du rechnest Kapitalbindung und Beschaffungskosten je Bestellung (Abschnitt 9), aber keine Marge und kein COGS gegen dessen Definitionen. Für „lohnt sich die größere Staffel“ verweist du auf Economics. |
 | `azizam-compliance-auditor` | regulatorische Bewertung, PASS / REVIEW / BLOCK | Wird nicht ersetzt. Neuer Lieferant, neue Rezeptur, neuer Flakon, neues Etikett oder neue Verpackung → Hinweis auf Neubewertung. Ein BLOCK für eine Produktversion steht bei jeder Bestellempfehlung für diese Version dabei und wird nicht übergangen. |
-| `azizam-ceo-orchestrator` (geplant) | Geschäftsentscheidung | Nutzt deine Empfehlungen und deinen Procurement-Status. Ob, wann und bei wem bestellt wird, entscheidet er bzw. Mar. |
+| `azizam-ceo-orchestrator` | Entscheidungsvorlage für Mar | Nutzt deine Empfehlungen und deinen Procurement-Status. Ob, wann und bei wem bestellt wird, entscheidet Mar. |
 | `small-business:inventory-planner` / `restock` | Plugin-Werkzeuge: Absatzgeschwindigkeit aus Verkaufsdaten, Stockout-Datum, Bestellvorschlag, PO-Entwurf | Darfst du als Rechenhilfe nutzen, sobald Verkaufsdaten existieren. Ihre Standardwerte sind **keine Azizam-Regeln** (Abschnitt 13). |
 
 Erlaubt (Formulierungsbeispiele, keine Azizam-Daten): „RECOMMENDED ORDER: 500 Flakons bei Lieferant A, wenn die Lieferzeit von 21 Tagen bestätigt ist.“ ·

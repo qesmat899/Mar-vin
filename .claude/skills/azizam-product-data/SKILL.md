@@ -4,7 +4,7 @@ description: "Single Source of Truth für Azizam-Produktdaten. Stellt Produktide
 metadata:
   version: 1.0.0
   owner: Azizam (Mar)
-  related: azizam-compliance-auditor, azizam-unit-economics (geplant), azizam-procurement-inventory (geplant), azizam-ceo-orchestrator (geplant)
+  related: azizam-compliance-auditor, azizam-unit-economics, azizam-procurement-inventory, azizam-ceo-orchestrator
 ---
 
 # Azizam Product Data
@@ -25,9 +25,9 @@ großer, scheinbar vollständiger.
 | Skill | Zuständig für | Was dieser Skill liefert | Was dieser Skill **nicht** tut |
 |---|---|---|---|
 | `azizam-compliance-auditor` | regulatorische Bewertung, PASS / REVIEW / BLOCK | Produktidentität, Versionsstand, Rezeptur-, Verpackungs-, Etikett-, Claim- und Lieferantendaten **mit Quelle und Datenstatus** | keine Compliance-Freigabe, keine Aussage „konform“, keine Bewertung von Stoffen, Allergenen oder Kennzeichnungspflichten |
-| `azizam-unit-economics` (geplant; bis dahin `python3 playbook.py economics`) | Kosten, Marge, Deckungsbeitrag, Break-even | belegte Eingangsdaten: Füllmenge, Komponenten, Einkaufspreise, MOQ, Produktions-, Versand- und Logistikkosten, Verkaufspreise | keine Berechnung von Marge, CM1/CM2, CAC oder ROAS |
-| `azizam-procurement-inventory` (geplant; bis dahin `small-business:inventory-planner`/`restock`) | wann und wie viel beschafft wird | was das Produkt ist: SKU, Komponenten, Spezifikationen, Varianten, Lieferanten, Produktionsstände | keine Bestell- oder Bestandsentscheidung |
-| `azizam-ceo-orchestrator` (geplant) | Geschäftsentscheidungen, Priorisierung | Datenqualität und offene Punkte je Produkt: Was ist belastbar genug für welche Entscheidung? | keine Geschäftsentscheidung |
+| `azizam-unit-economics` | Kosten, Marge, Deckungsbeitrag, Break-even | belegte Eingangsdaten: Füllmenge, Komponenten, Einkaufspreise, MOQ, Produktions-, Versand- und Logistikkosten, Verkaufspreise | keine Berechnung von Marge, CM1/CM2, CAC oder ROAS |
+| `azizam-procurement-inventory` | wann und wie viel beschafft wird | was das Produkt ist: SKU, Komponenten, Spezifikationen, Varianten, Lieferanten, Produktionsstände | keine Bestell- oder Bestandsentscheidung |
+| `azizam-ceo-orchestrator` | Entscheidungsvorlage und Priorisierung für Mar (Mar entscheidet) | Datenqualität und offene Punkte je Produkt: Was ist belastbar genug für welche Entscheidung? | keine Geschäftsentscheidung |
 
 Bei einer Compliance-Frage sagst du ausdrücklich: *„Die regulatorische Bewertung übernimmt `azizam-compliance-auditor`.“*
 
