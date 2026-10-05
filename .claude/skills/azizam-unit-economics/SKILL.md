@@ -417,9 +417,12 @@ Abschnitte ohne Inhalt nicht weglassen, sondern mit „nicht relevant“ oder �
   (Klasse S; Teile davon sind dort selbst als Annahme, Obergrenze oder alter Preis markiert → ASSUMPTION bzw. RECORDED).
 - Einzelwerte lassen sich überschreiben (`--price`, `--cogs`, `--shipping`, `--cac`, `--fee-pct`, `--returns-pct`,
   `--repeat`, `--variant`, `--all`). Wer überschreibt, nennt Wert und Quelle in INPUTS.
+- Seit 05.10.2026 rechnet der Rechner auch mit Rabatt (`--discount`), Versandentgelt des Kunden (`--shipping-fee`),
+  fester Gebühr je Transaktion (`--fee-fixed`) und gibt Perspektive B nur mit Faktor f aus (`--ad-factor`). Ohne diese
+  Angaben rechnet er mit 0 bzw. gibt B als UNKNOWN aus und nennt das in der Ausgabe. Eine 0 ist dann kein Beleg.
 - Was der Rechner **nicht** abbildet und du deshalb selbst ergänzen oder als Einschränkung nennen musst:
-  Versandentgelt des Kunden und Gratisversand-Schwelle · feste Transaktionsgebühren · Reverse-Charge-Aufschlag auf CAC ·
-  Ausschuss und verkaufsfähige Menge · Einmalkosten · MOQ und Kapitalbindung · Quellen und Datenstatus.
+  Gratisversand-Schwelle · echte Retourenkosten je Fall · Ausschuss und verkaufsfähige Menge · Einmalkosten ·
+  MOQ und Kapitalbindung · Quellen und Datenstatus je Wert.
 - `brand.json` und `playbook.py` werden von diesem Skill **nicht verändert**. Abweichungen werden gemeldet.
 
 ---
