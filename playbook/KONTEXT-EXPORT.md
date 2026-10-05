@@ -66,6 +66,9 @@ Rechengrundlage für den Rechner, bis echte Werte vorliegen.
 
 ### Getroffene Entscheidungen
 
+Historischer Stand 09/2026. **Neue kommerzielle Entscheidungen** (Preis, Rabatt, Offer, Bestellung, Sortiment,
+Experimente) stehen nur im Decision Ledger `azizam/commercial/entscheidungen.csv`.
+
 | Datum | Entscheidung |
 |---|---|
 | 09/2026 | **Zwei Duftlinien parallel.** *Heritage* (persisch-diasporisch, Persona Darius/Roya, Duft Narcos) und *Editions* (generisch-premium, Personas Leon/Selin, die übrigen sechs). Zuordnung in `azizam/04-produkt-marke.md`. |

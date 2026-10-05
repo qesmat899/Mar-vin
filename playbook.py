@@ -5,7 +5,8 @@ playbook.py — Werkzeugkasten für das E-Commerce Brand-Playbook (Azizam).
     python3 playbook.py brands
     python3 playbook.py status    [--brand azizam]
     python3 playbook.py economics --brand azizam [--price <€> --cogs <€> --cac <€> ...]
-    python3 playbook.py offers    --brand azizam
+    python3 playbook.py offers    --brand azizam [--ad-factor 1.19]
+    python3 playbook.py daten     --brand azizam   (Commercial-Daten prüfen und auswerten)
     python3 playbook.py prompt 3  --brand azizam --data zitate.txt --var PERSONA="..." [--run]
     python3 playbook.py swipe     --brand azizam --source "r/fragrance" "wörtliches Zitat"
 
@@ -23,6 +24,8 @@ import re
 import sys
 from datetime import date
 from pathlib import Path
+
+import commercial
 
 ROOT = Path(__file__).resolve().parent / "playbook"
 DEFAULT_MODEL = "claude-opus-5"
@@ -485,6 +488,70 @@ def export_cmd(args) -> None:
     print("     und arbeitet direkt auf den echten Dateien statt auf einer Kopie.")
 
 
+# ---------------------------------------------------------------- Commercial-Daten (commercial.py)
+
+def daten_cmd(slug: str) -> int:
+    """Prüft die Commercial-Daten und zeigt nur abgeleitete Werte. Schreibt nichts."""
+    brand = load_brand(slug)
+    directory = commercial.data_dir(ROOT, slug)
+    print(f"\n{brand['name']} — Commercial-Daten ({directory.relative_to(ROOT.parent)})\n")
+    if not directory.exists():
+        print("  Kein Ordner commercial/ vorhanden.")
+        return 1
+    t = commercial.load(directory)
+    errors = commercial.check_headers(directory)
+    v_errors, notes = commercial.validate(t)
+    errors += v_errors
+
+    print("Objekte")
+    for name in commercial.SCHEMA:
+        print(f"  {name:<28}{len(t[name]):>5} Einträge")
+
+    if t["produkte.csv"]:
+        print("\nCOGS je Produkt (aus Stückliste × Komponentenpreis, nicht gespeichert)")
+        for pid, c in commercial.cogs_by_product(t).items():
+            wert = eur(c["wert"]) if c["wert"] is not None else "UNKNOWN"
+            print(f"  {pid:<28}{wert:>12}  {'offen: ' + ', '.join(c['offen']) if c['offen'] else ''}")
+
+    levels = commercial.stock_levels(t)
+    if levels:
+        print("\nBestand (Summe der Bewegungen)")
+        for (typ, artikel, einheit), entry in sorted(levels.items()):
+            menge = "UNKNOWN" if entry["unknown"] else f"{entry['menge']:g}"
+            print(f"  {artikel:<28}{menge:>10} {einheit}")
+        total, unbewertet = commercial.capital(t)
+        print(f"  Gebundenes Kapital (bewertbarer Teil): {eur(total)}")
+        if unbewertet:
+            print(f"  Ohne belegten Wert (UNKNOWN, nicht geschätzt): {', '.join(unbewertet)}")
+
+    if t["transaktionen.csv"]:
+        mwst = brand["economics"].get("mwst", 0.0)
+        bekannt = [commercial.transaction_contribution(t, tx, mwst) for tx in t["transaktionen.csv"]
+                   if tx.get("status") != "storniert"]
+        cm1 = [x["cm1"] for x in bekannt if x["cm1"] is not None]
+        print("\nTransaktionen (Ist, ohne CAC)")
+        print(f"  {len(bekannt)} gezählt · CM1 belegt für {len(cm1)} · Summe CM1 {eur(sum(cm1))}")
+        if len(cm1) < len(bekannt):
+            print(f"  {len(bekannt) - len(cm1)} Transaktion(en) mit fehlenden Werten → CM1 UNKNOWN")
+
+    if t["experimente.csv"]:
+        print("\nExperimente (Kette Hypothese → … → nächster Test)")
+        for exp in t["experimente.csv"]:
+            c = commercial.experiment_chain(t, exp)
+            done = sum(c["schritte"].values())
+            offen = [k for k, ok in c["schritte"].items() if not ok]
+            print(f"  {exp['experiment_id']:<16}{done}/8  Evidenz {c['evidenz']:<15}{'offen: ' + ', '.join(offen) if offen else ''}")
+
+    print()
+    for n in notes:
+        print(f"  ℹ️  {n}")
+    for e in errors:
+        print(f"  ❌ {e}")
+    if not errors:
+        print("  ✅ Schema, Verweise, Freigaben und Datenschutz ohne Fehler")
+    return 1 if errors else 0
+
+
 # ---------------------------------------------------------------- CLI
 
 def main() -> None:
@@ -508,6 +575,9 @@ def main() -> None:
     s = sub.add_parser("offers", help="Offer-Vergleich Abo / 2+1 / 1+1+Geschenk (Kap. 4.2)")
     s.add_argument("--brand", required=True)
     s.add_argument("--ad-factor", type=float, help="Faktor f für Perspektive B")
+
+    s = sub.add_parser("daten", help="Commercial-Daten prüfen: Schema, Verweise, COGS, Bestand, Transaktionen")
+    s.add_argument("--brand", required=True)
 
     s = sub.add_parser("prompt", help="Prompt 1–6 mit Markenkontext füllen (Kap. 2.2)")
     s.add_argument("number", type=int, choices=range(1, 7))
@@ -560,6 +630,8 @@ def main() -> None:
     elif args.cmd == "offers":
         brand = load_brand(args.brand)
         print_offers(brand, offers(brand["economics"], args.ad_factor))
+    elif args.cmd == "daten":
+        sys.exit(daten_cmd(args.brand))
     elif args.cmd == "prompt":
         prompt_cmd(args)
     elif args.cmd == "export":

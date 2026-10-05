@@ -171,9 +171,10 @@ Bekannte Quellen im Repo (alle Klasse S, außer sie enthalten bzw. verlinken Ori
 (Sortiment, Linien, Notenstatus) · `playbook/azizam/brand-briefing.md` · `playbook/KONTEXT-EXPORT.md` · `SYNC.md` ·
 `BUSINESS-CONTEXT.md` · Shopify-Produkte (nur lesen) · Lieferantendokumente in Drive/Repo, sobald vorhanden.
 
-Ein eigener Produktdatensatz ist geplant (`playbook/azizam/SYSTEM-AUFBAU.md`, Stufe 2: Datensatz je Duft und
-Master-Index). Existiert er noch nicht, legst du ihn **nicht eigenmächtig** an, sondern schlägst die Ablage als
-RECOMMENDATION vor und wartest auf Mars Zustimmung. Ein angelegter Datensatz ist selbst nur Klasse S; er verweist für
+Die Struktur für den Produktdatensatz liegt in `playbook/azizam/commercial/` (`duefte.csv`, `produkte.csv`,
+`komponenten.csv`, `stueckliste.csv`, `lieferanten.csv`; Regeln in der dortigen `README.md`, Prüfung mit
+`python3 playbook.py daten --brand azizam`). Stand 05.10.2026 ist sie leer. Werte trägst du dort nur ein, wenn Mar
+sie liefert oder ein Beleg vorliegt, jeweils mit Status und Quelle; nie eigenmächtig. Ein angelegter Datensatz ist selbst nur Klasse S; er verweist für
 jeden Wert auf seine Quelle und ersetzt die Originaldokumente nicht.
 
 ---

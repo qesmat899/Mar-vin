@@ -37,7 +37,10 @@ Nie: „Lieferant B muss genommen werden.“ · „Das Produkt kann verkauft wer
 
 ## 2 · Aussagetypen und Quellen
 
-Gleiche Logik wie `azizam-product-data`.
+Gleiche Logik wie `azizam-product-data`. Kostenkomponenten und Stücklisten, Offers, Transaktionen und
+Experimente liegen in `playbook/azizam/commercial/` (Stand 05.10.2026 leer). COGS und Ist-CM1 je Transaktion
+rechnet `python3 playbook.py daten` daraus, mit echten Erstattungen statt Retourenquote; gespeichert wird nichts
+Abgeleitetes.
 
 | Typ | Bedeutung |
 |---|---|
