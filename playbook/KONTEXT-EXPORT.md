@@ -6,10 +6,10 @@
 
 ## Was das hier ist
 
-Zwei Dinge im selben Repository (`qesmat899/Mar-vin`):
+Im Repository (`qesmat899/Mar-vin`):
 
-1. **`marvin.py`** — das ursprüngliche Werkzeug: Video-URL → Whisper-Transkript → KI-Zusammenfassung. Für das
-   Playbook nützlich, um die Sprache der Zielgruppe aus TikTok-Videos wörtlich zu gewinnen.
+1. **`marvin.py`** — früheres Video-Transkriptions-Werkzeug aus der Zeit vor Azizam; am 05.10.2026 entfernt, nicht
+   mehr Teil des Repositorys.
 2. **`playbook/`** — die Umsetzung des „E-Commerce Brand-Playbook" (Vom Markt zur Culture Brand, Ausgabe 09/2026,
    64 Seiten) für zwei Marken des Inhabers. Nicht als Zusammenfassung, sondern als Arbeitssystem mit Rechner,
    Prompts und Checklisten. Bedient über `playbook.py`.

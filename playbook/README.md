@@ -51,18 +51,6 @@ python3 playbook.py swipe --brand azizam --source "Parfumo" --persona Darius "w�
 „eigene Kontext als Wettbewerbsvorteil“ aus Kapitel 5.1. Antworten landen in `<marke>/output/`.
 Standardmodell: `claude-opus-5` (`--model` zum Ändern). Benötigt `ANTHROPIC_API_KEY` und `pip install anthropic`.
 
-## Wo Mar-vin hilft
-
-`marvin.py` transkribiert TikTok-/YouTube-Videos. Für das Playbook heißt das:
-- **Voice of Customer aus Video:** Creator-Videos der Nische transkribieren, die Sprache der Zielgruppe wörtlich in die Swipe-Datei.
-- **Wettbewerber-Ads lesen:** Spark Ads und UGC der Konkurrenz transkribieren → Hook, Pain, Mechanismus zerlegen (Kap. 4.5).
-- **Eigene Creator-Videos prüfen:** Transkript gegen das Briefing halten — steht der Hook in den ersten drei Sekunden? Fällt ein verbotenes Wort?
-
-```bash
-python3 marvin.py <tiktok-url> --model small --lang de
-# → output/<slug>/transcript.txt → Zitate per playbook.py swipe übernehmen
-```
-
 ## Was hier bewusst *nicht* steht
 
 - **Keine erfundenen Zitate.** Alle Personas und Pains sind als Hypothesen markiert; `[ZITAT FEHLT]` bleibt stehen, bis ein echtes Zitat mit Quelle da ist. Das ist keine Lücke, das ist die Methode (Kap. 1.4: „Pain erfinden statt finden“).
