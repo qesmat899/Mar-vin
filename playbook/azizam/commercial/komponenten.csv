@@ -1,0 +1,8 @@
+komponente_id,bezeichnung,einheit,preis_eur_je_einheit,status,quelle,stand,notiz
+fertigparfum-ml,"Fertigparfum (Duftöl-Mischung, abfüllfertig) je ml",ml,0.076,RECORDED,KONTEXT-EXPORT.md: 38 € je 500 ml (Angabe Mar),2026-09,laut Angabe für alle Düfte gleich; je Duft nicht einzeln belegt; kein Angebot im Repo
+flakon-30,Flakon 30 ml,stueck,3.00,ASSUMPTION,SYNC.md: max. ca. 3 € pro Flakon (Obergrenze Mar),2026-10,"Flakon nicht gewählt; Obergrenze, kein Angebot"
+flakon-50,Flakon 50 ml,stueck,3.00,ASSUMPTION,SYNC.md: max. ca. 3 € pro Flakon (Obergrenze Mar),2026-10,"Flakon nicht gewählt; Obergrenze, kein Angebot"
+verschluss-30,Verschluss/Kappe 30 ml,stueck,,UNKNOWN,,,"ob im Flakonpreis enthalten, ist offen (Magnetkappe gewünscht, SYNC.md)"
+verschluss-50,Verschluss/Kappe 50 ml,stueck,,UNKNOWN,,,"ob im Flakonpreis enthalten, ist offen (Magnetkappe gewünscht, SYNC.md)"
+etikett-box,Etikett + Umverpackung (pauschal),stueck,1.00,ASSUMPTION,brand.json _herleitung (Annahme),2026-10,Verpackung nicht gewählt
+probenroehrchen-2,Probenröhrchen 2 ml inkl. Sprühkopf,stueck,,UNKNOWN,,,nicht gewählt

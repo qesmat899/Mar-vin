@@ -5,7 +5,8 @@ playbook.py — Werkzeugkasten für das E-Commerce Brand-Playbook (Azizam, Haus 
     python3 playbook.py brands
     python3 playbook.py status    [--brand azizam]
     python3 playbook.py economics --brand azizam [--price 69 --cogs 13.5 --cac 22 ...]
-    python3 playbook.py offers    --brand azizam
+    python3 playbook.py offers    --brand azizam [--ad-factor 1.19]
+    python3 playbook.py daten     --brand azizam   (Commercial-Daten prüfen und auswerten)
     python3 playbook.py prompt 3  --brand azizam --data zitate.txt --var PERSONA="..." [--run]
     python3 playbook.py swipe     --brand azizam --source "r/fragrance" "wörtliches Zitat"
 
@@ -482,6 +483,258 @@ def export_cmd(args) -> None:
     print("     und arbeitet direkt auf den echten Dateien statt auf einer Kopie.")
 
 
+# ---------------------------------------------------------------- Commercial-Daten (playbook/<marke>/commercial)
+
+DATA_STATUS = ("CONFIRMED", "RECORDED", "ASSUMPTION", "MISSING", "UNKNOWN", "CONFLICT", "OUTDATED", "N/A")
+STATUS_RANK = {"CONFIRMED": 0, "N/A": 0, "RECORDED": 1, "ASSUMPTION": 2, "OUTDATED": 3, "CONFLICT": 3,
+               "MISSING": 4, "UNKNOWN": 4}
+
+# Datei → (Pflichtspalten, {Spalte: erlaubte Werte}); leere Werte sind bei Enums erlaubt, außer bei Pflicht-Enums.
+COMMERCIAL_SCHEMA = {
+    "produkte.csv": (
+        ["produkt_id", "typ", "duft", "groesse_ml", "produktversion", "quelle_produkt_id", "stueckliste_id",
+         "lieferant_ref", "lebenszyklus", "status", "quelle", "stand", "notiz"],
+        {"typ": ("quellgebinde", "verkaufsvariante", "probe"),
+         "lebenszyklus": ("idee", "in_entwicklung", "in_klaerung", "bereit_fuer_pruefung", "aktiv", "eingestellt"),
+         "status": DATA_STATUS}),
+    "komponenten.csv": (
+        ["komponente_id", "bezeichnung", "einheit", "preis_eur_je_einheit", "status", "quelle", "stand", "notiz"],
+        {"einheit": ("ml", "stueck"), "status": DATA_STATUS}),
+    "stueckliste.csv": (["stueckliste_id", "komponente_id", "menge", "einheit"], {"einheit": ("ml", "stueck")}),
+    "bestand.csv": (
+        ["buchung_id", "datum", "artikel_id", "bewegung", "menge", "einheit", "charge", "abfuellung_ref", "beleg_ref", "notiz"],
+        {"bewegung": ("eingang", "abfuellung_entnahme", "abfuellung_zugang", "verkauf", "probe_abgabe", "creator",
+                      "bruch", "verlust", "korrektur"),
+         "einheit": ("ml", "stueck")}),
+    "offers.csv": (
+        ["offer_id", "name", "typ", "kanal", "preis_brutto", "rabatt_typ", "rabatt_wert", "versandentgelt",
+         "gratisversand_ab", "gueltig_von", "gueltig_bis", "status", "freigabe_ref", "notiz"],
+        {"typ": ("einzel", "bundle", "probe", "upsell", "rabattcode"), "kanal": ("online", "privat", "marktplatz"),
+         "rabatt_typ": ("", "prozent", "betrag"), "status": ("entwurf", "freigegeben", "aktiv", "beendet")}),
+    "offer_positionen.csv": (["offer_id", "produkt_id", "menge", "rolle"], {"rolle": ("verkauf", "beigabe", "probe")}),
+    "transaktionen.csv": (
+        ["transaktion_id", "datum", "kanal", "quelle", "offer_id", "erloes_brutto", "rabatt_eur", "versandentgelt",
+         "zahlungsgebuehr_ist", "versandkosten_ist", "kunde_ref", "neukunde", "experiment_id", "erstattung_eur", "notiz"],
+        {"kanal": ("online", "privat", "marktplatz"),
+         "quelle": ("organisch", "creator", "ad", "empfehlung", "wiederkauf", "unbekannt"),
+         "neukunde": ("", "ja", "nein")}),
+    "transaktion_positionen.csv": (["transaktion_id", "produkt_id", "menge", "preis_brutto"], {}),
+    "kunden.csv": (["kunde_ref", "erstkauf_datum", "erstkanal", "segment", "notiz"],
+                   {"erstkanal": ("", "online", "privat", "marktplatz")}),
+    "experimente.csv": (
+        ["experiment_id", "frage", "hypothese", "variante", "offer_id", "creative_id", "erfolgskriterium", "mindestmenge",
+         "start", "ende", "budget_eur", "ergebnis", "evidenz", "learning", "decision_ref", "status"],
+        {"evidenz": ("", "P", "S", "U"), "status": ("geplant", "laeuft", "beendet", "abgebrochen")}),
+    "entscheidungen.csv": (
+        ["decision_id", "datum", "entscheidung", "bereich", "bezug", "annahmen", "evidence_quality", "confidence",
+         "erwartetes_ergebnis", "pruefdatum", "tatsaechliches_ergebnis", "learning", "bestaetigt_von"],
+        {"evidence_quality": ("HIGH", "MEDIUM", "LOW"), "confidence": ("HIGH", "MEDIUM", "LOW"),
+         "bestaetigt_von": ("Mar",)}),
+}
+# Spalten, in denen Freitext stehen darf und die auf personenbezogene Daten geprüft werden.
+PRIVACY_FILES = ("transaktionen.csv", "kunden.csv", "experimente.csv", "entscheidungen.csv", "bestand.csv")
+EMAIL_RE = re.compile(r"[^@\s]+@[^@\s]+\.[a-z]{2,}", re.I)
+PHONE_RE = re.compile(r"(?<![\w-])(?:\+|0)\d[\d /-]{7,}\d")  # beginnt mit + oder 0; ISO-Daten (2026-…) nicht
+
+
+def load_commercial(brand: dict) -> tuple[dict, list[str]]:
+    """Liest alle Commercial-CSVs. Gibt (Tabellen, Fehler) zurück; fehlende Dateien sind Fehler."""
+    import csv
+    d = brand["_dir"] / "commercial"
+    tables, errors = {}, []
+    if not d.exists():
+        return tables, [f"Ordner fehlt: {d.relative_to(ROOT.parent)}"]
+    for name, (cols, _) in COMMERCIAL_SCHEMA.items():
+        path = d / name
+        if not path.exists():
+            errors.append(f"{name}: Datei fehlt")
+            continue
+        with path.open(encoding="utf-8", newline="") as f:
+            reader = csv.DictReader(f)
+            missing = [c for c in cols if c not in (reader.fieldnames or [])]
+            if missing:
+                errors.append(f"{name}: Spalten fehlen: {', '.join(missing)}")
+            tables[name] = [{k: (v or "").strip() for k, v in row.items()} for row in reader]
+    return tables, errors
+
+
+def validate_commercial(t: dict) -> list[str]:
+    """Erlaubte Werte, Pflicht-IDs, Verweise und Datenschutz."""
+    errors = []
+    for name, (_, enums) in COMMERCIAL_SCHEMA.items():
+        rows = t.get(name, [])
+        id_col = COMMERCIAL_SCHEMA[name][0][0]
+        seen = set()
+        for i, row in enumerate(rows, start=2):
+            for col, allowed in enums.items():
+                if row.get(col, "") not in allowed and not (row.get(col, "") == "" and "" in allowed):
+                    errors.append(f"{name} Zeile {i}: {col}='{row.get(col)}' nicht erlaubt ({' · '.join(a for a in allowed if a)})")
+            if name not in ("stueckliste.csv", "offer_positionen.csv", "transaktion_positionen.csv"):
+                key = row.get(id_col, "")
+                if not key:
+                    errors.append(f"{name} Zeile {i}: {id_col} fehlt")
+                elif key in seen:
+                    errors.append(f"{name} Zeile {i}: {id_col} '{key}' doppelt")
+                seen.add(key)
+            if name in PRIVACY_FILES:
+                for col, val in row.items():
+                    if EMAIL_RE.search(val or "") or PHONE_RE.search(val or ""):
+                        errors.append(f"{name} Zeile {i}: Spalte '{col}' sieht nach personenbezogenen Daten aus — gehört nicht ins Repo")
+
+    ids = lambda name, col: {r[col] for r in t.get(name, []) if r.get(col)}  # noqa: E731
+    produkte, komponenten = ids("produkte.csv", "produkt_id"), ids("komponenten.csv", "komponente_id")
+    stuecklisten = ids("stueckliste.csv", "stueckliste_id")
+    offers_, txs = ids("offers.csv", "offer_id"), ids("transaktionen.csv", "transaktion_id")
+    kunden, exps = ids("kunden.csv", "kunde_ref"), ids("experimente.csv", "experiment_id")
+    decisions = ids("entscheidungen.csv", "decision_id")
+
+    def ref(name, col, valid, target):
+        for i, row in enumerate(t.get(name, []), start=2):
+            v = row.get(col, "")
+            if v and v not in valid:
+                errors.append(f"{name} Zeile {i}: {col} '{v}' nicht in {target}")
+
+    ref("produkte.csv", "quelle_produkt_id", produkte, "produkte.csv")
+    ref("produkte.csv", "stueckliste_id", stuecklisten, "stueckliste.csv")
+    ref("stueckliste.csv", "komponente_id", komponenten, "komponenten.csv")
+    ref("bestand.csv", "artikel_id", produkte | komponenten, "produkte.csv/komponenten.csv")
+    ref("offer_positionen.csv", "offer_id", offers_, "offers.csv")
+    ref("offer_positionen.csv", "produkt_id", produkte, "produkte.csv")
+    ref("offers.csv", "freigabe_ref", decisions, "entscheidungen.csv")
+    ref("transaktionen.csv", "offer_id", offers_, "offers.csv")
+    ref("transaktionen.csv", "kunde_ref", kunden, "kunden.csv")
+    ref("transaktionen.csv", "experiment_id", exps, "experimente.csv")
+    ref("transaktion_positionen.csv", "transaktion_id", txs, "transaktionen.csv")
+    ref("transaktion_positionen.csv", "produkt_id", produkte, "produkte.csv")
+    ref("experimente.csv", "offer_id", offers_, "offers.csv")
+    ref("experimente.csv", "decision_ref", decisions, "entscheidungen.csv")
+    for i, row in enumerate(t.get("offers.csv", []), start=2):
+        if row.get("status") == "aktiv" and not row.get("freigabe_ref"):
+            errors.append(f"offers.csv Zeile {i}: aktives Offer ohne freigabe_ref (Freigabe durch Mar fehlt)")
+    return errors
+
+
+def _num(value: str) -> float | None:
+    try:
+        return float(value.replace(",", ".")) if value else None
+    except ValueError:
+        return None
+
+
+def derived_cogs(t: dict) -> dict:
+    """COGS je Produkt aus Stückliste × Komponentenpreis. Wird nie gespeichert.
+    Ergebnis je produkt_id: {'wert', 'vollstaendig', 'status', 'offen'}."""
+    preis = {k["komponente_id"]: k for k in t.get("komponenten.csv", [])}
+    listen: dict = {}
+    for row in t.get("stueckliste.csv", []):
+        listen.setdefault(row["stueckliste_id"], []).append(row)
+    out = {}
+    for p in t.get("produkte.csv", []):
+        summe, offen, status = 0.0, [], "CONFIRMED"
+        for pos in listen.get(p.get("stueckliste_id", ""), []):
+            k = preis.get(pos["komponente_id"], {})
+            pr, menge = _num(k.get("preis_eur_je_einheit", "")), _num(pos.get("menge", ""))
+            st = k.get("status", "UNKNOWN") or "UNKNOWN"
+            if STATUS_RANK.get(st, 4) > STATUS_RANK[status]:
+                status = st
+            if pr is None or menge is None:
+                offen.append(pos["komponente_id"])
+                status = "UNKNOWN"
+                continue
+            summe += pr * menge
+        if not listen.get(p.get("stueckliste_id", "")):
+            offen.append("Stückliste fehlt")
+            status = "UNKNOWN"
+        out[p["produkt_id"]] = {"wert": summe, "vollstaendig": not offen, "status": status, "offen": offen}
+    return out
+
+
+def stock_levels(t: dict) -> dict:
+    """Bestand je Artikel = Summe der Bewegungen (mit Einheit)."""
+    levels: dict = {}
+    for row in t.get("bestand.csv", []):
+        menge = _num(row.get("menge", ""))
+        if menge is None:
+            continue
+        key = (row["artikel_id"], row.get("einheit", ""))
+        levels[key] = levels.get(key, 0.0) + menge
+    return levels
+
+
+def daten_cmd(args) -> int:
+    brand = load_brand(args.brand)
+    tables, errors = load_commercial(brand)
+    if tables:
+        errors += validate_commercial(tables)
+    print(f"\n{brand['name']} — Commercial-Daten ({(brand['_dir'] / 'commercial').relative_to(ROOT.parent)})\n")
+    if not tables:
+        for e in errors:
+            print(f"  ❌ {e}")
+        return 1
+
+    cogs = derived_cogs(tables)
+    produkte = {p["produkt_id"]: p for p in tables.get("produkte.csv", [])}
+    print(f"{'Produkt':<26}{'Typ':<17}{'COGS':>11}  Status      Offen")
+    for pid, c in cogs.items():
+        wert = eur(c["wert"]) if c["vollstaendig"] else f"≥ {eur(c['wert'])}"
+        print(f"{pid:<26}{produkte[pid]['typ']:<17}{wert:>11}  {c['status']:<11} {', '.join(c['offen'])}")
+    print("\n  COGS = Σ Stückliste × Komponentenpreis (gerechnet, nicht gespeichert). „≥“ = unvollständig, nur Untergrenze.")
+
+    brand_cogs = {v["name"].replace(" ", ""): v.get("cogs") for v in brand.get("varianten", [])}
+    vergleiche = []
+    for pid, c in cogs.items():
+        p = produkte[pid]
+        alt = brand_cogs.get(f"{p['groesse_ml']}ml")
+        if p["typ"] == "verkaufsvariante" and alt is not None:
+            vergleiche.append((p["groesse_ml"], alt, c))
+    seen = set()
+    for ml, alt, c in vergleiche:
+        if ml in seen:
+            continue
+        seen.add(ml)
+        hinweis = "gleich" if abs(alt - c["wert"]) < 0.005 else "abweichend"
+        teil = "" if c["vollstaendig"] else " (Stückliste unvollständig: brand.json ist dann nur eine Untergrenze)"
+        print(f"  brand.json COGS {ml} ml: {eur(alt)} · aus Stückliste: {'' if c['vollstaendig'] else '≥ '}{eur(c['wert'])} → {hinweis}{teil}")
+
+    levels = stock_levels(tables)
+    print(f"\nBestand ({len(tables.get('bestand.csv', []))} Bewegungen)")
+    if not levels:
+        print("  keine Bewegungen erfasst — Bestand und gebundenes Kapital UNKNOWN")
+    preis = {k["komponente_id"]: _num(k.get("preis_eur_je_einheit", "")) for k in tables.get("komponenten.csv", [])}
+    kapital, unbewertet = 0.0, []
+    for (artikel, einheit), menge in sorted(levels.items()):
+        if artikel in produkte:
+            p = produkte[artikel]
+            c = cogs.get(artikel)
+            if p["typ"] == "quellgebinde" and einheit == "ml":
+                ml_preis = preis.get("fertigparfum-ml")
+                wert = menge * ml_preis if ml_preis is not None else None
+            else:
+                wert = menge * c["wert"] if c and c["vollstaendig"] else None
+        else:
+            wert = menge * preis[artikel] if preis.get(artikel) is not None else None
+        if wert is None:
+            unbewertet.append(artikel)
+        else:
+            kapital += wert
+        print(f"  {artikel:<26}{menge:>10g} {einheit:<7}{eur(wert) if wert is not None else 'Wert UNKNOWN':>14}")
+    if levels:
+        print(f"  Gebundenes Kapital (bewertete Artikel): {eur(kapital)}"
+              + (f" · ohne Wert: {', '.join(unbewertet)}" if unbewertet else ""))
+
+    print("\nWeitere Objekte")
+    for name in ("offers.csv", "transaktionen.csv", "kunden.csv", "experimente.csv", "entscheidungen.csv"):
+        print(f"  {name:<24}{len(tables.get(name, [])):>5} Einträge")
+
+    print()
+    if errors:
+        for e in errors:
+            print(f"  ❌ {e}")
+        return 1
+    print("  ✅ Struktur, Verweise und Datenschutzprüfung ohne Fehler")
+    return 0
+
+
 # ---------------------------------------------------------------- CLI
 
 def main() -> None:
@@ -517,6 +770,9 @@ def main() -> None:
     s = sub.add_parser("export", help="Alles in eine Markdown-Datei bündeln (für andere Claude-Sitzungen)")
     s.add_argument("--brand", help="nur eine Marke (Standard: alle)")
     s.add_argument("--out", default="playbook-export.md", help="Zieldatei (Standard: playbook-export.md)")
+
+    s = sub.add_parser("daten", help="Commercial-Daten prüfen: COGS aus Stückliste, Bestand, Kapital, Verweise")
+    s.add_argument("--brand", required=True)
 
     s = sub.add_parser("swipe", help="Wörtliches Zitat in die Swipe-Datei schreiben")
     s.add_argument("--brand", required=True)
@@ -561,6 +817,8 @@ def main() -> None:
         prompt_cmd(args)
     elif args.cmd == "export":
         export_cmd(args)
+    elif args.cmd == "daten":
+        sys.exit(daten_cmd(args))
     elif args.cmd == "swipe":
         swipe_cmd(args)
 

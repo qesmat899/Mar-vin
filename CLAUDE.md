@@ -17,6 +17,7 @@ Grundlage für jede Analyse und Strategie ist das **E-Commerce Brand-Playbook** 
 | `playbook/azizam/SYSTEM-AUFBAU.md` | Aufbauplan des Azizam-Systems in Stufen, mit den passenden Plugin-Skills |
 | `playbook/SYSTEM.md` | Das Playbook auf einer Seite — fester Denkrahmen für alle Marketing-Aufgaben |
 | `playbook/azizam/` | Azizam: Markt, Personas, Angles, Marke, Unit Economics, Creator, Recht, 90-Tage-Plan |
+| `playbook/azizam/commercial/` | Commercial-Daten: Produkte, Komponenten, Bestand, Offers, Transaktionen, Kunden (pseudonym), Experimente, Entscheidungen (Regeln in der `README.md` dort) |
 | `playbook/haus-und-gruen/` | Haus & Grün: dieselbe Struktur |
 | `playbook/templates/` | Vorlagen (Persona-/Pain-Karte, Creator-Briefing, Verträge, CSVs) |
 | `AI-REVIEW-CONTRACT.md` | Schnittstelle zu einem optionalen unabhängigen AI Review (siehe „Independent AI Review“) |
@@ -30,7 +31,10 @@ Grundlage für jede Analyse und Strategie ist das **E-Commerce Brand-Playbook** 
 python3 playbook.py status                          # Fortschritt der 90-Tage-Pläne
 python3 playbook.py economics --brand azizam        # CM1/CM2/Break-even-ROAS/LTV:CAC
 python3 playbook.py economics --brand azizam --all  # alle Größen × Kanäle
+python3 playbook.py economics --brand azizam --ad-factor 1.19  # zusätzlich Plattform-Perspektive B (nur wenn f belegt)
 python3 playbook.py offers --brand haus-und-gruen   # Angebotsvarianten
+python3 playbook.py daten --brand azizam            # Commercial-Daten prüfen: COGS aus Stückliste, Bestand, Kapital
+python3 -m unittest discover -s tests               # Tests für Rechner und Commercial-Daten
 python3 playbook.py prompt 1 --brand azizam --data zitate.txt [--run]
 python3 playbook.py swipe --brand azizam --source "Quelle" "Zitat"
 python3 playbook.py export                          # alles in eine Markdown-Datei bündeln

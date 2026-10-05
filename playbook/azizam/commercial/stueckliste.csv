@@ -1,0 +1,12 @@
+stueckliste_id,komponente_id,menge,einheit
+gebinde-500,fertigparfum-ml,500,ml
+sv-30,fertigparfum-ml,30,ml
+sv-30,flakon-30,1,stueck
+sv-30,verschluss-30,1,stueck
+sv-30,etikett-box,1,stueck
+sv-50,fertigparfum-ml,50,ml
+sv-50,flakon-50,1,stueck
+sv-50,verschluss-50,1,stueck
+sv-50,etikett-box,1,stueck
+probe-2,fertigparfum-ml,2,ml
+probe-2,probenroehrchen-2,1,stueck

@@ -463,7 +463,8 @@ FOLLOW-UP   – nächster Prüfpunkt
 ```
 
 Du stellst den Eintrag nur dar. Du schreibst ihn **nicht** selbst in `SYNC.md` oder eine andere Datei, außer Mar
-verlangt das ausdrücklich. Eine Empfehlung wird nie als Entscheidung geloggt.
+verlangt das ausdrücklich. Eine Empfehlung wird nie als Entscheidung geloggt. Verlangt Mar die Ablage, ist der Ort
+`playbook/azizam/commercial/entscheidungen.csv` (`bestaetigt_von` = Mar); Experimente stehen in `experimente.csv`.
 
 ---
 

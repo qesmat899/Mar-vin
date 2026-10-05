@@ -89,6 +89,9 @@ Verkaufsdaten. „Auslaufend“ gilt nur, wenn Mar es entschieden hat und es in 
 
 ## 4 · Bestandsarten
 
+Bestandsbewegungen (Eingang, Abfüllung aus dem Quellgebinde, Verkauf, Probe, Bruch, Korrektur) liegen in
+`playbook/azizam/commercial/bestand.csv`; Bestand und gebundenes Kapital rechnet `python3 playbook.py daten`.
+
 | Bestand | Definition |
 |---|---|
 | **Physical Stock** | physisch vorhanden (gezählt, mit Datum) |
