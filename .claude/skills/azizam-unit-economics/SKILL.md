@@ -105,7 +105,7 @@ will) sind keine zu belegenden Eingaben. Sie werden als **OPTION** gekennzeichne
 | CM2 je Einheit | wie CM1 + CAC |
 | Beitrag zum Fixkostenblock | wie CM2 + Retouren-/Ausfallquote |
 | Stück-/Umsatz-Break-even | wie Beitrag + definierter Fixkostenblock (Betrag, Zeitraum, Inhalt) |
-| Break-even-ROAS, max. CAC | wie CM1 (+ Retourenquote für max. CAC) |
+| Break-even-ROAS, max. CAC | wie CM1 (+ Retourenquote für max. CAC); für Perspektive B zusätzlich Steuerstatus und Abrechnungsart der Werbeplattform (Faktor f, Abschnitt 5 „Break-even“) |
 | MOQ / Staffel / Kapital | MOQ, Staffelpreise je Menge, Fracht- und Nebenkosten je Menge, Einmalkosten, verkaufsfähige Menge, Absatzannahme (echte Daten oder Planwert von Mar, siehe Abschnitt 3), Zahlungsbedingungen |
 | Lieferantenvergleich | vergleichbare Spezifikation, gleiche Menge, Preise, Fracht/Nebenkosten, MOQ, Ausschuss, Zahlungsbedingungen, Lieferzeit |
 | Rabatt / Bundle / Offer | wie CM2 + Rabatt- bzw. Bundle-Struktur (Einheiten je Bestellung, Versand je Bestellung) |
@@ -124,8 +124,8 @@ Die Definitionen folgen der bestehenden Repo-Konvention aus dem Playbook (Kap. 4
 VK netto − COGS − Versand/Fulfillment − Zahlungsgebühren   = CM1  (Deckungsbeitrag I, „Rohertrag“)
 CM1 − CAC                                                  = CM2  (Deckungsbeitrag II, „die entscheidende Zahl“)
 CM2 − Retouren/Ausfall                                     = Beitrag zum Fixkostenblock
-Break-even-ROAS = VK netto ÷ CM1   (Plattform-Sicht: VK brutto ÷ CM1)
-max. CAC        = CM1 − Retouren/Ausfall
+Break-even-ROAS = VK netto ÷ CM1   (Perspektive A, effektive Kosten; Perspektive B siehe „Break-even“)
+max. CAC        = CM1 − Retouren/Ausfall   (Perspektive A, effektive Kosten)
 ```
 
 Zusätzlich, ohne die Konvention zu ändern, zeigst du die Zwischenstufe
@@ -154,7 +154,8 @@ Preise, Versand-, Gebühren- und CAC-Werte.
 Als Kleinunternehmer kann Azizam keine Vorsteuer abziehen. Kosten werden daher mit dem **tatsächlich gezahlten Betrag
 inklusive nicht abziehbarer Umsatzsteuer** angesetzt. Ist unklar, ob ein Angebot netto oder brutto ist oder ob USt
 anfällt: **UNKNOWN**. Werbekosten bei Meta/TikTok/Google Ireland laut `07-recht-retention.md` effektiv ×1,19
-(Reverse Charge, kein Vorsteuerabzug; Klasse S). Steuerfragen klärt der Steuerberater.
+(Reverse Charge, kein Vorsteuerabzug; Klasse S). Wie sich das auf Break-even-ROAS und max. CAC auswirkt, regelt
+Abschnitt 5 „Break-even“ (Perspektive A und B). Steuerfragen klärt der Steuerberater.
 
 ### COGS (je verkaufsfähiger Einheit)
 Azizam-Konvention: „Produkt + Verpackung“. Präzisiert als **Landed Cost je verkaufsfähiger Einheit**:
@@ -205,8 +206,51 @@ Gehälter, Miete, Software, Agenturen, Verwaltung, Shop-Abo usw. gehören **nich
 für Break-even-Analysen getrennt als **Fixkostenblock** (Betrag, Zeitraum, Inhalt, Quelle) angesetzt.
 
 ### Break-even
-- **Break-even-ROAS** = Net Revenue ÷ CM1 (netto); Plattform-Sicht = VK brutto ÷ CM1.
-- **max. CAC** = CM1 − Retouren/Ausfall.
+Werbekennzahlen gibt es in **zwei Perspektiven**. Sie werden nie vermischt und immer mit ihrem Namen ausgegeben;
+eine Werbekennzahl ohne Perspektive ist unvollständig.
+
+| Perspektive | Was sie misst | Werbekosten-Basis |
+|---|---|---|
+| **A · effektive Wirtschaftskosten** | ob eine Bestellung nach allen Kosten Geld verdient oder verliert | Werbekosten so, wie sie Azizam wirtschaftlich tatsächlich belasten, nach der geltenden Steuerbehandlung (inkl. nicht abziehbarer Umsatzsteuer) |
+| **B · Plattformausgabe** | welche Schwelle im Werbekonto gilt | der Betrag, den die Werbeplattform berechnet bzw. im Ad-Konto als Ausgabe zeigt |
+
+Umrechnung über den **Faktor f**: effektive Werbekosten = Plattformausgabe × f.
+- **f = 1 + nicht abziehbarer USt-Satz.** Bei 19 % ergibt das 1,19.
+- **Warum:** Die Plattform rechnet ohne Umsatzsteuer ab (Reverse Charge), Azizam schuldet die Steuer selbst und kann
+  sie als Kleinunternehmer nicht als Vorsteuer abziehen. Quelle: `07-recht-retention.md` (Klasse S); vom
+  Steuerberater bestätigen lassen.
+- **Wann f = 1,19 gilt:** nur wenn alle drei Bedingungen erfüllt und belegt sind: Kleinunternehmerstatus im
+  Analysezeitraum, Abrechnung der Plattform ohne Umsatzsteuer, keine Vorsteuerabzugsberechtigung.
+- **Wann nicht:** Mit Vorsteuerabzug (z. B. nach Wechsel in die Regelbesteuerung) ist f = 1. Weist eine Plattform die
+  Umsatzsteuer auf der Rechnung aus, wird geklärt, ob das Ad-Konto die Ausgabe mit oder ohne Steuer zeigt; bis dahin ist
+  f **UNKNOWN**. Ist der Steuerstatus UNKNOWN, ist auch f UNKNOWN, und Perspektive B wird nicht ausgegeben.
+
+**Break-even-ROAS**
+- **Break-even-ROAS (A, effektiv)** = Net Revenue ÷ CM1. Gilt nur gegen einen ROAS, der mit **effektiven**
+  Werbekosten gerechnet ist.
+- **Break-even-ROAS (B, Plattform)** = Net Revenue ÷ (CM1 ÷ f) = f × Net Revenue ÷ CM1. Gilt gegen den ROAS, den die
+  Plattform anzeigt. Voraussetzung: Der Umsatz im Zähler entspricht dem Umsatz, den die Plattform als Conversion-Wert
+  zählt (z. B. mit oder ohne Versandentgelt). Ist das nicht geklärt, ist Perspektive B **UNKNOWN**.
+- Der **Plattform-ROAS** (Anzeige im Werbekonto) darf **nie** mit dem Break-even-ROAS (A) verglichen werden, sondern
+  nur mit dem Break-even-ROAS (B). Ohne f ist Perspektive B UNKNOWN.
+- Die frühere Zeile „Plattform-Sicht = VK brutto ÷ CM1“ (in `playbook.py` „Break-even-ROAS (brutto) … so rechnet die
+  Plattform“) betrifft nur die **Umsatzseite** bei Regelbesteuerung (brutto statt netto). Beim Kleinunternehmer ist
+  sie identisch mit Perspektive A und enthält **keinen** Faktor f. Sie ist keine Plattform-Schwelle.
+
+**max. CAC**
+- **max. CAC (A, effektiv)** = CM1 − Retouren/Ausfall. Höchste effektive Werbekosten je Neukunden-Bestellung, bei
+  denen der Beitrag zum Fixkostenblock nicht negativ wird.
+- **max. Plattform-CPA (B)** = max. CAC (A) ÷ f. Höchste Ausgabe je Neukunden-Bestellung, wie sie im Werbekonto
+  erscheint.
+
+**Bestehende Werte im Repo:** „Break-even-ROAS 1,51“ und „max. CAC 28,60 €“ (50 ml) in `brand-briefing.md`,
+`NAECHSTE-SCHRITTE.md` und `90-tage-plan.md` stammen aus `playbook.py`. Sie sind Perspektive A ohne Faktor f, mit **alten Preisen**, ohne
+Versandentgelt des Kunden und ohne feste Transaktionsgebühren (Abschnitt 13). Ihre Grundlage ist nicht aktuell, und
+aus den Texten geht nicht eindeutig hervor, gegen welche Perspektive sie gelesen werden sollen. Status: **OUTDATED,
+zu überprüfen.** Nie als Plattform-Schwelle verwenden; vor jeder Werbeentscheidung mit aktuellen Eingaben neu rechnen
+und beide Perspektiven getrennt ausweisen.
+
+**Weitere Break-even-Kennzahlen**
 - **Stück-Break-even** = Fixkostenblock ÷ Beitrag zum Fixkostenblock je Einheit (nur wenn Beitrag > 0).
 - **Umsatz-Break-even** = Stück-Break-even × Net Revenue je Einheit.
 - **Kapital-Break-even einer Bestellung** = Bestellsumme inkl. Nebenkosten ÷ Beitrag je Einheit
@@ -337,7 +381,8 @@ CM2
 CM2 je Einheit · CM2-Marge · Rechenweg · Beitrag zum Fixkostenblock (nach Retouren)
 
 BREAK-EVEN
-Break-even-ROAS (netto/brutto) · max. CAC · Stück- und Umsatz-Break-even (falls Fixkostenblock definiert)
+Break-even-ROAS (A, effektiv) · Break-even-ROAS (B, Plattform) mit Faktor f oder UNKNOWN · max. CAC (A, effektiv) ·
+max. Plattform-CPA (B) · Stück- und Umsatz-Break-even (falls Fixkostenblock definiert)
 
 MOQ / CAPITAL
 (falls relevant) Staffeltabelle · Cash Requirement · Kapitalbindung · Reichweite · Kapital-Break-even · Budgetabgleich
@@ -386,6 +431,8 @@ Abschnitte ohne Inhalt nicht weglassen, sondern mit „nicht relevant“ oder �
 - [ ] Ist ein alter oder als veraltet markierter Wert als aktuell verwendet? → OUTDATED.
 - [ ] Wurde bei einem Konflikt still ein Wert gewählt? → beide zeigen, Status anpassen.
 - [ ] Brutto mit Netto vermischt, Kanäle vermischt, Versandentgelt mit Versandkosten verwechselt?
+- [ ] Trägt jeder Break-even-ROAS und jeder max. CAC seine Perspektive (A effektiv / B Plattform)? Wird ein
+      Plattform-ROAS nur mit Perspektive B verglichen? Ist f belegt oder UNKNOWN?
 - [ ] Fixkosten oder Einmalkosten unbemerkt in COGS oder CM?
 - [ ] COGS durch bestellte statt verkaufsfähige Einheiten geteilt, obwohl Ausschuss bekannt ist?
 - [ ] Ist der Economics-Status der schlechteste relevante Status? Gibt es bei NOT READY eine BASE-Zahl? → als Modellrechnung kennzeichnen.

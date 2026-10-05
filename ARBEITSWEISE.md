@@ -39,6 +39,6 @@ Faustregel: **Am Ende soll eine Entscheidung stehen → Chat. Am Ende soll eine 
 - Flakon + Verpackung finden → **Chat**
 - `CLAUDE-MASTER.md` ins Projekt „Azizam“ hochladen, globale Anweisung + Memory aus `playbook/templates/claude-anweisungen.md` setzen → **Mar** (claude.ai)
 - Azizam-System nach `playbook/azizam/SYSTEM-AUFBAU.md` aufbauen: jetzt Stufe 0–1 (Profil steht, Montag „Monday brief“, Wettbewerbs- und Rechts-Routine) → **Code**/**Cloud-Routine**
-- CPNP/Sicherheitsbewertung bei der Fabrik schriftlich bestätigen → **Mar**
+- Dokumente der Fabrik je Duft sammeln (die Fabrik liefert die Rechtsdokumente, u. a. Sicherheitsbewertung und INCI), danach jeden Duft selbst im CPNP-Portal eintragen → **Mar** (Stand `SYNC.md`)
 - Preise festlegen, sobald Flakonpreis steht → **Chat**, dann **Code** (`brand.json` + Rechner)
 - 100 ml erst nach den ersten 30/50-ml-Verkäufen wieder aufgreifen

@@ -102,8 +102,9 @@ Regeln aus `ARBEITSWEISE.md`: Shopify lesen frei, ändern nur mit Freigabe. E-Ma
 (SSO, Rechteverwaltung, Audit), für eine Person meist unnötig. **Die API wird separat bezahlt**: `playbook.py prompt --run`
 braucht einen eigenen API-Key.
 
-**Abwägung für Mar (keine Entscheidung):** Ein Text empfiehlt Max 20x. Bei 500–1.500 € Gesamtbudget für 3 Monate und
-unter 5 Std./Woche würde das einen großen Teil des Budgets binden. Offene Frage in `SYNC.md`.
+**Abwägung für Mar (keine Entscheidung):** Ein Text empfiehlt Max 20x. Bei einem Investitionsbudget von 500–1.500 € für
+3 Monate (laut `SYNC.md`; Art und Aufteilung des Budgets sind UNKNOWN, solange Mar sie nicht bestätigt) und unter
+5 Std./Woche würde das einen großen Teil des Budgets binden. Offene Frage in `SYNC.md`.
 
 ---
 

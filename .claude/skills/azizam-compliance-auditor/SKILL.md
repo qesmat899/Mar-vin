@@ -290,6 +290,12 @@ RECOMMENDATIONs fest und vergib je Finding eine Risikoklasse.
     Verfahren zur Erfassung von Kundenmeldungen (Hautreaktionen usw.), Bewertung, Meldung **ernster** unerwünschter
     Wirkungen an die zuständige Behörde (Art. 23), Rückkopplung in CPSR/PIF. Kein Verfahren → MEDIUM vor Launch,
     HIGH nach Verkaufsstart. Bekannter ernster Vorfall ohne Bearbeitung → CRITICAL.
+    **Datenschutz bei Kundenmeldungen** (gemäß `CLAUDE-MASTER.md` §2 Regel 6): Gesundheitsbezogene oder sonstige sensible
+    personenbezogene Kundendaten (z. B. Name, Kontakt, Beschreibung einer Hautreaktion) kommen **nicht** ins
+    Repository. Sie werden auch nicht in Review-Packets, Decision Logs oder Commercial-Daten (z. B. Transaktions- oder
+    Kundendaten) übernommen. Braucht ein Compliance-Fall diese Information, verweist das Audit auf die zulässige externe
+    Quelle, in der Mar die Meldung führt, oder nutzt nur abstrahierte bzw. aggregierte Angaben (z. B. „1 Meldung
+    Hautrötung, Duft X, Charge Y, Datum“, ohne Personenbezug).
 
 15. **Änderungsprüfung (Prüfbereich 14)** – immer, wenn sich etwas geändert hat
     Bei jeder Änderung an **Rezeptur, Duftöl/Lieferant, Konzentration, Verpackung/Flakon (Material, Kontakt mit dem
