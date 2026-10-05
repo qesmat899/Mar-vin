@@ -1,7 +1,7 @@
 # SYNC.md – Übergabe zwischen Claude Chat und Claude Code (Azizam)
 
 > Gemeinsame Datei für **Claude Chat** und **Claude Code**. Sie ist die einzige Brücke zwischen beiden.
-> Zuletzt aktualisiert: 2026-10-04 [Code]
+> Zuletzt aktualisiert: 2026-10-05 [Code]
 
 ---
 
@@ -98,11 +98,11 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 - **2026-10-03 [Code]** Playbook-Kapitel 01, 03, 04, 06, 90-Tage-Plan, Briefing, Nächste Schritte und README bereinigt: 100 ml raus, Preise als `[Preis offen]`, Zahlen auf Kleinunternehmer/Flakon-Annahme; Kapitel 05 als Ganzes als veraltet markiert.
 - **2026-10-03 [Code]** Mars Antworten eingearbeitet (kein Verkauf aktuell, CPNP offen, 09/2026-Regeln gelten außer Duftlinien), Adresse/Telefon/USt-IdNr. aus dem Repo entfernt, Steuerteil in `07-recht-retention.md` auf Kleinunternehmer umgestellt.
 - **2026-10-03 [Code]** Mars Klärung eingearbeitet (Kleinunternehmer, 30 + 50 ml, Preise offen, Website offline): `brand.json` und `playbook/KONTEXT-EXPORT.md` angepasst, Economics neu gerechnet.
-- **2026-10-03 [Code]** Geprüft: Playbook (`docs/ECommerceBrandPlaybook.md`) und `playbook/KONTEXT-EXPORT.md` lagen schon im Repo, hochgeladene Fassung identisch. Widersprüche zu dieser Datei unter „Offene Fragen“ eingetragen.
 
 ### Verlauf (zusammengefasst)
 
 - 2026-10-02: SYNC.md im Chat angelegt und ins Repo gelegt.
+- 2026-10-03: Playbook (`docs/ECommerceBrandPlaybook.md`) und `playbook/KONTEXT-EXPORT.md` lagen schon im Repo, hochgeladene Fassung identisch; Widersprüche zu dieser Datei unter „Offene Fragen“ eingetragen.
 
 ---
 
