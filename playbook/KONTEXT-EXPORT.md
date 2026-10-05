@@ -6,10 +6,10 @@
 
 ## Was das hier ist
 
-Zwei Dinge im selben Repository (`qesmat899/Mar-vin`):
+Im Repository (`qesmat899/Mar-vin`):
 
-1. **`marvin.py`** — das ursprüngliche Werkzeug: Video-URL → Whisper-Transkript → KI-Zusammenfassung. Für das
-   Playbook nützlich, um die Sprache der Zielgruppe aus TikTok-Videos wörtlich zu gewinnen.
+1. **`marvin.py`** — früheres Video-Transkriptions-Werkzeug aus der Zeit vor Azizam; am 05.10.2026 entfernt, nicht
+   mehr Teil des Repositorys.
 2. **`playbook/`** — die Umsetzung des „E-Commerce Brand-Playbook" (Vom Markt zur Culture Brand, Ausgabe 09/2026,
    64 Seiten) für zwei Marken des Inhabers. Nicht als Zusammenfassung, sondern als Arbeitssystem mit Rechner,
    Prompts und Checklisten. Bedient über `playbook.py`.
@@ -50,6 +50,7 @@ der Website. **Flakon und Verpackung werden gesucht** (Stand 03.10.2026).
 | Kernzahlen 50 ml online | mit alten Preisen: `playbook.py economics --brand azizam --all` ausführen, nicht von Hand rechnen |
 | Firma | Marvin Farienfar, Einzelunternehmer, Würzburg · **Kleinunternehmer nach § 19 UStG** (Mar 03.10.2026), keine MwSt. · USt-IdNr. vorhanden |
 | Versand | Deutschland + Österreich, 2–4 Werktage, 4,95 €, kostenlos ab 80 € |
+| Shop & Buchhaltung | Neustart im Shopify-Shop „My Store 3“ (04.10.2026: 0 Produkte, 0 Bestellungen); Buchhaltung beim Steuerberater, Geschäftsjahr = Kalenderjahr (Mar 04.10.2026) |
 | Rückgabe | gesetzlich 14 Tage; freiwillig 30 Tage, wenn Flakon ≥ 80 % gefüllt |
 | Sortiment | 7 Düfte: Narcos, Midnight Café, Erba Bomb, Imaginary, Goldstaub II., Velvet Vanilla, Kings Perfume |
 
@@ -70,7 +71,8 @@ nie von Hand nachrechnen, sondern den Befehl nutzen.
 
 1. **Kosmetikrecht vor dem ersten Onlineverkauf.** Wer fertiges Parfum unter eigenem Namen abfüllt, ist selbst die
    verantwortliche Person nach Art. 4 Kosmetik-VO: CPNP-Notifizierung, PIF, Sicherheitsbewertung (CPSR), INCI-
-   Kennzeichnung. Anfrage an die Fabrik steht in `azizam/NAECHSTE-SCHRITTE.md`, Schritt 0A.
+   Kennzeichnung, dazu die erweiterte Duftallergen-Kennzeichnung nach VO (EU) 2023/1545 (für Produkte, die ab
+   31.07.2026 in Verkehr gebracht werden). Anfrage an die Fabrik steht in `azizam/NAECHSTE-SCHRITTE.md`, Schritt 0A.
 2. **Notenpyramiden für sechs der sieben Düfte.** Nur Narcos ist bekannt (Honig, Tabakblatt, Zimt, Lavendel,
    Zitrus, Vanille). Ohne die echten Noten bleibt die Linienzuordnung Hypothese — **keine Noten erfinden.**
 3. **Website-Quellcode ist nicht zugänglich.** Nicht in diesem Repo (dort nur 3D-Flakon-Komponenten unter
@@ -136,3 +138,5 @@ python3 playbook.py export                          # alles in eine Datei bünde
 2. Vor jeder Zahl: `playbook.py economics` laufen lassen, statt aus dem Text zu rechnen.
 3. Vor jedem Text: die Verbotsliste im `brand-briefing.md` prüfen.
 4. Neue Erkenntnisse gehören in die Dateien, nicht nur in die Antwort — sonst sind sie in der nächsten Sitzung weg.
+5. Wie Claude für Azizam arbeitet (Funktionen, Modelle, Compliance-System, Agenten, Freigaben, Routinen): `CLAUDE-MASTER.md`
+   im Repo-Root (Stand 04.10.2026). Fertige Texte für claude.ai: `templates/claude-anweisungen.md`.
