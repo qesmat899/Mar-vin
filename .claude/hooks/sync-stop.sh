@@ -14,5 +14,5 @@ out = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text
 files = [l[3:] for l in out.splitlines()]
 if files and "SYNC.md" not in files:
     print(json.dumps({"decision": "block",
-        "reason": "Es gibt Änderungen, aber SYNC.md ist nicht aktualisiert. Trage nach den Regeln in SYNC.md Entscheidungen, Aufgaben-Status und einen Log-Eintrag [Code] nach (nur Gesichertes), oder beende, falls nichts Relevantes passiert ist."}))
+        "reason": "Es gibt Änderungen, aber SYNC.md ist nicht aktualisiert. Nur wenn sich der Übergabestatus geändert hat (Stand, Entscheidung, offene Frage, Aufgabe): nach den Regeln in SYNC.md nachtragen, ohne Datenwerte zu kopieren. Sonst einfach beenden. Bei neuen oder umbenannten Dateien vorher python3 playbook.py hygiene laufen lassen."}))
 P

@@ -26,6 +26,7 @@ from datetime import date
 from pathlib import Path
 
 import commercial
+import hygiene
 
 ROOT = Path(__file__).resolve().parent / "playbook"
 DEFAULT_MODEL = "claude-opus-5"
@@ -603,6 +604,9 @@ def main() -> None:
     s.add_argument("--brand", required=True)
     s.add_argument("--ad-factor", type=float, help="Faktor f für Perspektive B")
 
+    s = sub.add_parser("hygiene", help="Repo-Hygiene: Lifecycle, Duplikate, Widersprüche, tote Verweise (löscht nie)")
+    s.add_argument("--alle", action="store_true", help="alle Dateien je Lifecycle auflisten")
+
     s = sub.add_parser("daten", help="Commercial-Daten prüfen: Schema, Verweise, COGS, Bestand, Transaktionen")
     s.add_argument("--brand", required=True)
 
@@ -657,6 +661,10 @@ def main() -> None:
     elif args.cmd == "offers":
         brand = load_brand(args.brand)
         print_offers(brand, offers(brand["economics"], args.ad_factor))
+    elif args.cmd == "hygiene":
+        r = hygiene.run(ROOT.parent)
+        print(hygiene.render(r, alle=args.alle))
+        sys.exit(1 if r.failed else 0)
     elif args.cmd == "daten":
         sys.exit(daten_cmd(args.brand))
     elif args.cmd == "prompt":

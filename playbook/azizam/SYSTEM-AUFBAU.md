@@ -38,7 +38,7 @@
 
 | Aufgabe | Werkzeug | Rhythmus | Wer |
 |---|---|---|---|
-| Wettbewerb und Trends beobachten | Prompt §7 aus `templates/claude-anweisungen.md` als Cloud-Routine; nach Shop-Start `/marketing-monday` | wöchentlich | Routine |
+| Wettbewerb und Trends beobachten | Prompt §7 aus `../templates/claude-anweisungen.md` als Cloud-Routine; nach Shop-Start `/marketing-monday` | wöchentlich | Routine |
 | Kosmetikrecht beobachten | Prompt §11 aus `claude-anweisungen.md` | monatlich | Routine |
 | Fabrik-Anfrage CPNP/CPSR/INCI + Duftallergene als **Entwurf** in Gmail | Gmail-Konnektor (nur Entwurf, Mar sendet) | einmalig | Code → Mar |
 | Flakon- und Verpackungsangebote vergleichen | Chat (Abwägung), Angebote als Tabelle in Code | laufend | Chat |

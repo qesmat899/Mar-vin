@@ -59,7 +59,7 @@ ausdrücklich nicht bestätigt. Aus `UNKNOWN`-Werten wird nichts Neues abgeleite
 | Versand | alte Website: Deutschland + Österreich, 2–4 Werktage, 4,95 €, kostenlos ab 80 € `OBSERVED (alte Website)`; für den Neustart nicht entschieden. Versandkosten für Azizam `UNKNOWN` |
 | Shop & Buchhaltung | Neustart im Shopify-Shop „My Store 3“ (04.10.2026: 0 Produkte, 0 Bestellungen `OBSERVED`); Buchhaltung beim Steuerberater, Geschäftsjahr = Kalenderjahr (Mar 04.10.2026) |
 | Rückgabe | gesetzlich 14 Tage; alte Website: freiwillig 30 Tage, wenn Flakon ≥ 80 % gefüllt `OBSERVED (alte Website)`, für den Neustart nicht entschieden |
-| Sortiment | 7 Düfte laut alter Website `OBSERVED`: Narcos, Midnight Café, Erba Bomb, Imaginary, Goldstaub II., Velvet Vanilla, Kings Perfume |
+| Sortiment | Alte Website zeigte 7 Düfte `OBSERVED`: Narcos, Midnight Café, Erba Bomb, Imaginary, Goldstaub II., Velvet Vanilla, Kings Perfume. Aktueller Duftbestand: `azizam/commercial/duefte.csv` |
 
 Die alten Zahlen stehen in `playbook/azizam/brand.json`, jede mit Status im Feld `_status`. Sie bleiben dort nur als
 Rechengrundlage für den Rechner, bis echte Werte vorliegen.
