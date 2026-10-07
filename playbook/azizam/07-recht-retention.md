@@ -73,7 +73,7 @@ Das ist der eine Punkt, der vor dem ersten Onlineverkauf stehen muss; alles ande
 |---|---|---|
 | Verantwortliche Person in der EU | Wer unter eigenem Namen verkauft, ist es in aller Regel selbst. Keine Formalie: haftet für Sicherheit, Kennzeichnung, PIF. | ☐ |
 | Produktinformationsdatei (PIF) | Rezeptur, Rohstoffdaten, Herstellverfahren, Stabilitätsdaten — vom Hersteller/Abfüller liefern lassen | ☐ |
-| Sicherheitsbewertung (CPSR) | Durch qualifizierten Safety Assessor, pro Duft | ☐ (Kosten je Duft `UNKNOWN` — alte Schätzung ~300–800 € ohne Quelle; Angebot einholen) |
+| Sicherheitsbewertung (CPSR) | Durch qualifizierten Safety Assessor, pro Duft | ☐ (Kosten **107,10 € je Sorte** `RECORDED` (Mar, 07.10.2026); die übrigen Unterlagen stellt der Hersteller kostenlos bereit) |
 | CPNP-Notifizierung | Vor Inverkehrbringen im EU-Portal | ☐ |
 | Kennzeichnung | INCI-Liste, Chargennummer, Nennfüllmenge (50 ml ℮), Haltbarkeit/PAO, Warnhinweise, verantwortliche Person mit Anschrift | ☐ |
 | 26 deklarationspflichtige Duftallergene | Über Schwellenwert in INCI ausweisen (bei Rose/Safran-Kompositionen relevant: Geraniol, Citronellol, Linalool, Eugenol …). **Erweiterte Liste (80+ Allergene) nach VO (EU) 2023/1545: gilt für Produkte, die ab 31.07.2026 in Verkehr gebracht werden; ältere Ware darf bis 31.07.2028 abverkauft werden — mit dem Hersteller klären.** | ☐ |

@@ -61,7 +61,7 @@ Alle drei Playbook-Varianten (Einmal, 2+1, Duo/Abo) mit gleichem Budget testen �
 ## Liquidität
 
 Bei 0,076 €/ml und 1,85 € Flakon bindet eine Charge von 100 Flakons à 50 ml nur ~665 € Ware — das Risiko liegt nicht
-in der Ware, sondern in **Rechtskosten (CPSR pro Duft ~300–800 €)** und im Ads-Budget. Reihenfolge deshalb: erst
+in der Ware, sondern in **Rechtskosten (CPSR 107,10 € je Sorte laut Mar, 07.10.2026; die frühere Schätzung ~300–800 € ist überholt)** und im Ads-Budget. Reihenfolge deshalb: erst
 Privatverkauf finanziert die Sicherheitsbewertungen, dann Ads.
 
 ## Skalierungsregel
