@@ -507,22 +507,49 @@ def daten_cmd(slug: str) -> int:
     for name in commercial.SCHEMA:
         print(f"  {name:<28}{len(t[name]):>5} Einträge")
 
-    if t["produkte.csv"]:
+    verkaufbar = {p["produkt_id"] for p in t["produkte.csv"] if p.get("typ") != "quellgebinde"}
+    if verkaufbar:
         print("\nCOGS je Produkt (aus Stückliste × Komponentenpreis, nicht gespeichert)")
         for pid, c in commercial.cogs_by_product(t).items():
+            if pid not in verkaufbar:
+                continue
             wert = eur(c["wert"]) if c["wert"] is not None else "UNKNOWN"
             print(f"  {pid:<28}{wert:>12}  {'offen: ' + ', '.join(c['offen']) if c['offen'] else ''}")
 
     levels = commercial.stock_levels(t)
     if levels:
-        print("\nBestand (Summe der Bewegungen)")
-        for (typ, artikel, einheit), entry in sorted(levels.items()):
-            menge = "UNKNOWN" if entry["unknown"] else f"{entry['menge']:g}"
-            print(f"  {artikel:<28}{menge:>10} {einheit}")
-        total, unbewertet = commercial.capital(t)
-        print(f"  Gebundenes Kapital (bewertbarer Teil): {eur(total)}")
-        if unbewertet:
-            print(f"  Ohne belegten Wert (UNKNOWN, nicht geschätzt): {', '.join(unbewertet)}")
+        print("\nBestand je Artikel/Gebinde (Inventur + spätere Bewegungen)")
+        total_lo = total_hi = 0.0
+        geschaetzt = False
+        for (typ, artikel, einheit, gebinde), entry in sorted(levels.items()):
+            if entry["unknown"]:
+                menge = "UNKNOWN"
+            elif entry["menge_max"] != entry["menge"]:
+                menge = f"{entry['menge']:g}–{entry['menge_max']:g}"
+            else:
+                menge = f"{entry['menge']:g}"
+            basis = entry["basis"] + (f" {entry['stand']}" if entry["stand"] else "")
+            print(f"  {artikel:<26}{gebinde:<8}{menge:>11} {einheit:<7}{basis}")
+            if einheit == "ml" and typ == "produkt" and not entry["unknown"]:
+                total_lo, total_hi = total_lo + entry["menge"], total_hi + entry["menge_max"]
+                geschaetzt = geschaetzt or entry["basis"] != "gemessen"
+        if total_hi:
+            spanne = f"{total_lo:g}" if total_lo == total_hi else f"{total_lo:g}–{total_hi:g}"
+            print(f"  Summe Parfum in Gebinden: {spanne} ml" + ("  (SCHÄTZUNG, nicht gemessen)" if geschaetzt else ""))
+        cap = commercial.capital(t)
+        wert = eur(cap["min"]) if abs(cap["max"] - cap["min"]) < 0.005 else f"{eur(cap['min'])} – {eur(cap['max'])}"
+        print(f"  Anteiliger Einstandswert (bewertbarer Teil): {wert}"
+              + ("  (SCHÄTZUNG: Füllstände per Augenmaß bzw. ca.-Preise)" if cap["geschaetzt"] else ""))
+        if cap["unbewertet"]:
+            print(f"  Ohne belegten Preis (UNKNOWN, nicht geschätzt): {', '.join(cap['unbewertet'])}")
+
+    offen = commercial.open_items(t)
+    if offen:
+        print("\nOffene Nachträge")
+        zugaenge = sum(1 for r in t["bestand_bewegungen.csv"] if r.get("bewegung") == "zugang")
+        for was, wo in offen.items():
+            liste = f"alle {zugaenge} Zugänge" if len(wo) == zugaenge else ", ".join(wo)
+            print(f"  {was:<16}{len(wo):>3}  {liste}")
 
     if t["transaktionen.csv"]:
         mwst = brand["economics"].get("mwst", 0.0)

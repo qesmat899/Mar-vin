@@ -19,6 +19,10 @@ import re
 UNKNOWN = "UNKNOWN"
 
 DATA_STATUS = ("CONFIRMED", "RECORDED", "OBSERVED", "ASSUMPTION", "OUTDATED", "UNKNOWN")
+# Wie eine Menge zustande kam: Nennmenge des Gebindes, gemessen (Waage/Messzylinder), per Augenmaß geschätzt, unbekannt
+MENGEN_BASIS = ("nennmenge", "gemessen", "geschaetzt", "UNKNOWN")
+# Wie belastbar ein Einkaufspreis ist: aus Beleg, exakte Angabe von Mar ohne Beleg, ca.-Angabe, unbekannt
+PREIS_QUALITAET = ("BELEG", "ANGABE", "CA_ANGABE", "UNKNOWN")
 
 # Datei → (Spalten in fester Reihenfolge, Pflichtspalten, erlaubte Werte je Spalte)
 SCHEMA: dict[str, tuple[list[str], set[str], dict[str, tuple[str, ...]]]] = {
@@ -28,8 +32,9 @@ SCHEMA: dict[str, tuple[list[str], set[str], dict[str, tuple[str, ...]]]] = {
         {"art": ("parfumfabrik", "flakon", "verpackung", "etikett", "versand", "sonstiges"), "status": DATA_STATUS},
     ),
     "duefte.csv": (
-        ["duft_id", "name", "lieferant_ref", "lieferanten_bezeichnung", "status", "quelle", "notiz"],
-        {"duft_id", "name", "status"},
+        ["duft_id", "name", "lieferant_ref", "lieferanten_bezeichnung", "duftoel_anteil_pct", "status", "quelle",
+         "notiz"],
+        {"duft_id", "status"},
         {"status": DATA_STATUS},
     ),
     "produkte.csv": (
@@ -53,14 +58,15 @@ SCHEMA: dict[str, tuple[list[str], set[str], dict[str, tuple[str, ...]]]] = {
         {"einheit": ("ml", "stueck")},
     ),
     "bestand_bewegungen.csv": (
-        ["buchung_id", "datum", "artikel_typ", "artikel_id", "bewegung", "menge", "einheit", "charge",
-         "einkaufspreis_gesamt_eur", "abfuellung_ref", "transaktion_ref", "experiment_ref", "status", "quelle",
-         "notiz"],
+        ["buchung_id", "datum", "artikel_typ", "artikel_id", "gebinde_id", "bewegung", "menge", "menge_bis",
+         "einheit", "mengen_basis", "charge", "einkaufspreis_gesamt_eur", "preis_qualitaet", "beleg_ref",
+         "abfuellung_ref", "transaktion_ref", "experiment_ref", "status", "quelle", "notiz"],
         {"buchung_id", "datum", "artikel_typ", "artikel_id", "bewegung", "menge", "einheit", "status"},
         {"artikel_typ": ("produkt", "komponente"),
-         "bewegung": ("zugang", "abfuellung_ab", "abfuellung_zu", "verkauf", "probe_gratis", "creator", "bruch",
-                      "verlust", "korrektur"),
-         "einheit": ("ml", "stueck"), "status": DATA_STATUS},
+         "bewegung": ("zugang", "inventur", "abfuellung_ab", "abfuellung_zu", "verkauf", "probe_gratis", "creator",
+                      "bruch", "verlust", "korrektur"),
+         "einheit": ("ml", "stueck"), "mengen_basis": MENGEN_BASIS, "preis_qualitaet": PREIS_QUALITAET,
+         "status": DATA_STATUS},
     ),
     "offers.csv": (
         ["offer_id", "name", "typ", "kanal", "preis_brutto", "rabatt_typ", "rabatt_wert", "versandentgelt_eur",
@@ -115,11 +121,13 @@ SCHEMA: dict[str, tuple[list[str], set[str], dict[str, tuple[str, ...]]]] = {
 ID_COLUMN = {name: cols[0] for name, (cols, _, _) in SCHEMA.items()
              if name not in ("stueckliste.csv", "offer_positionen.csv", "transaktion_positionen.csv")}
 
-NUMERIC = {"groesse_ml", "preis_eur_je_einheit", "menge", "einkaufspreis_gesamt_eur", "preis_brutto", "rabatt_wert",
+NUMERIC = {"groesse_ml", "duftoel_anteil_pct", "menge_bis", "preis_eur_je_einheit", "menge", "einkaufspreis_gesamt_eur", "preis_brutto", "rabatt_wert",
            "versandentgelt_eur", "gratisversand_ab_eur", "erloes_brutto", "rabatt_eur", "versandkosten_eur",
            "zahlungsgebuehr_eur", "erstattung_eur", "retourkosten_eur", "werbekosten_eur"}
 
-# Vorzeichen je Bewegung (korrektur trägt ihr Vorzeichen selbst)
+DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+# Vorzeichen je Bewegung (korrektur trägt ihr Vorzeichen selbst; inventur setzt den Stand absolut)
 SIGN = {"zugang": 1, "abfuellung_zu": 1, "abfuellung_ab": -1, "verkauf": -1, "probe_gratis": -1, "creator": -1,
         "bruch": -1, "verlust": -1, "korrektur": 1}
 
@@ -198,6 +206,8 @@ def validate(t: dict[str, list[dict]]) -> tuple[list[str], list[str]]:
 
     for i, r in enumerate(t.get("duefte.csv", []), 2):
         ref("duefte.csv", r, "lieferant_ref", "lieferanten.csv", f"duefte.csv Zeile {i}")
+        if not r.get("name") and not r.get("lieferanten_bezeichnung"):
+            errors.append(f"duefte.csv Zeile {i}: 'name' oder 'lieferanten_bezeichnung' angeben")
     for i, r in enumerate(t.get("produkte.csv", []), 2):
         w = f"produkte.csv Zeile {i}"
         ref("produkte.csv", r, "duft_id", "duefte.csv", w)
@@ -223,6 +233,20 @@ def validate(t: dict[str, list[dict]]) -> tuple[list[str], list[str]]:
             errors.append(f"{w}: Abfüllung braucht 'abfuellung_ref'")
         if r.get("bewegung") == "verkauf" and not r.get("transaktion_ref"):
             notes.append(f"{w}: Verkauf ohne transaktion_ref")
+        datum = r.get("datum", "")
+        if datum and datum != UNKNOWN and not DATE_RE.match(datum):
+            errors.append(f"{w}: datum '{datum}' nicht im Format JJJJ-MM-TT (oder UNKNOWN)")
+        if r.get("bewegung") == "inventur" and not DATE_RE.match(datum):
+            errors.append(f"{w}: Inventur braucht ein Datum")
+        try:
+            bis = num(r.get("menge_bis", "")) if r.get("menge_bis") not in (None, "") else None
+        except ValueError:
+            bis = None  # bereits als Zahlenfehler gemeldet
+        if bis is not None:
+            if r.get("bewegung") != "inventur":
+                errors.append(f"{w}: 'menge_bis' (Spanne) nur bei Inventur")
+            elif isinstance(m, float) and isinstance(bis, float) and bis < m:
+                errors.append(f"{w}: 'menge_bis' kleiner als 'menge'")
     abf: dict[str, set[str]] = {}
     for r in t.get("bestand_bewegungen.csv", []):
         if r.get("abfuellung_ref"):
@@ -318,51 +342,106 @@ def cogs_by_product(t: dict[str, list[dict]]) -> dict[str, dict]:
     return out
 
 
-def stock_levels(t: dict[str, list[dict]]) -> dict[tuple[str, str, str], dict]:
-    """Bestand je (artikel_typ, artikel_id, einheit) als Summe der Bewegungen. UNKNOWN-Mengen machen ihn UNKNOWN."""
-    levels: dict[tuple[str, str, str], dict] = {}
+def _key(r: dict) -> tuple[str, str, str, str]:
+    return (r["artikel_typ"], r["artikel_id"], r["einheit"], r.get("gebinde_id", ""))
+
+
+def stock_levels(t: dict[str, list[dict]]) -> dict[tuple[str, str, str, str], dict]:
+    """Bestand je (artikel_typ, artikel_id, einheit, gebinde_id).
+
+    Ohne Inventur: Summe aller Bewegungen. Mit Inventur: Stand der letzten Inventur (bei Schätzung ggf. als Spanne
+    menge … menge_bis) plus alle Bewegungen mit späterem Datum. UNKNOWN-Mengen machen den Bestand UNKNOWN.
+    `basis` sagt, worauf der Stand beruht (z. B. 'geschaetzt'); eine Schätzung wird nie zum Messwert.
+    """
+    rows: dict[tuple, list[dict]] = {}
     for r in t.get("bestand_bewegungen.csv", []):
-        key = (r["artikel_typ"], r["artikel_id"], r["einheit"])
-        entry = levels.setdefault(key, {"menge": 0.0, "unknown": False})
-        m = num(r.get("menge", ""))
-        if not isinstance(m, float):
-            entry["unknown"] = True
-            continue
-        entry["menge"] += SIGN.get(r["bewegung"], 0) * m
+        rows.setdefault(_key(r), []).append(r)
+    levels = {}
+    for key, rs in rows.items():
+        inv = [r for r in rs if r["bewegung"] == "inventur" and DATE_RE.match(r.get("datum", ""))]
+        entry = {"menge": 0.0, "menge_max": 0.0, "unknown": False, "basis": "buchungen", "stand": None}
+        if inv:
+            last = max(enumerate(inv), key=lambda x: (x[1]["datum"], x[0]))[1]
+            lo, hi = num(last.get("menge", "")), num(last.get("menge_bis", "")) if last.get("menge_bis") else None
+            if not isinstance(lo, float):
+                entry["unknown"] = True
+            else:
+                entry["menge"], entry["menge_max"] = lo, hi if isinstance(hi, float) else lo
+            entry.update(basis=last.get("mengen_basis") or UNKNOWN, stand=last["datum"])
+            later = [r for r in rs if r["bewegung"] != "inventur" and DATE_RE.match(r.get("datum", ""))
+                     and r["datum"] > last["datum"]]
+        else:
+            later = [r for r in rs if r["bewegung"] != "inventur"]
+        for r in later:
+            m = num(r.get("menge", ""))
+            if not isinstance(m, float):
+                entry["unknown"] = True
+                continue
+            delta = SIGN.get(r["bewegung"], 0) * m
+            entry["menge"] += delta
+            entry["menge_max"] += delta
+        levels[key] = entry
     return levels
 
 
-def source_cost_per_unit(t: dict[str, list[dict]], artikel_id: str, einheit: str):
-    """Einstandspreis je Einheit eines zugegangenen Artikels (gewogener Durchschnitt aller Zugänge)."""
+def source_cost_per_unit(t: dict[str, list[dict]], artikel_id: str, einheit: str, gebinde_id: str = ""):
+    """Einstandspreis je Einheit eines Gebindes bzw. Artikels: Einkaufspreis ÷ Zugangsmenge (bei mehreren Zugängen
+    gewogener Durchschnitt). Gibt (Preis je Einheit, ca.-Angabe ja/nein) zurück oder (None, False)."""
     menge = kosten = 0.0
+    ca = False
     for r in t.get("bestand_bewegungen.csv", []):
-        if r["artikel_id"] != artikel_id or r["einheit"] != einheit or r["bewegung"] != "zugang":
+        if (r["artikel_id"], r["einheit"], r.get("gebinde_id", ""), r["bewegung"]) != (artikel_id, einheit, gebinde_id, "zugang"):
             continue
         m, k = num(r.get("menge", "")), num(r.get("einkaufspreis_gesamt_eur", ""))
         if not isinstance(m, float) or not isinstance(k, float):
-            return None
+            return None, False
         menge, kosten = menge + m, kosten + k
-    return kosten / menge if menge else None
+        ca = ca or r.get("preis_qualitaet") == "CA_ANGABE"
+    return (kosten / menge, ca) if menge else (None, False)
 
 
-def capital(t: dict[str, list[dict]]) -> tuple[float, list[str]]:
-    """Gebundenes Kapital im Bestand. Artikel ohne belegten Wert werden aufgelistet, nicht geschätzt."""
+def capital(t: dict[str, list[dict]]) -> dict:
+    """Anteiliger Einstandswert des Bestands (gebundenes Kapital). Artikel ohne belegten Preis werden aufgelistet,
+    nicht geschätzt. `geschaetzt` = mindestens ein Bestand beruht auf einer Schätzung oder einer ca.-Preisangabe."""
     cogs = cogs_by_product(t)
-    total, unbewertet = 0.0, []
-    for (typ, artikel, einheit), entry in stock_levels(t).items():
+    out = {"min": 0.0, "max": 0.0, "unbewertet": [], "geschaetzt": False}
+    for (typ, artikel, einheit, gebinde), entry in stock_levels(t).items():
+        label = f"{artikel} {gebinde}".strip()
         if entry["unknown"]:
-            unbewertet.append(f"{artikel} (Menge UNKNOWN)")
+            out["unbewertet"].append(f"{label} (Menge UNKNOWN)")
             continue
-        if entry["menge"] == 0:
+        if entry["menge"] == 0 and entry["menge_max"] == 0:
             continue
-        unit = source_cost_per_unit(t, artikel, einheit)
+        unit, ca = source_cost_per_unit(t, artikel, einheit, gebinde)
         if unit is None and typ == "produkt" and einheit == "stueck":
             unit = cogs.get(artikel, {}).get("wert")
         if unit is None:
-            unbewertet.append(artikel)
-        else:
-            total += entry["menge"] * unit
-    return total, unbewertet
+            out["unbewertet"].append(label)
+            continue
+        out["min"] += entry["menge"] * unit
+        out["max"] += entry["menge_max"] * unit
+        out["geschaetzt"] = out["geschaetzt"] or ca or entry["basis"] in ("geschaetzt", UNKNOWN)
+    return out
+
+
+def open_items(t: dict[str, list[dict]]) -> dict[str, list[str]]:
+    """Offene Nachträge aus den Zugängen: Kaufdatum, Einkaufspreis, ca.-Preis, Charge, Beleg."""
+    out = {"Kaufdatum": [], "Einkaufspreis": [], "Preis nur ca.": [], "Charge": [], "Beleg zuordnen": []}
+    for r in t.get("bestand_bewegungen.csv", []):
+        if r.get("bewegung") != "zugang":
+            continue
+        label = f"{r['artikel_id']} {r.get('gebinde_id', '')}".strip()
+        if r.get("datum", "") in ("", UNKNOWN):
+            out["Kaufdatum"].append(label)
+        if not isinstance(num(r.get("einkaufspreis_gesamt_eur", "")), float):
+            out["Einkaufspreis"].append(label)
+        elif r.get("preis_qualitaet") == "CA_ANGABE":
+            out["Preis nur ca."].append(label)
+        if r.get("charge", "") in ("", UNKNOWN):
+            out["Charge"].append(label)
+        if not r.get("beleg_ref"):
+            out["Beleg zuordnen"].append(label)
+    return {k: v for k, v in out.items() if v}
 
 
 def transaction_contribution(t: dict[str, list[dict]], tx: dict, mwst: float = 0.0) -> dict:

@@ -1,8 +1,8 @@
 # Commercial-Daten Azizam
 
 Struktur für echte Produkt-, Bestands-, Angebots-, Verkaufs-, Experiment- und Entscheidungsdaten.
-**Stand 05.10.2026: alle Dateien leer (nur Spaltenköpfe).** Befüllt wird erst mit belegten Daten von Mar
-(erste Bestandsaufnahme). Prüfen und auswerten: `python3 playbook.py daten --brand azizam`. Code: `commercial.py`.
+**Stand 07.10.2026:** Erste Bestandsaufnahme von Mar eingetragen (18 Gebinde, 16 Düfte, Lieferant; Füllstände per
+Augenmaß). Komponenten, Offers, Transaktionen, Kunden, Experimente und Entscheidungen sind noch leer. Prüfen und auswerten: `python3 playbook.py daten --brand azizam`. Code: `commercial.py`.
 
 ## Regeln
 
@@ -42,11 +42,15 @@ Struktur für echte Produkt-, Bestands-, Angebots-, Verkaufs-, Experiment- und E
 - `produktversion`: ändert sich bei anderer Rezeptur, anderem Flakon, Etikett oder Lieferanten (Product-Data-Skill).
 
 ### INVENTORY — Bewegungen
+Jede physische Flasche ist ein eigenes **Gebinde** (`gebinde_id`, z. B. `G-01`) mit eigener Charge und eigenem
+Einkaufspreis. Zwei Flaschen desselben Dufts werden nie zu einer Durchschnittsflasche zusammengefasst.
+
 `bewegung` (Menge immer positiv eintragen, Richtung ergibt sich aus der Bewegung; nur `korrektur` trägt ein Vorzeichen):
 
 | Bewegung | Wirkung | Pflicht |
 |---|---|---|
-| `zugang` | + (Einkauf/Zugang; eine Zeile je 500-ml-Flasche bzw. Lieferung) | `einkaufspreis_gesamt_eur` (Zahl oder `UNKNOWN`) |
+| `zugang` | + (Einkauf/Zugang; eine Zeile je Flasche bzw. Lieferung, Menge = Nennmenge des Gebindes) | `einkaufspreis_gesamt_eur` (Zahl oder `UNKNOWN`), `preis_qualitaet`; `datum` = Kaufdatum oder `UNKNOWN` |
+| `inventur` | setzt den Stand absolut (Bestandsaufnahme); bei Schätzung als Spanne `menge` … `menge_bis` | Datum, `mengen_basis` |
 | `abfuellung_ab` | − Quellgebinde in ml und verbrauchte Komponenten | `abfuellung_ref` |
 | `abfuellung_zu` | + abgefüllte 30-ml-Produkte bzw. Proben | dieselbe `abfuellung_ref` |
 | `verkauf` | − verkaufte Produkte | `transaktion_ref` |
@@ -55,9 +59,15 @@ Struktur für echte Produkt-, Bestands-, Angebots-, Verkaufs-, Experiment- und E
 | `bruch`, `verlust` | − Bruch; Verlust/Verdunstung | — |
 | `korrektur` | ± Bestandskorrektur nach Zählung | `notiz` mit Grund |
 
+**Datenqualität je Bewegung:** `mengen_basis` = `nennmenge` · `gemessen` · `geschaetzt` (Augenmaß) · `UNKNOWN`;
+`preis_qualitaet` = `BELEG` · `ANGABE` (exakte Angabe von Mar ohne Beleg) · `CA_ANGABE` · `UNKNOWN`; `beleg_ref` =
+Verweis auf die zugeordnete Rechnung (leer = noch nicht zugeordnet). Eine Schätzung wird nie nachträglich zum Messwert:
+eine Messung ist eine neue `inventur` mit `mengen_basis = gemessen`.
+
 Kette: `500 ml Ausgangsbestand → Abfüllung → 30-ml-Produkte / Proben → Bundles → Verkäufe → Verbrauch → Restbestand →
-Kapitalbindung`. Bestand = Summe der Bewegungen. Kapitalbindung = Bestand × belegter Einstandspreis (Quellgebinde:
-gewogener Durchschnitt der Zugänge; abgefüllte Produkte: COGS aus Stückliste). Fehlt ein Preis: „ohne belegten
+Kapitalbindung`. Bestand = letzte Inventur + spätere Bewegungen (ohne Inventur: Summe der Bewegungen). Kapitalbindung = Bestand × Einstandspreis (Quellgebinde: Einkaufspreis ÷
+Nennmenge der jeweiligen Flasche; abgefüllte Produkte: COGS aus Stückliste). Beruht der Bestand auf einer Schätzung,
+ist auch der Wert eine Schätzung und wird so ausgegeben. Fehlt ein Preis: „ohne belegten
 Wert“, nicht geschätzt.
 
 ### OFFER
@@ -98,28 +108,23 @@ Ohne Vergleichsgruppe keine Kausalaussage. Creative-Tests im Detail weiter in `.
 - Geänderte Entscheidung: alte Zeile `status = ersetzt`, `ersetzt_durch` = neue `decision_id`. Nichts löschen.
 - Compliance-Gates (`azizam-compliance-auditor`) bleiben davon unberührt; ein Compliance-BLOCK wird nie „wegentschieden“.
 
-## Erste Bestandsaufnahme — benötigte Daten von Mar
+## Bestandsaufnahme 07.10.2026 (Mar)
 
-Nichts davon ist bekannt; alles ist `UNKNOWN`, bis Mar es liefert. Fehlt eine Angabe, bleibt sie `UNKNOWN` (nicht
-schätzen). Eine Zeile je Flasche bzw. Lieferung.
+Eingetragen: Lieferant Tomorrow Brand UG Parfumfabrik · 16 Düfte (Duftölanteil 30 % laut Mar) · 18 Gebinde
+`G-01` … `G-18` (16 × 500 ml, 2 × 1.000 ml Velvet Vanilla) mit Zugang (Nennmenge, Preis, Charge) und Inventur
+(Füllstand per Augenmaß, `mengen_basis = geschaetzt`; Roja Aoud als Spanne 300–325 ml). Status je Zeile `RECORDED`
+(Angabe von Mar, noch ohne Beleg). Die Düfte (außer Velvet Vanilla) sind mit der von Mar genannten Bezeichnung als
+`lieferanten_bezeichnung` angelegt; ob das die Fabrikbezeichnung ist und wie der Azizam-Name lautet, ist offen.
+Diese Bezeichnungen enthalten fremde Markennamen und gehören nie in Kundentexte (Verbotsliste `brand-briefing.md`).
 
-| # | Angabe | landet in |
-|---|---|---|
-| 1 | Duftname (Azizam-Name) und Bezeichnung der Fabrik für diesen Duft | `duefte.csv` |
-| 2 | Anzahl vorhandener 500-ml-Flaschen je Duft | `bestand_bewegungen.csv` (`zugang`, eine Zeile je Flasche) |
-| 3 | Füllstand je Flasche: voll oder angebrochen; Restmenge in ml und ob gemessen oder geschätzt | `menge`, `status` (gemessen = OBSERVED, geschätzt = ASSUMPTION) |
-| 4 | Lieferant/Quelle (Name der Fabrik) | `lieferanten.csv` |
-| 5 | Charge/Lot-Nummer, falls auf Flasche oder Rechnung | `charge` |
-| 6 | Tatsächlich gezahlter Einkaufspreis (je Flasche oder Rechnungsbetrag gesamt) | `einkaufspreis_gesamt_eur` |
-| 7 | Einkaufsdatum | `datum` |
-| 8 | Rechnung/Beleg vorhanden: ja/nein | `status` (Beleg = CONFIRMED, sonst RECORDED) |
-| 9 | Weitere bezahlte Kosten dieser Lieferung (Versand zu Mar, Zoll, Sonstiges) | Komponente `sonstiges` bzw. `notiz` |
-| 10 | Schon abgefüllt? Je Duft: wie viele Flakons welcher Größe, wann, aus welcher Flasche; davon noch vorhanden, verkauft, verschenkt (Probe/Creator) | `abfuellung_*`, `verkauf`, `probe_gratis`, `creator` |
-| 11 | Vorhandene leere Flakons: Größe, Anzahl, gezahlter Preis, Lieferant, Beleg ja/nein | `komponenten.csv` + `zugang` |
-| 12 | Verschlüsse/Kappen/Zerstäuber: Art, Anzahl, Preis, Beleg | dto. |
-| 13 | Etiketten: vorhanden ja/nein, Anzahl, Preis | dto. |
-| 14 | Boxen/Umverpackung: Anzahl, Preis | dto. |
-| 15 | Probenbehälter: Größe (2 ml / 5 ml), Anzahl, Preis | dto. |
-| 16 | Versandmaterial: Art, Anzahl, Preis | dto. |
-| 17 | Sonstige vorhandene Komponenten, die in ein verkaufsfähiges Produkt gehen | dto. |
-| 18 | Welche Verkaufsgrößen angelegt werden: 30 ml (laut `SYNC.md` auch 50 ml — gilt das noch?) und Proben 2 ml, 5 ml oder beides | `produkte.csv` |
+**Offene Nachträge** (zeigt `playbook.py daten` laufend an):
+1. Kaufdatum je Flasche (alle 18 `UNKNOWN`)
+2. Belege heraussuchen und den Flaschen bzw. Sammelbestellungen zuordnen (`beleg_ref`, dann `preis_qualitaet = BELEG`)
+3. Charge von Velvet Vanilla `G-17` (ungeöffnet)
+4. Einkaufspreis: Arabians Tonka `G-04`, Velvet Vanilla `G-17` und `G-18`; Imagination `G-13` nur ca. 38 €
+5. Liefer-/Zollkostenanteil je Sammelbestellung (bisher nicht erfasst)
+6. Azizam-Namen bzw. Bestätigung der Fabrikbezeichnungen
+7. Optional: Füllstände wiegen oder messen (neue `inventur` mit `mengen_basis = gemessen`; die Schätzung bleibt stehen)
+
+Noch nicht erfasst: bereits abgefüllte Mengen, leere Flakons, Verschlüsse, Etiketten, Boxen, Probenbehälter,
+Versandmaterial; Verkaufsgrößen 30 / 50 ml und Probengrößen.

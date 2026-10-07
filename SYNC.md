@@ -1,7 +1,7 @@
 # SYNC.md – Übergabe zwischen Claude Chat und Claude Code (Azizam)
 
 > Gemeinsame Datei für **Claude Chat** und **Claude Code**. Sie ist die einzige Brücke zwischen beiden.
-> Zuletzt aktualisiert: 2026-10-05 [Code]
+> Zuletzt aktualisiert: 2026-10-07 [Code]
 
 ---
 
@@ -81,7 +81,7 @@
 |-----|---------|--------|
 | Chat | Flakon-Optionen recherchieren und bewerten (30 + 50 ml) | offen |
 | Code | Struktur für Marketing-/Wachstums-Skills im Repo vorbereiten | offen |
-| Mar | Daten für die erste Bestandsaufnahme liefern (500-ml-Flaschen, Komponenten, Belege; Liste im Chat vom 05.10.2026 bzw. `playbook/azizam/commercial/README.md`) | offen |
+| Mar | Bestandsaufnahme ergänzen: Kaufdaten, Belege zuordnen, Charge Velvet Vanilla G-17, Preise Arabians Tonka + Velvet Vanilla, Azizam-Namen; danach Komponenten (Flakons, Proben, Verpackung) — Liste in `playbook/azizam/commercial/README.md` | in Arbeit |
 | Mar | Dokumente der Fabrik je Duft sammeln und ins Repo/Drive legen; danach jeden Duft im CPNP-Portal eintragen | offen |
 | Mar | `CLAUDE-MASTER.md` ins Chat-Projekt „Azizam“ hochladen; globale Anweisung und Memory aus `playbook/templates/claude-anweisungen.md` in claude.ai setzen | offen |
 
@@ -91,6 +91,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-10-07 [Code]** Erste Bestandsaufnahme von Mar in `playbook/azizam/commercial/` eingetragen: 18 Gebinde (16 × 500 ml, 2 × 1.000 ml Velvet Vanilla „Vanilla Powder“), 16 Düfte, Lieferant Tomorrow Brand UG Parfumfabrik, Duftölanteil 30 %. Füllstände per Augenmaß (als Schätzung gekennzeichnet), Preise wie von Mar genannt (3 UNKNOWN, 1 ca.). Offen: Kaufdaten, Belege, 1 Charge, 3 Preise, Azizam-Namen.
 - **2026-10-05 [Code]** PR #4 (Bereinigung + Commercial-Struktur ohne Daten) von Mar freigegeben und in `Azizam` gemergt (`edd6c2a`). Boss-Status als A4-PDF erstellt: `AZIZAM-Boss-Status-2026-10-05.pdf`. Nächster Schritt: erste Bestandsaufnahme der 500-ml-Flaschen mit Mar.
 - **2026-10-05 [Code]** Commercial-Datenarchitektur angelegt (nur Struktur, **keine Daten**): `playbook/azizam/commercial/` mit 13 leeren CSV-Vorlagen für Produkt, Komponenten, Bestand (Bewegungen ab 500-ml-Gebinde), Offers, Transaktionen, pseudonyme Kunden, Experimente und dem Decision Ledger `entscheidungen.csv` (einzige Quelle für kommerzielle Entscheidungen, nur Mar entscheidet). Prüfung mit `python3 playbook.py daten`, Code in `commercial.py`. Nächster Schritt: erste Bestandsaufnahme mit Mar.
 - **2026-10-05 [Code]** Bereinigung nach Mars Freigabe: PR #3 war gemergt (`f9243b6`). Der Commercial-Datensatz aus `f7c7a77` (u. a. sieben angenommene 500-ml-Quellgebinde) war nicht von Mar bestätigt und ist per Revert vollständig entfernt — es gibt **keine** erfassten Azizam-Bestände. `playbook/haus-und-gruen/` und alle Haus-&-Grün-Verweise entfernt; das Repo betrifft nur noch Azizam. Alte Zahlen (Preise, COGS, Versand, Gebühren, CAC, Retouren, Offers, ROAS) als `OUTDATED`/`EXAMPLE`/`UNKNOWN`/`ASSUMPTION` gekennzeichnet; Mar hat sie ausdrücklich nicht bestätigt. Keine neuen Zahlen. Formel-Anpassung `2f34f28` bleibt. Git-Historie unverändert.
@@ -100,10 +101,10 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 - **2026-10-04 [Code]** Small-Business-Plugin eingerichtet: Profil `BUSINESS-CONTEXT.md` (von Mar bestätigt, über `CLAUDE.md` immer geladen), Aufbauplan in Stufen mit passenden Plugin-Skills in `playbook/azizam/SYSTEM-AUFBAU.md`. Shopify geprüft (nur gelesen).
 - **2026-10-04 [Code]** `CLAUDE-MASTER.md` angelegt: Wissensbasis aus Mars sechs Recherche-Texten (Claude-Funktionen, Modelle, Compliance-System, Agenten, Freigaben, Routinen), auf Azizam zugeschnitten, Ungeprüftes markiert. Wird über `CLAUDE.md` immer geladen. Fertige Anweisungen in `playbook/templates/claude-anweisungen.md`.
 - **2026-10-03 [Code]** 100 ml als spätere Größe wieder aufgenommen (nach ersten 30/50-Verkäufen): `SYNC.md`, `brand.json`, Kontext-Export, README, Briefing.
-- **2026-10-03 [Code]** `ARBEITSWEISE.md` (Werkzeug-Kompass) angelegt; wird beim Sessionstart mitgeladen, Claude Code erinnert Mar aktiv daran.
 
 ### Verlauf (zusammengefasst)
 
+- 2026-10-03: `ARBEITSWEISE.md` (Werkzeug-Kompass) angelegt; wird beim Sessionstart mitgeladen, Claude Code erinnert Mar aktiv daran.
 - 2026-10-03: Playbook-Kapitel 01, 03, 04, 06, 90-Tage-Plan, Briefing, Nächste Schritte und README bereinigt: 100 ml raus, Preise als `[Preis offen]`, Zahlen auf Kleinunternehmer/Flakon-Annahme; Kapitel 05 als Ganzes als veraltet markiert.
 - 2026-10-02: SYNC.md im Chat angelegt und ins Repo gelegt.
 - 2026-10-03: Mars Antworten eingearbeitet (kein Verkauf aktuell, CPNP offen), Adresse/Telefon/USt-IdNr. aus den Dateien entfernt, Steuerteil auf Kleinunternehmer umgestellt.
