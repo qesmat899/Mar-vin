@@ -1,12 +1,5 @@
 # Azizam — E-Commerce Brand-Playbook (Umsetzung)
 
-> **Zahlenstatus (05.10.2026):** Preise, Kosten, COGS, Versand, Gebühren, CAC, ROAS, Margen, Offer- und Absatzwerte
-> in dieser Datei sind alte Modellwerte (`OUTDATED` / `EXAMPLE` / `ASSUMPTION`) oder ohne Quelle (`UNKNOWN`) und von
-> Mar ausdrücklich **nicht bestätigt**. Markt-, Wettbewerbs- und Persona-Zahlen ohne Quelle sind `UNKNOWN`,
-> Playbook-Richtwerte (Hook Rate, CTR, Wiederkaufrate …) `EXAMPLE`. Belegt (`RECORDED (Mar)`, `SYNC.md`) sind nur:
-> 30 % Duftöl · Start 30 und 50 ml · Flakon max. ca. 3 € (Obergrenze, keine Kostenangabe) · erste Flakonbestellung
-> 100–200 Stück · Investitionsbudget 500–1.500 € für 3 Monate. Nichts davon als Fakt verwenden oder daraus ableiten.
-
 > **azizam** (عزیزم) — „mein Schatz“, „meine Liebe“. Das Wort, das man im Persischen zu Menschen sagt, die man
 > nicht verlieren will.
 
@@ -25,7 +18,6 @@
 | [03-angles-hooks.md](03-angles-hooks.md) | Schicht 4+5 · Kap. 1.5–1.6 | 15 Angles, 15 Hooks, Creative-Aufbau, Landing-Page-Struktur |
 | [04-produkt-marke.md](04-produkt-marke.md) | Kap. 2.3 + Teil III | Produktfilter, Unique Mechanism, Brand-Steckbrief, Culture-Brand-Bausteine |
 | [05-offer-unit-economics.md](05-offer-unit-economics.md) | Kap. 4.2–4.3 | Echte Zahlen: alle Größen × Kanäle, Offer-Struktur, Break-even-ROAS |
-| [NAECHSTE-SCHRITTE.md](NAECHSTE-SCHRITTE.md) | — | Die konkreten Handlungsschritte der nächsten 14 Tage, in Reihenfolge |
 | [06-creator-skalierung.md](06-creator-skalierung.md) | Kap. 3.3, 4.4–4.7 | Creator-Kriterien, Anschreiben, Beispiel-Briefing, Funnel, Skalierungsregel |
 | [07-recht-retention.md](07-recht-retention.md) | Kap. 5.2–5.3 | Kosmetik-VO, CPNP, Gefahrgut, Markenrecht; Flows und Retention |
 | [90-tage-plan.md](90-tage-plan.md) | Kap. 5.4 | Der Fahrplan als Checkliste — Fortschritt mit `playbook.py status` |
@@ -33,6 +25,18 @@
 | [brand-briefing.md](brand-briefing.md) | Kap. 5.1 | Das permanente Marken-Briefing für die KI — wird bei jedem Prompt mitgegeben |
 | [brand.json](brand.json) | — | Zahlen und Prompt-Standardwerte für `playbook.py` |
 | [creator-outreach.csv](creator-outreach.csv) | Kap. 4.4 | Outreach-Tracking (100+ Zeilen Ziel) |
+
+## Zahlenstatus
+
+Gilt für diese Datei und alle Dateien in diesem Ordner, die darauf verweisen (Stand 05.10.2026). Aktuelle Bestands- und
+Einkaufsdaten stehen nicht hier, sondern in `commercial/` (Prüfung: `python3 playbook.py daten --brand azizam`).
+
+Preise, Kosten, COGS, Versand, Gebühren, CAC, ROAS, Margen, Offer- und Absatzwerte in diesen Dateien sind alte
+Modellwerte (`OUTDATED` / `EXAMPLE` / `ASSUMPTION`) oder ohne Quelle (`UNKNOWN`) und von Mar ausdrücklich **nicht
+bestätigt**. Markt-, Wettbewerbs- und Persona-Zahlen ohne Quelle sind `UNKNOWN`, Playbook-Richtwerte (Hook Rate, CTR,
+Wiederkaufrate …) `EXAMPLE`. Belegt (`RECORDED (Mar)`, `SYNC.md`) sind nur: 30 % Duftöl · Start 30 und 50 ml · Flakon
+max. ca. 3 € (Obergrenze, keine Kostenangabe) · erste Flakonbestellung 100–200 Stück · Investitionsbudget
+500–1.500 € für 3 Monate. Nichts davon als Fakt verwenden oder daraus ableiten.
 
 ## Fakten (Stand September 2026) und offene Annahmen
 
@@ -46,7 +50,7 @@
 2. **Duftkonzentration:** **30 % Duftöl bei jedem Duft** (bestätigt vom Inhaber, 09/2026) — branchenüblich bei Eau de Parfum sind 12–18 %. Kernmechanismus, siehe `04-produkt-marke.md`. Für Rückfragen von Kunden/Behörden lohnt sich trotzdem eine schriftliche Fabrikbestätigung (INCI, Konzentration, Sicherheitsdatenblatt).
 3. Etikett/Box 1,00 € `ASSUMPTION`, Versand 6,50 € (Gefahrgut-LQ) `UNKNOWN` — alte Schätzwerte in `brand.json`, nicht bestätigt.
 
-Was als Nächstes zu tun ist, steht in [`NAECHSTE-SCHRITTE.md`](NAECHSTE-SCHRITTE.md).
+Was als Nächstes zu tun ist, steht in [`SYNC.md`](../../SYNC.md) (Aktueller Stand, Aufgaben).
 
 ## Wo wir stehen
 
@@ -57,4 +61,4 @@ python3 playbook.py offers --brand azizam        # Abo vs. 2+1 vs. 1+1+Geschenk
 python3 playbook.py prompt 1 --brand azizam --data research/rohzitate.txt
 ```
 
-**Nächster Schritt:** `NAECHSTE-SCHRITTE.md` — Rechtsfreigabe bei der Fabrik anstoßen, Flakons im Frontend tauschen, erste 50 Flakons privat verkaufen und dabei die drei Research-Fragen stellen.
+**Nächster Schritt:** siehe [`SYNC.md`](../../SYNC.md). Fabrik-Anfrage: `07-recht-retention.md`; Research-Fragen beim Privatverkauf: `swipe-file.md`.

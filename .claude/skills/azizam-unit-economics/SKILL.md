@@ -246,8 +246,8 @@ Umrechnung über den **Faktor f**: effektive Werbekosten = Plattformausgabe × f
 - **max. Plattform-CPA (B)** = max. CAC (A) ÷ f. Höchste Ausgabe je Neukunden-Bestellung, wie sie im Werbekonto
   erscheint.
 
-**Bestehende Werte im Repo:** „Break-even-ROAS 1,51“ und „max. CAC 28,60 €“ (50 ml) in `brand-briefing.md`,
-`NAECHSTE-SCHRITTE.md` und `90-tage-plan.md` stammen aus `playbook.py`. Sie sind Perspektive A ohne Faktor f, mit **alten Preisen**, ohne
+**Bestehende Werte im Repo:** „Break-even-ROAS 1,51“ und „max. CAC 28,60 €“ (50 ml) in `brand-briefing.md`
+und `90-tage-plan.md` stammen aus `playbook.py`. Sie sind Perspektive A ohne Faktor f, mit **alten Preisen**, ohne
 Versandentgelt des Kunden und ohne feste Transaktionsgebühren (Abschnitt 13). Ihre Grundlage ist nicht aktuell, und
 aus den Texten geht nicht eindeutig hervor, gegen welche Perspektive sie gelesen werden sollen. Status: **OUTDATED,
 zu überprüfen.** Nie als Plattform-Schwelle verwenden; vor jeder Werbeentscheidung mit aktuellen Eingaben neu rechnen

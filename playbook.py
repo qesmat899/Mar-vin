@@ -301,7 +301,7 @@ def print_offers(brand: dict, rows: list[dict]) -> None:
 
 def status(slug: str) -> None:
     brand = load_brand(slug)
-    plans = [p for p in (brand["_dir"] / "NAECHSTE-SCHRITTE.md", brand["_dir"] / "90-tage-plan.md") if p.exists()]
+    plans = [p for p in (brand["_dir"] / "90-tage-plan.md",) if p.exists()]
     if not plans:
         print(f"{brand['name']}: kein 90-tage-plan.md gefunden")
         return

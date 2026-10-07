@@ -1,11 +1,7 @@
 # Recht & Retention
 
-> **Zahlenstatus (05.10.2026):** Preise, Kosten, COGS, Versand, Gebühren, CAC, ROAS, Margen, Offer- und Absatzwerte
-> in dieser Datei sind alte Modellwerte (`OUTDATED` / `EXAMPLE` / `ASSUMPTION`) oder ohne Quelle (`UNKNOWN`) und von
-> Mar ausdrücklich **nicht bestätigt**. Markt-, Wettbewerbs- und Persona-Zahlen ohne Quelle sind `UNKNOWN`,
-> Playbook-Richtwerte (Hook Rate, CTR, Wiederkaufrate …) `EXAMPLE`. Belegt (`RECORDED (Mar)`, `SYNC.md`) sind nur:
-> 30 % Duftöl · Start 30 und 50 ml · Flakon max. ca. 3 € (Obergrenze, keine Kostenangabe) · erste Flakonbestellung
-> 100–200 Stück · Investitionsbudget 500–1.500 € für 3 Monate. Nichts davon als Fakt verwenden oder daraus ableiten.
+> **Zahlenstatus:** Zahlen in dieser Datei sind alte, von Mar **nicht bestätigte** Werte (`OUTDATED` / `EXAMPLE` /
+> `ASSUMPTION` / `UNKNOWN`). Regel und die wenigen belegten Werte: [`README.md` → Zahlenstatus](README.md#zahlenstatus).
 
 ## Die echten Firmendaten (von azizamfragrances.com, Stand 09/2026)
 
@@ -29,20 +25,40 @@ Gratisversand-Schwelle für den Neustart sind nicht entschieden.
 Kein Ersatz für Rechtsberatung. Die Reihenfolge ist pragmatisch: Tag-1-Themen in Stunden erledigt,
 produktspezifische Zulassungen **vor dem ersten Verkauf**.
 
-### ⚠️ Zwei Dinge, die live falsch sind — Entfernung beschlossen (09/2026)
+### ⚠️ Website-Aussagen, die im Neustart nicht wiederkommen (Entscheidung 09/2026)
 
-Die Seite ist online und behauptet zwei Dinge, die vor dem ersten echten Verkauf verschwinden müssen. Der Inhaber
-hat die Entfernung beider Punkte entschieden; die fertigen Ersatztexte stehen in
-[`website-korrekturen.md`](website-korrekturen.md).
+Die alte Website (offline seit ca. 25.09.2026) enthielt zwei Dinge, deren Entfernung der Inhaber entschieden hat.
+Für den neuen Shop gilt dasselbe; alle Texte laufen zusätzlich gegen die Verbotsliste in `brand-briefing.md`.
 
-1. **„Handgefertigt in Deutschland“, „Seltene Zutaten“, „Haute Parfumerie“ und der Komposition-Absatz im
-   Geschichte-Abschnitt** widersprechen dem Geschäftsmodell (Fertigparfum aus der Fabrik, umgefüllt) —
-   Irreführung über wesentliche Merkmale der Ware, § 5 Abs. 1 Nr. 1 UWG. → ersetzen durch „In Deutschland
-   abgefüllt“ und die Kurations-Fassung der Geschichte.
-2. **„4.8 von 5“ bei „247 Bewertungen“ plus drei Testimonials** auf einer Seite ohne bisherige Onlineverkäufe.
-   Bewertungen müssen echt und nachvollziehbar sein (§ 5 Abs. 1, § 5b Abs. 3 UWG; Nr. 23b Anhang zu § 3 Abs. 3
-   UWG). → kompletter Block raus, ersetzt durch Risikoumkehr (30 Tage Rückgabe ab 80 % Füllstand). Echte
-   Bewertungen kommen mit Einwilligung zurück, sobald die Privatverkäufe laufen.
+1. **Keine Herstellungs-Aussagen:** nicht „Handgefertigt in Deutschland“, „Seltene Zutaten“, „Haute Parfumerie“,
+   keine eigene Komposition („komponiert“, „die Person, die ihn schuf“). Das widerspricht dem Geschäftsmodell
+   (Fertigparfum aus der Fabrik, umgefüllt) — Irreführung über wesentliche Merkmale der Ware, § 5 Abs. 1 Nr. 1 UWG,
+   abmahnfähig unabhängig von der Absicht.
+   - Stattdessen: „In Deutschland abgefüllt“. „Seltene Zutaten“ erst, wenn die Fabrik die Rohstoffe schriftlich
+     belegt. „30 % Duftöl“ bleibt (vom Inhaber bestätigt, echter Mechanismus).
+   - Textvorlage für die Geschichte (Kurations-Fassung; ersetzt den alten Komposition-Absatz):
+
+     > Wir haben dieses Haus um eine einzige Idee herum aufgebaut: dass Duft der Erinnerung am nächsten kommt. Keine
+     > Nostalgie — Erinnerung. Die Art, die sich einstellt, bevor man sich entschieden hat, sich zu erinnern.
+     >
+     > Wir stellen unsere Düfte nicht selbst her — wir wählen sie aus. Aus hunderten Kompositionen bleiben die
+     > wenigen, die diese eine Prüfung bestehen: Erinnert sie an etwas? Jeder Duft wird mit 30 % Duftöl abgefüllt,
+     > statt der 12 bis 18 %, die bei Eau de Parfum üblich sind. Deshalb bleibt er nah, statt laut zu sein.
+     >
+     > Diese Düfte sind nicht für jeden. Sie wurden für Menschen ausgewählt, die das verstehen.
+2. **Keine Bewertungen ohne echte Kunden:** Die alte Seite zeigte „4.8 von 5“ bei „247 Bewertungen“ plus drei
+   Testimonials, ohne bisherige Onlineverkäufe. Bewertungen müssen echt und nachvollziehbar sein (§ 5 Abs. 1,
+   § 5b Abs. 3 UWG; Nr. 23b Anhang zu § 3 Abs. 3 UWG); auch Haltbarkeitsaussagen in Testimonials brauchen eine
+   echte Grundlage.
+   - Stattdessen Risikoumkehr (Textvorlage; Rückgaberegel für den Neustart noch nicht entschieden):
+
+     > **Neu gestartet. Deshalb ohne Bewertungen — und mit 30 Tagen Rückgaberecht.**
+     > Wir sind eine junge Marke. Statt Sterne, die wir noch nicht verdient haben, geben wir Dir das hier: Wenn der
+     > Duft nicht Deiner ist, schick ihn innerhalb von 30 Tagen zurück, solange der Flakon noch zu 80 % gefüllt ist.
+     > Das Risiko liegt bei uns, nicht bei Dir.
+   - Echte Bewertungen: Einwilligung zur wörtlichen Verwendung schriftlich einholen (WhatsApp reicht), nur mit
+     Vornamen und Ort wie freigegeben veröffentlichen, Sterne nur aus einem echten System (Shopify-Reviews,
+     Trustpilot, Judge.me), Durchschnitt aus den tatsächlich vorhandenen Bewertungen.
 
 ### Der wichtigste Satz für dieses Geschäftsmodell
 
@@ -63,6 +79,22 @@ Das ist der eine Punkt, der vor dem ersten Onlineverkauf stehen muss; alles ande
 | 26 deklarationspflichtige Duftallergene | Über Schwellenwert in INCI ausweisen (bei Rose/Safran-Kompositionen relevant: Geraniol, Citronellol, Linalool, Eugenol …). **Erweiterte Liste (80+ Allergene) nach VO (EU) 2023/1545: gilt für Produkte, die ab 31.07.2026 in Verkehr gebracht werden; ältere Ware darf bis 31.07.2028 abverkauft werden — mit dem Hersteller klären.** | ☐ |
 | Gefahrgut UN 1266 | Alkoholhaltiges Parfum = Gefahrgut im Versand. Begrenzte Menge (LQ) möglich; **Luftfracht eingeschränkt**, Versanddienstleister und Verpackung entsprechend wählen; kein Standardversand ins Nicht-EU-Ausland ohne Prüfung | ☐ |
 | Tierversuchsverbot / Claims | „ohne Tierversuche“ ist in der EU ohnehin Pflicht — als Werbeaussage irreführend (UWG) | ✅ nicht bewerben |
+
+### Anfrage an die Fabrik (je Duft)
+
+Ohne diese Unterlagen kein Onlineverkauf. Die fehlende Rechtsfreigabe blockiert den **Onlineshop**, nicht den
+Privatverkauf (ob Privatverkauf zulässig ist, beurteilt der Skill `azizam-compliance-auditor`).
+- INCI-Liste (vollständige Inhaltsstoffe in INCI-Nomenklatur)
+- Allergen-Deklaration (welche deklarationspflichtigen Duftallergene über Schwellenwert)
+- Sicherheitsdatenblatt (SDS) — auch für den Gefahrgut-Versand nötig
+- Konzentration (EdP / Extrait, % Duftöl) — erst danach darf eine Zahl in die Werbung
+- Notenpyramide (Kopf/Herz/Basis) — keine Noten erfinden
+- Sind die Düfte bereits CPNP-notifiziert, unter welchem Namen? Gibt es eine Sicherheitsbewertung (CPSR), die ein
+  Safety Assessor für die eigene Marke übernehmen kann?
+- Sind es „inspired by“-Kompositionen? Dann Referenzdüfte **nie** nennen — nicht auf der Seite, nicht in DMs,
+  nicht durch Creator.
+- Parallel: Safety Assessor anfragen (Suchbegriff „Sicherheitsbewertung Kosmetik CPSR Parfum“), Preis je Duft
+  einholen. Mit 2–3 Düften starten, nicht mit allen.
 
 ### Shop-Pflichten Tag 1
 

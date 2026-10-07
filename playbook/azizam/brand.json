@@ -105,9 +105,9 @@
     "slogan": "Trage, was Worte nicht fassen können / Neue Kompositionen. Seltene Editionen.",
     "bewertungen_live": "4,8/5 bei 247 Bewertungen — als nicht belegbar eingestuft, Entfernung beschlossen",
     "rechtsflags": [
-      "ENTSCHIEDEN 09/2026 (Entfernung beschlossen, noch nicht umgesetzt): 'Handgefertigt in Deutschland', 'Seltene Zutaten', 'Haute Parfumerie' und der Komposition-Absatz im Geschichte-Abschnitt — widersprechen dem Umfüll-Geschäftsmodell, § 5 UWG. Ersatztexte: website-korrekturen.md",
-      "ENTSCHIEDEN 09/2026 (Entfernung beschlossen, noch nicht umgesetzt): Bewertungsblock '4.8 von 5' / '247 Bewertungen' / drei Testimonials — ohne echte Verkäufe wettbewerbswidrig. Ersetzt durch Risikoumkehr (30 Tage Rückgabe). Ersatztexte: website-korrekturen.md",
-      "OFFEN: Keine CPNP-Notifizierung/PIF/INCI/Sicherheitsdatenblatt erkennbar — siehe NAECHSTE-SCHRITTE.md Schritt 0A."
+      "ENTSCHIEDEN 09/2026 (Entfernung beschlossen, noch nicht umgesetzt): 'Handgefertigt in Deutschland', 'Seltene Zutaten', 'Haute Parfumerie' und der Komposition-Absatz im Geschichte-Abschnitt — widersprechen dem Umfüll-Geschäftsmodell, § 5 UWG. Ersatztexte: 07-recht-retention.md",
+      "ENTSCHIEDEN 09/2026 (Entfernung beschlossen, noch nicht umgesetzt): Bewertungsblock '4.8 von 5' / '247 Bewertungen' / drei Testimonials — ohne echte Verkäufe wettbewerbswidrig. Ersetzt durch Risikoumkehr (30 Tage Rückgabe). Ersatztexte: 07-recht-retention.md",
+      "OFFEN: Keine CPNP-Notifizierung/PIF/INCI/Sicherheitsdatenblatt erkennbar — siehe 07-recht-retention.md, Anfrage an die Fabrik."
     ],
     "website_quellcode": "nicht in diesem Repo; Vercel-Team 'MARN' zeigt keine Projekte — Zugriff für direkte Änderungen fehlt"
   }
