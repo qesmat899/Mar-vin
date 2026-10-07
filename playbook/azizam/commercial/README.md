@@ -121,7 +121,9 @@ Diese Bezeichnungen enthalten fremde Markennamen und gehören nie in Kundentexte
 1. Kaufdatum je Flasche (alle 18 `UNKNOWN`)
 2. Belege heraussuchen und den Flaschen bzw. Sammelbestellungen zuordnen (`beleg_ref`, dann `preis_qualitaet = BELEG`)
 3. Charge von Velvet Vanilla `G-17` (ungeöffnet)
-4. Einkaufspreis: Arabians Tonka `G-04`, Velvet Vanilla `G-17` und `G-18`; Imagination `G-13` nur ca. 38 €
+4. Einkaufspreise: alle 18 erfasst (Arabians Tonka 31,93 € nachgetragen). Ca.-Werte: Imagination `G-13` (ca. 38 €),
+   Velvet Vanilla `G-17`/`G-18`: tatsächlich `G-17` gratis, `G-18` ca. 90 €; für die Stückkosten je 45 € umgelegt
+   (Entscheidung `D-001` in `entscheidungen.csv`). Mit Beleg bestätigen.
 5. Liefer-/Zollkostenanteil je Sammelbestellung (bisher nicht erfasst)
 6. Azizam-Namen bzw. Bestätigung der Fabrikbezeichnungen
 7. Optional: Füllstände wiegen oder messen (neue `inventur` mit `mengen_basis = gemessen`; die Schätzung bleibt stehen)
