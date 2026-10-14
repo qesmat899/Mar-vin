@@ -91,7 +91,7 @@ jobs:
           echo "branch=$branch" >> "$GITHUB_OUTPUT"
 
       - name: Run Claude Code on the task branch
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action/base-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           prompt: |
@@ -119,11 +119,15 @@ jobs:
           BRANCH: ${{ steps.branch.outputs.branch }}
         run: |
           set -euo pipefail
-          if git diff --quiet && git diff --cached --quiet; then
+          if [[ -z "$(git status --porcelain)" ]]; then
             echo "No working-tree changes detected. No commit created by this step."
             exit 0
           fi
           git add -A
+          if git diff --cached --quiet; then
+            echo "No staged changes after git add; nothing to publish."
+            exit 0
+          fi
           git commit -m "Agent task: ${TASK:0:72}"
           git push --set-upstream origin "$BRANCH"
           gh pr create --draft --base Azizam --head "$BRANCH" \
