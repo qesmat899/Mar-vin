@@ -108,9 +108,14 @@ jobs:
           regressions, security/privacy risks, compliance-gate bypasses, missing tests, and conflicts
           with documented architecture. Distinguish verified findings from questions/risks.
           If no actionable defect is evident, say so and list meaningful residual risks.
-          Output concise Markdown with: Verdict (BLOCK / CHANGES REQUESTED / REVIEW / NO FINDINGS),
-          Findings sorted by severity with file/line when identifiable, Tests/evidence, and Open
-          questions. Do not make business decisions. No finding should be asserted without evidence."""
+          Use the repository's AI-REVIEW-CONTRACT output vocabulary exactly:
+          EXTERNAL_REVIEW: RESULT = PASS | PASS_WITH_FINDINGS | REVIEW_REQUIRED | BLOCKED.
+          Then include REVIEW_ID (use PR number and head SHA), BLOCKING_FINDINGS,
+          NON_BLOCKING_FINDINGS, QUESTIONS, RISKS, RECOMMENDATION, and CONFIDENCE
+          (HIGH / MEDIUM / LOW with a short reason, never a percentage).
+          Label statements FACT, ASSUMPTION, FINDING, or RECOMMENDATION where appropriate.
+          An external review result is not a compliance PASS or a CEO GO. Do not make business
+          decisions. No finding should be asserted without evidence."""
           user = {
             "pull_request": {
               "title": pr.get("title", ""),
