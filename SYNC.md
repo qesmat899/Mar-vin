@@ -79,7 +79,7 @@
 
 | Wer | Aufgabe | Status |
 |-----|---------|--------|
-| Chat | Flakon-Optionen recherchieren und bewerten (30 + 50 ml) | offen |
+| Mar | Flakon (30 ml), Etikett und Verpackung selbst klären — ohne Claude, bis Mar es wieder einbringt | offen |
 | Code | Struktur für Marketing-/Wachstums-Skills im Repo vorbereiten | offen |
 | Mar | Bestandsaufnahme ergänzen: Kaufdaten, Belege zuordnen, Charge Velvet Vanilla G-17, Azizam-Namen (Aufgaben auch in Todoist, Projekt „Azizam“); danach Komponenten (Flakons, Proben, Verpackung) — Liste in `playbook/azizam/commercial/README.md` | in Arbeit |
 | Mar | Dokumente der Fabrik je Duft sammeln und ins Repo/Drive legen; danach jeden Duft im CPNP-Portal eintragen | offen |
