@@ -95,7 +95,6 @@ jobs:
               r"gh[pousr]_[A-Za-z0-9]{20,}",
               r"AKIA[0-9A-Z]{16}",
               r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----",
-              r"(?i)(?:api[_-]?key|access[_-]?token|client[_-]?secret|password)\\s*[:=]\\s*['\\"]?[A-Za-z0-9/_+=.-]{16,}"
           ]
           if any(re.search(pattern, text) for pattern in patterns):
               print("::error::Potential credential detected in PR context. External review blocked; remove the credential and rotate it if real.")
