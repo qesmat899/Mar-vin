@@ -53,6 +53,7 @@ REGISTRY: list[tuple[str, str, str, str]] = [
     ("hygiene.py", "ACTIVE", "Repo-Hygiene und Lifecycle", ""),
     ("tests/*.py", "ACTIVE", "Tests", ""),
     (".gitignore", "ACTIVE", "hält Generiertes aus dem Repo", ""),
+    (".github/workflows/tests.yml", "ACTIVE", "CI: Unit-Tests bei Pull Requests und Push auf Azizam", ""),
     (".claude/settings.json", "ACTIVE", "Hooks", ""),
     (".claude/hooks/*", "ACTIVE", "Sessionstart/-ende", ""),
     (".claude/skills/*", "ACTIVE", "Skills", ""),
