@@ -1,11 +1,7 @@
 # Schicht 2 + 3 — Personas und Pains
 
-> **Zahlenstatus (05.10.2026):** Preise, Kosten, COGS, Versand, Gebühren, CAC, ROAS, Margen, Offer- und Absatzwerte
-> in dieser Datei sind alte Modellwerte (`OUTDATED` / `EXAMPLE` / `ASSUMPTION`) oder ohne Quelle (`UNKNOWN`) und von
-> Mar ausdrücklich **nicht bestätigt**. Markt-, Wettbewerbs- und Persona-Zahlen ohne Quelle sind `UNKNOWN`,
-> Playbook-Richtwerte (Hook Rate, CTR, Wiederkaufrate …) `EXAMPLE`. Belegt (`RECORDED (Mar)`, `SYNC.md`) sind nur:
-> 30 % Duftöl · Start 30 und 50 ml · Flakon max. ca. 3 € (Obergrenze, keine Kostenangabe) · erste Flakonbestellung
-> 100–200 Stück · Investitionsbudget 500–1.500 € für 3 Monate. Nichts davon als Fakt verwenden oder daraus ableiten.
+> **Zahlenstatus:** Zahlen in dieser Datei sind alte, von Mar **nicht bestätigte** Werte (`OUTDATED` / `EXAMPLE` /
+> `ASSUMPTION` / `UNKNOWN`). Regel und die wenigen belegten Werte: [`README.md` → Zahlenstatus](README.md#zahlenstatus).
 
 > **Status: Hypothesen.** Jede Persona und jeder Pain hier ist eine begründete Vermutung, bis 150–200
 > wörtliche Zitate sie belegen (Prompt 1 + 2). Zitate, die noch fehlen, sind mit `[ZITAT FEHLT]` markiert.
@@ -13,7 +9,7 @@
 
 Derselbe Markt — völlig verschiedene Menschen darin. Wir wählen die mit dem höchsten Schmerz.
 
-**Zwei Duftlinien, ab jetzt getrennt (siehe `04-produkt-marke.md`):** Persona A trägt **Azizam Heritage**
+**Zwei Duftlinien (09/2026 entschieden, laut `SYNC.md` wieder offen; siehe `04-produkt-marke.md`):** Persona A trägt **Azizam Heritage**
 (persisch-diasporische These, Duft: **Narcos**, Kandidat Goldstaub II.). Personas B und C tragen **Azizam
 Editions** (generisch-premium, Düfte: Kings Perfume, Velvet Vanilla, Erba Bomb, Midnight Café, Imaginary) —
 ihre Pains brauchten die persische Rahmung ohnehin nie.

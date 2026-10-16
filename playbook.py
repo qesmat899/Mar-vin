@@ -26,6 +26,7 @@ from datetime import date
 from pathlib import Path
 
 import commercial
+import hygiene
 
 ROOT = Path(__file__).resolve().parent / "playbook"
 DEFAULT_MODEL = "claude-opus-5"
@@ -162,9 +163,19 @@ def print_ad_perspectives(r: dict) -> None:
     print("   Einen Plattform-ROAS nie mit Perspektive A vergleichen.")
 
 
+def unbelegte_eingaben(brand: dict) -> list[str]:
+    """Rechner-Eingaben, die nicht als RECORDED belegt sind (OUTDATED, UNKNOWN, EXAMPLE, ASSUMPTION …)."""
+    return [k for k, st in brand["economics"].get("_status", {}).items() if not st.startswith("RECORDED")]
+
+
 def print_economics(brand: dict, r: dict) -> None:
-    ok = "✅" if r["beitrag"] > 0 else "❌"
+    modell = bool(unbelegte_eingaben(brand))
+    ok = (("Modell: positiv" if r["beitrag"] > 0 else "Modell: negativ") if modell
+          else ("✅" if r["beitrag"] > 0 else "❌"))
     print(f"\n{brand['name']} — Unit Economics ({brand['kategorie']})\n")
+    if modell:
+        print("  ⚠️  MODELLRECHNUNG: Eingaben nicht belegt (" + ", ".join(unbelegte_eingaben(brand))
+              + "). Keine Geschäftsaussage, keine Prüfergebnisse.\n")
     print(f"   Net Revenue                              {eur(r['netto']):>12}   ({eur(r['preis_brutto'])} brutto, Rabatt {eur(r['rabatt'])})")
     print(f" − COGS (Produkt + Verpackung)             − {eur(r['cogs']):>10}")
     print(f" − Versand netto (Kosten − Entgelt Kunde)  − {eur(r['versand_netto']):>10}   ({eur(r['versand'])} − {eur(r['versandentgelt'])})")
@@ -191,7 +202,8 @@ def print_economics(brand: dict, r: dict) -> None:
         (r["beitrag"] > 0, "CM2 nach Retouren positiv"),
     ]
     for passed, label in checks:
-        print(f"  {'✅' if passed else '⚠️ '} {label}")
+        mark = ("erfüllt" if passed else "nicht erfüllt") if modell else ("✅" if passed else "⚠️ ")
+        print(f"  {'Modell: ' + mark + ' —' if modell else mark} {label}")
     print(f"  ℹ️  LTV:CAC {r['ltv_cac']:.1f} ist ein Szenario, kein Prüfergebnis (keine Kohortendaten)")
     if r["beitrag"] <= 0:
         print("\n  Nicht skalieren. Erst CM2 nach Retouren dauerhaft positiv — sonst verstärkt jeder Euro Budget den Verlust.")
@@ -300,7 +312,7 @@ def print_offers(brand: dict, rows: list[dict]) -> None:
 
 def status(slug: str) -> None:
     brand = load_brand(slug)
-    plans = [p for p in (brand["_dir"] / "NAECHSTE-SCHRITTE.md", brand["_dir"] / "90-tage-plan.md") if p.exists()]
+    plans = [p for p in (brand["_dir"] / "90-tage-plan.md",) if p.exists()]
     if not plans:
         print(f"{brand['name']}: kein 90-tage-plan.md gefunden")
         return
@@ -507,22 +519,53 @@ def daten_cmd(slug: str) -> int:
     for name in commercial.SCHEMA:
         print(f"  {name:<28}{len(t[name]):>5} Einträge")
 
-    if t["produkte.csv"]:
+    verkaufbar = {p["produkt_id"] for p in t["produkte.csv"] if p.get("typ") != "quellgebinde"}
+    if verkaufbar:
         print("\nCOGS je Produkt (aus Stückliste × Komponentenpreis, nicht gespeichert)")
         for pid, c in commercial.cogs_by_product(t).items():
+            if pid not in verkaufbar:
+                continue
             wert = eur(c["wert"]) if c["wert"] is not None else "UNKNOWN"
             print(f"  {pid:<28}{wert:>12}  {'offen: ' + ', '.join(c['offen']) if c['offen'] else ''}")
 
     levels = commercial.stock_levels(t)
     if levels:
-        print("\nBestand (Summe der Bewegungen)")
-        for (typ, artikel, einheit), entry in sorted(levels.items()):
-            menge = "UNKNOWN" if entry["unknown"] else f"{entry['menge']:g}"
-            print(f"  {artikel:<28}{menge:>10} {einheit}")
-        total, unbewertet = commercial.capital(t)
-        print(f"  Gebundenes Kapital (bewertbarer Teil): {eur(total)}")
-        if unbewertet:
-            print(f"  Ohne belegten Wert (UNKNOWN, nicht geschätzt): {', '.join(unbewertet)}")
+        print("\nBestand je Artikel/Gebinde (Inventur + spätere Bewegungen)")
+        total_lo = total_hi = 0.0
+        geschaetzt = False
+        for (typ, artikel, einheit, gebinde), entry in sorted(levels.items()):
+            if entry["unknown"]:
+                menge = "UNKNOWN"
+            elif entry["menge_max"] != entry["menge"]:
+                menge = f"{entry['menge']:g}–{entry['menge_max']:g}"
+            else:
+                menge = f"{entry['menge']:g}"
+            basis = entry["basis"] + (f" {entry['stand']}" if entry["stand"] else "")
+            print(f"  {artikel:<26}{gebinde:<8}{menge:>11} {einheit:<7}{basis}")
+            if einheit == "ml" and typ == "produkt" and not entry["unknown"]:
+                total_lo, total_hi = total_lo + entry["menge"], total_hi + entry["menge_max"]
+                geschaetzt = geschaetzt or entry["basis"] != "gemessen"
+        if total_hi:
+            spanne = f"{total_lo:g}" if total_lo == total_hi else f"{total_lo:g}–{total_hi:g}"
+            print(f"  Summe Parfum in Gebinden: {spanne} ml" + ("  (SCHÄTZUNG, nicht gemessen)" if geschaetzt else ""))
+        cap = commercial.capital(t)
+        wert = eur(cap["min"]) if abs(cap["max"] - cap["min"]) < 0.005 else f"{eur(cap['min'])} – {eur(cap['max'])}"
+        print(f"  Anteiliger Einstandswert (bewertbarer Teil): {wert}"
+              + ("  (SCHÄTZUNG: Füllstände per Augenmaß bzw. ca.-Preise)" if cap["geschaetzt"] else ""))
+        if cap["unbewertet"]:
+            print(f"  Ohne belegten Preis (UNKNOWN, nicht geschätzt): {', '.join(cap['unbewertet'])}")
+        umlagen = [d["decision_id"] for d in t["entscheidungen.csv"]
+                   if d.get("bereich") == "bestand" and d.get("status") == "gueltig"]
+        if umlagen:
+            print(f"  Interne Zuordnungsregeln im Ledger (kein Einkaufspreis, Werte oben = tatsächliche Preise): {', '.join(umlagen)}")
+
+    offen = commercial.open_items(t)
+    if offen:
+        print("\nOffene Nachträge")
+        zugaenge = sum(1 for r in t["bestand_bewegungen.csv"] if r.get("bewegung") == "zugang")
+        for was, wo in offen.items():
+            liste = f"alle {zugaenge} Zugänge" if len(wo) == zugaenge else ", ".join(wo)
+            print(f"  {was:<16}{len(wo):>3}  {liste}")
 
     if t["transaktionen.csv"]:
         mwst = brand["economics"].get("mwst", 0.0)
@@ -575,6 +618,9 @@ def main() -> None:
     s = sub.add_parser("offers", help="Offer-Vergleich Abo / 2+1 / 1+1+Geschenk (Kap. 4.2)")
     s.add_argument("--brand", required=True)
     s.add_argument("--ad-factor", type=float, help="Faktor f für Perspektive B")
+
+    s = sub.add_parser("hygiene", help="Repo-Hygiene: Lifecycle, Duplikate, Widersprüche, tote Verweise (löscht nie)")
+    s.add_argument("--alle", action="store_true", help="alle Dateien je Lifecycle auflisten")
 
     s = sub.add_parser("daten", help="Commercial-Daten prüfen: Schema, Verweise, COGS, Bestand, Transaktionen")
     s.add_argument("--brand", required=True)
@@ -630,6 +676,10 @@ def main() -> None:
     elif args.cmd == "offers":
         brand = load_brand(args.brand)
         print_offers(brand, offers(brand["economics"], args.ad_factor))
+    elif args.cmd == "hygiene":
+        r = hygiene.run(ROOT.parent)
+        print(hygiene.render(r, alle=args.alle))
+        sys.exit(1 if r.failed else 0)
     elif args.cmd == "daten":
         sys.exit(daten_cmd(args.brand))
     elif args.cmd == "prompt":

@@ -59,7 +59,7 @@ ausdrücklich nicht bestätigt. Aus `UNKNOWN`-Werten wird nichts Neues abgeleite
 | Versand | alte Website: Deutschland + Österreich, 2–4 Werktage, 4,95 €, kostenlos ab 80 € `OBSERVED (alte Website)`; für den Neustart nicht entschieden. Versandkosten für Azizam `UNKNOWN` |
 | Shop & Buchhaltung | Neustart im Shopify-Shop „My Store 3“ (04.10.2026: 0 Produkte, 0 Bestellungen `OBSERVED`); Buchhaltung beim Steuerberater, Geschäftsjahr = Kalenderjahr (Mar 04.10.2026) |
 | Rückgabe | gesetzlich 14 Tage; alte Website: freiwillig 30 Tage, wenn Flakon ≥ 80 % gefüllt `OBSERVED (alte Website)`, für den Neustart nicht entschieden |
-| Sortiment | 7 Düfte laut alter Website `OBSERVED`: Narcos, Midnight Café, Erba Bomb, Imaginary, Goldstaub II., Velvet Vanilla, Kings Perfume |
+| Sortiment | Alte Website zeigte 7 Düfte `OBSERVED`: Narcos, Midnight Café, Erba Bomb, Imaginary, Goldstaub II., Velvet Vanilla, Kings Perfume. Aktueller Duftbestand: `azizam/commercial/duefte.csv`; Les Sables Roses im Sortiment (`D-002`, Mar 16.10.2026) |
 
 Die alten Zahlen stehen in `playbook/azizam/brand.json`, jede mit Status im Feld `_status`. Sie bleiben dort nur als
 Rechengrundlage für den Rechner, bis echte Werte vorliegen.
@@ -71,9 +71,9 @@ Experimente) stehen nur im Decision Ledger `azizam/commercial/entscheidungen.csv
 
 | Datum | Entscheidung |
 |---|---|
-| 09/2026 | **Zwei Duftlinien parallel.** *Heritage* (persisch-diasporisch, Persona Darius/Roya, Duft Narcos) und *Editions* (generisch-premium, Personas Leon/Selin, die übrigen sechs). Zuordnung in `azizam/04-produkt-marke.md`. |
+| 09/2026 | **Zwei Duftlinien parallel** (laut `SYNC.md` seit 10/2026 wieder offen). *Heritage* (persisch-diasporisch, Persona Darius/Roya, Duft Narcos) und *Editions* (generisch-premium, Personas Leon/Selin, die übrigen sechs). Zuordnung in `azizam/04-produkt-marke.md`. |
 | 09/2026 | **30 % Duftöl ist der Kernmechanismus**, zusammen mit Direktvertrieb ohne Handelsmarge. |
-| 09/2026 | **Herstellungs-Aussagen kommen von der Website runter** („Handgefertigt in Deutschland", „Seltene Zutaten", „Haute Parfumerie", der Komposition-Absatz). Ersatztexte fertig in `azizam/website-korrekturen.md`. |
+| 09/2026 | **Herstellungs-Aussagen kommen von der Website runter** („Handgefertigt in Deutschland", „Seltene Zutaten", „Haute Parfumerie", der Komposition-Absatz). Regeln und Ersatztexte für den Neustart: `azizam/07-recht-retention.md`. |
 | 09/2026 | **Der Bewertungsblock kommt runter** (4.8 von 5, 247 Bewertungen, drei Testimonials) — ohne echte Verkäufe wettbewerbswidrig. Ersetzt durch Risikoumkehr über das 30-Tage-Rückgaberecht. |
 | 09/2026 | **30 ml wird online nicht beworben** — unter 30 € trägt der Preis kein Paid Media. Bleibt als Einstieg und Post-Purchase-Upsell. Beruht auf dem alten Preis 29,99 € `OUTDATED`; mit echten Preisen neu prüfen. |
 
@@ -82,7 +82,7 @@ Experimente) stehen nur im Decision Ledger `azizam/commercial/entscheidungen.csv
 1. **Kosmetikrecht vor dem ersten Onlineverkauf.** Wer fertiges Parfum unter eigenem Namen abfüllt, ist selbst die
    verantwortliche Person nach Art. 4 Kosmetik-VO: CPNP-Notifizierung, PIF, Sicherheitsbewertung (CPSR), INCI-
    Kennzeichnung, dazu die erweiterte Duftallergen-Kennzeichnung nach VO (EU) 2023/1545 (für Produkte, die ab
-   31.07.2026 in Verkehr gebracht werden). Anfrage an die Fabrik steht in `azizam/NAECHSTE-SCHRITTE.md`, Schritt 0A.
+   31.07.2026 in Verkehr gebracht werden). Anfrage an die Fabrik: `azizam/07-recht-retention.md`, Abschnitt „Anfrage an die Fabrik“.
 2. **Notenpyramiden für sechs der sieben Düfte.** Nur Narcos ist bekannt (Honig, Tabakblatt, Zimt, Lavendel,
    Zitrus, Vanille). Ohne die echten Noten bleibt die Linienzuordnung Hypothese — **keine Noten erfinden.**
 3. **Website-Quellcode ist nicht zugänglich.** Nicht in diesem Repo (dort nur 3D-Flakon-Komponenten unter
@@ -93,10 +93,8 @@ Experimente) stehen nur im Decision Ledger `azizam/commercial/entscheidungen.csv
 
 ### Der nächste Schritt
 
-`azizam/NAECHSTE-SCHRITTE.md` ist der Fahrplan. Kern: die beiden Website-Korrekturen umsetzen, parallel die
-Rechtsfreigabe bei der Fabrik anstoßen, und **die ersten 50 Flakons privat verkaufen** — das bringt sofort Geld
-(alter Modellwert 26,96 € Deckungsbeitrag je 50 ml `OUTDATED`, aus unbelegten Zahlen) und liefert die echten Kundenzitate, die dem ganzen System
-bisher fehlen.
+Aktueller Stand und nächste Aufgaben: `SYNC.md` im Repo-Root. Fahrplan als Checkliste: `azizam/90-tage-plan.md`.
+Rechtsfreigabe bei der Fabrik: `azizam/07-recht-retention.md`; Research-Fragen beim Privatverkauf: `azizam/swipe-file.md`.
 
 ## Die Dateien
 
@@ -107,8 +105,6 @@ playbook/
 ├── prompts.md             Die sechs Prompts (Persona-Extraktion bis Rezensions-Mining)
 ├── templates/             Pain-Karte, Persona-Karte, Brand-Steckbrief, Creator-Briefing, Anschreiben, Vereinbarung, CSVs
 └── azizam/
-    ├── NAECHSTE-SCHRITTE.md    ← hier steht, was als Nächstes zu tun ist
-    ├── website-korrekturen.md  ← fertige Vorher/Nachher-Texte für die Live-Seite
     ├── brand-briefing.md       ← fester KI-Kontext dieser Marke (Verbotsliste!)
     ├── brand.json              ← alte Zahlen mit Status (`_status`), maschinenlesbar
     └── 01-markt … 07-recht-retention, 90-tage-plan, swipe-file

@@ -103,7 +103,7 @@ sondern REVIEW mit der Empfehlung „nicht umsetzen“: Ob Azizam trotzdem weite
 | Product Data / Economics / Procurement | **READY** | Gate erfüllt für diesen Bereich |
 | beliebig | Bereich für diese Entscheidung nicht relevant | **N/A** mit Begründung (z. B. Procurement bei einer reinen Preisfrage). N/A nie nutzen, um einem BLOCK oder NOT READY auszuweichen |
 
-Was „nicht verkaufsfähig“ heißt, entscheidet allein der Auditor. Laut `playbook/azizam/NAECHSTE-SCHRITTE.md` blockiert
+Was „nicht verkaufsfähig“ heißt, entscheidet allein der Auditor. Laut `playbook/azizam/07-recht-retention.md` (Anfrage an die Fabrik) blockiert
 die fehlende Rechtsfreigabe der Fabrik den **Onlineshop**, nicht den Privatverkauf. Gilt eine Entscheidung dem
 Privatverkauf, prüfst du, was der Auditor für diesen Fall sagt, statt das Ergebnis zu übertragen oder zu ignorieren.
 
@@ -283,7 +283,7 @@ Entscheidung beeinflussen:
 | Gratisversand-Schwelle 60 € vs. 80 € | `brand-briefing.md` vs. `brand.json`/`07-recht-retention.md` | AOV, Bundles, CM1, Shop-Texte |
 | Flakonpreis 1,85 € vs. 3,00 € Obergrenze | `05-offer-unit-economics.md` (als veraltet markiert) vs. `brand.json`/`SYNC.md` | COGS, Flakon- und Lieferantenwahl, Bestellkapital |
 | Noten von Narcos | `KONTEXT-EXPORT.md` vs. `brand-briefing.md`/`04-…` | Produkttexte, Etikett, Claims |
-| Ziel-CPA 22 € vs. 15 € | `90-tage-plan.md` vs. `NAECHSTE-SCHRITTE.md` | Testbudget pro Creative |
+| Ziel-CPA 22 € vs. 15 € | beide alt, in `90-tage-plan.md` | Testbudget pro Creative |
 | CM1/CM2-Definition | Repo-Konvention (übernommen in `azizam-unit-economics`) vs. abweichende Vorgabe; Mar entscheidet | Vergleich mit externen Zahlen |
 
 **Change Impact.** Meldet `azizam-product-data` eine Änderung, prüfst du, welche Gates neu laufen müssen. Nicht jede
@@ -330,9 +330,9 @@ Nachfragedaten.
 
 **Test vs. Scale** („Können wir skalieren?“) – unterscheide **TEST** und **SCALE**.
 - Ist die Nachfrage unsicher, ist ein kleiner Test meist sinnvoller als eine große MOQ.
-- **Skalierungsregel des Repos** (`playbook/SYSTEM.md`, `NAECHSTE-SCHRITTE.md`): skalieren erst, wenn **CM2 nach
+- **Skalierungsregel des Repos** (`playbook/SYSTEM.md`, `90-tage-plan.md`): skalieren erst, wenn **CM2 nach
   Retouren ≥ 7 Tage positiv**; Budget **+20–30 % alle 2–3 Tage**, keine Sprünge; steuern auf **MER**, nicht auf
-  Plattform-ROAS. Das MER-Ziel **≥ 2,5** steht in `NAECHSTE-SCHRITTE.md` und `05-offer-unit-economics.md`, dort
+  Plattform-ROAS. Das MER-Ziel **≥ 2,5** steht in `05-offer-unit-economics.md`, dort
   bezogen auf einen 50/100-ml-Mix; Kapitel 05 ist als veraltet markiert und 100 ml kommt erst später. Du führst das
   Ziel daher als RECORDED und weist auf den abweichenden Größenmix hin.
 - Positives CM1 allein ist **kein** Grund zu skalieren. Ohne echte Verkaufsdaten (heute: keine) ist jede

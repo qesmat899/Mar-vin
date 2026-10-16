@@ -1,11 +1,7 @@
 # Offer-Engineering & Unit Economics — echte Zahlen
 
-> **Zahlenstatus (05.10.2026):** Preise, Kosten, COGS, Versand, Gebühren, CAC, ROAS, Margen, Offer- und Absatzwerte
-> in dieser Datei sind alte Modellwerte (`OUTDATED` / `EXAMPLE` / `ASSUMPTION`) oder ohne Quelle (`UNKNOWN`) und von
-> Mar ausdrücklich **nicht bestätigt**. Markt-, Wettbewerbs- und Persona-Zahlen ohne Quelle sind `UNKNOWN`,
-> Playbook-Richtwerte (Hook Rate, CTR, Wiederkaufrate …) `EXAMPLE`. Belegt (`RECORDED (Mar)`, `SYNC.md`) sind nur:
-> 30 % Duftöl · Start 30 und 50 ml · Flakon max. ca. 3 € (Obergrenze, keine Kostenangabe) · erste Flakonbestellung
-> 100–200 Stück · Investitionsbudget 500–1.500 € für 3 Monate. Nichts davon als Fakt verwenden oder daraus ableiten.
+> **Zahlenstatus:** Zahlen in dieser Datei sind alte, von Mar **nicht bestätigte** Werte (`OUTDATED` / `EXAMPLE` /
+> `ASSUMPTION` / `UNKNOWN`). Regel und die wenigen belegten Werte: [`README.md` → Zahlenstatus](README.md#zahlenstatus).
 
 > ⚠️ **Ganzes Kapitel veraltet (Stand 09/2026).** Seit 03.10.2026: Kleinunternehmer (keine MwSt.), Start mit 30 und 50 ml
 > (100 ml später, nach den ersten Verkäufen), Preise und Flakon offen. Die Tabellen und Offers unten sind nur noch Referenz. Aktuelle Zahlen:
@@ -65,7 +61,7 @@ Alle drei Playbook-Varianten (Einmal, 2+1, Duo/Abo) mit gleichem Budget testen �
 ## Liquidität
 
 Bei 0,076 €/ml und 1,85 € Flakon bindet eine Charge von 100 Flakons à 50 ml nur ~665 € Ware — das Risiko liegt nicht
-in der Ware, sondern in **Rechtskosten (CPSR pro Duft ~300–800 €)** und im Ads-Budget. Reihenfolge deshalb: erst
+in der Ware, sondern in **Rechtskosten (CPSR 107,10 € je Sorte laut Mar, 07.10.2026; die frühere Schätzung ~300–800 € ist überholt)** und im Ads-Budget. Reihenfolge deshalb: erst
 Privatverkauf finanziert die Sicherheitsbewertungen, dann Ads.
 
 ## Skalierungsregel

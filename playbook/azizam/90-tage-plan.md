@@ -1,11 +1,7 @@
 # Azizam — Der 90-Tage-Fahrplan
 
-> **Zahlenstatus (05.10.2026):** Preise, Kosten, COGS, Versand, Gebühren, CAC, ROAS, Margen, Offer- und Absatzwerte
-> in dieser Datei sind alte Modellwerte (`OUTDATED` / `EXAMPLE` / `ASSUMPTION`) oder ohne Quelle (`UNKNOWN`) und von
-> Mar ausdrücklich **nicht bestätigt**. Markt-, Wettbewerbs- und Persona-Zahlen ohne Quelle sind `UNKNOWN`,
-> Playbook-Richtwerte (Hook Rate, CTR, Wiederkaufrate …) `EXAMPLE`. Belegt (`RECORDED (Mar)`, `SYNC.md`) sind nur:
-> 30 % Duftöl · Start 30 und 50 ml · Flakon max. ca. 3 € (Obergrenze, keine Kostenangabe) · erste Flakonbestellung
-> 100–200 Stück · Investitionsbudget 500–1.500 € für 3 Monate. Nichts davon als Fakt verwenden oder daraus ableiten.
+> **Zahlenstatus:** Zahlen in dieser Datei sind alte, von Mar **nicht bestätigte** Werte (`OUTDATED` / `EXAMPLE` /
+> `ASSUMPTION` / `UNKNOWN`). Regel und die wenigen belegten Werte: [`README.md` → Zahlenstatus](README.md#zahlenstatus).
 
 Fortschritt: `python3 playbook.py status --brand azizam` (zählt die Kästchen). Start: ______ · Tag 90: ______
 
@@ -30,11 +26,13 @@ Fortschritt: `python3 playbook.py status --brand azizam` (zählt die Kästchen).
 - [ ] Prompt 6 (Rezensions-Mining) auf 100 Wettbewerber-Rezensionen — Mechanismus gegen echte Enttäuschungen prüfen
 
 ## Woche 5–6 · Aufbau
-- [ ] Shopify aufsetzen, mobil-first; 3D-Flakon-Hero aus `frontend/components/` einbinden
+- [ ] Shopify aufsetzen, mobil-first; 3D-Flakon-Hero aus `frontend/components/` einbinden (Drehform, nur für runde Flakons; eckig → GLB-Modell oder Foto-Hero; für den Launch reichen gute Produktfotos)
+- [ ] Produktfotos neuer Flakon: 2 × Freisteller (30/50 ml), 3 × in der Hand, 3 × Lifestyle (Bildsprache aus `04-produkt-marke.md`)
+- [ ] Preise festlegen (offen): 30 ml · 50 ml · Duo · Trio 2+1 · Discovery 3 × 2 ml (Gutschein auf 50 ml) · Versandkostenfrei-Grenze · Hinweis § 19 UStG
 - [ ] Produktseite nach Angle → Pain → Mechanismus → Beweis → Offer (LP-Struktur in `03-angles-hooks.md`)
 - [ ] Rechtstexte: Impressum, Datenschutz (alle Pixel/Tools), Widerruf, AGB, Cookie-Consent
 - [ ] PAngV: Grundpreis €/100 ml auf jeder Produktseite; GPSR-Angaben; INCI + Allergene auf Produktseite
-- [ ] LUCID-Registrierung, Zahlungsanbieter (Auszahlungszyklen prüfen), Versand mit Gefahrgut-LQ
+- [ ] LUCID-Registrierung (Pflicht ab dem ersten Paket), Zahlungsanbieter (Auszahlungszyklen prüfen), Versand mit Gefahrgut-LQ (UN 1266: DHL Paket als „Begrenzte Menge (LQ)“, kein Päckchen, keine Luftfracht; Versandkosten real messen)
 - [ ] CPNP-Notifizierung abgeschlossen, PIF liegt vor — **kein Verkauf vorher**
 - [ ] Tracking: Meta Pixel + Conversions API, TikTok Pixel + Events API, Server-Side wenn möglich
 - [ ] Klaviyo: Welcome, Warenkorbabbruch, Post-Purchase (Inhalte in `07-recht-retention.md`), Double-Opt-In
@@ -42,12 +40,13 @@ Fortschritt: `python3 playbook.py status --brand azizam` (zählt die Kästchen).
 - [ ] Discovery-Set (3 × 2 ml) produziert; Gedichtkarte und Probe als Paketbeilage
 
 ## Woche 7–8 · Testing
+- [ ] Vorab organisch (kostet nichts): 3 Videos/Woche auf Instagram + TikTok, je Video **ein** Angle (A1 · A2 · B1 · A5 aus `03-angles-hooks.md`), Aufbau Hook 0–3 s → Problem → Flakon + Mechanismus → „Link in Bio“; 3-Sekunden-Rate messen, Kommentare wörtlich in die Swipe-Datei
 - [ ] 10–15 Creatives produzieren: eigene UGC + Founder-Story + 3–5 Nano-Creator (Barter)
 - [ ] Testkampagne breit, Advantage+ Placements; eine Kampagne, viele Creatives; TikTok parallel
-- [ ] Budget 3–5 × Ziel-CPA (Ziel-CPA `UNKNOWN`; alter Wert 22 € `OUTDATED`) pro Creative, 5–7 Tage laufen lassen
+- [ ] Budget 3–5 × Ziel-CPA (Ziel-CPA `UNKNOWN`; alter Wert 22 € `OUTDATED`, in einem älteren Fahrplan 15 € `UNKNOWN`) pro Creative, 5–7 Tage laufen lassen; nur 50 ml bewerben
 - [ ] Täglich Hook Rate, Hold Rate, CTR, CPA in `../templates/testing-log.csv` — nicht täglich abschalten
 - [ ] Nach 7 Tagen: Winner (CPA unter max. CAC laut `playbook.py economics`, alter Modellwert 28,60 € für 50 ml `OUTDATED`) und Verlierer analysieren — „und warum nicht?“
-- [ ] Offer-Test: Einmalkauf vs. 2+1 vs. 1 + Reisegröße + Karte, gleiches Budget
+- [ ] Offer-Test: Einmalkauf vs. 2+1 vs. 1 + Reisegröße + Karte (alternativ Einmalkauf vs. Duo vs. Trio 2+1), gleiches Budget
 - [ ] Entscheidung Haupt-Persona bestätigen (Darius-Angles vs. Leon-Angles nach CPA)
 
 ## Woche 9–10 · Creator-Outreach

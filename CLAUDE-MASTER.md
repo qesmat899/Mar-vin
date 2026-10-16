@@ -120,7 +120,7 @@ Die Texte raten zu getrennten Bereichen statt einem Riesen-Chat. Bei Azizam lieg
 | 02 Einkauf & Lieferanten | Angebote, Mindestmengen, Lieferzeiten, Alternativen | Flakon-Suche läuft im Chat | keine Datei |
 | 03 Produktion & Qualität | Abfüllen, Chargen, Arbeitsanweisungen, Kontrollen | – | fehlt |
 | 04 Marketing & Marke | Personas, Angles, Creator, Content | `playbook/azizam/01–06`, `.claude/skills/` | vorhanden |
-| 05 Shop & Verkauf | Produktseiten, SEO, Bundles, Conversion | `frontend/`, `website-korrekturen.md`, Shopify | Shop offline |
+| 05 Shop & Verkauf | Produktseiten, SEO, Bundles, Conversion | `frontend/`, `07-recht-retention.md` (Website-Aussagen), Shopify | Shop offline |
 | 06 Kundenservice | FAQ, Antwortvorlagen, Reklamationen | – | erst ab Verkaufsstart |
 | 07 Finanzen | Deckungsbeitrag, Margen, Cashflow, Break-even | `brand.json`, `playbook.py economics` | nur alte, nicht bestätigte Werte (`UNKNOWN`/`OUTDATED`) |
 | 08 Markt & Wettbewerb | Trends, Wettbewerber, Preise, Kundensprache | `01-markt.md`, `swipe-file.md` | vorhanden |

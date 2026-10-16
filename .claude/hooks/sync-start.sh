@@ -11,3 +11,11 @@ fi
 echo "Inhalt von SYNC.md (Übergabe Chat/Code). Regeln darin beachten, am Ende aktualisieren:"
 echo
 cat SYNC.md
+
+# Repo-Hygiene: nur bei Handlungsbedarf (Widerspruch oder temporäre Datei) kurz melden.
+if out=$(python3 playbook.py hygiene 2>/dev/null); then :; else
+  echo
+  echo "Repo-Hygiene meldet Handlungsbedarf (python3 playbook.py hygiene):"
+  echo "$out" | grep -E "^  ❌" | head -10
+  echo "$out" | grep -q "sicher entfernbar" && echo "  + temporäre Datei(en) im Repo, siehe Cleanup-Vorschlag"
+fi

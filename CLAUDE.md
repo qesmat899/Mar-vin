@@ -34,6 +34,7 @@ python3 playbook.py economics --brand azizam --all  # alle Größen × Kanäle
 python3 playbook.py economics --brand azizam --ad-factor 1.19  # zusätzlich Plattform-Perspektive B (nur wenn f belegt)
 python3 playbook.py offers --brand azizam           # Angebotsvarianten (Modellrechnung, Eingaben nicht belegt)
 python3 playbook.py daten --brand azizam            # Commercial-Daten prüfen: Schema, Verweise, COGS, Bestand, Kapital
+python3 playbook.py hygiene                         # Repo-Hygiene: Lifecycle, Duplikate, Widersprüche, tote Verweise (löscht nie)
 python3 -m unittest discover -s tests               # Tests für Rechner und Commercial-Daten
 python3 playbook.py prompt 1 --brand azizam --data zitate.txt [--run]
 python3 playbook.py swipe --brand azizam --source "Quelle" "Zitat"
@@ -46,6 +47,31 @@ python3 playbook.py export                          # alles in eine Markdown-Dat
 3. **Rechtliche Verbotslisten** im jeweiligen `brand-briefing.md` gelten für jeden Text, auch Creator-Skripte.
 4. **Marktentscheidungen trifft Mar**, nicht die KI.
 5. Neue Erkenntnisse und Entscheidungen in `playbook/KONTEXT-EXPORT.md` nachziehen.
+6. **Source of Truth statt Dokumentenfriedhof** (siehe „Repo-Hygiene“).
+
+## Repo-Hygiene
+**Azizam optimiert nicht die Menge seiner Dokumentation, sondern die Qualität seiner autoritativen Informationen.**
+Neue Dateien brauchen einen Zweck. Existiert eine Information bereits an einer autoritativen Stelle, wird sie nicht
+zusätzlich dupliziert, sondern verwiesen.
+
+| Information | autoritativer Ort |
+|---|---|
+| Bestand, Gebinde, Einkaufspreise | `playbook/azizam/commercial/bestand_bewegungen.csv` |
+| Produkt- und Duftstammdaten | `playbook/azizam/commercial/duefte.csv`, `produkte.csv` |
+| kommerzielle Entscheidungen (einzige dauerhafte Historie) | `playbook/azizam/commercial/entscheidungen.csv` |
+| aktueller Übergabestatus (kurz, kein Änderungsprotokoll) | `SYNC.md` |
+| Regeln und Governance | diese Datei, `CLAUDE-MASTER.md`, `.claude/skills/azizam-*` |
+| Berechnungslogik | `playbook.py`, `commercial.py`, `hygiene.py` |
+
+- **Lifecycle:** `ACTIVE` · `REFERENCE` · `TEMPORARY` · `SUPERSEDED` · `ARCHIVE` · `DELETE_CANDIDATE`. Zugeordnet in
+  `hygiene.py` (`REGISTRY`), nicht in den Dateien selbst. Eine neue Datei bekommt dort einen Eintrag mit Zweck; sonst
+  meldet die Prüfung sie.
+- **Reports sind temporär.** Arbeitsberichte und Analysen gehören in den Chat bzw. das Scratchpad, nicht ins Repo.
+  Dauerhaft nur mit langfristigem Nutzen (z. B. der bewusst erzeugte Boss-Bericht; ältere Fassungen gelten als ersetzt).
+- **Prüfen:** `python3 playbook.py hygiene` nach neuen, umbenannten oder ersetzten Dateien. Die Prüfung löscht nie.
+  `sicher entfernbar` (eindeutig temporär) darf Claude entfernen; `ersetzt` und `prüfen` legt Claude Mar als
+  Cleanup-Vorschlag vor. Widersprüche (`CONFLICTS`) werden an der autoritativen Stelle geklärt.
+- **Git-Historie** bleibt unangetastet; sie hält alte Stände fest, das aktuelle Repo bleibt trotzdem schlank.
 
 ## Azizam Decision Architecture (fünf Skills)
 Für Produkt-, Compliance-, Wirtschaftlichkeits-, Beschaffungs- und Geschäftsentscheidungen bei Azizam arbeiten fünf

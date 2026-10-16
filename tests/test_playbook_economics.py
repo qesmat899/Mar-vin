@@ -99,6 +99,30 @@ class VariantsTest(unittest.TestCase):
         self.assertAlmostEqual(privat["cm1"], 35.0 - 8.0)
 
 
+class ModelLabelTest(unittest.TestCase):
+    """Unbelegte Eingaben dürfen keine Prüfhaken (✅) erzeugen, sondern nur eine gekennzeichnete Modellrechnung."""
+
+    def _out(self, status: dict) -> str:
+        import contextlib
+        import io
+        brand = {"name": "Test", "kategorie": "Test", "economics": dict(BASE, _status=status)}
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            playbook.print_economics(brand, playbook.unit_economics(dict(BASE)))
+        return buf.getvalue()
+
+    def test_unconfirmed_inputs_show_model_label(self):
+        out = self._out({"preis_brutto": "OUTDATED — Test", "mwst": "RECORDED (Test)"})
+        self.assertIn("MODELLRECHNUNG", out)
+        self.assertNotIn("✅", out)
+        self.assertEqual(playbook.unbelegte_eingaben({"economics": {"_status": {"a": "UNKNOWN", "b": "RECORDED"}}}), ["a"])
+
+    def test_recorded_inputs_keep_checks(self):
+        out = self._out({"preis_brutto": "RECORDED (Test)"})
+        self.assertNotIn("MODELLRECHNUNG", out)
+        self.assertIn("✅", out)
+
+
 class BrandFilesTest(unittest.TestCase):
     """Die echten brand.json-Dateien laden und rechnen sich ohne Fehler (keine Werteprüfung)."""
 

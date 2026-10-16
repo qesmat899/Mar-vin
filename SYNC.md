@@ -1,7 +1,7 @@
 # SYNC.md – Übergabe zwischen Claude Chat und Claude Code (Azizam)
 
 > Gemeinsame Datei für **Claude Chat** und **Claude Code**. Sie ist die einzige Brücke zwischen beiden.
-> Zuletzt aktualisiert: 2026-10-05 [Code]
+> Zuletzt aktualisiert: 2026-10-16 [Code]
 
 ---
 
@@ -10,21 +10,21 @@
 1. **Zu Beginn jeder Session:** Diese Datei komplett lesen, bevor du etwas tust.
    - Claude Code liest sie selbst aus dem Repo.
    - Claude Chat kann das Repo nicht lesen. Mar fügt die Datei am Chat-Anfang ein. Ist sie nicht da, bitte Mar darum.
-2. **Am Ende jeder Session** (und nach jeder wichtigen Entscheidung): Datei aktualisieren.
+2. **Am Ende einer Session, wenn sich der Übergabestatus geändert hat** (Stand, Entscheidung, offene Frage, Aufgabe): Datei aktualisieren. Kleine Änderungen gehören nicht hierher; die Git-Historie hält sie fest.
    - Claude Code bearbeitet die Datei direkt.
    - Claude Chat gibt einen **Update-Block** (Vorlage ganz unten) aus, den Mar in die Datei einfügt.
 3. **Nur Gesichertes eintragen:** Was Mar gesagt oder entschieden hat, oder was wirklich umgesetzt wurde. Eigene Vorschläge gehören unter „Offene Fragen“ und beginnen mit „Vorschlag:“. Nie als Entscheidung eintragen.
 4. **Jeder Eintrag bekommt Datum und Quelle:** `[Chat]` oder `[Code]`.
 5. **Widerspruch:** Gilt Mars aktuelle Aussage, wird die Datei korrigiert. Veraltetes löschen, nicht stehen lassen.
 6. **Keine Geheimnisse:** Keine Zugangsdaten, API-Keys, Kundendaten, Rechnungen oder Passwörter in dieser Datei.
-7. **Kurz halten:** Maximal ca. 150 Zeilen. Im Log nur die 10 neuesten Einträge. Älteres in „Verlauf (zusammengefasst)“ in 1–2 Sätzen bündeln.
+7. **Kurz halten:** Maximal ca. 150 Zeilen. Im Log nur die 10 neuesten Einträge mit operativer Relevanz. Älteres in „Verlauf (zusammengefasst)“ in 1–2 Sätzen bündeln oder streichen, wenn es keine Relevanz mehr hat. Keine Datenwerte (Bestand, Preise, Mengen) kopieren, sondern auf die autoritative Datei verweisen. Prüfung: `python3 playbook.py hygiene`.
 8. **Rollen:**
    - **Chat:** Strategie, Recherche, Entscheidungen, Texte, Abwägen (z. B. Flakon).
    - **Code:** Dateien, Website, Skripte, Shopify-Importe, Auswertungen.
    - Gehört eine Aufgabe in die andere Umgebung, wird sie unter „Aufgaben und Übergaben“ eingetragen.
 9. **Abgrenzung:** Diese Datei und das ganze Repo betreffen nur Azizam.
 10. **Kommerzielle Entscheidungen** (Preis, Rabatt, Offer, Bestellung, Sortiment, Experimente) stehen verbindlich im
-    Decision Ledger `playbook/azizam/commercial/entscheidungen.csv`. Hier höchstens kurz mit `decision_id`.
+    Decision Ledger `playbook/azizam/commercial/entscheidungen.csv`. Hier höchstens kurz mit `decision_id`. Die dauerhafte Entscheidungshistorie steht nur dort.
 
 ---
 
@@ -57,6 +57,7 @@
 - Drei zuvor vorgeschlagene Standardflakons (schwarz/kantig, mattschwarz mit Goldkappe, schwer quadratisch mit Box) wurden abgelehnt.
 - Eigene Kreation/Sample erst später.
 - Bleiben gültig aus dem Playbook (09/2026): 30 % Duftöl als Kernversprechen; keine erfundenen Bewertungen; keine Herstellungsaussagen wie „Handgefertigt in Deutschland“, „Seltene Zutaten“, „Haute Parfumerie“. [Mar, 2026-10-03]
+- Les Sables Roses ist im Sortiment (`D-002`). [Mar, 2026-10-16]
 - Kein Privatkram im Repo: Adresse, Telefon, USt-IdNr. stehen nur im Impressum. [Mar, 2026-10-03]
 - Shop-Neustart im Shopify-Shop „My Store 3“ (pbznmb-fy.myshopify.com; Stand 04.10.: 0 Produkte, 0 Bestellungen). Buchhaltung macht der Steuerberater (kein Buchhaltungsprogramm). Geschäftsjahr = Kalenderjahr. Wochenüberblick montags. Claude-Plan: Pro. Geschäfts-E-Mail ist `azizamfragrance@gmail.com` (ohne „s“). [Mar, 2026-10-04]
 
@@ -70,7 +71,7 @@
 - Preise für 30 und 50 ml: offen. Die alten Werte in `brand.json` sind nicht bestätigt (`OUTDATED`); Einkaufspreis, COGS, Versandkosten, Gebühren, CAC und Retouren sind `UNKNOWN` und werden aus echten Quellen neu erfasst (Mar, 05.10.2026).
 - Etikettierung: Zum Etikett ist nichts geklärt.
 - Kosmetikrecht: Die Fabrik stellt die nötigen Dokumente bereit (Sicherheitsbewertung, INCI u. a.), Mar trägt die Produkte selbst im CPNP-Portal der EU ein (Mar, 04.10.). Offen: Liste der Fabrik-Dokumente prüfen (deckt sie CPSR/PIF-Inhalte und die erweiterte Allergen-Kennzeichnung nach VO (EU) 2023/1545 ab?), CPNP-Eintrag je Duft vor dem ersten Onlineverkauf.
-- Zwei Duftlinien (Heritage/Editions) aus dem Playbook: Mar ist unsicher, offen.
+- Zwei Duftlinien (Heritage/Editions) aus dem Playbook: offen. Mar entscheidet erst, wenn Flakon, Verpackung und Tüte endgültig gekauft sind (Suche läuft, Stand 16.10.).
 - Positionierung und Markenauftritt für die Zielgruppe.
 
 ---
@@ -79,9 +80,10 @@
 
 | Wer | Aufgabe | Status |
 |-----|---------|--------|
-| Chat | Flakon-Optionen recherchieren und bewerten (30 + 50 ml) | offen |
+| Mar | PR #6 prüfen und über das Merge nach `Azizam` entscheiden (offene Punkte in der PR-Beschreibung) | offen |
+| Mar | Flakon (30 ml), Etikett und Verpackung selbst klären — ohne Claude, bis Mar es wieder einbringt | offen |
 | Code | Struktur für Marketing-/Wachstums-Skills im Repo vorbereiten | offen |
-| Mar | Daten für die erste Bestandsaufnahme liefern (500-ml-Flaschen, Komponenten, Belege; Liste im Chat vom 05.10.2026 bzw. `playbook/azizam/commercial/README.md`) | offen |
+| Mar | Bestandsaufnahme ergänzen: Kaufdaten/Belege für Imagination und Les Sables Roses, Chargen Velvet Vanilla G-17 und Les Sables Roses G-19 (Termin 16.10. 18:30), Azizam-Namen (Aufgaben auch in Todoist, Projekt „Azizam“); danach Komponenten (Flakons, Proben, Verpackung) — Liste in `playbook/azizam/commercial/README.md` | in Arbeit |
 | Mar | Dokumente der Fabrik je Duft sammeln und ins Repo/Drive legen; danach jeden Duft im CPNP-Portal eintragen | offen |
 | Mar | `CLAUDE-MASTER.md` ins Chat-Projekt „Azizam“ hochladen; globale Anweisung und Memory aus `playbook/templates/claude-anweisungen.md` in claude.ai setzen | offen |
 
@@ -91,19 +93,23 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-10-16 [Code]** Bestandsabgleich abgeschlossen (Angaben Mar): tatsächliche Einkaufspreise Velvet Vanilla, Imagination = Citrus Fresh (Art. 1054), Les Sables Roses im Sortiment (`D-002`); Rechnungen der TBrand GmbH als verbindlich übernommen (Kaufdaten, Belege, Preise inkl. Rabatt, Versand nach ml verteilt) für 17 Flaschen; Zahlen nur in `playbook/azizam/commercial/`.
+- **2026-10-16 [Code]** Draft-PR #6 (`claude/charming-hypatia-58sfxg` → `Azizam`) geprüft und ergänzt: Rechner kennzeichnen Modellwerte, Bestandslogik gegen undatierte Bewegungen abgesichert, Duftlinien überall als offen markiert. Offene Entscheidungen stehen in der PR-Beschreibung. Nicht gemergt.
+- **2026-10-07 [Code]** Realer Bestand von Mar erfasst (inkl. Nachtrag Les Sables Roses): Gebinde, Preise, Füllstände per Augenmaß in `playbook/azizam/commercial/` (Zahlen nur dort, Übersicht: `python3 playbook.py daten`). Velvet-Vanilla-Umlage als Entscheidung D-001 im Ledger. Repo-Hygiene eingeführt: `python3 playbook.py hygiene` (Lifecycle, Duplikate, Widersprüche, tote Verweise; löscht nie).
+- **2026-10-05 [Code]** PR #4 (Bereinigung + Commercial-Struktur ohne Daten) von Mar freigegeben und in `Azizam` gemergt (`edd6c2a`). Boss-Status als A4-PDF erstellt: `AZIZAM-Boss-Status-2026-10-05.pdf`. Nächster Schritt: erste Bestandsaufnahme der 500-ml-Flaschen mit Mar.
 - **2026-10-05 [Code]** Commercial-Datenarchitektur angelegt (nur Struktur, **keine Daten**): `playbook/azizam/commercial/` mit 13 leeren CSV-Vorlagen für Produkt, Komponenten, Bestand (Bewegungen ab 500-ml-Gebinde), Offers, Transaktionen, pseudonyme Kunden, Experimente und dem Decision Ledger `entscheidungen.csv` (einzige Quelle für kommerzielle Entscheidungen, nur Mar entscheidet). Prüfung mit `python3 playbook.py daten`, Code in `commercial.py`. Nächster Schritt: erste Bestandsaufnahme mit Mar.
 - **2026-10-05 [Code]** Bereinigung nach Mars Freigabe: PR #3 war gemergt (`f9243b6`). Der Commercial-Datensatz aus `f7c7a77` (u. a. sieben angenommene 500-ml-Quellgebinde) war nicht von Mar bestätigt und ist per Revert vollständig entfernt — es gibt **keine** erfassten Azizam-Bestände. `playbook/haus-und-gruen/` und alle Haus-&-Grün-Verweise entfernt; das Repo betrifft nur noch Azizam. Alte Zahlen (Preise, COGS, Versand, Gebühren, CAC, Retouren, Offers, ROAS) als `OUTDATED`/`EXAMPLE`/`UNKNOWN`/`ASSUMPTION` gekennzeichnet; Mar hat sie ausdrücklich nicht bestätigt. Keine neuen Zahlen. Formel-Anpassung `2f34f28` bleibt. Git-Historie unverändert.
 - **2026-10-05 [Code]** Legacy-Cleanup: `marvin.py` (alter TikTok-/Video-Transcriber) entfernt, veraltete Verweise in `playbook/README.md` und `playbook/KONTEXT-EXPORT.md` bereinigt. Keine technischen Abhängigkeiten entfernt (es bestanden keine). Azizam-Skills und Decision Architecture unverändert. Commit `d892fd5`, PR #3.
 - **2026-10-04 [Code]** Mar: Claude Pro; Fabrik liefert die Rechtsdokumente, Mar trägt die Produkte selbst im CPNP-Portal ein. Offene Fragen und Aufgaben angepasst.
 - **2026-10-04 [Code]** E-Mail-Adresse korrigiert auf `azizamfragrance@gmail.com` (`brand.json`, `07-recht-retention.md`).
 - **2026-10-04 [Code]** Small-Business-Plugin eingerichtet: Profil `BUSINESS-CONTEXT.md` (von Mar bestätigt, über `CLAUDE.md` immer geladen), Aufbauplan in Stufen mit passenden Plugin-Skills in `playbook/azizam/SYSTEM-AUFBAU.md`. Shopify geprüft (nur gelesen).
-- **2026-10-04 [Code]** `CLAUDE-MASTER.md` angelegt: Wissensbasis aus Mars sechs Recherche-Texten (Claude-Funktionen, Modelle, Compliance-System, Agenten, Freigaben, Routinen), auf Azizam zugeschnitten, Ungeprüftes markiert. Wird über `CLAUDE.md` immer geladen. Fertige Anweisungen in `playbook/templates/claude-anweisungen.md`.
-- **2026-10-03 [Code]** 100 ml als spätere Größe wieder aufgenommen (nach ersten 30/50-Verkäufen): `SYNC.md`, `brand.json`, Kontext-Export, README, Briefing.
-- **2026-10-03 [Code]** `ARBEITSWEISE.md` (Werkzeug-Kompass) angelegt; wird beim Sessionstart mitgeladen, Claude Code erinnert Mar aktiv daran.
-- **2026-10-03 [Code]** Playbook-Kapitel 01, 03, 04, 06, 90-Tage-Plan, Briefing, Nächste Schritte und README bereinigt: 100 ml raus, Preise als `[Preis offen]`, Zahlen auf Kleinunternehmer/Flakon-Annahme; Kapitel 05 als Ganzes als veraltet markiert.
 
 ### Verlauf (zusammengefasst)
 
+- 2026-10-04: `CLAUDE-MASTER.md` angelegt (Wissensbasis aus Mars Recherche-Texten, über `CLAUDE.md` immer geladen).
+- 2026-10-03: 100 ml als spätere Größe wieder aufgenommen (nach ersten 30/50-Verkäufen).
+- 2026-10-03: `ARBEITSWEISE.md` (Werkzeug-Kompass) angelegt; wird beim Sessionstart mitgeladen, Claude Code erinnert Mar aktiv daran.
+- 2026-10-03: Playbook-Kapitel 01, 03, 04, 06, 90-Tage-Plan, Briefing, Nächste Schritte und README bereinigt: 100 ml raus, Preise als `[Preis offen]`, Zahlen auf Kleinunternehmer/Flakon-Annahme; Kapitel 05 als Ganzes als veraltet markiert.
 - 2026-10-02: SYNC.md im Chat angelegt und ins Repo gelegt.
 - 2026-10-03: Mars Antworten eingearbeitet (kein Verkauf aktuell, CPNP offen), Adresse/Telefon/USt-IdNr. aus den Dateien entfernt, Steuerteil auf Kleinunternehmer umgestellt.
 - 2026-10-03: Playbook (`docs/ECommerceBrandPlaybook.md`) und `playbook/KONTEXT-EXPORT.md` lagen schon im Repo, hochgeladene Fassung identisch; Widersprüche zu dieser Datei unter „Offene Fragen“ eingetragen. Mars Klärung (Kleinunternehmer, 30 + 50 ml, Preise offen, Website offline) in `brand.json` und Kontext-Export eingearbeitet.

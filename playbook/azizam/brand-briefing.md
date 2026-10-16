@@ -28,7 +28,7 @@ Haltbarkeits-Garantien in Stunden.
 2. **Leon, 24 — kein einziges Kompliment.** Trigger: zwei Dates ohne Kompliment. Pain Ebene 4: „Ich will der sein, an den man sich erinnert, nachdem ich den Raum verlassen habe.“ Einwand: „Habe ich schon probiert / hält nicht.“ Awareness 3–4.
 3. **Selin, 32 — sechs Flakons, kein Duft.** Trigger: Trennung, runder Geburtstag, Freundin mit Signature-Duft. Pain Ebene 4: „Ich will, dass jemand in zehn Jahren diesen Duft riecht und an mich denkt. Nicht an Douglas.“ Einwand: „Rose ist altmodisch, Orient zu schwer.“ Awareness 3.
 
-## Zwei Duftlinien (Entscheidung 09/2026)
+## Zwei Duftlinien (Entscheidung 09/2026, laut `SYNC.md` wieder offen — Mar ist unsicher)
 Azizam führt zwei Linien parallel: **Heritage** (persisch-diasporisch, Persona Darius/Roya, Duft **Narcos** —
 bestätigte Noten: Honig, Tabak, Zimt, Zitrus, Vanille; Kandidat Goldstaub II. ohne bestätigte Noten) und
 **Editions** (generisch-premium, Personas Leon/Selin, Düfte Kings Perfume/Velvet Vanilla/Erba Bomb/Midnight
