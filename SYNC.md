@@ -71,7 +71,7 @@
 - Preise für 30 und 50 ml: offen. Die alten Werte in `brand.json` sind nicht bestätigt (`OUTDATED`); Einkaufspreis, COGS, Versandkosten, Gebühren, CAC und Retouren sind `UNKNOWN` und werden aus echten Quellen neu erfasst (Mar, 05.10.2026).
 - Etikettierung: Zum Etikett ist nichts geklärt.
 - Kosmetikrecht: Die Fabrik stellt die nötigen Dokumente bereit (Sicherheitsbewertung, INCI u. a.), Mar trägt die Produkte selbst im CPNP-Portal der EU ein (Mar, 04.10.). Offen: Liste der Fabrik-Dokumente prüfen (deckt sie CPSR/PIF-Inhalte und die erweiterte Allergen-Kennzeichnung nach VO (EU) 2023/1545 ab?), CPNP-Eintrag je Duft vor dem ersten Onlineverkauf.
-- Zwei Duftlinien (Heritage/Editions) aus dem Playbook: Mar ist unsicher, offen.
+- Zwei Duftlinien (Heritage/Editions) aus dem Playbook: offen. Mar entscheidet erst, wenn Flakon, Verpackung und Tüte endgültig gekauft sind (Suche läuft, Stand 16.10.).
 - Positionierung und Markenauftritt für die Zielgruppe.
 
 ---
