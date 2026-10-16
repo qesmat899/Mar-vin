@@ -9,7 +9,7 @@
 |---|---|---|
 | **Kontext** | Was Claude über das Business immer weiß | `SYNC.md`, `CLAUDE.md`, `CLAUDE-MASTER.md` (Wissensbasis), `playbook/`, Projekt-Anweisungen in claude.ai |
 | **Skills** | Anleitungen für wiederkehrende Aufgaben | z. B. Produkttext mit Verbotsliste, Wochenreport |
-| **Konnektoren** | Zugriff auf Tools | Shopify, Gmail, Kalender, Drive, Canva, GitHub |
+| **Konnektoren** | Zugriff auf Tools | z. B. Shopify, Gmail, Kalender, Drive, GitHub, Todoist — geprüfter Stand mit Datum: `CLAUDE-MASTER.md` §3 |
 | **Automatik** | Läuft ohne Mar | Hooks (Code), geplante Aufgaben (Cowork), Routinen (Cloud) |
 | **Agents** | Eigenständige Helfer | erst bei großen, abgrenzbaren Aufgaben |
 

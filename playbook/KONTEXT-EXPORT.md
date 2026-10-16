@@ -71,7 +71,7 @@ Experimente) stehen nur im Decision Ledger `azizam/commercial/entscheidungen.csv
 
 | Datum | Entscheidung |
 |---|---|
-| 09/2026 | **Zwei Duftlinien parallel.** *Heritage* (persisch-diasporisch, Persona Darius/Roya, Duft Narcos) und *Editions* (generisch-premium, Personas Leon/Selin, die übrigen sechs). Zuordnung in `azizam/04-produkt-marke.md`. |
+| 09/2026 | **Zwei Duftlinien parallel** (laut `SYNC.md` seit 10/2026 wieder offen). *Heritage* (persisch-diasporisch, Persona Darius/Roya, Duft Narcos) und *Editions* (generisch-premium, Personas Leon/Selin, die übrigen sechs). Zuordnung in `azizam/04-produkt-marke.md`. |
 | 09/2026 | **30 % Duftöl ist der Kernmechanismus**, zusammen mit Direktvertrieb ohne Handelsmarge. |
 | 09/2026 | **Herstellungs-Aussagen kommen von der Website runter** („Handgefertigt in Deutschland", „Seltene Zutaten", „Haute Parfumerie", der Komposition-Absatz). Regeln und Ersatztexte für den Neustart: `azizam/07-recht-retention.md`. |
 | 09/2026 | **Der Bewertungsblock kommt runter** (4.8 von 5, 247 Bewertungen, drei Testimonials) — ohne echte Verkäufe wettbewerbswidrig. Ersetzt durch Risikoumkehr über das 30-Tage-Rückgaberecht. |

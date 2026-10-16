@@ -1,7 +1,7 @@
 # SYNC.md – Übergabe zwischen Claude Chat und Claude Code (Azizam)
 
 > Gemeinsame Datei für **Claude Chat** und **Claude Code**. Sie ist die einzige Brücke zwischen beiden.
-> Zuletzt aktualisiert: 2026-10-07 [Code]
+> Zuletzt aktualisiert: 2026-10-16 [Code]
 
 ---
 
@@ -79,6 +79,7 @@
 
 | Wer | Aufgabe | Status |
 |-----|---------|--------|
+| Mar | PR #6 prüfen und über das Merge nach `Azizam` entscheiden (offene Punkte in der PR-Beschreibung) | offen |
 | Mar | Flakon (30 ml), Etikett und Verpackung selbst klären — ohne Claude, bis Mar es wieder einbringt | offen |
 | Code | Struktur für Marketing-/Wachstums-Skills im Repo vorbereiten | offen |
 | Mar | Bestandsaufnahme ergänzen: Kaufdaten, Belege zuordnen, Charge Velvet Vanilla G-17, Azizam-Namen (Aufgaben auch in Todoist, Projekt „Azizam“); danach Komponenten (Flakons, Proben, Verpackung) — Liste in `playbook/azizam/commercial/README.md` | in Arbeit |
@@ -91,6 +92,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-10-16 [Code]** Draft-PR #6 (`claude/charming-hypatia-58sfxg` → `Azizam`) geprüft und ergänzt: Rechner kennzeichnen Modellwerte, Bestandslogik gegen undatierte Bewegungen abgesichert, Duftlinien überall als offen markiert. Offene Entscheidungen stehen in der PR-Beschreibung. Nicht gemergt.
 - **2026-10-07 [Code]** Realer Bestand von Mar erfasst (inkl. Nachtrag Les Sables Roses): Gebinde, Preise, Füllstände per Augenmaß in `playbook/azizam/commercial/` (Zahlen nur dort, Übersicht: `python3 playbook.py daten`). Velvet-Vanilla-Umlage als Entscheidung D-001 im Ledger. Repo-Hygiene eingeführt: `python3 playbook.py hygiene` (Lifecycle, Duplikate, Widersprüche, tote Verweise; löscht nie).
 - **2026-10-05 [Code]** PR #4 (Bereinigung + Commercial-Struktur ohne Daten) von Mar freigegeben und in `Azizam` gemergt (`edd6c2a`). Boss-Status als A4-PDF erstellt: `AZIZAM-Boss-Status-2026-10-05.pdf`. Nächster Schritt: erste Bestandsaufnahme der 500-ml-Flaschen mit Mar.
 - **2026-10-05 [Code]** Commercial-Datenarchitektur angelegt (nur Struktur, **keine Daten**): `playbook/azizam/commercial/` mit 13 leeren CSV-Vorlagen für Produkt, Komponenten, Bestand (Bewegungen ab 500-ml-Gebinde), Offers, Transaktionen, pseudonyme Kunden, Experimente und dem Decision Ledger `entscheidungen.csv` (einzige Quelle für kommerzielle Entscheidungen, nur Mar entscheidet). Prüfung mit `python3 playbook.py daten`, Code in `commercial.py`. Nächster Schritt: erste Bestandsaufnahme mit Mar.
@@ -100,10 +102,10 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 - **2026-10-04 [Code]** E-Mail-Adresse korrigiert auf `azizamfragrance@gmail.com` (`brand.json`, `07-recht-retention.md`).
 - **2026-10-04 [Code]** Small-Business-Plugin eingerichtet: Profil `BUSINESS-CONTEXT.md` (von Mar bestätigt, über `CLAUDE.md` immer geladen), Aufbauplan in Stufen mit passenden Plugin-Skills in `playbook/azizam/SYSTEM-AUFBAU.md`. Shopify geprüft (nur gelesen).
 - **2026-10-04 [Code]** `CLAUDE-MASTER.md` angelegt: Wissensbasis aus Mars sechs Recherche-Texten (Claude-Funktionen, Modelle, Compliance-System, Agenten, Freigaben, Routinen), auf Azizam zugeschnitten, Ungeprüftes markiert. Wird über `CLAUDE.md` immer geladen. Fertige Anweisungen in `playbook/templates/claude-anweisungen.md`.
-- **2026-10-03 [Code]** 100 ml als spätere Größe wieder aufgenommen (nach ersten 30/50-Verkäufen): `SYNC.md`, `brand.json`, Kontext-Export, README, Briefing.
 
 ### Verlauf (zusammengefasst)
 
+- 2026-10-03: 100 ml als spätere Größe wieder aufgenommen (nach ersten 30/50-Verkäufen).
 - 2026-10-03: `ARBEITSWEISE.md` (Werkzeug-Kompass) angelegt; wird beim Sessionstart mitgeladen, Claude Code erinnert Mar aktiv daran.
 - 2026-10-03: Playbook-Kapitel 01, 03, 04, 06, 90-Tage-Plan, Briefing, Nächste Schritte und README bereinigt: 100 ml raus, Preise als `[Preis offen]`, Zahlen auf Kleinunternehmer/Flakon-Annahme; Kapitel 05 als Ganzes als veraltet markiert.
 - 2026-10-02: SYNC.md im Chat angelegt und ins Repo gelegt.

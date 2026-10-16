@@ -9,7 +9,7 @@
 
 Derselbe Markt — völlig verschiedene Menschen darin. Wir wählen die mit dem höchsten Schmerz.
 
-**Zwei Duftlinien, ab jetzt getrennt (siehe `04-produkt-marke.md`):** Persona A trägt **Azizam Heritage**
+**Zwei Duftlinien (09/2026 entschieden, laut `SYNC.md` wieder offen; siehe `04-produkt-marke.md`):** Persona A trägt **Azizam Heritage**
 (persisch-diasporische These, Duft: **Narcos**, Kandidat Goldstaub II.). Personas B und C tragen **Azizam
 Editions** (generisch-premium, Düfte: Kings Perfume, Velvet Vanilla, Erba Bomb, Midnight Café, Imaginary) —
 ihre Pains brauchten die persische Rahmung ohnehin nie.

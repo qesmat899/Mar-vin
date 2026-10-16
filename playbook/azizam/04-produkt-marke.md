@@ -3,7 +3,7 @@
 > **Zahlenstatus:** Zahlen in dieser Datei sind alte, von Mar **nicht bestätigte** Werte (`OUTDATED` / `EXAMPLE` /
 > `ASSUMPTION` / `UNKNOWN`). Regel und die wenigen belegten Werte: [`README.md` → Zahlenstatus](README.md#zahlenstatus).
 
-## Das Sortiment — zwei Duftlinien parallel (Entscheidung 09/2026)
+## Das Sortiment — zwei Duftlinien parallel (Entscheidung 09/2026, laut `SYNC.md` wieder offen — Mar ist unsicher)
 
 Die sieben Düfte, die auf azizamfragrances.com live stehen, folgen keiner einheitlichen Linie — Narcos ist warm-
 orientalisch (Honig, Tabak, Zimt), Velvet Vanilla oder Kings Perfume sind generisch-premium. Statt alle sieben
@@ -133,7 +133,7 @@ DER EINE SATZ
 | Wiederkehrendes Ritual | **Nowruz-Drop** (20./21. März) und **Yalda-Drop** (21. Dezember): je eine limitierte Charge, einmal im Jahr. Monatlich: „Ein Vers, ein Duft“ — Newsletter mit Gedicht und Duftnotiz. |
 
 **Warum das ökonomisch ist (Kap. 3.1):** Wiederkaufrate 40–60 % statt 15–25 %, Creator melden sich von selbst,
-Preis ist Teil des Signals. Das Produkt ist in sechs Monaten kopiert. Die Community nicht.
+Preis ist Teil des Signals. Das Produkt ist in sechs Monaten kopiert. Die Community nicht. Werbung soll deshalb ein Gefühl transportieren, nicht einen Preis: Der Preis ist der Mechanismus, nicht die Botschaft.
 
 ## Markenrechtlicher Check vor dem Start
 ☐ DPMA/EUIPO-Recherche „Azizam“ in Klasse 3 (Parfümeriewaren) — ☐ Domain und Handles gesichert — ☐ Wortmarke anmelden (Klasse 3, ggf. 35).

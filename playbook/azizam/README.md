@@ -46,7 +46,7 @@ max. ca. 3 € (Obergrenze, keine Kostenangabe) · erste Flakonbestellung 100–
 - Website seit ca. 25.09.2026 offline, Neustart nach Flakonwahl. Aktuell kein Verkauf.
 
 **Noch Annahme — bitte korrigieren:**
-1. **Zwei Duftlinien, entschieden 09/2026:** Azizam **Heritage** (persisch-diasporisch, „Duft der zweiten Generation“, Persona Darius/Roya, Duft **Narcos**) und Azizam **Editions** (generisch-premium, Personas Leon/Selin, die übrigen sechs Düfte der Live-Seite). Zuordnung und offene Notenpyramiden: `04-produkt-marke.md`.
+1. **Zwei Duftlinien — 09/2026 entschieden, laut `SYNC.md` wieder offen:** Azizam **Heritage** (persisch-diasporisch, „Duft der zweiten Generation“, Persona Darius/Roya, Duft **Narcos**) und Azizam **Editions** (generisch-premium, Personas Leon/Selin, die übrigen sechs Düfte der Live-Seite). Zuordnung und offene Notenpyramiden: `04-produkt-marke.md`.
 2. **Duftkonzentration:** **30 % Duftöl bei jedem Duft** (bestätigt vom Inhaber, 09/2026) — branchenüblich bei Eau de Parfum sind 12–18 %. Kernmechanismus, siehe `04-produkt-marke.md`. Für Rückfragen von Kunden/Behörden lohnt sich trotzdem eine schriftliche Fabrikbestätigung (INCI, Konzentration, Sicherheitsdatenblatt).
 3. Etikett/Box 1,00 € `ASSUMPTION`, Versand 6,50 € (Gefahrgut-LQ) `UNKNOWN` — alte Schätzwerte in `brand.json`, nicht bestätigt.
 
