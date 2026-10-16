@@ -557,7 +557,7 @@ def daten_cmd(slug: str) -> int:
         umlagen = [d["decision_id"] for d in t["entscheidungen.csv"]
                    if d.get("bereich") == "bestand" and d.get("status") == "gueltig"]
         if umlagen:
-            print(f"  Preisansätze nach Entscheidung im Ledger (nicht der tatsächlich gezahlte Einzelpreis): {', '.join(umlagen)}")
+            print(f"  Interne Zuordnungsregeln im Ledger (kein Einkaufspreis, Werte oben = tatsächliche Preise): {', '.join(umlagen)}")
 
     offen = commercial.open_items(t)
     if offen:

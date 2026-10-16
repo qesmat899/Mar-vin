@@ -113,20 +113,21 @@ Ohne Vergleichsgruppe keine Kausalaussage. Creative-Tests im Detail weiter in `.
 Eingetragen: Lieferant Tomorrow Brand UG Parfumfabrik · 17 Düfte (Duftölanteil 30 % laut Mar) · 19 Gebinde
 `G-01` … `G-19` (17 × 500 ml, 2 × 1.000 ml Velvet Vanilla) mit Zugang (Nennmenge, Preis, Charge) und Inventur
 (Füllstand per Augenmaß, `mengen_basis = geschaetzt`; Roja Aoud als Spanne 300–325 ml). Status je Zeile `RECORDED`
-(Angabe von Mar, noch ohne Beleg). Die Düfte (außer Velvet Vanilla) sind mit der von Mar genannten Bezeichnung als
+(Angabe von Mar, Belege noch nicht zugeordnet). Les Sables Roses ist im Sortiment (`D-002`). Die Düfte (außer Velvet Vanilla) sind mit der von Mar genannten Bezeichnung als
 `lieferanten_bezeichnung` angelegt; ob das die Fabrikbezeichnung ist und wie der Azizam-Name lautet, ist offen.
 Diese Bezeichnungen enthalten fremde Markennamen und gehören nie in Kundentexte (Verbotsliste `brand-briefing.md`).
 
 **Offene Nachträge** (zeigt `playbook.py daten` laufend an):
-1. Kaufdatum je Flasche (alle 18 `UNKNOWN`)
-2. Belege heraussuchen und den Flaschen bzw. Sammelbestellungen zuordnen (`beleg_ref`, dann `preis_qualitaet = BELEG`)
-3. Charge von Velvet Vanilla `G-17` (ungeöffnet)
-4. Einkaufspreise: alle 18 erfasst (Arabians Tonka 31,93 € nachgetragen). Ca.-Werte: Imagination `G-13` (ca. 38 €),
-   Velvet Vanilla `G-17`/`G-18`: tatsächlich `G-17` gratis, `G-18` ca. 90 €; für die Stückkosten je 45 € umgelegt
-   (Entscheidung `D-001` in `entscheidungen.csv`). Mit Beleg bestätigen.
+1. Kaufdatum je Flasche (alle 19 `UNKNOWN`)
+2. Belege (laut Mar vorhanden) den Flaschen bzw. Sammelbestellungen zuordnen (`beleg_ref`, dann `preis_qualitaet = BELEG`)
+3. Charge von Velvet Vanilla `G-17` (ungeöffnet) und Les Sables Roses `G-19`
+4. Einkaufspreise: alle 19 als verbindliche Angabe von Mar erfasst (Stand 16.10.2026), keine ca.-Werte mehr.
+   Velvet Vanilla: `G-18` 95,46 €, `G-17` 0 € (kostenlose Flasche); vorher eine 500-ml-Flasche für 68,08 €, die nicht
+   im Bestand vom 07.10. steht. `D-001` (je 45 €) ist nur eine interne Zuordnungsregel für Stückkosten, kein
+   Einkaufspreis; ihre Basis „ca. 90 €“ ist überholt. Imagination `G-13` = Citrus Fresh, Artikel 1054, 49,25 €
+   (Shopify-Bestellbestätigung; Rechnung PF217304 fehlt). Les Sables Roses `G-19` 62,77 € (Bestellübersicht; Rechnung fehlt).
 5. Liefer-/Zollkostenanteil je Sammelbestellung (bisher nicht erfasst)
 6. Azizam-Namen bzw. Bestätigung der Fabrikbezeichnungen
-7. Optional: Füllstände wiegen oder messen (neue `inventur` mit `mengen_basis = gemessen`; die Schätzung bleibt stehen)
 
 Noch nicht erfasst: bereits abgefüllte Mengen, leere Flakons, Verschlüsse, Etiketten, Boxen, Probenbehälter,
 Versandmaterial; Verkaufsgrößen 30 / 50 ml und Probengrößen.
