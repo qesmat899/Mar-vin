@@ -110,25 +110,30 @@ Ohne Vergleichsgruppe keine Kausalaussage. Creative-Tests im Detail weiter in `.
 
 ## Bestandsaufnahme 07.10.2026 (Mar)
 
-Eingetragen: Lieferant Tomorrow Brand UG Parfumfabrik · 17 Düfte (Duftölanteil 30 % laut Mar) · 19 Gebinde
+Eingetragen: Lieferant TBrand GmbH (Parfumfabrik; früher als „Tomorrow Brand UG“ erfasst) · 17 Düfte (Duftölanteil 30 % laut Mar) · 19 Gebinde
 `G-01` … `G-19` (17 × 500 ml, 2 × 1.000 ml Velvet Vanilla) mit Zugang (Nennmenge, Preis, Charge) und Inventur
 (Füllstand per Augenmaß, `mengen_basis = geschaetzt`; Roja Aoud als Spanne 300–325 ml). Status je Zeile `RECORDED`
 (Angabe von Mar, Belege noch nicht zugeordnet). Les Sables Roses ist im Sortiment (`D-002`). Die Düfte (außer Velvet Vanilla) sind mit der von Mar genannten Bezeichnung als
 `lieferanten_bezeichnung` angelegt; ob das die Fabrikbezeichnung ist und wie der Azizam-Name lautet, ist offen.
 Diese Bezeichnungen enthalten fremde Markennamen und gehören nie in Kundentexte (Verbotsliste `brand-briefing.md`).
 
-**Offene Nachträge** (zeigt `playbook.py daten` laufend an). Stand 16.10.2026, nach Auswertung von 16 Rechnungen
-der TBrand GmbH (`Rechnung <Nr> (<PF-Referenz>)` in `beleg_ref`, Kaufdatum = Bestelldatum, Preise = netto × 1,19):
-1. Kaufdatum und Beleg fehlen noch für Erba Pura `G-02`/`G-03` (Zuordnung zu den Rechnungen 30122, 28934, 30764 nicht
-   eindeutig), Imagination `G-13` (Rechnung PF217304 nicht im ZIP; Preis 49,25 € laut Shopify-Bestellbestätigung) und
-   Les Sables Roses `G-19` (Rechnung fehlt; Preis 62,77 € laut Bestellübersicht)
-2. Charge von Velvet Vanilla `G-17` und Les Sables Roses `G-19`
-3. Velvet Vanilla: `G-18` 95,46 €, `G-17` 0 € (kostenlose Nachlieferung). Die frühere 500-ml-Flasche (68,08 €, Rechnung
-   28576) ist laut Mar aufgebraucht. `D-001` ist nur interne Kostenverteilung für die spätere Stückkostenrechnung beim
-   Umfüllen, kein Einkaufspreis.
-4. Fucking Fabulous `G-14`: Rechnung 19,55 € netto ergibt 23,26 €, erfasst 23,27 € (1 Cent Differenz)
-5. Versandkosten je Bestellung stehen auf den Rechnungen; ihre Umlage auf die Flaschen ist nicht festgelegt
-6. Azizam-Namen (außer Velvet Vanilla)
+**Preise und Nebenkosten** (Stand 16.10.2026, Rechnungen der TBrand GmbH laut Mar verbindlich): `einkaufspreis_gesamt_eur`
+= Positionspreis netto abzüglich anteiligem Bestellrabatt (nach Warenwert verteilt) × 1,19 (Kleinunternehmer, keine
+Vorsteuer). `nebenkosten_eur` = Versand der Bestellung × 1,19, verteilt nach Füllmenge (ml) auf alle Positionen der
+Bestellung einschließlich Proben – Versand hängt an Gewicht bzw. Volumen, nicht am Preis. Der Einstandspreis je ml
+(`playbook.py daten`, Kapitalbindung) rechnet mit beidem. Kaufdatum = Bestelldatum laut Rechnung.
+
+**Offene Nachträge** (zeigt `playbook.py daten` laufend an):
+1. Imagination `G-13` (Citrus Fresh, Artikel 1054): Rechnung PF217304 fehlt – Kaufdatum, Beleg, Nebenkosten offen;
+   Preis 49,25 € laut Shopify-Bestellbestätigung
+2. Les Sables Roses `G-19`: Rechnung fehlt – Kaufdatum, Beleg, Nebenkosten und Charge offen; Preis 62,77 € laut Bestellübersicht
+3. Charge von Velvet Vanilla `G-17`
+4. Azizam-Namen (außer Velvet Vanilla)
+
+Hinweise: Velvet Vanilla `G-17` ist eine kostenlose Nachlieferung (0 €); die frühere 500-ml-Flasche (Rechnung 28576,
+68,08 €) ist aufgebraucht. `D-001` ist nur interne Kostenverteilung für die spätere Stückkostenrechnung beim Umfüllen.
+Erba Pura: zwei Flaschen Artikel 1166 (Rechnungen 28934, 30764); welche Rechnung zu `G-02` bzw. `G-03` gehört, ist nicht
+unterscheidbar. Rechnung 30122 enthält zusätzlich Artikel 1232 (500 ml), der nicht im Bestand vom 07.10. steht.
 
 Noch nicht erfasst: bereits abgefüllte Mengen, leere Flakons, Verschlüsse, Etiketten, Boxen, Probenbehälter,
 Versandmaterial; Verkaufsgrößen 30 / 50 ml und Probengrößen.

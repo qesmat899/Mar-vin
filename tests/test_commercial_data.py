@@ -270,6 +270,16 @@ class BottleInventoryTest(unittest.TestCase):
         self.assertFalse(g1["unknown"])
         self.assertEqual(g1["menge"], 300)                     # Zugang 500 nicht zusätzlich addiert
 
+    def test_nebenkosten_raise_unit_cost_and_missing_ones_are_listed(self):
+        t = bottles()
+        t["bestand_bewegungen.csv"][0]["nebenkosten_eur"] = "5"          # G-1: (50 + 5) / 500 ml
+        unit, _ = commercial.source_cost_per_unit(t, "d1-500", "ml", "G-1")
+        self.assertAlmostEqual(unit, 0.11)
+        offen = commercial.open_items(t)["Nebenkosten"]
+        self.assertEqual(offen, ["d1-500 G-2"])                             # G-2 ohne Nebenkosten
+        t["bestand_bewegungen.csv"][0]["nebenkosten_eur"] = "UNKNOWN"     # unbekannt zählt nicht mit
+        self.assertAlmostEqual(commercial.source_cost_per_unit(t, "d1-500", "ml", "G-1")[0], 0.1)
+
     def test_ca_price_marks_capital_as_estimate(self):
         t = bottles()
         t["bestand_bewegungen.csv"][2].update(mengen_basis="gemessen", menge_bis="")

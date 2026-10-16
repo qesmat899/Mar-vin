@@ -83,7 +83,7 @@
 | Mar | PR #6 prüfen und über das Merge nach `Azizam` entscheiden (offene Punkte in der PR-Beschreibung) | offen |
 | Mar | Flakon (30 ml), Etikett und Verpackung selbst klären — ohne Claude, bis Mar es wieder einbringt | offen |
 | Code | Struktur für Marketing-/Wachstums-Skills im Repo vorbereiten | offen |
-| Mar | Bestandsaufnahme ergänzen: Kaufdaten/Belege für Erba Pura, Imagination, Les Sables Roses, Chargen Velvet Vanilla G-17 und Les Sables Roses G-19 (Termin 16.10. 18:30), Azizam-Namen (Aufgaben auch in Todoist, Projekt „Azizam“); danach Komponenten (Flakons, Proben, Verpackung) — Liste in `playbook/azizam/commercial/README.md` | in Arbeit |
+| Mar | Bestandsaufnahme ergänzen: Kaufdaten/Belege für Imagination und Les Sables Roses, Chargen Velvet Vanilla G-17 und Les Sables Roses G-19 (Termin 16.10. 18:30), Azizam-Namen (Aufgaben auch in Todoist, Projekt „Azizam“); danach Komponenten (Flakons, Proben, Verpackung) — Liste in `playbook/azizam/commercial/README.md` | in Arbeit |
 | Mar | Dokumente der Fabrik je Duft sammeln und ins Repo/Drive legen; danach jeden Duft im CPNP-Portal eintragen | offen |
 | Mar | `CLAUDE-MASTER.md` ins Chat-Projekt „Azizam“ hochladen; globale Anweisung und Memory aus `playbook/templates/claude-anweisungen.md` in claude.ai setzen | offen |
 
@@ -93,7 +93,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
-- **2026-10-16 [Code]** Bestandsabgleich abgeschlossen (Angaben Mar): tatsächliche Einkaufspreise Velvet Vanilla, Imagination = Citrus Fresh (Art. 1054), Les Sables Roses im Sortiment (`D-002`); 16 Rechnungen der TBrand GmbH ausgewertet (Kaufdaten, Belege, Fabrikbezeichnungen für 15 Flaschen); Zahlen nur in `playbook/azizam/commercial/`.
+- **2026-10-16 [Code]** Bestandsabgleich abgeschlossen (Angaben Mar): tatsächliche Einkaufspreise Velvet Vanilla, Imagination = Citrus Fresh (Art. 1054), Les Sables Roses im Sortiment (`D-002`); Rechnungen der TBrand GmbH als verbindlich übernommen (Kaufdaten, Belege, Preise inkl. Rabatt, Versand nach ml verteilt) für 17 Flaschen; Zahlen nur in `playbook/azizam/commercial/`.
 - **2026-10-16 [Code]** Draft-PR #6 (`claude/charming-hypatia-58sfxg` → `Azizam`) geprüft und ergänzt: Rechner kennzeichnen Modellwerte, Bestandslogik gegen undatierte Bewegungen abgesichert, Duftlinien überall als offen markiert. Offene Entscheidungen stehen in der PR-Beschreibung. Nicht gemergt.
 - **2026-10-07 [Code]** Realer Bestand von Mar erfasst (inkl. Nachtrag Les Sables Roses): Gebinde, Preise, Füllstände per Augenmaß in `playbook/azizam/commercial/` (Zahlen nur dort, Übersicht: `python3 playbook.py daten`). Velvet-Vanilla-Umlage als Entscheidung D-001 im Ledger. Repo-Hygiene eingeführt: `python3 playbook.py hygiene` (Lifecycle, Duplikate, Widersprüche, tote Verweise; löscht nie).
 - **2026-10-05 [Code]** PR #4 (Bereinigung + Commercial-Struktur ohne Daten) von Mar freigegeben und in `Azizam` gemergt (`edd6c2a`). Boss-Status als A4-PDF erstellt: `AZIZAM-Boss-Status-2026-10-05.pdf`. Nächster Schritt: erste Bestandsaufnahme der 500-ml-Flaschen mit Mar.

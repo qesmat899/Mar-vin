@@ -59,7 +59,8 @@ SCHEMA: dict[str, tuple[list[str], set[str], dict[str, tuple[str, ...]]]] = {
     ),
     "bestand_bewegungen.csv": (
         ["buchung_id", "datum", "artikel_typ", "artikel_id", "gebinde_id", "bewegung", "menge", "menge_bis",
-         "einheit", "mengen_basis", "charge", "einkaufspreis_gesamt_eur", "preis_qualitaet", "beleg_ref",
+         "einheit", "mengen_basis", "charge", "einkaufspreis_gesamt_eur", "nebenkosten_eur", "preis_qualitaet",
+         "beleg_ref",
          "abfuellung_ref", "transaktion_ref", "experiment_ref", "status", "quelle", "notiz"],
         {"buchung_id", "datum", "artikel_typ", "artikel_id", "bewegung", "menge", "einheit", "status"},
         {"artikel_typ": ("produkt", "komponente"),
@@ -121,7 +122,7 @@ SCHEMA: dict[str, tuple[list[str], set[str], dict[str, tuple[str, ...]]]] = {
 ID_COLUMN = {name: cols[0] for name, (cols, _, _) in SCHEMA.items()
              if name not in ("stueckliste.csv", "offer_positionen.csv", "transaktion_positionen.csv")}
 
-NUMERIC = {"groesse_ml", "duftoel_anteil_pct", "menge_bis", "preis_eur_je_einheit", "menge", "einkaufspreis_gesamt_eur", "preis_brutto", "rabatt_wert",
+NUMERIC = {"groesse_ml", "duftoel_anteil_pct", "menge_bis", "preis_eur_je_einheit", "menge", "einkaufspreis_gesamt_eur", "nebenkosten_eur", "preis_brutto", "rabatt_wert",
            "versandentgelt_eur", "gratisversand_ab_eur", "erloes_brutto", "rabatt_eur", "versandkosten_eur",
            "zahlungsgebuehr_eur", "erstattung_eur", "retourkosten_eur", "werbekosten_eur"}
 
@@ -391,8 +392,9 @@ def stock_levels(t: dict[str, list[dict]]) -> dict[tuple[str, str, str, str], di
 
 
 def source_cost_per_unit(t: dict[str, list[dict]], artikel_id: str, einheit: str, gebinde_id: str = ""):
-    """Einstandspreis je Einheit eines Gebindes bzw. Artikels: Einkaufspreis ÷ Zugangsmenge (bei mehreren Zugängen
-    gewogener Durchschnitt). Gibt (Preis je Einheit, ca.-Angabe ja/nein) zurück oder (None, False)."""
+    """Einstandspreis je Einheit eines Gebindes bzw. Artikels: (Einkaufspreis + Bezugsnebenkosten) ÷ Zugangsmenge (bei
+    mehreren Zugängen gewogener Durchschnitt). Fehlende Nebenkosten zählen als 0 und erscheinen in `open_items`.
+    Gibt (Preis je Einheit, ca.-Angabe ja/nein) zurück oder (None, False)."""
     menge = kosten = 0.0
     ca = False
     for r in t.get("bestand_bewegungen.csv", []):
@@ -401,7 +403,8 @@ def source_cost_per_unit(t: dict[str, list[dict]], artikel_id: str, einheit: str
         m, k = num(r.get("menge", "")), num(r.get("einkaufspreis_gesamt_eur", ""))
         if not isinstance(m, float) or not isinstance(k, float):
             return None, False
-        menge, kosten = menge + m, kosten + k
+        nk = num(r.get("nebenkosten_eur", ""))
+        menge, kosten = menge + m, kosten + k + (nk if isinstance(nk, float) else 0.0)
         ca = ca or r.get("preis_qualitaet") == "CA_ANGABE"
     return (kosten / menge, ca) if menge else (None, False)
 
@@ -431,8 +434,9 @@ def capital(t: dict[str, list[dict]]) -> dict:
 
 
 def open_items(t: dict[str, list[dict]]) -> dict[str, list[str]]:
-    """Offene Nachträge aus den Zugängen: Kaufdatum, Einkaufspreis, ca.-Preis, Charge, Beleg."""
-    out = {"Kaufdatum": [], "Einkaufspreis": [], "Preis nur ca.": [], "Charge": [], "Beleg zuordnen": []}
+    """Offene Nachträge aus den Zugängen: Kaufdatum, Einkaufspreis, ca.-Preis, Bezugsnebenkosten, Charge, Beleg."""
+    out = {"Kaufdatum": [], "Einkaufspreis": [], "Preis nur ca.": [], "Nebenkosten": [], "Charge": [],
+           "Beleg zuordnen": []}
     for r in t.get("bestand_bewegungen.csv", []):
         if r.get("bewegung") != "zugang":
             continue
@@ -443,6 +447,8 @@ def open_items(t: dict[str, list[dict]]) -> dict[str, list[str]]:
             out["Einkaufspreis"].append(label)
         elif r.get("preis_qualitaet") == "CA_ANGABE":
             out["Preis nur ca."].append(label)
+        if not isinstance(num(r.get("nebenkosten_eur", "")), float):
+            out["Nebenkosten"].append(label)
         if r.get("charge", "") in ("", UNKNOWN):
             out["Charge"].append(label)
         if not r.get("beleg_ref"):
