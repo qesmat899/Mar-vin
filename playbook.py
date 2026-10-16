@@ -163,9 +163,19 @@ def print_ad_perspectives(r: dict) -> None:
     print("   Einen Plattform-ROAS nie mit Perspektive A vergleichen.")
 
 
+def unbelegte_eingaben(brand: dict) -> list[str]:
+    """Rechner-Eingaben, die nicht als RECORDED belegt sind (OUTDATED, UNKNOWN, EXAMPLE, ASSUMPTION …)."""
+    return [k for k, st in brand["economics"].get("_status", {}).items() if not st.startswith("RECORDED")]
+
+
 def print_economics(brand: dict, r: dict) -> None:
-    ok = "✅" if r["beitrag"] > 0 else "❌"
+    modell = bool(unbelegte_eingaben(brand))
+    ok = (("Modell: positiv" if r["beitrag"] > 0 else "Modell: negativ") if modell
+          else ("✅" if r["beitrag"] > 0 else "❌"))
     print(f"\n{brand['name']} — Unit Economics ({brand['kategorie']})\n")
+    if modell:
+        print("  ⚠️  MODELLRECHNUNG: Eingaben nicht belegt (" + ", ".join(unbelegte_eingaben(brand))
+              + "). Keine Geschäftsaussage, keine Prüfergebnisse.\n")
     print(f"   Net Revenue                              {eur(r['netto']):>12}   ({eur(r['preis_brutto'])} brutto, Rabatt {eur(r['rabatt'])})")
     print(f" − COGS (Produkt + Verpackung)             − {eur(r['cogs']):>10}")
     print(f" − Versand netto (Kosten − Entgelt Kunde)  − {eur(r['versand_netto']):>10}   ({eur(r['versand'])} − {eur(r['versandentgelt'])})")
@@ -192,7 +202,8 @@ def print_economics(brand: dict, r: dict) -> None:
         (r["beitrag"] > 0, "CM2 nach Retouren positiv"),
     ]
     for passed, label in checks:
-        print(f"  {'✅' if passed else '⚠️ '} {label}")
+        mark = ("erfüllt" if passed else "nicht erfüllt") if modell else ("✅" if passed else "⚠️ ")
+        print(f"  {'Modell: ' + mark + ' —' if modell else mark} {label}")
     print(f"  ℹ️  LTV:CAC {r['ltv_cac']:.1f} ist ein Szenario, kein Prüfergebnis (keine Kohortendaten)")
     if r["beitrag"] <= 0:
         print("\n  Nicht skalieren. Erst CM2 nach Retouren dauerhaft positiv — sonst verstärkt jeder Euro Budget den Verlust.")
@@ -543,6 +554,10 @@ def daten_cmd(slug: str) -> int:
               + ("  (SCHÄTZUNG: Füllstände per Augenmaß bzw. ca.-Preise)" if cap["geschaetzt"] else ""))
         if cap["unbewertet"]:
             print(f"  Ohne belegten Preis (UNKNOWN, nicht geschätzt): {', '.join(cap['unbewertet'])}")
+        umlagen = [d["decision_id"] for d in t["entscheidungen.csv"]
+                   if d.get("bereich") == "bestand" and d.get("status") == "gueltig"]
+        if umlagen:
+            print(f"  Preisansätze nach Entscheidung im Ledger (nicht der tatsächlich gezahlte Einzelpreis): {', '.join(umlagen)}")
 
     offen = commercial.open_items(t)
     if offen:

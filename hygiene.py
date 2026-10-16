@@ -75,7 +75,10 @@ REGISTRY: list[tuple[str, str, str, str]] = [
 # Eindeutig temporär oder generiert: darf nicht dauerhaft im Repo liegen.
 TEMP_PATTERNS = ("*.tmp", "*.bak", "*.orig", "*.swp", "*~", ".DS_Store", "*/.DS_Store", "__pycache__/*",
                  "*/__pycache__/*", "*.pyc", "playbook-export.md", "docs/_playbook.html", "playbook/*/output/*",
-                 "tmp/*", "scratch/*", "*/scratch/*")
+                 "tmp/*", "scratch/*", "*/scratch/*", "*.log", "nohup.out")
+# Dateien, die typischerweise Zugangsdaten enthalten: nie ins Repo, nie automatisch löschen (Mar prüft).
+SECRET_PATTERNS = (".env", "*/.env", ".env.*", "*/.env.*", "*.pem", "*.key", "*.p12", "id_rsa*", "*/id_rsa*",
+                   "credentials.json", "*/credentials.json")
 # Name klingt nach Arbeitsnotiz oder Zwischenstand.
 NOTE_RE = re.compile(r"(notiz|notes?|todo|scratch|entwurf|draft|wip|zwischenstand|temp|kopie|copy|_old|-alt\b|test-?lauf)",
                      re.I)
@@ -168,6 +171,10 @@ def check_files(root: pathlib.Path, files: list[str], r: Report) -> None:
     reports: dict[str, list[tuple[str, str]]] = {}
     for path in files:
         name = pathlib.PurePosixPath(path).name
+        if any(_match(path, p) for p in SECRET_PATTERNS) and not path.endswith(".example"):
+            r.files[path] = ("TEMPORARY", "mögliche Zugangsdaten", "")
+            r.conflicts.append(f"{path}: Datei mit möglichen Zugangsdaten im Repo — nicht committen, Mar prüft")
+            continue
         if any(_match(path, p) for p in TEMP_PATTERNS):
             r.files[path] = ("DELETE_CANDIDATE", "temporär/generiert", "")
             r.add(SICHER, path, "temporäre oder generierte Datei liegt im Repo")

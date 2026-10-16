@@ -361,15 +361,21 @@ def stock_levels(t: dict[str, list[dict]]) -> dict[tuple[str, str, str, str], di
         inv = [r for r in rs if r["bewegung"] == "inventur" and DATE_RE.match(r.get("datum", ""))]
         entry = {"menge": 0.0, "menge_max": 0.0, "unknown": False, "basis": "buchungen", "stand": None}
         if inv:
-            last = max(enumerate(inv), key=lambda x: (x[1]["datum"], x[0]))[1]
+            pos = {id(r): i for i, r in enumerate(rs)}
+            last = max(inv, key=lambda r: (r["datum"], pos[id(r)]))
             lo, hi = num(last.get("menge", "")), num(last.get("menge_bis", "")) if last.get("menge_bis") else None
             if not isinstance(lo, float):
                 entry["unknown"] = True
             else:
                 entry["menge"], entry["menge_max"] = lo, hi if isinstance(hi, float) else lo
             entry.update(basis=last.get("mengen_basis") or UNKNOWN, stand=last["datum"])
+            # Nach der Inventur zählen spätere Daten und am selben Tag die Zeilen, die in der Datei danach stehen.
             later = [r for r in rs if r["bewegung"] != "inventur" and DATE_RE.match(r.get("datum", ""))
-                     and r["datum"] > last["datum"]]
+                     and (r["datum"], pos[id(r)]) > (last["datum"], pos[id(last)])]
+            # Ein Zugang ohne Datum gilt als Kauf vor der Inventur. Jede andere undatierte Bewegung lässt sich nicht
+            # einordnen: der Bestand ist dann UNKNOWN statt scheinbar exakt.
+            if any(r["bewegung"] not in ("inventur", "zugang") and not DATE_RE.match(r.get("datum", "")) for r in rs):
+                entry["unknown"] = True
         else:
             later = [r for r in rs if r["bewegung"] != "inventur"]
         for r in later:

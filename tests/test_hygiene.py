@@ -55,6 +55,21 @@ class HygieneTest(unittest.TestCase):
         self.assertIn(hygiene.SICHER, self.actions(r, "playbook/azizam/output/antwort.md"))
         self.assertTrue(r.failed)
 
+    def test_secret_files_are_conflicts_never_safe_delete(self):
+        self.write(".env", "TOKEN=x\n")
+        self.write("config/.env.local", "x\n")
+        self.write(".env.example", "TOKEN=\n")
+        r = self.run_check()
+        self.assertEqual(len(r.conflicts), 2)
+        self.assertTrue(all("Zugangsdaten" in c for c in r.conflicts))
+        self.assertNotIn(hygiene.SICHER, self.actions(r, ".env"))
+        self.assertTrue(r.failed)
+
+    def test_log_file_is_safe_delete_candidate(self):
+        self.write("debug.log", "x\n")
+        r = self.run_check()
+        self.assertEqual(r.files["debug.log"][0], "DELETE_CANDIDATE")
+
     def test_unregistered_note_and_report_are_temporary_and_only_proposed(self):
         self.write("arbeitsnotiz.md", "a\nb\nc\n")
         self.write("bestandsbild-2026-10-07.md", "a\nb\nc\n")

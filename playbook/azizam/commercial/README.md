@@ -65,7 +65,7 @@ Verweis auf die zugeordnete Rechnung (leer = noch nicht zugeordnet). Eine Schät
 eine Messung ist eine neue `inventur` mit `mengen_basis = gemessen`.
 
 Kette: `500 ml Ausgangsbestand → Abfüllung → 30-ml-Produkte / Proben → Bundles → Verkäufe → Verbrauch → Restbestand →
-Kapitalbindung`. Bestand = letzte Inventur + spätere Bewegungen (ohne Inventur: Summe der Bewegungen). Kapitalbindung = Bestand × Einstandspreis (Quellgebinde: Einkaufspreis ÷
+Kapitalbindung`. Bestand = letzte Inventur + spätere Bewegungen (ohne Inventur: Summe der Bewegungen). „Später“ heißt: späteres Datum oder am selben Tag weiter unten in der Datei. Ein Zugang ohne Datum gilt als Kauf vor der Inventur; jede andere Bewegung ohne Datum macht den Bestand des Gebindes UNKNOWN. Kapitalbindung = Bestand × Einstandspreis (Quellgebinde: Einkaufspreis ÷
 Nennmenge der jeweiligen Flasche; abgefüllte Produkte: COGS aus Stückliste). Beruht der Bestand auf einer Schätzung,
 ist auch der Wert eine Schätzung und wird so ausgegeben. Fehlt ein Preis: „ohne belegten
 Wert“, nicht geschätzt.
