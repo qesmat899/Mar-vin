@@ -117,17 +117,18 @@ Eingetragen: Lieferant Tomorrow Brand UG Parfumfabrik · 17 Düfte (Duftölantei
 `lieferanten_bezeichnung` angelegt; ob das die Fabrikbezeichnung ist und wie der Azizam-Name lautet, ist offen.
 Diese Bezeichnungen enthalten fremde Markennamen und gehören nie in Kundentexte (Verbotsliste `brand-briefing.md`).
 
-**Offene Nachträge** (zeigt `playbook.py daten` laufend an):
-1. Kaufdatum je Flasche (alle 19 `UNKNOWN`)
-2. Belege (laut Mar vorhanden) den Flaschen bzw. Sammelbestellungen zuordnen (`beleg_ref`, dann `preis_qualitaet = BELEG`)
-3. Charge von Velvet Vanilla `G-17` (ungeöffnet) und Les Sables Roses `G-19`
-4. Einkaufspreise: alle 19 als verbindliche Angabe von Mar erfasst (Stand 16.10.2026), keine ca.-Werte mehr.
-   Velvet Vanilla: `G-18` 95,46 €, `G-17` 0 € (kostenlose Flasche); vorher eine 500-ml-Flasche für 68,08 €, die nicht
-   im Bestand vom 07.10. steht. `D-001` (je 45 €) ist nur eine interne Zuordnungsregel für Stückkosten, kein
-   Einkaufspreis; ihre Basis „ca. 90 €“ ist überholt. Imagination `G-13` = Citrus Fresh, Artikel 1054, 49,25 €
-   (Shopify-Bestellbestätigung; Rechnung PF217304 fehlt). Les Sables Roses `G-19` 62,77 € (Bestellübersicht; Rechnung fehlt).
-5. Liefer-/Zollkostenanteil je Sammelbestellung (bisher nicht erfasst)
-6. Azizam-Namen bzw. Bestätigung der Fabrikbezeichnungen
+**Offene Nachträge** (zeigt `playbook.py daten` laufend an). Stand 16.10.2026, nach Auswertung von 16 Rechnungen
+der TBrand GmbH (`Rechnung <Nr> (<PF-Referenz>)` in `beleg_ref`, Kaufdatum = Bestelldatum, Preise = netto × 1,19):
+1. Kaufdatum und Beleg fehlen noch für Erba Pura `G-02`/`G-03` (Zuordnung zu den Rechnungen 30122, 28934, 30764 nicht
+   eindeutig), Imagination `G-13` (Rechnung PF217304 nicht im ZIP; Preis 49,25 € laut Shopify-Bestellbestätigung) und
+   Les Sables Roses `G-19` (Rechnung fehlt; Preis 62,77 € laut Bestellübersicht)
+2. Charge von Velvet Vanilla `G-17` und Les Sables Roses `G-19`
+3. Velvet Vanilla: `G-18` 95,46 €, `G-17` 0 € (kostenlose Nachlieferung). Die frühere 500-ml-Flasche (68,08 €, Rechnung
+   28576) ist laut Mar aufgebraucht. `D-001` ist nur interne Kostenverteilung für die spätere Stückkostenrechnung beim
+   Umfüllen, kein Einkaufspreis.
+4. Fucking Fabulous `G-14`: Rechnung 19,55 € netto ergibt 23,26 €, erfasst 23,27 € (1 Cent Differenz)
+5. Versandkosten je Bestellung stehen auf den Rechnungen; ihre Umlage auf die Flaschen ist nicht festgelegt
+6. Azizam-Namen (außer Velvet Vanilla)
 
 Noch nicht erfasst: bereits abgefüllte Mengen, leere Flakons, Verschlüsse, Etiketten, Boxen, Probenbehälter,
 Versandmaterial; Verkaufsgrößen 30 / 50 ml und Probengrößen.
