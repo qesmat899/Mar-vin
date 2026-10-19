@@ -126,9 +126,8 @@ Bestellung einschließlich Proben – Versand hängt an Gewicht bzw. Volumen, ni
 **Offene Nachträge** (zeigt `playbook.py daten` laufend an):
 1. Imagination `G-13` (Citrus Fresh, Artikel 1054): Rechnung PF217304 fehlt – Kaufdatum, Beleg, Nebenkosten offen;
    Preis 49,25 € laut Shopify-Bestellbestätigung
-2. Les Sables Roses `G-19`: Rechnung fehlt – Kaufdatum, Beleg, Nebenkosten und Charge offen; Preis 62,77 € laut Bestellübersicht
-3. Charge von Velvet Vanilla `G-17`
-4. Azizam-Namen (außer Velvet Vanilla)
+2. Les Sables Roses `G-19`: Rechnung fehlt – Kaufdatum, Beleg, Nebenkosten offen; Preis 62,77 € laut Bestellübersicht
+3. Azizam-Namen (außer Velvet Vanilla)
 
 Hinweise: Velvet Vanilla `G-17` ist eine kostenlose Nachlieferung (0 €); die frühere 500-ml-Flasche (Rechnung 28576,
 68,08 €) ist aufgebraucht. `D-001` ist nur interne Kostenverteilung für die spätere Stückkostenrechnung beim Umfüllen.
