@@ -82,7 +82,7 @@
 |-----|---------|--------|
 | Mar | Flakon (30 ml), Etikett und Verpackung selbst klären — ohne Claude, bis Mar es wieder einbringt | offen |
 | Code | Struktur für Marketing-/Wachstums-Skills im Repo vorbereiten | offen |
-| Mar | Bestandsaufnahme ergänzen: Rechnungen (Kaufdatum, Versandkosten) für Imagination G-13 und Les Sables Roses G-19, Azizam-Namen (Aufgaben auch in Todoist, Projekt „Azizam“); danach Komponenten (Flakons, Proben, Verpackung) — Liste in `playbook/azizam/commercial/README.md` | in Arbeit |
+| Mar | Bestandsaufnahme ergänzen: Rechnung PF217304 (Kaufdatum, Versandkosten) für Imagination G-13, Azizam-Namen; nebenbei, niedrige Priorität: Kaufdatum und Versandkosten Les Sables Roses G-19 (Aufgaben auch in Todoist, Projekt „Azizam“); danach Komponenten (Flakons, Proben, Verpackung) — Liste in `playbook/azizam/commercial/README.md` | in Arbeit |
 | Mar | Dokumente der Fabrik je Duft sammeln und ins Repo/Drive legen; danach jeden Duft im CPNP-Portal eintragen | offen |
 | Mar | `CLAUDE-MASTER.md` ins Chat-Projekt „Azizam“ hochladen; globale Anweisung und Memory aus `playbook/templates/claude-anweisungen.md` in claude.ai setzen | offen |
 
