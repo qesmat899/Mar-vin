@@ -126,13 +126,15 @@ Bestellung einschließlich Proben – Versand hängt an Gewicht bzw. Volumen, ni
 **Offene Nachträge** (zeigt `playbook.py daten` laufend an):
 1. Imagination `G-13` (Citrus Fresh, Artikel 1054): Rechnung PF217304 fehlt – Kaufdatum, Beleg, Nebenkosten offen;
    Preis 49,25 € laut Shopify-Bestellbestätigung
-2. Les Sables Roses `G-19`: Preis 62,77 € (Bestellübersicht, von Mar als Beleg gewertet); Kaufdatum und Nebenkosten offen – niedrige Priorität
-3. Azizam-Namen (außer Velvet Vanilla)
+2. Azizam-Namen (außer Velvet Vanilla)
 
 Hinweise: Velvet Vanilla `G-17` ist eine kostenlose Nachlieferung (0 €); die frühere 500-ml-Flasche (Rechnung 28576,
 68,08 €) ist aufgebraucht. `D-001` ist nur interne Kostenverteilung für die spätere Stückkostenrechnung beim Umfüllen.
 Erba Pura: zwei Flaschen Artikel 1166 (Rechnungen 28934, 30764); welche Rechnung zu `G-02` bzw. `G-03` gehört, ist nicht
 unterscheidbar. Rechnung 30122 enthält zusätzlich Artikel 1232 (500 ml), der nicht im Bestand vom 07.10. steht.
+Les Sables Roses `G-19` = Warm Rose Oud, Artikel 1053 (Rechnung RE-87176, 04.10.2026); die früher erfassten 62,77 € waren
+der Nettopreis. Die Bestellung enthält zusätzlich drei 5-ml-Proben (Artikel 1015, 1260, 1263), die nicht im Bestand stehen.
+Rechnung 32560 (PF220213) wurde am 22.10. erneut zugesandt; sie war schon erfasst (`G-07`, `G-11`).
 
 Noch nicht erfasst: bereits abgefüllte Mengen, leere Flakons, Verschlüsse, Etiketten, Boxen, Probenbehälter,
 Versandmaterial; Verkaufsgrößen 30 / 50 ml und Probengrößen.
