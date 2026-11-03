@@ -44,7 +44,7 @@
 
 - Bisher nur persönlicher Verkauf im Freundeskreis. **Aktuell kein Verkauf**, bis Flakon und Verpackung da sind.
 - Positionierung noch nicht vorhanden. Alte Website (Vercel) offline.
-- **Shop-Neubau in Shopify läuft (03.11.):** Entwurfs-Theme „Azizam – Entwurf (Claude)“ (unveröffentlicht, Live-Theme unverändert), 19 Düfte als **Entwürfe** mit Azizam-Namen (03.11., in `duefte.csv`), 30/50 ml, Preis 0 als Platzhalter (`preis-offen`); Bilder für alle Düfte (Produktfoto + Stimmungsbild), 3 Kollektionen nach Duftrichtung, Hauptmenü auf Deutsch. Duftdaten aus Mars Duftübersicht (PDF, 03.11.). Theme-Bausteine im Repo unter `shopify/theme/`. Hero zeigt Mars Flakon-Video (03.11.); auf der Startseite außerdem Kurations-Text, Duftkarte, Anlass-Finder, „ohne Bewertungen“-Block (Rückgabe-Absatz aus, bis Mar entscheidet) und Launch-Liste.
+- **Shop-Neubau in Shopify läuft (03.11.):** Entwurfs-Theme „Azizam – Entwurf (Claude)“ (unveröffentlicht, Live-Theme unverändert), 19 Düfte als **Entwürfe** mit Azizam-Namen (03.11., in `duefte.csv`), 30/50 ml, Preise nach D-003 gesetzt; Bilder für alle Düfte (Produktfoto + Stimmungsbild), 3 Kollektionen nach Duftrichtung, Hauptmenü auf Deutsch. Duftdaten aus Mars Duftübersicht (PDF, 03.11.). Theme-Bausteine im Repo unter `shopify/theme/`. Hero zeigt Mars Flakon-Video (03.11.); auf der Startseite außerdem Kurations-Text, Duftkarte, Anlass-Finder, „ohne Bewertungen“-Block (Rückgabe-Absatz aus, bis Mar entscheidet) und Launch-Liste.
 - Ziel: In den nächsten 3 Monaten deutschlandweit online verkaufen, Shop komplett neu starten.
 - **Wichtigste und dringendste Aufgabe:** passender Flakon (bestenfalls zylindrisch) und Verpackung.
 
@@ -52,6 +52,7 @@
 
 ## Entscheidungen (dauerhaft, mit Datum)
 
+- Verkaufspreise nach Originalpreis in zwei Stufen, verbindlich im Ledger `D-003`. [Mar, 2026-11-03]
 - Azizam-Namen für alle 19 Düfte (Liste in `duefte.csv`); Markenprüfung der Namen und Intensität 1–5 je Duft (Metafeld `azizam.intensitaet`) von Mar als erledigt bestätigt. [Mar, 2026-11-03]
 - Start mit **30 ml und 50 ml**. **100 ml kommt später**, wenn sich einige 30/50-ml-Flaschen verkauft haben. [Mar, 2026-10-03]
 - Stil: luxuriös mit Goldakzent, hohe schlanke Form, Glas nicht foliert, Magnetkappe gewünscht. Max. ca. 3 € pro Flakon, erste Bestellung 100–200 Stück. [Chat, 2026-10]
@@ -71,7 +72,7 @@
 - Welcher Flakon wird es (in 30 und 50 ml)? (Hängt davon ab: Verpackung, Etikett, Shop-Neustart)
 - Verpackung: wird gesucht.
 - Ab wie vielen Verkäufen kommt 100 ml (und im selben Flakon-Design)? Offen.
-- Preise für 30 und 50 ml: offen. Die alten Werte in `brand.json` sind nicht bestätigt (`OUTDATED`); Einkaufspreis, COGS, Versandkosten, Gebühren, CAC und Retouren sind `UNKNOWN` und werden aus echten Quellen neu erfasst (Mar, 05.10.2026).
+- Stückkosten, Versandkosten, Gebühren, CAC und Retouren sind `UNKNOWN` (Mar, 05.10.2026); erst damit lässt sich die Marge der neuen Preise (D-003) prüfen.
 - Etikettierung: Zum Etikett ist nichts geklärt.
 - Kosmetikrecht: Die Fabrik stellt die nötigen Dokumente bereit (Sicherheitsbewertung, INCI u. a.), Mar trägt die Produkte selbst im CPNP-Portal der EU ein (Mar, 04.10.). Offen: Liste der Fabrik-Dokumente prüfen (deckt sie CPSR/PIF-Inhalte und die erweiterte Allergen-Kennzeichnung nach VO (EU) 2023/1545 ab?), CPNP-Eintrag je Duft vor dem ersten Onlineverkauf.
 - Zwei Duftlinien (Heritage/Editions) aus dem Playbook: offen. Mar entscheidet erst, wenn Flakon, Verpackung und Tüte endgültig gekauft sind (Suche läuft, Stand 16.10.).
@@ -83,7 +84,7 @@
 
 | Wer | Aufgabe | Status |
 |-----|---------|--------|
-| Mar | Shop-Livegang: Namen, Preise, Bilder (Pixelcut), Shopify-Einstellungen (Sprache Deutsch, Shopname, Steuern aus, Versand, Zahlung), Rechtstexte, dann Theme veröffentlichen und Passwort entfernen. Checkliste im Chat vom 03.11. | in Arbeit |
+| Mar | Shop-Livegang: Shopify-Einstellungen (Sprache Deutsch, Shopname, Steuern aus, Versand, Zahlung), Rechtstexte, dann Theme veröffentlichen und Passwort entfernen. Checkliste im Chat vom 03.11. | in Arbeit |
 | Mar | PR #6 prüfen und über das Merge nach `Azizam` entscheiden (offene Punkte in der PR-Beschreibung) | offen |
 | Mar | Flakon (30 ml), Etikett und Verpackung selbst klären — ohne Claude, bis Mar es wieder einbringt | offen |
 | Code | Struktur für Marketing-/Wachstums-Skills im Repo vorbereiten | offen |
@@ -97,6 +98,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-11-03 [Code]** Preise für alle 19 Düfte in Shopify gesetzt (D-003), Grundpreis €/100 ml läuft automatisch.
 - **2026-11-03 [Code]** Bilder Dunkel & edel (7 Düfte) hochgeladen; alle 19 Produkte haben Produktfoto und Stimmungsbild.
 - **2026-11-03 [Code]** Azizam-Namen für alle 19 Düfte (Mar) in Shopify (neue URLs mit Weiterleitung) und `duefte.csv`; 24 Bilder hochgeladen; Theme mit Kollektionsraster, Kacheln mit Bildwechsel und Produktseite (Noten, Intensität, Duftwelt, weitere Düfte).
 - **2026-11-03 [Code]** Shopify-Shop aufgebaut (Auftrag Mar): Entwurfs-Theme mit eigener Startseite (Hero, 30 % Duftöl, Duftrichtungen, Anlass-Finder, Geschichte, Duftbegriffe) und Duftprofil auf der Produktseite; 19 Düfte als Entwürfe mit Metafeldern `azizam.*`; nichts veröffentlicht. Blue Talisman und Megamare neu in `duefte.csv` (Lieferant und Bestand UNKNOWN).
@@ -106,7 +108,6 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 - **2026-10-05 [Code]** PR #4 (Bereinigung + Commercial-Struktur ohne Daten) von Mar freigegeben und in `Azizam` gemergt (`edd6c2a`). Boss-Status als A4-PDF erstellt: `AZIZAM-Boss-Status-2026-10-05.pdf`. Nächster Schritt: erste Bestandsaufnahme der 500-ml-Flaschen mit Mar.
 - **2026-10-05 [Code]** Commercial-Datenarchitektur angelegt (nur Struktur, **keine Daten**): `playbook/azizam/commercial/` mit 13 leeren CSV-Vorlagen für Produkt, Komponenten, Bestand (Bewegungen ab 500-ml-Gebinde), Offers, Transaktionen, pseudonyme Kunden, Experimente und dem Decision Ledger `entscheidungen.csv` (einzige Quelle für kommerzielle Entscheidungen, nur Mar entscheidet). Prüfung mit `python3 playbook.py daten`, Code in `commercial.py`. Nächster Schritt: erste Bestandsaufnahme mit Mar.
 - **2026-10-05 [Code]** Bereinigung nach Mars Freigabe: PR #3 war gemergt (`f9243b6`). Der Commercial-Datensatz aus `f7c7a77` (u. a. sieben angenommene 500-ml-Quellgebinde) war nicht von Mar bestätigt und ist per Revert vollständig entfernt — es gibt **keine** erfassten Azizam-Bestände. `playbook/haus-und-gruen/` und alle Haus-&-Grün-Verweise entfernt; das Repo betrifft nur noch Azizam. Alte Zahlen (Preise, COGS, Versand, Gebühren, CAC, Retouren, Offers, ROAS) als `OUTDATED`/`EXAMPLE`/`UNKNOWN`/`ASSUMPTION` gekennzeichnet; Mar hat sie ausdrücklich nicht bestätigt. Keine neuen Zahlen. Formel-Anpassung `2f34f28` bleibt. Git-Historie unverändert.
-- **2026-10-05 [Code]** Legacy-Cleanup: `marvin.py` (alter TikTok-/Video-Transcriber) entfernt, veraltete Verweise in `playbook/README.md` und `playbook/KONTEXT-EXPORT.md` bereinigt. Keine technischen Abhängigkeiten entfernt (es bestanden keine). Azizam-Skills und Decision Architecture unverändert. Commit `d892fd5`, PR #3.
 
 ### Verlauf (zusammengefasst)
 
