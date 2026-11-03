@@ -44,7 +44,7 @@
 
 - Bisher nur persönlicher Verkauf im Freundeskreis. **Aktuell kein Verkauf**, bis Flakon und Verpackung da sind.
 - Positionierung noch nicht vorhanden. Alte Website (Vercel) offline.
-- **Shop-Neubau in Shopify läuft (03.11.):** Entwurfs-Theme „Azizam – Entwurf (Claude)“ (unveröffentlicht, Live-Theme unverändert), 19 Düfte als **Entwürfe** mit Azizam-Namen (03.11., in `duefte.csv`), 30/50 ml, Preis 0 als Platzhalter (`preis-offen`); Bilder für 12 Düfte (Frisch & klar, Süß & warm), Dunkel & edel folgt (`bild-offen`), 3 Kollektionen nach Duftrichtung, Hauptmenü auf Deutsch. Duftdaten aus Mars Duftübersicht (PDF, 03.11.). Theme-Bausteine im Repo unter `shopify/theme/`. Hero zeigt Mars Flakon-Video (03.11.); auf der Startseite außerdem Kurations-Text, Duftkarte, Anlass-Finder, „ohne Bewertungen“-Block (Rückgabe-Absatz aus, bis Mar entscheidet) und Launch-Liste.
+- **Shop-Neubau in Shopify läuft (03.11.):** Entwurfs-Theme „Azizam – Entwurf (Claude)“ (unveröffentlicht, Live-Theme unverändert), 19 Düfte als **Entwürfe** mit Azizam-Namen (03.11., in `duefte.csv`), 30/50 ml, Preis 0 als Platzhalter (`preis-offen`); Bilder für die Richtungen Frisch & klar und Süß & warm, Dunkel & edel folgt (`bild-offen`), 3 Kollektionen nach Duftrichtung, Hauptmenü auf Deutsch. Duftdaten aus Mars Duftübersicht (PDF, 03.11.). Theme-Bausteine im Repo unter `shopify/theme/`. Hero zeigt Mars Flakon-Video (03.11.); auf der Startseite außerdem Kurations-Text, Duftkarte, Anlass-Finder, „ohne Bewertungen“-Block (Rückgabe-Absatz aus, bis Mar entscheidet) und Launch-Liste.
 - Ziel: In den nächsten 3 Monaten deutschlandweit online verkaufen, Shop komplett neu starten.
 - **Wichtigste und dringendste Aufgabe:** passender Flakon (bestenfalls zylindrisch) und Verpackung.
 
