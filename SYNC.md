@@ -44,7 +44,7 @@
 
 - Bisher nur persönlicher Verkauf im Freundeskreis. **Aktuell kein Verkauf**, bis Flakon und Verpackung da sind.
 - Positionierung noch nicht vorhanden. Alte Website (Vercel) offline.
-- **Shop-Neubau in Shopify läuft (03.11.):** Entwurfs-Theme „Azizam – Entwurf (Claude)“ (unveröffentlicht, Live-Theme unverändert), 19 Düfte als **Entwürfe** mit Azizam-Namen (03.11., in `duefte.csv`), 30/50 ml, Preise nach D-003 gesetzt; Bilder für alle Düfte (Produktfoto + Stimmungsbild), 3 Kollektionen nach Duftrichtung, Hauptmenü auf Deutsch. Duftdaten aus Mars Duftübersicht (PDF, 03.11.). Theme-Bausteine im Repo unter `shopify/theme/`. Hero zeigt Mars Flakon-Video (03.11.); auf der Startseite außerdem Kurations-Text, Duftkarte, Anlass-Finder, „ohne Bewertungen“-Block (Rückgabe-Absatz aus, bis Mar entscheidet) und Launch-Liste.
+- **Shop-Neubau in Shopify läuft (03.11.):** Entwurfs-Theme „Azizam – Entwurf (Claude)“ (unveröffentlicht, Live-Theme unverändert), 19 Düfte **aktiv im Onlineshop, aber hinter dem Shop-Passwort** (Mar, 03.11.) mit Azizam-Namen (03.11., in `duefte.csv`), 30/50 ml, Preise nach D-003 gesetzt; Bilder für alle Düfte (Produktfoto + Stimmungsbild), 3 Kollektionen nach Duftrichtung, Hauptmenü auf Deutsch. Duftdaten aus Mars Duftübersicht (PDF, 03.11.). Theme-Bausteine im Repo unter `shopify/theme/`. Hero zeigt Mars Flakon-Video (03.11.); auf der Startseite außerdem Kurations-Text, Duftkarte, Anlass-Finder, „ohne Bewertungen“-Block (Rückgabe-Absatz aus, bis Mar entscheidet) und Launch-Liste.
 - Ziel: In den nächsten 3 Monaten deutschlandweit online verkaufen, Shop komplett neu starten.
 - **Wichtigste und dringendste Aufgabe:** passender Flakon (bestenfalls zylindrisch) und Verpackung.
 
@@ -98,6 +98,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-11-03 [Code]** Auf Mars Wunsch alle 19 Produkte aktiviert und im Onlineshop-Kanal veröffentlicht; Shop bleibt passwortgeschützt, Live-Theme unverändert. Bestand steht auf 0 (Ausverkauft-Anzeige), bis Mar echte Stückzahlen nennt.
 - **2026-11-03 [Code]** Preise für alle 19 Düfte in Shopify gesetzt (D-003), Grundpreis €/100 ml läuft automatisch.
 - **2026-11-03 [Code]** Bilder Dunkel & edel (7 Düfte) hochgeladen; alle 19 Produkte haben Produktfoto und Stimmungsbild.
 - **2026-11-03 [Code]** Azizam-Namen für alle 19 Düfte (Mar) in Shopify (neue URLs mit Weiterleitung) und `duefte.csv`; 24 Bilder hochgeladen; Theme mit Kollektionsraster, Kacheln mit Bildwechsel und Produktseite (Noten, Intensität, Duftwelt, weitere Düfte).
@@ -107,7 +108,6 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 - **2026-10-07 [Code]** Realer Bestand von Mar erfasst (inkl. Nachtrag Les Sables Roses): Gebinde, Preise, Füllstände per Augenmaß in `playbook/azizam/commercial/` (Zahlen nur dort, Übersicht: `python3 playbook.py daten`). Velvet-Vanilla-Umlage als Entscheidung D-001 im Ledger. Repo-Hygiene eingeführt: `python3 playbook.py hygiene` (Lifecycle, Duplikate, Widersprüche, tote Verweise; löscht nie).
 - **2026-10-05 [Code]** PR #4 (Bereinigung + Commercial-Struktur ohne Daten) von Mar freigegeben und in `Azizam` gemergt (`edd6c2a`). Boss-Status als A4-PDF erstellt: `AZIZAM-Boss-Status-2026-10-05.pdf`. Nächster Schritt: erste Bestandsaufnahme der 500-ml-Flaschen mit Mar.
 - **2026-10-05 [Code]** Commercial-Datenarchitektur angelegt (nur Struktur, **keine Daten**): `playbook/azizam/commercial/` mit 13 leeren CSV-Vorlagen für Produkt, Komponenten, Bestand (Bewegungen ab 500-ml-Gebinde), Offers, Transaktionen, pseudonyme Kunden, Experimente und dem Decision Ledger `entscheidungen.csv` (einzige Quelle für kommerzielle Entscheidungen, nur Mar entscheidet). Prüfung mit `python3 playbook.py daten`, Code in `commercial.py`. Nächster Schritt: erste Bestandsaufnahme mit Mar.
-- **2026-10-05 [Code]** Bereinigung nach Mars Freigabe: PR #3 war gemergt (`f9243b6`). Der Commercial-Datensatz aus `f7c7a77` (u. a. sieben angenommene 500-ml-Quellgebinde) war nicht von Mar bestätigt und ist per Revert vollständig entfernt — es gibt **keine** erfassten Azizam-Bestände. `playbook/haus-und-gruen/` und alle Haus-&-Grün-Verweise entfernt; das Repo betrifft nur noch Azizam. Alte Zahlen (Preise, COGS, Versand, Gebühren, CAC, Retouren, Offers, ROAS) als `OUTDATED`/`EXAMPLE`/`UNKNOWN`/`ASSUMPTION` gekennzeichnet; Mar hat sie ausdrücklich nicht bestätigt. Keine neuen Zahlen. Formel-Anpassung `2f34f28` bleibt. Git-Historie unverändert.
 
 ### Verlauf (zusammengefasst)
 
