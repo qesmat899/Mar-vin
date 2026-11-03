@@ -1,12 +1,15 @@
 {{ 'azizam.css' | asset_url | stylesheet_tag }}
-{%- comment -%} Duftprofil aus den Produkt-Metafeldern (namespace azizam). Fehlende Felder werden ausgelassen. {%- endcomment -%}
+{%- comment -%} Duftprofil neben dem Kaufbereich: Hauptnoten, Intensität, Tageszeit, Saison, Anlass (Metafelder azizam.*). {%- endcomment -%}
 {%- assign p = closest.product | default: product -%}
 {%- assign m = p.metafields.azizam -%}
 <div class="az-profil" {{ block.shopify_attributes }}>
-  {%- if m.familie.value != blank -%}<div class="az-profil__fam">{{ m.familie.value }}</div>{%- endif -%}
   {%- assign noten = m.noten.value -%}
-  {%- if noten != blank -%}<p class="az-profil__notes"><span class="visually-hidden">Hauptnoten: </span>{{ noten | join: ' · ' }}</p>{%- endif -%}
+  {%- if noten != blank -%}
+    <p class="az-profil__lbl">Hauptnoten</p>
+    <ul class="az-profil__noten">{%- for n in noten -%}<li>{{ n }}</li>{%- endfor -%}</ul>
+  {%- endif -%}
   <dl class="az-profil__grid">
+    {%- if m.intensitaet.value != blank -%}<dt>Intensität</dt><dd>{% render 'azizam-intensitaet', product: p, labels: true %}</dd>{%- endif -%}
     {%- if m.tageszeit.value != blank -%}<dt>Tageszeit</dt><dd>{{ m.tageszeit.value }}</dd>{%- endif -%}
     {%- if m.saison.value != blank -%}<dt>Saison</dt><dd>{{ m.saison.value }}</dd>{%- endif -%}
     {%- if m.anlass.value != blank -%}<dt>Passt zu</dt><dd>{{ m.anlass.value | join: ', ' }}</dd>{%- endif -%}
@@ -17,9 +20,7 @@
 {% schema %}
 {
   "name": "Azizam Duftprofil",
-  "settings": [
-    { "type": "text", "id": "oil_text", "label": "Hinweis", "default": "Rund 30 % Duftöl." }
-  ],
+  "settings": [{ "type": "text", "id": "oil_text", "label": "Hinweis", "default": "Rund 30 % Duftöl. In Deutschland abgefüllt." }],
   "presets": [{ "name": "Azizam Duftprofil" }]
 }
 {% endschema %}

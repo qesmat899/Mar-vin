@@ -1,0 +1,11 @@
+{%- comment -%} Intensität 1–5 aus azizam.intensitaet. Parameter: product, labels (true = Beschriftung leicht/präsent) {%- endcomment -%}
+{%- assign stufe = product.metafields.azizam.intensitaet.value | default: 0 -%}
+{%- if stufe > 0 -%}
+  <span class="az-int" role="img" aria-label="Intensität {{ stufe }} von 5">
+    {%- if labels -%}<span class="az-int__lbl">leicht</span>{%- endif -%}
+    <span class="az-int__dots" aria-hidden="true">
+      {%- for i in (1..5) -%}<span class="az-int__dot{% if i <= stufe %} is-on{% endif %}"></span>{%- endfor -%}
+    </span>
+    {%- if labels -%}<span class="az-int__lbl">präsent</span>{%- endif -%}
+  </span>
+{%- endif -%}

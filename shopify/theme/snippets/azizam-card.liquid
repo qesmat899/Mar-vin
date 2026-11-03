@@ -1,0 +1,42 @@
+{%- comment -%}
+  Produktkachel: Stimmungsbild (2. Bild) als Hauptbild, beim Überfahren das Produktfoto (1. Bild).
+  Parameter: product, eager (true für die ersten Kacheln)
+{%- endcomment -%}
+{%- liquid
+  assign m = product.metafields.azizam
+  assign main = product.media[1] | default: product.media[0]
+  assign alt_img = product.media[0]
+  if product.media.size < 2
+    assign alt_img = nil
+  endif
+  assign loading = 'lazy'
+  if eager
+    assign loading = 'eager'
+  endif
+-%}
+<a class="az-card" href="{{ product.url }}" data-familie="{{ m.familie.value | handleize }}">
+  <span class="az-card__media">
+    {%- if main != blank -%}
+      {{ main.preview_image | image_url: width: 900 | image_tag: class: 'az-card__img', loading: loading, widths: '360, 540, 720, 900', sizes: '(min-width: 1100px) 25vw, (min-width: 750px) 33vw, 50vw', alt: product.title }}
+      {%- if alt_img != blank -%}
+        {{ alt_img.preview_image | image_url: width: 900 | image_tag: class: 'az-card__img az-card__img--alt', loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 1100px) 25vw, (min-width: 750px) 33vw, 50vw', alt: '' }}
+      {%- endif -%}
+    {%- else -%}
+      <span class="az-card__ph"><span>{{ product.title }}</span></span>
+    {%- endif -%}
+  </span>
+  <span class="az-card__body">
+    <span class="az-card__fam">{{ m.familie.value }}</span>
+    <span class="az-card__name">{{ product.title }}</span>
+    {%- assign noten = m.noten.value -%}
+    {%- if noten != blank -%}<span class="az-card__notes">{{ noten | join: ' · ' }}</span>{%- endif -%}
+    <span class="az-card__foot">
+      {%- render 'azizam-intensitaet', product: product -%}
+      <span class="az-card__price">
+        {%- if product.price_min > 0 -%}
+          {%- if product.price_varies -%}ab {% endif -%}{{ product.price_min | money }}
+        {%- else -%}Bald erhältlich{%- endif -%}
+      </span>
+    </span>
+  </span>
+</a>

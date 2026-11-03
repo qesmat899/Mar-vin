@@ -1,0 +1,32 @@
+{{ 'azizam.css' | asset_url | stylesheet_tag }}
+{%- comment -%} Produktseite: weitere Düfte derselben Duftrichtung (Kollektion mit gleichem Titel wie azizam.familie). {%- endcomment -%}
+{%- assign fam = product.metafields.azizam.familie.value -%}
+{%- assign c = product.collections | where: 'title', fam | first -%}
+{%- if c and c.products_count > 1 -%}
+  <section class="az az-section" aria-labelledby="az-mehr-{{ section.id }}">
+    <div class="az-wrap">
+      <div class="az-kol__head">
+        <h2 id="az-mehr-{{ section.id }}" class="az-h az-kol__title">{{ section.settings.heading }} {{ fam }}</h2>
+        <a class="az-link" href="{{ c.url }}">Alle ansehen</a>
+      </div>
+      <div class="az-grid">
+        {%- assign shown = 0 -%}
+        {%- for p in c.products -%}
+          {%- if p.id != product.id and shown < 4 -%}
+            {%- render 'azizam-card', product: p -%}
+            {%- assign shown = shown | plus: 1 -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Azizam Mehr davon",
+  "tag": "div",
+  "settings": [{ "type": "text", "id": "heading", "label": "Überschrift", "default": "Mehr aus" }],
+  "presets": [{ "name": "Azizam Mehr davon" }]
+}
+{% endschema %}

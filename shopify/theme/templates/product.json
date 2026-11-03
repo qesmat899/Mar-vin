@@ -97,6 +97,12 @@
                 "placeholder": ""
               },
               "blocks": {
+                "fam": {
+                  "type": "azizam-familie",
+                  "name": "Azizam Duftrichtung",
+                  "settings": {},
+                  "blocks": {}
+                },
                 "titel": {
                   "type": "text",
                   "name": "t:names.product_title",
@@ -153,6 +159,7 @@
                 }
               },
               "block_order": [
+                "fam",
                 "titel",
                 "preis",
                 "hinweis"
@@ -162,7 +169,7 @@
               "type": "azizam-duftprofil",
               "name": "Azizam Duftprofil",
               "settings": {
-                "oil_text": "Rund 30 % Duftöl."
+                "oil_text": "Rund 30 % Duftöl. In Deutschland abgefüllt."
               },
               "blocks": {}
             },
@@ -307,151 +314,20 @@
         "padding-block-end": 0
       }
     },
-    "empfehlungen": {
-      "type": "product-recommendations",
-      "name": "t:names.product_recommendations",
-      "blocks": {
-        "kopf": {
-          "type": "text",
-          "name": "t:names.header",
-          "settings": {
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0,
-            "text": "<h3>Das könnte dir auch gefallen</h3>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h4",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0
-          },
-          "blocks": {}
-        },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
-          "settings": {
-            "product_card_gap": 8,
-            "background_color": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 8,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "bild": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0,
-                "image_ratio": "portrait",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_color": "",
-                "border_radius": 0
-              },
-              "blocks": {}
-            },
-            "titel": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0,
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "text_color": ""
-              },
-              "blocks": {}
-            },
-            "preis": {
-              "type": "price",
-              "settings": {
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0,
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "text_color": ""
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "bild",
-            "titel",
-            "preis"
-          ]
-        }
-      },
-      "block_order": [
-        "kopf"
-      ],
+    "duftwelt": {
+      "type": "azizam-duftwelt",
+      "settings": {}
+    },
+    "mehr": {
+      "type": "azizam-mehr",
       "settings": {
-        "product": "{{ closest.product }}",
-        "recommendation_type": "related",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 4,
-        "columns": 4,
-        "mobile_columns": "2",
-        "columns_gap": 12,
-        "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "gap": 28,
-        "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "heading": "Mehr aus"
       }
     }
   },
   "order": [
     "main",
-    "empfehlungen"
+    "duftwelt",
+    "mehr"
   ]
 }

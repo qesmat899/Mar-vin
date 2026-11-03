@@ -1,0 +1,33 @@
+{{ 'azizam.css' | asset_url | stylesheet_tag }}
+{%- comment -%} Produktseite: großes Stimmungsbild (2. Bild) mit Charakter, Noten und Intensität. {%- endcomment -%}
+{%- assign p = product -%}
+{%- assign m = p.metafields.azizam -%}
+{%- assign img = p.media[1] | default: p.media[0] -%}
+<section class="az az-welt" aria-labelledby="az-welt-{{ section.id }}">
+  <div class="az-welt__media">
+    {%- if img != blank -%}
+      {{ img.preview_image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '540, 720, 1080, 1400, 1600', sizes: '(min-width: 900px) 50vw, 100vw', alt: img.alt | default: p.title }}
+    {%- endif -%}
+  </div>
+  <div class="az-welt__copy">
+    <p class="az-kicker">{{ m.familie.value | default: section.settings.kicker }}</p>
+    <h2 id="az-welt-{{ section.id }}" class="az-h az-welt__name">{{ p.title }}</h2>
+    {%- if m.charakter.value != blank -%}<p class="az-welt__text">{{ m.charakter.value }}</p>{%- endif -%}
+    {%- assign noten = m.noten.value -%}
+    {%- if noten != blank -%}
+      <ol class="az-welt__noten">{%- for n in noten -%}<li><span>{{ forloop.index | prepend: '0' }}</span>{{ n }}</li>{%- endfor -%}</ol>
+    {%- endif -%}
+    {%- if m.intensitaet.value != blank -%}
+      <div class="az-welt__int"><span class="az-kicker">Intensität</span>{% render 'azizam-intensitaet', product: p, labels: true %}</div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Azizam Duftwelt",
+  "tag": "div",
+  "settings": [{ "type": "text", "id": "kicker", "label": "Überzeile, falls keine Duftrichtung", "default": "Azizam" }],
+  "presets": [{ "name": "Azizam Duftwelt" }]
+}
+{% endschema %}
