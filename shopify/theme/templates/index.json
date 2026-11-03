@@ -21,7 +21,7 @@
       "type": "azizam-haltung",
       "settings": {
         "label": "Über Azizam",
-        "text": "<p>Wir stellen unsere Düfte nicht selbst her. Wir wählen sie aus.</p><p>Jeder Duft wird mit rund 30 % Duftöl abgefüllt, statt der 12 bis 18 %, die bei Eau de Parfum üblich sind. Deshalb bleibt er <em>nah, statt laut zu sein.</em></p>"
+        "text": "<p>Wir stellen unsere Düfte selbst her.&nbsp;</p><p>Jeder Duft wird mit rund 30 % Duftöl abgefüllt, statt der 12 bis 18 %, die bei Eau de Parfum üblich sind. Deshalb bleibt er <em>nah, statt laut zu sein.</em></p>"
       },
       "blocks": {
         "f1": {
@@ -127,15 +127,6 @@
         "a7"
       ]
     },
-    "ehrlich": {
-      "type": "azizam-ehrlich",
-      "settings": {
-        "heading": "Neu gestartet. Deshalb ohne Bewertungen.",
-        "text": "<p>Wir sind eine junge Marke. Statt Sterne zu zeigen, die wir noch nicht verdient haben, sagen wir Dir genau, was Du bekommst: <strong>rund 30 % Duftöl, die Hauptnoten und wann ein Duft passt.</strong></p><p>Echte Stimmen kommen hierher, sobald es sie gibt. Mit Namen und Einverständnis.</p>",
-        "show_return": false,
-        "return_text": "<p><strong>Und mit 30 Tagen Rückgaberecht.</strong> Wenn der Duft nicht Deiner ist, schick ihn innerhalb von 30 Tagen zurück, solange der Flakon noch zu 80 % gefüllt ist. Das Risiko liegt bei uns, nicht bei Dir.</p>"
-      }
-    },
     "liste": {
       "type": "azizam-liste",
       "settings": {}
@@ -221,7 +212,6 @@
     "kollektion",
     "haltung",
     "anlass",
-    "ehrlich",
     "liste",
     "begriffe"
   ]
