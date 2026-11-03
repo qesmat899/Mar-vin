@@ -1,7 +1,7 @@
 # SYNC.md – Übergabe zwischen Claude Chat und Claude Code (Azizam)
 
 > Gemeinsame Datei für **Claude Chat** und **Claude Code**. Sie ist die einzige Brücke zwischen beiden.
-> Zuletzt aktualisiert: 2026-10-16 [Code]
+> Zuletzt aktualisiert: 2026-11-03 [Code]
 
 ---
 
@@ -43,8 +43,8 @@
 ## Aktueller Stand (überschreiben, nicht anhängen)
 
 - Bisher nur persönlicher Verkauf im Freundeskreis. **Aktuell kein Verkauf**, bis Flakon und Verpackung da sind.
-- Positionierung noch nicht vorhanden. Website (Single-Page, Shopify, Vercel) war bis ca. 25.09.2026 live, jetzt offline und veraltet.
-- Website kann erst gebaut werden, wenn der Flakon feststeht (Flakon ist Teil der Website).
+- Positionierung noch nicht vorhanden. Alte Website (Vercel) offline.
+- **Shop-Neubau in Shopify läuft (03.11.):** Entwurfs-Theme „Azizam – Entwurf (Claude)“ (unveröffentlicht, Live-Theme unverändert), 19 Düfte als **Entwürfe** (30/50 ml, Preis 0 als Platzhalter, Tags `name-offen`/`preis-offen`/`bild-offen`), 3 Kollektionen nach Duftrichtung, Hauptmenü auf Deutsch. Duftdaten aus Mars Duftübersicht (PDF, 03.11.). Theme-Bausteine im Repo unter `shopify/theme/`. Flakon-Bild ist bis zu echten Fotos eine Illustration.
 - Ziel: In den nächsten 3 Monaten deutschlandweit online verkaufen, Shop komplett neu starten.
 - **Wichtigste und dringendste Aufgabe:** passender Flakon (bestenfalls zylindrisch) und Verpackung.
 
@@ -80,6 +80,7 @@
 
 | Wer | Aufgabe | Status |
 |-----|---------|--------|
+| Mar | Shop-Livegang: Namen, Preise, Bilder (Pixelcut), Shopify-Einstellungen (Sprache Deutsch, Shopname, Steuern aus, Versand, Zahlung), Rechtstexte, dann Theme veröffentlichen und Passwort entfernen. Checkliste im Chat vom 03.11. | in Arbeit |
 | Mar | PR #6 prüfen und über das Merge nach `Azizam` entscheiden (offene Punkte in der PR-Beschreibung) | offen |
 | Mar | Flakon (30 ml), Etikett und Verpackung selbst klären — ohne Claude, bis Mar es wieder einbringt | offen |
 | Code | Struktur für Marketing-/Wachstums-Skills im Repo vorbereiten | offen |
@@ -93,6 +94,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-11-03 [Code]** Shopify-Shop aufgebaut (Auftrag Mar): Entwurfs-Theme mit eigener Startseite (Hero, 30 % Duftöl, Duftrichtungen, Anlass-Finder, Geschichte, Duftbegriffe) und Duftprofil auf der Produktseite; 19 Düfte als Entwürfe mit Metafeldern `azizam.*`; nichts veröffentlicht. Blue Talisman und Megamare neu in `duefte.csv` (Lieferant und Bestand UNKNOWN).
 - **2026-10-16 [Code]** Bestandsabgleich abgeschlossen (Angaben Mar): tatsächliche Einkaufspreise Velvet Vanilla, Imagination = Citrus Fresh (Art. 1054), Les Sables Roses im Sortiment (`D-002`); Rechnungen der TBrand GmbH als verbindlich übernommen (Kaufdaten, Belege, Preise inkl. Rabatt, Versand nach ml verteilt) für 17 Flaschen; Zahlen nur in `playbook/azizam/commercial/`.
 - **2026-10-16 [Code]** Draft-PR #6 (`claude/charming-hypatia-58sfxg` → `Azizam`) geprüft und ergänzt: Rechner kennzeichnen Modellwerte, Bestandslogik gegen undatierte Bewegungen abgesichert, Duftlinien überall als offen markiert. Offene Entscheidungen stehen in der PR-Beschreibung. Nicht gemergt.
 - **2026-10-07 [Code]** Realer Bestand von Mar erfasst (inkl. Nachtrag Les Sables Roses): Gebinde, Preise, Füllstände per Augenmaß in `playbook/azizam/commercial/` (Zahlen nur dort, Übersicht: `python3 playbook.py daten`). Velvet-Vanilla-Umlage als Entscheidung D-001 im Ledger. Repo-Hygiene eingeführt: `python3 playbook.py hygiene` (Lifecycle, Duplikate, Widersprüche, tote Verweise; löscht nie).
@@ -102,7 +104,6 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 - **2026-10-05 [Code]** Legacy-Cleanup: `marvin.py` (alter TikTok-/Video-Transcriber) entfernt, veraltete Verweise in `playbook/README.md` und `playbook/KONTEXT-EXPORT.md` bereinigt. Keine technischen Abhängigkeiten entfernt (es bestanden keine). Azizam-Skills und Decision Architecture unverändert. Commit `d892fd5`, PR #3.
 - **2026-10-04 [Code]** Mar: Claude Pro; Fabrik liefert die Rechtsdokumente, Mar trägt die Produkte selbst im CPNP-Portal ein. Offene Fragen und Aufgaben angepasst.
 - **2026-10-04 [Code]** E-Mail-Adresse korrigiert auf `azizamfragrance@gmail.com` (`brand.json`, `07-recht-retention.md`).
-- **2026-10-04 [Code]** Small-Business-Plugin eingerichtet: Profil `BUSINESS-CONTEXT.md` (von Mar bestätigt, über `CLAUDE.md` immer geladen), Aufbauplan in Stufen mit passenden Plugin-Skills in `playbook/azizam/SYSTEM-AUFBAU.md`. Shopify geprüft (nur gelesen).
 
 ### Verlauf (zusammengefasst)
 
