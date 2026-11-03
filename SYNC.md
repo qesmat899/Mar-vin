@@ -73,7 +73,7 @@
 - Kosmetikrecht: Die Fabrik stellt die nötigen Dokumente bereit (Sicherheitsbewertung, INCI u. a.), Mar trägt die Produkte selbst im CPNP-Portal der EU ein (Mar, 04.10.). Offen: Liste der Fabrik-Dokumente prüfen (deckt sie CPSR/PIF-Inhalte und die erweiterte Allergen-Kennzeichnung nach VO (EU) 2023/1545 ab?), CPNP-Eintrag je Duft vor dem ersten Onlineverkauf.
 - Zwei Duftlinien (Heritage/Editions) aus dem Playbook: offen. Mar entscheidet erst, wenn Flakon, Verpackung und Tüte endgültig gekauft sind (Suche läuft, Stand 16.10.).
 - Positionierung und Markenauftritt für die Zielgruppe.
-- Duftnamen: Midnight Café existiert als US-Parfum (Fine’ry „Midnight Cafe“), EU-Schutz unbekannt; Duna ist sehr ähnlich zu Dior „Dune“ (Websuche 03.11.); alle Namen vor dem Druck im Markenregister prüfen (TMview, Klasse 3). Vorschlag: „Midnight Cafe“ und „Dune“ in TMview prüfen.
+- Duftnamen: Midnight Café existiert als US-Parfum (Fine’ry „Midnight Cafe“), EU-Schutz unbekannt (Websuche 03.11.); alle Namen vor dem Druck im Markenregister prüfen (TMview, Klasse 3). Vorschlag: „Midnight Cafe“ in TMview prüfen.
 - Website-Collections: Vorschlag Frisch · Süß & Warm · Amber & Safran · Oud & Leder (Zuordnung im Chat 03.11.), von Mar noch nicht bestätigt.
 - Flakon aus dem Mockup vom 03.11. (eckig, weiße Kappe, Goldringe, Etikett „AZIZAM FRAGRANCES“): endgültig, bestellt, 30/50 ml? Offen.
 
