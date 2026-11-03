@@ -1,8 +1,8 @@
 # Commercial-Daten Azizam
 
 Struktur für echte Produkt-, Bestands-, Angebots-, Verkaufs-, Experiment- und Entscheidungsdaten.
-**Stand 07.10.2026:** Erste Bestandsaufnahme von Mar eingetragen (19 Gebinde, 17 Düfte, Lieferant; Füllstände per
-Augenmaß). Komponenten, Offers, Transaktionen, Kunden, Experimente und Entscheidungen sind noch leer. Prüfen und auswerten: `python3 playbook.py daten --brand azizam`. Code: `commercial.py`.
+**Stand 07.10.2026:** Erste Bestandsaufnahme von Mar eingetragen (19 Gebinde, Lieferant; Füllstände per
+Augenmaß). **Stand 03.11.2026:** 19 Düfte in `duefte.csv`; Borbus und Mare Vita stehen in Mars Duftübersicht, ohne erfassten Bestand oder Lieferanten. Komponenten, Offers, Transaktionen, Kunden, Experimente und Entscheidungen sind noch leer. Prüfen und auswerten: `python3 playbook.py daten --brand azizam`. Code: `commercial.py`.
 
 ## Regeln
 
@@ -110,7 +110,7 @@ Ohne Vergleichsgruppe keine Kausalaussage. Creative-Tests im Detail weiter in `.
 
 ## Bestandsaufnahme 07.10.2026 (Mar)
 
-Eingetragen: Lieferant TBrand GmbH (Parfumfabrik; früher als „Tomorrow Brand UG“ erfasst) · 17 Düfte (Duftölanteil 30 % laut Mar) · 19 Gebinde
+Eingetragen: Lieferant TBrand GmbH (Parfumfabrik; früher als „Tomorrow Brand UG“ erfasst) · Düfte mit Gebinde: 17 (Duftölanteil 30 % laut Mar) · 19 Gebinde
 `G-01` … `G-19` (17 × 500 ml, 2 × 1.000 ml Velvet Vanilla) mit Zugang (Nennmenge, Preis, Charge) und Inventur
 (Füllstand per Augenmaß, `mengen_basis = geschaetzt`; Roja Aoud als Spanne 300–325 ml). Status je Zeile `RECORDED`
 (Angabe von Mar, Belege noch nicht zugeordnet). Les Sables Roses ist im Sortiment (`D-002`). Die Düfte (außer Velvet Vanilla) sind mit der von Mar genannten Bezeichnung als

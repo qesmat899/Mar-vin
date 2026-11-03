@@ -74,7 +74,8 @@
 - Zwei Duftlinien (Heritage/Editions) aus dem Playbook: offen. Mar entscheidet erst, wenn Flakon, Verpackung und Tüte endgültig gekauft sind (Suche läuft, Stand 16.10.).
 - Positionierung und Markenauftritt für die Zielgruppe.
 - Duftnamen: Midnight Café existiert als US-Parfum (Fine’ry „Midnight Cafe“), EU-Schutz unbekannt (Websuche 03.11.); alle Namen vor dem Druck im Markenregister prüfen (TMview, Klasse 3). Vorschlag: „Midnight Cafe“ in TMview prüfen.
-- Website-Collections: Vorschlag Frisch · Süß & Warm · Amber & Safran · Oud & Leder (Zuordnung im Chat 03.11.), von Mar noch nicht bestätigt.
+- Website-Kategorien: Vorschlag Mars drei Duftrichtungen aus der Duftübersicht (Frisch & klar · Süß & warm · Dunkel & edel), noch nicht bestätigt. Die Duftübersicht nennt die Originale mit Marke: nur intern verwenden, nie auf Website oder an Kunden.
+- Borbus und Mare Vita: gekauft oder geplant? Lieferant und Bestand fehlen.
 - Flakon aus dem Mockup vom 03.11. (eckig, weiße Kappe, Goldringe, Etikett „AZIZAM FRAGRANCES“): endgültig, bestellt, 30/50 ml? Offen.
 
 ---
