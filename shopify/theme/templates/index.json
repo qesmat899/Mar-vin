@@ -3,63 +3,71 @@
     "hero": {
       "type": "azizam-hero",
       "settings": {
-        "eyebrow": "Azizam Fragrance",
+        "video_url": "https://cdn.shopify.com/s/files/1/1084/8141/3450/files/azizam-hero-1080.mp4?v=1793715747",
+        "video_alt": "Azizam Flakon im warmen Licht",
+        "poster": "shopify://shop_images/azizam-hero-start.jpg",
+        "still": "shopify://shop_images/azizam-hero-end.jpg",
         "title": "Azizam",
         "persian": "عزیزم",
-        "subtitle": "Der Duft der zweiten Generation.",
-        "text": "<p>Azizam heißt auf Persisch „mein Schatz“. 19 Düfte in drei Duftrichtungen, jeder mit rund 30 % Duftöl.</p>",
-        "cta_1_label": "Alle Düfte entdecken",
-        "cta_1_link": "shopify://collections/all",
-        "cta_2_label": "Duft nach Anlass finden",
-        "cta_2_link": "#anlass"
+        "persian_meaning": "persisch für „mein Schatz“",
+        "line": "Der Duft der zweiten Generation.",
+        "cta_label": "Düfte entdecken",
+        "cta_link": "shopify://collections/all",
+        "link_label": "Nach Anlass wählen",
+        "link_target": "#anlass"
       }
     },
-    "versprechen": {
-      "type": "azizam-versprechen",
-      "settings": { "heading": "Was Azizam ausmacht" },
-      "blocks": {
-        "oel": { "type": "punkt", "settings": { "big": "30 %", "label": "Duftöl in jedem Duft", "text": "Branchenüblich sind bei Eau de Parfum 12 bis 18 %. Darum sitzt Azizam näher an der Haut, ohne lauter zu sein." } },
-        "groessen": { "type": "punkt", "settings": { "big": "30 · 50 ml", "label": "Zwei Größen", "text": "Zum Kennenlernen oder für deinen Lieblingsduft." } },
-        "duefte": { "type": "punkt", "settings": { "big": "19", "label": "Düfte in drei Richtungen", "text": "Von frisch und klar bis dunkel und edel." } }
+    "haltung": {
+      "type": "azizam-haltung",
+      "settings": {
+        "label": "Über Azizam",
+        "text": "<p>Wir stellen unsere Düfte nicht selbst her. Wir wählen sie aus.</p><p>Jeder Duft wird mit rund 30 % Duftöl abgefüllt, statt der 12 bis 18 %, die bei Eau de Parfum üblich sind. Deshalb bleibt er <em>nah, statt laut zu sein.</em></p>"
       },
-      "block_order": ["oel", "groessen", "duefte"]
-    },
-    "familien": {
-      "type": "azizam-familien",
-      "settings": { "eyebrow": "Von leicht bis intensiv", "heading": "Drei Duftrichtungen", "text": "" },
       "blocks": {
-        "frisch": { "type": "familie", "settings": { "collection": "frisch-klar", "fallback_title": "Frisch & klar", "when": "Tag", "tone": "frisch", "text": "Für den Tag, das Büro und warme Temperaturen." } },
-        "suess": { "type": "familie", "settings": { "collection": "suess-warm", "fallback_title": "Süß & warm", "when": "Abend", "tone": "suess", "text": "Für den Abend und die kühlere Jahreszeit." } },
-        "dunkel": { "type": "familie", "settings": { "collection": "dunkel-edel", "fallback_title": "Dunkel & edel", "when": "Anlass", "tone": "dunkel", "text": "Für besondere Anlässe und Abendveranstaltungen." } }
+        "f1": { "type": "fakt", "settings": { "term": "Duftöl", "value": "rund 30 %" } },
+        "f2": { "type": "fakt", "settings": { "term": "Größen", "value": "30 ml · 50 ml" } },
+        "f3": { "type": "fakt", "settings": { "term": "Düfte", "value": "19, in drei Richtungen" } },
+        "f4": { "type": "fakt", "settings": { "term": "Abgefüllt", "value": "in Deutschland" } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4"]
+    },
+    "duftkarte": {
+      "type": "azizam-familien",
+      "settings": { "heading": "Die Düfte", "sub": "Von leicht bis intensiv" },
+      "blocks": {
+        "frisch": { "type": "familie", "settings": { "collection": "frisch-klar", "fallback_title": "Frisch & klar", "text": "Für den Tag, das Büro und warme Temperaturen." } },
+        "suess": { "type": "familie", "settings": { "collection": "suess-warm", "fallback_title": "Süß & warm", "text": "Für den Abend und die kühlere Jahreszeit." } },
+        "dunkel": { "type": "familie", "settings": { "collection": "dunkel-edel", "fallback_title": "Dunkel & edel", "text": "Für besondere Anlässe und Abendveranstaltungen." } }
       },
       "block_order": ["frisch", "suess", "dunkel"]
     },
     "anlass": {
       "type": "azizam-anlass",
-      "settings": { "eyebrow": "Für jeden Moment", "heading": "Finde deinen Duft nach Anlass" },
+      "settings": { "eyebrow": "Nach Anlass", "heading": "Welcher Duft passt zu Deinem Abend?" },
       "blocks": {
-        "a1": { "type": "anlass", "settings": { "label": "Vielseitig", "key": "Vielseitig" } },
-        "a2": { "type": "anlass", "settings": { "label": "Date", "key": "Date" } },
-        "a3": { "type": "anlass", "settings": { "label": "Büro & Studium", "key": "Büro & Studium" } },
-        "a4": { "type": "anlass", "settings": { "label": "Sommer & Hitze", "key": "Hohe Temperaturen" } },
-        "a5": { "type": "anlass", "settings": { "label": "Ausgehen", "key": "Ausgehen" } },
-        "a6": { "type": "anlass", "settings": { "label": "Besondere Anlässe", "key": "Besondere Anlässe" } },
+        "a1": { "type": "anlass", "settings": { "label": "Date", "key": "Date" } },
+        "a2": { "type": "anlass", "settings": { "label": "Ausgehen", "key": "Ausgehen" } },
+        "a3": { "type": "anlass", "settings": { "label": "Besondere Anlässe", "key": "Besondere Anlässe" } },
+        "a4": { "type": "anlass", "settings": { "label": "Vielseitig", "key": "Vielseitig" } },
+        "a5": { "type": "anlass", "settings": { "label": "Uni & Büro", "key": "Büro & Studium" } },
+        "a6": { "type": "anlass", "settings": { "label": "Sommer", "key": "Hohe Temperaturen" } },
         "a7": { "type": "anlass", "settings": { "label": "Eigenständig", "key": "Eigenständig" } }
       },
       "block_order": ["a1", "a2", "a3", "a4", "a5", "a6", "a7"]
     },
-    "story": {
-      "type": "azizam-story",
+    "ehrlich": {
+      "type": "azizam-ehrlich",
       "settings": {
-        "word": "عزیزم",
-        "eyebrow": "Azizam – mein Schatz",
-        "heading": "Ein Wort, das man nicht übersetzt, sondern fühlt.",
-        "text": "<p>So nennt man auf Persisch die Menschen, die einem am nächsten sind. Genau das soll ein Duft sein: <strong>nah, warm und unverwechselbar deiner.</strong></p><p>Jeder Azizam-Duft hat rund 30 % Duftöl. Damit bleibt er nah an der Haut, statt den Raum zu füllen.</p>"
+        "heading": "Neu gestartet. Deshalb ohne Bewertungen.",
+        "text": "<p>Wir sind eine junge Marke. Statt Sterne zu zeigen, die wir noch nicht verdient haben, sagen wir Dir genau, was Du bekommst: <strong>rund 30 % Duftöl, die Hauptnoten und wann ein Duft passt.</strong></p><p>Echte Stimmen kommen hierher, sobald es sie gibt. Mit Namen und Einverständnis.</p>",
+        "show_return": false,
+        "return_text": "<p><strong>Und mit 30 Tagen Rückgaberecht.</strong> Wenn der Duft nicht Deiner ist, schick ihn innerhalb von 30 Tagen zurück, solange der Flakon noch zu 80 % gefüllt ist. Das Risiko liegt bei uns, nicht bei Dir.</p>"
       }
     },
-    "glossar": {
+    "liste": { "type": "azizam-liste", "settings": {} },
+    "begriffe": {
       "type": "azizam-glossar",
-      "settings": { "eyebrow": "Kurz erklärt", "heading": "Duftbegriffe" },
+      "settings": { "heading": "Begriffe kurz erklärt" },
       "blocks": {
         "oud": { "type": "begriff", "settings": { "term": "Oud", "definition": "Dunkles, harziges Holz mit rauchigem, intensivem Charakter." } },
         "amber": { "type": "begriff", "settings": { "term": "Amber", "definition": "Warme, weiche und leicht süße Duftnote." } },
@@ -69,5 +77,5 @@
       "block_order": ["oud", "amber", "moschus", "tonka"]
     }
   },
-  "order": ["hero", "versprechen", "familien", "anlass", "story", "glossar"]
+  "order": ["hero", "haltung", "duftkarte", "anlass", "ehrlich", "liste", "begriffe"]
 }

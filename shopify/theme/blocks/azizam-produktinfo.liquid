@@ -1,0 +1,37 @@
+{{ 'azizam.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Pflicht- und Service-Infos auf der Produktseite (Playbook 07-recht-retention.md: GPSR, Kennzeichnung).
+  Inhalte kommen aus Produkt-Metafeldern (azizam.inci, azizam.warnhinweise) und den Shop-Richtlinien.
+  Ein Punkt ohne Inhalt wird nicht angezeigt. Nichts wird erfunden.
+{%- endcomment -%}
+{%- assign p = closest.product | default: product -%}
+{%- assign m = p.metafields.azizam -%}
+<div class="az-info" {{ block.shopify_attributes }}>
+  {%- if m.inci.value != blank -%}
+    <details><summary>Inhaltsstoffe (INCI)</summary><div class="az-info__body">{{ m.inci.value }}</div></details>
+  {%- endif -%}
+  {%- if m.warnhinweise.value != blank -%}
+    <details><summary>Sicherheitshinweise</summary><div class="az-info__body">{{ m.warnhinweise.value }}</div></details>
+  {%- endif -%}
+  {%- if block.settings.responsible != blank -%}
+    <details><summary>Verantwortliche Person</summary><div class="az-info__body">{{ block.settings.responsible }}</div></details>
+  {%- endif -%}
+  {%- if block.settings.shipping != blank or shop.shipping_policy != blank -%}
+    <details><summary>Versand &amp; Rückgabe</summary><div class="az-info__body">{{ block.settings.shipping }}
+      {%- if shop.shipping_policy != blank %}
+<a href="{{ shop.shipping_policy.url }}">Versandbedingungen</a>{% endif -%}
+      {%- if shop.refund_policy != blank %} · <a href="{{ shop.refund_policy.url }}">Widerruf</a>{% endif -%}
+    </div></details>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Azizam Produktinfos",
+  "settings": [
+    { "type": "textarea", "id": "responsible", "label": "Verantwortliche Person (Name, Post- und E-Mail-Adresse, GPSR)" },
+    { "type": "textarea", "id": "shipping", "label": "Versand-Kurztext" }
+  ],
+  "presets": [{ "name": "Azizam Produktinfos" }]
+}
+{% endschema %}

@@ -6,8 +6,10 @@
 {%- assign source = section.settings.collection | default: collections.all -%}
 <section class="az az-section" id="anlass" aria-labelledby="az-anl-{{ section.id }}">
   <div class="az-wrap">
-    <p class="az-eyebrow">{{ section.settings.eyebrow }}</p>
-    <h2 id="az-anl-{{ section.id }}" class="az-h" style="font-size: clamp(2rem, 5vw, 3.2rem);">{{ section.settings.heading }}</h2>
+    <div class="az-anlass__head">
+      <p class="az-kicker">{{ section.settings.eyebrow }}</p>
+      <h2 id="az-anl-{{ section.id }}" class="az-h" style="margin-top:14px;">{{ section.settings.heading }}</h2>
+    </div>
     <azizam-tabs class="az-anlass">
       <div class="az-anlass__tabs" role="tablist" aria-label="{{ section.settings.heading | escape }}">
         {%- for block in section.blocks -%}
@@ -30,7 +32,7 @@
               </a>
             {%- endif -%}
           {%- endfor -%}
-          {%- if hits == 0 -%}<p class="az-empty">Bald verfügbar.</p>{%- endif -%}
+          {%- if hits == 0 -%}<p class="az-empty" style="border:0;">Bald verfügbar.</p>{%- endif -%}
         </div>
       {%- endfor -%}
     </azizam-tabs>
@@ -67,7 +69,7 @@
   "tag": "div",
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Überzeile", "default": "Für jeden Moment" },
-    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Finde deinen Duft nach Anlass" },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Welcher Duft passt zu Deinem Abend?" },
     { "type": "collection", "id": "collection", "label": "Quelle (leer = alle Produkte)" }
   ],
   "blocks": [{

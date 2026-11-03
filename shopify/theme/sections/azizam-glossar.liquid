@@ -1,14 +1,10 @@
 {{ 'azizam.css' | asset_url | stylesheet_tag }}
 <section class="az az-section" aria-labelledby="az-gl-{{ section.id }}">
   <div class="az-wrap">
-    <p class="az-eyebrow">{{ section.settings.eyebrow }}</p>
-    <h2 id="az-gl-{{ section.id }}" class="az-h" style="font-size: clamp(1.8rem, 4vw, 2.6rem);">{{ section.settings.heading }}</h2>
+    <h2 id="az-gl-{{ section.id }}" class="az-kicker" style="margin-bottom:32px;">{{ section.settings.heading }}</h2>
     <dl class="az-gloss">
       {%- for block in section.blocks -%}
-        <div class="az-gloss__item" {{ block.shopify_attributes }}>
-          <dt class="az-gloss__term">{{ block.settings.term }}</dt>
-          <dd class="az-gloss__def" style="margin:8px 0 0;">{{ block.settings.definition }}</dd>
-        </div>
+        <div {{ block.shopify_attributes }}><dt>{{ block.settings.term }}</dt><dd>{{ block.settings.definition }}</dd></div>
       {%- endfor -%}
     </dl>
   </div>
@@ -16,19 +12,13 @@
 
 {% schema %}
 {
-  "name": "Azizam Duft-Begriffe",
+  "name": "Azizam Duftbegriffe",
   "tag": "div",
-  "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Überzeile", "default": "Kurz erklärt" },
-    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Duftbegriffe" }
-  ],
-  "blocks": [{
-    "type": "begriff", "name": "Begriff",
-    "settings": [
-      { "type": "text", "id": "term", "label": "Begriff" },
-      { "type": "textarea", "id": "definition", "label": "Erklärung" }
-    ]
-  }],
-  "presets": [{ "name": "Azizam Duft-Begriffe" }]
+  "settings": [{ "type": "text", "id": "heading", "label": "Überschrift", "default": "Begriffe kurz erklärt" }],
+  "blocks": [{ "type": "begriff", "name": "Begriff", "settings": [
+    { "type": "text", "id": "term", "label": "Begriff" },
+    { "type": "textarea", "id": "definition", "label": "Erklärung" }
+  ] }],
+  "presets": [{ "name": "Azizam Duftbegriffe" }]
 }
 {% endschema %}

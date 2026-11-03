@@ -1,0 +1,28 @@
+{{ 'azizam.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Ehrlich statt Sterne (Playbook 07-recht-retention.md): keine Bewertungen ohne echte Kunden.
+  Der Absatz zur Rückgabe erscheint nur, wenn Mar die Rückgaberegel entschieden und hier eingeschaltet hat.
+{%- endcomment -%}
+<section class="az az-section" aria-labelledby="az-eh-{{ section.id }}">
+  <div class="az-wrap az-ehrlich">
+    <h2 id="az-eh-{{ section.id }}" class="az-h">{{ section.settings.heading }}</h2>
+    <div class="az-ehrlich__text">
+      {{ section.settings.text }}
+      {%- if section.settings.show_return and section.settings.return_text != blank -%}{{ section.settings.return_text }}{%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Azizam Ehrlich",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Neu gestartet. Deshalb ohne Bewertungen." },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "checkbox", "id": "show_return", "label": "Rückgabe-Versprechen zeigen (erst nach Mars Entscheidung)", "default": false },
+    { "type": "richtext", "id": "return_text", "label": "Rückgabe-Text" }
+  ],
+  "presets": [{ "name": "Azizam Ehrlich" }]
+}
+{% endschema %}

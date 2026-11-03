@@ -5,15 +5,11 @@
 <div class="az-profil" {{ block.shopify_attributes }}>
   {%- if m.familie.value != blank -%}<div class="az-profil__fam">{{ m.familie.value }}</div>{%- endif -%}
   {%- assign noten = m.noten.value -%}
-  {%- if noten != blank -%}
-    <ul class="az-profil__notes" aria-label="Hauptnoten">
-      {%- for n in noten -%}<li>{{ n }}</li>{%- endfor -%}
-    </ul>
-  {%- endif -%}
+  {%- if noten != blank -%}<p class="az-profil__notes"><span class="visually-hidden">Hauptnoten: </span>{{ noten | join: ' · ' }}</p>{%- endif -%}
   <dl class="az-profil__grid">
     {%- if m.tageszeit.value != blank -%}<dt>Tageszeit</dt><dd>{{ m.tageszeit.value }}</dd>{%- endif -%}
     {%- if m.saison.value != blank -%}<dt>Saison</dt><dd>{{ m.saison.value }}</dd>{%- endif -%}
-    {%- if m.anlass.value != blank -%}<dt>Ideal für</dt><dd>{{ m.anlass.value | join: ', ' }}</dd>{%- endif -%}
+    {%- if m.anlass.value != blank -%}<dt>Passt zu</dt><dd>{{ m.anlass.value | join: ', ' }}</dd>{%- endif -%}
   </dl>
   {%- if block.settings.oil_text != blank -%}<p class="az-profil__oil">{{ block.settings.oil_text }}</p>{%- endif -%}
 </div>

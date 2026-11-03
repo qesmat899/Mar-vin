@@ -1,112 +1,148 @@
-/* Azizam – eigene Gestaltung. Farben als Tokens, alles unter .az gekapselt. */
+/* Azizam – Gestaltung. Farben aus dem Hero-Video (Bernstein, Creme, Gold). Alles unter .az gekapselt. */
 :root {
-  --az-bg: #0d0b09;
-  --az-bg-2: #16120e;
-  --az-ink: #f2ebdf;
-  --az-muted: #a89e8f;
-  --az-gold: #c8a45a;
-  --az-gold-2: #e8d29b;
-  --az-line: rgba(200, 164, 90, 0.28);
-  --az-serif: var(--font-heading--family, 'Playfair Display', Georgia, serif);
+  --az-bg: #120e0a;
+  --az-bg-2: #1a1410;
+  --az-ink: #efe6d6;
+  --az-muted: #a39684;
+  --az-gold: #c9a35f;
+  --az-gold-2: #e4cc95;
+  --az-line: rgba(239, 230, 214, 0.14);
+  --az-line-gold: rgba(201, 163, 95, 0.45);
+  --az-serif: var(--font-heading--family, Georgia, 'Times New Roman', serif);
   --az-sans: var(--font-body--family, system-ui, sans-serif);
+  --az-ease: cubic-bezier(.2, .7, .1, 1);
 }
 .az { background: var(--az-bg); color: var(--az-ink); font-family: var(--az-sans); }
 .az *, .az *::before, .az *::after { box-sizing: border-box; }
-.az-wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 16px; }
-@media (min-width: 750px) { .az-wrap { padding: 0 32px; } }
-.az-eyebrow { font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--az-gold); margin: 0 0 14px; }
-.az-h { font-family: var(--az-serif); font-weight: 400; line-height: 1.08; margin: 0; color: var(--az-ink); }
-.az-lead { color: var(--az-muted); font-size: 1.02rem; line-height: 1.7; max-width: 38rem; }
-.az-rule { width: 56px; height: 1px; background: var(--az-gold); border: 0; margin: 22px 0; }
-.az-section { padding: 72px 0; border-top: 1px solid var(--az-line); }
-@media (min-width: 750px) { .az-section { padding: 104px 0; } }
-.az-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 28px;
-  font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; border-radius: 0;
-  transition: background .25s, color .25s, border-color .25s; }
-.az-btn--gold { background: var(--az-gold); color: var(--az-bg); border: 1px solid var(--az-gold); }
-.az-btn--gold:hover { background: var(--az-gold-2); border-color: var(--az-gold-2); }
-.az-btn--ghost { background: transparent; color: var(--az-ink); border: 1px solid var(--az-line); }
-.az-btn--ghost:hover { border-color: var(--az-gold); color: var(--az-gold-2); }
-.az-btn:focus-visible, .az a:focus-visible, .az button:focus-visible { outline: 2px solid var(--az-gold-2); outline-offset: 3px; }
+.az-wrap { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 16px; }
+@media (min-width: 750px) { .az-wrap { padding: 0 40px; } }
+.az-kicker { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--az-muted); margin: 0; }
+.az-h { font-family: var(--az-serif); font-weight: 400; line-height: 1.05; margin: 0; color: var(--az-ink); letter-spacing: -.01em; }
+.az-section { padding: 80px 0; }
+@media (min-width: 750px) { .az-section { padding: 128px 0; } }
+.az-section + .az-section { border-top: 1px solid var(--az-line); }
+.az a { color: inherit; }
+.az .az-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 32px;
+  font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; text-decoration: none;
+  background: var(--az-ink); color: var(--az-bg); border: 1px solid var(--az-ink); transition: background .3s, color .3s; }
+.az .az-btn:hover { background: var(--az-gold-2); border-color: var(--az-gold-2); }
+.az-link { font-size: .9rem; text-decoration: none; border-bottom: 1px solid var(--az-line-gold); padding-bottom: 3px; transition: border-color .3s, color .3s; }
+.az-link:hover { color: var(--az-gold-2); border-color: var(--az-gold-2); }
+.az :focus-visible { outline: 2px solid var(--az-gold-2); outline-offset: 3px; }
 
-/* Hero */
-.az-hero { position: relative; overflow: hidden; padding: 88px 0 72px;
-  background: radial-gradient(120% 80% at 75% 30%, rgba(200,164,90,.16), transparent 60%), var(--az-bg); }
-.az-hero__grid { display: grid; gap: 48px; align-items: center; }
-@media (min-width: 900px) { .az-hero { padding: 128px 0 112px; } .az-hero__grid { grid-template-columns: 1.15fr 0.85fr; } }
-.az-hero__title { font-size: clamp(3rem, 11vw, 7.5rem); letter-spacing: -0.01em; }
-.az-hero__fa { font-family: var(--az-serif); color: var(--az-gold); font-size: clamp(1.4rem, 4vw, 2rem); margin-top: 10px; direction: rtl; display: inline-block; }
-.az-hero__sub { font-family: var(--az-serif); font-style: italic; font-size: clamp(1.15rem, 2.6vw, 1.5rem); color: var(--az-ink); margin: 18px 0 0; }
-.az-hero__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
-.az-hero__visual { display: flex; justify-content: center; }
-.az-hero__visual img { width: 100%; max-width: 440px; height: auto; display: block; }
-
-/* Flakon-Platzhalter (zylindrisch, bis echte Bilder da sind) */
-.az-flakon { width: min(62vw, 260px); height: auto; filter: drop-shadow(0 30px 60px rgba(200,164,90,.18)); }
+/* ---------- Hero mit Video ---------- */
+/* Mobil: Video oben (Hochformat passt), Text darunter im ausgeblendeten Teil, nicht über dem Etikett. */
+.az-hero { position: relative; display: block; overflow: hidden; }
+.az-hero__media { position: relative; height: 68svh; min-height: 460px; }
+.az-hero__media video, .az-hero__media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; display: block; }
+.az-hero__media::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to top, var(--az-bg) 0%, rgba(18,14,10,.6) 16%, rgba(18,14,10,0) 34%); }
+.az-hero__copy { position: relative; z-index: 1; margin-top: -56px; padding: 0 16px 48px; }
+.az-hero__title { font-size: clamp(3.2rem, 15vw, 10.5rem); line-height: .86; }
+.az-hero__fa { display: block; margin-top: 14px; font-family: var(--az-serif); font-size: 1rem; color: var(--az-gold-2); }
+.az-hero__fa span { color: var(--az-muted); font-family: var(--az-sans); font-size: .85rem; margin-inline-start: 10px; }
+.az-hero__line { margin: 20px 0 0; font-family: var(--az-serif); font-style: italic; font-size: clamp(1.3rem, 4.6vw, 1.75rem); max-width: 22ch; line-height: 1.25; }
+.az-hero__ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; margin-top: 30px; }
+@media (min-width: 900px) {
+  .az-hero { display: grid; grid-template-columns: 7fr 5fr; min-height: calc(100svh - var(--header-height, 64px)); }
+  .az-hero__media { order: 2; height: auto; min-height: 100%; }
+  .az-hero__media video, .az-hero__media img { position: absolute; inset: 0; object-position: 50% 78%; }
+  .az-hero__media::after { background: linear-gradient(to right, var(--az-bg) 0%, rgba(18,14,10,0) 18%); }
+  .az-hero__copy { order: 1; align-self: end; margin-top: 0; padding: 64px 40px 72px max(40px, calc((100vw - 1280px) / 2 + 40px)); }
+}
 @media (prefers-reduced-motion: no-preference) {
-  .az-flakon { animation: az-float 7s ease-in-out infinite; }
-  @keyframes az-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  .az-hero__copy > * { opacity: 0; transform: translateY(14px); animation: az-rise 1.1s var(--az-ease) forwards; }
+  .az-hero__copy > :nth-child(2) { animation-delay: .15s; }
+  .az-hero__copy > :nth-child(3) { animation-delay: .3s; }
+  .az-hero__copy > :nth-child(4) { animation-delay: .45s; }
+  @keyframes az-rise { to { opacity: 1; transform: none; } }
 }
 
-/* Versprechen */
-.az-usp { display: grid; gap: 1px; background: var(--az-line); border: 1px solid var(--az-line); }
-@media (min-width: 750px) { .az-usp { grid-template-columns: repeat(3, 1fr); } }
-.az-usp__item { background: var(--az-bg); padding: 34px 26px; }
-.az-usp__big { font-family: var(--az-serif); font-size: clamp(2.2rem, 6vw, 3.2rem); color: var(--az-gold); line-height: 1; }
-.az-usp__label { margin-top: 12px; font-size: 0.95rem; color: var(--az-ink); }
-.az-usp__text { margin-top: 8px; font-size: 0.88rem; line-height: 1.6; color: var(--az-muted); }
+/* ---------- Haltung (Kuration + 30 % Duftöl) ---------- */
+.az-haltung { display: grid; gap: 48px; }
+@media (min-width: 900px) { .az-haltung { grid-template-columns: 7fr 4fr; gap: 96px; align-items: end; } }
+.az-haltung__text { font-family: var(--az-serif); font-size: clamp(1.6rem, 3.6vw, 2.6rem); line-height: 1.25; }
+.az-haltung__text p { margin: 0 0 .6em; }
+.az-haltung__text em { color: var(--az-gold-2); font-style: italic; }
+.az-facts { margin: 0; border-top: 1px solid var(--az-line); }
+.az-facts div { display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--az-line); }
+.az-facts dt { color: var(--az-muted); font-size: .9rem; }
+.az-facts dd { margin: 0; font-size: .95rem; text-align: right; }
 
-/* Duftrichtungen */
-.az-fam { display: grid; gap: 16px; margin-top: 44px; }
-@media (min-width: 750px) { .az-fam { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
-.az-fam__card { position: relative; display: flex; flex-direction: column; min-height: 300px; padding: 30px 26px;
-  text-decoration: none; color: var(--az-ink); border: 1px solid var(--az-line); background: var(--az-bg-2);
-  transition: border-color .3s, transform .3s; }
-.az-fam__card:hover { border-color: var(--az-gold); transform: translateY(-3px); }
-.az-fam__no { font-size: 0.72rem; letter-spacing: .24em; color: var(--az-gold); }
-.az-fam__title { font-family: var(--az-serif); font-size: 1.9rem; margin: 18px 0 10px; }
-.az-fam__text { color: var(--az-muted); font-size: 0.92rem; line-height: 1.6; }
-.az-fam__list { margin: auto 0 0; padding: 22px 0 0; list-style: none; font-size: 0.86rem; color: var(--az-ink); line-height: 1.9; }
-.az-fam__more { margin-top: 18px; font-size: .74rem; letter-spacing: .2em; text-transform: uppercase; color: var(--az-gold); }
-.az-fam__card--frisch { background: linear-gradient(160deg, rgba(160,190,185,.10), transparent 60%), var(--az-bg-2); }
-.az-fam__card--suess { background: linear-gradient(160deg, rgba(210,160,100,.13), transparent 60%), var(--az-bg-2); }
-.az-fam__card--dunkel { background: linear-gradient(160deg, rgba(120,60,60,.16), transparent 60%), var(--az-bg-2); }
+/* ---------- Duftkarte (drei Duftrichtungen) ---------- */
+.az-karte__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 56px; }
+.az-karte__head .az-h { font-size: clamp(2.2rem, 6vw, 4rem); }
+.az-karte { display: grid; gap: 56px; }
+@media (min-width: 900px) { .az-karte { grid-template-columns: repeat(3, 1fr); gap: 40px; } }
+.az-karte__col { border-top: 1px solid var(--az-ink); padding-top: 18px; }
+.az-karte__name { font-family: var(--az-serif); font-size: 1.7rem; text-decoration: none; }
+.az-karte__name:hover { color: var(--az-gold-2); }
+.az-karte__when { margin: 8px 0 22px; color: var(--az-muted); font-size: .9rem; line-height: 1.5; }
+.az-karte__list { list-style: none; margin: 0; padding: 0; }
+.az-karte__list li { border-top: 1px solid var(--az-line); }
+.az-karte__list a { display: block; padding: 14px 0; text-decoration: none; }
+.az-karte__list a:hover .az-karte__duft { color: var(--az-gold-2); }
+.az-karte__duft { font-family: var(--az-serif); font-size: 1.15rem; transition: color .25s; }
+.az-karte__noten { display: block; margin-top: 3px; font-size: .82rem; color: var(--az-gold); }
+.az-empty { color: var(--az-muted); font-size: .9rem; padding: 14px 0; border-top: 1px solid var(--az-line); }
 
-/* Anlass-Finder */
-.az-anlass__tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; margin-top: 36px; scrollbar-width: thin; }
-.az-anlass__tab { flex: 0 0 auto; min-height: 44px; padding: 0 18px; background: transparent; color: var(--az-muted);
-  border: 1px solid var(--az-line); font: inherit; font-size: .86rem; cursor: pointer; }
-.az-anlass__tab[aria-selected="true"] { color: var(--az-bg); background: var(--az-gold); border-color: var(--az-gold); }
-.az-anlass__panel { margin-top: 26px; display: grid; gap: 12px; }
-@media (min-width: 750px) { .az-anlass__panel { grid-template-columns: repeat(3, 1fr); } }
+/* ---------- Anlass ---------- */
+.az-anlass__head .az-h { font-size: clamp(2rem, 5vw, 3.4rem); max-width: 16ch; }
+.az-anlass__tabs { display: flex; gap: 28px; overflow-x: auto; margin-top: 40px; border-bottom: 1px solid var(--az-line); scrollbar-width: none; }
+.az-anlass__tabs::-webkit-scrollbar { display: none; }
+.az-anlass__tab { flex: 0 0 auto; padding: 0 0 14px; min-height: 44px; background: none; border: 0; border-bottom: 1px solid transparent;
+  margin-bottom: -1px; color: var(--az-muted); font: inherit; font-size: .95rem; cursor: pointer; transition: color .25s, border-color .25s; }
+.az-anlass__tab:hover { color: var(--az-ink); }
+.az-anlass__tab[aria-selected="true"] { color: var(--az-ink); border-bottom-color: var(--az-gold); }
+.az-anlass__panel { display: grid; gap: 0; margin-top: 8px; }
+@media (min-width: 750px) { .az-anlass__panel { grid-template-columns: repeat(3, 1fr); column-gap: 40px; } }
 .az-anlass__panel[hidden] { display: none; }
-.az-pick { display: block; padding: 22px; border: 1px solid var(--az-line); text-decoration: none; color: var(--az-ink); background: var(--az-bg-2); }
-.az-pick:hover { border-color: var(--az-gold); }
-.az-pick__name { font-family: var(--az-serif); font-size: 1.35rem; }
-.az-pick__notes { margin-top: 6px; color: var(--az-gold); font-size: .82rem; }
-.az-pick__meta { margin-top: 10px; color: var(--az-muted); font-size: .82rem; line-height: 1.5; }
-.az-empty { color: var(--az-muted); font-size: .9rem; }
+.az-pick { display: block; padding: 26px 0; border-bottom: 1px solid var(--az-line); text-decoration: none; }
+.az-pick__name { font-family: var(--az-serif); font-size: 1.5rem; }
+.az-pick:hover .az-pick__name { color: var(--az-gold-2); }
+.az-pick__notes { margin-top: 6px; color: var(--az-gold); font-size: .85rem; }
+.az-pick__meta { margin-top: 10px; color: var(--az-muted); font-size: .9rem; line-height: 1.55; max-width: 34ch; }
 
-/* Story */
-.az-story { display: grid; gap: 40px; }
-@media (min-width: 900px) { .az-story { grid-template-columns: 1fr 1fr; align-items: center; gap: 80px; } }
-.az-story__word { font-family: var(--az-serif); font-size: clamp(3.5rem, 12vw, 7rem); color: var(--az-gold); line-height: 1; direction: rtl; }
-.az-story__text p { color: var(--az-muted); line-height: 1.8; margin: 0 0 16px; }
-.az-story__text p strong { color: var(--az-ink); font-weight: 500; }
+/* ---------- Ehrlich (ohne Bewertungen) ---------- */
+.az-ehrlich { display: grid; gap: 28px; }
+@media (min-width: 900px) { .az-ehrlich { grid-template-columns: 5fr 6fr; gap: 96px; } }
+.az-ehrlich .az-h { font-size: clamp(1.9rem, 4.4vw, 3rem); }
+.az-ehrlich__text { color: var(--az-muted); font-size: 1.02rem; line-height: 1.75; }
+.az-ehrlich__text p { margin: 0 0 1em; }
+.az-ehrlich__text strong { color: var(--az-ink); font-weight: 500; }
 
-/* Glossar */
-.az-gloss { display: grid; gap: 1px; margin-top: 36px; background: var(--az-line); border: 1px solid var(--az-line); }
-@media (min-width: 750px) { .az-gloss { grid-template-columns: repeat(4, 1fr); } }
-.az-gloss__item { background: var(--az-bg); padding: 26px 22px; }
-.az-gloss__term { font-family: var(--az-serif); font-size: 1.4rem; color: var(--az-gold-2); }
-.az-gloss__def { margin-top: 8px; color: var(--az-muted); font-size: .9rem; line-height: 1.6; }
+/* ---------- Launch-Liste ---------- */
+.az-liste { display: grid; gap: 28px; }
+@media (min-width: 900px) { .az-liste { grid-template-columns: 1fr 1fr; gap: 96px; align-items: end; } }
+.az-liste .az-h { font-size: clamp(2rem, 5vw, 3.4rem); }
+.az-liste__text { color: var(--az-muted); margin: 18px 0 0; line-height: 1.7; }
+.az-form { display: flex; border-bottom: 1px solid var(--az-ink); }
+.az-form input[type="email"] { flex: 1; min-width: 0; min-height: 56px; background: transparent; border: 0; color: var(--az-ink); font: inherit; font-size: 1.05rem; padding: 0; }
+.az-form input::placeholder { color: var(--az-muted); }
+.az-form input:focus { outline: none; }
+.az-form button { background: none; border: 0; color: var(--az-ink); font: inherit; font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; padding: 0 0 0 16px; min-height: 56px; }
+.az-form button:hover { color: var(--az-gold-2); }
+.az-form-note { margin-top: 12px; font-size: .78rem; color: var(--az-muted); line-height: 1.6; }
+.az-form-msg { margin-top: 12px; font-size: .9rem; color: var(--az-gold-2); }
 
-/* Duftprofil auf der Produktseite */
-.az-profil { border-top: 1px solid var(--az-line); border-bottom: 1px solid var(--az-line); padding: 18px 0; color: inherit; }
-.az-profil__fam { font-size: .72rem; letter-spacing: .24em; text-transform: uppercase; color: var(--az-gold); }
-.az-profil__notes { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; padding: 0; list-style: none; }
-.az-profil__notes li { padding: 6px 12px; border: 1px solid var(--az-line); font-size: .84rem; }
-.az-profil__grid { display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; font-size: .86rem; margin: 0; }
+/* ---------- Duftbegriffe (Fußnoten-Zeile) ---------- */
+.az-gloss { display: grid; gap: 28px; margin: 0; }
+@media (min-width: 750px) { .az-gloss { grid-template-columns: repeat(4, 1fr); gap: 40px; } }
+.az-gloss dt { font-family: var(--az-serif); font-size: 1.25rem; }
+.az-gloss dd { margin: 6px 0 0; color: var(--az-muted); font-size: .88rem; line-height: 1.6; }
+
+/* ---------- Produktseite ---------- */
+.az-profil { border-top: 1px solid var(--az-line); border-bottom: 1px solid var(--az-line); padding: 20px 0; }
+.az-profil__fam { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--az-muted); }
+.az-profil__notes { margin: 10px 0 16px; font-family: var(--az-serif); font-size: 1.15rem; color: var(--az-gold-2); }
+.az-profil__grid { display: grid; grid-template-columns: auto 1fr; gap: 8px 20px; font-size: .9rem; margin: 0; }
 .az-profil__grid dt { color: var(--az-muted); }
 .az-profil__grid dd { margin: 0; }
-.az-profil__oil { margin-top: 14px; font-size: .84rem; color: var(--az-muted); }
+.az-profil__oil { margin: 16px 0 0; font-size: .88rem; }
+.az-info details { border-bottom: 1px solid var(--az-line); }
+.az-info details:first-child { border-top: 1px solid var(--az-line); }
+.az-info summary { list-style: none; display: flex; justify-content: space-between; align-items: center; min-height: 52px; cursor: pointer; font-size: .92rem; }
+.az-info summary::-webkit-details-marker { display: none; }
+.az-info summary::after { content: "+"; font-size: 1.2rem; color: var(--az-muted); transition: transform .25s; }
+.az-info details[open] summary::after { transform: rotate(45deg); }
+.az-info__body { padding: 0 0 18px; font-size: .88rem; line-height: 1.65; opacity: .85; white-space: pre-line; }

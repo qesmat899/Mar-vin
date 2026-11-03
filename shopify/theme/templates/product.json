@@ -273,6 +273,15 @@
                 "corner_radius": 0
               },
               "blocks": {}
+            },
+            "infos": {
+              "type": "azizam-produktinfo",
+              "name": "Azizam Produktinfos",
+              "settings": {
+                "responsible": "",
+                "shipping": ""
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -280,7 +289,8 @@
             "profil",
             "varianten",
             "kaufen",
-            "beschreibung"
+            "beschreibung",
+            "infos"
           ]
         }
       },
