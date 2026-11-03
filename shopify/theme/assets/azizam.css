@@ -1,0 +1,112 @@
+/* Azizam – eigene Gestaltung. Farben als Tokens, alles unter .az gekapselt. */
+:root {
+  --az-bg: #0d0b09;
+  --az-bg-2: #16120e;
+  --az-ink: #f2ebdf;
+  --az-muted: #a89e8f;
+  --az-gold: #c8a45a;
+  --az-gold-2: #e8d29b;
+  --az-line: rgba(200, 164, 90, 0.28);
+  --az-serif: var(--font-heading--family, 'Playfair Display', Georgia, serif);
+  --az-sans: var(--font-body--family, system-ui, sans-serif);
+}
+.az { background: var(--az-bg); color: var(--az-ink); font-family: var(--az-sans); }
+.az *, .az *::before, .az *::after { box-sizing: border-box; }
+.az-wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+@media (min-width: 750px) { .az-wrap { padding: 0 32px; } }
+.az-eyebrow { font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--az-gold); margin: 0 0 14px; }
+.az-h { font-family: var(--az-serif); font-weight: 400; line-height: 1.08; margin: 0; color: var(--az-ink); }
+.az-lead { color: var(--az-muted); font-size: 1.02rem; line-height: 1.7; max-width: 38rem; }
+.az-rule { width: 56px; height: 1px; background: var(--az-gold); border: 0; margin: 22px 0; }
+.az-section { padding: 72px 0; border-top: 1px solid var(--az-line); }
+@media (min-width: 750px) { .az-section { padding: 104px 0; } }
+.az-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 28px;
+  font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; border-radius: 0;
+  transition: background .25s, color .25s, border-color .25s; }
+.az-btn--gold { background: var(--az-gold); color: var(--az-bg); border: 1px solid var(--az-gold); }
+.az-btn--gold:hover { background: var(--az-gold-2); border-color: var(--az-gold-2); }
+.az-btn--ghost { background: transparent; color: var(--az-ink); border: 1px solid var(--az-line); }
+.az-btn--ghost:hover { border-color: var(--az-gold); color: var(--az-gold-2); }
+.az-btn:focus-visible, .az a:focus-visible, .az button:focus-visible { outline: 2px solid var(--az-gold-2); outline-offset: 3px; }
+
+/* Hero */
+.az-hero { position: relative; overflow: hidden; padding: 88px 0 72px;
+  background: radial-gradient(120% 80% at 75% 30%, rgba(200,164,90,.16), transparent 60%), var(--az-bg); }
+.az-hero__grid { display: grid; gap: 48px; align-items: center; }
+@media (min-width: 900px) { .az-hero { padding: 128px 0 112px; } .az-hero__grid { grid-template-columns: 1.15fr 0.85fr; } }
+.az-hero__title { font-size: clamp(3rem, 11vw, 7.5rem); letter-spacing: -0.01em; }
+.az-hero__fa { font-family: var(--az-serif); color: var(--az-gold); font-size: clamp(1.4rem, 4vw, 2rem); margin-top: 10px; direction: rtl; display: inline-block; }
+.az-hero__sub { font-family: var(--az-serif); font-style: italic; font-size: clamp(1.15rem, 2.6vw, 1.5rem); color: var(--az-ink); margin: 18px 0 0; }
+.az-hero__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.az-hero__visual { display: flex; justify-content: center; }
+.az-hero__visual img { width: 100%; max-width: 440px; height: auto; display: block; }
+
+/* Flakon-Platzhalter (zylindrisch, bis echte Bilder da sind) */
+.az-flakon { width: min(62vw, 260px); height: auto; filter: drop-shadow(0 30px 60px rgba(200,164,90,.18)); }
+@media (prefers-reduced-motion: no-preference) {
+  .az-flakon { animation: az-float 7s ease-in-out infinite; }
+  @keyframes az-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+}
+
+/* Versprechen */
+.az-usp { display: grid; gap: 1px; background: var(--az-line); border: 1px solid var(--az-line); }
+@media (min-width: 750px) { .az-usp { grid-template-columns: repeat(3, 1fr); } }
+.az-usp__item { background: var(--az-bg); padding: 34px 26px; }
+.az-usp__big { font-family: var(--az-serif); font-size: clamp(2.2rem, 6vw, 3.2rem); color: var(--az-gold); line-height: 1; }
+.az-usp__label { margin-top: 12px; font-size: 0.95rem; color: var(--az-ink); }
+.az-usp__text { margin-top: 8px; font-size: 0.88rem; line-height: 1.6; color: var(--az-muted); }
+
+/* Duftrichtungen */
+.az-fam { display: grid; gap: 16px; margin-top: 44px; }
+@media (min-width: 750px) { .az-fam { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+.az-fam__card { position: relative; display: flex; flex-direction: column; min-height: 300px; padding: 30px 26px;
+  text-decoration: none; color: var(--az-ink); border: 1px solid var(--az-line); background: var(--az-bg-2);
+  transition: border-color .3s, transform .3s; }
+.az-fam__card:hover { border-color: var(--az-gold); transform: translateY(-3px); }
+.az-fam__no { font-size: 0.72rem; letter-spacing: .24em; color: var(--az-gold); }
+.az-fam__title { font-family: var(--az-serif); font-size: 1.9rem; margin: 18px 0 10px; }
+.az-fam__text { color: var(--az-muted); font-size: 0.92rem; line-height: 1.6; }
+.az-fam__list { margin: auto 0 0; padding: 22px 0 0; list-style: none; font-size: 0.86rem; color: var(--az-ink); line-height: 1.9; }
+.az-fam__more { margin-top: 18px; font-size: .74rem; letter-spacing: .2em; text-transform: uppercase; color: var(--az-gold); }
+.az-fam__card--frisch { background: linear-gradient(160deg, rgba(160,190,185,.10), transparent 60%), var(--az-bg-2); }
+.az-fam__card--suess { background: linear-gradient(160deg, rgba(210,160,100,.13), transparent 60%), var(--az-bg-2); }
+.az-fam__card--dunkel { background: linear-gradient(160deg, rgba(120,60,60,.16), transparent 60%), var(--az-bg-2); }
+
+/* Anlass-Finder */
+.az-anlass__tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; margin-top: 36px; scrollbar-width: thin; }
+.az-anlass__tab { flex: 0 0 auto; min-height: 44px; padding: 0 18px; background: transparent; color: var(--az-muted);
+  border: 1px solid var(--az-line); font: inherit; font-size: .86rem; cursor: pointer; }
+.az-anlass__tab[aria-selected="true"] { color: var(--az-bg); background: var(--az-gold); border-color: var(--az-gold); }
+.az-anlass__panel { margin-top: 26px; display: grid; gap: 12px; }
+@media (min-width: 750px) { .az-anlass__panel { grid-template-columns: repeat(3, 1fr); } }
+.az-anlass__panel[hidden] { display: none; }
+.az-pick { display: block; padding: 22px; border: 1px solid var(--az-line); text-decoration: none; color: var(--az-ink); background: var(--az-bg-2); }
+.az-pick:hover { border-color: var(--az-gold); }
+.az-pick__name { font-family: var(--az-serif); font-size: 1.35rem; }
+.az-pick__notes { margin-top: 6px; color: var(--az-gold); font-size: .82rem; }
+.az-pick__meta { margin-top: 10px; color: var(--az-muted); font-size: .82rem; line-height: 1.5; }
+.az-empty { color: var(--az-muted); font-size: .9rem; }
+
+/* Story */
+.az-story { display: grid; gap: 40px; }
+@media (min-width: 900px) { .az-story { grid-template-columns: 1fr 1fr; align-items: center; gap: 80px; } }
+.az-story__word { font-family: var(--az-serif); font-size: clamp(3.5rem, 12vw, 7rem); color: var(--az-gold); line-height: 1; direction: rtl; }
+.az-story__text p { color: var(--az-muted); line-height: 1.8; margin: 0 0 16px; }
+.az-story__text p strong { color: var(--az-ink); font-weight: 500; }
+
+/* Glossar */
+.az-gloss { display: grid; gap: 1px; margin-top: 36px; background: var(--az-line); border: 1px solid var(--az-line); }
+@media (min-width: 750px) { .az-gloss { grid-template-columns: repeat(4, 1fr); } }
+.az-gloss__item { background: var(--az-bg); padding: 26px 22px; }
+.az-gloss__term { font-family: var(--az-serif); font-size: 1.4rem; color: var(--az-gold-2); }
+.az-gloss__def { margin-top: 8px; color: var(--az-muted); font-size: .9rem; line-height: 1.6; }
+
+/* Duftprofil auf der Produktseite */
+.az-profil { border-top: 1px solid var(--az-line); border-bottom: 1px solid var(--az-line); padding: 18px 0; color: inherit; }
+.az-profil__fam { font-size: .72rem; letter-spacing: .24em; text-transform: uppercase; color: var(--az-gold); }
+.az-profil__notes { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; padding: 0; list-style: none; }
+.az-profil__notes li { padding: 6px 12px; border: 1px solid var(--az-line); font-size: .84rem; }
+.az-profil__grid { display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; font-size: .86rem; margin: 0; }
+.az-profil__grid dt { color: var(--az-muted); }
+.az-profil__grid dd { margin: 0; }
+.az-profil__oil { margin-top: 14px; font-size: .84rem; color: var(--az-muted); }

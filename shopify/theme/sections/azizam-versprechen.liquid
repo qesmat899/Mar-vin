@@ -1,0 +1,32 @@
+{{ 'azizam.css' | asset_url | stylesheet_tag }}
+<section class="az az-section" aria-label="{{ section.settings.heading | escape }}">
+  <div class="az-wrap">
+    {%- if section.settings.heading != blank -%}<p class="az-eyebrow">{{ section.settings.heading }}</p>{%- endif -%}
+    <div class="az-usp">
+      {%- for block in section.blocks -%}
+        <div class="az-usp__item" {{ block.shopify_attributes }}>
+          <div class="az-usp__big">{{ block.settings.big }}</div>
+          <div class="az-usp__label">{{ block.settings.label }}</div>
+          {%- if block.settings.text != blank -%}<div class="az-usp__text">{{ block.settings.text }}</div>{%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Azizam Versprechen",
+  "tag": "div",
+  "settings": [{ "type": "text", "id": "heading", "label": "Überschrift", "default": "Was Azizam ausmacht" }],
+  "blocks": [{
+    "type": "punkt", "name": "Punkt",
+    "settings": [
+      { "type": "text", "id": "big", "label": "Große Zahl / Wort" },
+      { "type": "text", "id": "label", "label": "Bezeichnung" },
+      { "type": "textarea", "id": "text", "label": "Erklärung" }
+    ]
+  }],
+  "presets": [{ "name": "Azizam Versprechen" }]
+}
+{% endschema %}

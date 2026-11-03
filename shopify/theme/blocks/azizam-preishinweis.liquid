@@ -1,0 +1,25 @@
+{%- comment -%}
+  Pflichtangaben am Preis: Kleinunternehmer (§ 19 UStG) und Versandkosten mit Link.
+  Der Grundpreis (€/100 ml) kommt aus der Variante (unit_price), sobald ein Preis gesetzt ist.
+{%- endcomment -%}
+{%- assign p = closest.product | default: product -%}
+{%- assign v = p.selected_or_first_available_variant -%}
+<div class="az-preishinweis" style="font-size: .8rem; line-height: 1.6; opacity: .75;" {{ block.shopify_attributes }}>
+  {%- if v.unit_price_measurement and v.price > 0 -%}
+    <div>Grundpreis: {{ v.unit_price | money }} / {% if v.unit_price_measurement.reference_value != 1 %}{{ v.unit_price_measurement.reference_value }} {% endif %}{{ v.unit_price_measurement.reference_unit }}</div>
+  {%- endif -%}
+  <div>{{ block.settings.text }}
+    {%- if shop.shipping_policy != blank %} <a href="{{ shop.shipping_policy.url }}" style="color: inherit;">{{ block.settings.shipping_label }}</a>{% else %} {{ block.settings.shipping_label }}{% endif -%}.
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Azizam Preishinweis",
+  "settings": [
+    { "type": "text", "id": "text", "label": "Text", "default": "Gemäß § 19 UStG wird keine Umsatzsteuer berechnet. Zzgl." },
+    { "type": "text", "id": "shipping_label", "label": "Versand-Link-Text", "default": "Versandkosten" }
+  ],
+  "presets": [{ "name": "Azizam Preishinweis" }]
+}
+{% endschema %}

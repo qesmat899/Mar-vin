@@ -1,0 +1,73 @@
+{
+  "sections": {
+    "hero": {
+      "type": "azizam-hero",
+      "settings": {
+        "eyebrow": "Azizam Fragrance",
+        "title": "Azizam",
+        "persian": "عزیزم",
+        "subtitle": "Der Duft der zweiten Generation.",
+        "text": "<p>Azizam heißt auf Persisch „mein Schatz“. 19 Düfte in drei Duftrichtungen, jeder mit rund 30 % Duftöl.</p>",
+        "cta_1_label": "Alle Düfte entdecken",
+        "cta_1_link": "shopify://collections/all",
+        "cta_2_label": "Duft nach Anlass finden",
+        "cta_2_link": "#anlass"
+      }
+    },
+    "versprechen": {
+      "type": "azizam-versprechen",
+      "settings": { "heading": "Was Azizam ausmacht" },
+      "blocks": {
+        "oel": { "type": "punkt", "settings": { "big": "30 %", "label": "Duftöl in jedem Duft", "text": "Branchenüblich sind bei Eau de Parfum 12 bis 18 %. Darum sitzt Azizam näher an der Haut, ohne lauter zu sein." } },
+        "groessen": { "type": "punkt", "settings": { "big": "30 · 50 ml", "label": "Zwei Größen", "text": "Zum Kennenlernen oder für deinen Lieblingsduft." } },
+        "duefte": { "type": "punkt", "settings": { "big": "19", "label": "Düfte in drei Richtungen", "text": "Von frisch und klar bis dunkel und edel." } }
+      },
+      "block_order": ["oel", "groessen", "duefte"]
+    },
+    "familien": {
+      "type": "azizam-familien",
+      "settings": { "eyebrow": "Von leicht bis intensiv", "heading": "Drei Duftrichtungen", "text": "" },
+      "blocks": {
+        "frisch": { "type": "familie", "settings": { "collection": "frisch-klar", "fallback_title": "Frisch & klar", "when": "Tag", "tone": "frisch", "text": "Für den Tag, das Büro und warme Temperaturen." } },
+        "suess": { "type": "familie", "settings": { "collection": "suess-warm", "fallback_title": "Süß & warm", "when": "Abend", "tone": "suess", "text": "Für den Abend und die kühlere Jahreszeit." } },
+        "dunkel": { "type": "familie", "settings": { "collection": "dunkel-edel", "fallback_title": "Dunkel & edel", "when": "Anlass", "tone": "dunkel", "text": "Für besondere Anlässe und Abendveranstaltungen." } }
+      },
+      "block_order": ["frisch", "suess", "dunkel"]
+    },
+    "anlass": {
+      "type": "azizam-anlass",
+      "settings": { "eyebrow": "Für jeden Moment", "heading": "Finde deinen Duft nach Anlass" },
+      "blocks": {
+        "a1": { "type": "anlass", "settings": { "label": "Vielseitig", "key": "Vielseitig" } },
+        "a2": { "type": "anlass", "settings": { "label": "Date", "key": "Date" } },
+        "a3": { "type": "anlass", "settings": { "label": "Büro & Studium", "key": "Büro & Studium" } },
+        "a4": { "type": "anlass", "settings": { "label": "Sommer & Hitze", "key": "Hohe Temperaturen" } },
+        "a5": { "type": "anlass", "settings": { "label": "Ausgehen", "key": "Ausgehen" } },
+        "a6": { "type": "anlass", "settings": { "label": "Besondere Anlässe", "key": "Besondere Anlässe" } },
+        "a7": { "type": "anlass", "settings": { "label": "Eigenständig", "key": "Eigenständig" } }
+      },
+      "block_order": ["a1", "a2", "a3", "a4", "a5", "a6", "a7"]
+    },
+    "story": {
+      "type": "azizam-story",
+      "settings": {
+        "word": "عزیزم",
+        "eyebrow": "Azizam – mein Schatz",
+        "heading": "Ein Wort, das man nicht übersetzt, sondern fühlt.",
+        "text": "<p>So nennt man auf Persisch die Menschen, die einem am nächsten sind. Genau das soll ein Duft sein: <strong>nah, warm und unverwechselbar deiner.</strong></p><p>Jeder Azizam-Duft hat rund 30 % Duftöl. Damit bleibt er nah an der Haut, statt den Raum zu füllen.</p>"
+      }
+    },
+    "glossar": {
+      "type": "azizam-glossar",
+      "settings": { "eyebrow": "Kurz erklärt", "heading": "Duftbegriffe" },
+      "blocks": {
+        "oud": { "type": "begriff", "settings": { "term": "Oud", "definition": "Dunkles, harziges Holz mit rauchigem, intensivem Charakter." } },
+        "amber": { "type": "begriff", "settings": { "term": "Amber", "definition": "Warme, weiche und leicht süße Duftnote." } },
+        "moschus": { "type": "begriff", "settings": { "term": "Moschus", "definition": "Weiche, saubere Note, die an frische Wäsche erinnert." } },
+        "tonka": { "type": "begriff", "settings": { "term": "Tonka", "definition": "Süße Bohne mit Anklängen von Vanille und Marzipan." } }
+      },
+      "block_order": ["oud", "amber", "moschus", "tonka"]
+    }
+  },
+  "order": ["hero", "versprechen", "familien", "anlass", "story", "glossar"]
+}
