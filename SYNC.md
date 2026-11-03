@@ -44,7 +44,7 @@
 
 - Bisher nur persönlicher Verkauf im Freundeskreis. **Aktuell kein Verkauf**, bis Flakon und Verpackung da sind.
 - Positionierung noch nicht vorhanden. Alte Website (Vercel) offline.
-- **Shop-Neubau in Shopify läuft (03.11.):** Entwurfs-Theme „Azizam – Entwurf (Claude)“ (unveröffentlicht, Live-Theme unverändert), 19 Düfte als **Entwürfe** (30/50 ml, Preis 0 als Platzhalter, Tags `name-offen`/`preis-offen`/`bild-offen`), 3 Kollektionen nach Duftrichtung, Hauptmenü auf Deutsch. Duftdaten aus Mars Duftübersicht (PDF, 03.11.). Theme-Bausteine im Repo unter `shopify/theme/`. Flakon-Bild ist bis zu echten Fotos eine Illustration.
+- **Shop-Neubau in Shopify läuft (03.11.):** Entwurfs-Theme „Azizam – Entwurf (Claude)“ (unveröffentlicht, Live-Theme unverändert), 19 Düfte als **Entwürfe** (30/50 ml, Preis 0 als Platzhalter, Tags `name-offen`/`preis-offen`/`bild-offen`), 3 Kollektionen nach Duftrichtung, Hauptmenü auf Deutsch. Duftdaten aus Mars Duftübersicht (PDF, 03.11.). Theme-Bausteine im Repo unter `shopify/theme/`. Hero zeigt Mars Flakon-Video (03.11.); auf der Startseite außerdem Kurations-Text, Duftkarte, Anlass-Finder, „ohne Bewertungen“-Block (Rückgabe-Absatz aus, bis Mar entscheidet) und Launch-Liste.
 - Ziel: In den nächsten 3 Monaten deutschlandweit online verkaufen, Shop komplett neu starten.
 - **Wichtigste und dringendste Aufgabe:** passender Flakon (bestenfalls zylindrisch) und Verpackung.
 
@@ -65,6 +65,8 @@
 
 ## Offene Fragen
 
+- GPSR: Produktseiten brauchen Name, Post- und E-Mail-Adresse der verantwortlichen Person; bisher steht die Anschrift laut Entscheidung nur im Impressum. Mar entscheidet (Feld im Theme-Baustein „Azizam Produktinfos“).
+- Rückgaberegel für den Neustart (30 Tage bei ≥ 80 % Füllung wie früher?) offen; erst danach den Rückgabe-Absatz auf der Startseite einschalten.
 - Welcher Flakon wird es (in 30 und 50 ml)? (Hängt davon ab: Verpackung, Etikett, Shop-Neustart)
 - Verpackung: wird gesucht.
 - Ab wie vielen Verkäufen kommt 100 ml (und im selben Flakon-Design)? Offen.
