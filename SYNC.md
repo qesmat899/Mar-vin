@@ -73,7 +73,7 @@
 - Kosmetikrecht: Die Fabrik stellt die nötigen Dokumente bereit (Sicherheitsbewertung, INCI u. a.), Mar trägt die Produkte selbst im CPNP-Portal der EU ein (Mar, 04.10.). Offen: Liste der Fabrik-Dokumente prüfen (deckt sie CPSR/PIF-Inhalte und die erweiterte Allergen-Kennzeichnung nach VO (EU) 2023/1545 ab?), CPNP-Eintrag je Duft vor dem ersten Onlineverkauf.
 - Zwei Duftlinien (Heritage/Editions) aus dem Playbook: offen. Mar entscheidet erst, wenn Flakon, Verpackung und Tüte endgültig gekauft sind (Suche läuft, Stand 16.10.).
 - Positionierung und Markenauftritt für die Zielgruppe.
-- Duftnamen: Golden Amber existiert (Floris London u. a.), Café Velvet ähnelt „Velvet Coffee“ (David Beckham/Coty u. a.) (Websuche 03.11.); alle Namen vor dem Druck im Markenregister prüfen (TMview, Klasse 3). Vorschlag: beide Konfliktnamen ersetzen.
+- Duftnamen: Midnight Café existiert als US-Parfum (Fine’ry „Midnight Cafe“), EU-Schutz unbekannt (Websuche 03.11.); alle Namen vor dem Druck im Markenregister prüfen (TMview, Klasse 3). Vorschlag: in TMview prüfen, ob „Midnight Cafe“ in der EU eingetragen ist.
 - Website-Collections: Vorschlag Frisch · Süß & Warm · Amber & Safran · Oud & Leder (Zuordnung im Chat 03.11.), von Mar noch nicht bestätigt.
 - Flakon aus dem Mockup vom 03.11. (eckig, weiße Kappe, Goldringe, Etikett „AZIZAM FRAGRANCES“): endgültig, bestellt, 30/50 ml? Offen.
 
@@ -96,7 +96,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
-- **2026-11-03 [Code]** Azizam-Namen für alle 17 Düfte von Mar gewählt, eingetragen in `playbook/azizam/commercial/duefte.csv` (Spalte `name`). Namensprüfung per Websuche: Konflikte bei Golden Amber (Floris London) und Café Velvet (ähnlich „Velvet Coffee“); Markenregister ungeprüft. Produkt- und Coverbilder je Duft mit Pixelcut erzeugt (auf Basis des Flakon-Mockups, liegen in Mars Pixelcut-Bibliothek; nicht im Repo).
+- **2026-11-03 [Code]** Azizam-Namen für alle 17 Düfte von Mar gewählt, eingetragen in `playbook/azizam/commercial/duefte.csv` (Spalte `name`). Namensprüfung per Websuche: offener Konflikt nur bei Midnight Café (Fine’ry „Midnight Cafe“, USA); Markenregister ungeprüft. Produkt- und Coverbilder je Duft mit Pixelcut erzeugt (auf Basis des Flakon-Mockups, liegen in Mars Pixelcut-Bibliothek; nicht im Repo).
 - **2026-10-16 [Code]** Bestandsabgleich abgeschlossen (Angaben Mar): tatsächliche Einkaufspreise Velvet Vanilla, Imagination = Citrus Fresh (Art. 1054), Les Sables Roses im Sortiment (`D-002`); Rechnungen der TBrand GmbH als verbindlich übernommen (Kaufdaten, Belege, Preise inkl. Rabatt, Versand nach ml verteilt) für 17 Flaschen; Zahlen nur in `playbook/azizam/commercial/`.
 - **2026-10-16 [Code]** Draft-PR #6 (`claude/charming-hypatia-58sfxg` → `Azizam`) geprüft und ergänzt: Rechner kennzeichnen Modellwerte, Bestandslogik gegen undatierte Bewegungen abgesichert, Duftlinien überall als offen markiert. Offene Entscheidungen stehen in der PR-Beschreibung. Nicht gemergt.
 - **2026-10-07 [Code]** Realer Bestand von Mar erfasst (inkl. Nachtrag Les Sables Roses): Gebinde, Preise, Füllstände per Augenmaß in `playbook/azizam/commercial/` (Zahlen nur dort, Übersicht: `python3 playbook.py daten`). Velvet-Vanilla-Umlage als Entscheidung D-001 im Ledger. Repo-Hygiene eingeführt: `python3 playbook.py hygiene` (Lifecycle, Duplikate, Widersprüche, tote Verweise; löscht nie).
