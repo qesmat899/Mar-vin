@@ -12,7 +12,7 @@
     assign source = collections.all
   endif
   assign on_collection = false
-  if collection != blank and section.settings.collection == blank
+  if collection != blank and section.settings.collection == blank and collection.handle != 'all'
     assign on_collection = true
   endif
 -%}
