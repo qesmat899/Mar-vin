@@ -7,9 +7,12 @@
 <section class="az az-hero" aria-labelledby="az-hero-{{ section.id }}">
   <div class="az-hero__media">
     {%- if vid != blank or section.settings.video_url != blank -%}
-      <video class="az-hero__video" muted playsinline preload="auto" disablepictureinpicture
+      <video class="az-hero__video" autoplay muted playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback
         {% if poster != blank %}poster="{{ poster | image_url: width: 1080 }}"{% endif %}
         aria-label="{{ section.settings.video_alt | escape }}" data-az-hero-video>
+        {%- if section.settings.video_url_mobile != blank -%}
+          <source src="{{ section.settings.video_url_mobile }}" type="video/mp4" media="(max-width: 899px)">
+        {%- endif -%}
         {%- if vid != blank -%}
           {%- for s in vid.sources -%}
             {%- if s.mime_type == 'video/mp4' -%}<source src="{{ s.url }}" type="video/mp4">{%- break -%}{%- endif -%}
@@ -52,14 +55,14 @@
 <script>
   (function () {
     var v = document.querySelector('#shopify-section-{{ section.id }} [data-az-hero-video]');
-    if (!v || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!v) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); return; }
     v.muted = true;
-    var p = v.play();
-    if (p && p.catch) p.catch(function () {
-      // Autoplay blockiert (z. B. Stromsparmodus): Standbild der Frontansicht zeigen.
-      var s = v.parentNode.querySelector('.az-hero__still');
-      if (s) { v.style.display = 'none'; s.style.display = 'block'; }
-    });
+    var tryPlay = function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
+    // Autoplay-Sperre (z. B. Stromsparmodus): Poster bleibt sichtbar, beim ersten Tippen/Scrollen erneut versuchen.
+    tryPlay();
+    v.addEventListener('loadeddata', tryPlay, { once: true });
+    ['touchstart', 'scroll', 'click'].forEach(function (e) { window.addEventListener(e, tryPlay, { once: true, passive: true }); });
   })();
 </script>
 
@@ -69,7 +72,8 @@
   "tag": "div",
   "settings": [
     { "type": "video", "id": "video", "label": "Video (aus Shopify-Dateien)" },
-    { "type": "text", "id": "video_url", "label": "oder Video-URL (MP4)" },
+    { "type": "text", "id": "video_url", "label": "oder Video-URL (MP4, Desktop)" },
+    { "type": "text", "id": "video_url_mobile", "label": "Video-URL fürs Handy (MP4, 720 × 1280)" },
     { "type": "text", "id": "video_alt", "label": "Bildbeschreibung", "default": "Azizam Flakon im warmen Licht" },
     { "type": "image_picker", "id": "poster", "label": "Erstes Bild des Videos (lädt sofort)" },
     { "type": "image_picker", "id": "still", "label": "Standbild bei reduzierter Bewegung" },

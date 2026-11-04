@@ -3,7 +3,7 @@
     "hero": {
       "type": "azizam-hero",
       "settings": {
-        "video_url": "https://cdn.shopify.com/s/files/1/1084/8141/3450/files/azizam-hero-1080.mp4?v=1793715747",
+        "video_url": "https://cdn.shopify.com/s/files/1/1084/8141/3450/files/azizam-hero-desktop.mp4?v=1793753099",
         "video_alt": "Azizam Flakon im warmen Licht",
         "poster": "shopify://shop_images/azizam-hero-start.jpg",
         "still": "shopify://shop_images/azizam-hero-end.jpg",
@@ -14,7 +14,8 @@
         "cta_label": "Düfte entdecken",
         "cta_link": "#duefte",
         "link_label": "Nach Anlass wählen",
-        "link_target": "#anlass"
+        "link_target": "#anlass",
+        "video_url_mobile": "https://cdn.shopify.com/s/files/1/1084/8141/3450/files/azizam-hero-mobil.mp4?v=1793753099"
       }
     },
     "haltung": {
