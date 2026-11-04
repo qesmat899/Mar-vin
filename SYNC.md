@@ -52,6 +52,7 @@
 
 ## Entscheidungen (dauerhaft, mit Datum)
 
+- Kostenloser Versand ab 20 €, Details im Ledger `D-006`. [Mar, 2026-11-04]
 - Reiseflakon 10 ml je Duft, kein Entdecker-Trio, Details im Ledger `D-005`. Theme-Änderungen als Kopie statt GitHub-Verbindung. [Mar, 2026-11-04]
 - Discovery-Set als Einstiegsangebot, Details im Ledger `D-004`. [Mar, 2026-11-04]
 - Verkaufspreise nach Originalpreis in zwei Stufen, verbindlich im Ledger `D-003`. [Mar, 2026-11-03]
@@ -70,7 +71,7 @@
 ## Offene Fragen
 
 - Weitere Bundles (Signature, Tag & Nacht) offen; Trio verworfen, Reiseflakon 10 ml umgesetzt (`D-005`). Stückkosten der Proben UNKNOWN.
-- Theme-Änderungen laufen über Kopien, die Mar veröffentlicht (keine GitHub-Verbindung, Mar 04.11.). Aktuell wartet „Azizam – Update 04.11. (Claude)“ auf Veröffentlichung; danach Discovery-Set aktivieren.
+- Theme-Änderungen laufen über Kopien, die Mar veröffentlicht (keine GitHub-Verbindung, Mar 04.11.). „Azizam – Update 04.11.“ ist live; im Editor noch offen: Vertrauensleiste-Text auf 20 €, Header-Logo.
 - GPSR: Produktseiten brauchen Name, Post- und E-Mail-Adresse der verantwortlichen Person; bisher steht die Anschrift laut Entscheidung nur im Impressum. Mar entscheidet (Feld im Theme-Baustein „Azizam Produktinfos“).
 - Rückgaberegel für den Neustart (30 Tage bei ≥ 80 % Füllung wie früher?) offen; erst danach den Rückgabe-Absatz auf der Startseite einschalten.
 - Welcher Flakon wird es (in 30 und 50 ml)? (Hängt davon ab: Verpackung, Etikett, Shop-Neustart)
@@ -102,6 +103,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-11-04 [Code]** Discovery-Set freigeschaltet; Versandprofil: 4,95 € unter 20 €, sonst kostenlos, Express und Auslandszonen entfernt; Versandseite angepasst.
 - **2026-11-04 [Code]** 10-ml-Variante für alle 19 Düfte; Gutscheincode für Discovery-Käufer angelegt; Theme-Kopie mit Duft-Finder, Discovery-Auswahl, Vertrauensleiste, Logo/Favicon, ohne Ankündigungsleiste, neuem Haltung-Text.
 - **2026-11-04 [Code]** Logo (Wortmarke, Symbol) in Shopify-Dateien hochgeladen; Discovery-Set als Entwurfsprodukt angelegt (D-004).
 - **2026-11-04 [Code]** Hero-Video auf Handys repariert (eigene 720×1280-Datei, robustere Wiedergabe) im unveröffentlichten Theme „Azizam – Video-Fix (Claude)“; Mar muss es veröffentlichen. Interne Duftreferenz (Azizam-Name → Original) als PDF an Mar übergeben, bewusst nicht im öffentlichen Repo.
@@ -111,7 +113,6 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 - **2026-11-03 [Code]** Bilder Dunkel & edel (7 Düfte) hochgeladen; alle 19 Produkte haben Produktfoto und Stimmungsbild.
 - **2026-11-03 [Code]** Azizam-Namen für alle 19 Düfte (Mar) in Shopify (neue URLs mit Weiterleitung) und `duefte.csv`; 24 Bilder hochgeladen; Theme mit Kollektionsraster, Kacheln mit Bildwechsel und Produktseite (Noten, Intensität, Duftwelt, weitere Düfte).
 - **2026-11-03 [Code]** Shopify-Shop aufgebaut (Auftrag Mar): Entwurfs-Theme mit eigener Startseite (Hero, 30 % Duftöl, Duftrichtungen, Anlass-Finder, Geschichte, Duftbegriffe) und Duftprofil auf der Produktseite; 19 Düfte als Entwürfe mit Metafeldern `azizam.*`; nichts veröffentlicht. Blue Talisman und Megamare neu in `duefte.csv` (Lieferant und Bestand UNKNOWN).
-- **2026-10-16 [Code]** Bestandsabgleich abgeschlossen (Angaben Mar): tatsächliche Einkaufspreise Velvet Vanilla, Imagination = Citrus Fresh (Art. 1054), Les Sables Roses im Sortiment (`D-002`); Rechnungen der TBrand GmbH als verbindlich übernommen (Kaufdaten, Belege, Preise inkl. Rabatt, Versand nach ml verteilt) für 17 Flaschen; Zahlen nur in `playbook/azizam/commercial/`.
 
 ### Verlauf (zusammengefasst)
 
