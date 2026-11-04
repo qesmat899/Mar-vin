@@ -7,14 +7,11 @@
           "type": "_product-media-gallery",
           "static": true,
           "settings": {
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0,
             "media_presentation": "grid",
             "media_columns": "one",
             "image_gap": 4,
             "large_first_image": true,
+            "icons_style": "arrow",
             "slideshow_controls_style": "counter",
             "slideshow_mobile_controls_style": "dots",
             "thumbnail_position": "right",
@@ -27,7 +24,11 @@
             "extend_media": false,
             "zoom": true,
             "video_loop": false,
-            "hide_variants": true
+            "hide_variants": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {}
         },
@@ -62,10 +63,6 @@
               "type": "group",
               "name": "t:names.header",
               "settings": {
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0,
                 "content_direction": "column",
                 "vertical_on_mobile": true,
                 "horizontal_alignment": "flex-start",
@@ -93,8 +90,13 @@
                 "border_opacity": 100,
                 "border_color": "",
                 "border_radius": 0,
+                "link": "",
                 "open_in_new_tab": false,
-                "placeholder": ""
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
               },
               "blocks": {
                 "fam": {
@@ -107,10 +109,6 @@
                   "type": "text",
                   "name": "t:names.product_title",
                   "settings": {
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0,
                     "text": "<h1>{{ closest.product.title }}</h1>",
                     "width": "100%",
                     "max_width": "normal",
@@ -125,17 +123,17 @@
                     "text_color": "",
                     "background": false,
                     "background_color": "#00000026",
-                    "corner_radius": 0
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
                   },
                   "blocks": {}
                 },
                 "preis": {
                   "type": "price",
                   "settings": {
-                    "padding-block-start": 4,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0,
                     "show_sale_price_first": true,
                     "show_installments": false,
                     "show_tax_info": false,
@@ -147,14 +145,21 @@
                     "line_height": "normal",
                     "letter_spacing": "normal",
                     "case": "none",
-                    "text_color": ""
+                    "text_color": "",
+                    "padding-block-start": 4,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
                   },
                   "blocks": {}
                 },
                 "hinweis": {
                   "type": "azizam-preishinweis",
                   "name": "Azizam Preishinweis",
-                  "settings": {},
+                  "settings": {
+                    "text": "Gemäß § 19 UStG wird keine Umsatzsteuer berechnet. Zzgl.",
+                    "shipping_label": "Versandkosten"
+                  },
                   "blocks": {}
                 }
               },
@@ -176,10 +181,6 @@
             "varianten": {
               "type": "variant-picker",
               "settings": {
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0,
                 "variant_style": "buttons",
                 "show_swatches": false,
                 "option_label_text_color": "",
@@ -191,17 +192,17 @@
                 "custom_selected_variant_background": "{{ settings.color_palette.foreground }}",
                 "custom_selected_variant_text": "{{ settings.color_palette.background }}",
                 "custom_selected_variant_border": "{{ settings.color_palette.foreground }}",
-                "alignment": "left"
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
               },
               "blocks": {}
             },
             "kaufen": {
               "type": "buy-buttons",
               "settings": {
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0,
                 "stacking": true,
                 "text_color": "",
                 "show_pickup_availability": false,
@@ -219,7 +220,11 @@
                 "input_text_color": "{{ settings.color_palette.foreground }}",
                 "input_border_color": "{{ settings.color_palette.foreground }}",
                 "border_width": 1,
-                "border_radius": 0
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
               },
               "blocks": {
                 "quantity": {
@@ -259,10 +264,6 @@
               "type": "text",
               "name": "t:names.product_description",
               "settings": {
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0,
                 "text": "{{ closest.product.description }}",
                 "width": "100%",
                 "max_width": "normal",
@@ -277,7 +278,11 @@
                 "text_color": "",
                 "background": false,
                 "background_color": "#00000026",
-                "corner_radius": 0
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
               },
               "blocks": {}
             },
@@ -289,6 +294,14 @@
                 "shipping": ""
               },
               "blocks": {}
+            },
+            "vertrauen": {
+              "type": "azizam-vertrauen",
+              "name": "Azizam Vertrauensleiste",
+              "settings": {
+                "items": "Versand mit DHL in 2–4 Tagen · Kostenloser Versand ab 60 € · 14 Tage Widerruf · PayPal & Klarna"
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -296,12 +309,12 @@
             "profil",
             "varianten",
             "kaufen",
+            "vertrauen",
             "beschreibung",
             "infos"
           ]
         }
       },
-      "block_order": [],
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
@@ -316,18 +329,66 @@
     },
     "duftwelt": {
       "type": "azizam-duftwelt",
-      "settings": {}
+      "settings": {
+        "kicker": "Azizam"
+      }
     },
     "mehr": {
       "type": "azizam-mehr",
       "settings": {
         "heading": "Mehr aus"
       }
+    },
+    "17937852687fa90815": {
+      "type": "_blocks",
+      "blocks": {
+        "judge_me_reviews_review_widget_JCiGpP": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": true,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_JCiGpP"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
     "main",
     "duftwelt",
-    "mehr"
+    "mehr",
+    "17937852687fa90815"
   ]
 }

@@ -22,7 +22,7 @@
       "type": "azizam-haltung",
       "settings": {
         "label": "Über Azizam",
-        "text": "<p>Wir stellen unsere Düfte selbst her.&nbsp;</p><p>Jeder Duft wird mit rund 30 % Duftöl abgefüllt, statt der 12 bis 18 %, die bei Eau de Parfum üblich sind. Deshalb bleibt er <em>nah, statt laut zu sein.</em></p>"
+        "text": "<p>Jeder Duft ist von uns ausgewählt und auf die Haut abgestimmt.</p><p>Mit rund 30 % Duftöl statt der 12 bis 18 %, die bei Eau de Parfum üblich sind. In Deutschland abgefüllt. Deshalb bleibt er <em>nah, statt laut zu sein.</em></p>"
       },
       "blocks": {
         "f1": {
@@ -206,11 +206,16 @@
         "f2",
         "f3"
       ]
+    },
+    "finder": {
+      "type": "azizam-finder",
+      "settings": {}
     }
   },
   "order": [
     "hero",
     "kollektion",
+    "finder",
     "haltung",
     "anlass",
     "liste",

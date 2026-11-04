@@ -1,9 +1,7 @@
 {
   "current": {
-    "logo_height": 36,
-    "logo_height_mobile": 28,
-    "page_background_color": "{{ settings.color_palette.background }}",
-    "page_width": "narrow",
+    "logo_height": 30,
+    "logo_height_mobile": 24,
     "page_text_color": "{{ settings.color_palette.foreground }}",
     "type_body_font": "jost_n4",
     "type_subheading_font": "jost_n5",
@@ -35,6 +33,8 @@
     "type_font_h6": "subheading",
     "type_size_h6": "12",
     "type_line_height_h6": "display-loose",
+    "page_background_color": "{{ settings.color_palette.background }}",
+    "page_width": "narrow",
     "page_transition_enabled": false,
     "transition_to_main_product": false,
     "card_hover_effect": "none",
@@ -93,11 +93,21 @@
     "variant_button_border_width": 1,
     "variant_button_radius": 0,
     "variant_button_width": "equal-width-buttons",
+    "content_for_index": [],
+    "blocks": {
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      }
+    },
     "color_palette": {
       "background": "#120e0a",
       "foreground": "#efe6d6",
       "color1": "#e3d8c6",
       "color2": "#3a2f25"
-    }
+    },
+    "logo": "shopify://shop_images/azizam-wortmarke-gold.png",
+    "favicon": "shopify://shop_images/azizam-icon-512.png"
   }
 }

@@ -1,0 +1,84 @@
+{{ 'azizam.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Discovery-Set: Kunde wählt N Düfte. Auswahl landet als Bestell-Eigenschaft (properties[Duft 1..N])
+  im Produktformular von Horizon (BuyButtons-ProductForm-<section.id>). Warenkorb-Button erst aktiv,
+  wenn alle Plätze gewählt sind. Express-Checkout (PayPal-Button) wird hier ausgeblendet, weil er
+  die Auswahl nicht mitsendet.
+{%- endcomment -%}
+{%- assign n = block.settings.anzahl | default: 3 -%}
+{%- assign form_id = 'BuyButtons-ProductForm-' | append: section.id -%}
+<azizam-discovery class="az-disc" data-form="{{ form_id }}" data-n="{{ n }}" {{ block.shopify_attributes }}>
+  <p class="az-disc__lbl">{{ block.settings.heading }}</p>
+  <ol class="az-disc__slots" aria-live="polite">
+    {%- for i in (1..n) -%}
+      <li class="az-disc__slot" data-slot="{{ i }}">
+        <button type="button" class="az-disc__slotbtn" aria-label="Platz {{ i }} leeren" disabled>
+          <span class="az-disc__num">{{ i }}</span><span class="az-disc__slotname">Duft wählen</span>
+        </button>
+        <input type="hidden" name="properties[Duft {{ i }}]" value="" form="{{ form_id }}" data-input="{{ i }}">
+      </li>
+    {%- endfor -%}
+  </ol>
+  <div class="az-disc__grid" role="group" aria-label="Düfte zur Auswahl">
+    {%- for p in collections.all.products limit: 50 -%}
+      {%- if p.id == product.id or p.type == 'Probenset' -%}{%- continue -%}{%- endif -%}
+      {%- assign img = p.media[1] | default: p.media[0] -%}
+      <button type="button" class="az-disc__opt" data-name="{{ p.title | escape }}" aria-pressed="false">
+        {%- if img -%}{{ img.preview_image | image_url: width: 240 | image_tag: loading: 'lazy', alt: '', class: 'az-disc__img' }}{%- endif -%}
+        <span class="az-disc__optname">{{ p.title }}</span>
+        <span class="az-disc__optfam">{{ p.metafields.azizam.familie.value }}</span>
+      </button>
+    {%- endfor -%}
+  </div>
+  <p class="az-disc__hint" data-hint>{{ block.settings.hint }}</p>
+</azizam-discovery>
+<style>
+  #shopify-section-{{ section.id }} shopify-accelerated-checkout,
+  #shopify-section-{{ section.id }} .shopify-payment-button { display: none !important; }
+</style>
+<script>
+  if (!customElements.get('azizam-discovery')) customElements.define('azizam-discovery', class extends HTMLElement {
+    connectedCallback() {
+      this.n = +this.dataset.n; this.picks = [];
+      this.opts = [...this.querySelectorAll('.az-disc__opt')];
+      this.opts.forEach(o => o.addEventListener('click', () => this.toggle(o.dataset.name)));
+      this.querySelectorAll('.az-disc__slotbtn').forEach((b, i) => b.addEventListener('click', () => { this.picks.splice(i, 1); this.render(); }));
+      this.render();
+      const form = document.getElementById(this.dataset.form);
+      if (form) form.addEventListener('submit', (e) => { if (this.picks.length < this.n) { e.preventDefault(); e.stopImmediatePropagation(); this.querySelector('[data-hint]').classList.add('is-warn'); this.scrollIntoView({ behavior: 'smooth', block: 'center' }); } }, true);
+    }
+    toggle(name) {
+      const i = this.picks.indexOf(name);
+      if (i > -1) this.picks.splice(i, 1); else if (this.picks.length < this.n) this.picks.push(name);
+      this.render();
+    }
+    render() {
+      this.querySelectorAll('.az-disc__slot').forEach((s, i) => {
+        const v = this.picks[i] || '';
+        s.querySelector('input').value = v;
+        s.querySelector('.az-disc__slotname').textContent = v || 'Duft wählen';
+        s.classList.toggle('is-filled', !!v);
+        s.querySelector('button').disabled = !v;
+      });
+      const full = this.picks.length >= this.n;
+      this.opts.forEach(o => { const on = this.picks.includes(o.dataset.name); o.setAttribute('aria-pressed', on); o.disabled = full && !on; });
+      const form = document.getElementById(this.dataset.form);
+      const btn = form && form.querySelector('[type="submit"], button[name="add"]');
+      if (btn) { btn.toggleAttribute('aria-disabled', !full); btn.classList.toggle('az-disc--locked', !full); }
+      const h = this.querySelector('[data-hint]');
+      h.textContent = full ? 'Perfekt. Dein Set ist komplett.' : `Noch ${this.n - this.picks.length} ${this.n - this.picks.length === 1 ? 'Duft' : 'Düfte'} wählen.`;
+      h.classList.toggle('is-ok', full); if (full) h.classList.remove('is-warn');
+    }
+  });
+</script>
+{% schema %}
+{
+  "name": "Azizam Discovery-Auswahl",
+  "settings": [
+    { "type": "range", "id": "anzahl", "label": "Anzahl Düfte", "min": 2, "max": 6, "step": 1, "default": 3 },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Wähle deine 3 Düfte" },
+    { "type": "text", "id": "hint", "label": "Hinweis", "default": "Noch 3 Düfte wählen." }
+  ],
+  "presets": [{ "name": "Azizam Discovery-Auswahl" }]
+}
+{% endschema %}
