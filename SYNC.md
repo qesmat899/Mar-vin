@@ -71,7 +71,7 @@
 ## Offene Fragen
 
 - Weitere Bundles (Signature, Tag & Nacht) offen; Trio verworfen, Reiseflakon 10 ml umgesetzt (`D-005`). Stückkosten der Proben UNKNOWN.
-- Theme-Änderungen laufen über Kopien, die Mar veröffentlicht (keine GitHub-Verbindung, Mar 04.11.). „Azizam – Update 04.11.“ ist live; im Editor noch offen: Vertrauensleiste-Text auf 20 €, Header-Logo.
+- Theme-Änderungen laufen über Kopien, die Mar veröffentlicht (keine GitHub-Verbindung, Mar 04.11.). „Azizam – Update 04.11.“ ist live; „Azizam – Check 04.11. (Claude)“ (Footer mit Rechtslinks, deutsche Texte, Vertrauensleiste 20 €, Discovery-Kachel) wartet auf Veröffentlichung durch Mar.
 - GPSR: Produktseiten brauchen Name, Post- und E-Mail-Adresse der verantwortlichen Person; bisher steht die Anschrift laut Entscheidung nur im Impressum. Mar entscheidet (Feld im Theme-Baustein „Azizam Produktinfos“).
 - Rückgaberegel für den Neustart (30 Tage bei ≥ 80 % Füllung wie früher?) offen; erst danach den Rückgabe-Absatz auf der Startseite einschalten.
 - Welcher Flakon wird es (in 30 und 50 ml)? (Hängt davon ab: Verpackung, Etikett, Shop-Neustart)
@@ -103,6 +103,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-11-04 [Code]** Gesamtcheck der Live-Seite (Desktop/Handy, Checkout, Rechtstexte). Live geändert: Discovery Set im Hauptmenü, Kontaktseite deutsch. Theme-Kopie „Check 04.11.“ mit den übrigen Korrekturen. Offen bei Mar: „Express 7,99 €“ und Name „Standard“ im Checkout (nicht im Versandprofil), Anschrift in der Kontakt-Richtlinie („Lilienweg 97084“), Versand-Richtlinie fehlt, Discovery-Bild.
 - **2026-11-04 [Code]** Discovery-Set freigeschaltet; Versandprofil: 4,95 € unter 20 €, sonst kostenlos, Express und Auslandszonen entfernt; Versandseite angepasst.
 - **2026-11-04 [Code]** 10-ml-Variante für alle 19 Düfte; Gutscheincode für Discovery-Käufer angelegt; Theme-Kopie mit Duft-Finder, Discovery-Auswahl, Vertrauensleiste, Logo/Favicon, ohne Ankündigungsleiste, neuem Haltung-Text.
 - **2026-11-04 [Code]** Logo (Wortmarke, Symbol) in Shopify-Dateien hochgeladen; Discovery-Set als Entwurfsprodukt angelegt (D-004).
@@ -112,7 +113,6 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 - **2026-11-03 [Code]** Preise für alle 19 Düfte in Shopify gesetzt (D-003), Grundpreis €/100 ml läuft automatisch.
 - **2026-11-03 [Code]** Bilder Dunkel & edel (7 Düfte) hochgeladen; alle 19 Produkte haben Produktfoto und Stimmungsbild.
 - **2026-11-03 [Code]** Azizam-Namen für alle 19 Düfte (Mar) in Shopify (neue URLs mit Weiterleitung) und `duefte.csv`; 24 Bilder hochgeladen; Theme mit Kollektionsraster, Kacheln mit Bildwechsel und Produktseite (Noten, Intensität, Duftwelt, weitere Düfte).
-- **2026-11-03 [Code]** Shopify-Shop aufgebaut (Auftrag Mar): Entwurfs-Theme mit eigener Startseite (Hero, 30 % Duftöl, Duftrichtungen, Anlass-Finder, Geschichte, Duftbegriffe) und Duftprofil auf der Produktseite; 19 Düfte als Entwürfe mit Metafeldern `azizam.*`; nichts veröffentlicht. Blue Talisman und Megamare neu in `duefte.csv` (Lieferant und Bestand UNKNOWN).
 
 ### Verlauf (zusammengefasst)
 
