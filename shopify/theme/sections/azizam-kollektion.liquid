@@ -34,7 +34,21 @@
       {%- endunless -%}
     </div>
     <div class="az-grid" data-az-grid>
+      {%- assign disc = all_products['discovery-set'] -%}
+      {%- if on_collection == false and disc != blank and disc.available -%}
+        <a class="az-card az-card--disc" href="{{ disc.url }}" data-familie="alle">
+          <span class="az-card__media az-disc-tile">
+            <span class="az-disc-tile__kicker">Nicht sicher?</span>
+            <span class="az-disc-tile__title">Discovery Set</span>
+            <span class="az-disc-tile__sub">3 Düfte deiner Wahl · je 5 ml</span>
+            <span class="az-disc-tile__price">{{ disc.price | money }}</span>
+            <span class="az-disc-tile__note">Den Betrag bekommst du als Gutschein für deine große Flasche zurück.</span>
+            <span class="az-disc-tile__cta">Set zusammenstellen</span>
+          </span>
+        </a>
+      {%- endif -%}
       {%- for p in source.products limit: section.settings.limit -%}
+        {%- if p.type == 'Probenset' -%}{%- continue -%}{%- endif -%}
         {%- liquid
           assign eager = false
           if forloop.index0 < 4

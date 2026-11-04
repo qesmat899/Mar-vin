@@ -266,3 +266,20 @@ azizam-finder, azizam-discovery { display: block; }
 .az-finder__also { margin: 24px 0 0; font-size: .9rem; color: var(--az-muted); }
 .az-finder__also a { color: var(--az-ink); }
 @media (prefers-reduced-motion: reduce) { .az-finder__step.is-active, .az-finder__match { animation: none; } .az-finder__img img { transition: none; } }
+
+/* Discovery-Teaser im Raster */
+.az-disc-tile { display: flex; flex-direction: column; justify-content: center; gap: 10px; padding: clamp(16px, 3vw, 32px);
+  border: 1px solid var(--az-gold); background: radial-gradient(120% 80% at 50% 0%, rgba(201,163,95,.18), transparent 60%), var(--az-bg-2); text-align: left; }
+.az-disc-tile__kicker { font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--az-gold); }
+.az-disc-tile__title { font-family: var(--az-serif); font-size: clamp(1.5rem, 3vw, 2.2rem); line-height: 1.05; color: var(--az-ink); }
+.az-disc-tile__sub { font-size: .85rem; color: var(--az-muted); }
+.az-disc-tile__price { font-family: var(--az-serif); font-size: clamp(1.3rem, 2.4vw, 1.7rem); color: var(--az-gold-2); }
+.az-disc-tile__note { font-size: .78rem; line-height: 1.45; color: var(--az-ink); opacity: .85; }
+.az-disc-tile__cta { margin-top: 6px; align-self: flex-start; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+  padding: 10px 14px; background: var(--az-ink); color: var(--az-bg); }
+.az-card--disc:hover .az-disc-tile__cta { background: var(--az-gold-2); }
+@media (max-width: 749px) {
+  .az-disc-tile { gap: 6px; padding: 14px; }
+  .az-disc-tile__note { display: none; }
+  .az-disc-tile__cta { padding: 8px 10px; font-size: .64rem; }
+}
