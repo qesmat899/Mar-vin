@@ -8,3 +8,6 @@ playbook-export.md
 
 # Zwischenstand des PDF-Builds
 docs/_playbook.html
+
+# Duftberater: Abhängigkeiten (npm install in shopify/berater)
+shopify/berater/node_modules/

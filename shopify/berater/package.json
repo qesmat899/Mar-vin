@@ -1,0 +1,24 @@
+{
+  "name": "azizam-berater",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Duftberater als React-Insel fürs Shopify-Theme. Build schreibt nach ../theme/assets/azizam-berater.js/.css",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "node --test src/logik.test.js"
+  },
+  "dependencies": {
+    "motion": "^11.18.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "vite": "^5.4.11"
+  }
+}

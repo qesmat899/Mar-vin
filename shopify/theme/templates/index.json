@@ -209,6 +209,11 @@
     },
     "finder": {
       "type": "azizam-finder",
+      "settings": {},
+      "disabled": true
+    },
+    "berater": {
+      "type": "azizam-berater",
       "settings": {}
     }
   },
@@ -216,6 +221,7 @@
     "hero",
     "kollektion",
     "finder",
+    "berater",
     "haltung",
     "anlass",
     "liste",

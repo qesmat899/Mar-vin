@@ -1,7 +1,7 @@
 # SYNC.md – Übergabe zwischen Claude Chat und Claude Code (Azizam)
 
 > Gemeinsame Datei für **Claude Chat** und **Claude Code**. Sie ist die einzige Brücke zwischen beiden.
-> Zuletzt aktualisiert: 2026-11-03 [Code]
+> Zuletzt aktualisiert: 2026-11-05 [Code]
 
 ---
 
@@ -70,8 +70,9 @@
 
 ## Offene Fragen
 
+- 21st.dev: Der hinterlegte Schlüssel wird nicht als Konto erkannt (Antwort „signed-out“, nur 2 freie Abrufe/Tag; Hauptdomain `21st.dev` ohne Schlüssel, nur `api.21st.dev` bekommt ihn). Mar prüft Schlüssel bzw. Abo; der Duftberater braucht 21st.dev nicht.
 - Weitere Bundles (Signature, Tag & Nacht) offen; Trio verworfen, Reiseflakon 10 ml umgesetzt (`D-005`). Stückkosten der Proben UNKNOWN.
-- Theme-Änderungen laufen über Kopien, die Mar veröffentlicht (keine GitHub-Verbindung, Mar 04.11.). „Azizam – Update 04.11.“ ist live; „Azizam – Check 04.11. (Claude)“ (Footer mit Rechtslinks, deutsche Texte, Vertrauensleiste 20 €, Discovery-Kachel) wartet auf Veröffentlichung durch Mar.
+- Theme-Änderungen laufen über Kopien, die Mar veröffentlicht (keine GitHub-Verbindung, Mar 04.11.). Live ist „Azizam – Check 04.11. (Claude)“; „Azizam – Duftberater 05.11. (Claude)“ (Kopie davon + Duftberater) wartet auf Veröffentlichung durch Mar.
 - GPSR: Produktseiten brauchen Name, Post- und E-Mail-Adresse der verantwortlichen Person; bisher steht die Anschrift laut Entscheidung nur im Impressum. Mar entscheidet (Feld im Theme-Baustein „Azizam Produktinfos“).
 - Rückgaberegel für den Neustart (30 Tage bei ≥ 80 % Füllung wie früher?) offen; erst danach den Rückgabe-Absatz auf der Startseite einschalten.
 - Welcher Flakon wird es (in 30 und 50 ml)? (Hängt davon ab: Verpackung, Etikett, Shop-Neustart)
@@ -93,7 +94,7 @@
 | Mar | PR #6 prüfen und über das Merge nach `Azizam` entscheiden (offene Punkte in der PR-Beschreibung) | offen |
 | Mar | Flakon (30 ml), Etikett und Verpackung selbst klären — ohne Claude, bis Mar es wieder einbringt | offen |
 | Code | Struktur für Marketing-/Wachstums-Skills im Repo vorbereiten | offen |
-| Code | Duftberater bauen (neue Session, 21st.dev-Schlüssel liegt als Netzwerk-Secret für `*.21st.dev`): erst Zugriff testen (`curl https://21st.dev/r/shadcn/button`), dann React-Insel nach Plan vom 05.11. (Vite + React + Tailwind gekapselt + Motion → Theme-Assets `azizam-berater.js/.css`, Section `azizam-berater.liquid`, Daten aus `azizam.*` und `azizam_berater.*`, Jahreszeit automatisch, Schwarz/Champagnergold), als Theme-Kopie | offen |
+| Mar | Theme-Kopie „Azizam – Duftberater 05.11. (Claude)“ in der Vorschau prüfen (Startseite, unter der Kollektion) und veröffentlichen; alter Duft-Finder ist dort ausgeblendet, im Theme-Editor wieder einschaltbar | offen |
 | Mar | Bestandsaufnahme ergänzen: Kaufdaten/Belege für Imagination und Les Sables Roses, Chargen Velvet Vanilla G-17 und Les Sables Roses G-19 (Termin 16.10. 18:30), Azizam-Namen (Aufgaben auch in Todoist, Projekt „Azizam“); danach Komponenten (Flakons, Proben, Verpackung) — Liste in `playbook/azizam/commercial/README.md` | in Arbeit |
 | Mar | Dokumente der Fabrik je Duft sammeln und ins Repo/Drive legen; danach jeden Duft im CPNP-Portal eintragen | offen |
 | Mar | `CLAUDE-MASTER.md` ins Chat-Projekt „Azizam“ hochladen; globale Anweisung und Memory aus `playbook/templates/claude-anweisungen.md` in claude.ai setzen | offen |
@@ -104,6 +105,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-11-05 [Code]** Duftberater gebaut: React-Insel (Vite, React, Tailwind gekapselt, Motion), 4 Auswahlkarten-Fragen, Jahreszeit automatisch, Ergebnis mit Gründen + 2 Alternativen; Quelle `shopify/berater/`, Section `azizam-berater.liquid`. In neuer Theme-Kopie „Azizam – Duftberater 05.11. (Claude)“ eingespielt und in der Vorschau getestet (Desktop/Handy), nichts veröffentlicht.
 - **2026-11-05 [Code]** Duftberater: Merkmale je Duft aus Online-Recherche (Bewertungen der Originale), von Mar abgesegnet, als Metafelder `azizam_berater.*` (tendenz, stimmung, saison, anlass, nicht_buero) in Shopify eingetragen. Rohdaten mit Originalnamen nur intern, nicht im Repo. 21st.dev: Mar hinterlegt API-Schlüssel in der Cloud-Umgebung, danach neue Session.
 - **2026-11-04 [Code]** Gesamtcheck der Live-Seite (Desktop/Handy, Checkout, Rechtstexte). Live geändert: Discovery Set im Hauptmenü, Kontaktseite deutsch. Theme-Kopie „Check 04.11.“ mit den übrigen Korrekturen. Offen bei Mar: „Express 7,99 €“ und Name „Standard“ im Checkout (nicht im Versandprofil), Anschrift in der Kontakt-Richtlinie („Lilienweg 97084“), Versand-Richtlinie fehlt, Discovery-Bild.
 - **2026-11-04 [Code]** Discovery-Set freigeschaltet; Versandprofil: 4,95 € unter 20 €, sonst kostenlos, Express und Auslandszonen entfernt; Versandseite angepasst.
@@ -113,17 +115,14 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 - **2026-11-04 [Code]** Rechtsseiten angelegt (Impressum, AGB, Widerrufsbelehrung ohne Versiegelungs-Ausschluss, Versand: DHL, 4,95 €, frei ab 60 €, 2–4 Werktage, nur DE), im Footer verlinkt; Bestand 10 je Duft und Größe. Offen bei Mar: Versandprofil in Shopify angleichen, Richtlinienfelder füllen, Datenschutz auf Deutsch, Steuern aus, PayPal/Klarna, Haltung-Text („selbst her“) und Ehrlich-Abschnitt im Theme-Editor.
 - **2026-11-03 [Code]** Auf Mars Wunsch alle 19 Produkte aktiviert und im Onlineshop-Kanal veröffentlicht; Shop bleibt passwortgeschützt, Live-Theme unverändert. Bestand steht auf 0 (Ausverkauft-Anzeige), bis Mar echte Stückzahlen nennt.
 - **2026-11-03 [Code]** Preise für alle 19 Düfte in Shopify gesetzt (D-003), Grundpreis €/100 ml läuft automatisch.
-- **2026-11-03 [Code]** Bilder Dunkel & edel (7 Düfte) hochgeladen; alle 19 Produkte haben Produktfoto und Stimmungsbild.
 
 ### Verlauf (zusammengefasst)
 
 - 2026-10-04: `CLAUDE-MASTER.md` angelegt (Wissensbasis aus Mars Recherche-Texten, über `CLAUDE.md` immer geladen).
-- 2026-10-03: 100 ml als spätere Größe wieder aufgenommen (nach ersten 30/50-Verkäufen).
 - 2026-10-03: `ARBEITSWEISE.md` (Werkzeug-Kompass) angelegt; wird beim Sessionstart mitgeladen, Claude Code erinnert Mar aktiv daran.
 - 2026-10-03: Playbook-Kapitel 01, 03, 04, 06, 90-Tage-Plan, Briefing, Nächste Schritte und README bereinigt: 100 ml raus, Preise als `[Preis offen]`, Zahlen auf Kleinunternehmer/Flakon-Annahme; Kapitel 05 als Ganzes als veraltet markiert.
+- 2026-10-03: Mars Klärungen eingearbeitet (Kleinunternehmer, kein Verkauf, CPNP offen, 30 + 50 ml, 100 ml später); Privatdaten aus den Dateien entfernt.
 - 2026-10-02: SYNC.md im Chat angelegt und ins Repo gelegt.
-- 2026-10-03: Mars Antworten eingearbeitet (kein Verkauf aktuell, CPNP offen), Adresse/Telefon/USt-IdNr. aus den Dateien entfernt, Steuerteil auf Kleinunternehmer umgestellt.
-- 2026-10-03: Playbook (`docs/ECommerceBrandPlaybook.md`) und `playbook/KONTEXT-EXPORT.md` lagen schon im Repo, hochgeladene Fassung identisch; Widersprüche zu dieser Datei unter „Offene Fragen“ eingetragen. Mars Klärung (Kleinunternehmer, 30 + 50 ml, Preise offen, Website offline) in `brand.json` und Kontext-Export eingearbeitet.
 
 ---
 
