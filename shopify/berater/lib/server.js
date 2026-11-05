@@ -19,6 +19,7 @@ export function konfiguration(env = process.env) {
     erlaubteHerkunft: (env.ERLAUBTE_HERKUNFT || 'https://azizamfragrances.com,https://www.azizamfragrances.com,https://pbznmb-fy.myshopify.com')
       .split(',').map((s) => s.trim()).filter(Boolean),
     shopDatenUrl: env.SHOP_DATEN_URL || 'https://azizamfragrances.com/collections/all?view=berater',
+    vorschauThemeId: /^\d+$/.test(env.SHOP_VORSCHAU_THEME_ID || '') ? env.SHOP_VORSCHAU_THEME_ID : '',
     adminToken: env.ADMIN_TOKEN || '',
   };
 }
@@ -38,7 +39,21 @@ export const speicherInstanz = () => (speicher ??= erstelleSpeicher());
 let daten = { zeit: 0, produkte: null };
 export async function shopDaten(config, fetchFn = globalThis.fetch) {
   if (daten.produkte && Date.now() - daten.zeit < 10 * 60 * 1000) return daten.produkte;
-  const r = await fetchFn(config.shopDatenUrl, { signal: AbortSignal.timeout(6000), headers: { Accept: 'application/json' } });
+  const headers = {}; // kein Accept: application/json – sonst liefert Shopify für Theme-Vorlagen 404
+  // Nur vorübergehend: Feed aus einer unveröffentlichten Theme-Kopie lesen (Shopify-Vorschau braucht ein Sitzungs-Cookie).
+  if (config.vorschauThemeId) {
+    const u = new URL(config.shopDatenUrl);
+    const jar = new Map();
+    let ziel = `${u.origin}/?preview_theme_id=${encodeURIComponent(config.vorschauThemeId)}`;
+    for (let i = 0; i < 4 && ziel; i += 1) { // Weiterleitungen von Hand folgen und Cookies sammeln
+      const v = await fetchFn(ziel, { redirect: 'manual', signal: AbortSignal.timeout(6000), headers: jar.size ? { Cookie: [...jar].map(([k, w]) => `${k}=${w}`).join('; ') } : {} });
+      for (const c of v.headers.getSetCookie?.() ?? []) { const [kv] = c.split(';'); const j = kv.indexOf('='); jar.set(kv.slice(0, j), kv.slice(j + 1)); }
+      const loc = v.status >= 300 && v.status < 400 ? v.headers.get('location') : null;
+      ziel = loc ? new URL(loc, ziel).toString() : null;
+    }
+    if (jar.size) headers.Cookie = [...jar].map(([k, w]) => `${k}=${w}`).join('; ');
+  }
+  const r = await fetchFn(config.shopDatenUrl, { signal: AbortSignal.timeout(6000), headers });
   if (!r.ok) throw new Error(`Shopdaten ${r.status}`);
   const text = await r.text();
   const json = JSON.parse(text.slice(text.indexOf('{')));
