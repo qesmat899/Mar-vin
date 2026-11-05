@@ -103,6 +103,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-11-05 [Code]** Duftberater: Merkmale je Duft aus Online-Recherche (Bewertungen der Originale), von Mar abgesegnet, als Metafelder `azizam_berater.*` (tendenz, stimmung, saison, anlass, nicht_buero) in Shopify eingetragen. Rohdaten mit Originalnamen nur intern, nicht im Repo. 21st.dev: Mar hinterlegt API-Schlüssel in der Cloud-Umgebung, danach neue Session.
 - **2026-11-04 [Code]** Gesamtcheck der Live-Seite (Desktop/Handy, Checkout, Rechtstexte). Live geändert: Discovery Set im Hauptmenü, Kontaktseite deutsch. Theme-Kopie „Check 04.11.“ mit den übrigen Korrekturen. Offen bei Mar: „Express 7,99 €“ und Name „Standard“ im Checkout (nicht im Versandprofil), Anschrift in der Kontakt-Richtlinie („Lilienweg 97084“), Versand-Richtlinie fehlt, Discovery-Bild.
 - **2026-11-04 [Code]** Discovery-Set freigeschaltet; Versandprofil: 4,95 € unter 20 €, sonst kostenlos, Express und Auslandszonen entfernt; Versandseite angepasst.
 - **2026-11-04 [Code]** 10-ml-Variante für alle 19 Düfte; Gutscheincode für Discovery-Käufer angelegt; Theme-Kopie mit Duft-Finder, Discovery-Auswahl, Vertrauensleiste, Logo/Favicon, ohne Ankündigungsleiste, neuem Haltung-Text.
@@ -112,7 +113,6 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 - **2026-11-03 [Code]** Auf Mars Wunsch alle 19 Produkte aktiviert und im Onlineshop-Kanal veröffentlicht; Shop bleibt passwortgeschützt, Live-Theme unverändert. Bestand steht auf 0 (Ausverkauft-Anzeige), bis Mar echte Stückzahlen nennt.
 - **2026-11-03 [Code]** Preise für alle 19 Düfte in Shopify gesetzt (D-003), Grundpreis €/100 ml läuft automatisch.
 - **2026-11-03 [Code]** Bilder Dunkel & edel (7 Düfte) hochgeladen; alle 19 Produkte haben Produktfoto und Stimmungsbild.
-- **2026-11-03 [Code]** Azizam-Namen für alle 19 Düfte (Mar) in Shopify (neue URLs mit Weiterleitung) und `duefte.csv`; 24 Bilder hochgeladen; Theme mit Kollektionsraster, Kacheln mit Bildwechsel und Produktseite (Noten, Intensität, Duftwelt, weitere Düfte).
 
 ### Verlauf (zusammengefasst)
 
