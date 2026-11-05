@@ -25,7 +25,8 @@ for (const [name, eingabe, soll] of FAELLE.slice(0, anzahl)) {
   const r = await berate({ eingabe, produkteRoh: roh, client, config, speicher, log: (o) => logs.push(o) });
   const fehler = r.status === 200 ? pruefe(soll, r.body.empfehlungen, r.body.hinweise) : [`HTTP ${r.status}`];
   if (r.body.quelle === 'claude') ki += 1;
-  if (!soll.kein_treffer || r.body.quelle === 'claude') kiErwartet += 1; // aussichtslose Fälle brauchen keinen Aufruf
+  // KI wird nur bei Freitext gefragt (KI_NUR_MIT_FREITEXT) und nicht bei aussichtslosen Angaben
+  if ((eingabe.freitext || !config.kiNurMitFreitext) && !soll.kein_treffer) kiErwartet += 1;
   if (!fehler.length) ok += 1;
   console.log(`${fehler.length ? '✗' : '✓'} ${name} [${r.body.quelle}] → ${(r.body.empfehlungen || []).map((e) => `${e.product_id} ${e.match_score}% (${e.ki_urteil ?? '–'})`).join(', ') || 'kein Treffer'}`);
   for (const f of fehler) console.log(`    ${f}`);

@@ -129,14 +129,70 @@ function Feinschliff({ antworten, setAntworten }) {
   );
 }
 
-function Laden() {
+const SCHRITTE_KI = [
+  { ab: 0, text: 'Deine Angaben lesen' },
+  { ab: 12, text: '19 Düfte abgleichen' },
+  { ab: 30, text: 'KI prüft die besten Kandidaten' },
+  { ab: 72, text: 'Begründung formulieren' },
+];
+const SCHRITTE_SCHNELL = [
+  { ab: 0, text: 'Deine Angaben lesen' },
+  { ab: 35, text: '19 Düfte abgleichen' },
+];
+
+// Fortschritt: läuft gleichmäßig auf ~92 % zu, solange der Server arbeitet, und springt bei der Antwort auf 100 %.
+// Die Schritte sind die echten Arbeitsschritte der Beratung; die Prozentzahl ist eine Schätzung nach Zeit.
+function Fortschritt({ ki, fertig }) {
+  const [p, setP] = useState(0);
+  useEffect(() => {
+    const start = performance.now();
+    const dauer = ki ? 7000 : 260; // Zeitkonstante: KI-Antwort meist 8–20 s, ohne KI sofort
+    const t = setInterval(() => {
+      const verstrichen = performance.now() - start;
+      setP((alt) => Math.max(alt, 92 * (1 - Math.exp(-verstrichen / dauer))));
+    }, 80);
+    return () => clearInterval(t);
+  }, [ki]);
+  const wert = fertig ? 100 : p;
+  const schritte = ki ? SCHRITTE_KI : SCHRITTE_SCHNELL;
+  const aktiv = fertig ? schritte.length : schritte.filter((x) => wert >= x.ab).length - 1;
   return (
-    <motion.div key="laden" className="tw-flex tw-min-h-[320px] tw-flex-col tw-items-center tw-justify-center tw-text-center"
-      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} role="status" aria-live="polite">
-      <motion.span className="tw-block tw-h-px tw-w-40 tw-bg-gradient-to-r tw-from-transparent tw-via-gold2 tw-to-transparent"
-        animate={{ scaleX: [0.2, 1, 0.2], opacity: [0.4, 1, 0.4] }} transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }} />
-      <p className="azb-gold-text tw-mt-6 tw-font-serif tw-text-[1.6rem] md:tw-text-[2rem]">Wir wählen deinen Duft aus …</p>
-      <p className="tw-mt-2 tw-text-[0.85rem] tw-text-grau">Wir gleichen Stimmung, Anlass, Intensität und Jahreszeit ab.</p>
+    <motion.div key="laden" className="tw-mx-auto tw-flex tw-min-h-[340px] tw-max-w-[560px] tw-flex-col tw-justify-center"
+      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+      <p className="azb-gold-text tw-text-center tw-font-serif tw-text-[1.6rem] md:tw-text-[2rem]">Wir wählen deinen Duft aus …</p>
+      <div className="tw-mt-8 tw-flex tw-items-center tw-gap-4">
+        <div className="tw-relative tw-h-[6px] tw-flex-1 tw-overflow-hidden tw-rounded-full tw-bg-creme/10"
+          role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(wert)} aria-label="Fortschritt der Beratung">
+          <motion.div className="tw-absolute tw-inset-y-0 tw-left-0 tw-rounded-full tw-bg-gradient-to-r tw-from-golddunkel tw-via-gold tw-to-gold2"
+            animate={{ width: `${wert}%` }} transition={{ duration: fertig ? 0.35 : 0.12, ease: 'linear' }} />
+          {!fertig && (
+            <motion.div className="tw-absolute tw-inset-y-0 tw-w-1/3 tw-bg-gradient-to-r tw-from-transparent tw-via-white/35 tw-to-transparent"
+              animate={{ x: ['-120%', '320%'] }} transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }} />
+          )}
+        </div>
+        <span className="tw-w-12 tw-text-right tw-text-[0.85rem] tw-tabular-nums tw-text-gold2">{Math.round(wert)} %</span>
+      </div>
+      <ol className="tw-mt-7 tw-list-none tw-space-y-3 tw-p-0" aria-live="polite">
+        {schritte.map((x, i) => {
+          const erledigt = i < aktiv;
+          const laeuft = i === aktiv;
+          return (
+            <motion.li key={x.text} className="tw-flex tw-items-center tw-gap-3 tw-text-[0.95rem]"
+              initial={{ opacity: 0, y: 6 }} animate={{ opacity: erledigt || laeuft ? 1 : 0.4, y: 0 }} transition={{ delay: i * 0.08, duration: 0.35 }}>
+              <span className={`tw-flex tw-h-5 tw-w-5 tw-shrink-0 tw-items-center tw-justify-center tw-rounded-full tw-border ${
+                erledigt ? 'tw-border-gold tw-bg-gold tw-text-nacht' : laeuft ? 'tw-border-gold2' : 'tw-border-creme/20'
+              }`}>
+                {erledigt ? <Haken /> : laeuft ? (
+                  <motion.span className="tw-block tw-h-1.5 tw-w-1.5 tw-rounded-full tw-bg-gold2"
+                    animate={{ opacity: [0.3, 1, 0.3] }} transition={{ duration: 1.1, repeat: Infinity }} />
+                ) : null}
+              </span>
+              <span className={erledigt ? 'tw-text-creme/70' : laeuft ? 'tw-text-creme' : 'tw-text-grau'}>{x.text}</span>
+            </motion.li>
+          );
+        })}
+      </ol>
+      {ki && !fertig && <p className="tw-mt-6 tw-text-center tw-text-[0.8rem] tw-text-grau">Die KI liest deine Worte mit – das dauert meist 10–20 Sekunden.</p>}
     </motion.div>
   );
 }
@@ -291,6 +347,7 @@ export default function Berater({ produkte, kicker, heading, discovery, api }) {
   const [antworten, setAntworten] = useState(LEER);
   const [ergebnis, setErgebnis] = useState(null);
   const [laedt, setLaedt] = useState(false);
+  const [lade, setLade] = useState({ ki: false, fertig: false });
   const anfrage = useRef(0);
 
   const frageRef = useRef(null);
@@ -308,10 +365,14 @@ export default function Berater({ produkte, kicker, heading, discovery, api }) {
   async function auswerten() {
     const eingabe = { ...antworten, saison, freitext: antworten.freitext.trim() };
     const nr = ++anfrage.current; // nur die letzte Anfrage zählt (Doppelklick, Zurück)
+    // Server/KI nur bei Freitext: Karten allein rechnet der Browser genauso gut – sofort und kostenlos.
+    const ki = Boolean(api && eingabe.freitext);
+    const start = performance.now();
+    setLade({ ki, fertig: false });
     setLaedt(true);
     setSchritt(SCHRITTE.length);
     let e = null;
-    if (api) {
+    if (ki) {
       try {
         const r = await fetch(api, {
           method: 'POST',
@@ -322,7 +383,12 @@ export default function Berater({ produkte, kicker, heading, discovery, api }) {
         if (r.ok) e = await r.json();
       } catch { e = null; }
     }
-    if (!e || !Array.isArray(e.empfehlungen)) e = berateLokal(eingabe, produkte, api ? 'server_nicht_erreichbar' : 'lokal');
+    if (!e || !Array.isArray(e.empfehlungen)) e = berateLokal(eingabe, produkte, ki ? 'server_nicht_erreichbar' : 'lokal');
+    const rest = Math.max(0, 900 - (performance.now() - start)); // kurze Anzeige auch bei Sofort-Ergebnis
+    await new Promise((ok) => setTimeout(ok, rest));
+    if (nr !== anfrage.current) return;
+    setLade({ ki, fertig: true });
+    await new Promise((ok) => setTimeout(ok, 450)); // 100 % kurz zeigen
     if (nr !== anfrage.current) return;
     setErgebnis(e);
     setLaedt(false);
@@ -410,7 +476,7 @@ export default function Berater({ produkte, kicker, heading, discovery, api }) {
                 </div>
               </motion.div>
             ) : laedt || !ergebnis ? (
-              <Laden key="laden" />
+              <Fortschritt key="laden" ki={lade.ki} fertig={lade.fertig} />
             ) : (
               <Ergebnis key="ergebnis" ergebnis={ergebnis} saison={saison} discovery={discovery} onNeu={neu} onZurueck={zurueckZumFeinschliff} />
             )}

@@ -29,7 +29,7 @@ mit nachvollziehbarem Match-%, Gründen und Hinweisen. Gibt es keinen passenden 
 5. **Gewichtete Bewertung** (`lib/matching.js`): Stimmung 35 · Anlass 15 · Präsenz 15 · Jahreszeit 15 · Richtung 10 ·
    gewünschte Noten 10. Gezählt werden nur beantwortete Kriterien. Deutliche Widersprüche (Gegensatz zur Stimmung,
    entgegengesetzte Richtung) kosten 10 Punkte. **Das Match-% entsteht nur hier**, nie aus der KI.
-6. **Claude** (ein Aufruf, `output_config.format` mit JSON-Schema) bekommt die besten ≤ 10 Kandidaten mit belegten Daten.
+6. **Claude** (nur bei Freitext, ein Aufruf, `output_config.format` mit JSON-Schema) bekommt die besten ≤ 6 Kandidaten mit belegten Daten.
    Claude liefert Vorlieben und Abneigungen aus dem Freitext (feste Werteliste) und je Kandidat ein Urteil
    (`passt`/`teilweise`/`passt_nicht`), Gründe, Attribute, Konflikte und eine Erklärung.
 7. **Validierung:** Unbekannte oder doppelte `product_id` werden verworfen. Attribute, die nicht in den Produktdaten
@@ -47,11 +47,13 @@ ohne KI (`quelle: "ohne_ki"`). Im Browser zeigt sich das nur daran, dass der Hin
   innerhalb von 7 Tagen kommen aus dem Cache (0 €). Gleichzeitige gleiche Anfragen lösen nur einen Aufruf aus.
 - Token und Kosten je Aufruf: `lib/kosten.js` (Listenpreise je Modell, vor Nutzung prüfen). Monatsübersicht:
   `GET /api/kosten?monat=2026-11` mit `Authorization: Bearer <ADMIN_TOKEN>`.
-- Größenordnung mit Claude Sonnet 5.5 (2 $/10 $ je 1 Mio. Token): etwa 3.000 Eingabe- und 1.000–1.500
-  Ausgabe-Token, also rund 0,02 $ je Beratung. Das ist eine **Schätzung**; die echten Werte stehen nach dem ersten
-  Live-Test in der Kostenübersicht.
+- **Claude nur bei Freitext** (`KI_NUR_MIT_FREITEXT`, Standard an): Wer nur Karten wählt, bekommt sofort das
+  berechnete Ergebnis aus dem Browser – ohne Server, ohne Kosten (36/36 Profile auch ohne KI richtig).
+- Gemessen am 05.11. (Live-Test, 36 Profile, KI bei 11 mit Freitext, `effort: low`, höchstens 6 Kandidaten):
+  Claude Haiku 5.5 (Standard) **0,0012 $ je KI-Beratung**, 36/36 richtig; Claude Sonnet 5.5 0,021 $, 36/36 richtig.
+  Bei 100 KI-Beratungen/Tag (Tageslimit) höchstens ca. 0,12 $ am Tag mit Haiku.
 - Schutz: CORS nur für die Shop-Domains · nur `POST` · Eingabe höchstens 4 KB · 20 Beratungen je IP und Stunde
-  (IP nur gehasht) · höchstens 300 KI-Beratungen pro Tag (danach ohne KI) · Zeitlimit 20 s je Versuch, das SDK
+  (IP nur gehasht) · höchstens 100 KI-Beratungen pro Tag (danach ohne KI) · Zeitlimit 20 s je Versuch, das SDK
   wiederholt 429/5xx/Verbindungsfehler bis zu 2-mal.
 - Ohne `KV_REST_API_URL`/`KV_REST_API_TOKEN` liegen Cache, Rate-Limit und Kosten nur im Arbeitsspeicher einer
   Server-Instanz und gehen bei Neustart verloren. Für eine verlässliche Monatsübersicht Upstash Redis (Vercel

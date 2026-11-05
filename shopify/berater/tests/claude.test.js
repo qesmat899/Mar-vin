@@ -65,7 +65,7 @@ test('Nur Kandidaten mit belegten Daten gehen an Claude (keine Bilder/URLs, Unbe
   const c = mockClient(allePassen);
   await lauf(DUNKEL, c);
   const kand = JSON.parse(c.aufrufe[0].messages[0].content.match(/<kandidaten>(.*)<\/kandidaten>/s)[1]);
-  assert.ok(kand.length <= 10);
+  assert.ok(kand.length <= 6);
   for (const k of kand) {
     assert.ok(!('url' in k) && !('bild' in k));
     assert.ok(k.unbekannt.includes('haltbarkeit') && k.unbekannt.includes('sillage'));
@@ -220,4 +220,16 @@ test('Aussichtslose Angaben (kein Duft ≥ 45 %) lösen keinen API-Aufruf aus', 
   const r = await lauf({}, c);
   assert.equal(c.aufrufe.length, 0);
   assert.equal(r.body.kein_treffer, true);
+});
+
+test('Kosten sparen: ohne Freitext kein API-Aufruf, wenn kiNurMitFreitext aktiv ist', async () => {
+  const c = mockClient(allePassen);
+  const r = await lauf(DUNKEL, c, { kiNurMitFreitext: true });
+  assert.equal(c.aufrufe.length, 0);
+  assert.equal(r.body.quelle, 'ohne_ki');
+  assert.equal(r.body.grund, 'ohne_freitext');
+  assert.ok(r.body.empfehlungen.length > 0);
+  const mit = await lauf({ ...DUNKEL, freitext: 'eher wie ein Kaminabend' }, c, { kiNurMitFreitext: true });
+  assert.equal(c.aufrufe.length, 1);
+  assert.equal(mit.body.quelle, 'claude');
 });

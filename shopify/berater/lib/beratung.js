@@ -12,7 +12,7 @@ import { kostenUsd, bucheKosten } from './kosten.js';
 import { ohneKi, ausgabe } from './ergebnis.js';
 
 export const CACHE_SEKUNDEN = 60 * 60 * 24 * 7;
-const MAX_KI_KANDIDATEN = 10;
+const MAX_KI_KANDIDATEN = 6;
 const MIN_FUER_KI = 45; // darunter kann kein Duft das Qualitäts-Gate erreichen
 const MIN_TEILWEISE = 70; // „teilweise passend“ nur bei hoher berechneter Übereinstimmung
 
@@ -50,9 +50,10 @@ export async function berate({ eingabe, produkteRoh, client, config, speicher, l
     const vorab = matche(profile, angaben);
     let ergebnis;
     // Claude nur fragen, wenn überhaupt ein Duft in Reichweite ist (spart Kosten bei aussichtslosen Angaben).
-    const kiErlaubt = config.kiAktiv && (vorab.kandidaten[0]?.match ?? 0) >= MIN_FUER_KI && (await unterTageslimit(speicher, config));
+    const kiSinnvoll = !(config.kiNurMitFreitext && !angaben.freitext);
+    const kiErlaubt = config.kiAktiv && kiSinnvoll && (vorab.kandidaten[0]?.match ?? 0) >= MIN_FUER_KI && (await unterTageslimit(speicher, config));
     if (kiErlaubt) ergebnis = await mitClaude({ angaben, profile, vorab, client, config, speicher, log });
-    if (!ergebnis) ergebnis = ohneKi(angaben, profile, vorab, config.kiAktiv ? 'ki_nicht_verfuegbar' : 'ki_aus');
+    if (!ergebnis) ergebnis = ohneKi(angaben, profile, vorab, !config.kiAktiv ? 'ki_aus' : !kiSinnvoll ? 'ohne_freitext' : 'ki_nicht_verfuegbar');
 
     if (ergebnis.quelle === 'claude') await sicher(() => speicher.set(schluessel, JSON.stringify(ergebnis), CACHE_SEKUNDEN));
     if (ergebnis.quelle === 'ohne_ki') await sicher(() => bucheKosten(speicher, { model: config.model, tokens: null, usd: 0, art: 'ohne_ki' }));
@@ -69,7 +70,7 @@ async function unterTageslimit(speicher, config) {
 
 async function mitClaude({ angaben, profile, vorab, client, config, speicher, log }) {
   // Kandidaten: die besten der Vorbewertung plus Düfte mit ausdrücklich gewünschten Noten.
-  const ids = new Set(vorab.kandidaten.slice(0, 8).map((k) => k.id));
+  const ids = new Set(vorab.kandidaten.slice(0, 5).map((k) => k.id));
   for (const k of vorab.kandidaten) if (ids.size < MAX_KI_KANDIDATEN && angaben.mag.some((g) => profile.find((p) => p.id === k.id)?.gruppen.includes(g))) ids.add(k.id);
   const kiProfile = profile.filter((p) => ids.has(p.id));
 
@@ -106,6 +107,13 @@ async function mitClaude({ angaben, profile, vorab, client, config, speicher, lo
     if (!b || b.urteil === 'passt_nicht') continue; // nur von der KI geprüfte Düfte; KI-Veto gilt
     if (!empfehlbar(k, b.urteil === 'teilweise' ? MIN_TEILWEISE : undefined)) continue;
     empfehlungen.push(ausgabe(profile.find((p) => p.id === k.id), k, b));
+  }
+  // Freie Plätze: Düfte außerhalb der geprüften Kandidaten, die die Berechnung (mit den von Claude erkannten
+  // Abneigungen) bestehen – z. B. wenn eine neue Abneigung alle Kandidaten ausgeschlossen hat.
+  for (const k of neu.kandidaten) {
+    if (empfehlungen.length >= MAX_EMPFEHLUNGEN) break;
+    if (urteil.has(k.id) || !empfehlbar(k)) continue;
+    empfehlungen.push(ausgabe(profile.find((p) => p.id === k.id), k, null));
   }
   empfehlungen.sort((x, y) => y.match_score - x.match_score || (x.ki_urteil === 'passt' ? -1 : 1));
 
