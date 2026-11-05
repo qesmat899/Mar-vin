@@ -78,5 +78,5 @@ test('Status verrät keine Schlüssel', async () => {
   assert.equal(r.code, 200);
   assert.equal(r.body.ki_schluessel_gesetzt, false);
   assert.equal(r.body.produkte_geladen, 19);
-  assert.equal(r.body.modell, 'claude-sonnet-5-5');
+  assert.equal(r.body.modell, 'claude-haiku-5-5');
 });

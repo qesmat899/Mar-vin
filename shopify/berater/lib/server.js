@@ -5,16 +5,19 @@ import Anthropic from '@anthropic-ai/sdk';
 import { erstelleSpeicher } from './speicher.js';
 
 export function konfiguration(env = process.env) {
-  const model = (env.ANTHROPIC_MODEL || 'claude-sonnet-5-5').trim();
+  // Standard Haiku 5.5: im Live-Test (05.11.) gleiche Trefferquote wie Sonnet 5.5 bei ca. 1/20 der Kosten.
+  const model = (env.ANTHROPIC_MODEL || 'claude-haiku-5-5').trim();
   return {
     model,
-    effort: ['low', 'medium', 'high'].includes(env.ANTHROPIC_EFFORT) ? env.ANTHROPIC_EFFORT : 'medium',
+    effort: ['low', 'medium', 'high'].includes(env.ANTHROPIC_EFFORT) ? env.ANTHROPIC_EFFORT : 'low',
+    // Kosten sparen: Claude nur, wenn Freitext da ist (Karten allein löst die Engine ohne KI). „aus“ = immer Claude.
+    kiNurMitFreitext: env.KI_NUR_MIT_FREITEXT !== 'aus',
     // Serverseitiger Ersatz bei einer Ablehnung durch Sicherheitsfilter (nur Claude Sonnet 5.5 über die Claude API).
     fallback: env.ANTHROPIC_FALLBACK !== 'aus' && model === 'claude-sonnet-5-5',
     kiAktiv: Boolean(env.ANTHROPIC_API_KEY),
     timeoutMs: Number(env.ANTHROPIC_TIMEOUT_MS) > 0 ? Number(env.ANTHROPIC_TIMEOUT_MS) : 20000,
     maxRetries: 2,
-    maxKiProTag: Number(env.MAX_KI_BERATUNGEN_PRO_TAG) > 0 ? Number(env.MAX_KI_BERATUNGEN_PRO_TAG) : 300,
+    maxKiProTag: Number(env.MAX_KI_BERATUNGEN_PRO_TAG) > 0 ? Number(env.MAX_KI_BERATUNGEN_PRO_TAG) : 100,
     maxProIpProStunde: Number(env.MAX_BERATUNGEN_PRO_IP_STUNDE) > 0 ? Number(env.MAX_BERATUNGEN_PRO_IP_STUNDE) : 20,
     erlaubteHerkunft: (env.ERLAUBTE_HERKUNFT || 'https://azizamfragrances.com,https://www.azizamfragrances.com,https://pbznmb-fy.myshopify.com')
       .split(',').map((s) => s.trim()).filter(Boolean),

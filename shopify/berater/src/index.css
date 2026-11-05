@@ -1,6 +1,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Startwerte für Tailwind-Farbverläufe (sonst in der weggelassenen Basisschicht), nur im Berater. */
+.azb, .azb *, .azb ::before, .azb ::after { --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; }
+
 /* Kleiner Reset nur im Berater, damit Theme-Stile (Buttons, Überschriften) nicht durchschlagen. */
 .azb { background: #0b0a09; color: #efe6d6; font-family: var(--az-sans, system-ui, sans-serif); -webkit-font-smoothing: antialiased; }
 .azb *, .azb *::before, .azb *::after { box-sizing: border-box; border: 0 solid rgba(239, 230, 214, .1); }
