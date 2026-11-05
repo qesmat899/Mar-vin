@@ -70,7 +70,7 @@
 
 ## Offene Fragen
 
-- KI-Duftberater: Claude-API-Kosten (gemessen ca. 0,031 $ je Beratung mit Sonnet 5.5, Tageslimit 300 = max. ca. 9 $/Tag) und Vercel-Hosting brauchen Mars Zustimmung; API wird separat von Pro bezahlt. Kopf-/Herz-/Basisnote, Haltbarkeit, Sillage sind für alle Düfte UNKNOWN (Vorlage: `npm run luecken`).
+- KI-Duftberater: Claude-API-Kosten: KI nur bei Freitext, Haiku 5.5, gemessen 0,0012 $ je KI-Beratung (Tageslimit 100 = max. ca. 0,12 $/Tag) und Vercel-Hosting brauchen Mars Zustimmung; API wird separat von Pro bezahlt. Kopf-/Herz-/Basisnote, Haltbarkeit, Sillage sind für alle Düfte UNKNOWN (Vorlage: `npm run luecken`).
 - 21st.dev: Der hinterlegte Schlüssel wird nicht als Konto erkannt (Antwort „signed-out“, nur 2 freie Abrufe/Tag; Hauptdomain `21st.dev` ohne Schlüssel, nur `api.21st.dev` bekommt ihn). Mar prüft Schlüssel bzw. Abo; der Duftberater braucht 21st.dev nicht.
 - Weitere Bundles (Signature, Tag & Nacht) offen; Trio verworfen, Reiseflakon 10 ml umgesetzt (`D-005`). Stückkosten der Proben UNKNOWN.
 - Theme-Änderungen laufen über Kopien, die Mar veröffentlicht (keine GitHub-Verbindung, Mar 04.11.). Live ist „Azizam – KI-Duftberater 05.11. (Claude)“ (Mar, 05.11.); Berater läuft dort noch ohne KI, bis die API-Adresse eingetragen ist. Server: Vercel-Projekt `mar-vin` (Team MARN, Root `shopify/berater`), https://mar-vin.vercel.app, mit KI live getestet.
@@ -95,7 +95,7 @@
 | Mar | PR #6 prüfen und über das Merge nach `Azizam` entscheiden (offene Punkte in der PR-Beschreibung) | offen |
 | Mar | Flakon (30 ml), Etikett und Verpackung selbst klären — ohne Claude, bis Mar es wieder einbringt | offen |
 | Code | Struktur für Marketing-/Wachstums-Skills im Repo vorbereiten | offen |
-| Mar | KI-Duftberater: im Theme-Editor (Section „Azizam Duftberater“) Feld „Berater-API (KI)“ = `https://mar-vin.vercel.app/api/beratung` setzen; danach in Vercel `SHOP_VORSCHAU_THEME_ID` löschen + Redeploy; API-Schlüssel erneuern (stand im Chat) | offen |
+| Mar | KI-Duftberater: PR #8 mergen (Vercel baut neu), Theme-Kopie „Azizam – Fortschritt 05.11. (Claude)“ veröffentlichen; in Vercel `SHOP_VORSCHAU_THEME_ID` löschen; API-Schlüssel erneuern (stand im Chat) | offen |
 | Mar | Bestandsaufnahme ergänzen: Kaufdaten/Belege für Imagination und Les Sables Roses, Chargen Velvet Vanilla G-17 und Les Sables Roses G-19 (Termin 16.10. 18:30), Azizam-Namen (Aufgaben auch in Todoist, Projekt „Azizam“); danach Komponenten (Flakons, Proben, Verpackung) — Liste in `playbook/azizam/commercial/README.md` | in Arbeit |
 | Mar | Dokumente der Fabrik je Duft sammeln und ins Repo/Drive legen; danach jeden Duft im CPNP-Portal eintragen | offen |
 | Mar | `CLAUDE-MASTER.md` ins Chat-Projekt „Azizam“ hochladen; globale Anweisung und Memory aus `playbook/templates/claude-anweisungen.md` in claude.ai setzen | offen |
