@@ -93,6 +93,7 @@
 | Mar | PR #6 prüfen und über das Merge nach `Azizam` entscheiden (offene Punkte in der PR-Beschreibung) | offen |
 | Mar | Flakon (30 ml), Etikett und Verpackung selbst klären — ohne Claude, bis Mar es wieder einbringt | offen |
 | Code | Struktur für Marketing-/Wachstums-Skills im Repo vorbereiten | offen |
+| Code | Duftberater bauen (neue Session, 21st.dev-Schlüssel liegt als Netzwerk-Secret für `*.21st.dev`): erst Zugriff testen (`curl https://21st.dev/r/shadcn/button`), dann React-Insel nach Plan vom 05.11. (Vite + React + Tailwind gekapselt + Motion → Theme-Assets `azizam-berater.js/.css`, Section `azizam-berater.liquid`, Daten aus `azizam.*` und `azizam_berater.*`, Jahreszeit automatisch, Schwarz/Champagnergold), als Theme-Kopie | offen |
 | Mar | Bestandsaufnahme ergänzen: Kaufdaten/Belege für Imagination und Les Sables Roses, Chargen Velvet Vanilla G-17 und Les Sables Roses G-19 (Termin 16.10. 18:30), Azizam-Namen (Aufgaben auch in Todoist, Projekt „Azizam“); danach Komponenten (Flakons, Proben, Verpackung) — Liste in `playbook/azizam/commercial/README.md` | in Arbeit |
 | Mar | Dokumente der Fabrik je Duft sammeln und ins Repo/Drive legen; danach jeden Duft im CPNP-Portal eintragen | offen |
 | Mar | `CLAUDE-MASTER.md` ins Chat-Projekt „Azizam“ hochladen; globale Anweisung und Memory aus `playbook/templates/claude-anweisungen.md` in claude.ai setzen | offen |
