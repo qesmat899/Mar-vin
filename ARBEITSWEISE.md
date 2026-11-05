@@ -36,7 +36,7 @@ Faustregel: **Am Ende soll eine Entscheidung stehen → Chat. Am Ende soll eine 
 
 ## Gerade dran (Stand 05.11.2026)
 
-- **Duftberater:** Theme-Kopie „Azizam – Duftberater 05.11. (Claude)“ prüfen und veröffentlichen → **Mar** (Shopify-Admin)
+- **KI-Duftberater:** API-Schlüssel + Vercel freigeben, Theme-Kopie „KI-Duftberater 05.11.“ prüfen und veröffentlichen → **Mar**; einrichten und live testen → **Code**
 - **Shop-Livegang:** Entwurfs-Theme und 19 Produkt-Entwürfe stehen in Shopify → Namen je Duft (**Chat**), Bilder (**Code** mit Pixelcut), Preise (**Chat**), Shopify-Einstellungen und Freigabe (**Mar** im Shopify-Admin), Rechtstexte zum Schluss
 - Flakon + Verpackung finden → **Chat**
 - `CLAUDE-MASTER.md` ins Projekt „Azizam“ hochladen, globale Anweisung + Memory aus `playbook/templates/claude-anweisungen.md` setzen → **Mar** (claude.ai)

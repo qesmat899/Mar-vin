@@ -70,9 +70,10 @@
 
 ## Offene Fragen
 
+- KI-Duftberater: Claude-API-Kosten (geschätzt ca. 0,02 $ je Beratung mit Sonnet 5.5, Tageslimit 300) und Vercel-Hosting brauchen Mars Zustimmung; API wird separat von Pro bezahlt. Kopf-/Herz-/Basisnote, Haltbarkeit, Sillage sind für alle Düfte UNKNOWN (Vorlage: `npm run luecken`).
 - 21st.dev: Der hinterlegte Schlüssel wird nicht als Konto erkannt (Antwort „signed-out“, nur 2 freie Abrufe/Tag; Hauptdomain `21st.dev` ohne Schlüssel, nur `api.21st.dev` bekommt ihn). Mar prüft Schlüssel bzw. Abo; der Duftberater braucht 21st.dev nicht.
 - Weitere Bundles (Signature, Tag & Nacht) offen; Trio verworfen, Reiseflakon 10 ml umgesetzt (`D-005`). Stückkosten der Proben UNKNOWN.
-- Theme-Änderungen laufen über Kopien, die Mar veröffentlicht (keine GitHub-Verbindung, Mar 04.11.). Live ist „Azizam – Check 04.11. (Claude)“; „Azizam – Duftberater 05.11. (Claude)“ (Kopie davon + Duftberater) wartet auf Veröffentlichung durch Mar.
+- Theme-Änderungen laufen über Kopien, die Mar veröffentlicht (keine GitHub-Verbindung, Mar 04.11.). Live ist „Azizam – Duftberater 05.11. (Claude)“ (Mar, 05.11.); „Azizam – KI-Duftberater 05.11. (Claude)“ (Matching-Engine, Feinschliff-Schritt, Produkt-Feed) wartet auf Veröffentlichung durch Mar.
 - GPSR: Produktseiten brauchen Name, Post- und E-Mail-Adresse der verantwortlichen Person; bisher steht die Anschrift laut Entscheidung nur im Impressum. Mar entscheidet (Feld im Theme-Baustein „Azizam Produktinfos“).
 - Rückgaberegel für den Neustart (30 Tage bei ≥ 80 % Füllung wie früher?) offen; erst danach den Rückgabe-Absatz auf der Startseite einschalten.
 - Welcher Flakon wird es (in 30 und 50 ml)? (Hängt davon ab: Verpackung, Etikett, Shop-Neustart)
@@ -94,7 +95,7 @@
 | Mar | PR #6 prüfen und über das Merge nach `Azizam` entscheiden (offene Punkte in der PR-Beschreibung) | offen |
 | Mar | Flakon (30 ml), Etikett und Verpackung selbst klären — ohne Claude, bis Mar es wieder einbringt | offen |
 | Code | Struktur für Marketing-/Wachstums-Skills im Repo vorbereiten | offen |
-| Mar | Theme-Kopie „Azizam – Duftberater 05.11. (Claude)“ in der Vorschau prüfen (Startseite, unter der Kollektion) und veröffentlichen; alter Duft-Finder ist dort ausgeblendet, im Theme-Editor wieder einschaltbar | offen |
+| Mar | KI-Duftberater freischalten: (1) Anthropic-API-Schlüssel anlegen, (2) Claude Code anlegen lassen: Vercel-Projekt `azizam-berater` (Team MARN), Schlüssel trägt Mar dort selbst ein, (3) Theme-Kopie „Azizam – KI-Duftberater 05.11. (Claude)“ prüfen und veröffentlichen, (4) API-Adresse in der Section eintragen. Anleitung: `shopify/berater/README.md` | offen |
 | Mar | Bestandsaufnahme ergänzen: Kaufdaten/Belege für Imagination und Les Sables Roses, Chargen Velvet Vanilla G-17 und Les Sables Roses G-19 (Termin 16.10. 18:30), Azizam-Namen (Aufgaben auch in Todoist, Projekt „Azizam“); danach Komponenten (Flakons, Proben, Verpackung) — Liste in `playbook/azizam/commercial/README.md` | in Arbeit |
 | Mar | Dokumente der Fabrik je Duft sammeln und ins Repo/Drive legen; danach jeden Duft im CPNP-Portal eintragen | offen |
 | Mar | `CLAUDE-MASTER.md` ins Chat-Projekt „Azizam“ hochladen; globale Anweisung und Memory aus `playbook/templates/claude-anweisungen.md` in claude.ai setzen | offen |
@@ -105,6 +106,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-11-05 [Code]** KI-Duftberater gebaut: deterministische Matching-Engine (Match-% nachvollziehbar, harte Ausschlüsse, Qualitäts-Gate, ehrlich „kein Treffer“), ein Claude-Aufruf je Beratung (Sonnet 5.5, JSON-Schema, serverseitige Validierung), Server für Vercel (`shopify/berater/api/`), Kostenprotokoll, 36 Kundenprofile + 29 weitere Tests grün. Ohne API-Schlüssel noch nicht live mit KI getestet. Neue Theme-Kopie „KI-Duftberater 05.11.“, nichts veröffentlicht.
 - **2026-11-05 [Code]** Duftberater gebaut: React-Insel (Vite, React, Tailwind gekapselt, Motion), 4 Auswahlkarten-Fragen, Jahreszeit automatisch, Ergebnis mit Gründen + 2 Alternativen; Quelle `shopify/berater/`, Section `azizam-berater.liquid`. In neuer Theme-Kopie „Azizam – Duftberater 05.11. (Claude)“ eingespielt und in der Vorschau getestet (Desktop/Handy), nichts veröffentlicht.
 - **2026-11-05 [Code]** Duftberater: Merkmale je Duft aus Online-Recherche (Bewertungen der Originale), von Mar abgesegnet, als Metafelder `azizam_berater.*` (tendenz, stimmung, saison, anlass, nicht_buero) in Shopify eingetragen. Rohdaten mit Originalnamen nur intern, nicht im Repo. 21st.dev: Mar hinterlegt API-Schlüssel in der Cloud-Umgebung, danach neue Session.
 - **2026-11-04 [Code]** Gesamtcheck der Live-Seite (Desktop/Handy, Checkout, Rechtstexte). Live geändert: Discovery Set im Hauptmenü, Kontaktseite deutsch. Theme-Kopie „Check 04.11.“ mit den übrigen Korrekturen. Offen bei Mar: „Express 7,99 €“ und Name „Standard“ im Checkout (nicht im Versandprofil), Anschrift in der Kontakt-Richtlinie („Lilienweg 97084“), Versand-Richtlinie fehlt, Discovery-Bild.
@@ -114,15 +116,13 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 - **2026-11-04 [Code]** Hero-Video auf Handys repariert (eigene 720×1280-Datei, robustere Wiedergabe) im unveröffentlichten Theme „Azizam – Video-Fix (Claude)“; Mar muss es veröffentlichen. Interne Duftreferenz (Azizam-Name → Original) als PDF an Mar übergeben, bewusst nicht im öffentlichen Repo.
 - **2026-11-04 [Code]** Rechtsseiten angelegt (Impressum, AGB, Widerrufsbelehrung ohne Versiegelungs-Ausschluss, Versand: DHL, 4,95 €, frei ab 60 €, 2–4 Werktage, nur DE), im Footer verlinkt; Bestand 10 je Duft und Größe. Offen bei Mar: Versandprofil in Shopify angleichen, Richtlinienfelder füllen, Datenschutz auf Deutsch, Steuern aus, PayPal/Klarna, Haltung-Text („selbst her“) und Ehrlich-Abschnitt im Theme-Editor.
 - **2026-11-03 [Code]** Auf Mars Wunsch alle 19 Produkte aktiviert und im Onlineshop-Kanal veröffentlicht; Shop bleibt passwortgeschützt, Live-Theme unverändert. Bestand steht auf 0 (Ausverkauft-Anzeige), bis Mar echte Stückzahlen nennt.
-- **2026-11-03 [Code]** Preise für alle 19 Düfte in Shopify gesetzt (D-003), Grundpreis €/100 ml läuft automatisch.
 
 ### Verlauf (zusammengefasst)
 
-- 2026-10-04: `CLAUDE-MASTER.md` angelegt (Wissensbasis aus Mars Recherche-Texten, über `CLAUDE.md` immer geladen).
+- 2026-10-02/04: SYNC.md im Chat angelegt; `CLAUDE-MASTER.md` (Wissensbasis, über `CLAUDE.md` immer geladen) angelegt.
 - 2026-10-03: `ARBEITSWEISE.md` (Werkzeug-Kompass) angelegt; wird beim Sessionstart mitgeladen, Claude Code erinnert Mar aktiv daran.
 - 2026-10-03: Playbook-Kapitel 01, 03, 04, 06, 90-Tage-Plan, Briefing, Nächste Schritte und README bereinigt: 100 ml raus, Preise als `[Preis offen]`, Zahlen auf Kleinunternehmer/Flakon-Annahme; Kapitel 05 als Ganzes als veraltet markiert.
 - 2026-10-03: Mars Klärungen eingearbeitet (Kleinunternehmer, kein Verkauf, CPNP offen, 30 + 50 ml, 100 ml später); Privatdaten aus den Dateien entfernt.
-- 2026-10-02: SYNC.md im Chat angelegt und ins Repo gelegt.
 
 ---
 

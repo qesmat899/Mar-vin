@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "functions": {
+    "api/beratung.js": { "maxDuration": 60 },
+    "api/kosten.js": { "maxDuration": 10 },
+    "api/status.js": { "maxDuration": 10 }
+  },
+  "headers": [
+    { "source": "/api/(.*)", "headers": [{ "key": "X-Content-Type-Options", "value": "nosniff" }] }
+  ]
+}

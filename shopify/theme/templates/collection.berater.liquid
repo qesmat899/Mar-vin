@@ -1,0 +1,15 @@
+{%- layout none -%}
+{%- comment -%}
+  Produktdaten-Feed für das Duftberater-Backend: /collections/all?view=berater
+  Nur öffentliche Shop-Daten (dasselbe, was auf den Produktseiten steht). Keine Zugangsdaten nötig.
+{%- endcomment -%}
+{"stand": {{ 'now' | date: '%Y-%m-%dT%H:%M:%S%z' | json }}, "produkte": [
+{%- assign erster = true -%}
+{%- paginate collection.products by 100 -%}
+{%- for produkt in collection.products -%}
+  {%- if produkt.type == 'Probenset' or produkt.metafields.azizam_berater.anlass.value == blank -%}{%- continue -%}{%- endif -%}
+  {%- unless erster -%},{%- endunless -%}{%- assign erster = false -%}
+  {%- render 'azizam-berater-produkt', produkt: produkt -%}
+{%- endfor -%}
+{%- endpaginate -%}
+]}

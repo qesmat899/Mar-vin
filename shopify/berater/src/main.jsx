@@ -18,7 +18,7 @@ function mount(el) {
   const root = createRoot(ziel);
   roots.set(el, root);
   root.render(
-    <Berater produkte={produkte} kicker={el.dataset.kicker} heading={el.dataset.heading} discovery={el.dataset.discovery} />,
+    <Berater produkte={produkte} kicker={el.dataset.kicker} heading={el.dataset.heading} discovery={el.dataset.discovery} api={el.dataset.api || ''} />,
   );
 }
 

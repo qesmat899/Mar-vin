@@ -11,3 +11,6 @@ docs/_playbook.html
 
 # Duftberater: Abhängigkeiten (npm install in shopify/berater)
 shopify/berater/node_modules/
+shopify/berater/.env
+shopify/berater/.env.local
+shopify/berater/.vercel/

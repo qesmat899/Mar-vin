@@ -2,14 +2,17 @@
   "name": "azizam-berater",
   "private": true,
   "version": "1.0.0",
-  "description": "Duftberater als React-Insel fürs Shopify-Theme. Build schreibt nach ../theme/assets/azizam-berater.js/.css",
+  "description": "Azizam Duftberater: React-Insel fürs Shopify-Theme (Build → ../theme/assets/azizam-berater.*) und Server mit Claude API (api/, Vercel)",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "test": "node --test src/logik.test.js"
+    "test": "node --test src/logik.test.js tests/*.test.js",
+    "test:live": "node scripts/live-test.mjs",
+    "luecken": "node scripts/profil-luecken.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^1.1.0",
     "motion": "^11.18.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
@@ -20,5 +23,8 @@
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
     "vite": "^5.4.11"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

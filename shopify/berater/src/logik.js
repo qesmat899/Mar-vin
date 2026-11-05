@@ -1,7 +1,7 @@
-// Duftberater – reine Logik ohne React (testbar mit `npm test`).
-// Daten kommen aus den Produkt-Metafeldern azizam.* und azizam_berater.* (siehe Section azizam-berater.liquid).
-
-export const JAHRESZEITEN = ['Frühling', 'Sommer', 'Herbst', 'Winter'];
+// Duftberater – Auswahloptionen der Oberfläche und automatische Jahreszeit.
+// Die Bewertung selbst steckt in ../lib (gemeinsam mit dem Server).
+export { JAHRESZEITEN, MAX_STIMMUNGEN, MAX_FREITEXT } from '../lib/matching.js';
+import { NOTEN_GRUPPEN } from '../lib/lexikon.js';
 
 // Meteorologische Jahreszeiten (Deutschland): Mär–Mai, Jun–Aug, Sep–Nov, Dez–Feb.
 export function jahreszeit(datum = new Date()) {
@@ -30,12 +30,11 @@ export const STIMMUNGEN = [
   { id: 'geheimnisvoll', label: 'Geheimnisvoll', sub: 'dunkel · rauchig · leise' },
   { id: 'kraftvoll', label: 'Kraftvoll', sub: 'präsent · markant · bleibt' },
 ];
-export const MAX_STIMMUNGEN = 2;
 
 export const PRAESENZ = [
-  { id: 'leise', label: 'Hautnah', sub: 'Nur wer nah ist', ziel: 1.5 },
-  { id: 'mittel', label: 'Spürbar', sub: 'Man bemerkt dich', ziel: 3 },
-  { id: 'laut', label: 'Unübersehbar', sub: 'Man erinnert sich', ziel: 4.5 },
+  { id: 'leise', label: 'Hautnah', sub: 'Nur wer nah ist' },
+  { id: 'mittel', label: 'Spürbar', sub: 'Man bemerkt dich' },
+  { id: 'laut', label: 'Unübersehbar', sub: 'Man erinnert sich' },
 ];
 
 export const RICHTUNG = [
@@ -44,55 +43,9 @@ export const RICHTUNG = [
   { id: 'egal', label: 'Ganz egal', sub: 'Hauptsache, er passt' },
 ];
 
-const TENDENZ = {
-  feminin: { 'unisex-feminin': 2, unisex: 1, 'unisex-maskulin': -0.5, maskulin: -2, feminin: 2.5 },
-  maskulin: { 'unisex-maskulin': 2, unisex: 1, 'unisex-feminin': -0.5, feminin: -2, maskulin: 2.5 },
-  egal: { unisex: 0.5 },
-};
+export const ABNEIGUNGEN = Object.entries(NOTEN_GRUPPEN).map(([id, g]) => ({ id, label: g.label }));
 
-const liste = (v) => (Array.isArray(v) ? v : []);
-
-// Bewertet einen Duft gegen die Antworten. Gibt Punktzahl und Gründe (für die Anzeige) zurück.
-export function bewerte(p, a) {
-  let s = 0;
-  const gruende = [];
-  const anl = liste(p.anlass);
-  const saison = liste(p.saison);
-  const stimmung = liste(p.stimmung);
-  const i = Number(p.intensitaet) || 3;
-
-  if (a.anlass) {
-    if (anl.includes(a.anlass)) { s += 4; gruende.push(ANLAESSE.find((x) => x.id === a.anlass)?.label || a.anlass); }
-    if (a.anlass === 'Abend' && /Abend/.test(p.tageszeit || '')) s += 1;
-    if (a.anlass === 'Büro') {
-      if (p.nicht_buero) s -= 6;
-      else if (i >= 4) s -= 2;
-    }
-  }
-
-  for (const st of liste(a.stimmung)) {
-    if (stimmung.includes(st)) { s += 3; gruende.push(STIMMUNGEN.find((x) => x.id === st)?.label || st); }
-  }
-
-  if (a.praesenz) {
-    const ziel = PRAESENZ.find((x) => x.id === a.praesenz)?.ziel ?? 3;
-    s += 2.5 - Math.abs(i - ziel) * 1.2;
-  }
-
-  if (a.saison) {
-    if (saison.includes(a.saison)) { s += 2.5; gruende.push(`passt zum ${a.saison}`); }
-    else s -= 1.5;
-  }
-
-  if (a.richtung) s += TENDENZ[a.richtung]?.[p.tendenz] ?? 0;
-
-  return { punkte: Math.round(s * 100) / 100, gruende };
-}
-
-// Sortiert alle Düfte; bei Gleichstand gewinnt die Reihenfolge im Shop (stabil).
-export function empfehlung(produkte, antworten, anzahl = 3) {
-  return produkte
-    .map((p, idx) => ({ p, idx, ...bewerte(p, antworten) }))
-    .sort((x, y) => y.punkte - x.punkte || x.idx - y.idx)
-    .slice(0, anzahl);
-}
+export const BUDGETS = [
+  { id: 35, label: 'bis 35 €' },
+  { id: null, label: 'egal' },
+];

@@ -1,0 +1,41 @@
+{%- comment -%}
+  Ein Duft als JSON für den Duftberater (Section azizam-berater und Feed collection.berater).
+  Felder: azizam.* und azizam_berater.* (freigegeben), azizam_profil.* (gezielt ergänzt, optional), Preise je Größe.
+  Fehlende Werte bleiben null – der Berater behandelt sie als unbekannt.
+{%- endcomment -%}
+{%- assign p = produkt -%}
+{%- assign bild = p.media[1] | default: p.media[0] -%}
+{
+  "id": {{ p.handle | json }},
+  "shopify_id": {{ p.id | append: '' | json }},
+  "t": {{ p.title | json }},
+  "u": {{ p.url | json }},
+  "p": {{ p.price_min | money | json }},
+  "img": {% if bild %}{{ bild.preview_image | image_url: width: 1100 | json }}{% else %}null{% endif %},
+  "img2": {% if p.media[0] %}{{ p.media[0].preview_image | image_url: width: 300 | json }}{% else %}null{% endif %},
+  "verfuegbar": {{ p.available | json }},
+  "preise": { {%- for v in p.variants -%}{{ v.title | json }}: {{ v.price | divided_by: 100.0 }}{% unless forloop.last %}, {% endunless %}{%- endfor -%} },
+  "familie": {{ p.metafields.azizam.familie.value | json }},
+  "noten": {{ p.metafields.azizam.noten.value | json }},
+  "charakter": {{ p.metafields.azizam.charakter.value | json }},
+  "intensitaet": {{ p.metafields.azizam.intensitaet.value | json }},
+  "tageszeit": {{ p.metafields.azizam.tageszeit.value | json }},
+  "tendenz": {{ p.metafields.azizam_berater.tendenz.value | json }},
+  "stimmung": {{ p.metafields.azizam_berater.stimmung.value | json }},
+  "saison": {{ p.metafields.azizam_berater.saison.value | json }},
+  "anlass": {{ p.metafields.azizam_berater.anlass.value | json }},
+  "nicht_buero": {{ p.metafields.azizam_berater.nicht_buero.value | default: false | json }},
+  "profil": {
+    "kopfnote": {{ p.metafields.azizam_profil.kopfnote.value | json }},
+    "herznote": {{ p.metafields.azizam_profil.herznote.value | json }},
+    "basisnote": {{ p.metafields.azizam_profil.basisnote.value | json }},
+    "haltbarkeit": {{ p.metafields.azizam_profil.haltbarkeit.value | json }},
+    "sillage": {{ p.metafields.azizam_profil.sillage.value | json }},
+    "suesse": {{ p.metafields.azizam_profil.suesse.value | json }},
+    "frische": {{ p.metafields.azizam_profil.frische.value | json }},
+    "waerme": {{ p.metafields.azizam_profil.waerme.value | json }},
+    "rauchig": {{ p.metafields.azizam_profil.rauchig.value | json }},
+    "holzig": {{ p.metafields.azizam_profil.holzig.value | json }},
+    "wuerzig": {{ p.metafields.azizam_profil.wuerzig.value | json }}
+  }
+}
