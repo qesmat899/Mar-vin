@@ -13,6 +13,7 @@ import { ohneKi, ausgabe } from './ergebnis.js';
 
 export const CACHE_SEKUNDEN = 60 * 60 * 24 * 7;
 const MAX_KI_KANDIDATEN = 10;
+const MIN_FUER_KI = 45; // darunter kann kein Duft das Qualitäts-Gate erreichen
 const MIN_TEILWEISE = 70; // „teilweise passend“ nur bei hoher berechneter Übereinstimmung
 
 const laufend = new Map(); // gleiche Anfrage gleichzeitig → ein Aufruf
@@ -48,7 +49,8 @@ export async function berate({ eingabe, produkteRoh, client, config, speicher, l
   const arbeit = (async () => {
     const vorab = matche(profile, angaben);
     let ergebnis;
-    const kiErlaubt = config.kiAktiv && vorab.kandidaten.length > 0 && (await unterTageslimit(speicher, config));
+    // Claude nur fragen, wenn überhaupt ein Duft in Reichweite ist (spart Kosten bei aussichtslosen Angaben).
+    const kiErlaubt = config.kiAktiv && (vorab.kandidaten[0]?.match ?? 0) >= MIN_FUER_KI && (await unterTageslimit(speicher, config));
     if (kiErlaubt) ergebnis = await mitClaude({ angaben, profile, vorab, client, config, speicher, log });
     if (!ergebnis) ergebnis = ohneKi(angaben, profile, vorab, config.kiAktiv ? 'ki_nicht_verfuegbar' : 'ki_aus');
 

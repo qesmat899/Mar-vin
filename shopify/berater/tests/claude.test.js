@@ -214,3 +214,10 @@ test('Serverseitiger Fallback (Sonnet 5.5) nutzt den Beta-Aufruf mit fallbacks: 
   assert.deepEqual(c.aufrufe[0].betas, ['server-side-fallback-2026-07-01']);
   assert.equal(c.aufrufe[0].fallbacks, 'default');
 });
+
+test('Aussichtslose Angaben (kein Duft ≥ 45 %) lösen keinen API-Aufruf aus', async () => {
+  const c = mockClient(allePassen);
+  const r = await lauf({}, c);
+  assert.equal(c.aufrufe.length, 0);
+  assert.equal(r.body.kein_treffer, true);
+});

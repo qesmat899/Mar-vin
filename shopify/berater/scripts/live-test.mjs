@@ -20,10 +20,12 @@ const logs = [];
 
 let ok = 0;
 let ki = 0;
+let kiErwartet = 0;
 for (const [name, eingabe, soll] of FAELLE.slice(0, anzahl)) {
   const r = await berate({ eingabe, produkteRoh: roh, client, config, speicher, log: (o) => logs.push(o) });
   const fehler = r.status === 200 ? pruefe(soll, r.body.empfehlungen, r.body.hinweise) : [`HTTP ${r.status}`];
   if (r.body.quelle === 'claude') ki += 1;
+  if (!soll.kein_treffer || r.body.quelle === 'claude') kiErwartet += 1; // aussichtslose Fälle brauchen keinen Aufruf
   if (!fehler.length) ok += 1;
   console.log(`${fehler.length ? '✗' : '✓'} ${name} [${r.body.quelle}] → ${(r.body.empfehlungen || []).map((e) => `${e.product_id} ${e.match_score}% (${e.ki_urteil ?? '–'})`).join(', ') || 'kein Treffer'}`);
   for (const f of fehler) console.log(`    ${f}`);
@@ -34,4 +36,4 @@ const fehlerLogs = logs.filter((l) => l.ereignis !== 'claude_aufruf' || !l.ok);
 console.log(`\n${ok}/${anzahl} Profile passend · ${ki} mit Claude beantwortet · Modell ${config.model} · effort ${config.effort}`);
 console.log(`Tokens: ${JSON.stringify(m.tokens)} · Kosten gesamt ${m.kosten_usd} $ · je Claude-Beratung ${ki ? Math.round((m.kosten_usd / ki) * 10000) / 10000 : 0} $`);
 if (fehlerLogs.length) console.log('Auffälligkeiten:', JSON.stringify(fehlerLogs, null, 1));
-process.exit(ok === anzahl && ki === anzahl ? 0 : 1);
+process.exit(ok === anzahl && ki >= kiErwartet ? 0 : 1);
