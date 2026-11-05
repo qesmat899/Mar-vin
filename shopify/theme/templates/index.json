@@ -1,0 +1,230 @@
+{
+  "sections": {
+    "hero": {
+      "type": "azizam-hero",
+      "settings": {
+        "video_url": "https://cdn.shopify.com/s/files/1/1084/8141/3450/files/azizam-hero-desktop.mp4?v=1793753099",
+        "video_alt": "Azizam Flakon im warmen Licht",
+        "poster": "shopify://shop_images/azizam-hero-start.jpg",
+        "still": "shopify://shop_images/azizam-hero-end.jpg",
+        "title": "Azizam",
+        "persian": "عزیزم",
+        "persian_meaning": "persisch für „mein Schatz“",
+        "line": "Der Duft der zweiten Generation.",
+        "cta_label": "Düfte entdecken",
+        "cta_link": "#duefte",
+        "link_label": "Nach Anlass wählen",
+        "link_target": "#anlass",
+        "video_url_mobile": "https://cdn.shopify.com/s/files/1/1084/8141/3450/files/azizam-hero-mobil.mp4?v=1793753099"
+      }
+    },
+    "haltung": {
+      "type": "azizam-haltung",
+      "settings": {
+        "label": "Über Azizam",
+        "text": "<p>Jeder Duft ist von uns ausgewählt und auf die Haut abgestimmt.</p><p>Mit rund 30 % Duftöl statt der 12 bis 18 %, die bei Eau de Parfum üblich sind. In Deutschland abgefüllt. Deshalb bleibt er <em>nah, statt laut zu sein.</em></p>"
+      },
+      "blocks": {
+        "f1": {
+          "type": "fakt",
+          "settings": {
+            "term": "Duftöl",
+            "value": "rund 30 %"
+          }
+        },
+        "f2": {
+          "type": "fakt",
+          "settings": {
+            "term": "Größen",
+            "value": "30 ml · 50 ml"
+          }
+        },
+        "f3": {
+          "type": "fakt",
+          "settings": {
+            "term": "Düfte",
+            "value": "19, in drei Richtungen"
+          }
+        },
+        "f4": {
+          "type": "fakt",
+          "settings": {
+            "term": "Abgefüllt",
+            "value": "in Deutschland"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ]
+    },
+    "anlass": {
+      "type": "azizam-anlass",
+      "settings": {
+        "eyebrow": "Nach Anlass",
+        "heading": "Welcher Duft passt zu Deinem Abend?"
+      },
+      "blocks": {
+        "a1": {
+          "type": "anlass",
+          "settings": {
+            "label": "Date",
+            "key": "Date"
+          }
+        },
+        "a2": {
+          "type": "anlass",
+          "settings": {
+            "label": "Ausgehen",
+            "key": "Ausgehen"
+          }
+        },
+        "a3": {
+          "type": "anlass",
+          "settings": {
+            "label": "Besondere Anlässe",
+            "key": "Besondere Anlässe"
+          }
+        },
+        "a4": {
+          "type": "anlass",
+          "settings": {
+            "label": "Vielseitig",
+            "key": "Vielseitig"
+          }
+        },
+        "a5": {
+          "type": "anlass",
+          "settings": {
+            "label": "Uni & Büro",
+            "key": "Büro & Studium"
+          }
+        },
+        "a6": {
+          "type": "anlass",
+          "settings": {
+            "label": "Sommer",
+            "key": "Hohe Temperaturen"
+          }
+        },
+        "a7": {
+          "type": "anlass",
+          "settings": {
+            "label": "Eigenständig",
+            "key": "Eigenständig"
+          }
+        }
+      },
+      "block_order": [
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "a5",
+        "a6",
+        "a7"
+      ]
+    },
+    "liste": {
+      "type": "azizam-liste",
+      "settings": {}
+    },
+    "begriffe": {
+      "type": "azizam-glossar",
+      "settings": {
+        "heading": "Begriffe kurz erklärt"
+      },
+      "blocks": {
+        "oud": {
+          "type": "begriff",
+          "settings": {
+            "term": "Oud",
+            "definition": "Dunkles, harziges Holz mit rauchigem, intensivem Charakter."
+          }
+        },
+        "amber": {
+          "type": "begriff",
+          "settings": {
+            "term": "Amber",
+            "definition": "Warme, weiche und leicht süße Duftnote."
+          }
+        },
+        "moschus": {
+          "type": "begriff",
+          "settings": {
+            "term": "Moschus",
+            "definition": "Weiche, saubere Note, die an frische Wäsche erinnert."
+          }
+        },
+        "tonka": {
+          "type": "begriff",
+          "settings": {
+            "term": "Tonka",
+            "definition": "Süße Bohne mit Anklängen von Vanille und Marzipan."
+          }
+        }
+      },
+      "block_order": [
+        "oud",
+        "amber",
+        "moschus",
+        "tonka"
+      ]
+    },
+    "kollektion": {
+      "type": "azizam-kollektion",
+      "settings": {
+        "kicker": "19 Düfte · drei Richtungen",
+        "heading": "Die Kollektion",
+        "limit": 24
+      },
+      "blocks": {
+        "f1": {
+          "type": "filter",
+          "settings": {
+            "label": "Frisch & klar"
+          }
+        },
+        "f2": {
+          "type": "filter",
+          "settings": {
+            "label": "Süß & warm"
+          }
+        },
+        "f3": {
+          "type": "filter",
+          "settings": {
+            "label": "Dunkel & edel"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ]
+    },
+    "finder": {
+      "type": "azizam-finder",
+      "settings": {},
+      "disabled": true
+    },
+    "berater": {
+      "type": "azizam-berater",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "kollektion",
+    "finder",
+    "berater",
+    "haltung",
+    "anlass",
+    "liste",
+    "begriffe"
+  ]
+}

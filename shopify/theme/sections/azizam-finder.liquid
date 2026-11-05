@@ -1,0 +1,116 @@
+{{ 'azizam.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Duft-Finder: 3 Bildfragen, Ergebnis aus den Produkt-Metafeldern (familie, tageszeit, intensitaet).
+  Bilder der Antworten = Stimmungsbilder der genannten Düfte (Handles in den Einstellungen änderbar).
+{%- endcomment -%}
+{%- liquid
+  assign q = 'tag:marea|abend:midnight-cafe|beides:assassin,frisch:mare-vita|suess:velvet-vanilla|dunkel:ombroso,leise:borbus|mittel:sicilia-nobile|laut:alpha-tonka' | split: ','
+-%}
+<section class="az az-finder" id="duftfinder" aria-labelledby="az-fi-{{ section.id }}">
+  <azizam-finder class="az-wrap az-finder__inner" data-discovery="{{ section.settings.discovery_url | default: '/products/discovery-set' }}">
+    <header class="az-finder__head">
+      <p class="az-kicker">{{ section.settings.kicker }}</p>
+      <h2 id="az-fi-{{ section.id }}" class="az-h az-finder__title">{{ section.settings.heading }}</h2>
+      <div class="az-finder__progress" aria-hidden="true"><span data-bar></span></div>
+    </header>
+
+    {%- assign steps = 'Wann soll er wirken?|Was zieht dich an?|Wie präsent darf er sein?' | split: '|' -%}
+    {%- assign labels = 'Am Tag,Am Abend,Beides|Frisch & klar,Süß & warm,Dunkel & edel|Hautnah,Spürbar,Unübersehbar' | split: '|' -%}
+    {%- assign subs = 'Büro · Uni · Sonne,Dinner · Date · Nacht,Ein Duft für alles|Zitrus · Meer · Tee,Vanille · Honig · Amber,Oud · Leder · Rose|Nur wer nah ist,Man bemerkt dich,Man erinnert sich' | split: '|' -%}
+    {%- for step in steps -%}
+      {%- assign si = forloop.index0 -%}
+      {%- assign opts = q[si] | split: '|' -%}
+      {%- assign ls = labels[si] | split: ',' -%}
+      {%- assign ss = subs[si] | split: ',' -%}
+      <div class="az-finder__step{% if forloop.first %} is-active{% endif %}" data-step="{{ si }}" {% unless forloop.first %}hidden{% endunless %}>
+        <p class="az-finder__q"><span>0{{ forloop.index }} / 03</span>{{ step }}</p>
+        <div class="az-finder__opts">
+          {%- for o in opts -%}
+            {%- assign kv = o | split: ':' -%}
+            {%- assign pr = all_products[kv[1]] -%}
+            {%- assign img = pr.media[1] | default: pr.media[0] -%}
+            <button type="button" class="az-finder__opt" data-value="{{ kv[0] }}">
+              <span class="az-finder__img">{%- if img -%}{{ img.preview_image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 750px) 30vw, 90vw', alt: '' }}{%- endif -%}</span>
+              <span class="az-finder__lbl">{{ ls[forloop.index0] }}</span>
+              <span class="az-finder__sub">{{ ss[forloop.index0] }}</span>
+            </button>
+          {%- endfor -%}
+        </div>
+        {%- unless forloop.first -%}<button type="button" class="az-finder__back" data-back>← Zurück</button>{%- endunless -%}
+      </div>
+    {%- endfor -%}
+
+    <div class="az-finder__result" data-result hidden aria-live="polite"></div>
+
+    <script type="application/json" data-products>
+      [{%- for p in collections.all.products limit: 50 -%}{%- if p.type == 'Probenset' -%}{%- continue -%}{%- endif -%}{%- assign img = p.media[1] | default: p.media[0] -%}
+      {"t":{{ p.title | json }},"u":{{ p.url | json }},"f":{{ p.metafields.azizam.familie.value | json }},"z":{{ p.metafields.azizam.tageszeit.value | json }},"i":{{ p.metafields.azizam.intensitaet.value | default: 3 }},"n":{{ p.metafields.azizam.noten.value | join: ' · ' | json }},"c":{{ p.metafields.azizam.charakter.value | json }},"p":{{ p.price_min | money | json }},"img":{% if img %}{{ img.preview_image | image_url: width: 1000 | json }}{% else %}null{% endif %}}{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}]
+    </script>
+  </azizam-finder>
+</section>
+<script>
+  if (!customElements.get('azizam-finder')) customElements.define('azizam-finder', class extends HTMLElement {
+    connectedCallback() {
+      this.data = JSON.parse(this.querySelector('[data-products]').textContent.trim().replace(/,\s*]$/, ']'));
+      this.steps = [...this.querySelectorAll('[data-step]')]; this.ans = [];
+      this.querySelectorAll('.az-finder__opt').forEach(b => b.addEventListener('click', () => this.pick(b)));
+      this.querySelectorAll('[data-back]').forEach(b => b.addEventListener('click', () => { this.ans.pop(); this.go(this.ans.length); }));
+      this.bar = this.querySelector('[data-bar]'); this.go(0);
+    }
+    pick(b) {
+      b.classList.add('is-picked');
+      this.ans[this.steps.findIndex(s => s.contains(b))] = b.dataset.value;
+      setTimeout(() => { b.classList.remove('is-picked'); this.ans.length >= 3 ? this.result() : this.go(this.ans.length); }, 380);
+    }
+    go(i) {
+      this.querySelector('[data-result]').hidden = true;
+      this.steps.forEach((s, k) => { s.hidden = k !== i; s.classList.toggle('is-active', k === i); });
+      this.bar.style.width = (i / 3 * 100) + '%';
+    }
+    result() {
+      const [zeit, fam, lvl] = this.ans;
+      const famMap = { frisch: 'Frisch & klar', suess: 'Süß & warm', dunkel: 'Dunkel & edel' };
+      const target = { leise: 1.5, mittel: 3, laut: 4.5 }[lvl];
+      const score = p => {
+        let s = 0; if (p.f === famMap[fam]) s += 4;
+        const z = (p.z || '');
+        if (zeit === 'beides') s += z.includes('Tag') && z.includes('Abend') ? 2 : 0.5;
+        else if (zeit === 'tag') s += z.includes('Tag') ? 2 : 0; else s += z.includes('Abend') ? 2 : 0;
+        return s + 2.5 - Math.abs(p.i - target) * 1.1;
+      };
+      const r = [...this.data].sort((a, b) => score(b) - score(a));
+      const top = r[0], alt = r.slice(1, 3);
+      this.steps.forEach(s => s.hidden = true); this.bar.style.width = '100%';
+      const el = this.querySelector('[data-result]');
+      const esc = s => String(s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+      el.innerHTML = `
+        <div class="az-finder__match">
+          <a class="az-finder__matchimg" href="${top.u}">${top.img ? `<img src="${top.img}" alt="${esc(top.t)}">` : ''}</a>
+          <div class="az-finder__matchcopy">
+            <p class="az-kicker">Dein Duft · ${esc(top.f)}</p>
+            <h3 class="az-h az-finder__name">${esc(top.t)}</h3>
+            <p class="az-finder__notes">${esc(top.n)}</p>
+            <p class="az-finder__char">${esc(top.c)}</p>
+            <div class="az-finder__ctas"><a class="az-btn" href="${top.u}">Ansehen · ab ${esc(top.p)}</a><a class="az-link" href="${this.dataset.discovery}">Erst testen: Discovery-Set</a></div>
+            <p class="az-finder__also">Passt auch: ${alt.map(a => `<a href="${a.u}">${esc(a.t)}</a>`).join(' · ')}</p>
+            <button type="button" class="az-finder__back" data-restart>↺ Neu starten</button>
+          </div>
+        </div>`;
+      el.hidden = false;
+      el.querySelector('[data-restart]').addEventListener('click', () => { this.ans = []; this.go(0); });
+    }
+  });
+</script>
+{% schema %}
+{
+  "name": "Azizam Duft-Finder",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Überzeile", "default": "Duft-Finder · 30 Sekunden" },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Drei Bilder. Dein Duft." },
+    { "type": "url", "id": "discovery_url", "label": "Link Discovery-Set" }
+  ],
+  "presets": [{ "name": "Azizam Duft-Finder" }]
+}
+{% endschema %}

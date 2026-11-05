@@ -1,0 +1,27 @@
+{{ 'azizam.css' | asset_url | stylesheet_tag }}
+<section class="az az-section" aria-label="{{ section.settings.label | escape }}">
+  <div class="az-wrap az-haltung">
+    <div class="az-haltung__text">{{ section.settings.text }}</div>
+    <dl class="az-facts">
+      {%- for block in section.blocks -%}
+        <div {{ block.shopify_attributes }}><dt>{{ block.settings.term }}</dt><dd>{{ block.settings.value }}</dd></div>
+      {%- endfor -%}
+    </dl>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Azizam Haltung",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Name für Screenreader", "default": "Über Azizam" },
+    { "type": "richtext", "id": "text", "label": "Text" }
+  ],
+  "blocks": [{ "type": "fakt", "name": "Fakt", "settings": [
+    { "type": "text", "id": "term", "label": "Begriff" },
+    { "type": "text", "id": "value", "label": "Wert" }
+  ] }],
+  "presets": [{ "name": "Azizam Haltung" }]
+}
+{% endschema %}

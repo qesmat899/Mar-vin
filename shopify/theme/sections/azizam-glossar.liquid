@@ -1,0 +1,24 @@
+{{ 'azizam.css' | asset_url | stylesheet_tag }}
+<section class="az az-section" aria-labelledby="az-gl-{{ section.id }}">
+  <div class="az-wrap">
+    <h2 id="az-gl-{{ section.id }}" class="az-kicker" style="margin-bottom:32px;">{{ section.settings.heading }}</h2>
+    <dl class="az-gloss">
+      {%- for block in section.blocks -%}
+        <div {{ block.shopify_attributes }}><dt>{{ block.settings.term }}</dt><dd>{{ block.settings.definition }}</dd></div>
+      {%- endfor -%}
+    </dl>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Azizam Duftbegriffe",
+  "tag": "div",
+  "settings": [{ "type": "text", "id": "heading", "label": "Überschrift", "default": "Begriffe kurz erklärt" }],
+  "blocks": [{ "type": "begriff", "name": "Begriff", "settings": [
+    { "type": "text", "id": "term", "label": "Begriff" },
+    { "type": "textarea", "id": "definition", "label": "Erklärung" }
+  ] }],
+  "presets": [{ "name": "Azizam Duftbegriffe" }]
+}
+{% endschema %}

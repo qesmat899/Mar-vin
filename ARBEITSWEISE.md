@@ -34,8 +34,10 @@ Faustregel: **Am Ende soll eine Entscheidung stehen → Chat. Am Ende soll eine 
 5. **Wiederholt sich etwas dreimal → Skill oder Automatik daraus machen.**
 6. **Entscheiden tut Mar.** Claude liefert Optionen mit Begründung.
 
-## Gerade dran (Stand 07.10.2026)
+## Gerade dran (Stand 05.11.2026)
 
+- **KI-Duftberater:** API-Schlüssel + Vercel freigeben, Theme-Kopie „KI-Duftberater 05.11.“ prüfen und veröffentlichen → **Mar**; einrichten und live testen → **Code**
+- **Shop-Livegang:** Entwurfs-Theme und 19 Produkt-Entwürfe stehen in Shopify → Namen je Duft (**Chat**), Bilder (**Code** mit Pixelcut), Preise (**Chat**), Shopify-Einstellungen und Freigabe (**Mar** im Shopify-Admin), Rechtstexte zum Schluss
 - Flakon + Verpackung finden → **Chat**
 - `CLAUDE-MASTER.md` ins Projekt „Azizam“ hochladen, globale Anweisung + Memory aus `playbook/templates/claude-anweisungen.md` setzen → **Mar** (claude.ai)
 - Azizam-System nach `playbook/azizam/SYSTEM-AUFBAU.md` aufbauen: jetzt Stufe 0–1 (Profil steht, Montag „Monday brief“, Wettbewerbs- und Rechts-Routine) → **Code**/**Cloud-Routine**

@@ -1,0 +1,44 @@
+{{ 'azizam.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Launch-Liste über Shopifys Kundenformular (Newsletter-Einwilligung). Double-Opt-in in den
+  Shopify-Einstellungen (Marketing → E-Mail-Einwilligung) aktivieren; Datenschutzerklärung muss es nennen.
+{%- endcomment -%}
+<section class="az az-section" id="liste" aria-labelledby="az-li-{{ section.id }}">
+  <div class="az-wrap az-liste">
+    <div>
+      <h2 id="az-li-{{ section.id }}" class="az-h">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<p class="az-liste__text">{{ section.settings.text }}</p>{%- endif -%}
+    </div>
+    <div>
+      {%- form 'customer', id: 'AzizamListe', class: 'az-liste__form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter,launch-liste">
+        {%- if form.posted_successfully? -%}
+          <p class="az-form-msg" role="status">{{ section.settings.success }}</p>
+        {%- else -%}
+          <label for="AzizamListe-email" class="visually-hidden">E-Mail-Adresse</label>
+          <div class="az-form">
+            <input id="AzizamListe-email" type="email" name="contact[email]" required autocomplete="email" placeholder="Deine E-Mail-Adresse">
+            <button type="submit">{{ section.settings.button }}</button>
+          </div>
+          {%- if form.errors -%}<p class="az-form-msg" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>{%- endif -%}
+          <p class="az-form-note">{{ section.settings.note }}{% if shop.privacy_policy %} <a href="{{ shop.privacy_policy.url }}">Datenschutz</a>{% endif %}</p>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Azizam Launch-Liste",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Als Erste wissen, wann es losgeht." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Eine E-Mail zum Start. Danach nur, wenn es wirklich etwas Neues gibt." },
+    { "type": "text", "id": "button", "label": "Button", "default": "Eintragen" },
+    { "type": "textarea", "id": "note", "label": "Hinweis unter dem Feld", "default": "Mit dem Eintragen willigst Du ein, E-Mails von Azizam zu erhalten. Abmelden geht jederzeit über den Link in jeder E-Mail." },
+    { "type": "text", "id": "success", "label": "Bestätigung", "default": "Danke. Du stehst auf der Liste." }
+  ],
+  "presets": [{ "name": "Azizam Launch-Liste" }]
+}
+{% endschema %}

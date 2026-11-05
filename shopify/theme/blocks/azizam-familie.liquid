@@ -1,0 +1,12 @@
+{%- comment -%} Kleine Überzeile über dem Produkttitel: Duftrichtung als Link zur Kollektion. {%- endcomment -%}
+{%- assign p = closest.product | default: product -%}
+{%- assign fam = p.metafields.azizam.familie.value -%}
+{%- if fam != blank -%}
+  {%- assign c = p.collections | where: 'title', fam | first -%}
+  <p class="az-famlink" style="margin:0;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;opacity:.7;" {{ block.shopify_attributes }}>
+    {%- if c -%}<a href="{{ c.url }}" style="color:inherit;text-decoration:none;">{{ fam }}</a>{%- else -%}{{ fam }}{%- endif -%}
+  </p>
+{%- endif -%}
+{% schema %}
+{ "name": "Azizam Duftrichtung", "settings": [], "presets": [{ "name": "Azizam Duftrichtung" }] }
+{% endschema %}

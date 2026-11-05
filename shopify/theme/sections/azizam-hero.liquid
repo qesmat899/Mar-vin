@@ -1,0 +1,91 @@
+{{ 'azizam.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign poster = section.settings.poster
+  assign still = section.settings.still | default: poster
+  assign vid = section.settings.video
+-%}
+<section class="az az-hero" aria-labelledby="az-hero-{{ section.id }}">
+  <div class="az-hero__media">
+    {%- if vid != blank or section.settings.video_url != blank -%}
+      <video class="az-hero__video" autoplay muted playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback
+        {% if poster != blank %}poster="{{ poster | image_url: width: 1080 }}"{% endif %}
+        aria-label="{{ section.settings.video_alt | escape }}" data-az-hero-video>
+        {%- if section.settings.video_url_mobile != blank -%}
+          <source src="{{ section.settings.video_url_mobile }}" type="video/mp4" media="(max-width: 899px)">
+        {%- endif -%}
+        {%- if vid != blank -%}
+          {%- for s in vid.sources -%}
+            {%- if s.mime_type == 'video/mp4' -%}<source src="{{ s.url }}" type="video/mp4">{%- break -%}{%- endif -%}
+          {%- endfor -%}
+        {%- else -%}
+          <source src="{{ section.settings.video_url }}" type="video/mp4">
+        {%- endif -%}
+      </video>
+    {%- endif -%}
+    {%- if still != blank -%}
+      {{ still | image_url: width: 1400 | image_tag: class: 'az-hero__still', loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 900px) 50vw, 100vw', widths: '540, 720, 1080, 1400', alt: section.settings.video_alt }}
+    {%- endif -%}
+  </div>
+
+  <div class="az-hero__copy">
+    <h1 id="az-hero-{{ section.id }}" class="az-h az-hero__title">{{ section.settings.title }}</h1>
+    {%- if section.settings.persian != blank -%}
+      <span class="az-hero__fa" lang="fa">{{ section.settings.persian }}<span lang="de">{{ section.settings.persian_meaning }}</span></span>
+    {%- endif -%}
+    {%- if section.settings.line != blank -%}<p class="az-hero__line">{{ section.settings.line }}</p>{%- endif -%}
+    <div class="az-hero__ctas">
+      {%- if section.settings.cta_label != blank -%}
+        <a class="az-btn" href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}">{{ section.settings.cta_label }}</a>
+      {%- endif -%}
+      {%- if section.settings.link_label != blank -%}
+        <a class="az-link" href="{{ section.settings.link_target | default: '#anlass' }}">{{ section.settings.link_label }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Video spielt einmal und bleibt auf der Frontansicht stehen. Bei reduzierter Bewegung nur das Standbild. */
+  #shopify-section-{{ section.id }} .az-hero__still { display: none; }
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .az-hero__video { display: none; }
+    #shopify-section-{{ section.id }} .az-hero__still { display: block; }
+  }
+</style>
+<script>
+  (function () {
+    var v = document.querySelector('#shopify-section-{{ section.id }} [data-az-hero-video]');
+    if (!v) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); return; }
+    v.muted = true;
+    var tryPlay = function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
+    // Autoplay-Sperre (z. B. Stromsparmodus): Poster bleibt sichtbar, beim ersten Tippen/Scrollen erneut versuchen.
+    tryPlay();
+    v.addEventListener('loadeddata', tryPlay, { once: true });
+    ['touchstart', 'scroll', 'click'].forEach(function (e) { window.addEventListener(e, tryPlay, { once: true, passive: true }); });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Azizam Hero (Video)",
+  "tag": "div",
+  "settings": [
+    { "type": "video", "id": "video", "label": "Video (aus Shopify-Dateien)" },
+    { "type": "text", "id": "video_url", "label": "oder Video-URL (MP4, Desktop)" },
+    { "type": "text", "id": "video_url_mobile", "label": "Video-URL fürs Handy (MP4, 720 × 1280)" },
+    { "type": "text", "id": "video_alt", "label": "Bildbeschreibung", "default": "Azizam Flakon im warmen Licht" },
+    { "type": "image_picker", "id": "poster", "label": "Erstes Bild des Videos (lädt sofort)" },
+    { "type": "image_picker", "id": "still", "label": "Standbild bei reduzierter Bewegung" },
+    { "type": "text", "id": "title", "label": "Titel", "default": "Azizam" },
+    { "type": "text", "id": "persian", "label": "Persischer Schriftzug", "default": "عزیزم" },
+    { "type": "text", "id": "persian_meaning", "label": "Bedeutung", "default": "persisch für „mein Schatz“" },
+    { "type": "text", "id": "line", "label": "Satz", "default": "Der Duft der zweiten Generation." },
+    { "type": "text", "id": "cta_label", "label": "Button", "default": "Düfte entdecken" },
+    { "type": "url", "id": "cta_link", "label": "Button-Link" },
+    { "type": "text", "id": "link_label", "label": "Textlink", "default": "Nach Anlass wählen" },
+    { "type": "text", "id": "link_target", "label": "Textlink-Ziel", "default": "#anlass" }
+  ],
+  "presets": [{ "name": "Azizam Hero (Video)" }]
+}
+{% endschema %}

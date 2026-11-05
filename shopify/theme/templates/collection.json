@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "kollektion": {
+      "type": "azizam-kollektion",
+      "settings": {
+        "kicker": "Duftrichtung",
+        "heading": "Die Kollektion",
+        "limit": 50
+      },
+      "blocks": {},
+      "block_order": []
+    }
+  },
+  "order": [
+    "kollektion"
+  ]
+}

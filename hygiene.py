@@ -71,6 +71,8 @@ REGISTRY: list[tuple[str, str, str, str]] = [
     ("playbook/templates/*", "REFERENCE", "Vorlagen", ""),
     ("docs/*", "REFERENCE", "Original-Playbook und PDF-Build", ""),
     ("frontend/*", "REFERENCE", "3D-Flakon-Komponenten (warten auf Flakon)", ""),
+    ("shopify/berater/*", "ACTIVE", "Quelle des Duftberaters (React-Insel); Build schreibt nach shopify/theme/assets/azizam-berater.*", ""),
+    ("shopify/theme/*", "ACTIVE", "Eigene Azizam-Bausteine fürs Shopify-Theme (Quelle für das Entwurfs-Theme)", ""),
 ]
 
 # Eindeutig temporär oder generiert: darf nicht dauerhaft im Repo liegen.

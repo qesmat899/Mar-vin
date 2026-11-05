@@ -1,0 +1,13 @@
+{{ 'azizam.css' | asset_url | stylesheet_tag }}
+{%- comment -%} Vertrauensleiste unter dem Kaufen-Button. Punkte als Blöcke-Text, Trenner „·“. {%- endcomment -%}
+<ul class="az-trust" {{ block.shopify_attributes }}>
+  {%- assign items = block.settings.items | split: '·' -%}
+  {%- for it in items -%}{%- assign t = it | strip -%}{%- if t != blank -%}<li>{{ t }}</li>{%- endif -%}{%- endfor -%}
+</ul>
+{% schema %}
+{
+  "name": "Azizam Vertrauensleiste",
+  "settings": [{ "type": "textarea", "id": "items", "label": "Punkte, mit · getrennt", "default": "Versand mit DHL in 2–4 Tagen · Kostenloser Versand ab 20 € · 14 Tage Widerruf · PayPal & Klarna" }],
+  "presets": [{ "name": "Azizam Vertrauensleiste" }]
+}
+{% endschema %}

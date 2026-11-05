@@ -1,0 +1,84 @@
+{{ 'azizam.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Anlass-Finder. Datengetrieben: liest das Produkt-Metafeld azizam.anlass (Liste) aus der
+  gewählten Kollektion. Neue Zuordnung = Metafeld am Produkt ändern, nicht diesen Code.
+{%- endcomment -%}
+{%- assign source = section.settings.collection | default: collections.all -%}
+<section class="az az-section" id="anlass" aria-labelledby="az-anl-{{ section.id }}">
+  <div class="az-wrap">
+    <div class="az-anlass__head">
+      <p class="az-kicker">{{ section.settings.eyebrow }}</p>
+      <h2 id="az-anl-{{ section.id }}" class="az-h" style="margin-top:14px;">{{ section.settings.heading }}</h2>
+    </div>
+    <azizam-tabs class="az-anlass">
+      <div class="az-anlass__tabs" role="tablist" aria-label="{{ section.settings.heading | escape }}">
+        {%- for block in section.blocks -%}
+          <button type="button" role="tab" class="az-anlass__tab" id="az-tab-{{ block.id }}" aria-controls="az-panel-{{ block.id }}"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" {% unless forloop.first %}tabindex="-1"{% endunless %} {{ block.shopify_attributes }}>{{ block.settings.label }}</button>
+        {%- endfor -%}
+      </div>
+      {%- for block in section.blocks -%}
+        <div class="az-anlass__panel" role="tabpanel" id="az-panel-{{ block.id }}" aria-labelledby="az-tab-{{ block.id }}" {% unless forloop.first %}hidden{% endunless %}>
+          {%- assign hits = 0 -%}
+          {%- for p in source.products limit: 50 -%}
+            {%- assign anl = p.metafields.azizam.anlass.value -%}
+            {%- if anl contains block.settings.key -%}
+              {%- assign hits = hits | plus: 1 -%}
+              <a class="az-pick" href="{{ p.url }}">
+                <div class="az-pick__name">{{ p.title }}</div>
+                {%- assign noten = p.metafields.azizam.noten.value -%}
+                {%- if noten -%}<div class="az-pick__notes">{{ noten | join: ' · ' }}</div>{%- endif -%}
+                <div class="az-pick__meta">{{ p.metafields.azizam.charakter.value }}</div>
+              </a>
+            {%- endif -%}
+          {%- endfor -%}
+          {%- if hits == 0 -%}<p class="az-empty" style="border:0;">Bald verfügbar.</p>{%- endif -%}
+        </div>
+      {%- endfor -%}
+    </azizam-tabs>
+  </div>
+</section>
+<script>
+  if (!customElements.get('azizam-tabs')) {
+    customElements.define('azizam-tabs', class extends HTMLElement {
+      connectedCallback() {
+        this.tabs = [...this.querySelectorAll('[role="tab"]')];
+        this.tabs.forEach((t, i) => {
+          t.addEventListener('click', () => this.select(i));
+          t.addEventListener('keydown', (e) => {
+            if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+            const n = (i + (e.key === 'ArrowRight' ? 1 : -1) + this.tabs.length) % this.tabs.length;
+            this.select(n); this.tabs[n].focus();
+          });
+        });
+      }
+      select(idx) {
+        this.tabs.forEach((t, i) => {
+          const on = i === idx;
+          t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1;
+          this.querySelector('#' + t.getAttribute('aria-controls')).hidden = !on;
+        });
+      }
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Azizam Anlass-Finder",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Überzeile", "default": "Für jeden Moment" },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Welcher Duft passt zu Deinem Abend?" },
+    { "type": "collection", "id": "collection", "label": "Quelle (leer = alle Produkte)" }
+  ],
+  "blocks": [{
+    "type": "anlass", "name": "Anlass",
+    "settings": [
+      { "type": "text", "id": "label", "label": "Anzeige-Text" },
+      { "type": "text", "id": "key", "label": "Schlüssel im Metafeld azizam.anlass" }
+    ]
+  }],
+  "presets": [{ "name": "Azizam Anlass-Finder" }]
+}
+{% endschema %}
