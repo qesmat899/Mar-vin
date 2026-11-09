@@ -20,12 +20,21 @@ export const ABZUG_DEUTLICH = 10;
 export const MIN_MATCH_BEI_WIDERSPRUCH = 80;
 export const MIN_MATCH = 60; // darunter keine Empfehlung
 export const MAX_EMPFEHLUNGEN = 3;
+// Kein Duft besteht das Gate: bis zu 2 nächstbeste zeigen (ehrlich als Annäherung gekennzeichnet), wenn sie nah genug sind.
+export const MIN_ANNAEHERUNG = 55;
+export const MAX_ANNAEHERUNG = 2;
+// Spezifität: Ein Merkmal, das als erstes (Haupt-)Merkmal eingetragen ist, zählt voll; weitere Einträge etwas weniger.
+// Ganzjährige Düfte passen zu jeder Jahreszeit, sind aber für keine eine besondere Wahl. So gewinnt nicht der Duft
+// mit den meisten Einträgen, sondern der, dessen Profil am besten zum Wunsch passt.
+export const STIMMUNG_NEBEN = 0.85;
+export const ANLASS_NEBEN = 0.8;
+export const SAISON_GANZJAEHRIG = 0.75;
 
 const ANLASS_LABEL = { Alltag: 'den Alltag', Büro: 'das Büro', Date: 'ein Date', Abend: 'den Abend', 'Besonderer Anlass': 'besondere Anlässe', Freizeit: 'die Freizeit' };
 
 const TENDENZ_WERT = {
-  feminin: { feminin: 1, 'unisex-feminin': 1, unisex: 0.7, 'unisex-maskulin': 0.2, maskulin: 0 },
-  maskulin: { maskulin: 1, 'unisex-maskulin': 1, unisex: 0.7, 'unisex-feminin': 0.2, feminin: 0 },
+  feminin: { feminin: 1, 'unisex-feminin': 1, unisex: 0.85, 'unisex-maskulin': 0.2, maskulin: 0 },
+  maskulin: { maskulin: 1, 'unisex-maskulin': 1, unisex: 0.85, 'unisex-feminin': 0.2, feminin: 0 },
 };
 
 // Stimmung, die sich (schwächer) aus den Noten-Dimensionen stützen lässt. Eleganz nur über das Merkmal selbst.
@@ -137,7 +146,7 @@ export function bewerte(p, a) {
     if (!p.stimmung.length && !p.hauptnoten.length) datenluecken.push('stimmung');
     let s = 0;
     for (const st of a.stimmung) {
-      if (p.stimmung.includes(st)) { s += 1; gruende.push(`Stimmung: ${st}`); attribute.push(`stimmung:${st}`); }
+      if (p.stimmung.includes(st)) { s += p.stimmung[0] === st ? 1 : STIMMUNG_NEBEN; gruende.push(`Stimmung: ${st}`); attribute.push(`stimmung:${st}`); }
       else if (STIMMUNG_AUS_DIMS[st]?.(d, p)) { s += 0.5; gruende.push(`${st} (laut Noten)`); attribute.push(`noten:${st}`); }
       else if (STIMMUNG_GEGENSATZ[st]?.(d, p)) { const t = `eher nicht ${st}${p.familie ? ` (${p.familie})` : ''}`; konflikte.push(t); deutlich.push(t); }
     }
@@ -147,7 +156,7 @@ export function bewerte(p, a) {
   if (a.anlass) {
     if (!p.anlass.length) datenluecken.push('anlass');
     let s = 0;
-    if (p.anlass.includes(a.anlass)) { s = 1; gruende.push(`passt für ${ANLASS_LABEL[a.anlass]}`); attribute.push(`anlass:${a.anlass}`); }
+    if (p.anlass.includes(a.anlass)) { s = p.anlass[0] === a.anlass ? 1 : ANLASS_NEBEN; gruende.push(`passt für ${ANLASS_LABEL[a.anlass]}`); attribute.push(`anlass:${a.anlass}`); }
     else if (a.anlass === 'Abend' && /Abend/.test(p.tageszeit || '')) { s = 0.5; gruende.push('Abendduft'); attribute.push('tageszeit:Abend'); }
     else if (p.anlass.length) konflikte.push(`eher für ${p.anlass.slice(0, 2).join(' / ')}`);
     if (a.anlass === 'Büro' && (p.intensitaet ?? 0) >= 4) konflikte.push('recht präsent fürs Büro');
@@ -167,7 +176,11 @@ export function bewerte(p, a) {
 
   if (a.saison) {
     if (!p.saison.length) { datenluecken.push('saison'); kriterium('saison', 0); }
-    else if (p.saison.includes(a.saison)) { gruende.push(`passt zum ${a.saison}`); attribute.push(`saison:${a.saison}`); kriterium('saison', 1); }
+    else if (p.saison.includes(a.saison)) {
+      const ganzjaehrig = JAHRESZEITEN.every((j) => p.saison.includes(j));
+      gruende.push(ganzjaehrig ? 'ganzjährig tragbar' : `passt zum ${a.saison}`); attribute.push(`saison:${a.saison}`);
+      kriterium('saison', ganzjaehrig ? SAISON_GANZJAEHRIG : 1);
+    }
     else { konflikte.push(`eher für ${p.saison.join(' / ')}`); kriterium('saison', 0); }
   }
 
@@ -211,13 +224,20 @@ export function matche(profile, angaben) {
     if (grund) ausgeschlossen.push({ id: p.id, grund });
     else bewertet.push({ ...bewerte(p, angaben), _idx: idx });
   });
-  bewertet.sort((x, y) => y.match - x.match || x.konflikte.length - y.konflikte.length || x._idx - y._idx);
+  // Gleichstand: weniger Widersprüche, dann das spezifischere Profil (weniger Einträge) – nicht die Reihenfolge im Shop.
+  const breite = (id) => { const p = profile.find((x) => x.id === id); return p.stimmung.length + p.anlass.length + p.saison.length; };
+  bewertet.sort((x, y) => y.match - x.match || x.konflikte.length - y.konflikte.length || breite(x.id) - breite(y.id) || x._idx - y._idx);
   return { kandidaten: bewertet.map(({ _idx, ...r }) => r), ausgeschlossen, hinweise: widersprueche(angaben) };
 }
 
 // Qualitäts-Gate: nur ausreichend passende, zuverlässig belegte Düfte; lieber weniger als falsche.
 export function waehleAus(kandidaten, { min = MIN_MATCH, max = MAX_EMPFEHLUNGEN } = {}) {
   return kandidaten.filter((k) => empfehlbar(k, min)).slice(0, max);
+}
+
+// Annäherung, wenn nichts das Gate besteht: die nächstbesten, zuverlässig belegten Düfte ohne harten Ausschluss.
+export function annaeherung(kandidaten, { min = MIN_ANNAEHERUNG, max = MAX_ANNAEHERUNG } = {}) {
+  return kandidaten.filter((k) => k.zuverlaessig && k.match >= min).slice(0, max);
 }
 
 export function empfehlbar(k, min = MIN_MATCH) {

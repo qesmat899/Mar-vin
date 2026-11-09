@@ -1,15 +1,18 @@
 // Aufbereitung des Ergebnisses für die Oberfläche (ohne Node-Abhängigkeiten, läuft auch im Browser).
-import { empfehlbar, MAX_EMPFEHLUNGEN } from './matching.js';
+import { empfehlbar, annaeherung, MAX_EMPFEHLUNGEN } from './matching.js';
 
 export function ohneKi(angaben, profile, vorab, grund) {
-  const empfehlungen = vorab.kandidaten
+  let empfehlungen = vorab.kandidaten
     .filter((k) => empfehlbar(k))
     .slice(0, MAX_EMPFEHLUNGEN)
     .map((k) => ausgabe(profile.find((p) => p.id === k.id), k, null));
+  const naeherung = !empfehlungen.length;
+  if (naeherung) empfehlungen = annaeherung(vorab.kandidaten).map((k) => ausgabe(profile.find((p) => p.id === k.id), k, null));
   return {
     quelle: 'ohne_ki',
     grund,
     empfehlungen,
+    annaeherung: naeherung && empfehlungen.length > 0,
     kein_treffer: empfehlungen.length === 0,
     kundenwunsch: { zusammenfassung: '' },
     hinweise: vorab.hinweise,

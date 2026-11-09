@@ -6,7 +6,7 @@
 import { createHash } from 'node:crypto';
 import { produktProfil, profilFuerKi } from './profil.js';
 import { freitextLesen } from './lexikon.js';
-import { kundenAngaben, matche, empfehlbar, MAX_EMPFEHLUNGEN } from './matching.js';
+import { kundenAngaben, matche, empfehlbar, annaeherung, MAX_EMPFEHLUNGEN } from './matching.js';
 import { frageClaude, validiereAntwort } from './claude.js';
 import { kostenUsd, bucheKosten } from './kosten.js';
 import { ohneKi, ausgabe } from './ergebnis.js';
@@ -14,6 +14,7 @@ import { ohneKi, ausgabe } from './ergebnis.js';
 export const CACHE_SEKUNDEN = 60 * 60 * 24 * 7;
 const MAX_KI_KANDIDATEN = 10;
 const MIN_TEILWEISE = 70; // „teilweise passend“ nur bei hoher berechneter Übereinstimmung
+const KI_PASST_BONUS = 8; // nur für die Reihenfolge, nicht für das angezeigte Match-%
 
 const laufend = new Map(); // gleiche Anfrage gleichzeitig → ein Aufruf
 
@@ -105,12 +106,23 @@ async function mitClaude({ angaben, profile, vorab, client, config, speicher, lo
     if (!empfehlbar(k, b.urteil === 'teilweise' ? MIN_TEILWEISE : undefined)) continue;
     empfehlungen.push(ausgabe(profile.find((p) => p.id === k.id), k, b));
   }
-  empfehlungen.sort((x, y) => y.match_score - x.match_score || (x.ki_urteil === 'passt' ? -1 : 1));
+  // Das KI-Urteil zählt mit: „passt“ (stimmiges Gesamtprofil) wird vor „teilweise“ gereiht, wenn die Punkte nah beieinander liegen.
+  const rang = (e) => e.match_score + (e.ki_urteil === 'passt' ? KI_PASST_BONUS : 0);
+  empfehlungen.sort((x, y) => rang(y) - rang(x) || y.match_score - x.match_score);
+
+  // Nichts besteht: nächstbeste zeigen, aber nie gegen ein KI-Veto.
+  let naeherung = false;
+  if (!empfehlungen.length) {
+    const ohneVeto = neu.kandidaten.filter((k) => urteil.get(k.id)?.urteil !== 'passt_nicht');
+    for (const k of annaeherung(ohneVeto)) empfehlungen.push(ausgabe(profile.find((p) => p.id === k.id), k, urteil.get(k.id) ?? null));
+    naeherung = empfehlungen.length > 0;
+  }
 
   return {
     quelle: 'claude',
     modell,
     empfehlungen: empfehlungen.slice(0, MAX_EMPFEHLUNGEN),
+    annaeherung: naeherung,
     kein_treffer: empfehlungen.length === 0,
     kundenwunsch: { zusammenfassung: gepr.kundenwunsch.zusammenfassung },
     hinweise: neu.hinweise,

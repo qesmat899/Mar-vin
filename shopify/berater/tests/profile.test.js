@@ -17,7 +17,7 @@ for (const [name, eingabe, soll] of FAELLE) {
   test(`Profil: ${name}`, async () => {
     const r = await empfiehl(eingabe);
     assert.equal(r.status, 200, JSON.stringify(r.body));
-    const fehler = pruefe(soll, r.body.empfehlungen, r.body.hinweise);
+    const fehler = pruefe(soll, r.body.empfehlungen, r.body.hinweise, r.body.annaeherung === true);
     if (soll.kein_treffer !== undefined) assert.equal(r.body.kein_treffer, soll.kein_treffer);
     assert.deepEqual(fehler, [], `Empfehlungen: ${r.body.empfehlungen.map((x) => `${x.product_id} ${x.match_score}%`).join(', ') || '–'}`);
   });

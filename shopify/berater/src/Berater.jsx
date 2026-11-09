@@ -171,8 +171,15 @@ function Ergebnis({ ergebnis, saison, discovery, onNeu, onZurueck }) {
   }
 
   const text = top.recommendation_explanation || top.fragrance_character;
+  const naeher = ergebnis.annaeherung === true;
   return (
     <motion.div key="ergebnis" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }} aria-live="polite">
+      {naeher && (
+        <motion.p className="tw-mb-8 tw-max-w-[60ch] tw-border-l tw-border-gold/60 tw-pl-4 tw-text-[0.95rem] tw-text-creme/85"
+          initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: EASE }}>
+          Ganz genau passt keiner unserer Düfte zu allen Angaben. Diese kommen deinem Wunsch am nächsten – was abweicht, steht dabei.
+        </motion.p>
+      )}
       {ergebnis.kundenwunsch?.zusammenfassung && (
         <motion.p className="tw-mb-8 tw-max-w-[60ch] tw-font-serif tw-text-[1.1rem] tw-italic tw-text-creme/80"
           initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: EASE }}>
@@ -193,7 +200,7 @@ function Ergebnis({ ergebnis, saison, discovery, onNeu, onZurueck }) {
           <motion.div className="tw-flex tw-flex-wrap tw-items-center tw-gap-3"
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.6, ease: EASE }}>
             <span className="tw-text-[0.72rem] tw-uppercase tw-tracking-[0.18em] tw-text-gold">
-              Dein Duft{saison ? ` für den ${saison}` : ''}{top.familie ? ` · ${top.familie}` : ''}
+              {naeher ? 'Am nächsten dran' : `Dein Duft${saison ? ` für den ${saison}` : ''}`}{top.familie ? ` · ${top.familie}` : ''}
             </span>
             <MatchBadge wert={top.match_score} />
           </motion.div>
@@ -243,7 +250,7 @@ function Ergebnis({ ergebnis, saison, discovery, onNeu, onZurueck }) {
 
       {alt.length > 0 && (
         <div className="tw-mt-14 tw-border-t tw-border-creme/10 tw-pt-8">
-          <p className="tw-text-[0.72rem] tw-uppercase tw-tracking-[0.18em] tw-text-grau">Passt auch</p>
+          <p className="tw-text-[0.72rem] tw-uppercase tw-tracking-[0.18em] tw-text-grau">{naeher ? 'Auch nah dran' : 'Passt auch'}</p>
           <div className="tw-mt-4 tw-grid tw-gap-4 sm:tw-grid-cols-2">
             {alt.map((a, i) => (
               <motion.a key={a.product_id} href={a.url}

@@ -106,6 +106,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-11-09 [Code]** Duftberater nachgeschärft (Mars Rückmeldung: zu oft Assassin, oft „kein Treffer“): Hauptmerkmal zählt mehr als Nebeneintrag, ganzjährig < passende Saison, unisex näher an maskulin/feminin, Gleichstand nicht mehr alphabetisch, KI-Urteil „passt“ beeinflusst die Reihenfolge, statt leerer Seite „Am nächsten dran“ (ehrlich gekennzeichnet, nie gegen KI-Veto). Simulation über 1.512 Antwortkombinationen: Assassin auf Platz 1 Herbst 11,8 → 7,3 %, Sommer 15,3 → 11,2 %; leere Ergebnisse Herbst 4,5 → 1,8 %, Sommer 9,7 → 6,3 %. 70 Tests grün. Server (Vercel) wird erst nach Merge aktiv; Browser-Bundle in Theme-Kopie „Favoriten 09.11.“. Mare Vita = Megamare, Borbus = Blue Talisman von Mar bestätigt (`duefte.csv`).
 - **2026-11-09 [Code]** „Unsere Favoriten“ gebaut (Mars Auswahl: Dolce Sole, Calura, Ombroso, Velvet Vanilla, Mare Vita), bewusst nicht „Bestseller“ (bisher 1 Bestellung). Section `azizam-favoriten` + `assets/azizam-favoriten.css`, direkt unter dem Hero: Desktop aufklappende Paneele mit Auto-Wechsel, Handy wischbare Karten; Muster nach 21st.dev „Interactive Selector“. Nur in Theme-Kopie „Favoriten 09.11.“, nichts veröffentlicht. Hinweis: Metafeld `charakter` von Velvet Vanilla enthält „Von unseren Kunden am häufigsten gelobt“ (Beleg offen).
 - **2026-11-09 [Code]** Auf Mars Wunsch Bildreihenfolge bei allen 19 Düften getauscht: Stimmungsbild (Cover) jetzt Bild 1, Flakon (Produkt) Bild 2. Folge mit der Theme-Logik (`media[1]` auf Karten): Startseite/Kollektion zeigen den Flakon, Produktseite öffnet mit dem Cover. Cover ist damit auch Vorschaubild in Warenkorb, Checkout und beim Teilen.
 - **2026-11-05 [Code]** KI-Duftberater gebaut: deterministische Matching-Engine (Match-% nachvollziehbar, harte Ausschlüsse, Qualitäts-Gate, ehrlich „kein Treffer“), ein Claude-Aufruf je Beratung (Sonnet 5.5, JSON-Schema, serverseitige Validierung), Server für Vercel (`shopify/berater/api/`), Kostenprotokoll, 36 Kundenprofile + 29 weitere Tests grün. Ohne API-Schlüssel noch nicht live mit KI getestet. Neue Theme-Kopie „KI-Duftberater 05.11.“, nichts veröffentlicht.
@@ -115,7 +116,6 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 - **2026-11-04 [Code]** Discovery-Set freigeschaltet; Versandprofil: 4,95 € unter 20 €, sonst kostenlos, Express und Auslandszonen entfernt; Versandseite angepasst.
 - **2026-11-04 [Code]** 10-ml-Variante für alle 19 Düfte; Gutscheincode für Discovery-Käufer angelegt; Theme-Kopie mit Duft-Finder, Discovery-Auswahl, Vertrauensleiste, Logo/Favicon, ohne Ankündigungsleiste, neuem Haltung-Text.
 - **2026-11-04 [Code]** Logo (Wortmarke, Symbol) in Shopify-Dateien hochgeladen; Discovery-Set als Entwurfsprodukt angelegt (D-004).
-- **2026-11-04 [Code]** Hero-Video auf Handys repariert (eigene 720×1280-Datei, robustere Wiedergabe) im unveröffentlichten Theme „Azizam – Video-Fix (Claude)“; Mar muss es veröffentlichen. Interne Duftreferenz (Azizam-Name → Original) als PDF an Mar übergeben, bewusst nicht im öffentlichen Repo.
 
 ### Verlauf (zusammengefasst)
 
