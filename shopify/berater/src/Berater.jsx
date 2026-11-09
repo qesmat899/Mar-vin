@@ -117,7 +117,7 @@ function Ergebnis({ ergebnis, discovery, onJustieren, onNeu, onZurueck, justiert
           {(top.bild || top.bild_klein) && <img src={top.bild || top.bild_klein} alt={top.name} className="tw-h-full tw-w-full tw-object-cover" />}
         </a>
         <div className="tw-flex tw-min-w-0 tw-flex-col tw-justify-center">
-          <span className="tw-inline-flex tw-w-fit tw-rounded-full tw-border tw-border-gold/50 tw-px-3 tw-py-1 tw-text-[0.85rem] tw-text-gold2">{top.stufe?.text}</span>
+          {top.stufe?.text && <span className="tw-inline-flex tw-w-fit tw-rounded-full tw-border tw-border-gold/50 tw-px-3 tw-py-1 tw-text-[0.85rem] tw-text-gold2">{top.stufe.text}</span>}
           <h3 className="azb-gold-text tw-mt-3 tw-text-[2.6rem] tw-leading-[1.02] md:tw-text-[3.6rem]">{top.name}</h3>
           <p className="tw-mt-2 tw-text-[1rem] tw-text-creme/80">
             {[top.familie, top.preis_ab_text && `ab ${top.preis_ab_text}`].filter(Boolean).join(' · ')}
@@ -206,7 +206,9 @@ export default function Berater({ produkte, kicker, heading, discovery, api }) {
         if (r.ok) e = await r.json();
       } catch { e = null; }
     }
-    if (!e || !Array.isArray(e.empfehlungen)) e = berateLokal(eingabe, produkte, api ? 'server_nicht_erreichbar' : 'lokal');
+    // Server mit altem Stand (ohne Einstufung/Begründung) → lieber die neue Engine im Browser
+    const altesFormat = e && Array.isArray(e.empfehlungen) && e.empfehlungen.length > 0 && !e.empfehlungen[0].stufe;
+    if (!e || !Array.isArray(e.empfehlungen) || altesFormat) e = berateLokal(eingabe, produkte, api ? (altesFormat ? 'server_alt' : 'server_nicht_erreichbar') : 'lokal');
     if (nr !== anfrage.current) return;
     setErgebnis(e);
     setLaedt(false);
