@@ -19,7 +19,8 @@ async function messen(libPfad) {
     const { angaben } = aufbau(e);
     const r = m.matche(P, angaben);
     const w = m.waehleAus(r.kandidaten);
-    return { w, ann: !w.length && m.annaeherung ? m.annaeherung(r.kandidaten) : [] };
+    const naechste = m.naechstbeste || m.annaeherung; // neue Regel: immer die nächstbesten (sofern nicht ausgeschlossen)
+    return { w, ann: !w.length && naechste ? naechste(r.kandidaten) : [] };
   };
   // 1 Kundenprofile mit Soll-Werten
   let ok = 0; let top1 = 0; let top1n = 0; let nie = 0;
