@@ -11,7 +11,8 @@
     "test:live": "node scripts/live-test.mjs",
     "luecken": "node scripts/profil-luecken.mjs",
     "qualitaet": "node scripts/qualitaet.mjs",
-    "profile": "node scripts/duftprofile.mjs"
+    "profile": "node scripts/duftprofile.mjs",
+    "modellvergleich": "node scripts/modellvergleich.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.1.0",
