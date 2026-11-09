@@ -227,7 +227,7 @@
     "berater": {
       "type": "azizam-berater",
       "settings": {
-        "kicker": "Duftberater · 4 Fragen",
+        "kicker": "Duftberater · in wenigen Fragen",
         "heading": "Finde deinen Duft für jetzt.",
         "discovery_url": "",
         "api_url": "https://mar-vin.vercel.app/api/beratung"

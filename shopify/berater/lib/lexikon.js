@@ -138,23 +138,24 @@ export function gruppenImDuft(noten = [], charakter = '') {
   return [...treffer];
 }
 
-// Einfacher Freitext-Leser ohne KI (Sicherheitsnetz und Fallback): findet Notengruppen und ob sie verneint sind.
-// „kein Oud“, „ohne Vanille“, „Rosen mag ich nicht“, „hasse Leder“ → mag_nicht; sonst mag.
-export function freitextLesen(text) {
-  const w = woerter(text).slice(0, 120);
-  const mag = new Set();
-  const magNicht = new Set();
-  w.forEach((wort, i) => {
-    const id = gruppeVonWort(wort);
-    if (id) {
-      const davor = w.slice(Math.max(0, i - 3), i);
-      const danach = w.slice(i + 1, i + 5);
-      const verneint = davor.some((x) => VERNEINUNG.includes(x) || x === 'hasse' || x === 'außer')
-        || (danach.includes('nicht') && danach.some((x) => ['mag', 'mögen', 'gern', 'gerne', 'leiden', 'vertrage'].includes(x)))
-        || danach.slice(0, 2).some((x) => ['nicht', 'nein', 'nö'].includes(x));
-      (verneint ? magNicht : mag).add(id);
-    }
-  });
-  for (const id of magNicht) mag.delete(id);
-  return { mag: [...mag], mag_nicht: [...magNicht] };
+// Freitext verstehen: siehe verstehen.js (Satzteile, Verneinung im Satzteil, Gradangaben als weiche Vorgabe).
+
+// Welche Merkmale trägt eine Hauptnote laut Lexikon? (für Belege in Erklärungen)
+export function NOTE_DIM_TEXT(note) {
+  const b = NOTE_DIM[norm(note)];
+  return b ? Object.keys(b) : null;
+}
+
+// Für Vorlieben („ich mag Vanille“) zählen nur Kern-Noten einer Gruppe. Verwandte, aber andere Noten (Honig, Karamell,
+// Bittermandel) und reine Beschreibungswörter (süß) zählen nur bei Ausschlüssen.
+const NUR_AUSSCHLUSS = new Set(['honig', 'karamell', 'zucker', 'bittermandel', 'süß', 'süße', 'süßes', 'süßer', 'suess', 'gourmand']);
+export function vorliebenGruppen(noten = []) {
+  const g = new Set();
+  for (const n of noten) {
+    const w = norm(n);
+    if (NUR_AUSSCHLUSS.has(w)) continue;
+    const id = gruppeVonWort(w);
+    if (id) g.add(id);
+  }
+  return [...g];
 }

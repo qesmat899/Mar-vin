@@ -9,7 +9,7 @@ import { validiereAntwort, ANTWORT_SCHEMA, SYSTEM_PROMPT, attributBelegt } from 
 import { kostenUsd, monatsUebersicht, monatsSchluessel } from '../lib/kosten.js';
 import { speicherImArbeitsspeicher } from '../lib/speicher.js';
 
-const roh = JSON.parse(readFileSync(new URL('./fixtures/shop-stand-2026-11-05.json', import.meta.url))).produkte;
+const roh = JSON.parse(readFileSync(new URL('./fixtures/shop-stand-2026-11-09.json', import.meta.url))).produkte;
 const P = roh.map(produktProfil);
 const config = { model: 'claude-sonnet-5-5', effort: 'medium', fallback: false, kiAktiv: true, maxKiProTag: 100 };
 const USAGE = { input_tokens: 3000, output_tokens: 1200, cache_creation_input_tokens: 0, cache_read_input_tokens: 900 };
@@ -65,7 +65,7 @@ test('Nur Kandidaten mit belegten Daten gehen an Claude (keine Bilder/URLs, Unbe
   const c = mockClient(allePassen);
   await lauf(DUNKEL, c);
   const kand = JSON.parse(c.aufrufe[0].messages[0].content.match(/<kandidaten>(.*)<\/kandidaten>/s)[1]);
-  assert.ok(kand.length <= 10);
+  assert.ok(kand.length <= 20); // alle nicht ausgeschlossenen Düfte (Sortiment 19)
   for (const k of kand) {
     assert.ok(!('url' in k) && !('bild' in k));
     assert.ok(k.unbekannt.includes('haltbarkeit') && k.unbekannt.includes('sillage'));

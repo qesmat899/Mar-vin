@@ -4,7 +4,7 @@
 import { readFileSync } from 'node:fs';
 import { produktProfil } from '../lib/profil.js';
 
-export const roh = JSON.parse(readFileSync(new URL('./fixtures/shop-stand-2026-11-05.json', import.meta.url))).produkte;
+export const roh = JSON.parse(readFileSync(new URL('./fixtures/shop-stand-2026-11-09.json', import.meta.url))).produkte;
 const profile = Object.fromEntries(roh.map((r) => [r.id, produktProfil(r)]));
 
 export const DUNKEL = ['oud-majeste', 'duna', 'royal-cedar', 'ombroso', 'sombre', 'calura', 'velvet-vice'];
@@ -54,9 +54,9 @@ export const FAELLE = [
   ['Budget 45 € (alles erlaubt)', { anlass: 'Abend', stimmung: ['geheimnisvoll'], saison: 'Herbst', budget: 45 },
     { top: DUNKEL }],
   ['Widerspruch: hautnah + kraftvoll', { anlass: 'Alltag', stimmung: ['kraftvoll'], praesenz: 'leise', saison: 'Herbst' },
-    { hinweis: /Hautnah/ }],
+    { hinweis: /dezent und sehr kräftig/ }],
   ['Widerspruch: frisch + geheimnisvoll', { anlass: 'Abend', stimmung: ['frisch', 'geheimnisvoll'], praesenz: 'mittel', saison: 'Sommer' },
-    { hinweis: /Frisch und geheimnisvoll/ }],
+    { hinweis: /Frisch und dunkel/ }],
   ['Alles ausgeschlossen → kein Treffer', { anlass: 'Alltag', stimmung: ['frisch'], saison: 'Sommer', mag_nicht: ['vanille', 'oud', 'leder', 'blumig', 'kaffee', 'tabak', 'zitrus', 'meer', 'frucht', 'gewuerz', 'holz', 'moschus', 'pudrig'] },
     { kein_treffer: true }],
   ['Frisch ohne Zitrus/Meer/Frucht', { anlass: 'Alltag', stimmung: ['frisch'], saison: 'Sommer', mag_nicht: ['zitrus', 'meer', 'frucht'] },
@@ -87,8 +87,9 @@ export const FAELLE = [
     { top: ['royal-cedar', 'oud-majeste', 'sicilia-nobile', 'orphea'], nie: ['marea', 'borbus', 'mare-vita'] }],
   ['Sommer-Date, verspielt', { anlass: 'Date', stimmung: ['verspielt'], praesenz: 'mittel', saison: 'Sommer' },
     { top: ['dolce-sole', 'borbus'], nie: DUNKEL }],
-  ['Nur Jahreszeit angegeben', { saison: 'Sommer' },
-    { alle: ['marea', 'bergamo', 'borbus', 'mare-vita', 'assassin', 'dolce-sole', 'orphea'] }],
+  // Nur die Jahreszeit ist keine Beratung: ohne Angabe zu Duft, Stimmung oder Noten keine Empfehlung (seit 09.11.;
+  // in der neuen Beratung kommt das nicht vor, die erste Frage gilt immer der Duftart).
+  ['Nur Jahreszeit angegeben', { saison: 'Sommer' }, { kein_treffer: true }],
   ['Keine Angaben → keine Empfehlung', {}, { kein_treffer: true }],
 
   // Rückmeldung Mar (09.11.): „elegant + maskulin“ darf nicht beim Allrounder landen
