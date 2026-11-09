@@ -1,0 +1,125 @@
+/* Azizam – Unsere Favoriten. Eigene Bühne: Bernstein-Glow, Goldrahmen, große Ziffern, aufklappende Paneele. */
+.az-fav { position: relative; overflow: hidden; isolation: isolate;
+  background:
+    radial-gradient(120% 70% at 50% 0%, rgba(201, 163, 95, .16) 0%, rgba(201, 163, 95, 0) 60%),
+    linear-gradient(180deg, #17110b 0%, var(--az-bg) 100%); }
+.az-fav::before, .az-fav::after { content: ""; position: absolute; left: 0; right: 0; height: 1px; z-index: 0;
+  background: linear-gradient(90deg, transparent, var(--az-gold) 20%, var(--az-gold-2) 50%, var(--az-gold) 80%, transparent); opacity: .7; }
+.az-fav::before { top: 0; }
+.az-fav::after { bottom: 0; }
+.az-fav__glow { position: absolute; z-index: -1; width: 70vmax; height: 70vmax; left: 50%; top: 40%; transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(228, 204, 149, .10) 0%, rgba(228, 204, 149, 0) 62%); pointer-events: none; }
+.az-visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* Kopf */
+.az-fav__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 20px 48px; margin-bottom: 40px; }
+@media (min-width: 900px) { .az-fav__head { margin-bottom: 56px; } }
+.az-fav__kicker { color: var(--az-gold); display: inline-flex; align-items: center; gap: 12px; }
+.az-fav__kicker::before { content: ""; width: 28px; height: 1px; background: var(--az-gold); }
+.az-fav__title { margin-top: 14px; font-size: clamp(2.6rem, 8vw, 5.6rem); line-height: .95; }
+.az-fav__title em { font-style: italic; color: transparent;
+  background: linear-gradient(100deg, var(--az-gold) 0%, var(--az-gold-2) 45%, #fff3d6 55%, var(--az-gold) 100%);
+  background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; }
+.az-fav__intro { margin: 0; max-width: 34ch; font-family: var(--az-serif); font-style: italic; font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  line-height: 1.4; color: var(--az-muted); }
+
+/* Bühne: Handy = wischbare Karten */
+.az-fav__stage { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+  margin: 0 -16px; padding: 0 16px 4px; scroll-padding: 0 16px; }
+.az-fav__stage::-webkit-scrollbar { display: none; }
+.az-fav__panel { position: relative; flex: 0 0 82%; scroll-snap-align: start; display: flex; flex-direction: column; overflow: hidden;
+  border: 1px solid var(--az-line-gold); background: linear-gradient(180deg, var(--az-bg-2), #0f0b08); color: var(--az-ink); }
+.az-fav__media { position: relative; display: block; aspect-ratio: 1 / 1; overflow: hidden; }
+.az-fav__shade { position: absolute; inset: 0; pointer-events: none; }
+.az-fav__img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.04);
+  transition: transform 1.6s var(--az-ease), filter .8s var(--az-ease); }
+.az-fav__shade { background: linear-gradient(to bottom, rgba(12, 9, 6, .35) 0%, rgba(12, 9, 6, 0) 22%); }
+.az-fav__bar { display: none; }
+
+.az-fav__toggle { position: absolute; inset: 0; z-index: 1; width: 100%; padding: 0; margin: 0; border: 0; background: none;
+  color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.az-fav__nr { position: absolute; top: 16px; left: 18px; font-family: var(--az-serif); font-size: .95rem; letter-spacing: .1em; color: var(--az-gold-2); }
+.az-fav__spine { display: none; }
+
+.az-fav__content { position: relative; z-index: 2; flex: 1; padding: 22px 18px 20px; pointer-events: none; }
+.az-fav__content a { pointer-events: auto; }
+.az-fav__big { position: absolute; right: 10px; bottom: calc(100% - 30px); font-family: var(--az-serif); font-size: 6.5rem; line-height: 1;
+  color: transparent; -webkit-text-stroke: 1px rgba(228, 204, 149, .55); pointer-events: none; }
+.az-fav__fam { margin: 0; font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--az-gold); }
+.az-fav__name { margin-top: 8px; font-size: clamp(2rem, 8vw, 2.6rem); }
+.az-fav__name a { text-decoration: none; }
+.az-fav__notes { margin: 8px 0 0; font-size: .85rem; color: var(--az-gold-2); }
+.az-fav__char { margin: 10px 0 0; font-family: var(--az-serif); font-style: italic; font-size: 1rem; line-height: 1.4; color: rgba(239, 230, 214, .82); }
+.az-fav__foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 16px; padding-top: 14px;
+  border-top: 1px solid var(--az-line); font-size: .9rem; }
+.az-fav__cta { display: inline-flex; align-items: center; gap: 10px; margin-top: 16px; padding-bottom: 4px; font-size: .78rem;
+  letter-spacing: .14em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid var(--az-gold); }
+.az-fav__cta span { transition: transform .4s var(--az-ease); }
+.az-fav__cta:hover { color: var(--az-gold-2); }
+.az-fav__cta:hover span { transform: translateX(4px); }
+
+.az-fav__meta { display: flex; justify-content: space-between; align-items: center; margin-top: 22px; font-size: .8rem;
+  letter-spacing: .14em; color: var(--az-muted); }
+.az-fav__count b { color: var(--az-gold-2); font-weight: 400; }
+.az-fav__dots { display: flex; gap: 6px; }
+.az-fav__dot { width: 18px; height: 2px; background: var(--az-ink); opacity: .2; transition: opacity .4s, width .4s var(--az-ease), background .4s; }
+.az-fav__dot.is-on { width: 36px; opacity: 1; background: var(--az-gold); }
+
+/* Desktop: fünf Paneele, das aktive öffnet sich */
+@media (min-width: 900px) {
+  .az-fav__stage { overflow: visible; margin: 0; padding: 0; gap: 10px; height: min(78svh, 680px); min-height: 520px; }
+  .az-fav__panel { display: block; flex: 1 1 0; min-width: 0; border-color: var(--az-line); background: var(--az-bg-2);
+    transition: flex-grow .9s var(--az-ease), border-color .6s; }
+  .az-fav__panel.is-active { flex-grow: 5.2; border-color: var(--az-gold); box-shadow: 0 30px 80px -40px rgba(201, 163, 95, .45); }
+  .az-fav__panel:not(.is-active) .az-fav__img { filter: grayscale(.55) brightness(.55) sepia(.25); }
+  .az-fav__media { position: absolute; inset: 0; aspect-ratio: auto; transition: left .9s var(--az-ease); }
+  .az-fav__panel.is-active .az-fav__media { left: 30%;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 26%); mask-image: linear-gradient(90deg, transparent 0, #000 26%); }
+  .az-fav__img { object-position: 50% 50%; transition: transform 1.6s var(--az-ease), filter .8s var(--az-ease), object-position 1s var(--az-ease); }
+  .az-fav__panel.is-active .az-fav__img { transform: scale(1); object-position: 50% 50%; }
+  .az-fav__shade { transition: background .8s; }
+  .az-fav__panel.is-active .az-fav__shade { background:
+    linear-gradient(90deg, rgba(12, 9, 6, .6) 0%, rgba(12, 9, 6, .3) 34%, rgba(12, 9, 6, 0) 50%),
+    linear-gradient(to top, rgba(12, 9, 6, .75) 0%, rgba(12, 9, 6, 0) 40%); }
+  .az-fav__panel:not(.is-active):hover .az-fav__img { filter: grayscale(.2) brightness(.75) sepia(.15); }
+  .az-fav__panel:not(.is-active) .az-fav__shade { background: linear-gradient(to top, rgba(12, 9, 6, .9), rgba(12, 9, 6, .35)); }
+
+  .az-fav__nr { top: 22px; left: 50%; transform: translateX(-50%); transition: left .6s var(--az-ease), transform .6s var(--az-ease); }
+  .az-fav__panel.is-active .az-fav__nr { left: 26px; transform: none; }
+  .az-fav__spine { display: block; position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%) rotate(180deg);
+    writing-mode: vertical-rl; white-space: nowrap; font-family: var(--az-serif); font-size: clamp(1.3rem, 1.8vw, 1.7rem);
+    letter-spacing: .02em; transition: opacity .4s; }
+  .az-fav__panel.is-active .az-fav__spine { opacity: 0; }
+  .az-fav__panel.is-active .az-fav__toggle { cursor: default; }
+
+  .az-fav__content { position: absolute; inset: auto 0 0 0; padding: 36px 40px; max-width: 470px; opacity: 0; transform: translateY(16px);
+    transition: opacity .35s, transform .35s; visibility: hidden; }
+  .az-fav__panel.is-active .az-fav__content { opacity: 1; transform: none; visibility: visible;
+    transition: opacity .7s .35s, transform .9s .35s var(--az-ease), visibility 0s .35s; }
+  .az-fav__big { position: absolute; left: auto; right: -12px; bottom: auto; top: -8.6rem; font-size: 11rem; }
+  .az-fav__name { font-size: clamp(2.6rem, 4.4vw, 4rem); }
+  .az-fav__char { font-size: 1.15rem; max-width: 40ch; }
+
+  /* Fortschrittslinie für den automatischen Wechsel */
+  .az-fav__bar { display: block; position: absolute; z-index: 3; left: 0; right: 0; top: 0; height: 2px; background: rgba(239, 230, 214, .12); opacity: 0; }
+  .az-fav__bar span { display: block; height: 100%; width: 100%; transform-origin: left; transform: scaleX(0);
+    background: linear-gradient(90deg, var(--az-gold), var(--az-gold-2)); }
+  .az-fav.is-running .az-fav__panel.is-active .az-fav__bar { opacity: 1; }
+  .az-fav.is-running .az-fav__panel.is-active .az-fav__bar span { animation: az-fav-bar var(--az-fav-ms, 6000ms) linear forwards; }
+
+  .az-fav__meta { margin-top: 26px; }
+}
+@keyframes az-fav-bar { to { transform: scaleX(1); } }
+
+/* Auftritt beim Hineinscrollen */
+@media (prefers-reduced-motion: no-preference) {
+  .az-fav__title em { animation: az-fav-shine 6s ease-in-out infinite; }
+  @keyframes az-fav-shine { 0%, 100% { background-position: 100% 0; } 50% { background-position: 0 0; } }
+  .az-fav[data-ready] .az-fav__panel { opacity: 0; transform: translateY(40px); }
+  .az-fav.is-visible .az-fav__panel { opacity: 1; transform: none;
+    transition: opacity 1s calc(var(--i) * 90ms), transform 1.2s calc(var(--i) * 90ms) var(--az-ease), flex-grow .9s var(--az-ease), border-color .6s; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .az-fav__panel, .az-fav__img, .az-fav__content, .az-fav__nr { transition: none !important; }
+}

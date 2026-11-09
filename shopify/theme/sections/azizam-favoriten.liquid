@@ -1,0 +1,191 @@
+{{ 'azizam.css' | asset_url | stylesheet_tag }}
+{{ 'azizam-favoriten.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Unsere Favoriten: fünf von Mar gewählte Düfte als aufklappende Bühne.
+  Desktop: fünf Paneele, das aktive öffnet sich (Klick, Tastatur, Überfahren); wechselt von selbst, solange niemand eingreift.
+  Handy: wischbare Karten mit Zähler. Bild = Produktfoto (Flakon, 2. Bild), wie auf den übrigen Kacheln der Startseite.
+  Bewusst kein „Bestseller“: Die Auswahl ist eine Empfehlung, keine Verkaufszahl.
+{%- endcomment -%}
+{%- assign favs = section.settings.products -%}
+{%- if favs != blank and favs.count > 0 -%}
+<section class="az az-section az-fav" id="favoriten" aria-labelledby="az-fav-{{ section.id }}"
+  data-az-fav data-interval="{{ section.settings.interval | times: 1000 }}">
+  <div class="az-fav__glow" aria-hidden="true"></div>
+  <div class="az-wrap">
+    <header class="az-fav__head">
+      <div>
+        {%- if section.settings.kicker != blank -%}<p class="az-kicker az-fav__kicker">{{ section.settings.kicker }}</p>{%- endif -%}
+        <h2 id="az-fav-{{ section.id }}" class="az-h az-fav__title">
+          {{ section.settings.heading_1 }} <em>{{ section.settings.heading_2 }}</em>
+        </h2>
+      </div>
+      {%- if section.settings.text != blank -%}<p class="az-fav__intro">{{ section.settings.text }}</p>{%- endif -%}
+    </header>
+
+    <div class="az-fav__stage" data-az-fav-stage>
+      {%- for p in favs limit: 5 -%}
+        {%- liquid
+          assign m = p.metafields.azizam
+          assign img = p.media[1] | default: p.media[0]
+          assign nr = forloop.index | prepend: '0'
+          assign pid = section.id | append: '-' | append: forloop.index
+        -%}
+        <article class="az-fav__panel{% if forloop.first %} is-active{% endif %}" data-az-fav-panel data-index="{{ forloop.index0 }}"
+          style="--i: {{ forloop.index0 }}">
+          <span class="az-fav__media">
+            {%- if img != blank -%}
+              {{ img.preview_image | image_url: width: 1200 | image_tag: class: 'az-fav__img', loading: 'lazy', widths: '480, 720, 960, 1200', sizes: '(min-width: 900px) 55vw, 82vw', alt: p.title }}
+            {%- endif -%}
+          </span>
+          <span class="az-fav__shade" aria-hidden="true"></span>
+          <span class="az-fav__bar" aria-hidden="true"><span></span></span>
+
+          <button type="button" class="az-fav__toggle" data-az-fav-toggle
+            aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="az-fav-c-{{ pid }}">
+            <span class="az-fav__nr" aria-hidden="true">{{ nr }}</span>
+            <span class="az-fav__spine">{{ p.title }}</span>
+            <span class="az-visually-hidden">Favorit {{ forloop.index }} von {{ favs.count | at_most: 5 }}: {{ p.title }} zeigen</span>
+          </button>
+
+          <div class="az-fav__content" id="az-fav-c-{{ pid }}">
+            <span class="az-fav__big" aria-hidden="true">{{ nr }}</span>
+            <div class="az-fav__info">
+              {%- if m.familie.value != blank -%}<p class="az-fav__fam">N° {{ nr }} · {{ m.familie.value }}</p>{%- endif -%}
+              <h3 class="az-h az-fav__name"><a href="{{ p.url }}" tabindex="-1">{{ p.title }}</a></h3>
+              {%- assign noten = m.noten.value -%}
+              {%- if noten != blank -%}<p class="az-fav__notes">{{ noten | join: ' · ' }}</p>{%- endif -%}
+              {%- if m.charakter.value != blank -%}<p class="az-fav__char">{{ m.charakter.value | strip_newlines | truncate: 120 }}</p>{%- endif -%}
+              <div class="az-fav__foot">
+                {%- render 'azizam-intensitaet', product: p -%}
+                <span class="az-fav__price">
+                  {%- if p.price_min > 0 -%}{%- if p.price_varies -%}ab {% endif -%}{{ p.price_min | money }}{%- else -%}Bald erhältlich{%- endif -%}
+                </span>
+              </div>
+              <a class="az-fav__cta" href="{{ p.url }}" data-az-fav-link>
+                {{ section.settings.cta | default: 'Duft entdecken' }}<span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+
+    <div class="az-fav__meta" aria-hidden="true">
+      <span class="az-fav__count"><b data-az-fav-current>01</b> / 0{{ favs.count | at_most: 5 }}</span>
+      <span class="az-fav__dots">
+        {%- for p in favs limit: 5 -%}<span class="az-fav__dot{% if forloop.first %} is-on{% endif %}"></span>{%- endfor -%}
+      </span>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var root = document.querySelector('#shopify-section-{{ section.id }} [data-az-fav]');
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = '1';
+    var stage = root.querySelector('[data-az-fav-stage]');
+    var panels = Array.prototype.slice.call(root.querySelectorAll('[data-az-fav-panel]'));
+    var dots = root.querySelectorAll('.az-fav__dot');
+    var current = root.querySelector('[data-az-fav-current]');
+    var interval = parseInt(root.dataset.interval, 10) || 0;
+    var desktop = window.matchMedia('(min-width: 900px)');
+    var calm = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var active = 0, timer = null, userTook = false, inView = false, hoverT = null;
+
+    function mark(i) {
+      if (current) current.textContent = ('0' + (i + 1)).slice(-2);
+      dots.forEach(function (d, k) { d.classList.toggle('is-on', k === i); });
+    }
+    function setActive(i) {
+      active = (i + panels.length) % panels.length;
+      panels.forEach(function (p, k) {
+        var on = k === active;
+        p.classList.toggle('is-active', on);
+        p.querySelector('[data-az-fav-toggle]').setAttribute('aria-expanded', on);
+        p.querySelectorAll('.az-fav__content a').forEach(function (a) { a.tabIndex = on || !desktop.matches ? 0 : -1; });
+      });
+      mark(active);
+      restartBar();
+    }
+    function restartBar() {
+      root.classList.remove('is-running');
+      void root.offsetWidth;
+      if (timer) root.classList.add('is-running');
+    }
+    function stop() { clearInterval(timer); timer = null; root.classList.remove('is-running'); }
+    function start() {
+      stop();
+      if (!interval || userTook || !inView || calm.matches || !desktop.matches) return;
+      root.style.setProperty('--az-fav-ms', interval + 'ms');
+      timer = setInterval(function () { setActive(active + 1); }, interval);
+      restartBar();
+    }
+    function take(i) { userTook = true; stop(); setActive(i); }
+
+    panels.forEach(function (p, k) {
+      var t = p.querySelector('[data-az-fav-toggle]');
+      t.addEventListener('click', function () {
+        if (!desktop.matches) { location.href = p.querySelector('[data-az-fav-link]').href; return; }
+        if (k === active) { location.href = p.querySelector('[data-az-fav-link]').href; return; }
+        take(k);
+      });
+      t.addEventListener('keydown', function (e) {
+        if (!desktop.matches) return;
+        var n = null;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = k + 1;
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = k - 1;
+        if (e.key === 'Home') n = 0;
+        if (e.key === 'End') n = panels.length - 1;
+        if (n === null) return;
+        e.preventDefault();
+        n = (n + panels.length) % panels.length;
+        take(n);
+        panels[n].querySelector('[data-az-fav-toggle]').focus();
+      });
+      p.addEventListener('mouseenter', function () {
+        if (!desktop.matches || !window.matchMedia('(hover: hover)').matches) return;
+        clearTimeout(hoverT);
+        hoverT = setTimeout(function () { if (k !== active) take(k); else { userTook = true; stop(); } }, 140);
+      });
+      p.addEventListener('mouseleave', function () { clearTimeout(hoverT); });
+    });
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) { inView = e.isIntersecting; root.classList.toggle('is-visible', inView || root.classList.contains('is-visible')); inView ? start() : stop(); });
+      }, { threshold: 0.35 }).observe(stage);
+      // Handy: Zähler folgt der gewischten Karte
+      var io = new IntersectionObserver(function (es) {
+        if (desktop.matches) return;
+        es.forEach(function (e) { if (e.isIntersecting) mark(panels.indexOf(e.target)); });
+      }, { root: stage, threshold: 0.6 });
+      panels.forEach(function (p) { io.observe(p); });
+    } else {
+      root.classList.add('is-visible');
+    }
+    var onChange = function () { setActive(desktop.matches ? active : 0); start(); };
+    desktop.addEventListener ? desktop.addEventListener('change', onChange) : desktop.addListener(onChange);
+    setActive(0);
+  })();
+</script>
+{%- elsif request.design_mode -%}
+  <div class="az az-section"><div class="az-wrap"><p class="az-kicker">Unsere Favoriten: Bitte bis zu fünf Produkte auswählen.</p></div></div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Azizam Favoriten",
+  "tag": "div",
+  "settings": [
+    { "type": "product_list", "id": "products", "label": "Favoriten (max. 5, Reihenfolge = Nummer)", "limit": 5 },
+    { "type": "text", "id": "kicker", "label": "Überzeile", "default": "Von uns ausgewählt" },
+    { "type": "text", "id": "heading_1", "label": "Überschrift", "default": "Unsere" },
+    { "type": "text", "id": "heading_2", "label": "Überschrift, hervorgehoben", "default": "Favoriten" },
+    { "type": "text", "id": "text", "label": "Satz", "default": "Fünf Düfte, mit denen wir dir den Einstieg ans Herz legen." },
+    { "type": "text", "id": "cta", "label": "Link-Text", "default": "Duft entdecken" },
+    { "type": "range", "id": "interval", "label": "Automatischer Wechsel (Sekunden, 0 = aus)", "min": 0, "max": 12, "step": 1, "default": 6 }
+  ],
+  "presets": [{ "name": "Azizam Favoriten" }]
+}
+{% endschema %}
