@@ -133,7 +133,7 @@ function Ergebnis({ ergebnis, discovery, onJustieren, onNeu, onZurueck, justiert
             <a href={top.url} className="tw-inline-flex tw-min-h-[52px] tw-items-center tw-bg-gold tw-px-7 tw-text-[0.95rem] tw-font-medium tw-text-nacht hover:tw-bg-gold2">Duft ansehen</a>
             {top.probe && (
               <a href={top.probe.url} className="tw-inline-flex tw-min-h-[52px] tw-items-center tw-border tw-border-gold tw-px-6 tw-text-[0.95rem] tw-text-gold2 hover:tw-bg-gold hover:tw-text-nacht">
-                Erst 10 ml testen · {top.probe.text}
+                Erst 10 ml testen · {top.probe.text}{top.probe.grundpreis ? <span className="tw-ml-1.5 tw-text-[0.8rem] tw-opacity-75">({top.probe.grundpreis})</span> : null}
               </a>
             )}
           </div>

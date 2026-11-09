@@ -105,7 +105,7 @@ test('Ergebnis: verständlich, ohne Zahlen, Alternativen mit Unterschied, Links 
   for (const e of r.empfehlungen) {
     assert.match(e.url, /^\/products\/[a-z0-9-]+$/);
     assert.equal(e.url, `/products/${e.product_id}`);
-    if (e.probe) assert.ok(e.probe.url.startsWith(e.url) && e.probe.preis > 0);
+    if (e.probe) { assert.ok(e.probe.url.startsWith(e.url) && e.probe.preis > 0); assert.match(e.probe.grundpreis, /€\/100 ml$/); }
   }
 });
 

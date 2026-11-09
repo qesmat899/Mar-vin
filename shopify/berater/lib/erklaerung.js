@@ -84,5 +84,7 @@ export function probe(p) {
   if (preis === undefined) return null;
   const v = (p.varianten || []).find((x) => /^10\s?ml$/i.test(x.t) && x.v !== false);
   const url = p.url ? (v?.id ? `${p.url}?variant=${v.id}` : p.url) : null;
-  return url ? { preis, url, text: `${String(preis.toFixed(2)).replace('.', ',')} €` } : null;
+  const euro = (x) => `${x.toFixed(2).replace('.', ',')} €`;
+  // Grundpreis je 100 ml (Leitplanke in brand-briefing.md)
+  return url ? { preis, url, text: euro(preis), grundpreis: `${euro(preis * 10)}/100 ml` } : null;
 }
