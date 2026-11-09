@@ -52,6 +52,7 @@
 
 ## Entscheidungen (dauerhaft, mit Datum)
 
+- Theme-Kopien von Claude werden ab jetzt fortlaufend nummeriert: „Azizam #NN – Inhalt TT.MM. (Claude)“, beginnend mit #01; die nächste freie Nummer steht hier: **nächste: #01**. [Mar, 2026-11-09]
 - Frühere interne Namen (Originale) bleiben in `duefte.csv`; nur Kundentexte bleiben ohne fremde Markennamen. Berater: Assassin nicht „elegant“; Royal Cedar, Oud Majesté, Ombroso „unisex-maskulin“. [Mar, 2026-11-09]
 - Kostenloser Versand ab 20 €, Details im Ledger `D-006`. [Mar, 2026-11-04]
 - Reiseflakon 10 ml je Duft, kein Entdecker-Trio, Details im Ledger `D-005`. Theme-Änderungen als Kopie statt GitHub-Verbindung. [Mar, 2026-11-04]
@@ -74,7 +75,7 @@
 - KI-Duftberater: Claude-API-Kosten (geschätzt ca. 0,02 $ je Beratung mit Sonnet 5.5, Tageslimit 300) und Vercel-Hosting brauchen Mars Zustimmung; API wird separat von Pro bezahlt. Kopf-/Herz-/Basisnote, Haltbarkeit, Sillage sind für alle Düfte UNKNOWN (Vorlage: `npm run luecken`).
 - 21st.dev: Der hinterlegte Schlüssel wird nicht als Konto erkannt (Antwort „signed-out“, nur 2 freie Abrufe/Tag; Hauptdomain `21st.dev` ohne Schlüssel, nur `api.21st.dev` bekommt ihn). Mar prüft Schlüssel bzw. Abo; der Duftberater braucht 21st.dev nicht.
 - Weitere Bundles (Signature, Tag & Nacht) offen; Trio verworfen, Reiseflakon 10 ml umgesetzt (`D-005`). Stückkosten der Proben UNKNOWN.
-- Theme-Änderungen laufen über Kopien, die Mar veröffentlicht (keine GitHub-Verbindung, Mar 04.11.). Live ist „Azizam – Duftberater 05.11. (Claude)“ (Mar, 05.11.); „Azizam – KI-Duftberater 05.11. (Claude)“ (Matching-Engine, Feinschliff-Schritt, Produkt-Feed) wartet auf Veröffentlichung durch Mar. Live ist seit 09.11. „Azizam – Favoriten 09.11. (Claude)“ (Mar). Live ist „Azizam – Berater-Fix 09.11. (Claude)“ (Mar, 09.11.). Neu: „Azizam – Berater neu 09.11. (Claude)“ mit adaptivem Duftberater wartet auf Veröffentlichung durch Mar (sicher auch vor dem Merge: antwortet der Server noch im alten Format, rechnet die Seite selbst mit der neuen Engine; KI-Erklärungen kommen erst nach dem Merge).
+- Theme-Änderungen laufen über Kopien, die Mar veröffentlicht (keine GitHub-Verbindung, Mar 04.11.). Live ist „Azizam – Duftberater 05.11. (Claude)“ (Mar, 05.11.); „Azizam – KI-Duftberater 05.11. (Claude)“ (Matching-Engine, Feinschliff-Schritt, Produkt-Feed) wartet auf Veröffentlichung durch Mar. Live ist seit 09.11. „Azizam – Favoriten 09.11. (Claude)“ (Mar). Live ist „Azizam – Berater neu 09.11. (Claude)“ mit adaptivem Duftberater (Mar, 09.11.); PR #10 gemergt, Vercel liefert die neue Logik (geprüft 09.11.), PR #8 geschlossen.
 - GPSR: Produktseiten brauchen Name, Post- und E-Mail-Adresse der verantwortlichen Person; bisher steht die Anschrift laut Entscheidung nur im Impressum. Mar entscheidet (Feld im Theme-Baustein „Azizam Produktinfos“).
 - Rückgaberegel für den Neustart (30 Tage bei ≥ 80 % Füllung wie früher?) offen; erst danach den Rückgabe-Absatz auf der Startseite einschalten.
 - Welcher Flakon wird es (in 30 und 50 ml)? (Hängt davon ab: Verpackung, Etikett, Shop-Neustart)
