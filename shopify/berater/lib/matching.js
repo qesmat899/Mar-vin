@@ -329,7 +329,7 @@ export function bewerte(p, a) {
       }
       for (const ab of v.abweichung) {
         const t = ab.dim === 'intensitaet' ? `${ab.art === 'staerker' ? 'kräftiger' : 'dezenter'} als gewünscht`
-          : `${ab.art === 'zu_viel' ? 'mehr' : 'weniger'} ${DIM_LABEL[ab.dim]} als gewünscht`;
+          : ab.art === 'zu_viel' ? `${KOMPARATIV[ab.dim] || `mehr ${DIM_LABEL[ab.dim]}`} als gewünscht` : `weniger ${DIM_LABEL[ab.dim]} als gewünscht`;
         konflikte.push(t);
         if (ab.deutlich) deutlich.push(t);
       }
@@ -425,6 +425,7 @@ export function bewerte(p, a) {
   };
 }
 
+const KOMPARATIV = { suesse: 'süßer', frische: 'frischer', waerme: 'wärmer', rauchig: 'rauchiger', holzig: 'holziger', wuerzig: 'würziger', blumig: 'blumiger', fruchtig: 'fruchtiger', ledrig: 'ledriger', pudrig: 'pudriger', cremig: 'cremiger', sauber: 'sauberer' };
 const ANLASS_TEXT = { Alltag: 'den Alltag', Büro: 'die Arbeit', Date: 'ein Date', Abend: 'den Abend', 'Besonderer Anlass': 'besondere Anlässe', Freizeit: 'die Freizeit' };
 
 // Gesamter deterministischer Durchlauf über alle Produkte.
