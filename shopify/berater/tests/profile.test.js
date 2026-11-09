@@ -1,4 +1,4 @@
-// Prüft die Empfehlungen inhaltlich: Kundenprofile (tests/faelle.js) gegen die echten Shopify-Daten (Stand 05.11.2026).
+// Prüft die Empfehlungen inhaltlich: Kundenprofile (tests/faelle.js) gegen die echten Shopify-Daten (Stand 09.11.2026).
 // Erwartungen beschreiben, was zum Profil passt (Duftlogik), nicht das, was die Engine zufällig ausgibt.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';

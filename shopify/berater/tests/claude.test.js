@@ -9,7 +9,7 @@ import { validiereAntwort, ANTWORT_SCHEMA, SYSTEM_PROMPT, attributBelegt } from 
 import { kostenUsd, monatsUebersicht, monatsSchluessel } from '../lib/kosten.js';
 import { speicherImArbeitsspeicher } from '../lib/speicher.js';
 
-const roh = JSON.parse(readFileSync(new URL('./fixtures/shop-stand-2026-11-05.json', import.meta.url))).produkte;
+const roh = JSON.parse(readFileSync(new URL('./fixtures/shop-stand-2026-11-09.json', import.meta.url))).produkte;
 const P = roh.map(produktProfil);
 const config = { model: 'claude-sonnet-5-5', effort: 'medium', fallback: false, kiAktiv: true, maxKiProTag: 100 };
 const USAGE = { input_tokens: 3000, output_tokens: 1200, cache_creation_input_tokens: 0, cache_read_input_tokens: 900 };

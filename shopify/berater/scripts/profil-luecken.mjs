@@ -12,7 +12,7 @@ if (process.env.SHOP_DATEN_URL) {
   const t = await (await fetch(process.env.SHOP_DATEN_URL)).text();
   produkte = JSON.parse(t.slice(t.indexOf('{'))).produkte;
 } else {
-  produkte = JSON.parse(readFileSync(new URL('../tests/fixtures/shop-stand-2026-11-05.json', import.meta.url))).produkte;
+  produkte = JSON.parse(readFileSync(new URL('../tests/fixtures/shop-stand-2026-11-09.json', import.meta.url))).produkte;
 }
 const q = (s) => `"${String(s ?? '').replace(/"/g, '""')}"`;
 console.log(['id', 'name', 'unbekannt', ...FELDER.map((f) => `${f}_bestaetigt`), 'quelle'].map(q).join(','));

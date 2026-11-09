@@ -4,7 +4,7 @@
 import { readFileSync } from 'node:fs';
 import { produktProfil } from '../lib/profil.js';
 
-export const roh = JSON.parse(readFileSync(new URL('./fixtures/shop-stand-2026-11-05.json', import.meta.url))).produkte;
+export const roh = JSON.parse(readFileSync(new URL('./fixtures/shop-stand-2026-11-09.json', import.meta.url))).produkte;
 const profile = Object.fromEntries(roh.map((r) => [r.id, produktProfil(r)]));
 
 export const DUNKEL = ['oud-majeste', 'duna', 'royal-cedar', 'ombroso', 'sombre', 'calura', 'velvet-vice'];

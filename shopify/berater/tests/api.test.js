@@ -3,7 +3,7 @@ import { test, before } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
-const feed = readFileSync(new URL('./fixtures/shop-stand-2026-11-05.json', import.meta.url), 'utf8');
+const feed = readFileSync(new URL('./fixtures/shop-stand-2026-11-09.json', import.meta.url), 'utf8');
 let beratung, kosten, status;
 
 before(async () => {
