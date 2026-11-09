@@ -22,7 +22,7 @@ let ok = 0;
 let ki = 0;
 for (const [name, eingabe, soll] of FAELLE.slice(0, anzahl)) {
   const r = await berate({ eingabe, produkteRoh: roh, client, config, speicher, log: (o) => logs.push(o) });
-  const fehler = r.status === 200 ? pruefe(soll, r.body.empfehlungen, r.body.hinweise) : [`HTTP ${r.status}`];
+  const fehler = r.status === 200 ? pruefe(soll, r.body.empfehlungen, r.body.hinweise, r.body.annaeherung === true) : [`HTTP ${r.status}`];
   if (r.body.quelle === 'claude') ki += 1;
   if (!fehler.length) ok += 1;
   console.log(`${fehler.length ? '✗' : '✓'} ${name} [${r.body.quelle}] → ${(r.body.empfehlungen || []).map((e) => `${e.product_id} ${e.match_score}% (${e.ki_urteil ?? '–'})`).join(', ') || 'kein Treffer'}`);

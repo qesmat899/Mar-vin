@@ -65,7 +65,8 @@
       "type": "azizam-anlass",
       "settings": {
         "eyebrow": "Nach Anlass",
-        "heading": "Welcher Duft passt zu Deinem Abend?"
+        "heading": "Welcher Duft passt zu Deinem Abend?",
+        "collection": ""
       },
       "blocks": {
         "a1": {
@@ -130,7 +131,13 @@
     },
     "liste": {
       "type": "azizam-liste",
-      "settings": {}
+      "settings": {
+        "heading": "Als Erste wissen, wann es losgeht.",
+        "text": "Eine E-Mail zum Start. Danach nur, wenn es wirklich etwas Neues gibt.",
+        "button": "Eintragen",
+        "note": "Mit dem Eintragen willigst Du ein, E-Mails von Azizam zu erhalten. Abmelden geht jederzeit über den Link in jeder E-Mail.",
+        "success": "Danke. Du stehst auf der Liste."
+      }
     },
     "begriffe": {
       "type": "azizam-glossar",
@@ -179,7 +186,8 @@
       "settings": {
         "kicker": "19 Düfte · drei Richtungen",
         "heading": "Die Kollektion",
-        "limit": 24
+        "limit": 24,
+        "collection": ""
       },
       "blocks": {
         "f1": {
@@ -209,16 +217,44 @@
     },
     "finder": {
       "type": "azizam-finder",
-      "settings": {},
+      "settings": {
+        "kicker": "Duft-Finder · 30 Sekunden",
+        "heading": "Drei Bilder. Dein Duft.",
+        "discovery_url": ""
+      },
       "disabled": true
     },
     "berater": {
       "type": "azizam-berater",
-      "settings": {}
+      "settings": {
+        "kicker": "Duftberater · 4 Fragen",
+        "heading": "Finde deinen Duft für jetzt.",
+        "discovery_url": "",
+        "api_url": "https://mar-vin.vercel.app/api/beratung"
+      }
+    },
+    "favoriten": {
+      "type": "azizam-favoriten",
+      "settings": {
+        "products": [
+          "dolce-sole",
+          "calura",
+          "ombroso",
+          "velvet-vanilla",
+          "mare-vita"
+        ],
+        "kicker": "Von uns ausgewählt",
+        "heading_1": "Unsere",
+        "heading_2": "Favoriten",
+        "text": "Fünf Düfte, mit denen wir dir den Einstieg ans Herz legen.",
+        "cta": "Duft entdecken",
+        "interval": 6
+      }
     }
   },
   "order": [
     "hero",
+    "favoriten",
     "kollektion",
     "finder",
     "berater",

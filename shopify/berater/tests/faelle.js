@@ -90,10 +90,23 @@ export const FAELLE = [
   ['Nur Jahreszeit angegeben', { saison: 'Sommer' },
     { alle: ['marea', 'bergamo', 'borbus', 'mare-vita', 'assassin', 'dolce-sole', 'orphea'] }],
   ['Keine Angaben → keine Empfehlung', {}, { kein_treffer: true }],
+
+  // Rückmeldung Mar (09.11.): „elegant + maskulin“ darf nicht beim Allrounder landen
+  ['Elegant, maskulin, Abend', { anlass: 'Abend', stimmung: ['elegant'], praesenz: 'mittel', richtung: 'maskulin', saison: 'Herbst' },
+    { top: ['royal-cedar', 'oud-majeste', 'sicilia-nobile', 'orphea'], nicht_top: ['assassin'] }],
+  ['Elegant, maskulin, Alltag', { anlass: 'Alltag', stimmung: ['elegant'], praesenz: 'mittel', richtung: 'maskulin', saison: 'Herbst' },
+    { nicht_top: ['assassin'] }],
+  ['Elegant + kraftvoll, maskulin, besonderer Anlass', { anlass: 'Besonderer Anlass', stimmung: ['elegant', 'kraftvoll'], praesenz: 'laut', richtung: 'maskulin', saison: 'Winter' },
+    { top: ['royal-cedar', 'oud-majeste'], nie: ['assassin', 'marea', 'borbus'] }],
+  ['Elegant + sinnlich, maskulin, Date', { anlass: 'Date', stimmung: ['elegant', 'sinnlich'], praesenz: 'mittel', richtung: 'maskulin', saison: 'Herbst' },
+    { nicht_top: ['assassin'] }],
+  // Nichts besteht das Gate, aber es gibt nahe Düfte: Annäherung statt leerer Seite
+  ['Annäherung statt „kein Treffer“', { anlass: 'Abend', stimmung: ['elegant'], praesenz: 'mittel', saison: 'Herbst', freitext: 'Ich mag keine Rosen und bitte kein Oud.' },
+    { annaeherung: true, kein_treffer: false, nie: ['duna', 'oud-majeste', 'royal-cedar', 'ombroso'] }],
 ];
 
 
-export function pruefe(soll, empfehlungen, hinweise = []) {
+export function pruefe(soll, empfehlungen, hinweise = [], annaeherung = false) {
   const e = empfehlungen.map((x) => x.product_id);
   const fehler = [];
   if (soll.kein_treffer && e.length) fehler.push('erwartet keinen Treffer');
@@ -103,9 +116,11 @@ export function pruefe(soll, empfehlungen, hinweise = []) {
   if (soll.alle) for (const x of e) if (!soll.alle.includes(x)) fehler.push(`„${x}“ passt nicht zum Profil`);
   if (soll.nie) for (const x of soll.nie) if (e.includes(x)) fehler.push(`„${x}“ darf nicht empfohlen werden`);
   if (soll.hinweis && !hinweise.some((h) => soll.hinweis.test(h))) fehler.push('Widerspruchshinweis fehlt');
+  if (soll.nicht_top && e.length && soll.nicht_top.includes(e[0])) fehler.push(`Platz 1 „${e[0]}“ unerwünscht`);
+  if (soll.annaeherung !== undefined && soll.annaeherung !== annaeherung) fehler.push(`Annäherung erwartet: ${soll.annaeherung}`);
   for (const x of empfehlungen) {
     if (!profile[x.product_id]) fehler.push(`unbekanntes Produkt ${x.product_id}`);
-    if (x.match_score < 60) fehler.push(`Match unter Schwelle: ${x.product_id}`);
+    if (x.match_score < (annaeherung ? 55 : 60)) fehler.push(`Match unter Schwelle: ${x.product_id}`);
   }
   if (e.length > 3) fehler.push('mehr als 3 Empfehlungen');
   return fehler;
