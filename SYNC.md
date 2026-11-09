@@ -106,6 +106,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-11-09 [Code]** Auf Mars Wunsch Bildreihenfolge bei allen 19 Düften getauscht: Stimmungsbild (Cover) jetzt Bild 1, Flakon (Produkt) Bild 2. Folge mit der Theme-Logik (`media[1]` auf Karten): Startseite/Kollektion zeigen den Flakon, Produktseite öffnet mit dem Cover. Cover ist damit auch Vorschaubild in Warenkorb, Checkout und beim Teilen.
 - **2026-11-05 [Code]** KI-Duftberater gebaut: deterministische Matching-Engine (Match-% nachvollziehbar, harte Ausschlüsse, Qualitäts-Gate, ehrlich „kein Treffer“), ein Claude-Aufruf je Beratung (Sonnet 5.5, JSON-Schema, serverseitige Validierung), Server für Vercel (`shopify/berater/api/`), Kostenprotokoll, 36 Kundenprofile + 29 weitere Tests grün. Ohne API-Schlüssel noch nicht live mit KI getestet. Neue Theme-Kopie „KI-Duftberater 05.11.“, nichts veröffentlicht.
 - **2026-11-05 [Code]** Duftberater gebaut: React-Insel (Vite, React, Tailwind gekapselt, Motion), 4 Auswahlkarten-Fragen, Jahreszeit automatisch, Ergebnis mit Gründen + 2 Alternativen; Quelle `shopify/berater/`, Section `azizam-berater.liquid`. In neuer Theme-Kopie „Azizam – Duftberater 05.11. (Claude)“ eingespielt und in der Vorschau getestet (Desktop/Handy), nichts veröffentlicht.
 - **2026-11-05 [Code]** Duftberater: Merkmale je Duft aus Online-Recherche (Bewertungen der Originale), von Mar abgesegnet, als Metafelder `azizam_berater.*` (tendenz, stimmung, saison, anlass, nicht_buero) in Shopify eingetragen. Rohdaten mit Originalnamen nur intern, nicht im Repo. 21st.dev: Mar hinterlegt API-Schlüssel in der Cloud-Umgebung, danach neue Session.
@@ -115,7 +116,6 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 - **2026-11-04 [Code]** Logo (Wortmarke, Symbol) in Shopify-Dateien hochgeladen; Discovery-Set als Entwurfsprodukt angelegt (D-004).
 - **2026-11-04 [Code]** Hero-Video auf Handys repariert (eigene 720×1280-Datei, robustere Wiedergabe) im unveröffentlichten Theme „Azizam – Video-Fix (Claude)“; Mar muss es veröffentlichen. Interne Duftreferenz (Azizam-Name → Original) als PDF an Mar übergeben, bewusst nicht im öffentlichen Repo.
 - **2026-11-04 [Code]** Rechtsseiten angelegt (Impressum, AGB, Widerrufsbelehrung ohne Versiegelungs-Ausschluss, Versand: DHL, 4,95 €, frei ab 60 €, 2–4 Werktage, nur DE), im Footer verlinkt; Bestand 10 je Duft und Größe. Offen bei Mar: Versandprofil in Shopify angleichen, Richtlinienfelder füllen, Datenschutz auf Deutsch, Steuern aus, PayPal/Klarna, Haltung-Text („selbst her“) und Ehrlich-Abschnitt im Theme-Editor.
-- **2026-11-03 [Code]** Auf Mars Wunsch alle 19 Produkte aktiviert und im Onlineshop-Kanal veröffentlicht; Shop bleibt passwortgeschützt, Live-Theme unverändert. Bestand steht auf 0 (Ausverkauft-Anzeige), bis Mar echte Stückzahlen nennt.
 
 ### Verlauf (zusammengefasst)
 
