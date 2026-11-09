@@ -4,7 +4,7 @@
 //   "bestaetigt" – Metafeld azizam_profil.* (gezielt ergänzt, von Mar bestätigt)
 //   "abgeleitet" – Regel aus lexikon.js (Hauptnoten + Charakter-Text), keine Produktangabe
 
-import { DIMENSIONEN, dimensionenAusNoten, gruppenImDuft } from './lexikon.js';
+import { DIMENSIONEN, dimensionenAusNoten, gruppenImDuft, vorliebenGruppen } from './lexikon.js';
 
 const liste = (v) => (Array.isArray(v) ? v.filter((x) => typeof x === 'string' && x.trim()) : []);
 const zahl = (v) => (v === null || v === undefined || v === '' || Number.isNaN(Number(v)) ? null : Number(v));
@@ -43,6 +43,7 @@ export function produktProfil(roh) {
     bild_klein: text(p.img2),
     preis_ab_text: text(p.p),
     preise, // z. B. { "10 ml": 9.99, "30 ml": 39.99, "50 ml": 49.99 }
+    varianten: Array.isArray(p.varianten) ? p.varianten.filter((v) => v && typeof v.t === 'string').map((v) => ({ t: v.t, id: v.id ? String(v.id) : null, v: v.v !== false })) : [],
     verfuegbar: p.verfuegbar !== false,
     familie: text(p.familie),
     hauptnoten: noten,
@@ -60,7 +61,8 @@ export function produktProfil(roh) {
     haltbarkeit: zahl(bestaetigt.haltbarkeit), // 1–5, nur bestätigt
     sillage: zahl(bestaetigt.sillage), // 1–5, nur bestätigt
     dims,
-    gruppen: gruppenImDuft(noten, charakter || ''),
+    gruppen: gruppenImDuft(noten, charakter || ''), // für Ausschlüsse: Noten + Beschreibung (lieber vorsichtig)
+    noten_gruppen: vorliebenGruppen(noten), // für Vorlieben: nur Kern-Hauptnoten („mag Vanille“ ≠ Honig oder „süß“)
   };
   profil.unbekannt = unbekannteFelder(profil);
   return profil;

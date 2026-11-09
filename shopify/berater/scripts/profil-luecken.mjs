@@ -4,9 +4,9 @@
 //   npm run luecken > luecken.csv            (Testdaten)
 //   SHOP_DATEN_URL=https://…?view=berater npm run luecken > luecken.csv
 import { readFileSync } from 'node:fs';
-import { produktProfil } from '../lib/profil.js';
+import { produktProfil, PROFIL_FELDER } from '../lib/profil.js';
 
-const FELDER = ['kopfnote', 'herznote', 'basisnote', 'haltbarkeit', 'sillage', 'suesse', 'frische', 'waerme', 'rauchig', 'holzig', 'wuerzig'];
+const FELDER = PROFIL_FELDER; // alle 12 Merkmale + Noten, Haltbarkeit, Sillage
 let produkte;
 if (process.env.SHOP_DATEN_URL) {
   const t = await (await fetch(process.env.SHOP_DATEN_URL)).text();

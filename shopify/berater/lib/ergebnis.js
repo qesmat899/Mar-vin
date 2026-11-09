@@ -1,13 +1,15 @@
 // Aufbereitung des Ergebnisses für die Oberfläche (ohne Node-Abhängigkeiten, läuft auch im Browser).
 import { empfehlbar, annaeherung, MAX_EMPFEHLUNGEN } from './matching.js';
+import { stufe, warum, unterschied, probe } from './erklaerung.js';
 
 export function ohneKi(angaben, profile, vorab, grund) {
   let empfehlungen = vorab.kandidaten
     .filter((k) => empfehlbar(k))
     .slice(0, MAX_EMPFEHLUNGEN)
-    .map((k) => ausgabe(profile.find((p) => p.id === k.id), k, null));
+    .map((k) => ausgabe(profile.find((p) => p.id === k.id), k, null, angaben));
   const naeherung = !empfehlungen.length;
-  if (naeherung) empfehlungen = annaeherung(vorab.kandidaten).map((k) => ausgabe(profile.find((p) => p.id === k.id), k, null));
+  if (naeherung) empfehlungen = annaeherung(vorab.kandidaten).map((k) => ausgabe(profile.find((p) => p.id === k.id), k, null, angaben));
+  empfehlungen = mitUnterschieden(empfehlungen, profile);
   return {
     quelle: 'ohne_ki',
     grund,
@@ -20,8 +22,11 @@ export function ohneKi(angaben, profile, vorab, grund) {
   };
 }
 
-export function ausgabe(p, k, b) {
+export function ausgabe(p, k, b, angaben = null) {
   return {
+    stufe: stufe(k.match),
+    warum: angaben ? warum(angaben, p, k) : '',
+    probe: probe(p),
     product_id: p.id,
     shopify_id: p.shopify_id,
     name: p.name,
@@ -42,3 +47,9 @@ export function ausgabe(p, k, b) {
   };
 }
 
+
+// Platz 2 und 3: verständlicher Unterschied zu Platz 1 (aus Produktdaten).
+export function mitUnterschieden(empfehlungen, profile) {
+  const top = empfehlungen[0] && profile.find((p) => p.id === empfehlungen[0].product_id);
+  return empfehlungen.map((e, i) => (i === 0 || !top ? e : { ...e, unterschied: unterschied(top, profile.find((p) => p.id === e.product_id)) }));
+}

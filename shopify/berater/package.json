@@ -9,7 +9,9 @@
     "build": "vite build",
     "test": "node --test src/logik.test.js tests/*.test.js",
     "test:live": "node scripts/live-test.mjs",
-    "luecken": "node scripts/profil-luecken.mjs"
+    "luecken": "node scripts/profil-luecken.mjs",
+    "qualitaet": "node scripts/qualitaet.mjs",
+    "profile": "node scripts/duftprofile.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.1.0",

@@ -15,31 +15,49 @@ mit nachvollziehbarem Match-%, Gründen und Hinweisen. Gibt es keinen passenden 
 | Shopify | `../theme/sections/azizam-berater.liquid`, `../theme/snippets/azizam-berater-produkt.liquid`, `../theme/templates/collection.berater.liquid` | Section; Produktdaten als JSON; öffentlicher Feed `/collections/all?view=berater` für den Server |
 | Tests | `tests/`, `src/logik.test.js` | 36 Kundenprofile + Claude-Stufe (simuliert) + Endpunkte |
 
-## Ablauf einer Beratung
+## Ablauf einer Beratung (seit 09.11.2026: adaptiv)
 
-1. **Angaben prüfen** (`kundenAngaben`): nur erlaubte Werte, Freitext gekürzt (400 Zeichen) und bereinigt.
-2. **Kundenprofil:** Karten plus Freitext. Abneigungen aus dem Freitext erkennt immer auch eine Regel ohne KI.
-3. **Produktprofile** (`lib/profil.js`) aus Shopify. Jede Angabe hat eine Quelle:
-   - `shopify`: Metafelder `azizam.*` / `azizam_berater.*`, von Mar freigegeben
-   - `bestaetigt`: Metafelder `azizam_profil.*`, gezielt ergänzt
-   - `abgeleitet`: Regel in `lib/lexikon.js` aus den Hauptnoten
-   Was nicht belegt ist, bleibt `null` (unbekannt): aktuell Kopf-/Herz-/Basisnote, Haltbarkeit und Sillage für alle Düfte.
-4. **Harte Ausschlüsse:** Note aus „Bitte nicht drin“ · fürs Büro zu stark · über dem Budget (30 ml) · Intensität
-   weit weg vom Wunsch · nicht verfügbar.
-5. **Gewichtete Bewertung** (`lib/matching.js`): Stimmung 35 · Anlass 15 · Präsenz 15 · Jahreszeit 15 · Richtung 10 ·
-   gewünschte Noten 10. Gezählt werden nur beantwortete Kriterien. Deutliche Widersprüche (Gegensatz zur Stimmung,
-   entgegengesetzte Richtung) kosten 10 Punkte. **Das Match-% entsteht nur hier**, nie aus der KI.
-6. **Claude** (ein Aufruf, `output_config.format` mit JSON-Schema) bekommt die besten ≤ 10 Kandidaten mit belegten Daten.
-   Claude liefert Vorlieben und Abneigungen aus dem Freitext (feste Werteliste) und je Kandidat ein Urteil
-   (`passt`/`teilweise`/`passt_nicht`), Gründe, Attribute, Konflikte und eine Erklärung.
-7. **Validierung:** Unbekannte oder doppelte `product_id` werden verworfen. Attribute, die nicht in den Produktdaten
-   stehen, werden entfernt. Texte mit Verbotsliste-Begriffen, Prozentangaben oder fremden Duftnamen werden verworfen.
-   Danach wird neu gerechnet; von Claude erkannte Abneigungen gelten als harter Ausschluss.
-8. **Qualitäts-Gate:** empfohlen nur bei Match ≥ 60 %, zuverlässigen Daten und ohne KI-Veto. Bei „teilweise“ ab 70 %,
-   bei deutlichem Widerspruch ab 80 %. Höchstens 3 Düfte, sonst „kein passender Duft“.
+**Gesprächsführung** (`lib/gespraech.js`, läuft im Browser): Nach jeder Antwort rechnet die Engine für jede noch
+offene Frage aus, ob eine andere Antwort einen anderen besten Duft ergäbe. Gefragt wird nur, was die Empfehlung
+verändert, und nie, was schon feststeht (auch aus dem Freitext).
+1. „Welche Art von Duft gefällt dir spontan am besten?“ (frisch · warm · süß · holzig · dunkel · weiß ich noch nicht),
+   wahlweise in eigenen Worten. Bei „weiß ich noch nicht“: „Was riechst du lieber?“ (frisch oder warm).
+2. 0–3 Fragen aus Süße, Stärke, Anlass – die erste, wenn sie den besten Duft ändern kann, jede weitere nur bei
+   größerem Nutzen.
+3. „Gibt es etwas, das du gar nicht magst?“ (entfällt, wenn der Freitext schon Abneigungen nennt).
+4. Nur wenn zwei Düfte fast gleichauf liegen: eine Unterscheidungsfrage aus ihrem größten Unterschied.
+Messwert (`npm run qualitaet`): im Mittel 4,1 Fragen, höchstens 5.
 
-Ohne Schlüssel, bei API-Fehlern, über dem Tageslimit oder wenn der Server nicht erreichbar ist, läuft dieselbe Engine
-ohne KI (`quelle: "ohne_ki"`). Im Browser zeigt sich das nur daran, dass der Hinweis „von KI geprüft“ fehlt.
+**Freitext** (`lib/verstehen.js`, ohne KI): Satzteile, Verneinung nur im eigenen Satzteil, auch nachgestellt
+(„Oud geht gar nicht“). Klare Ablehnung → harter Ausschluss; Gradangabe („nicht zu süß“, „etwas weniger frisch“) →
+weiche Grenze. Die KI ergänzt Abneigungen nur, wenn sie an einem Notenwort im Text hängen.
+
+**Kundenprofil** (`lib/kunde.js`): Antworten + Freitext an einer Stelle; eine Antwort wird nie überschrieben.
+
+**Bewertung** (`lib/matching.js`), Gewichte als Hypothese, geprüft mit Tests und `npm run qualitaet`:
+- Duftprofil 50 – 12 Merkmale (süß, frisch, warm, rauchig, holzig, würzig, blumig, fruchtig, ledrig, pudrig, cremig,
+  sauber) und Intensität gegen das Zielprofil. Status je Produktwert: bestätigt (zählt voll), aus Hauptnoten
+  geschätzt (zählt weniger), unbekannt (zählt gar nicht, nie als „nicht vorhanden“). Hat der Kunde nur wenig zum
+  Profil gesagt, zählt dieser Teil entsprechend weniger.
+- Vorlieben 25 – genannte Noten; zählt nur mit Kern-Hauptnote oder genau der genannten Note.
+- Charakter 15 – Duftart ↔ Duftrichtung, Stimmungs-Etiketten, Richtung (in der alten Frageform 30).
+- Kontext 10 – Anlass und Jahreszeit.
+Harte Ausschlüsse vor der Bewertung: Abneigungen · zu stark fürs Büro · Budget · Intensität weit weg · nicht
+verfügbar · „Andere Vorschläge“. **Die Rangfolge entsteht nur hier**, nie aus der KI.
+
+**Claude** (ein Aufruf am Ende, wenn der Server erreichbar ist) prüft alle nicht ausgeschlossenen Düfte, urteilt
+`passt`/`teilweise`/`passt_nicht` und erklärt in einfacher Sprache. Validierung wie bisher (unbekannte IDs,
+unbelegte Attribute, Verbotsliste, fremde Duftnamen werden verworfen).
+
+**Ergebnis** (`lib/erklaerung.js`): keine Prozentzahlen. Einstufung („Passt sehr gut zu dir“ …), „Warum wir ihn
+empfehlen“ nur aus erfüllten Wünschen und Produktdaten, bei Platz 2/3 der Unterschied („etwas süßer – mit der Note
+Vanille“), Link zur 10-ml-Variante. **Nachjustieren** („etwas weniger süß“, „wärmer“, „frischer“, „dezenter“,
+„intensiver“, „andere Vorschläge“) rechnet im Browser neu, alle Antworten bleiben.
+
+Ohne Server oder KI läuft dieselbe Engine im Browser (`quelle: "ohne_ki"`).
+
+**Duftprofile pflegen:** Shopify Admin → Produkt → Metafelder → „Duftprofil: …“ (0–3; leer = nicht bestätigt).
+Kontrolle: `npm run profile` (✓ bestätigt · ~ aus Noten geschätzt · ? unbekannt).
 
 ## Kosten und Schutz
 
@@ -73,7 +91,9 @@ ohne KI (`quelle: "ohne_ki"`). Im Browser zeigt sich das nur daran, dass der Hin
 ```bash
 cd shopify/berater
 npm install
-npm test                                   # Engine, 36 Kundenprofile, Claude-Stufe (simuliert), Endpunkte
+npm test                                   # Engine, Kundenprofile, Freitext-Sätze, Beratungsgespräche, Claude-Stufe (simuliert), Endpunkte
+npm run qualitaet [-- pfad/zu/alter/lib]   # Matching-Qualität und Beratungslänge messen (optional Vergleich mit alter Engine)
+npm run profile                            # Duftprofile aller Düfte mit Status (✓ ~ ?)
 npm run build                              # Oberfläche → ../theme/assets/azizam-berater.*
 ANTHROPIC_API_KEY=… npm run test:live      # echte API: Profile + JSON + Kosten (kostet Geld; LIVE_ANZAHL=5 begrenzt)
 npm run luecken > luecken.csv              # fehlende Produktdaten je Duft als Vorlage zum Ergänzen

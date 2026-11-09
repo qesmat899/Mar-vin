@@ -5,14 +5,15 @@
 
 import { createHash } from 'node:crypto';
 import { produktProfil, profilFuerKi } from './profil.js';
-import { freitextLesen } from './lexikon.js';
-import { kundenAngaben, matche, empfehlbar, annaeherung, MAX_EMPFEHLUNGEN } from './matching.js';
+import { kundeAufbauen } from './kunde.js';
+import { notenwortImText } from './verstehen.js';
+import { matche, empfehlbar, annaeherung, MAX_EMPFEHLUNGEN } from './matching.js';
 import { frageClaude, validiereAntwort } from './claude.js';
 import { kostenUsd, bucheKosten } from './kosten.js';
-import { ohneKi, ausgabe } from './ergebnis.js';
+import { ohneKi, ausgabe, mitUnterschieden } from './ergebnis.js';
 
 export const CACHE_SEKUNDEN = 60 * 60 * 24 * 7;
-const MAX_KI_KANDIDATEN = 10;
+const MAX_KI_KANDIDATEN = 20;
 const MIN_TEILWEISE = 70; // „teilweise passend“ nur bei hoher berechneter Übereinstimmung
 const KI_PASST_BONUS = 8; // nur für die Reihenfolge, nicht für das angezeigte Match-%
 
@@ -23,15 +24,9 @@ export function datenVersion(produkteRoh) {
 }
 
 export async function berate({ eingabe, produkteRoh, client, config, speicher, log = () => {} }) {
-  const { angaben, fehler } = kundenAngaben(eingabe);
+  // Antworten + Freitext (ohne KI gelesen): eindeutige Abneigungen gelten sofort, Gradangaben nur als weiche Vorgabe.
+  const { angaben, fehler } = kundeAufbauen(eingabe);
   if (fehler.length) return { status: 400, body: { fehler } };
-
-  // Freitext ohne KI lesen: Abneigungen gelten immer (Sicherheitsnetz), Vorlieben fließen in die Bewertung.
-  if (angaben.freitext) {
-    const lokal = freitextLesen(angaben.freitext);
-    angaben.mag_nicht = [...new Set([...angaben.mag_nicht, ...lokal.mag_nicht])];
-    angaben.mag = [...new Set([...angaben.mag, ...lokal.mag])].filter((g) => !angaben.mag_nicht.includes(g));
-  }
 
   const profile = (Array.isArray(produkteRoh) ? produkteRoh : []).map(produktProfil).filter((p) => p.id && p.name);
   if (!profile.length) return { status: 503, body: { fehler: ['Produktdaten nicht verfügbar'] } };
@@ -67,9 +62,8 @@ async function unterTageslimit(speicher, config) {
 }
 
 async function mitClaude({ angaben, profile, vorab, client, config, speicher, log }) {
-  // Kandidaten: die besten der Vorbewertung plus Düfte mit ausdrücklich gewünschten Noten.
-  const ids = new Set(vorab.kandidaten.slice(0, 8).map((k) => k.id));
-  for (const k of vorab.kandidaten) if (ids.size < MAX_KI_KANDIDATEN && angaben.mag.some((g) => profile.find((p) => p.id === k.id)?.gruppen.includes(g))) ids.add(k.id);
+  // Kandidaten: alle nicht ausgeschlossenen Düfte (bei unserem Sortiment wenige), damit die KI nichts übersieht.
+  const ids = new Set(vorab.kandidaten.slice(0, MAX_KI_KANDIDATEN).map((k) => k.id));
   const kiProfile = profile.filter((p) => ids.has(p.id));
 
   const start = Date.now();
@@ -91,9 +85,11 @@ async function mitClaude({ angaben, profile, vorab, client, config, speicher, lo
   if (!gepr.ok || !gepr.bewertungen.length) return null;
 
   // Erkannte Vorlieben/Abneigungen übernehmen und deterministisch neu rechnen.
+  // Abneigungen der KI nur übernehmen, wenn sie an einem Notenwort im Freitext hängen (nie aus „nicht zu süß“).
+  const kiNicht = gepr.kundenwunsch.mag_nicht.filter((g) => angaben.freitext && notenwortImText(angaben.freitext, g));
   const angaben2 = {
     ...angaben,
-    mag_nicht: [...new Set([...angaben.mag_nicht, ...gepr.kundenwunsch.mag_nicht])],
+    mag_nicht: [...new Set([...angaben.mag_nicht, ...kiNicht])],
   };
   angaben2.mag = [...new Set([...angaben.mag, ...gepr.kundenwunsch.mag])].filter((g) => !angaben2.mag_nicht.includes(g));
   const neu = matche(profile, angaben2);
@@ -104,7 +100,7 @@ async function mitClaude({ angaben, profile, vorab, client, config, speicher, lo
     const b = urteil.get(k.id);
     if (!b || b.urteil === 'passt_nicht') continue; // nur von der KI geprüfte Düfte; KI-Veto gilt
     if (!empfehlbar(k, b.urteil === 'teilweise' ? MIN_TEILWEISE : undefined)) continue;
-    empfehlungen.push(ausgabe(profile.find((p) => p.id === k.id), k, b));
+    empfehlungen.push(ausgabe(profile.find((p) => p.id === k.id), k, b, angaben2));
   }
   // Das KI-Urteil zählt mit: „passt“ (stimmiges Gesamtprofil) wird vor „teilweise“ gereiht, wenn die Punkte nah beieinander liegen.
   const rang = (e) => e.match_score + (e.ki_urteil === 'passt' ? KI_PASST_BONUS : 0);
@@ -114,14 +110,14 @@ async function mitClaude({ angaben, profile, vorab, client, config, speicher, lo
   let naeherung = false;
   if (!empfehlungen.length) {
     const ohneVeto = neu.kandidaten.filter((k) => urteil.get(k.id)?.urteil !== 'passt_nicht');
-    for (const k of annaeherung(ohneVeto)) empfehlungen.push(ausgabe(profile.find((p) => p.id === k.id), k, urteil.get(k.id) ?? null));
+    for (const k of annaeherung(ohneVeto)) empfehlungen.push(ausgabe(profile.find((p) => p.id === k.id), k, urteil.get(k.id) ?? null, angaben2));
     naeherung = empfehlungen.length > 0;
   }
 
   return {
     quelle: 'claude',
     modell,
-    empfehlungen: empfehlungen.slice(0, MAX_EMPFEHLUNGEN),
+    empfehlungen: mitUnterschieden(empfehlungen.slice(0, MAX_EMPFEHLUNGEN), profile),
     annaeherung: naeherung,
     kein_treffer: empfehlungen.length === 0,
     kundenwunsch: { zusammenfassung: gepr.kundenwunsch.zusammenfassung },

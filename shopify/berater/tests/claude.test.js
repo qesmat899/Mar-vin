@@ -65,7 +65,7 @@ test('Nur Kandidaten mit belegten Daten gehen an Claude (keine Bilder/URLs, Unbe
   const c = mockClient(allePassen);
   await lauf(DUNKEL, c);
   const kand = JSON.parse(c.aufrufe[0].messages[0].content.match(/<kandidaten>(.*)<\/kandidaten>/s)[1]);
-  assert.ok(kand.length <= 10);
+  assert.ok(kand.length <= 20); // alle nicht ausgeschlossenen Düfte (Sortiment 19)
   for (const k of kand) {
     assert.ok(!('url' in k) && !('bild' in k));
     assert.ok(k.unbekannt.includes('haltbarkeit') && k.unbekannt.includes('sillage'));

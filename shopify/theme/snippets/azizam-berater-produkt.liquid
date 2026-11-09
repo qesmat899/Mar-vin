@@ -1,6 +1,7 @@
 {%- comment -%}
   Ein Duft als JSON für den Duftberater (Section azizam-berater und Feed collection.berater).
-  Felder: azizam.* und azizam_berater.* (freigegeben), azizam_profil.* (gezielt ergänzt, optional), Preise je Größe.
+  Felder: azizam.* und azizam_berater.* (freigegeben), azizam_profil.* (alle 12 Merkmale, Noten, Haltbarkeit, Sillage – gezielt
+  bestätigt, optional), Preise und Varianten-IDs je Größe (für den direkten Link zur 10-ml-Probe).
   Fehlende Werte bleiben null – der Berater behandelt sie als unbekannt.
 {%- endcomment -%}
 {%- assign p = produkt -%}
@@ -15,6 +16,7 @@
   "img2": {% if p.media[0] %}{{ p.media[0].preview_image | image_url: width: 300 | json }}{% else %}null{% endif %},
   "verfuegbar": {{ p.available | json }},
   "preise": { {%- for v in p.variants -%}{{ v.title | json }}: {{ v.price | divided_by: 100.0 }}{% unless forloop.last %}, {% endunless %}{%- endfor -%} },
+  "varianten": [ {%- for v in p.variants -%}{ "t": {{ v.title | json }}, "id": {{ v.id | append: '' | json }}, "v": {{ v.available | json }} }{% unless forloop.last %}, {% endunless %}{%- endfor -%} ],
   "familie": {{ p.metafields.azizam.familie.value | json }},
   "noten": {{ p.metafields.azizam.noten.value | json }},
   "charakter": {{ p.metafields.azizam.charakter.value | json }},
@@ -36,6 +38,12 @@
     "waerme": {{ p.metafields.azizam_profil.waerme.value | json }},
     "rauchig": {{ p.metafields.azizam_profil.rauchig.value | json }},
     "holzig": {{ p.metafields.azizam_profil.holzig.value | json }},
-    "wuerzig": {{ p.metafields.azizam_profil.wuerzig.value | json }}
+    "wuerzig": {{ p.metafields.azizam_profil.wuerzig.value | json }},
+    "blumig": {{ p.metafields.azizam_profil.blumig.value | json }},
+    "fruchtig": {{ p.metafields.azizam_profil.fruchtig.value | json }},
+    "ledrig": {{ p.metafields.azizam_profil.ledrig.value | json }},
+    "pudrig": {{ p.metafields.azizam_profil.pudrig.value | json }},
+    "cremig": {{ p.metafields.azizam_profil.cremig.value | json }},
+    "sauber": {{ p.metafields.azizam_profil.sauber.value | json }}
   }
 }

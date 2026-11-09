@@ -1,7 +1,7 @@
-// Duftberater – Auswahloptionen der Oberfläche und automatische Jahreszeit.
-// Die Bewertung selbst steckt in ../lib (gemeinsam mit dem Server).
-export { JAHRESZEITEN, MAX_STIMMUNGEN, MAX_FREITEXT } from '../lib/matching.js';
-import { NOTEN_GRUPPEN } from '../lib/lexikon.js';
+// Duftberater – automatische Jahreszeit und Nachjustier-Optionen für die Oberfläche.
+// Fragen, Reihenfolge und Bewertung stecken in ../lib (gemeinsam mit dem Server).
+export { JAHRESZEITEN, MAX_FREITEXT } from '../lib/matching.js';
+export { FRAGEN } from '../lib/gespraech.js';
 
 // Meteorologische Jahreszeiten (Deutschland): Mär–Mai, Jun–Aug, Sep–Nov, Dez–Feb.
 export function jahreszeit(datum = new Date()) {
@@ -12,40 +12,12 @@ export function jahreszeit(datum = new Date()) {
   return 'Winter';
 }
 
-export const ANLAESSE = [
-  { id: 'Alltag', label: 'Alltag', sub: 'Uni · Freunde · unterwegs' },
-  { id: 'Büro', label: 'Büro', sub: 'Arbeit · Meetings · nah an anderen' },
-  { id: 'Date', label: 'Date', sub: 'Nähe · erster Eindruck' },
-  { id: 'Abend', label: 'Abend & Ausgehen', sub: 'Dinner · Bar · Nacht' },
-  { id: 'Besonderer Anlass', label: 'Besonderer Anlass', sub: 'Hochzeit · Feier · Abschluss' },
-  { id: 'Freizeit', label: 'Freizeit', sub: 'Wochenende · draußen · Sport' },
-];
-
-export const STIMMUNGEN = [
-  { id: 'frisch', label: 'Frisch', sub: 'klar · hell · sauber' },
-  { id: 'verspielt', label: 'Verspielt', sub: 'leicht · fruchtig · gut gelaunt' },
-  { id: 'elegant', label: 'Elegant', sub: 'ruhig · gepflegt · stilvoll' },
-  { id: 'gemütlich', label: 'Gemütlich', sub: 'warm · weich · nah' },
-  { id: 'sinnlich', label: 'Sinnlich', sub: 'tief · süß · auf der Haut' },
-  { id: 'geheimnisvoll', label: 'Geheimnisvoll', sub: 'dunkel · rauchig · leise' },
-  { id: 'kraftvoll', label: 'Kraftvoll', sub: 'präsent · markant · bleibt' },
-];
-
-export const PRAESENZ = [
-  { id: 'leise', label: 'Hautnah', sub: 'Nur wer nah ist' },
-  { id: 'mittel', label: 'Spürbar', sub: 'Man bemerkt dich' },
-  { id: 'laut', label: 'Unübersehbar', sub: 'Man erinnert sich' },
-];
-
-export const RICHTUNG = [
-  { id: 'feminin', label: 'Eher feminin', sub: 'weicher · blumiger' },
-  { id: 'maskulin', label: 'Eher maskulin', sub: 'herber · holziger' },
-  { id: 'egal', label: 'Ganz egal', sub: 'Hauptsache, er passt' },
-];
-
-export const ABNEIGUNGEN = Object.entries(NOTEN_GRUPPEN).map(([id, g]) => ({ id, label: g.label }));
-
-export const BUDGETS = [
-  { id: 35, label: 'bis 35 €' },
-  { id: null, label: 'egal' },
+// Nach dem Ergebnis: Empfehlung verändern, ohne neu anzufangen.
+export const NACHJUSTIEREN = [
+  { id: 'weniger_suess', label: 'Etwas weniger süß' },
+  { id: 'waermer', label: 'Etwas wärmer' },
+  { id: 'frischer', label: 'Etwas frischer' },
+  { id: 'dezenter', label: 'Etwas dezenter' },
+  { id: 'intensiver', label: 'Etwas intensiver' },
+  { id: 'andere', label: 'Andere Vorschläge' },
 ];
