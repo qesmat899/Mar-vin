@@ -13,6 +13,7 @@ export function stufe(match) {
 const STIL_TEXT = { frisch: 'frische, leichte Düfte', warm: 'warme, gemütliche Düfte', suess: 'süße Düfte', holzig: 'holzige, elegante Düfte', dunkel: 'dunkle, intensive Düfte' };
 const DIM_ADJ = { suesse: 'süß', frische: 'frisch', waerme: 'warm', rauchig: 'rauchig', holzig: 'holzig', wuerzig: 'würzig', blumig: 'blumig', fruchtig: 'fruchtig', ledrig: 'ledrig', pudrig: 'pudrig', cremig: 'cremig', sauber: 'sauber' };
 const ANLASS_SATZ = { Alltag: 'für den Alltag', Freizeit: 'für die Freizeit', Büro: 'für die Arbeit', Date: 'für Dates', Abend: 'für den Abend', 'Besonderer Anlass': 'für besondere Anlässe', vielseitig: 'für viele Gelegenheiten' };
+const STAERKE_OHNE_ANLASS = (i) => (i <= 2 ? 'der eher dezent bleibt' : i === 3 ? 'den man bemerkt' : 'der deutlich wahrnehmbar ist');
 const STAERKE_SATZ = (i) => (i <= 2 ? 'das eher dezent bleibt' : i === 3 ? 'das man bemerkt' : 'das deutlich wahrnehmbar ist');
 const GRUPPE_TEXT = { vanille: 'Vanille', kaffee: 'Kaffee', zitrus: 'Zitrus', oud: 'Oud', leder: 'Leder', blumig: 'Blüten', meer: 'Meeresnoten', frucht: 'Früchten', gewuerz: 'Gewürzen', holz: 'Hölzern', moschus: 'Moschus', pudrig: 'pudrigen Noten', cremig: 'cremigen Noten', tabak: 'Tabak' };
 
@@ -43,10 +44,11 @@ export function warum(angaben, p, k) {
   // 2 Wofür und wie stark
   const anlass = [...e].find((x) => x.startsWith('anlass:'))?.slice(7);
   const staerke = [...e].find((x) => x.startsWith('staerke:'));
-  const teile = [];
-  if (anlass && ANLASS_SATZ[anlass]) teile.push(`etwas ${ANLASS_SATZ[anlass]}`);
-  if (staerke && p.intensitaet !== null) teile.push(STAERKE_SATZ(p.intensitaet));
-  if (teile.length) saetze.push(`Außerdem suchst du ${teile.join(', ')}.`);
+  const mitAnlass = anlass && ANLASS_SATZ[anlass];
+  const st = staerke && p.intensitaet !== null ? p.intensitaet : null;
+  if (mitAnlass && st !== null) saetze.push(`Außerdem suchst du etwas ${ANLASS_SATZ[anlass]}, ${STAERKE_SATZ(st)}.`);
+  else if (mitAnlass) saetze.push(`Außerdem suchst du etwas ${ANLASS_SATZ[anlass]}.`);
+  else if (st !== null) saetze.push(`Außerdem suchst du einen Duft, ${STAERKE_OHNE_ANLASS(st)}.`);
   // 3 Der Duft selbst (freigegebene Beschreibung bzw. Hauptnoten)
   if (saetze.length) saetze.push(k.match >= 70 ? `Deshalb passt ${p.name} gut zu deinen Angaben.` : `${p.name} kommt dem am nächsten.`);
   return saetze.join(' ');

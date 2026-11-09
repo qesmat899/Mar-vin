@@ -96,6 +96,9 @@ test('Ergebnis: verständlich, ohne Zahlen, Alternativen mit Unterschied, Links 
   assert.ok(r.empfehlungen.length >= 2);
   const [top, ...alt] = r.empfehlungen;
   assert.match(top.warum, /^Du /);
+  // Grammatik ohne Anlass
+  const ohne = berateLokal({ saison: 'Herbst', freitext: 'Ich mag Vanille', staerke: 'bemerkbar' }, roh).empfehlungen[0];
+  assert.ok(!/suchst du das/.test(ohne.warum), ohne.warum);
   assert.ok(!/\d+\s?%/.test(top.warum));
   assert.ok(top.stufe?.text);
   for (const a of alt) assert.match(a.unterschied, /Alternative/);
