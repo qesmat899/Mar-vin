@@ -96,7 +96,11 @@ function Ergebnis({ ergebnis, discovery, onJustieren, onNeu, onZurueck, justiert
     return (
       <motion.div key="leer" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="tw-max-w-[640px] tw-py-6" aria-live="polite">
         <h3 className="tw-text-[1.9rem] tw-leading-tight">Dafür haben wir gerade keinen passenden Duft.</h3>
-        <p className="tw-mt-3 tw-text-[1.05rem] tw-text-creme/85">Lieber keine als eine falsche Empfehlung. Ändere eine Antwort – oder probier drei Düfte im Discovery Set.</p>
+        <p className="tw-mt-3 tw-text-[1.05rem] tw-text-creme/85">
+          {ergebnis.ausgeschlossen > 0
+            ? 'Jeder unserer Düfte enthält etwas, das du nicht magst – oder liegt über deinem Budget. Nimm eine Abneigung zurück, dann zeigen wir dir, was am nächsten kommt.'
+            : 'Erzähl uns etwas mehr: Welche Art von Duft gefällt dir?'}
+        </p>
         {ergebnis.hinweise?.length > 0 && <ul className="tw-mt-4 tw-list-none tw-p-0 tw-text-[0.95rem] tw-text-grau">{ergebnis.hinweise.map((h) => <li key={h}>{h}</li>)}</ul>}
         <div className="tw-mt-7 tw-flex tw-flex-wrap tw-gap-x-6 tw-gap-y-3">
           <button type="button" onClick={onZurueck} className="tw-inline-flex tw-min-h-[52px] tw-items-center tw-border tw-border-gold tw-px-7 tw-text-[0.95rem] tw-text-gold2 hover:tw-bg-gold hover:tw-text-nacht">Antwort ändern</button>
@@ -128,6 +132,11 @@ function Ergebnis({ ergebnis, discovery, onJustieren, onNeu, onZurueck, justiert
               <p className="tw-text-[0.85rem] tw-uppercase tw-tracking-[0.12em] tw-text-grau">Warum wir ihn empfehlen</p>
               <p className="tw-mt-1 tw-text-[1.02rem] tw-leading-relaxed tw-text-creme/90">{begruendung}</p>
             </div>
+          )}
+          {naeher && top.possible_conflicts?.length > 0 && (
+            <p className="tw-mt-4 tw-text-[0.95rem] tw-text-creme/80">
+              <span className="tw-text-gold2">Was abweicht:</span> {top.possible_conflicts.slice(0, 2).join(' · ')}. Mit „Noch nicht ganz?“ unten kannst du nachjustieren.
+            </p>
           )}
           <div className="tw-mt-6 tw-flex tw-flex-wrap tw-items-center tw-gap-3">
             <a href={top.url} className="tw-inline-flex tw-min-h-[52px] tw-items-center tw-bg-gold tw-px-7 tw-text-[0.95rem] tw-font-medium tw-text-nacht hover:tw-bg-gold2">Duft ansehen</a>

@@ -49,8 +49,9 @@ export const FAELLE = [
     { top: ['midnight-cafe'] }],
   ['Budget 35 € + sinnlich am Abend', { anlass: 'Abend', stimmung: ['sinnlich'], praesenz: 'mittel', saison: 'Winter', budget: 35 },
     { alle: ['midnight-cafe', 'alpha-tonka', 'sombre'] }],
-  ['Budget 35 € + frisch im Sommer: ehrlich kein Treffer', { anlass: 'Freizeit', stimmung: ['frisch'], praesenz: 'leise', saison: 'Sommer', budget: 35 },
-    { kein_treffer: true }],
+  // Seit 09.11. (Mar): Passt nichts genau, zeigt der Berater trotzdem, was am nächsten kommt – Budget bleibt hart.
+  ['Budget 35 € + frisch im Sommer: nächstbeste unter Budget', { anlass: 'Freizeit', stimmung: ['frisch'], praesenz: 'leise', saison: 'Sommer', budget: 35 },
+    { annaeherung: true, kein_treffer: false }],
   ['Budget 45 € (alles erlaubt)', { anlass: 'Abend', stimmung: ['geheimnisvoll'], saison: 'Herbst', budget: 45 },
     { top: DUNKEL }],
   ['Widerspruch: hautnah + kraftvoll', { anlass: 'Alltag', stimmung: ['kraftvoll'], praesenz: 'leise', saison: 'Herbst' },
@@ -61,8 +62,8 @@ export const FAELLE = [
     { kein_treffer: true }],
   ['Frisch ohne Zitrus/Meer/Frucht', { anlass: 'Alltag', stimmung: ['frisch'], saison: 'Sommer', mag_nicht: ['zitrus', 'meer', 'frucht'] },
     { hinweis: /Zitrus/, nie: ['marea', 'bergamo', 'mare-vita', 'borbus', 'dolce-sole', 'assassin'] }],
-  ['Sommer + geheimnisvoll + ohne Oud/Leder: kein Treffer', { anlass: 'Abend', stimmung: ['geheimnisvoll', 'kraftvoll'], praesenz: 'laut', saison: 'Sommer', mag_nicht: ['oud', 'leder'] },
-    { kein_treffer: true }],
+  ['Sommer + geheimnisvoll + ohne Oud/Leder: nächstbeste ohne Oud/Leder', { anlass: 'Abend', stimmung: ['geheimnisvoll', 'kraftvoll'], praesenz: 'laut', saison: 'Sommer', mag_nicht: ['oud', 'leder'] },
+    { annaeherung: true, kein_treffer: false }],
 
   // Sehr spezifische Profile (Freitext)
   ['Spezifisch: Leder mit Kardamom', { stimmung: ['geheimnisvoll'], saison: 'Herbst', freitext: 'Leder mit Kardamom, herb und geradlinig' },
@@ -121,7 +122,7 @@ export function pruefe(soll, empfehlungen, hinweise = [], annaeherung = false) {
   if (soll.annaeherung !== undefined && soll.annaeherung !== annaeherung) fehler.push(`Annäherung erwartet: ${soll.annaeherung}`);
   for (const x of empfehlungen) {
     if (!profile[x.product_id]) fehler.push(`unbekanntes Produkt ${x.product_id}`);
-    if (x.match_score < (annaeherung ? 55 : 60)) fehler.push(`Match unter Schwelle: ${x.product_id}`);
+    if (!annaeherung && x.match_score < 60) fehler.push(`Match unter Schwelle: ${x.product_id}`);
   }
   if (e.length > 3) fehler.push('mehr als 3 Empfehlungen');
   return fehler;

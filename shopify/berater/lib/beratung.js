@@ -7,7 +7,7 @@ import { createHash } from 'node:crypto';
 import { produktProfil, profilFuerKi } from './profil.js';
 import { kundeAufbauen } from './kunde.js';
 import { notenwortImText } from './verstehen.js';
-import { matche, empfehlbar, annaeherung, MAX_EMPFEHLUNGEN } from './matching.js';
+import { matche, empfehlbar, annaeherung, naechstbeste, MAX_EMPFEHLUNGEN } from './matching.js';
 import { frageClaude, validiereAntwort } from './claude.js';
 import { kostenUsd, bucheKosten } from './kosten.js';
 import { ohneKi, ausgabe, mitUnterschieden } from './ergebnis.js';
@@ -111,6 +111,8 @@ async function mitClaude({ angaben, profile, vorab, client, config, speicher, lo
   if (!empfehlungen.length) {
     const ohneVeto = neu.kandidaten.filter((k) => urteil.get(k.id)?.urteil !== 'passt_nicht');
     for (const k of annaeherung(ohneVeto)) empfehlungen.push(ausgabe(profile.find((p) => p.id === k.id), k, urteil.get(k.id) ?? null, angaben2));
+    // Immer noch nichts (auch bei KI-Veto): die Düfte, die laut Berechnung am nächsten kommen – ehrlich als Annäherung.
+    if (!empfehlungen.length) for (const k of naechstbeste(neu.kandidaten)) empfehlungen.push(ausgabe(profile.find((p) => p.id === k.id), k, null, angaben2));
     naeherung = empfehlungen.length > 0;
   }
 

@@ -131,3 +131,15 @@ test('Unbekannte Merkmale zählen nicht als „nicht vorhanden“', () => {
   const r = berateLokal({ saison: 'Herbst', stil: 'frisch', suesse: 'kaum' }, [...roh, ohneNoten]);
   assert.ok(!r.empfehlungen.some((e) => e.product_id === 'test-unbekannt'));
 });
+
+test('Passt nichts genau: trotzdem die nächstbesten – aber nie gegen Abneigungen oder Budget', () => {
+  const a = berateLokal({ anlass: 'Abend', stimmung: ['geheimnisvoll', 'kraftvoll'], praesenz: 'laut', saison: 'Sommer', mag_nicht: ['oud', 'leder'] }, roh);
+  assert.ok(a.empfehlungen.length >= 1 && a.annaeherung === true);
+  for (const e of a.empfehlungen) assert.ok(!P[e.product_id].gruppen.some((g) => ['oud', 'leder'].includes(g)), e.product_id);
+  const b = berateLokal({ anlass: 'Freizeit', stimmung: ['frisch'], praesenz: 'leise', saison: 'Sommer', budget: 35 }, roh);
+  assert.ok(b.empfehlungen.length >= 1);
+  for (const e of b.empfehlungen) assert.ok((P[e.product_id].preise['30 ml'] ?? 0) <= 35, e.product_id);
+  // Alles ausgeschlossen: dann ehrlich keiner
+  const c = berateLokal({ stil: 'frisch', saison: 'Sommer', mag_nicht: ['vanille', 'oud', 'leder', 'blumig', 'kaffee', 'tabak', 'zitrus', 'meer', 'frucht', 'gewuerz', 'holz', 'moschus', 'pudrig', 'cremig'] }, roh);
+  assert.equal(c.kein_treffer, true);
+});

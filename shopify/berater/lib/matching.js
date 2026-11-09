@@ -452,6 +452,16 @@ export function annaeherung(kandidaten, { min = MIN_ANNAEHERUNG, max = MAX_ANNAE
   return kandidaten.filter((k) => k.zuverlaessig && k.match >= min).slice(0, max);
 }
 
+// Immer etwas zeigen, wenn es geht: erst die Annäherung (ab 55 %), sonst die zwei Düfte, die am nächsten kommen.
+// Grenzen: Harte Ausschlüsse (Abneigungen, Budget, Büro) gelten weiter – ein ausgeschlossener Duft wird nie gezeigt.
+// Und der Kunde muss etwas zum Duft gesagt haben (Duftart, Profil, Stimmung oder Noten), sonst gibt es nichts zu vergleichen.
+export function naechstbeste(kandidaten, { max = MAX_ANNAEHERUNG } = {}) {
+  const a = annaeherung(kandidaten, { max });
+  if (a.length) return a;
+  const mitSubstanz = (k) => k.teilwerte.profil !== undefined || k.teilwerte.charakter !== undefined || k.teilwerte.vorlieben !== undefined;
+  return kandidaten.filter(mitSubstanz).slice(0, max);
+}
+
 export function empfehlbar(k, min = MIN_MATCH) {
   if (!k.zuverlaessig || k.match < min) return false;
   return !k.deutliche_konflikte || k.match >= MIN_MATCH_BEI_WIDERSPRUCH;
