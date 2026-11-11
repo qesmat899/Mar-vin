@@ -9,7 +9,9 @@
   bleibt verborgen, solange es keine Bewertung gibt.
 {%- endcomment -%}
 <style>
-  .shopify-policy__body, .shopify-policy__container { overflow-wrap: anywhere; }
+  /* Rechtstexte: Shopify setzt 65ch Breite plus Innenabstand; im Flex-Layout des Themes wird der Kasten am Handy
+     dadurch breiter als der Bildschirm. Mit border-box und voller Breite bleibt er im Rahmen. */
+  .shopify-policy__container { box-sizing: border-box; width: 100%; overflow-wrap: anywhere; }
   .shopify-policy__body table { display: block; max-width: 100%; overflow-x: auto; }
   .az-ship { margin: 0 0 16px; font-size: .88rem; line-height: 1.4; }
   .az-ship[hidden] { display: none; }
@@ -19,8 +21,9 @@
   .az-ship__stand { height: 100%; width: 0; background: #c9a35f; transition: width .4s ease; }
   @media (prefers-reduced-motion: reduce) { .az-ship__stand { transition: none; } }
   {%- if section.settings.bewertungen_leer_ausblenden %}
-  .shopify-section:has(.jdgm-rev-widg[data-number-of-reviews="0"]),
-  .shopify-block:has(> .jdgm-widget .jdgm-rev-widg[data-number-of-reviews="0"]) { display: none; }
+  /* Judge.me kennzeichnet den leeren Zustand mit .jdgm-empty-state. Ändert die App die Klasse, erscheint der Block
+     einfach wieder; mit der ersten Bewertung wird er von selbst sichtbar. */
+  .shopify-section:has(.jdgm-review-widget .jdgm-empty-state) { display: none; }
   {%- endif %}
 </style>
 
