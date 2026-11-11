@@ -1,0 +1,171 @@
+{%- comment -%}
+  Duftvergleich auf der Produktseite: der aktuelle Duft neben einem zweiten, frei wählbaren.
+  Alle Angaben kommen aus freigegebenen Metafeldern (azizam.*) und den Varianten; nichts wird geschätzt.
+  Der Satz über den Unterschied wird im Browser aus genau diesen Daten gebildet (keine KI zur Laufzeit).
+  Parameter: product
+{%- endcomment -%}
+{%- liquid
+  assign aktuell = product
+  assign fam = aktuell.metafields.azizam.familie.value
+  assign andere = 0
+  for p in collections.all.products limit: 50
+    if p.id != aktuell.id and p.type != 'Probenset' and p.metafields.azizam.noten.value != blank
+      assign andere = andere | plus: 1
+    endif
+  endfor
+-%}
+{%- if andere > 0 and aktuell.metafields.azizam.noten.value != blank -%}
+  {{ 'azizam-vergleich.css' | asset_url | stylesheet_tag }}
+  <div class="az-vgl" data-az-vergleich>
+    <div class="az-vgl__head">
+      <div>
+        <p class="az-kicker">Noch unentschieden?</p>
+        <h2 class="az-h az-vgl__title" id="az-vgl-titel">{{ aktuell.title }} im Vergleich</h2>
+      </div>
+      <label class="az-vgl__wahl">
+        <span>Vergleichen mit</span>
+        <select data-az-vgl-wahl aria-controls="az-vgl-tabelle">
+          {%- for p in collections.all.products limit: 50 -%}
+            {%- if p.id == aktuell.id or p.type == 'Probenset' or p.metafields.azizam.noten.value == blank -%}{%- continue -%}{%- endif -%}
+            <option value="{{ p.handle }}"{% if p.metafields.azizam.familie.value == fam %} data-gleiche-familie{% endif %}>{{ p.title }} · {{ p.metafields.azizam.familie.value }}</option>
+          {%- endfor -%}
+        </select>
+      </label>
+    </div>
+
+    <p class="az-vgl__satz" data-az-vgl-satz role="status"></p>
+
+    <div class="az-vgl__scroll">
+      <table class="az-vgl__tabelle" id="az-vgl-tabelle" aria-labelledby="az-vgl-titel">
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col">{{ aktuell.title }}</th>
+            <th scope="col" data-az-vgl="name"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Duftrichtung</th><td data-az-vgl-a="familie"></td><td data-az-vgl="familie"></td></tr>
+          <tr><th scope="row">Hauptnoten</th><td data-az-vgl-a="noten"></td><td data-az-vgl="noten"></td></tr>
+          <tr><th scope="row">Intensität</th><td data-az-vgl-a="intensitaet"></td><td data-az-vgl="intensitaet"></td></tr>
+          <tr><th scope="row">Tageszeit</th><td data-az-vgl-a="tageszeit"></td><td data-az-vgl="tageszeit"></td></tr>
+          <tr><th scope="row">Saison</th><td data-az-vgl-a="saison"></td><td data-az-vgl="saison"></td></tr>
+          <tr><th scope="row">Passt zu</th><td data-az-vgl-a="anlass"></td><td data-az-vgl="anlass"></td></tr>
+          <tr><th scope="row">Preis</th><td data-az-vgl-a="preise"></td><td data-az-vgl="preise"></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <a class="az-link" data-az-vgl-link href="#"></a>
+
+    <script type="application/json" data-az-vgl-daten>
+      {
+        "aktuell": {{ aktuell.handle | json }},
+        "duefte": [
+          {%- assign erster = true -%}
+          {%- for p in collections.all.products limit: 50 -%}
+            {%- if p.type == 'Probenset' or p.metafields.azizam.noten.value == blank -%}{%- continue -%}{%- endif -%}
+            {%- unless erster -%},{%- endunless -%}{%- assign erster = false -%}
+            {
+              "h": {{ p.handle | json }},
+              "t": {{ p.title | json }},
+              "u": {{ p.url | json }},
+              "familie": {{ p.metafields.azizam.familie.value | json }},
+              "noten": {{ p.metafields.azizam.noten.value | json }},
+              "intensitaet": {{ p.metafields.azizam.intensitaet.value | json }},
+              "tageszeit": {{ p.metafields.azizam.tageszeit.value | json }},
+              "saison": {{ p.metafields.azizam.saison.value | json }},
+              "anlass": {{ p.metafields.azizam.anlass.value | json }},
+              "preise": [ {%- for v in p.variants -%}[{{ v.title | json }}, {{ v.price | money | json }}]{% unless forloop.last %},{% endunless %}{%- endfor -%} ]
+            }
+          {%- endfor -%}
+        ]
+      }
+    </script>
+    <script>
+      (function () {
+        var root = document.currentScript.closest('[data-az-vergleich]');
+        if (!root) return;
+        var daten;
+        try { daten = JSON.parse(root.querySelector('[data-az-vgl-daten]').textContent); } catch (e) { root.hidden = true; return; }
+        var nach = {};
+        daten.duefte.forEach(function (d) { nach[d.h] = d; });
+        var a = nach[daten.aktuell];
+        var wahl = root.querySelector('[data-az-vgl-wahl]');
+        if (!a || !wahl) { root.hidden = true; return; }
+
+        var liste = function (v) { return Array.isArray(v) ? v : (v ? String(v).split(/\s*,\s*/) : []); };
+        var text = function (v) { var l = liste(v); return l.length ? l.join(', ') : '–'; };
+
+        function fuelle(zelle, feld, d) {
+          zelle.textContent = '';
+          if (feld === 'intensitaet') {
+            var n = Number(d.intensitaet) || 0;
+            if (!n) { zelle.textContent = '–'; return; }
+            var box = document.createElement('span');
+            box.className = 'az-int';
+            box.setAttribute('role', 'img');
+            box.setAttribute('aria-label', 'Intensität ' + n + ' von 5');
+            var punkte = document.createElement('span');
+            punkte.className = 'az-int__dots';
+            punkte.setAttribute('aria-hidden', 'true');
+            for (var i = 1; i <= 5; i++) {
+              var p = document.createElement('span');
+              p.className = 'az-int__dot' + (i <= n ? ' is-on' : '');
+              punkte.appendChild(p);
+            }
+            box.appendChild(punkte);
+            zelle.appendChild(box);
+          } else if (feld === 'preise') {
+            (d.preise || []).forEach(function (paar) {
+              var z = document.createElement('span');
+              z.className = 'az-vgl__preis';
+              z.textContent = paar[0] + ' ' + paar[1];
+              zelle.appendChild(z);
+            });
+          } else if (feld === 'noten') {
+            zelle.textContent = liste(d.noten).join(' · ') || '–';
+          } else if (feld === 'name') {
+            zelle.textContent = d.t;
+          } else {
+            zelle.textContent = text(d[feld]);
+          }
+        }
+
+        // Ein Satz zum Unterschied, nur aus den Daten in der Tabelle.
+        function satz(b) {
+          var teile = [];
+          var ia = Number(a.intensitaet) || 0, ib = Number(b.intensitaet) || 0;
+          if (ia && ib) {
+            if (ib > ia) teile.push(b.t + ' ist präsenter (' + ib + ' von 5 statt ' + ia + ' von 5)');
+            else if (ib < ia) teile.push(b.t + ' ist leichter (' + ib + ' von 5 statt ' + ia + ' von 5)');
+            else teile.push('Beide sind gleich intensiv (' + ia + ' von 5)');
+          }
+          var na = liste(a.noten), nb = liste(b.noten);
+          var gemeinsam = na.filter(function (n) { return nb.indexOf(n) > -1; });
+          if (gemeinsam.length) teile.push('beide tragen ' + gemeinsam.join(' und '));
+          var nurB = liste(b.anlass).filter(function (x) { return liste(a.anlass).indexOf(x) === -1; });
+          if (nurB.length) teile.push(b.t + ' passt zusätzlich zu: ' + nurB.join(', '));
+          if (a.familie && b.familie && a.familie !== b.familie) teile.push('andere Duftrichtung (' + b.familie + ')');
+          return teile.length ? teile.join(' · ') + '.' : '';
+        }
+
+        function zeige(handle) {
+          var b = nach[handle];
+          if (!b) return;
+          root.querySelectorAll('[data-az-vgl-a]').forEach(function (z) { fuelle(z, z.getAttribute('data-az-vgl-a'), a); });
+          root.querySelectorAll('[data-az-vgl]').forEach(function (z) { fuelle(z, z.getAttribute('data-az-vgl'), b); });
+          root.querySelector('[data-az-vgl-satz]').textContent = satz(b);
+          var link = root.querySelector('[data-az-vgl-link]');
+          link.href = b.u;
+          link.textContent = b.t + ' ansehen';
+        }
+
+        // Start: ein Duft derselben Richtung, sonst der erste der Liste.
+        var start = wahl.querySelector('option[data-gleiche-familie]') || wahl.options[0];
+        if (start) wahl.value = start.value;
+        wahl.addEventListener('change', function () { zeige(wahl.value); });
+        zeige(wahl.value);
+      })();
+    </script>
+  </div>
+{%- endif -%}

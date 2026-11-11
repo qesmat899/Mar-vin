@@ -1,0 +1,160 @@
+{%- comment -%}
+  Läuft auf jeder Seite (Footer-Gruppe) und zeigt selbst nichts an. Drei Aufgaben:
+  1. Tastatur: Horizon scrollt ab 990 px Breite in .page-wrapper statt im Fenster. Solange nichts fokussiert ist,
+     erreichen Leertaste, Bild auf/ab, Pos1/Ende und die Pfeiltasten den Container nicht. Das Skript reicht sie weiter.
+  2. Warenkorb: Fortschritt bis zum kostenlosen Versand (Schwelle aus der Einstellung, Ledger D-006), in der
+     Warenkorb-Leiste und auf der Warenkorb-Seite. Es wird nur angezeigt, nichts am Bestellablauf geändert.
+  3. Strukturierte Daten: WebSite (Startseite) und Brotkrumen (Produkt, Kollektion).
+  Dazu zwei kleine Korrekturen per CSS: Rechtstexte laufen am Handy nicht mehr seitlich über; der Bewertungsblock
+  bleibt verborgen, solange es keine Bewertung gibt.
+{%- endcomment -%}
+<style>
+  .shopify-policy__body, .shopify-policy__container { overflow-wrap: anywhere; }
+  .shopify-policy__body table { display: block; max-width: 100%; overflow-x: auto; }
+  .az-ship { margin: 0 0 16px; font-size: .88rem; line-height: 1.4; }
+  .az-ship[hidden] { display: none; }
+  .az-ship__text { margin: 0 0 8px; }
+  .az-ship__text b { font-weight: 600; }
+  .az-ship__spur { height: 2px; background: color-mix(in srgb, currentColor 18%, transparent); }
+  .az-ship__stand { height: 100%; width: 0; background: #c9a35f; transition: width .4s ease; }
+  @media (prefers-reduced-motion: reduce) { .az-ship__stand { transition: none; } }
+  {%- if section.settings.bewertungen_leer_ausblenden %}
+  .shopify-section:has(.jdgm-rev-widg[data-number-of-reviews="0"]),
+  .shopify-block:has(> .jdgm-widget .jdgm-rev-widg[data-number-of-reviews="0"]) { display: none; }
+  {%- endif %}
+</style>
+
+{%- if template.name == 'index' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "alternateName": ["Azizam", "Azizam Fragrance"],
+      "url": {{ shop.url | json }},
+      "inLanguage": {{ request.locale.iso_code | json }}
+    }
+  </script>
+{%- elsif template.name == 'product' or template.name == 'collection' -%}
+  {%- liquid
+    assign krume = collection
+    if template.name == 'product' and krume == blank
+      assign fam = product.metafields.azizam.familie.value
+      assign krume = product.collections | where: 'title', fam | first
+    endif
+  -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Alle Düfte", "item": {{ shop.url | append: routes.all_products_collection_url | json }} }
+        {%- assign pos = 1 -%}
+        {%- if krume != blank and krume.handle != 'all' -%}
+          {%- assign pos = pos | plus: 1 -%}
+          ,{ "@type": "ListItem", "position": {{ pos }}, "name": {{ krume.title | json }}, "item": {{ shop.url | append: krume.url | json }} }
+        {%- endif -%}
+        {%- if template.name == 'product' -%}
+          {%- assign pos = pos | plus: 1 -%}
+          ,{ "@type": "ListItem", "position": {{ pos }}, "name": {{ product.title | json }}, "item": {{ shop.url | append: product.url | json }} }
+        {%- endif -%}
+      ]
+    }
+  </script>
+{%- endif -%}
+
+<script>
+  (function () {
+    // 1. Tastatur-Scrollen im Desktop-Container
+    var wrapper = document.querySelector('.page-wrapper');
+    function scrolltSelbst() {
+      if (!wrapper) return false;
+      var o = getComputedStyle(wrapper).overflowY;
+      return (o === 'auto' || o === 'scroll') && wrapper.scrollHeight > wrapper.clientHeight;
+    }
+    document.addEventListener('keydown', function (e) {
+      if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
+      if (e.target !== document.body && e.target !== document.documentElement) return;
+      if (!scrolltSelbst()) return;
+      var seite = wrapper.clientHeight * 0.875, weg = null;
+      switch (e.key) {
+        case ' ': weg = e.shiftKey ? -seite : seite; break;
+        case 'PageDown': weg = seite; break;
+        case 'PageUp': weg = -seite; break;
+        case 'ArrowDown': weg = 40; break;
+        case 'ArrowUp': weg = -40; break;
+        case 'Home': weg = -wrapper.scrollHeight; break;
+        case 'End': weg = wrapper.scrollHeight; break;
+      }
+      if (weg === null) return;
+      e.preventDefault();
+      wrapper.scrollBy({ top: weg, behavior: 'auto' });
+    });
+
+    {% if section.settings.versand_aktiv and section.settings.versand_schwelle > 0 -%}
+    // 2. Fortschritt bis zum kostenlosen Versand
+    var SCHWELLE = {{ section.settings.versand_schwelle | times: 100 | round }};
+    var stand = { summe: {{ cart.total_price | default: 0 }}, anzahl: {{ cart.item_count | default: 0 }} };
+    var euro = function (cent) { return (cent / 100).toFixed(2).replace('.', ',') + ' €'; };
+
+    function leiste() {
+      var el = document.createElement('div');
+      el.className = 'az-ship';
+      el.setAttribute('data-az-ship', '');
+      el.innerHTML = '<p class="az-ship__text" role="status"></p><div class="az-ship__spur" aria-hidden="true"><div class="az-ship__stand"></div></div>';
+      return el;
+    }
+    function zeichne() {
+      document.querySelectorAll('.cart-totals').forEach(function (totals) {
+        var el = totals.parentNode.querySelector(':scope > [data-az-ship]');
+        if (!el) { el = leiste(); totals.parentNode.insertBefore(el, totals); }
+        var leer = stand.anzahl < 1;
+        if (el.hidden !== leer) el.hidden = leer;
+        if (leer) return;
+        var rest = SCHWELLE - stand.summe;
+        var html = rest > 0
+          ? 'Noch <b>' + euro(rest) + '</b> bis zum kostenlosen Versand.'
+          : '<b>Kostenloser Versand</b> für diese Bestellung.';
+        var text = el.querySelector('.az-ship__text');
+        if (text.innerHTML !== html) text.innerHTML = html;
+        var breite = Math.max(0, Math.min(100, Math.round((stand.summe / SCHWELLE) * 100))) + '%';
+        var balken = el.querySelector('.az-ship__stand');
+        if (balken.style.width !== breite) balken.style.width = breite;
+      });
+    }
+    var wartet = null;
+    function lade() {
+      clearTimeout(wartet);
+      wartet = setTimeout(function () {
+        fetch({{ routes.cart_url | append: '.js' | json }}, { headers: { Accept: 'application/json' }, credentials: 'same-origin' })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (c) { if (c) { stand.summe = c.total_price; stand.anzahl = c.item_count; } zeichne(); })
+          .catch(function () { zeichne(); });
+      }, 250);
+    }
+    // Der Warenkorb wird vom Theme neu gezeichnet; jede Änderung dort löst eine neue Abfrage aus.
+    new MutationObserver(function (liste) {
+      for (var i = 0; i < liste.length; i++) {
+        var ziel = liste[i].target;
+        if (ziel.nodeType !== 1 || ziel.closest('[data-az-ship]')) continue;
+        if (ziel.closest('cart-items-component, cart-drawer-component, .cart-totals, .cart-page')) { lade(); return; }
+      }
+    }).observe(document.body, { childList: true, subtree: true, characterData: true });
+    zeichne();
+    {%- endif %}
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Azizam Global",
+  "tag": "div",
+  "class": "az-global",
+  "settings": [
+    { "type": "checkbox", "id": "versand_aktiv", "label": "Fortschritt bis zum kostenlosen Versand im Warenkorb zeigen", "default": true },
+    { "type": "number", "id": "versand_schwelle", "label": "Kostenloser Versand ab (in €, wie im Versandprofil)", "default": 20 },
+    { "type": "checkbox", "id": "bewertungen_leer_ausblenden", "label": "Bewertungsblock verbergen, solange es keine Bewertung gibt", "default": true }
+  ],
+  "presets": [{ "name": "Azizam Global" }]
+}
+{% endschema %}

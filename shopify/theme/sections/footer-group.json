@@ -89,7 +89,10 @@
               "blocks": {}
             }
           },
-          "block_order": ["text_LWt8Pz", "text_f9CFLH"]
+          "block_order": [
+            "text_LWt8Pz",
+            "text_f9CFLH"
+          ]
         },
         "email_signup_crihX7": {
           "type": "email-signup",
@@ -138,7 +141,11 @@
           "blocks": {}
         }
       },
-      "block_order": ["group_H6VpwJ", "email_signup_crihX7", "menu_rechtliches"],
+      "block_order": [
+        "group_H6VpwJ",
+        "email_signup_crihX7",
+        "menu_rechtliches"
+      ],
       "name": "t:names.footer",
       "settings": {
         "section_width": "page-width",
@@ -169,7 +176,10 @@
           "blocks": {}
         }
       },
-      "block_order": ["footer_copyright_jweRK8", "footer_policy_list_VCdnpa"],
+      "block_order": [
+        "footer_copyright_jweRK8",
+        "footer_policy_list_VCdnpa"
+      ],
       "name": "t:names.utilities",
       "settings": {
         "section_width": "page-width",
@@ -180,7 +190,19 @@
         "padding-block-start": 20,
         "padding-block-end": 48
       }
+    },
+    "azizam_global": {
+      "type": "azizam-global",
+      "settings": {
+        "versand_aktiv": true,
+        "versand_schwelle": 20,
+        "bewertungen_leer_ausblenden": true
+      }
     }
   },
-  "order": ["footer_m9NzUG", "footer_utilities_jLGE8U"]
+  "order": [
+    "footer_m9NzUG",
+    "footer_utilities_jLGE8U",
+    "azizam_global"
+  ]
 }

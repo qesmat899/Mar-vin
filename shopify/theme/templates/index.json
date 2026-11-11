@@ -36,7 +36,7 @@
           "type": "fakt",
           "settings": {
             "term": "Größen",
-            "value": "30 ml · 50 ml"
+            "value": "10 ml · 30 ml · 50 ml"
           }
         },
         "f3": {
@@ -137,7 +137,8 @@
         "button": "Eintragen",
         "note": "Mit dem Eintragen willigst Du ein, E-Mails von Azizam zu erhalten. Abmelden geht jederzeit über den Link in jeder E-Mail.",
         "success": "Danke. Du stehst auf der Liste."
-      }
+      },
+      "disabled": true
     },
     "begriffe": {
       "type": "azizam-glossar",
@@ -255,9 +256,9 @@
   "order": [
     "hero",
     "favoriten",
+    "berater",
     "kollektion",
     "finder",
-    "berater",
     "haltung",
     "anlass",
     "liste",

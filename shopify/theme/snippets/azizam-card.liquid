@@ -9,6 +9,7 @@
   if product.media.size < 2
     assign alt_img = nil
   endif
+  assign bild_alt = main.alt | default: product.title
   assign loading = 'lazy'
   if eager
     assign loading = 'eager'
@@ -17,7 +18,7 @@
 <a class="az-card" href="{{ product.url }}" data-familie="{{ m.familie.value | handleize }}">
   <span class="az-card__media">
     {%- if main != blank -%}
-      {{ main.preview_image | image_url: width: 900 | image_tag: class: 'az-card__img', loading: loading, widths: '360, 540, 720, 900', sizes: '(min-width: 1100px) 25vw, (min-width: 750px) 33vw, 50vw', alt: product.title }}
+      {{ main.preview_image | image_url: width: 900 | image_tag: class: 'az-card__img', loading: loading, widths: '360, 540, 720, 900', sizes: '(min-width: 1100px) 25vw, (min-width: 750px) 33vw, 50vw', alt: bild_alt }}
       {%- if alt_img != blank -%}
         {{ alt_img.preview_image | image_url: width: 900 | image_tag: class: 'az-card__img az-card__img--alt', loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 1100px) 25vw, (min-width: 750px) 33vw, 50vw', alt: '' }}
       {%- endif -%}
