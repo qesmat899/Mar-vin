@@ -119,12 +119,11 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 - **2026-11-05 [Code]** KI-Duftberater gebaut: deterministische Matching-Engine (Match-% nachvollziehbar, harte Ausschlüsse, Qualitäts-Gate, ehrlich „kein Treffer“), ein Claude-Aufruf je Beratung (Sonnet 5.5, JSON-Schema, serverseitige Validierung), Server für Vercel (`shopify/berater/api/`), Kostenprotokoll, 36 Kundenprofile + 29 weitere Tests grün. Ohne API-Schlüssel noch nicht live mit KI getestet. Neue Theme-Kopie „KI-Duftberater 05.11.“, nichts veröffentlicht.
 - **2026-11-05 [Code]** Duftberater gebaut: React-Insel (Vite, React, Tailwind gekapselt, Motion), 4 Auswahlkarten-Fragen, Jahreszeit automatisch, Ergebnis mit Gründen + 2 Alternativen; Quelle `shopify/berater/`, Section `azizam-berater.liquid`. In neuer Theme-Kopie „Azizam – Duftberater 05.11. (Claude)“ eingespielt und in der Vorschau getestet (Desktop/Handy), nichts veröffentlicht.
 - **2026-11-05 [Code]** Duftberater: Merkmale je Duft aus Online-Recherche (Bewertungen der Originale), von Mar abgesegnet, als Metafelder `azizam_berater.*` (tendenz, stimmung, saison, anlass, nicht_buero) in Shopify eingetragen. Rohdaten mit Originalnamen nur intern, nicht im Repo. 21st.dev: Mar hinterlegt API-Schlüssel in der Cloud-Umgebung, danach neue Session.
-- **2026-11-04 [Code]** Gesamtcheck der Live-Seite (Desktop/Handy, Checkout, Rechtstexte). Live geändert: Discovery Set im Hauptmenü, Kontaktseite deutsch. Theme-Kopie „Check 04.11.“ mit den übrigen Korrekturen. Offen bei Mar: „Express 7,99 €“ und Name „Standard“ im Checkout (nicht im Versandprofil), Anschrift in der Kontakt-Richtlinie („Lilienweg 97084“), Versand-Richtlinie fehlt, Discovery-Bild. Discovery-Set freigeschaltet; Versandprofil: 4,95 € unter 20 €, sonst kostenlos, Express und Auslandszonen entfernt; Versandseite angepasst.
 
 ### Verlauf (zusammengefasst)
 
-- 2026-10-02/04: SYNC.md im Chat angelegt; `CLAUDE-MASTER.md` (Wissensbasis, über `CLAUDE.md` immer geladen) angelegt.
-- 2026-10-03: `ARBEITSWEISE.md` (Werkzeug-Kompass) angelegt; wird beim Sessionstart mitgeladen, Claude Code erinnert Mar aktiv daran.
+- 2026-11-04: Gesamtcheck der Live-Seite; Versandprofil 4,95 € unter 20 €, sonst kostenlos; Discovery-Set freigeschaltet.
+- 2026-10-02/04: SYNC.md, `CLAUDE-MASTER.md` und `ARBEITSWEISE.md` angelegt.
 - 2026-10-03: Playbook-Kapitel 01, 03, 04, 06, 90-Tage-Plan, Briefing, Nächste Schritte und README bereinigt: 100 ml raus, Preise als `[Preis offen]`, Zahlen auf Kleinunternehmer/Flakon-Annahme; Kapitel 05 als Ganzes als veraltet markiert.
 - 2026-10-03: Mars Klärungen eingearbeitet (Kleinunternehmer, kein Verkauf, CPNP offen, 30 + 50 ml, 100 ml später); Privatdaten aus den Dateien entfernt.
 
