@@ -124,8 +124,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 - 2026-11-04: Gesamtcheck der Live-Seite; Versandprofil 4,95 € unter 20 €, sonst kostenlos; Discovery-Set freigeschaltet.
 - 2026-10-02/04: SYNC.md, `CLAUDE-MASTER.md` und `ARBEITSWEISE.md` angelegt.
-- 2026-10-03: Playbook-Kapitel 01, 03, 04, 06, 90-Tage-Plan, Briefing, Nächste Schritte und README bereinigt: 100 ml raus, Preise als `[Preis offen]`, Zahlen auf Kleinunternehmer/Flakon-Annahme; Kapitel 05 als Ganzes als veraltet markiert.
-- 2026-10-03: Mars Klärungen eingearbeitet (Kleinunternehmer, kein Verkauf, CPNP offen, 30 + 50 ml, 100 ml später); Privatdaten aus den Dateien entfernt.
+- 2026-10-03: Playbook bereinigt (100 ml raus, Preise offen, Kapitel 05 veraltet), Mars Klärungen eingearbeitet, Privatdaten entfernt.
 
 ---
 
