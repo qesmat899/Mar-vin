@@ -15,13 +15,18 @@
   if collection != blank and section.settings.collection == blank and collection.handle != 'all'
     assign on_collection = true
   endif
+  # Auf Kollektionsseiten ist der Titel die Hauptüberschrift der Seite (genau eine H1 je Seite).
+  assign titel_tag = 'h2'
+  if template.name == 'collection'
+    assign titel_tag = 'h1'
+  endif
 -%}
 <section class="az az-section az-kol" id="duefte" aria-labelledby="az-kol-{{ section.id }}">
   <div class="az-wrap">
     <div class="az-kol__head">
       <div>
         {%- if section.settings.kicker != blank -%}<p class="az-kicker">{{ section.settings.kicker }}</p>{%- endif -%}
-        <h2 id="az-kol-{{ section.id }}" class="az-h az-kol__title">{% if on_collection %}{{ source.title }}{% else %}{{ section.settings.heading }}{% endif %}</h2>
+        <{{ titel_tag }} id="az-kol-{{ section.id }}" class="az-h az-kol__title">{% if on_collection %}{{ source.title }}{% else %}{{ section.settings.heading }}{% endif %}</{{ titel_tag }}>
         {%- if on_collection and source.description != blank -%}<div class="az-kol__desc">{{ source.description }}</div>{%- endif -%}
       </div>
       {%- unless on_collection -%}
@@ -62,6 +67,25 @@
     </div>
   </div>
 </section>
+{%- if template.name == 'collection' -%}
+  {%- comment -%} Strukturierte Daten: Liste der Düfte dieser Seite (für Suchmaschinen und KI-Assistenten). {%- endcomment -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": {% if on_collection %}{{ source.title | json }}{% else %}{{ section.settings.heading | json }}{% endif %},
+      "itemListElement": [
+        {%- assign pos = 0 -%}
+        {%- for p in source.products limit: section.settings.limit -%}
+          {%- if p.type == 'Probenset' -%}{%- continue -%}{%- endif -%}
+          {%- assign pos = pos | plus: 1 -%}
+          {%- unless pos == 1 -%},{%- endunless -%}
+          { "@type": "ListItem", "position": {{ pos }}, "name": {{ p.title | json }}, "url": {{ shop.url | append: p.url | json }} }
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}
 <script>
   (function () {
     var root = document.getElementById('az-kol-{{ section.id }}').closest('section');

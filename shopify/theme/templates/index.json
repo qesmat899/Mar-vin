@@ -18,49 +18,6 @@
         "video_url_mobile": "https://cdn.shopify.com/s/files/1/1084/8141/3450/files/azizam-hero-mobil.mp4?v=1793753099"
       }
     },
-    "haltung": {
-      "type": "azizam-haltung",
-      "settings": {
-        "label": "Über Azizam",
-        "text": "<p>Jeder Duft ist von uns ausgewählt und auf die Haut abgestimmt.</p><p>Mit rund 30 % Duftöl statt der 12 bis 18 %, die bei Eau de Parfum üblich sind. In Deutschland abgefüllt. Deshalb bleibt er <em>nah, statt laut zu sein.</em></p>"
-      },
-      "blocks": {
-        "f1": {
-          "type": "fakt",
-          "settings": {
-            "term": "Duftöl",
-            "value": "rund 30 %"
-          }
-        },
-        "f2": {
-          "type": "fakt",
-          "settings": {
-            "term": "Größen",
-            "value": "30 ml · 50 ml"
-          }
-        },
-        "f3": {
-          "type": "fakt",
-          "settings": {
-            "term": "Düfte",
-            "value": "19, in drei Richtungen"
-          }
-        },
-        "f4": {
-          "type": "fakt",
-          "settings": {
-            "term": "Abgefüllt",
-            "value": "in Deutschland"
-          }
-        }
-      },
-      "block_order": [
-        "f1",
-        "f2",
-        "f3",
-        "f4"
-      ]
-    },
     "anlass": {
       "type": "azizam-anlass",
       "settings": {
@@ -137,7 +94,8 @@
         "button": "Eintragen",
         "note": "Mit dem Eintragen willigst Du ein, E-Mails von Azizam zu erhalten. Abmelden geht jederzeit über den Link in jeder E-Mail.",
         "success": "Danke. Du stehst auf der Liste."
-      }
+      },
+      "disabled": true
     },
     "begriffe": {
       "type": "azizam-glossar",
@@ -250,15 +208,55 @@
         "cta": "Duft entdecken",
         "interval": 6
       }
+    },
+    "wort": {
+      "type": "azizam-wort",
+      "blocks": {
+        "w1": {
+          "type": "fakt",
+          "settings": {
+            "big": "rund 30 %",
+            "label": "Duftöl, statt der 12 bis 18 % bei Eau de Parfum"
+          }
+        },
+        "w2": {
+          "type": "fakt",
+          "settings": {
+            "big": "19 Düfte",
+            "label": "in drei Richtungen"
+          }
+        },
+        "w3": {
+          "type": "fakt",
+          "settings": {
+            "big": "Deutschland",
+            "label": "hier abgefüllt"
+          }
+        }
+      },
+      "block_order": [
+        "w1",
+        "w2",
+        "w3"
+      ],
+      "settings": {
+        "word": "عزیزم",
+        "word_meaning": "„mein Schatz“",
+        "kicker": "Der Duft der zweiten Generation",
+        "heading": "Für alle, die hier zu Hause sind und dort ihre Wurzeln haben.",
+        "text": "<p>Azizam ist das Wort, mit dem persische Familien die Menschen rufen, die ihnen am nächsten sind. Unsere Düfte sollen genau so wirken: vertraut, warm und nah an der Haut.</p><p>Herkunft trägt man bei uns wie eine gute Uhr, selbstverständlich und ohne Kostüm.</p>",
+        "discovery_handle": "discovery-set",
+        "cta_label": "Drei Düfte kennenlernen: Discovery Set"
+      }
     }
   },
   "order": [
     "hero",
     "favoriten",
+    "berater",
     "kollektion",
     "finder",
-    "berater",
-    "haltung",
+    "wort",
     "anlass",
     "liste",
     "begriffe"
