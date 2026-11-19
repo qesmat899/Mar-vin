@@ -1,7 +1,7 @@
 # SYNC.md – Übergabe zwischen Claude Chat und Claude Code (Azizam)
 
 > Gemeinsame Datei für **Claude Chat** und **Claude Code**. Sie ist die einzige Brücke zwischen beiden.
-> Zuletzt aktualisiert: 2026-11-11 [Code]
+> Zuletzt aktualisiert: 2026-11-19 [Code]
 
 ---
 
@@ -95,6 +95,7 @@
 | Wer | Aufgabe | Status |
 |-----|---------|--------|
 | Mar | Shop-Livegang: Shopify-Einstellungen (Sprache Deutsch, Shopname, Steuern aus, Versand, Zahlung), Rechtstexte, dann Theme veröffentlichen und Passwort entfernen. Checkliste im Chat vom 03.11. | in Arbeit |
+| Mar | Neuen Shop übernehmen: Link zum Speichern (Chat 19.11.) öffnen, Tarif wählen und Angebotsbedingungen lesen; danach Sprache Deutsch, Zeitzone Berlin, Preisformat, Versandprofil (D-006), Zahlungen, Richtlinien, Domain umziehen, Judge.me installieren, alten Shop erst danach schließen (Hero-Video liegt noch dort) | offen |
 | Mar | Theme-Kopie „Azizam – Shop-Audit 11.11. (Claude)“ in der Vorschau prüfen und veröffentlichen; im Admin: Preisformat auf „{{amount_with_comma_separator}} €“, Titel und Beschreibung der Startseite, im Theme-Editor „Auschecken“ → „Zur Kasse“ und den Steuerhinweis im Warenkorb, Tags `name-fix`/`bestseller` entfernen, leere Seiten `/collections/frontpage` und `/blogs/news`; dazu die vier Entscheidungen aus dem Shop-Audit (Compliance-Stand, Preisstaffel, Checkout-Button und Datenschutzerklärung, Produktbilder) | offen |
 | Mar | PR #6 prüfen und über das Merge nach `Azizam` entscheiden (offene Punkte in der PR-Beschreibung) | offen |
 | Mar | Flakon (30 ml), Etikett und Verpackung selbst klären — ohne Claude, bis Mar es wieder einbringt | offen |
@@ -109,13 +110,14 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-11-19 [Code]** Auf Mars Wunsch neuer Shopify-Shop als 1:1-Kopie angelegt (Vorschau-Shop, Land DE, EUR; noch nicht in Mars Konto gespeichert, Link nur im Chat). Kopiert: 20 Produkte mit Varianten, Preisen, SKUs, Bestand, Bildern, Metafeldern und 30 Metafeld-Definitionen; 3 Kollektionen; 5 Seiten; Haupt- und Fußmenü; Logo, Favicon, Hero-Bilder; Theme als „Azizam (Kopie aus My Store 3)“ (Horizon 4.2.0 + Azizam-Dateien, Prüfsummen gleich dem Live-Theme, unveröffentlicht). Nicht kopierbar ohne Mars Anmeldung: Richtlinien, Sprache Deutsch, Zeitzone, Preisformat, Versand, Zahlung, Domain, Judge.me, Hero-Video, Kunden/Bestellung.
 - **2026-11-11 [Code]** Shop-Audit (23 Seiten Desktop/Handy, Kaufweg, Quellcode, Shopify-Daten; Bericht als privates Artefakt im Chat). Gebaut und in Theme-Kopie „Azizam – Shop-Audit 11.11. (Claude)“ getestet, nichts veröffentlicht: Duftvergleich auf der Produktseite (`snippets/azizam-vergleich.liquid`, nur freigegebene Metafelder), Section `azizam-global` (Tastatur-Scrollen am Desktop, Fortschritt bis zum kostenlosen Versand im Warenkorb, WebSite- und Brotkrumen-Daten, Rechtstexte am Handy im Rahmen, leerer Bewertungsblock verborgen), H1 und ItemList auf Kollektionsseiten, nur noch eine H1 auf der Startseite, Duftberater vor der Kollektion, Launch-Liste aus, Warenkorb- und 404-Vorlage auf Deutsch. Tests des Duftberaters (119) laufen jetzt in der GitHub-Prüfung mit. Berater-Server zählt nur im Arbeitsspeicher (Tageslimit nicht verlässlich); dauerhafter Speicher (Upstash über Vercel) braucht Mars Zustimmung.
 - **2026-11-09 [Code]** Duftberater neu (Auftrag Mar): adaptive Beratung (3–5 einfache Fragen, Mittel 4,1), Freitext neu (Abneigung hart, „nicht zu …“ weich), Bewertung nach Duftprofil (12 Merkmale mit Status bestätigt/geschätzt/unbekannt), Ergebnis ohne Prozent mit Begründung, Unterschied der Alternativen, 10-ml-Link und Nachjustieren. 17 Metafeld-Definitionen `azizam_profil.*` in Shopify angelegt (Pflege im Admin), Kontrolle `npm run profile`. 119 Tests grün; `npm run qualitaet`: 41/41 Kundenprofile, 0 Verstöße, 1,1 % leer. Offen: Dolce Sole 21,9 % Platz 1 (Ziel ≤ 15 %), Profilwerte von Mar bestätigen.
 - **2026-11-09 [Code]** „Unsere Favoriten“ gebaut (Mars Auswahl: Dolce Sole, Calura, Ombroso, Velvet Vanilla, Mare Vita), bewusst nicht „Bestseller“ (bisher 1 Bestellung). Section `azizam-favoriten` + `assets/azizam-favoriten.css`, direkt unter dem Hero: Desktop aufklappende Paneele mit Auto-Wechsel, Handy wischbare Karten; Muster nach 21st.dev „Interactive Selector“. Nur in Theme-Kopie „Favoriten 09.11.“, nichts veröffentlicht. Hinweis: Metafeld `charakter` von Velvet Vanilla enthält „Von unseren Kunden am häufigsten gelobt“ (Beleg offen).
-- **2026-11-09 [Code]** Auf Mars Wunsch Bildreihenfolge bei allen 19 Düften getauscht: Stimmungsbild (Cover) jetzt Bild 1, Flakon (Produkt) Bild 2. Folge mit der Theme-Logik (`media[1]` auf Karten): Startseite/Kollektion zeigen den Flakon, Produktseite öffnet mit dem Cover. Cover ist damit auch Vorschaubild in Warenkorb, Checkout und beim Teilen.
 
 ### Verlauf (zusammengefasst)
 
+- 2026-11-09: Bildreihenfolge aller 19 Düfte getauscht (Stimmungsbild zuerst, Flakon als zweites Bild).
 - 2026-11-05/09: Duftberater gebaut (React-Insel, Matching-Engine, ein Claude-Aufruf je Beratung auf Vercel, Merkmale als Metafelder `azizam_berater.*`), am 09.11. nachgeschärft; Berater-API läuft mit Schlüssel (geprüft 11.11.).
 - 2026-11-04: Gesamtcheck der Live-Seite; Discovery Set im Menü, Kontaktseite deutsch, Versandprofil nach D-006 (4,95 € unter 20 €, sonst kostenlos, nur Deutschland).
 - 2026-10-02/04: SYNC.md im Chat angelegt; `CLAUDE-MASTER.md` (Wissensbasis, über `CLAUDE.md` immer geladen) angelegt.
