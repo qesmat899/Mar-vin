@@ -1,7 +1,7 @@
 # SYNC.md – Übergabe zwischen Claude Chat und Claude Code (Azizam)
 
 > Gemeinsame Datei für **Claude Chat** und **Claude Code**. Sie ist die einzige Brücke zwischen beiden.
-> Zuletzt aktualisiert: 2026-11-05 [Code]
+> Zuletzt aktualisiert: 2026-11-19 [Code]
 
 ---
 
@@ -70,6 +70,10 @@
 ---
 
 ## Offene Fragen
+
+- **Bestand in Shopify zu hoch (geprüft 19.11. [Code]):** Jeder Duft steht mit 10 × 10/30/50 ml (= 900 ml Duft) im Shop; laut Bestandsaufnahme 07.10. (`bestand_bewegungen.csv`) reichen nur Velvet Vanilla (ca. 1.570 ml) dafür, bei Sicilia Nobile (ca. 95 ml), Bergamo (ca. 150 ml), Midnight Café (ca. 200 ml) nicht einmal annähernd; Borbus/Mare Vita UNKNOWN, Flakons offen. Vor Werbung Bestand auf echte, abfüllbare Menge setzen (Mar).
+- Vorschlag: Preisleiter prüfen (D-003/D-004/D-005): 10 ml (1,00 €/ml) ist so günstig wie 50 ml, 30 ml (1,33 €/ml) am teuersten; 3 × 10 ml (29,97 €) schlägt 30 ml (39,99 €); Discovery-Set (3 × 5 ml, 9,99 € + Gutschein) schlägt den 10-ml-Flakon. Mar entscheidet.
+- Vorschlag: Release in Drops (erste Düfte sichtbar, übrige als dunkle Karten mit Hinweis + „Benachrichtigen“), Werbung erst nach CPNP-Eintrag der beworbenen Düfte, echtem Bestand, Pixel + Cookie-Einwilligung. Mar entscheidet.
 
 - KI-Duftberater: Claude-API-Kosten (geschätzt ca. 0,02 $ je Beratung mit Sonnet 5.5, Tageslimit 300) und Vercel-Hosting brauchen Mars Zustimmung; API wird separat von Pro bezahlt. Kopf-/Herz-/Basisnote, Haltbarkeit, Sillage sind für alle Düfte UNKNOWN (Vorlage: `npm run luecken`).
 - 21st.dev: Der hinterlegte Schlüssel wird nicht als Konto erkannt (Antwort „signed-out“, nur 2 freie Abrufe/Tag; Hauptdomain `21st.dev` ohne Schlüssel, nur `api.21st.dev` bekommt ihn). Mar prüft Schlüssel bzw. Abo; der Duftberater braucht 21st.dev nicht.
