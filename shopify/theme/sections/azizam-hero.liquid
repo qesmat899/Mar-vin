@@ -72,10 +72,17 @@
       var p = v.play();
       if (p && p.catch) p.catch(function () {}); // gesperrt: erstes Bild bleibt stehen
     };
-    // Erst starten, wenn das Video durchlaufen kann (sonst stockt es in der ersten Sekunde);
-    // spätestens nach 3 s, falls der Browser das nie meldet (z. B. iOS ohne Vorladen).
-    if (v.readyState >= 4) start();
-    else { v.addEventListener('canplaythrough', start, { once: true }); setTimeout(start, 3000); }
+    // Erst starten, wenn der 5-Sekunden-Clip ganz geladen ist (sonst stockt er in der ersten
+    // Sekunde, weil die Seite parallel Bilder lädt); spätestens nach 4 s, falls der Browser
+    // nicht vorlädt (z. B. iOS im Datensparmodus).
+    var loaded = function () {
+      var b = v.buffered, d = v.duration;
+      return v.readyState >= 3 && b.length > 0 && d > 0 && b.end(b.length - 1) >= d - 0.25;
+    };
+    var check = function () { if (loaded()) start(); };
+    ['loadeddata', 'progress', 'suspend', 'canplaythrough'].forEach(function (e) { v.addEventListener(e, check); });
+    check();
+    setTimeout(start, 4000);
   })();
 </script>
 
