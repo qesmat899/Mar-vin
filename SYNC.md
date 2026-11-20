@@ -44,7 +44,7 @@
 
 - Bisher nur persönlicher Verkauf im Freundeskreis. **Aktuell kein Verkauf**, bis Flakon und Verpackung da sind.
 - Positionierung noch nicht vorhanden. Alte Website (Vercel) offline.
-- **Shop-Neubau in Shopify läuft (03.11.):** Entwurfs-Theme „Azizam – Entwurf (Claude)“ (unveröffentlicht, Live-Theme unverändert), **Shop ist live auf azizamfragrances.com** (Theme und Domain von Mar am 03./04.11. freigeschaltet), 19 Düfte aktiv mit je 10 Stück pro Größe (Mar, 04.11.) mit Azizam-Namen (03.11., in `duefte.csv`), 30/50 ml, Preise in Shopify noch nach D-003 (neu entschieden: D-007, Umsetzung offen); Bilder für alle Düfte (Produktfoto + Stimmungsbild), 3 Kollektionen nach Duftrichtung, Hauptmenü auf Deutsch. Duftdaten aus Mars Duftübersicht (PDF, 03.11.). Theme-Bausteine im Repo unter `shopify/theme/`. Hero zeigt Mars Flakon-Video (03.11.); auf der Startseite außerdem Kurations-Text, Duftkarte, Anlass-Finder, „ohne Bewertungen“-Block (Rückgabe-Absatz aus, bis Mar entscheidet) und Launch-Liste.
+- **Shop-Neubau in Shopify läuft (03.11.):** Entwurfs-Theme „Azizam – Entwurf (Claude)“ (unveröffentlicht, Live-Theme unverändert), **Shop ist live auf azizamfragrances.com** (Theme und Domain von Mar am 03./04.11. freigeschaltet), 19 Düfte aktiv mit je 10 Stück pro Größe (Mar, 04.11.) mit Azizam-Namen (03.11., in `duefte.csv`), 30/50 ml, Preise nach D-007 (seit 20.11. live); Bilder für alle Düfte (Produktfoto + Stimmungsbild), 3 Kollektionen nach Duftrichtung, Hauptmenü auf Deutsch. Duftdaten aus Mars Duftübersicht (PDF, 03.11.). Theme-Bausteine im Repo unter `shopify/theme/`. Hero zeigt Mars Flakon-Video (03.11.); auf der Startseite außerdem Kurations-Text, Duftkarte, Anlass-Finder, „ohne Bewertungen“-Block (Rückgabe-Absatz aus, bis Mar entscheidet) und Launch-Liste.
 - Ziel: In den nächsten 3 Monaten deutschlandweit online verkaufen, Shop komplett neu starten.
 - **Flakon und Verpackung provisorisch vorhanden** (Mar, 20.11.); endgültige Lösung weiter offen.
 - **CPNP:** Mar trägt zuerst fünf Düfte ein; Velvet Vanilla ist eingetragen (Mar, 20.11.), die übrigen vier offen.
@@ -96,7 +96,7 @@
 
 | Wer | Aufgabe | Status |
 |-----|---------|--------|
-| Code | Preise nach `D-007` in Shopify setzen (57 Varianten), sobald Mar freigibt | offen |
+| Code | Preise nach `D-007` in Shopify gesetzt (57 Varianten, Mars Freigabe 20.11.), Live-Seite geprüft | erledigt |
 | Mar | Shop-Livegang: Shopify-Einstellungen (Sprache Deutsch, Shopname, Steuern aus, Versand, Zahlung), Rechtstexte, dann Theme veröffentlichen und Passwort entfernen. Checkliste im Chat vom 03.11. | in Arbeit |
 | Mar | PR #6 prüfen und über das Merge nach `Azizam` entscheiden (offene Punkte in der PR-Beschreibung) | offen |
 | Mar | Flakon (30 ml), Etikett und Verpackung selbst klären — ohne Claude, bis Mar es wieder einbringt | offen |
@@ -112,7 +112,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
-- **2026-11-20 [Code]** Release-Plan in Drops als Artifact (19.11.); Mar wählt Preisleiter B (`D-007`), CPNP für die ersten fünf Düfte (Velvet Vanilla erledigt), Flakon/Verpackung provisorisch. Shopify-Preise noch alt.
+- **2026-11-20 [Code]** Release-Plan in Drops als Artifact (19.11.); Mar wählt Preisleiter B (`D-007`), CPNP für die ersten fünf Düfte (Velvet Vanilla erledigt), Flakon/Verpackung provisorisch. D-007 in Shopify live (57 Varianten, Seite geprüft).
 - **2026-11-09 [Code]** Duftberater neu (Auftrag Mar): adaptive Beratung (3–5 einfache Fragen, Mittel 4,1), Freitext neu (Abneigung hart, „nicht zu …“ weich), Bewertung nach Duftprofil (12 Merkmale mit Status bestätigt/geschätzt/unbekannt), Ergebnis ohne Prozent mit Begründung, Unterschied der Alternativen, 10-ml-Link und Nachjustieren. 17 Metafeld-Definitionen `azizam_profil.*` in Shopify angelegt (Pflege im Admin), Kontrolle `npm run profile`. 119 Tests grün; `npm run qualitaet`: 41/41 Kundenprofile, 0 Verstöße, 1,1 % leer. Offen: Dolce Sole 21,9 % Platz 1 (Ziel ≤ 15 %), Profilwerte von Mar bestätigen.
 - **2026-11-09 [Code]** Auf Mars Wunsch Berater-Merkmale in Shopify geändert: Assassin ohne „elegant“ (nur noch „kraftvoll“); Royal Cedar, Oud Majesté, Ombroso jetzt „unisex-maskulin“. Simulation: bei „elegant“ kommt Assassin nicht mehr auf Platz 1. Server liest den Feed alle 10 Min., die Änderung wirkt ohne Deploy. Testdaten auf Shop-Stand 09.11. aktualisiert, 70 Tests grün. Originalnamen bleiben in `duefte.csv` (Mar).
 - **2026-11-09 [Code]** Duftberater nachgeschärft (Mars Rückmeldung: zu oft Assassin, oft „kein Treffer“): Hauptmerkmal zählt mehr als Nebeneintrag, ganzjährig < passende Saison, unisex näher an maskulin/feminin, Gleichstand nicht mehr alphabetisch, KI-Urteil „passt“ beeinflusst die Reihenfolge, statt leerer Seite „Am nächsten dran“ (ehrlich gekennzeichnet, nie gegen KI-Veto). Simulation über 1.512 Antwortkombinationen: Assassin auf Platz 1 Herbst 11,8 → 7,3 %, Sommer 15,3 → 11,2 %; leere Ergebnisse Herbst 4,5 → 1,8 %, Sommer 9,7 → 6,3 %. 70 Tests grün. Server (Vercel) wird erst nach Merge aktiv; Browser-Bundle in Theme-Kopie „Berater-Fix 09.11.“. Mare Vita = Megamare, Borbus = Blue Talisman von Mar bestätigt (`duefte.csv`).
