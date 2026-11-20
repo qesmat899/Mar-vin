@@ -7,7 +7,7 @@
 <section class="az az-hero" aria-labelledby="az-hero-{{ section.id }}">
   <div class="az-hero__media">
     {%- if vid != blank or section.settings.video_url != blank -%}
-      <video class="az-hero__video" autoplay muted playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback
+      <video class="az-hero__video" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback
         {% if poster != blank %}poster="{{ poster | image_url: width: 1080 }}"{% endif %}
         aria-label="{{ section.settings.video_alt | escape }}" data-az-hero-video>
         {%- if section.settings.video_url_mobile != blank -%}
@@ -23,7 +23,7 @@
       </video>
     {%- endif -%}
     {%- if still != blank -%}
-      {{ still | image_url: width: 1400 | image_tag: class: 'az-hero__still', loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 900px) 50vw, 100vw', widths: '540, 720, 1080, 1400', alt: section.settings.video_alt }}
+      {{ still | image_url: width: 1400 | image_tag: class: 'az-hero__still', loading: 'lazy', sizes: '(min-width: 900px) 50vw, 100vw', widths: '540, 720, 1080, 1400', alt: section.settings.video_alt }}
     {%- endif -%}
   </div>
 
@@ -47,6 +47,11 @@
 <style>
   /* Video spielt einmal und bleibt auf der Frontansicht stehen. Bei reduzierter Bewegung nur das Standbild. */
   #shopify-section-{{ section.id }} .az-hero__still { display: none; }
+  /* Kein Play-Symbol des Browsers, wenn Autoplay gesperrt ist (z. B. iPhone im Stromsparmodus): dann bleibt das erste Bild stehen. */
+  #shopify-section-{{ section.id }} .az-hero__video { pointer-events: none; }
+  #shopify-section-{{ section.id }} .az-hero__video::-webkit-media-controls,
+  #shopify-section-{{ section.id }} .az-hero__video::-webkit-media-controls-start-playback-button,
+  #shopify-section-{{ section.id }} .az-hero__video::-webkit-media-controls-overlay-play-button { display: none !important; -webkit-appearance: none; opacity: 0; }
   @media (prefers-reduced-motion: reduce) {
     #shopify-section-{{ section.id }} .az-hero__video { display: none; }
     #shopify-section-{{ section.id }} .az-hero__still { display: block; }
@@ -56,13 +61,21 @@
   (function () {
     var v = document.querySelector('#shopify-section-{{ section.id }} [data-az-hero-video]');
     if (!v) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); return; }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.pause(); return; }
     v.muted = true;
-    var tryPlay = function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
-    // Autoplay-Sperre (z. B. Stromsparmodus): Poster bleibt sichtbar, beim ersten Tippen/Scrollen erneut versuchen.
-    tryPlay();
-    v.addEventListener('loadeddata', tryPlay, { once: true });
-    ['touchstart', 'scroll', 'click'].forEach(function (e) { window.addEventListener(e, tryPlay, { once: true, passive: true }); });
+    // Genau ein Startversuch. Kein erneuter Versuch beim Scrollen/Tippen: das ließ das Video
+    // mitten im Scrollen anlaufen bzw. nach dem Ende von vorn beginnen.
+    var started = false;
+    var start = function () {
+      if (started) return;
+      started = true;
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {}); // gesperrt: erstes Bild bleibt stehen
+    };
+    // Erst starten, wenn das Video durchlaufen kann (sonst stockt es in der ersten Sekunde);
+    // spätestens nach 3 s, falls der Browser das nie meldet (z. B. iOS ohne Vorladen).
+    if (v.readyState >= 4) start();
+    else { v.addEventListener('canplaythrough', start, { once: true }); setTimeout(start, 3000); }
   })();
 </script>
 
