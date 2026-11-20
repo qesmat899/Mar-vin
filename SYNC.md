@@ -47,6 +47,7 @@
 - **Shop-Neubau in Shopify läuft (03.11.):** Entwurfs-Theme „Azizam – Entwurf (Claude)“ (unveröffentlicht, Live-Theme unverändert), **Shop ist live auf azizamfragrances.com** (Theme und Domain von Mar am 03./04.11. freigeschaltet), 19 Düfte aktiv mit je 10 Stück pro Größe (Mar, 04.11.) mit Azizam-Namen (03.11., in `duefte.csv`), 30/50 ml, Preise nach D-007 (seit 20.11. live); Bilder für alle Düfte (Produktfoto + Stimmungsbild), 3 Kollektionen nach Duftrichtung, Hauptmenü auf Deutsch. Duftdaten aus Mars Duftübersicht (PDF, 03.11.). Theme-Bausteine im Repo unter `shopify/theme/`. Hero zeigt Mars Flakon-Video (03.11.); auf der Startseite außerdem Kurations-Text, Duftkarte, Anlass-Finder, „ohne Bewertungen“-Block (Rückgabe-Absatz aus, bis Mar entscheidet) und Launch-Liste.
 - Ziel: In den nächsten 3 Monaten deutschlandweit online verkaufen, Shop komplett neu starten.
 - **Flakon und Verpackung provisorisch vorhanden** (Mar, 20.11.); endgültige Lösung weiter offen.
+- **Drop-1-Teaser live (20.11.):** Theme „Azizam – Drop 1 Teaser 20.11. (Claude)“ von Mar veröffentlicht; Nebel als WebGL-Wolke (nach Aceternity „cloud-shader“, `assets/azizam-nebel.js` nur im Theme, Lizenz) live mit Mars Go. Die 14 dunklen Düfte stehen in Shopify auf „Entwurf“ (Ausblenden aus dem Kanal ist über den Konnektor gesperrt; Mars Go 20.11.); zum Enthüllen wieder auf „Aktiv“.
 - **CPNP:** Für die fünf Drop-1-Düfte laut Mar vorhanden, damit verkaufsbereit (Mar, 20.11.); Nachweise noch nicht abgelegt.
 
 ---
@@ -73,7 +74,6 @@
 ## Offene Fragen
 
 - **Bestand klären:** In Shopify stehen je Duft 10 Stück pro Größe (10/30/50 ml = 900 ml Duft, Mar 04.11.); die letzte Bestandsaufnahme im Repo (07.10., `bestand_bewegungen.csv`) zeigt bei allen Düften außer Velvet Vanilla weniger Duft (z. B. Sicilia Nobile ca. 95 ml). Mar: gibt es neuere Zugänge oder schon abgefüllte Flaschen? Dann in `bestand_bewegungen.csv` nachtragen.
-- **Drop-Teaser live schalten:** Theme-Kopie „Drop 1 Teaser 20.11.“ zeigt in der Kollektion nur Kollektion `drop-1` (fünf Düfte), dann fünf Fragezeichen-Karten (Midnight Café, Ambra Dorata, Sombre, Velvet Vice, Ombroso) und neun Düfte im Nebel (Mar, 20.11.). Beim Veröffentlichen die 14 im Onlineshop ausblenden (Code nach Mars Go), sonst bleiben sie über Berater, Discovery-Auswahl, Duftrichtungs-Seiten und Suche kaufbar. Pixel erst nach Mars weiteren Website-Änderungen.
 
 - KI-Duftberater: Claude-API-Kosten (geschätzt ca. 0,02 $ je Beratung mit Sonnet 5.5, Tageslimit 300) und Vercel-Hosting brauchen Mars Zustimmung; API wird separat von Pro bezahlt. Kopf-/Herz-/Basisnote, Haltbarkeit, Sillage sind für alle Düfte UNKNOWN (Vorlage: `npm run luecken`).
 - UI-Bibliotheken shadcn/ui, Magic UI, Aceternity UI über Skill `ui-komponenten` nutzbar (frei, ohne Schlüssel; Mar 20.11.). 21st.dev: Der hinterlegte Schlüssel wird nicht als Konto erkannt (Antwort „signed-out“, nur 2 freie Abrufe/Tag; Hauptdomain `21st.dev` ohne Schlüssel, nur `api.21st.dev` bekommt ihn). Mar prüft Schlüssel bzw. Abo; der Duftberater braucht 21st.dev nicht.
@@ -98,7 +98,6 @@
 |-----|---------|--------|
 | Mar | Pixel: Shopify-Apps „Facebook & Instagram“ und „TikTok“ verbinden, Datenschutzerklärung ergänzen, Double-Opt-in an, Testkauf (Anleitung im Artifact „Azizam Release-Plan“) | offen |
 | Mar | CPNP-Nachweise der fünf Drop-1-Düfte ablegen (Drive/Repo) | offen |
-| Code | Nebelwolke im Drop-Teaser neu gestalten (Mar 20.11.: Form unschön, wirkt schlecht gerendert), mit Skill `ui-komponenten` (Kandidat: Aceternity „cloud-shader“) | offen |
 | Mar | Shop-Livegang: Shopify-Einstellungen (Sprache Deutsch, Shopname, Steuern aus, Versand, Zahlung), Rechtstexte, dann Theme veröffentlichen und Passwort entfernen. Checkliste im Chat vom 03.11. | in Arbeit |
 | Mar | PR #6 prüfen und über das Merge nach `Azizam` entscheiden (offene Punkte in der PR-Beschreibung) | offen |
 | Mar | Flakon (30 ml), Etikett und Verpackung selbst klären — ohne Claude, bis Mar es wieder einbringt | offen |
@@ -114,6 +113,7 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-11-20 [Code]** Teaser live: Kollektion `drop-1` (fünf Düfte), fünf Fragezeichen-Karten, neun im Nebel; Nebel als WebGL-Wolke neu (Mars Kritik an der CSS-Wolke), Theme mit Mars Go neu veröffentlicht; 14 Düfte auf „Entwurf“ (Direktlinks 404). Skill `ui-komponenten` (shadcn/ui, Magic UI, Aceternity UI) angelegt.
 - **2026-11-20 [Code]** Preisleiter B (`D-007`) live in Shopify. Drop 1 (`D-008`): Velvet Vanilla, Dolce Sole, Orphéa, Calura, Assassin. Theme-Kopie „Azizam – Drop 1 Teaser 20.11. (Claude)“: 5 Fragezeichen-Karten (Hinweis aus Metafeld `noten`) + 9 im Nebel (Kennung d01–d14, Zuordnung in der Block-Notiz), Kollektion `drop-1` angelegt, Warteliste mit Tags `warteliste`/`interesse-dXX`, Favoriten = Drop 1, alte Launch-Liste aus; nichts veröffentlicht. Cookie-Banner läuft, Meta/TikTok-Pixel fehlen (Apps, Mar).
 - **2026-11-09 [Code]** Duftberater neu (Auftrag Mar): adaptive Beratung (3–5 einfache Fragen, Mittel 4,1), Freitext neu (Abneigung hart, „nicht zu …“ weich), Bewertung nach Duftprofil (12 Merkmale mit Status bestätigt/geschätzt/unbekannt), Ergebnis ohne Prozent mit Begründung, Unterschied der Alternativen, 10-ml-Link und Nachjustieren. 17 Metafeld-Definitionen `azizam_profil.*` in Shopify angelegt (Pflege im Admin), Kontrolle `npm run profile`. 119 Tests grün; `npm run qualitaet`: 41/41 Kundenprofile, 0 Verstöße, 1,1 % leer. Offen: Dolce Sole 21,9 % Platz 1 (Ziel ≤ 15 %), Profilwerte von Mar bestätigen.
 - **2026-11-09 [Code]** Duftberater nachgeschärft (Mars Rückmeldung: zu oft Assassin, oft „kein Treffer“): Hauptmerkmal zählt mehr als Nebeneintrag, ganzjährig < passende Saison, unisex näher an maskulin/feminin, Gleichstand nicht mehr alphabetisch, KI-Urteil „passt“ beeinflusst die Reihenfolge, statt leerer Seite „Am nächsten dran“ (ehrlich gekennzeichnet, nie gegen KI-Veto). Simulation über 1.512 Antwortkombinationen: Assassin auf Platz 1 Herbst 11,8 → 7,3 %, Sommer 15,3 → 11,2 %; leere Ergebnisse Herbst 4,5 → 1,8 %, Sommer 9,7 → 6,3 %. 70 Tests grün. Server (Vercel) wird erst nach Merge aktiv; Browser-Bundle in Theme-Kopie „Berater-Fix 09.11.“. Mare Vita = Megamare, Borbus = Blue Talisman von Mar bestätigt (`duefte.csv`).

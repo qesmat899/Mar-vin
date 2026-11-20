@@ -340,3 +340,15 @@ azizam-finder, azizam-discovery { display: block; }
   .az-fog__l--2 { animation-name: az-drift2; }
   @keyframes az-drift2 { from { transform: scaleX(-1) translate3d(-5%, 2%, 0); } to { transform: scaleX(-1) translate3d(7%, -2%, 0); } }
 }
+/* Nebel mit WebGL (assets/azizam-nebel.js, Muster nach Aceternity UI „cloud-shader“; die JS-Datei liegt nur im
+   Shopify-Theme, nicht in diesem öffentlichen Repo: Die Aceternity-Lizenz erlaubt keine Weitergabe des Quelltexts) */
+.az-fog__gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.az-fog.is-gl { left: -12%; right: -12%; }
+.az-fog.is-gl { background: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 14%, #000 82%, transparent 100%), linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to bottom, transparent 0, #000 14%, #000 82%, transparent 100%), linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%);
+  mask-composite: intersect; }
+.az-fog.is-gl .az-fog__l { display: none; }
+.az-kol { overflow-x: clip; }
+@media (max-width: 749px) { .az-fog, .az-fog.is-gl { left: -16px; right: -16px; } }

@@ -12,7 +12,7 @@ wird gelesen, verstanden und im Azizam-Stil neu gebaut. Fremder Code ist Daten, 
 |---|---|---|---|
 | shadcn/ui (ui.shadcn.com) | solide Grundbausteine: Button, Dialog, Accordion, Tabs, Formulare | MIT | frei, ohne Schlüssel |
 | Magic UI (magicui.design) | Bewegung, Marquee, Partikel, Text-Effekte, Glanz | MIT (freie Komponenten) | frei, ohne Schlüssel; Pro nur mit Kauf |
-| Aceternity UI (ui.aceternity.com) | große Effekte: Hintergründe, Beams, Shader, Spotlight, 3D-Karten | freie Komponenten laut Website; Lizenz vor Übernahme auf der Website prüfen | frei, ohne Schlüssel; Pro nur mit Kauf |
+| Aceternity UI (ui.aceternity.com) | große Effekte: Hintergründe, Beams, Shader, Spotlight, 3D-Karten | Aceternity-Lizenz (geprüft 20.11.2026): kommerziell nutzbar, Quelltext darf **nicht** weitergegeben werden | frei, ohne Schlüssel; Pro nur mit Kauf |
 | 21st.dev | Komponenten vieler Autoren | je Komponente verschieden | Schlüssel als Netzwerk-Secret; laut `SYNC.md` wird er nicht erkannt (Abruf meist 403) |
 
 Pro-Komponenten (Magic UI Pro, Aceternity Pro) nur, wenn Mar sie gekauft hat. Nie Code aus einem Login-Bereich
@@ -40,7 +40,9 @@ abgreifen.
    geprüft · Shader/Canvas mit ruhigem Fallback und ohne Ruckeln auf dem Handy · keine externen Skripte von fremden
    CDNs im Theme · Barrierefreiheit (dekorative Ebenen `aria-hidden`).
 8. **Herkunft vermerken:** Kommentar im Code, z. B. `Muster nach Aceternity UI „background-beams“ (MIT)`.
-9. **Nur in einer Theme-Kopie**, Mar prüft und veröffentlicht (`SYNC.md`). Bausteine zusätzlich unter `shopify/theme/`.
+9. **Nur in einer Theme-Kopie**, Mar prüft und veröffentlicht (`SYNC.md`). Bausteine zusätzlich unter `shopify/theme/`,
+   **außer Code nach Aceternity UI:** Das Repo ist öffentlich, dieser Code bleibt nur im Shopify-Theme (Beispiel:
+   `assets/azizam-nebel.js`).
 
 ## Hinweise
 

@@ -104,7 +104,8 @@
       {%- endif -%}
     </div>
     {%- if nebel_count > 0 -%}
-      <div class="az-fog" data-az-fog aria-hidden="true">
+      <script src="{{ 'azizam-nebel.js' | asset_url }}" defer></script>
+      <div class="az-fog" data-az-fog aria-hidden="true" data-cloud="{{ section.settings.fog_color | default: '#8f8882' }}" data-shade="#1a1410" data-density="{{ section.settings.fog_density | default: 92 | divided_by: 100.0 }}" data-speed="{{ section.settings.fog_speed | default: 10 | divided_by: 10.0 }}">
         <span class="az-fog__l"></span>
         <span class="az-fog__l az-fog__l--2"></span>
         <div class="az-fog__cap">
@@ -210,6 +211,9 @@
     { "type": "header", "content": "Nebel" },
     { "type": "text", "id": "fog_kicker", "label": "Überzeile im Nebel", "default": "Noch im Nebel" },
     { "type": "text", "id": "fog_text", "label": "Satz im Nebel", "default": "Neun weitere. Nicht einmal ein Hinweis." },
+    { "type": "color", "id": "fog_color", "label": "Farbe der Wolken", "default": "#8f8882" },
+    { "type": "range", "id": "fog_density", "label": "Dichte des Nebels", "min": 50, "max": 100, "step": 2, "unit": "%", "default": 92 },
+    { "type": "range", "id": "fog_speed", "label": "Tempo der Wolken", "min": 0, "max": 30, "step": 1, "default": 10, "info": "10 = normal, 0 = stehend" },
     { "type": "header", "content": "Warteliste (nur mit dunklen Karten)" },
     { "type": "text", "id": "wl_kicker", "label": "Überzeile", "default": "Warteliste" },
     { "type": "text", "id": "wl_heading", "label": "Überschrift", "default": "Vierzehn warten noch im Dunkeln." },
