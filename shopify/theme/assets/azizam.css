@@ -310,3 +310,33 @@ azizam-finder, azizam-discovery { display: block; }
 .az-wl__text { color: var(--az-muted); margin: 16px 0 0; line-height: 1.7; max-width: 46ch; }
 .az-wl__picked { margin: 0 0 14px; font-size: .85rem; color: var(--az-gold-2); }
 .az .az-visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+/* ---------- Drop-Teaser: Nebel (Düfte ohne Hinweis) ---------- */
+.az-kol__stage { position: relative; }
+.az-card--ghost { pointer-events: none; user-select: none; opacity: calc(.62 - var(--g) * .5); filter: blur(calc(1px + var(--g) * 12px)) grayscale(1); }
+.az-ghost { display: grid; place-items: center; border: 1px solid rgba(239,230,214,.06);
+  background: color-mix(in srgb, #5d5752 calc(var(--g) * 55%), #0d0a08); }
+.az-ghost svg { width: 46%; max-width: 150px; height: auto; }
+.az-ghost svg rect { fill: rgba(239,230,214,.07); }
+.az-ghost__bar { display: block; height: 10px; width: 62%; background: rgba(160,150,140,.22); }
+.az-ghost__bar--s { width: 38%; margin-top: 6px; }
+@media (max-width: 749px) { .az-ghost--m { display: none; } }
+@media (min-width: 750px) and (max-width: 1099px) { .az-ghost--t { display: none; } }
+.az-fog { position: absolute; left: -40px; right: -40px; z-index: 2; pointer-events: none; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%); mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
+  background: linear-gradient(to bottom, rgba(18,14,10,0) 0%, rgba(62,58,54,.22) 28%, rgba(76,71,66,.62) 55%, rgba(86,81,76,.92) 80%, var(--az-bg) 100%); }
+.az-fog[hidden] { display: none; }
+.az-fog__l { position: absolute; inset: -20%; filter: blur(36px); opacity: .75;
+  background: radial-gradient(38% 30% at 22% 42%, rgba(150,143,136,.45), transparent 70%),
+              radial-gradient(34% 26% at 70% 58%, rgba(130,124,118,.5), transparent 70%),
+              radial-gradient(44% 34% at 48% 82%, rgba(170,163,156,.35), transparent 70%); }
+.az-fog__l--2 { opacity: .6; transform: scaleX(-1); }
+.az-fog__cap { position: absolute; left: 0; right: 0; bottom: 18%; z-index: 1; text-align: center; padding: 0 24px; }
+.az-fog__cap .az-kicker { color: rgba(239,230,214,.7); }
+.az-fog__text { margin: 12px auto 0; max-width: 22ch; font-family: var(--az-serif); font-style: italic; font-size: clamp(1.5rem, 3.4vw, 2.4rem); line-height: 1.2; color: var(--az-ink); text-shadow: 0 2px 24px rgba(0,0,0,.45); }
+@media (prefers-reduced-motion: no-preference) {
+  .az-fog__l { animation: az-drift 38s ease-in-out infinite alternate; }
+  .az-fog__l--2 { animation-duration: 52s; animation-direction: alternate-reverse; }
+  @keyframes az-drift { from { transform: translate3d(-6%, 0, 0); } to { transform: translate3d(6%, -3%, 0); } }
+  .az-fog__l--2 { animation-name: az-drift2; }
+  @keyframes az-drift2 { from { transform: scaleX(-1) translate3d(-5%, 2%, 0); } to { transform: scaleX(-1) translate3d(7%, -2%, 0); } }
+}

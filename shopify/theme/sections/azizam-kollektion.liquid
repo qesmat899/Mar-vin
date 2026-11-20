@@ -2,8 +2,9 @@
 {%- comment -%}
   Produktraster mit Filter nach Duftrichtung. Auf einer Kollektionsseite zeigt es diese Kollektion,
   sonst die gewählte (leer = alle Produkte). Filter laufen im Browser, ohne Neuladen.
-  Drop-Teaser: Blöcke „Dunkle Karte“ erscheinen nach den Produkten (nur außerhalb von Kollektionsseiten),
-  darunter die Warteliste (Shopify-Kundenformular, Tags: newsletter, warteliste, interesse-<Kennung>).
+  Drop-Teaser (nur außerhalb von Kollektionsseiten): Blöcke „Dunkle Karte“ erscheinen nach den Produkten,
+  entweder als Fragezeichen mit Hinweis (vormerkbar) oder im Nebel (ohne Hinweis, wird immer grauer).
+  Darunter die Warteliste (Shopify-Kundenformular, Tags: newsletter, warteliste, interesse-<Kennung>).
 {%- endcomment -%}
 {%- liquid
   assign source = section.settings.collection
@@ -17,14 +18,20 @@
   if collection != blank and section.settings.collection == blank and collection.handle != 'all'
     assign on_collection = true
   endif
-  assign dark_count = 0
+  assign frage_count = 0
+  assign nebel_count = 0
   unless on_collection
     for block in section.blocks
       if block.type == 'dunkel'
-        assign dark_count = dark_count | plus: 1
+        if block.settings.darstellung == 'nebel'
+          assign nebel_count = nebel_count | plus: 1
+        else
+          assign frage_count = frage_count | plus: 1
+        endif
       endif
     endfor
   endunless
+  assign dark_count = frage_count | plus: nebel_count
 -%}
 <section class="az az-section az-kol" id="duefte" aria-labelledby="az-kol-{{ section.id }}">
   <div class="az-wrap">
@@ -44,6 +51,7 @@
         </div>
       {%- endunless -%}
     </div>
+    <div class="az-kol__stage">
     <div class="az-grid" data-az-grid>
       {%- assign disc = all_products['discovery-set'] -%}
       {%- if on_collection == false and disc != blank and disc.available -%}
@@ -72,10 +80,10 @@
       {%- else -%}
         {%- if dark_count == 0 -%}<p class="az-empty">Bald verfügbar.</p>{%- endif -%}
       {%- endfor -%}
-      {%- if dark_count > 0 -%}
+      {%- if frage_count > 0 -%}
         {%- assign dark_i = shown -%}
         {%- for block in section.blocks -%}
-          {%- if block.type != 'dunkel' -%}{%- continue -%}{%- endif -%}
+          {%- if block.type != 'dunkel' or block.settings.darstellung == 'nebel' -%}{%- continue -%}{%- endif -%}
           {%- liquid
             assign dark_i = dark_i | plus: 1
             assign nr = dark_i
@@ -86,6 +94,26 @@
           {%- render 'azizam-dunkel', block: block, nr: nr, cta: section.settings.dark_cta -%}
         {%- endfor -%}
       {%- endif -%}
+      {%- if nebel_count > 0 -%}
+        {%- assign ghost_i = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type != 'dunkel' or block.settings.darstellung != 'nebel' -%}{%- continue -%}{%- endif -%}
+          {%- assign ghost_i = ghost_i | plus: 1 -%}
+          {%- render 'azizam-nebel', block: block, i: ghost_i, total: nebel_count -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+    {%- if nebel_count > 0 -%}
+      <div class="az-fog" data-az-fog aria-hidden="true">
+        <span class="az-fog__l"></span>
+        <span class="az-fog__l az-fog__l--2"></span>
+        <div class="az-fog__cap">
+          {%- if section.settings.fog_kicker != blank -%}<p class="az-kicker">{{ section.settings.fog_kicker }}</p>{%- endif -%}
+          <p class="az-fog__text">{{ section.settings.fog_text }}</p>
+        </div>
+      </div>
+      <p class="az-visually-hidden">{{ section.settings.fog_text }}</p>
+    {%- endif -%}
     </div>
 
     {%- if dark_count > 0 -%}
@@ -121,11 +149,28 @@
     var root = document.getElementById('az-kol-{{ section.id }}').closest('section');
     var chips = root.querySelectorAll('.az-chip');
     var cards = root.querySelectorAll('.az-card');
+    var fog = root.querySelector('[data-az-fog]');
+    var grid = root.querySelector('[data-az-grid]');
+    function placeFog() {
+      if (!fog || fog.hidden) return;
+      var ghosts = [].slice.call(root.querySelectorAll('.az-card--ghost')).filter(function (g) { return g.offsetParent !== null; });
+      var minLeft = Math.min.apply(null, [].slice.call(grid.children).map(function (c) { return c.offsetLeft; }));
+      var first = ghosts.filter(function (g) { return g.offsetLeft === minLeft; })[0] || ghosts[ghosts.length - 1];
+      if (!first) { fog.style.display = 'none'; return; }
+      fog.style.display = '';
+      var top = Math.max(0, first.offsetTop - first.offsetHeight * 0.18);
+      fog.style.top = top + 'px';
+      fog.style.height = (grid.offsetHeight - top + 120) + 'px';
+    }
+    placeFog();
+    window.addEventListener('resize', placeFog);
+    window.addEventListener('load', placeFog);
     chips.forEach(function (c) {
       c.addEventListener('click', function () {
         var f = c.dataset.filter;
         chips.forEach(function (x) { x.setAttribute('aria-pressed', x === c); });
         cards.forEach(function (k) { k.hidden = !(f === 'alle' || k.dataset.familie === f); });
+        if (fog) { fog.hidden = f !== 'alle'; placeFog(); }
       });
     });
     var tags = root.querySelector('[data-az-wl-tags]');
@@ -162,6 +207,9 @@
     { "type": "header", "content": "Dunkle Karten" },
     { "type": "text", "id": "dark_cta", "label": "Knopf auf der Karte", "default": "Vormerken" },
     { "type": "text", "id": "dark_cta_on", "label": "Knopf nach dem Vormerken", "default": "Vorgemerkt" },
+    { "type": "header", "content": "Nebel" },
+    { "type": "text", "id": "fog_kicker", "label": "Überzeile im Nebel", "default": "Noch im Nebel" },
+    { "type": "text", "id": "fog_text", "label": "Satz im Nebel", "default": "Neun weitere. Nicht einmal ein Hinweis." },
     { "type": "header", "content": "Warteliste (nur mit dunklen Karten)" },
     { "type": "text", "id": "wl_kicker", "label": "Überzeile", "default": "Warteliste" },
     { "type": "text", "id": "wl_heading", "label": "Überschrift", "default": "Vierzehn warten noch im Dunkeln." },
@@ -176,10 +224,14 @@
       { "type": "text", "id": "label", "label": "Duftrichtung (genau wie im Metafeld)" }
     ] },
     { "type": "dunkel", "name": "Dunkle Karte", "settings": [
-      { "type": "text", "id": "hinweis", "label": "Hinweis (sichtbar)", "default": "Rauch. Leder." },
+      { "type": "select", "id": "darstellung", "label": "Darstellung", "default": "frage", "options": [
+        { "value": "frage", "label": "Fragezeichen mit Hinweis" },
+        { "value": "nebel", "label": "Im Nebel (ohne Hinweis)" }
+      ] },
+      { "type": "text", "id": "hinweis", "label": "Hinweis (nur bei Fragezeichen)", "default": "Rauch. Leder." },
       { "type": "text", "id": "familie", "label": "Duftrichtung (genau wie beim Filter)" },
       { "type": "text", "id": "status", "label": "Zeile unten", "default": "Enthüllung folgt" },
-      { "type": "text", "id": "code", "label": "Kennung für die Warteliste (Tag interesse-…)", "info": "Neutral halten, z. B. n07: Sie steht im Seitenquelltext." },
+      { "type": "text", "id": "code", "label": "Kennung für die Warteliste", "info": "Wird zum Tag interesse-… Neutral halten (z. B. d07), sie steht im Seitenquelltext." },
       { "type": "text", "id": "intern", "label": "Interne Notiz (nie sichtbar)", "info": "Zum Beispiel der Duftname, damit du die Karte zuordnen kannst." }
     ] }
   ],
