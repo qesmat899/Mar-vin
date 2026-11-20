@@ -283,3 +283,30 @@ azizam-finder, azizam-discovery { display: block; }
   .az-disc-tile__note { display: none; }
   .az-disc-tile__cta { padding: 8px 10px; font-size: .64rem; }
 }
+
+/* ---------- Drop-Teaser: dunkle Karten + Warteliste ---------- */
+.az-card--dark { appearance: none; -webkit-appearance: none; background: none; border: 0; padding: 0; margin: 0; font: inherit; text-align: left; cursor: pointer; }
+.az-dark { display: grid; place-items: center; background: radial-gradient(90% 60% at 50% 38%, rgba(201,163,95,.10), transparent 70%), #0b0806; border: 1px solid var(--az-line); transition: border-color .4s var(--az-ease); }
+.az-dark__svg { width: 46%; max-width: 150px; height: auto; display: block; }
+.az-dark__svg .b { fill: #16110c; stroke: rgba(239,230,214,.22); stroke-width: 1.5; }
+.az-dark__svg .c { fill: #120d09; stroke: var(--az-gold); stroke-width: 1.5; stroke-opacity: .55; }
+.az-dark__svg .q { fill: var(--az-gold); font-family: var(--az-serif); font-size: 86px; }
+.az-dark__nr { position: absolute; left: 14px; top: 12px; font-size: .7rem; letter-spacing: .16em; color: var(--az-muted); }
+.az-dark__hint { font-family: var(--az-serif); font-style: italic; font-size: clamp(1.15rem, 2vw, 1.4rem); line-height: 1.2; color: var(--az-gold-2); }
+.az-dark__when { font-size: .78rem; color: var(--az-muted); }
+.az-dark__cta { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--az-ink); border-bottom: 1px solid var(--az-line-gold); padding-bottom: 2px; }
+.az-card--dark:hover .az-dark, .az-card--dark:focus-visible .az-dark { border-color: var(--az-line-gold); }
+.az-card--dark[aria-pressed="true"] .az-dark { border-color: var(--az-gold); }
+.az-card--dark[aria-pressed="true"] .az-dark__cta { color: var(--az-gold-2); border-color: var(--az-gold-2); }
+@media (prefers-reduced-motion: no-preference) {
+  .az-dark__svg .q { animation: az-breathe 4.5s ease-in-out infinite; }
+  .az-card--dark:nth-child(3n) .az-dark__svg .q { animation-delay: -1.5s; }
+  .az-card--dark:nth-child(3n+1) .az-dark__svg .q { animation-delay: -3s; }
+  @keyframes az-breathe { 50% { opacity: .35; } }
+}
+.az-wl { display: grid; gap: 28px; margin-top: 72px; padding-top: 48px; border-top: 1px solid var(--az-line); }
+@media (min-width: 900px) { .az-wl { grid-template-columns: 1fr 1fr; gap: 96px; align-items: end; margin-top: 96px; } }
+.az-wl__title { font-size: clamp(1.9rem, 4.4vw, 3rem); margin-top: 12px; }
+.az-wl__text { color: var(--az-muted); margin: 16px 0 0; line-height: 1.7; max-width: 46ch; }
+.az-wl__picked { margin: 0 0 14px; font-size: .85rem; color: var(--az-gold-2); }
+.az .az-visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }

@@ -66,14 +66,14 @@
 - Bleiben gültig aus dem Playbook (09/2026): 30 % Duftöl als Kernversprechen; keine erfundenen Bewertungen; keine Herstellungsaussagen wie „Handgefertigt in Deutschland“, „Seltene Zutaten“, „Haute Parfumerie“. [Mar, 2026-10-03]
 - Les Sables Roses ist im Sortiment (`D-002`). [Mar, 2026-10-16]
 - Kein Privatkram im Repo: Adresse, Telefon, USt-IdNr. stehen nur im Impressum. [Mar, 2026-10-03]
-- Shop-Neustart im Shopify-Shop „My Store 3“ (pbznmb-fy.myshopify.com; Stand 04.10.: 0 Produkte, 0 Bestellungen). Buchhaltung macht der Steuerberater (kein Buchhaltungsprogramm). Geschäftsjahr = Kalenderjahr. Wochenüberblick montags. Claude-Plan: Pro. Geschäfts-E-Mail ist `azizamfragrance@gmail.com` (ohne „s“). [Mar, 2026-10-04]
+- Shop läuft seit 19.11. im neuen Shopify-Shop „Azizam Fragrances“ (pyxp-v308b4-80.myshopify.com, Domain azizamfragrances.de; .com leitet weiter), Theme „Azizam (Kopie aus My Store 3)“ live; vorher „My Store 3“ (pbznmb-fy). [Code, festgestellt 20.11.] Buchhaltung macht der Steuerberater (kein Buchhaltungsprogramm). Geschäftsjahr = Kalenderjahr. Wochenüberblick montags. Claude-Plan: Pro. Geschäfts-E-Mail ist `azizamfragrance@gmail.com` (ohne „s“). [Mar, 2026-10-04]
 
 ---
 
 ## Offene Fragen
 
 - **Bestand klären:** In Shopify stehen je Duft 10 Stück pro Größe (10/30/50 ml = 900 ml Duft, Mar 04.11.); die letzte Bestandsaufnahme im Repo (07.10., `bestand_bewegungen.csv`) zeigt bei allen Düften außer Velvet Vanilla weniger Duft (z. B. Sicilia Nobile ca. 95 ml). Mar: gibt es neuere Zugänge oder schon abgefüllte Flaschen? Dann in `bestand_bewegungen.csv` nachtragen.
-- Vorschlag: Release in Drops (Plan als Artifact „Azizam Release-Plan“, 19.11.): die ersten fünf Düfte sichtbar, übrige als dunkle Karten mit Hinweis + „Benachrichtigen“; Werbung erst nach CPNP der beworbenen Düfte und geklärtem Bestand. Pixel/Cookie-Einwilligung und dunkle Karten baut Code danach (Mar, 20.11.).
+- **Drop-Teaser live schalten:** Mar prüft und veröffentlicht die Theme-Kopie „Drop 1 Teaser 20.11.“; gleichzeitig müssen die 14 dunklen Düfte im Onlineshop ausgeblendet werden (Code nach Mars Go), sonst stehen sie doppelt da. Hinweise auf den Karten von Mar bestätigen.
 
 - KI-Duftberater: Claude-API-Kosten (geschätzt ca. 0,02 $ je Beratung mit Sonnet 5.5, Tageslimit 300) und Vercel-Hosting brauchen Mars Zustimmung; API wird separat von Pro bezahlt. Kopf-/Herz-/Basisnote, Haltbarkeit, Sillage sind für alle Düfte UNKNOWN (Vorlage: `npm run luecken`).
 - 21st.dev: Der hinterlegte Schlüssel wird nicht als Konto erkannt (Antwort „signed-out“, nur 2 freie Abrufe/Tag; Hauptdomain `21st.dev` ohne Schlüssel, nur `api.21st.dev` bekommt ihn). Mar prüft Schlüssel bzw. Abo; der Duftberater braucht 21st.dev nicht.
@@ -96,7 +96,8 @@
 
 | Wer | Aufgabe | Status |
 |-----|---------|--------|
-| Code | Preise nach `D-007` in Shopify gesetzt (57 Varianten, Mars Freigabe 20.11.), Live-Seite geprüft | erledigt |
+| Mar | Pixel: Shopify-Apps „Facebook & Instagram“ und „TikTok“ verbinden, Datenschutzerklärung ergänzen, Double-Opt-in an, Testkauf (Anleitung im Artifact „Azizam Release-Plan“) | offen |
+| Mar | CPNP für Dolce Sole, Orphéa, Calura, Assassin | offen |
 | Mar | Shop-Livegang: Shopify-Einstellungen (Sprache Deutsch, Shopname, Steuern aus, Versand, Zahlung), Rechtstexte, dann Theme veröffentlichen und Passwort entfernen. Checkliste im Chat vom 03.11. | in Arbeit |
 | Mar | PR #6 prüfen und über das Merge nach `Azizam` entscheiden (offene Punkte in der PR-Beschreibung) | offen |
 | Mar | Flakon (30 ml), Etikett und Verpackung selbst klären — ohne Claude, bis Mar es wieder einbringt | offen |
@@ -112,11 +113,10 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
-- **2026-11-20 [Code]** Release-Plan in Drops als Artifact (19.11.); Mar wählt Preisleiter B (`D-007`), CPNP für die ersten fünf Düfte (Velvet Vanilla erledigt), Flakon/Verpackung provisorisch. D-007 in Shopify live (57 Varianten, Seite geprüft).
+- **2026-11-20 [Code]** Preisleiter B (`D-007`) live in Shopify. Drop 1 (`D-008`): Velvet Vanilla, Dolce Sole, Orphéa, Calura, Assassin. Theme-Kopie „Azizam – Drop 1 Teaser 20.11. (Claude)“: 14 dunkle Karten (Hinweis aus Metafeld `noten`, Kennung d01–d14, Zuordnung in der Block-Notiz), Warteliste mit Tags `warteliste`/`interesse-dXX`, Favoriten = Drop 1, alte Launch-Liste aus; nichts veröffentlicht. Cookie-Banner läuft, Meta/TikTok-Pixel fehlen (Apps, Mar).
 - **2026-11-09 [Code]** Duftberater neu (Auftrag Mar): adaptive Beratung (3–5 einfache Fragen, Mittel 4,1), Freitext neu (Abneigung hart, „nicht zu …“ weich), Bewertung nach Duftprofil (12 Merkmale mit Status bestätigt/geschätzt/unbekannt), Ergebnis ohne Prozent mit Begründung, Unterschied der Alternativen, 10-ml-Link und Nachjustieren. 17 Metafeld-Definitionen `azizam_profil.*` in Shopify angelegt (Pflege im Admin), Kontrolle `npm run profile`. 119 Tests grün; `npm run qualitaet`: 41/41 Kundenprofile, 0 Verstöße, 1,1 % leer. Offen: Dolce Sole 21,9 % Platz 1 (Ziel ≤ 15 %), Profilwerte von Mar bestätigen.
 - **2026-11-09 [Code]** Auf Mars Wunsch Berater-Merkmale in Shopify geändert: Assassin ohne „elegant“ (nur noch „kraftvoll“); Royal Cedar, Oud Majesté, Ombroso jetzt „unisex-maskulin“. Simulation: bei „elegant“ kommt Assassin nicht mehr auf Platz 1. Server liest den Feed alle 10 Min., die Änderung wirkt ohne Deploy. Testdaten auf Shop-Stand 09.11. aktualisiert, 70 Tests grün. Originalnamen bleiben in `duefte.csv` (Mar).
 - **2026-11-09 [Code]** Duftberater nachgeschärft (Mars Rückmeldung: zu oft Assassin, oft „kein Treffer“): Hauptmerkmal zählt mehr als Nebeneintrag, ganzjährig < passende Saison, unisex näher an maskulin/feminin, Gleichstand nicht mehr alphabetisch, KI-Urteil „passt“ beeinflusst die Reihenfolge, statt leerer Seite „Am nächsten dran“ (ehrlich gekennzeichnet, nie gegen KI-Veto). Simulation über 1.512 Antwortkombinationen: Assassin auf Platz 1 Herbst 11,8 → 7,3 %, Sommer 15,3 → 11,2 %; leere Ergebnisse Herbst 4,5 → 1,8 %, Sommer 9,7 → 6,3 %. 70 Tests grün. Server (Vercel) wird erst nach Merge aktiv; Browser-Bundle in Theme-Kopie „Berater-Fix 09.11.“. Mare Vita = Megamare, Borbus = Blue Talisman von Mar bestätigt (`duefte.csv`).
-- **2026-11-09 [Code]** „Unsere Favoriten“ gebaut (Mars Auswahl: Dolce Sole, Calura, Ombroso, Velvet Vanilla, Mare Vita), bewusst nicht „Bestseller“ (bisher 1 Bestellung). Section `azizam-favoriten` + `assets/azizam-favoriten.css`, direkt unter dem Hero: Desktop aufklappende Paneele mit Auto-Wechsel, Handy wischbare Karten; Muster nach 21st.dev „Interactive Selector“. Nur in Theme-Kopie „Favoriten 09.11.“, nichts veröffentlicht. Hinweis: Metafeld `charakter` von Velvet Vanilla enthält „Von unseren Kunden am häufigsten gelobt“ (Beleg offen).
 - **2026-11-05 [Code]** KI-Duftberater gebaut: deterministische Matching-Engine (Match-% nachvollziehbar, harte Ausschlüsse, Qualitäts-Gate, ehrlich „kein Treffer“), ein Claude-Aufruf je Beratung (Sonnet 5.5, JSON-Schema, serverseitige Validierung), Server für Vercel (`shopify/berater/api/`), Kostenprotokoll, 36 Kundenprofile + 29 weitere Tests grün. Ohne API-Schlüssel noch nicht live mit KI getestet. Neue Theme-Kopie „KI-Duftberater 05.11.“, nichts veröffentlicht.
 
 ### Verlauf (zusammengefasst)

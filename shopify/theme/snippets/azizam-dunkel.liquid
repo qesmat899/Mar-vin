@@ -1,0 +1,28 @@
+{%- comment -%}
+  Dunkle Karte für einen Duft, der noch nicht enthüllt ist (Drop-Teaser). Kein Produkt, kein Name, kein Preis.
+  Parameter: block (Block „Dunkle Karte“ aus Azizam Kollektion), nr (laufende Nummer, z. B. 06), cta (Knopftext)
+{%- endcomment -%}
+{%- liquid
+  assign s = block.settings
+  assign code = s.code | default: nr | handleize
+-%}
+<button type="button" class="az-card az-card--dark" data-familie="{{ s.familie | handleize }}" data-az-dark="{{ code }}" data-nr="{{ nr }}" aria-pressed="false" {{ block.shopify_attributes }}>
+  <span class="az-card__media az-dark">
+    <span class="az-dark__nr">N° {{ nr }}</span>
+    <svg class="az-dark__svg" viewBox="0 0 200 420" aria-hidden="true" focusable="false">
+      <rect class="c" x="70" y="34" width="60" height="84" rx="4"/>
+      <rect class="b" x="86" y="118" width="28" height="16"/>
+      <rect class="b" x="24" y="134" width="152" height="272" rx="12"/>
+      <text class="q" x="100" y="300" text-anchor="middle">?</text>
+    </svg>
+  </span>
+  <span class="az-card__body">
+    {%- if s.familie != blank -%}<span class="az-card__fam">{{ s.familie }}</span>{%- endif -%}
+    <span class="az-dark__hint">{{ s.hinweis }}</span>
+    <span class="az-card__foot">
+      <span class="az-dark__when">{{ s.status | default: 'Enthüllung folgt' }}</span>
+      <span class="az-dark__cta" data-az-dark-cta>{{ cta }}</span>
+    </span>
+  </span>
+  <span class="az-visually-hidden"> – noch nicht enthüllt. Für die Warteliste vormerken.</span>
+</button>

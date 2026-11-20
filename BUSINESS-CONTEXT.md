@@ -15,7 +15,7 @@
 - **Currency:** EUR
 - **Financial year end:** 31 December
 - **Weekly cadence:** "Monday brief" every Monday
-- **Website:** azizamfragrances.com (offline; Shop „My Store 3“, pbznmb-fy.myshopify.com)
+- **Website:** azizamfragrances.de (live; Shop „Azizam Fragrances“, pyxp-v308b4-80.myshopify.com, seit 19.11.2026; .com leitet weiter)
 - **Brand colors:** luxuriös mit Goldakzent – genaue Farben werden festgelegt, wenn der Flakon feststeht
 - **Logo:** none yet
 - **Output preference:** visual artifacts
