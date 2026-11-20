@@ -137,7 +137,8 @@
         "button": "Eintragen",
         "note": "Mit dem Eintragen willigst Du ein, E-Mails von Azizam zu erhalten. Abmelden geht jederzeit über den Link in jeder E-Mail.",
         "success": "Danke. Du stehst auf der Liste."
-      }
+      },
+      "disabled": true
     },
     "begriffe": {
       "type": "azizam-glossar",
@@ -179,7 +180,8 @@
         "amber",
         "moschus",
         "tonka"
-      ]
+      ],
+      "disabled": true
     },
     "kollektion": {
       "type": "azizam-kollektion",

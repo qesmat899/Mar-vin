@@ -332,7 +332,7 @@ azizam-finder, azizam-discovery { display: block; }
 .az-fog__l--2 { opacity: .6; transform: scaleX(-1); }
 .az-fog__cap { position: absolute; left: 0; right: 0; bottom: 18%; z-index: 1; text-align: center; padding: 0 24px; }
 .az-fog__cap .az-kicker { color: rgba(239,230,214,.7); }
-.az-fog__text { margin: 12px auto 0; max-width: 22ch; font-family: var(--az-serif); font-style: italic; font-size: clamp(1.5rem, 3.4vw, 2.4rem); line-height: 1.2; color: var(--az-ink); text-shadow: 0 2px 24px rgba(0,0,0,.45); }
+.az-fog__text { margin: 12px auto 0; max-width: 28ch; font-family: var(--az-serif); font-style: italic; font-size: clamp(1.5rem, 3.4vw, 2.4rem); line-height: 1.2; color: var(--az-ink); text-shadow: 0 2px 24px rgba(0,0,0,.45); }
 @media (prefers-reduced-motion: no-preference) {
   .az-fog__l { animation: az-drift 38s ease-in-out infinite alternate; }
   .az-fog__l--2 { animation-duration: 52s; animation-direction: alternate-reverse; }
@@ -352,3 +352,4 @@ azizam-finder, azizam-discovery { display: block; }
 .az-fog.is-gl .az-fog__l { display: none; }
 .az-kol { overflow-x: clip; }
 @media (max-width: 749px) { .az-fog, .az-fog.is-gl { left: -16px; right: -16px; } }
+.az-fog__cap .az-kicker { color: var(--az-ink); font-weight: 600; font-size: .8rem; letter-spacing: .22em; text-shadow: 0 2px 18px rgba(0,0,0,.5); }

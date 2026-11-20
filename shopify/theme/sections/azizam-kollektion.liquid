@@ -110,7 +110,7 @@
         <span class="az-fog__l az-fog__l--2"></span>
         <div class="az-fog__cap">
           {%- if section.settings.fog_kicker != blank -%}<p class="az-kicker">{{ section.settings.fog_kicker }}</p>{%- endif -%}
-          <p class="az-fog__text">{{ section.settings.fog_text }}</p>
+          <p class="az-fog__text">{{ section.settings.fog_text | escape | replace: ". ", ".<br>" }}</p>
         </div>
       </div>
       <p class="az-visually-hidden">{{ section.settings.fog_text }}</p>
@@ -209,8 +209,8 @@
     { "type": "text", "id": "dark_cta", "label": "Knopf auf der Karte", "default": "Vormerken" },
     { "type": "text", "id": "dark_cta_on", "label": "Knopf nach dem Vormerken", "default": "Vorgemerkt" },
     { "type": "header", "content": "Nebel" },
-    { "type": "text", "id": "fog_kicker", "label": "Überzeile im Nebel", "default": "Noch im Nebel" },
-    { "type": "text", "id": "fog_text", "label": "Satz im Nebel", "default": "Neun weitere. Nicht einmal ein Hinweis." },
+    { "type": "text", "id": "fog_kicker", "label": "Überzeile im Nebel", "default": "Bald geht es weiter" },
+    { "type": "text", "id": "fog_text", "label": "Satz im Nebel", "default": "Neun weitere Düfte. Das Warten lohnt sich." },
     { "type": "color", "id": "fog_color", "label": "Farbe der Wolken", "default": "#8f8882" },
     { "type": "range", "id": "fog_density", "label": "Dichte des Nebels", "min": 50, "max": 100, "step": 2, "unit": "%", "default": 92 },
     { "type": "range", "id": "fog_speed", "label": "Tempo der Wolken", "min": 0, "max": 30, "step": 1, "default": 10, "info": "10 = normal, 0 = stehend" },
