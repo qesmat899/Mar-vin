@@ -2,7 +2,7 @@
 
 ## Worum es geht
 Arbeits-Repository für die Marke von Mar (Inhaber):
-- **Azizam Fragrance** — Parfum-Marke (persisch inspiriert, „Duft der zweiten Generation“), Shop: azizamfragrances.com
+- **Azizam Fragrance** — Parfum-Marke (persisch inspiriert, „Duft der zweiten Generation“), Shop: azizamfragrances.de
 
 Das Repo enthält ausschließlich Azizam als Geschäftskontext.
 
