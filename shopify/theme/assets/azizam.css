@@ -284,5 +284,72 @@ azizam-finder, azizam-discovery { display: block; }
   .az-disc-tile__cta { padding: 8px 10px; font-size: .64rem; }
 }
 
-/* Grundpreis (PAngV) unter Preisangaben */
-.az-gp { display: block; margin-top: 2px; font-size: .72em; font-weight: 400; letter-spacing: 0; text-transform: none; opacity: .7; }
+/* ---------- Drop-Teaser: dunkle Karten + Warteliste ---------- */
+.az-card--dark { appearance: none; -webkit-appearance: none; background: none; border: 0; padding: 0; margin: 0; font: inherit; text-align: left; cursor: pointer; }
+.az-dark { display: grid; place-items: center; background: radial-gradient(90% 60% at 50% 38%, rgba(201,163,95,.10), transparent 70%), #0b0806; border: 1px solid var(--az-line); transition: border-color .4s var(--az-ease); }
+.az-dark__svg { width: 46%; max-width: 150px; height: auto; display: block; }
+.az-dark__svg .b { fill: #16110c; stroke: rgba(239,230,214,.22); stroke-width: 1.5; }
+.az-dark__svg .c { fill: #120d09; stroke: var(--az-gold); stroke-width: 1.5; stroke-opacity: .55; }
+.az-dark__svg .q { fill: var(--az-gold); font-family: var(--az-serif); font-size: 86px; }
+.az-dark__nr { position: absolute; left: 14px; top: 12px; font-size: .7rem; letter-spacing: .16em; color: var(--az-muted); }
+.az-dark__hint { font-family: var(--az-serif); font-style: italic; font-size: clamp(1.15rem, 2vw, 1.4rem); line-height: 1.2; color: var(--az-gold-2); }
+.az-dark__when { font-size: .78rem; color: var(--az-muted); }
+.az-dark__cta { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--az-ink); border-bottom: 1px solid var(--az-line-gold); padding-bottom: 2px; }
+.az-card--dark:hover .az-dark, .az-card--dark:focus-visible .az-dark { border-color: var(--az-line-gold); }
+.az-card--dark[aria-pressed="true"] .az-dark { border-color: var(--az-gold); }
+.az-card--dark[aria-pressed="true"] .az-dark__cta { color: var(--az-gold-2); border-color: var(--az-gold-2); }
+@media (prefers-reduced-motion: no-preference) {
+  .az-dark__svg .q { animation: az-breathe 4.5s ease-in-out infinite; }
+  .az-card--dark:nth-child(3n) .az-dark__svg .q { animation-delay: -1.5s; }
+  .az-card--dark:nth-child(3n+1) .az-dark__svg .q { animation-delay: -3s; }
+  @keyframes az-breathe { 50% { opacity: .35; } }
+}
+.az-wl { display: grid; gap: 28px; margin-top: 72px; padding-top: 48px; border-top: 1px solid var(--az-line); }
+@media (min-width: 900px) { .az-wl { grid-template-columns: 1fr 1fr; gap: 96px; align-items: end; margin-top: 96px; } }
+.az-wl__title { font-size: clamp(1.9rem, 4.4vw, 3rem); margin-top: 12px; }
+.az-wl__text { color: var(--az-muted); margin: 16px 0 0; line-height: 1.7; max-width: 46ch; }
+.az-wl__picked { margin: 0 0 14px; font-size: .85rem; color: var(--az-gold-2); }
+.az .az-visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+/* ---------- Drop-Teaser: Nebel (Düfte ohne Hinweis) ---------- */
+.az-kol__stage { position: relative; }
+.az-card--ghost { pointer-events: none; user-select: none; opacity: calc(.62 - var(--g) * .5); filter: blur(calc(1px + var(--g) * 12px)) grayscale(1); }
+.az-ghost { display: grid; place-items: center; border: 1px solid rgba(239,230,214,.06);
+  background: color-mix(in srgb, #5d5752 calc(var(--g) * 55%), #0d0a08); }
+.az-ghost svg { width: 46%; max-width: 150px; height: auto; }
+.az-ghost svg rect { fill: rgba(239,230,214,.07); }
+.az-ghost__bar { display: block; height: 10px; width: 62%; background: rgba(160,150,140,.22); }
+.az-ghost__bar--s { width: 38%; margin-top: 6px; }
+@media (max-width: 749px) { .az-ghost--m { display: none; } }
+@media (min-width: 750px) and (max-width: 1099px) { .az-ghost--t { display: none; } }
+.az-fog { position: absolute; left: -40px; right: -40px; z-index: 2; pointer-events: none; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%); mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
+  background: linear-gradient(to bottom, rgba(18,14,10,0) 0%, rgba(62,58,54,.22) 28%, rgba(76,71,66,.62) 55%, rgba(86,81,76,.92) 80%, var(--az-bg) 100%); }
+.az-fog[hidden] { display: none; }
+.az-fog__l { position: absolute; inset: -20%; filter: blur(36px); opacity: .75;
+  background: radial-gradient(38% 30% at 22% 42%, rgba(150,143,136,.45), transparent 70%),
+              radial-gradient(34% 26% at 70% 58%, rgba(130,124,118,.5), transparent 70%),
+              radial-gradient(44% 34% at 48% 82%, rgba(170,163,156,.35), transparent 70%); }
+.az-fog__l--2 { opacity: .6; transform: scaleX(-1); }
+.az-fog__cap { position: absolute; left: 0; right: 0; bottom: 18%; z-index: 1; text-align: center; padding: 0 24px; }
+.az-fog__cap .az-kicker { color: rgba(239,230,214,.7); }
+.az-fog__text { margin: 12px auto 0; max-width: 28ch; font-family: var(--az-serif); font-style: italic; font-size: clamp(1.5rem, 3.4vw, 2.4rem); line-height: 1.2; color: var(--az-ink); text-shadow: 0 2px 24px rgba(0,0,0,.45); }
+@media (prefers-reduced-motion: no-preference) {
+  .az-fog__l { animation: az-drift 38s ease-in-out infinite alternate; }
+  .az-fog__l--2 { animation-duration: 52s; animation-direction: alternate-reverse; }
+  @keyframes az-drift { from { transform: translate3d(-6%, 0, 0); } to { transform: translate3d(6%, -3%, 0); } }
+  .az-fog__l--2 { animation-name: az-drift2; }
+  @keyframes az-drift2 { from { transform: scaleX(-1) translate3d(-5%, 2%, 0); } to { transform: scaleX(-1) translate3d(7%, -2%, 0); } }
+}
+/* Nebel mit WebGL (assets/azizam-nebel.js, Muster nach Aceternity UI „cloud-shader“; die JS-Datei liegt nur im
+   Shopify-Theme, nicht in diesem öffentlichen Repo: Die Aceternity-Lizenz erlaubt keine Weitergabe des Quelltexts) */
+.az-fog__gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.az-fog.is-gl { left: -12%; right: -12%; }
+.az-fog.is-gl { background: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 14%, #000 82%, transparent 100%), linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to bottom, transparent 0, #000 14%, #000 82%, transparent 100%), linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%);
+  mask-composite: intersect; }
+.az-fog.is-gl .az-fog__l { display: none; }
+.az-kol { overflow-x: clip; }
+@media (max-width: 749px) { .az-fog, .az-fog.is-gl { left: -16px; right: -16px; } }
+.az-fog__cap .az-kicker { color: var(--az-ink); font-weight: 600; font-size: .8rem; letter-spacing: .22em; text-shadow: 0 2px 18px rgba(0,0,0,.5); }

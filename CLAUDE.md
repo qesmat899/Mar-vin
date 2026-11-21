@@ -24,7 +24,7 @@ Grundlage für jede Analyse und Strategie ist das **E-Commerce Brand-Playbook** 
 | `playbook.py` | Werkzeug: Status, Rechner, Prompts (siehe unten) |
 | `docs/` | Original-Playbook als Markdown + PDF (64 Seiten) |
 | `frontend/` | 3D-Flakon-Komponenten für die Azizam-Website (Next.js) |
-| `.claude/skills/` | Marketing-Skills (coreyhaines31/marketingskills) und die fünf Azizam-Skills `azizam-*` (siehe „Azizam Decision Architecture“) |
+| `.claude/skills/` | Marketing-Skills (coreyhaines31/marketingskills), die fünf Azizam-Skills `azizam-*` (siehe „Azizam Decision Architecture“) und `ui-komponenten` (shadcn/ui, Magic UI, Aceternity UI, 21st.dev für Shop-Gestaltung) |
 
 ## Befehle
 ```bash
