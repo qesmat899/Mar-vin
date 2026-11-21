@@ -16,9 +16,9 @@ export function konfiguration(env = process.env) {
     maxRetries: 2,
     maxKiProTag: Number(env.MAX_KI_BERATUNGEN_PRO_TAG) > 0 ? Number(env.MAX_KI_BERATUNGEN_PRO_TAG) : 300,
     maxProIpProStunde: Number(env.MAX_BERATUNGEN_PRO_IP_STUNDE) > 0 ? Number(env.MAX_BERATUNGEN_PRO_IP_STUNDE) : 20,
-    erlaubteHerkunft: (env.ERLAUBTE_HERKUNFT || 'https://azizamfragrances.com,https://www.azizamfragrances.com,https://pbznmb-fy.myshopify.com')
+    erlaubteHerkunft: (env.ERLAUBTE_HERKUNFT || 'https://azizamfragrances.de,https://www.azizamfragrances.de,https://pyxp-v308b4-80.myshopify.com,https://azizamfragrances.com,https://www.azizamfragrances.com')
       .split(',').map((s) => s.trim()).filter(Boolean),
-    shopDatenUrl: env.SHOP_DATEN_URL || 'https://azizamfragrances.com/collections/all?view=berater',
+    shopDatenUrl: env.SHOP_DATEN_URL || 'https://azizamfragrances.de/collections/all?view=berater',
     vorschauThemeId: /^\d+$/.test(env.SHOP_VORSCHAU_THEME_ID || '') ? env.SHOP_VORSCHAU_THEME_ID : '',
     adminToken: env.ADMIN_TOKEN || '',
   };

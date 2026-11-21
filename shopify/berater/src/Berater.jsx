@@ -8,23 +8,43 @@ import { berateLokal } from '../lib/lokal.js';
 
 // Adaptive Beratung (Muster nach 21st.dev „Questionnaire“): eine Frage pro Schritt, große Antwortzeilen,
 // eigene Worte direkt bei der Frage, Zurück jederzeit. Welche Frage kommt, entscheidet die Engine (lib/gespraech.js).
+// Antwortfelder (21.11.2026, Wunsch Mar): Creme mit einem Hauch Gold, Tinte als Schrift, feine Goldlinie,
+// dunkle Buchstaben-Taste als kleiner Kontrast. Lichtschein folgt dem Zeiger (Muster nach Magic UI „magic-card“, MIT),
+// beim Wählen ein kurzer Goldglanz (nach Magic UI „shine-border“, MIT). Bei reduzierter Bewegung kein Glanz.
 const EASE = [0.2, 0.7, 0.1, 1];
 const API_TIMEOUT_MS = 15000;
+const TASTEN = 'ABCDEFGHIJ';
+const BESTAETIGEN_MS = 230; // kurz zeigen, was gewählt wurde, dann weiter
 
-function Zeile({ option, gewaehlt, onClick, index }) {
+function Haken() {
   return (
-    <motion.button type="button" onClick={onClick} aria-pressed={gewaehlt}
-      initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, delay: index * 0.03, ease: EASE }}
-      whileTap={{ scale: 0.99 }}
-      className={`azb-karte tw-flex tw-min-h-[64px] tw-w-full tw-items-center tw-gap-4 tw-rounded-[3px] tw-border tw-px-5 tw-py-4 tw-text-left tw-transition-colors tw-duration-200 ${
-        gewaehlt ? 'tw-border-gold tw-bg-gold/10' : 'tw-border-creme/15 hover:tw-border-gold/60'
-      }`}>
-      <span aria-hidden="true" className={`tw-flex tw-h-6 tw-w-6 tw-shrink-0 tw-items-center tw-justify-center tw-rounded-full tw-border-2 ${gewaehlt ? 'tw-border-gold tw-bg-gold' : 'tw-border-creme/30'}`}>
-        {gewaehlt && <span className="tw-h-2 tw-w-2 tw-rounded-full tw-bg-nacht" />}
-      </span>
-      <span className="tw-min-w-0">
-        <span className={`tw-block tw-text-[1.12rem] tw-leading-snug md:tw-text-[1.2rem] ${gewaehlt ? 'tw-text-gold2' : 'tw-text-creme'}`}>{option.label}</span>
-        {option.sub && <span className="tw-mt-0.5 tw-block tw-text-[0.92rem] tw-text-grau">{option.sub}</span>}
+    <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false">
+      <path d="M3.2 8.4 6.5 11.6 12.8 4.6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// Lichtschein: Zeigerposition als CSS-Variablen, ohne React-State (kein Neurendern bei jeder Bewegung).
+function zeigerFolgen(e) {
+  const el = e.currentTarget;
+  const r = el.getBoundingClientRect();
+  el.style.setProperty('--mx', `${e.clientX - r.left}px`);
+  el.style.setProperty('--my', `${e.clientY - r.top}px`);
+}
+
+function Feld({ option, gewaehlt, mehrfach, onClick, index, taste }) {
+  return (
+    <motion.button type="button" onClick={onClick} onPointerMove={zeigerFolgen}
+      aria-pressed={mehrfach ? gewaehlt : undefined} aria-keyshortcuts={taste}
+      data-gewaehlt={gewaehlt ? 'true' : 'false'}
+      initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, delay: index * 0.035, ease: EASE }}
+      whileTap={{ scale: 0.985 }}
+      className="azb-feld tw-flex tw-min-h-[68px] tw-w-full tw-items-center tw-gap-4 tw-rounded-[4px] tw-px-4 tw-py-3.5 tw-text-left md:tw-px-5">
+      <span className="azb-glanz" aria-hidden="true" />
+      <span className="azb-taste" aria-hidden="true">{gewaehlt ? <Haken /> : taste}</span>
+      <span className="tw-relative tw-min-w-0">
+        <span className="azb-feld__titel">{option.label}</span>
+        {option.sub && <span className="azb-feld__sub">{option.sub}</span>}
       </span>
     </motion.button>
   );
@@ -43,19 +63,49 @@ function Fortschritt({ anzahl, fastFertig }) {
   );
 }
 
-function Frage({ frage, onAntwort, onZurueck, kannZurueck }) {
+function Frage({ frage, onAntwort, onZurueck, kannZurueck, fokus }) {
   const [auswahl, setAuswahl] = useState([]);
+  const [einzeln, setEinzeln] = useState(null); // gewählte Antwort, kurz sichtbar vor dem Weiterblättern
   const [text, setText] = useState('');
+  const titel = useRef(null);
+  const timer = useRef(0);
   const mehrfach = Boolean(frage.mehrfach);
   const weiter = () => onAntwort(mehrfach ? auswahl : null, text.trim());
+
+  const waehlen = (id) => {
+    if (mehrfach) { setAuswahl((a) => (a.includes(id) ? a.filter((x) => x !== id) : [...a, id])); return; }
+    if (einzeln) return; // Doppelklick ignorieren
+    setEinzeln(id);
+    timer.current = window.setTimeout(() => onAntwort(id, text.trim()), BESTAETIGEN_MS);
+  };
+  useEffect(() => () => window.clearTimeout(timer.current), []);
+
+  // Das geklickte Feld verschwindet mit der alten Frage: Fokus auf die neue Frage, damit Tastatur und
+  // Screenreader an der richtigen Stelle weitermachen. Beim ersten Laden der Seite nie Fokus nehmen.
+  useEffect(() => {
+    if (fokus && titel.current) titel.current.focus({ preventScroll: true });
+  }, [fokus]);
+
+  // Buchstaben-Tasten (A, B, C …) wählen eine Antwort, solange der Fokus im Berater ist.
+  const tasten = (e) => {
+    if (e.metaKey || e.ctrlKey || e.altKey || e.repeat) return;
+    const ziel = e.target.tagName;
+    if (ziel === 'TEXTAREA' || ziel === 'INPUT' || ziel === 'SELECT') return;
+    const i = TASTEN.indexOf((e.key || '').toUpperCase());
+    if (i < 0 || i >= frage.optionen.length || e.key.length !== 1) return;
+    e.preventDefault();
+    waehlen(frage.optionen[i].id);
+  };
+
   return (
-    <motion.div key={frage.id} initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }} transition={{ duration: 0.25, ease: EASE }}>
-      <h3 className="tw-max-w-[28ch] tw-text-[1.75rem] tw-leading-tight md:tw-text-[2.3rem]">{frage.frage}</h3>
+    <motion.div key={frage.id} onKeyDown={tasten} initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }} transition={{ duration: 0.25, ease: EASE }}>
+      <h3 ref={titel} tabIndex={-1} className="tw-max-w-[28ch] tw-text-[1.75rem] tw-leading-tight focus:tw-outline-none md:tw-text-[2.3rem]">{frage.frage}</h3>
       {frage.hinweis && <p className="tw-mt-2 tw-text-[0.95rem] tw-text-grau">{frage.hinweis}</p>}
-      <div className={`tw-mt-6 tw-grid tw-gap-3 ${frage.optionen.length > 4 ? 'md:tw-grid-cols-2' : 'md:tw-max-w-[640px]'}`} role={mehrfach ? 'group' : 'radiogroup'} aria-label={frage.frage}>
+      <div className={`tw-mt-6 tw-grid tw-gap-3 ${frage.optionen.length > 4 ? 'md:tw-grid-cols-2' : 'md:tw-max-w-[640px]'}`} role="group" aria-label={frage.frage}>
         {frage.optionen.map((o, i) => (
-          <Zeile key={o.id} option={o} index={i} gewaehlt={mehrfach ? auswahl.includes(o.id) : false}
-            onClick={() => (mehrfach ? setAuswahl((a) => (a.includes(o.id) ? a.filter((x) => x !== o.id) : [...a, o.id])) : onAntwort(o.id, text.trim()))} />
+          <Feld key={o.id} option={o} index={i} taste={TASTEN[i]} mehrfach={mehrfach}
+            gewaehlt={mehrfach ? auswahl.includes(o.id) : einzeln === o.id}
+            onClick={() => waehlen(o.id)} />
         ))}
       </div>
       {frage.freitext && (
@@ -63,13 +113,13 @@ function Frage({ frage, onAntwort, onZurueck, kannZurueck }) {
           <span className="tw-text-[0.95rem] tw-text-creme/85">{frage.id === 'stil' ? 'Oder sag es in deinen Worten' : 'Sonst noch etwas, das du nicht magst?'}</span>
           <textarea value={text} maxLength={MAX_FREITEXT} rows={2} onChange={(e) => setText(e.target.value)}
             placeholder={frage.id === 'stil' ? 'z. B. „Etwas Warmes für den Abend, nicht zu süß“' : 'z. B. „Kein Oud, bitte nichts Blumiges“'}
-            className="tw-mt-2 tw-block tw-w-full tw-resize-none tw-rounded-[3px] tw-border tw-border-creme/20 tw-bg-nacht2 tw-p-4 tw-text-[1rem] tw-text-creme placeholder:tw-text-grau/70 focus:tw-border-gold focus:tw-outline-none" />
+            className="azb-eingabe tw-mt-2 tw-block tw-w-full tw-resize-none tw-rounded-[4px] tw-p-4 tw-text-[1rem]" />
         </label>
       )}
       <div className="tw-mt-7 tw-flex tw-flex-wrap tw-items-center tw-gap-x-6 tw-gap-y-3">
         {(mehrfach || (frage.freitext && text.trim())) && (
           <button type="button" onClick={weiter}
-            className="tw-inline-flex tw-min-h-[52px] tw-items-center tw-bg-gold tw-px-8 tw-text-[0.95rem] tw-font-medium tw-text-nacht tw-transition-colors hover:tw-bg-gold2">
+            className="azb-weiter tw-inline-flex tw-min-h-[52px] tw-items-center tw-px-8 tw-text-[0.95rem] tw-font-medium">
             {mehrfach && !auswahl.length && !text.trim() ? 'Nein, nichts davon' : 'Weiter'}
           </button>
         )}
@@ -170,8 +220,8 @@ function Ergebnis({ ergebnis, discovery, onJustieren, onNeu, onZurueck, justiert
         <p className="tw-text-[1rem] tw-text-creme/90">Noch nicht ganz? Sag uns, in welche Richtung:</p>
         <div className="tw-mt-3 tw-flex tw-flex-wrap tw-gap-2">
           {NACHJUSTIEREN.map((n) => (
-            <button key={n.id} type="button" onClick={() => onJustieren(n.id)}
-              className="tw-min-h-[44px] tw-rounded-full tw-border tw-border-creme/25 tw-px-4 tw-text-[0.95rem] tw-text-creme/90 hover:tw-border-gold hover:tw-text-gold2">
+            <button key={n.id} type="button" onClick={() => onJustieren(n.id)} onPointerMove={zeigerFolgen}
+              className="azb-chip tw-min-h-[44px] tw-rounded-full tw-px-4 tw-text-[0.95rem]">
               {n.label}
             </button>
           ))}
@@ -259,7 +309,7 @@ export default function Berater({ produkte, kicker, heading, discovery, api }) {
           <label className="tw-flex tw-items-center tw-gap-2 tw-text-[0.9rem] tw-text-grau">
             Für
             <select value={saison} onChange={(e) => { const s = e.target.value; setVerlauf((v) => [...v.slice(0, -1), { ...zustand, eingabe: { ...zustand.eingabe, saison: s } }]); if (ergebnis) setErgebnis(berateLokal({ ...zustand.eingabe, saison: s }, produkte, 'nachjustiert')); }}
-              className="tw-rounded-[3px] tw-border tw-border-creme/20 tw-bg-nacht2 tw-px-2 tw-py-1.5 tw-text-creme">
+              className="azb-auswahl tw-min-h-[40px] tw-rounded-full tw-py-1.5 tw-pl-4 tw-pr-9 tw-text-[0.92rem]">
               {JAHRESZEITEN.map((j) => <option key={j} value={j}>{j === auto ? `${j} (jetzt)` : j}</option>)}
             </select>
           </label>
@@ -271,7 +321,7 @@ export default function Berater({ produkte, kicker, heading, discovery, api }) {
             <AnimatePresence mode="wait">
               {laedt ? <Laden key="laden" />
                 : ergebnis ? <Ergebnis key="ergebnis" ergebnis={ergebnis} discovery={discovery} onJustieren={justieren} onNeu={neu} onZurueck={zurueck} justiert={justiert} />
-                  : frage ? <Frage key={`${frage.id}-${verlauf.length}`} frage={frage} onAntwort={antworten} onZurueck={zurueck} kannZurueck={verlauf.length > 1} />
+                  : frage ? <Frage key={`${frage.id}-${verlauf.length}`} frage={frage} onAntwort={antworten} onZurueck={zurueck} kannZurueck={verlauf.length > 1} fokus={verlauf.length > 1} />
                     : null}
             </AnimatePresence>
           </div>

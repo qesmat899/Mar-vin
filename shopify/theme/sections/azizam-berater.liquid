@@ -3,6 +3,8 @@
   Daten je Duft über das Snippet azizam-berater-produkt (Metafelder azizam.*, azizam_berater.*, azizam_profil.*).
   Mit „Berater-API“ prüft zusätzlich der Server mit Claude; ohne bzw. bei Fehlern rechnet der Browser allein.
   Jahreszeit setzt der Berater automatisch.
+  Das Skript (~100 KB) lädt erst, wenn der Berater in die Nähe kommt, ein Link auf #duftberater geklickt wird
+  oder die Seite mit #duftberater geöffnet wurde. So bleibt der Seitenstart schnell.
   Ohne JavaScript bleibt der Hinweis mit Link zur Kollektion stehen.
 {%- endcomment -%}
 {{ 'azizam-berater.css' | asset_url | stylesheet_tag }}
@@ -11,8 +13,9 @@
   data-kicker="{{ section.settings.kicker | escape }}"
   data-heading="{{ section.settings.heading | escape }}"
   data-discovery="{{ section.settings.discovery_url | default: '/products/discovery-set' }}"
-  data-api="{{ section.settings.api_url | escape }}">
-  <div data-berater-app>
+  data-api="{{ section.settings.api_url | escape }}"
+  data-src="{{ 'azizam-berater.js' | asset_url }}">
+  <div data-berater-app style="min-height: 560px">
     <noscript>
       <div style="max-width:1280px;margin:0 auto;padding:80px 16px">
         <p>{{ section.settings.heading }}</p>
@@ -31,7 +34,31 @@
     ]
   </script>
 </section>
-<script src="{{ 'azizam-berater.js' | asset_url }}" defer></script>
+<script>
+  (function () {
+    var root = document.getElementById('duftberater');
+    if (!root || root.dataset.laden) return;
+    var geladen = false;
+    function laden() {
+      if (geladen) return;
+      geladen = true;
+      root.dataset.laden = '1';
+      var s = document.createElement('script');
+      s.src = root.dataset.src;
+      s.defer = true;
+      document.head.appendChild(s);
+    }
+    if (location.hash === '#duftberater' || !('IntersectionObserver' in window) || {{ request.design_mode | json }}) { laden(); return; }
+    var io = new IntersectionObserver(function (es) {
+      if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); laden(); }
+    }, { rootMargin: '900px 0px' });
+    io.observe(root);
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="#duftberater"]');
+      if (a) laden();
+    });
+  })();
+</script>
 {% schema %}
 {
   "name": "Azizam Duftberater",

@@ -310,6 +310,7 @@ azizam-finder, azizam-discovery { display: block; }
 .az-wl__text { color: var(--az-muted); margin: 16px 0 0; line-height: 1.7; max-width: 46ch; }
 .az-wl__picked { margin: 0 0 14px; font-size: .85rem; color: var(--az-gold-2); }
 .az .az-visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
 /* ---------- Drop-Teaser: Nebel (Düfte ohne Hinweis) ---------- */
 .az-kol__stage { position: relative; }
 .az-card--ghost { pointer-events: none; user-select: none; opacity: calc(.62 - var(--g) * .5); filter: blur(calc(1px + var(--g) * 12px)) grayscale(1); }
@@ -353,3 +354,6 @@ azizam-finder, azizam-discovery { display: block; }
 .az-kol { overflow-x: clip; }
 @media (max-width: 749px) { .az-fog, .az-fog.is-gl { left: -16px; right: -16px; } }
 .az-fog__cap .az-kicker { color: var(--az-ink); font-weight: 600; font-size: .8rem; letter-spacing: .22em; text-shadow: 0 2px 18px rgba(0,0,0,.5); }
+
+/* Grundpreis (PAngV) unter Preisangaben */
+.az-gp { display: block; margin-top: 2px; font-size: .72em; font-weight: 400; letter-spacing: 0; text-transform: none; opacity: .7; }
