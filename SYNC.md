@@ -1,7 +1,7 @@
 # SYNC.md – Übergabe zwischen Claude Chat und Claude Code (Azizam)
 
 > Gemeinsame Datei für **Claude Chat** und **Claude Code**. Sie ist die einzige Brücke zwischen beiden.
-> Zuletzt aktualisiert: 2026-11-20 [Code]
+> Zuletzt aktualisiert: 2026-11-21 [Code]
 
 ---
 
@@ -42,9 +42,8 @@
 
 ## Aktueller Stand (überschreiben, nicht anhängen)
 
-- Bisher nur persönlicher Verkauf im Freundeskreis. **Aktuell kein Verkauf**, bis Flakon und Verpackung da sind.
-- Positionierung noch nicht vorhanden. Alte Website (Vercel) offline.
-- **Shop-Neubau in Shopify läuft (03.11.):** Entwurfs-Theme „Azizam – Entwurf (Claude)“ (unveröffentlicht, Live-Theme unverändert), **Shop ist live auf azizamfragrances.com** (Theme und Domain von Mar am 03./04.11. freigeschaltet), 19 Düfte aktiv mit je 10 Stück pro Größe (Mar, 04.11.) mit Azizam-Namen (03.11., in `duefte.csv`), 30/50 ml, Preise nach D-007 (seit 20.11. live); Bilder für alle Düfte (Produktfoto + Stimmungsbild), 3 Kollektionen nach Duftrichtung, Hauptmenü auf Deutsch. Duftdaten aus Mars Duftübersicht (PDF, 03.11.). Theme-Bausteine im Repo unter `shopify/theme/`. Hero zeigt Mars Flakon-Video (03.11.); auf der Startseite außerdem Kurations-Text, Duftkarte, Anlass-Finder, „ohne Bewertungen“-Block (Rückgabe-Absatz aus, bis Mar entscheidet) und Launch-Liste.
+- Bisher persönlicher Verkauf im Freundeskreis; seit 20.11. sind die fünf Drop-1-Düfte im Shop bestellbar (Kaufweg bis Warenkorb am 21.11. geprüft). Positionierung noch nicht festgelegt.
+- **Shop live auf azizamfragrances.de** (Shopify-Shop „Azizam Fragrances“, einziger aktiver Shop seit 20.11.; .com leitet weiter). 19 Düfte mit Azizam-Namen (`duefte.csv`), 10/30/50 ml, Preise nach `D-007`, Grundpreis €/100 ml an allen Preisen. Live-Theme seit 21.11.: „Azizam – Grundpreis 21.11. (Claude)“ (Drop-1-Teaser, Hero-Video-Fix, Grundpreis). Wartet auf Mar: „Azizam #02 – Next Level 21.11. (Claude)“ (siehe Log 21.11.). Theme-Bausteine im Repo unter `shopify/theme/`; Templates und Einstellungen gelten so, wie sie im Shopify-Theme stehen.
 - Ziel: In den nächsten 3 Monaten deutschlandweit online verkaufen, Shop komplett neu starten.
 - **Flakon und Verpackung provisorisch vorhanden** (Mar, 20.11.); endgültige Lösung weiter offen.
 - **Drop-1-Teaser live (20.11.):** Theme „Azizam – Drop 1 Teaser 20.11. (Claude)“ von Mar veröffentlicht; Nebel als WebGL-Wolke (nach Aceternity „cloud-shader“, `assets/azizam-nebel.js` nur im Theme, Lizenz) live mit Mars Go. Die 14 dunklen Düfte stehen in Shopify auf „Entwurf“ (Ausblenden aus dem Kanal ist über den Konnektor gesperrt; Mars Go 20.11.); zum Enthüllen wieder auf „Aktiv“.
@@ -54,6 +53,8 @@
 
 ## Entscheidungen (dauerhaft, mit Datum)
 
+- Theme-Kopien von Claude werden fortlaufend nummeriert: „Azizam #NN – Inhalt TT.MM. (Claude)“; vergeben bis #02, **nächste: #03**. [Mar, 2026-11-09]
+- Shop gewechselt: Alles läuft über den Shopify-Shop „Azizam Fragrances“ (pyxp-v308b4-80.myshopify.com), Hauptdomain azizamfragrances.de. [Mar, 2026-11-20]
 - Preisleiter einheitlich für alle Düfte: 10 ml 12,99 €, 30 ml 29,99 €, 50 ml 44,99 €, verbindlich im Ledger `D-007` (ersetzt D-003 und D-005). [Mar, 2026-11-20]
 - Frühere interne Namen (Originale) bleiben in `duefte.csv`; nur Kundentexte bleiben ohne fremde Markennamen. Berater: Assassin nicht „elegant“; Royal Cedar, Oud Majesté, Ombroso „unisex-maskulin“. [Mar, 2026-11-09]
 - Kostenloser Versand ab 20 €, Details im Ledger `D-006`. [Mar, 2026-11-04]
@@ -67,25 +68,24 @@
 - Bleiben gültig aus dem Playbook (09/2026): 30 % Duftöl als Kernversprechen; keine erfundenen Bewertungen; keine Herstellungsaussagen wie „Handgefertigt in Deutschland“, „Seltene Zutaten“, „Haute Parfumerie“. [Mar, 2026-10-03]
 - Les Sables Roses ist im Sortiment (`D-002`). [Mar, 2026-10-16]
 - Kein Privatkram im Repo: Adresse, Telefon, USt-IdNr. stehen nur im Impressum. [Mar, 2026-10-03]
-- Shop läuft seit 19.11. im neuen Shopify-Shop „Azizam Fragrances“ (pyxp-v308b4-80.myshopify.com, Domain azizamfragrances.de; .com leitet weiter), Theme „Azizam (Kopie aus My Store 3)“ live; vorher „My Store 3“ (pbznmb-fy). [Code, festgestellt 20.11.] Buchhaltung macht der Steuerberater (kein Buchhaltungsprogramm). Geschäftsjahr = Kalenderjahr. Wochenüberblick montags. Claude-Plan: Pro. Geschäfts-E-Mail ist `azizamfragrance@gmail.com` (ohne „s“). [Mar, 2026-10-04]
+- Buchhaltung macht der Steuerberater (kein Buchhaltungsprogramm). Geschäftsjahr = Kalenderjahr. Wochenüberblick montags. Claude-Plan: Pro. Geschäfts-E-Mail ist `azizamfragrance@gmail.com` (ohne „s“). [Mar, 2026-10-04]
 
 ---
 
 ## Offene Fragen
 
 - **Bestand klären:** In Shopify stehen je Duft 10 Stück pro Größe (10/30/50 ml = 900 ml Duft, Mar 04.11.); die letzte Bestandsaufnahme im Repo (07.10., `bestand_bewegungen.csv`) zeigt bei allen Düften außer Velvet Vanilla weniger Duft (z. B. Sicilia Nobile ca. 95 ml). Mar: gibt es neuere Zugänge oder schon abgefüllte Flaschen? Dann in `bestand_bewegungen.csv` nachtragen.
-
 - KI-Duftberater: Claude-API-Kosten (geschätzt ca. 0,02 $ je Beratung mit Sonnet 5.5, Tageslimit 300) und Vercel-Hosting brauchen Mars Zustimmung; API wird separat von Pro bezahlt. Kopf-/Herz-/Basisnote, Haltbarkeit, Sillage sind für alle Düfte UNKNOWN (Vorlage: `npm run luecken`).
 - UI-Bibliotheken shadcn/ui, Magic UI, Aceternity UI über Skill `ui-komponenten` nutzbar (frei, ohne Schlüssel; Mar 20.11.). 21st.dev: Der hinterlegte Schlüssel wird nicht als Konto erkannt (Antwort „signed-out“, nur 2 freie Abrufe/Tag; Hauptdomain `21st.dev` ohne Schlüssel, nur `api.21st.dev` bekommt ihn). Mar prüft Schlüssel bzw. Abo; der Duftberater braucht 21st.dev nicht.
 - Weitere Bundles (Signature, Tag & Nacht) offen; Trio verworfen, Reiseflakon 10 ml umgesetzt (`D-005`). Stückkosten der Proben UNKNOWN.
-- Theme-Änderungen laufen über Kopien, die Mar veröffentlicht (keine GitHub-Verbindung, Mar 04.11.). Live ist „Azizam – Duftberater 05.11. (Claude)“ (Mar, 05.11.); „Azizam – KI-Duftberater 05.11. (Claude)“ (Matching-Engine, Feinschliff-Schritt, Produkt-Feed) wartet auf Veröffentlichung durch Mar. Live ist seit 09.11. „Azizam – Favoriten 09.11. (Claude)“ (Mar). Live ist „Azizam – Berater-Fix 09.11. (Claude)“ (Mar, 09.11.). Neu: „Azizam – Berater neu 09.11. (Claude)“ mit adaptivem Duftberater wartet auf Veröffentlichung durch Mar (sicher auch vor dem Merge: antwortet der Server noch im alten Format, rechnet die Seite selbst mit der neuen Engine; KI-Erklärungen kommen erst nach dem Merge).
+- Theme-Änderungen laufen über Kopien, die Mar veröffentlicht (keine GitHub-Verbindung, Mar 04.11.). Wartet: „Azizam #02 – Next Level 21.11. (Claude)“. Die Kopien aus „My Store 3“ (05.–11.11., u. a. #01 „Nächstbester Duft“) sind mit dem Shopwechsel hinfällig; ihre Inhalte stecken in #02.
+- **KI-Duftberater ohne KI seit dem Shopwechsel:** Der Server (mar-vin.vercel.app) lehnte Anfragen von azizamfragrances.de ab (CORS, geprüft 21.11.), der Berater rechnete deshalb nur im Browser. Fix im Code (Branch `claude/relaxed-galileo-s09d74`), wirkt nach Merge und Vercel-Deploy. Ist in Vercel die Variable `ERLAUBTE_HERKUNFT` gesetzt, dort die .de-Domains ergänzen (Mar).
+- Vorschlag: Geldformat in Shopify auf „12,99 €“ statt „€12,99“ (Einstellungen → Shopdetails → Währungsformat); Knopf „Auschecken“ → „Zur Kasse“ (Theme-Texte). Mar entscheidet.
+- Shop-Einstellung „Preise inkl. Steuern“ ist an; der Warenkorb schrieb deshalb „Inkl. … Steuern“. In #02 per Theme durch den § 19-Hinweis ersetzt; Einstellung selbst mit dem Steuerberater prüfen (Mar).
 - GPSR: Produktseiten brauchen Name, Post- und E-Mail-Adresse der verantwortlichen Person; bisher steht die Anschrift laut Entscheidung nur im Impressum. Mar entscheidet (Feld im Theme-Baustein „Azizam Produktinfos“).
 - **Widerruf:** Hausnummer 8 ist richtig (Mar, 21.11.); Mar korrigiert Widerrufsbelehrung (2×) und AGB im Shopify-Admin (Konnektor darf Rechtstexte nicht ändern). Probe zu jeder 30/50-ml-Flasche (`D-009`), kein Siegel. Offen: Probengröße, Wiegen vor Versand/nach Rücksendung (Vorschlag), Hinweis auf Produktseite sobald Proben beiliegen, Rechtstexte-Dienst.
-- Welcher Flakon wird es (in 30 und 50 ml)? (Hängt davon ab: Verpackung, Etikett, Shop-Neustart)
-- Verpackung: wird gesucht.
-- Ab wie vielen Verkäufen kommt 100 ml (und im selben Flakon-Design)? Offen.
+- Endgültiger Flakon (30/50 ml), Verpackung und Etikett offen (provisorisch vorhanden, Mar 20.11.); 100 ml erst nach den ersten Verkäufen.
 - Stückkosten, Versandkosten, Gebühren, CAC und Retouren sind `UNKNOWN` (Mar, 05.10.2026); erst damit lässt sich die Marge der neuen Preise (D-003) prüfen.
-- Etikettierung: Zum Etikett ist nichts geklärt.
 - Kosmetikrecht: Die Fabrik stellt die nötigen Dokumente bereit (Sicherheitsbewertung, INCI u. a.), Mar trägt die Produkte selbst im CPNP-Portal der EU ein (Mar, 04.10.). Offen: Liste der Fabrik-Dokumente prüfen (deckt sie CPSR/PIF-Inhalte und die erweiterte Allergen-Kennzeichnung nach VO (EU) 2023/1545 ab?), CPNP-Eintrag je Duft vor dem ersten Onlineverkauf.
 - Zwei Duftlinien (Heritage/Editions) aus dem Playbook: offen. Mar entscheidet erst, wenn Flakon, Verpackung und Tüte endgültig gekauft sind (Suche läuft, Stand 16.10.).
 - Shop-Grundsprache ist Englisch (Rechtstext-Titel, „Email address“ u. a. erscheinen englisch). Vorschlag: in Shopify unter Einstellungen → Sprachen Deutsch als Standard setzen (Mar).
@@ -97,6 +97,8 @@
 
 | Wer | Aufgabe | Status |
 |-----|---------|--------|
+| Mar | Theme-Kopie „Azizam #02 – Next Level 21.11. (Claude)“ in der Vorschau prüfen und veröffentlichen; PR des Branches `claude/relaxed-galileo-s09d74` mergen (enthält auch die offenen Stände Drop 1, Grundpreis, Berater-Feinschliff und #11) | offen |
+| Mar | Vor den Pixeln klären (Todoist, Label `vor-pixel`): CPNP je Duft eingetragen? · LUCID registriert? · GPSR-Angaben auf Produktseiten · Hausnummer Impressum/Widerruf vereinheitlichen · Titel und Meta-Beschreibung der Startseite im Admin | offen |
 | Mar | Pixel: Shopify-Apps „Facebook & Instagram“ und „TikTok“ verbinden, Datenschutzerklärung ergänzen, Double-Opt-in an, Testkauf (Anleitung im Artifact „Azizam Release-Plan“) | offen |
 | Mar | CPNP-Nachweise der fünf Drop-1-Düfte ablegen (Drive/Repo) | offen |
 | Mar | Shop-Livegang: Shopify-Einstellungen (Sprache Deutsch, Shopname, Steuern aus, Versand, Zahlung), Rechtstexte, dann Theme veröffentlichen und Passwort entfernen. Checkliste im Chat vom 03.11. | in Arbeit |
@@ -114,10 +116,11 @@ Status: `offen` · `in Arbeit` · `erledigt` (erledigte Zeilen nach dem nächste
 
 ## Log (neueste oben, max. 10)
 
+- **2026-11-21 [Code]** „Next Level“ in Theme-Kopie #02 (nichts veröffentlicht): Duftberater-Felder in Creme mit Goldlinie und dunklen Buchstaben-Tasten (Wunsch Mar), Skript lädt erst bei Bedarf; Startseite neu geordnet (Hero mit Faktenzeile und Link zum Berater → Die ersten fünf → „Erst testen“ mit Live-Preisen → Berater → Warum Azizam → Nach Anlass → Teaser ohne doppelte Düfte → FAQ mit 11 Fragen); Duftfarbe (Bildfarbe des Dufts als Schein) auf Favoriten, Kacheln und Duftwelt; Produktseite „Erst testen?“; Warenkorb deutsch, § 19-Hinweis, Versand-Fortschritt (aus #11). Vier offene Branches zusammengeführt. 121 Berater-Tests, 66 Python-Tests grün.
+- **2026-11-21 [Code]** Grundpreis €/100 ml an allen Preisen und Hero-Video-Fix live (Mar); Probe zu jeder 30/50-ml-Flasche als `D-009` (Hinweis erst, wenn Proben beiliegen).
 - **2026-11-20 [Code]** Teaser live: Kollektion `drop-1` (fünf Düfte), fünf Fragezeichen-Karten, neun im Nebel („Bald geht es weiter“, Mar); Startseite ohne „Begriffe“, Footer ohne Newsletter und Menü, nur Aufklappmenü „Rechtliches“ (Impressum, AGB, Widerruf, Versand, Datenschutz, Kontakt; deutsche Bezeichnungen im Theme, weil die Shop-Grundsprache Englisch ist); Nebel als WebGL-Wolke neu (Mars Kritik an der CSS-Wolke), Theme mit Mars Go neu veröffentlicht; 14 Düfte auf „Entwurf“ (Direktlinks 404). Skill `ui-komponenten` (shadcn/ui, Magic UI, Aceternity UI) angelegt.
 - **2026-11-20 [Code]** Preisleiter B (`D-007`) live in Shopify. Drop 1 (`D-008`): Velvet Vanilla, Dolce Sole, Orphéa, Calura, Assassin. Theme-Kopie „Azizam – Drop 1 Teaser 20.11. (Claude)“: 5 Fragezeichen-Karten (Hinweis aus Metafeld `noten`) + 9 im Nebel (Kennung d01–d14, Zuordnung in der Block-Notiz), Kollektion `drop-1` angelegt, Warteliste mit Tags `warteliste`/`interesse-dXX`, Favoriten = Drop 1, alte Launch-Liste aus; nichts veröffentlicht. Cookie-Banner läuft, Meta/TikTok-Pixel fehlen (Apps, Mar).
 - **2026-11-09 [Code]** Duftberater neu (Auftrag Mar): adaptive Beratung (3–5 einfache Fragen, Mittel 4,1), Freitext neu (Abneigung hart, „nicht zu …“ weich), Bewertung nach Duftprofil (12 Merkmale mit Status bestätigt/geschätzt/unbekannt), Ergebnis ohne Prozent mit Begründung, Unterschied der Alternativen, 10-ml-Link und Nachjustieren. 17 Metafeld-Definitionen `azizam_profil.*` in Shopify angelegt (Pflege im Admin), Kontrolle `npm run profile`. 119 Tests grün; `npm run qualitaet`: 41/41 Kundenprofile, 0 Verstöße, 1,1 % leer. Offen: Dolce Sole 21,9 % Platz 1 (Ziel ≤ 15 %), Profilwerte von Mar bestätigen.
-- **2026-11-05 [Code]** KI-Duftberater gebaut: deterministische Matching-Engine (Match-% nachvollziehbar, harte Ausschlüsse, Qualitäts-Gate, ehrlich „kein Treffer“), ein Claude-Aufruf je Beratung (Sonnet 5.5, JSON-Schema, serverseitige Validierung), Server für Vercel (`shopify/berater/api/`), Kostenprotokoll, 36 Kundenprofile + 29 weitere Tests grün. Ohne API-Schlüssel noch nicht live mit KI getestet. Neue Theme-Kopie „KI-Duftberater 05.11.“, nichts veröffentlicht.
 
 ### Verlauf (zusammengefasst)
 

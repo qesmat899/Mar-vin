@@ -34,11 +34,11 @@ Faustregel: **Am Ende soll eine Entscheidung stehen → Chat. Am Ende soll eine 
 5. **Wiederholt sich etwas dreimal → Skill oder Automatik daraus machen.**
 6. **Entscheiden tut Mar.** Claude liefert Optionen mit Begründung.
 
-## Gerade dran (Stand 19.11.2026)
+## Gerade dran (Stand 21.11.2026)
 
-- **Release nach außen (Instagram, Meta Ads, TikTok):** Preisleiter und Drop-Plan entscheiden → **Chat**/**Mar**; Shopify-Bestand korrigieren → **Mar**; dunkle Teaser-Karten + Warteliste im Theme, Pixel/Einwilligung → **Code**
-- **KI-Duftberater:** API-Schlüssel + Vercel freigeben, Theme-Kopie „KI-Duftberater 05.11.“ prüfen und veröffentlichen → **Mar**; einrichten und live testen → **Code**
-- **Shop-Livegang:** Entwurfs-Theme und 19 Produkt-Entwürfe stehen in Shopify → Namen je Duft (**Chat**), Bilder (**Code** mit Pixelcut), Preise (**Chat**), Shopify-Einstellungen und Freigabe (**Mar** im Shopify-Admin), Rechtstexte zum Schluss
+- **Website „Next Level“:** Theme-Kopie „Azizam #02 – Next Level 21.11. (Claude)“ in der Vorschau ansehen und veröffentlichen, PR mergen → **Mar**; Feinschliff nach Rückmeldung → **Code**
+- **KI-Duftberater:** nach dem Merge prüfen, ob Vercel neu gebaut hat und `/api/status` + Anfrage von .de klappen; sonst `ERLAUBTE_HERKUNFT` in Vercel ergänzen → **Mar** (Vercel) / **Code**
+- **Release nach außen (Instagram, Meta Ads, TikTok):** Pixel/Einwilligung, „Vor den Pixeln“-Liste in Todoist → **Mar**; Texte und Hooks → **Chat**
 - **Repo auf privat stellen** (ist öffentlich) → **Mar** (GitHub)
 - Flakon + Verpackung finden → **Chat**
 - `CLAUDE-MASTER.md` ins Projekt „Azizam“ hochladen, globale Anweisung + Memory aus `playbook/templates/claude-anweisungen.md` setzen → **Mar** (claude.ai)
