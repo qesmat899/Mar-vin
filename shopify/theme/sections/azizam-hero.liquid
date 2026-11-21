@@ -28,7 +28,8 @@
   </div>
 
   <div class="az-hero__copy">
-    <h1 id="az-hero-{{ section.id }}" class="az-h az-hero__title">{{ section.settings.title }}</h1>
+    {%- comment -%} Kein h1: Auf der Startseite setzt der Kopfbereich (Horizon) das Logo bereits als h1. {%- endcomment -%}
+    <p id="az-hero-{{ section.id }}" class="az-h az-hero__title">{{ section.settings.title }}</p>
     {%- if section.settings.persian != blank -%}
       <span class="az-hero__fa" lang="fa">{{ section.settings.persian }}<span lang="de">{{ section.settings.persian_meaning }}</span></span>
     {%- endif -%}

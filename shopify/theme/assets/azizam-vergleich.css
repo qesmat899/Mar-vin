@@ -1,0 +1,26 @@
+/* Azizam – Duftvergleich auf der Produktseite (Snippet azizam-vergleich). Nutzt die Variablen aus azizam.css. */
+.az-vgl { margin-bottom: 96px; padding-bottom: 96px; border-bottom: 1px solid var(--az-line); }
+.az-vgl__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 20px 32px; margin-bottom: 20px; }
+.az-vgl__title { font-size: clamp(1.9rem, 5vw, 3rem); margin-top: 12px; }
+.az-vgl__wahl { display: grid; gap: 6px; font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--az-muted); }
+.az-vgl__wahl select { min-height: 48px; min-width: min(100%, 18rem); padding: 0 40px 0 16px; font: inherit; font-size: 1rem; letter-spacing: 0; text-transform: none;
+  color: var(--az-ink); background-color: var(--az-bg-2); border: 1px solid var(--az-line-gold); border-radius: 0; }
+.az-vgl__satz { margin: 0 0 28px; max-width: 62ch; font-family: var(--az-serif); font-size: 1.25rem; line-height: 1.4; color: var(--az-gold-2); }
+.az-vgl__satz:empty { display: none; }
+.az-vgl__scroll { overflow-x: auto; margin-bottom: 28px; }
+.az-vgl__tabelle { width: 100%; border-collapse: collapse; font-size: .95rem; table-layout: fixed; }
+.az-vgl__tabelle th, .az-vgl__tabelle td { text-align: left; vertical-align: top; padding: 14px 16px 14px 0; border-bottom: 1px solid var(--az-line); font-weight: 400; overflow-wrap: anywhere; }
+.az-vgl__tabelle thead th { font-family: var(--az-serif); font-size: 1.5rem; line-height: 1.1; color: var(--az-ink); }
+.az-vgl__tabelle tbody th { width: 26%; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--az-muted); padding-top: 17px; }
+.az-vgl__tabelle thead td { width: 26%; }
+.az-vgl__preis { display: block; font-variant-numeric: tabular-nums; }
+@media (max-width: 749px) {
+  .az-vgl { margin-bottom: 64px; padding-bottom: 64px; }
+  .az-vgl__tabelle, .az-vgl__tabelle tbody, .az-vgl__tabelle tr { display: block; }
+  .az-vgl__tabelle thead { display: grid; }
+  .az-vgl__tabelle thead tr, .az-vgl__tabelle tbody tr { display: grid; grid-template-columns: 1fr 1fr; column-gap: 16px; border-bottom: 1px solid var(--az-line); }
+  .az-vgl__tabelle thead td { display: none; }
+  .az-vgl__tabelle th, .az-vgl__tabelle td { border-bottom: 0; padding: 10px 0; }
+  .az-vgl__tabelle tbody th { grid-column: 1 / -1; width: auto; padding: 12px 0 0; }
+  .az-vgl__tabelle thead th { font-size: 1.25rem; padding: 12px 0; }
+}
