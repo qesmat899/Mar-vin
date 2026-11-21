@@ -1,0 +1,44 @@
+{%- doc -%}
+  Grundpreis nach PAngV (Preis je 100 ml) als Text, z. B. „€129,90 / 100 ml“. Gibt nichts aus, wenn keine Füllmenge erkennbar ist.
+
+  Shopify liefert variant.unit_price im Shop derzeit nicht aus (Admin-Werte sind gesetzt, Storefront meldet null).
+  Darum: unit_price, falls vorhanden; sonst Füllmenge aus dem Variantennamen („10 ml“)
+  oder bei Sets aus dem Produkttitel („3 × 5 ml“) lesen und selbst rechnen.
+
+  @param {object} [variant] - Die Variante, deren Preis gilt. Ohne Angabe: die günstigste Variante des Produkts („ab“-Preis).
+  @param {object} product - Das Produkt (für Sets ohne ml im Variantennamen).
+{%- enddoc -%}
+{%- liquid
+  assign ml = 0
+  if variant == blank
+    for vv in product.variants
+      if vv.price == product.price_min
+        assign variant = vv
+        break
+      endif
+    endfor
+  endif
+  if variant.unit_price_measurement and variant.unit_price
+    echo variant.unit_price | money | unit_price_with_measurement: variant.unit_price_measurement
+  else
+    assign t = variant.title | downcase | remove: ' '
+    if t contains 'ml'
+      assign ml = t | split: 'ml' | first | split: '×' | last | split: 'x' | last | plus: 0
+    else
+      assign pt = product.title | downcase | remove: ' '
+      if pt contains 'ml' and pt contains '×'
+        assign head = pt | split: 'ml' | first
+        assign parts = head | split: '×'
+        assign each = parts | last | plus: 0
+        assign count = parts | first | split: '–' | last | split: '-' | last | plus: 0
+        assign ml = each | times: count
+      elsif pt contains 'ml'
+        assign ml = pt | split: 'ml' | first | split: '–' | last | split: '-' | last | plus: 0
+      endif
+    endif
+    if ml > 0 and variant.price > 0
+      assign cents = variant.price | times: 100.0 | divided_by: ml | round
+      echo cents | money | append: ' / 100 ml'
+    endif
+  endif
+-%}

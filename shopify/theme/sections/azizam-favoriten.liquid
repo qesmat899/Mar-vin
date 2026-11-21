@@ -58,7 +58,7 @@
               <div class="az-fav__foot">
                 {%- render 'azizam-intensitaet', product: p -%}
                 <span class="az-fav__price">
-                  {%- if p.price_min > 0 -%}{%- if p.price_varies -%}ab {% endif -%}{{ p.price_min | money }}{%- else -%}Bald erhältlich{%- endif -%}
+                  {%- if p.price_min > 0 -%}{%- if p.price_varies -%}ab {% endif -%}{{ p.price_min | money }}<small class="az-gp">{% render 'azizam-grundpreis', product: p %}</small>{%- else -%}Bald erhältlich{%- endif -%}
                 </span>
               </div>
               <a class="az-fav__cta" href="{{ p.url }}" data-az-fav-link>

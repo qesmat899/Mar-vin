@@ -44,7 +44,7 @@
 
     <script type="application/json" data-products>
       [{%- for p in collections.all.products limit: 50 -%}{%- if p.type == 'Probenset' -%}{%- continue -%}{%- endif -%}{%- assign img = p.media[1] | default: p.media[0] -%}
-      {"t":{{ p.title | json }},"u":{{ p.url | json }},"f":{{ p.metafields.azizam.familie.value | json }},"z":{{ p.metafields.azizam.tageszeit.value | json }},"i":{{ p.metafields.azizam.intensitaet.value | default: 3 }},"n":{{ p.metafields.azizam.noten.value | join: ' · ' | json }},"c":{{ p.metafields.azizam.charakter.value | json }},"p":{{ p.price_min | money | json }},"img":{% if img %}{{ img.preview_image | image_url: width: 1000 | json }}{% else %}null{% endif %}}{% unless forloop.last %},{% endunless %}
+      {"t":{{ p.title | json }},"u":{{ p.url | json }},"f":{{ p.metafields.azizam.familie.value | json }},"z":{{ p.metafields.azizam.tageszeit.value | json }},"i":{{ p.metafields.azizam.intensitaet.value | default: 3 }},"n":{{ p.metafields.azizam.noten.value | join: ' · ' | json }},"c":{{ p.metafields.azizam.charakter.value | json }},{%- capture gp -%}{% render 'azizam-grundpreis', product: p %}{%- endcapture -%}"p":{{ p.price_min | money | append: ' (' | append: gp | append: ')' | json }},"img":{% if img %}{{ img.preview_image | image_url: width: 1000 | json }}{% else %}null{% endif %}}{% unless forloop.last %},{% endunless %}
       {%- endfor -%}]
     </script>
   </azizam-finder>

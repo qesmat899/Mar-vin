@@ -57,7 +57,7 @@ ausdrücklich nicht bestätigt. Aus `UNKNOWN`-Werten wird nichts Neues abgeleite
 | Rechner | `playbook.py economics` rechnet nur mit den alten Werten aus `brand.json` — Ergebnisse sind Modellrechnungen, keine Geschäftsdaten |
 | Firma | Marvin Farienfar, Einzelunternehmer, Würzburg · **Kleinunternehmer nach § 19 UStG** (Mar 03.10.2026), keine MwSt. · USt-IdNr. vorhanden |
 | Versand | alte Website: Deutschland + Österreich, 2–4 Werktage, 4,95 €, kostenlos ab 80 € `OBSERVED (alte Website)`; für den Neustart nicht entschieden. Versandkosten für Azizam `UNKNOWN` |
-| Shop & Buchhaltung | Neustart im Shopify-Shop „My Store 3“ (04.10.2026: 0 Produkte, 0 Bestellungen `OBSERVED`); Buchhaltung beim Steuerberater, Geschäftsjahr = Kalenderjahr (Mar 04.10.2026) |
+| Shop & Buchhaltung | Shopify-Shop „Azizam Fragrances“, Domain azizamfragrances.de (Mar 20.11.2026; vorher „My Store 3“); Buchhaltung beim Steuerberater, Geschäftsjahr = Kalenderjahr (Mar 04.10.2026) |
 | Rückgabe | gesetzlich 14 Tage; alte Website: freiwillig 30 Tage, wenn Flakon ≥ 80 % gefüllt `OBSERVED (alte Website)`, für den Neustart nicht entschieden |
 | Sortiment | Alte Website zeigte 7 Düfte `OBSERVED`: Narcos, Midnight Café, Erba Bomb, Imaginary, Goldstaub II., Velvet Vanilla, Kings Perfume. Aktueller Duftbestand: `azizam/commercial/duefte.csv`; Les Sables Roses im Sortiment (`D-002`, Mar 16.10.2026) |
 
