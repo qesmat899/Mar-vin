@@ -5,6 +5,8 @@
   2. Warenkorb: Fortschritt bis zum kostenlosen Versand (Schwelle aus der Einstellung, Ledger D-006), in der
      Warenkorb-Leiste und auf der Warenkorb-Seite. Es wird nur angezeigt, nichts am Bestellablauf geändert.
   3. Strukturierte Daten: WebSite (Startseite) und Brotkrumen (Produkt, Kollektion).
+  4. Warenkorb: Horizon schreibt „Inkl. Zollgebühren und Steuern“, weil im Shop „Preise inkl. Steuern“ an ist. Für einen
+     Kleinunternehmer (§ 19 UStG) falsch; ersetzt durch den Hinweis aus der Einstellung (wie auf der Produktseite).
   Dazu zwei kleine Korrekturen per CSS: Rechtstexte laufen am Handy nicht mehr seitlich über; der Bewertungsblock
   bleibt verborgen, solange es keine Bewertung gibt.
 {%- endcomment -%}
@@ -68,6 +70,29 @@
 
 <script>
   (function () {
+    // 4. Steuerhinweis im Warenkorb (Seite und Leiste), auch nach jedem Neuzeichnen
+    var STEUER = {{ section.settings.steuer_hinweis | json }};
+    function steuerText() {
+      if (!STEUER) return;
+      document.querySelectorAll('cart-items-component, cart-drawer-component, .cart-summary, .cart-drawer').forEach(function (box) {
+        box.querySelectorAll('p, small, span, div').forEach(function (el) {
+          if (el.children.length > 4 || el.dataset.azSteuer) return;
+          var t = (el.textContent || '').trim();
+          if (!/^Inkl(\.|usive)/.test(t) || t.indexOf('Steuer') < 0) return;
+          var innen = [].some.call(el.children, function (c) { return /^Inkl/.test((c.textContent || '').trim()); });
+          if (innen) return;
+          el.dataset.azSteuer = '1';
+          el.textContent = STEUER;
+        });
+      });
+    }
+    var geplant = 0;
+    steuerText();
+    new MutationObserver(function () {
+      if (geplant) return;
+      geplant = requestAnimationFrame(function () { geplant = 0; steuerText(); });
+    }).observe(document.body, { childList: true, subtree: true });
+
     // 1. Tastatur-Scrollen im Desktop-Container
     var wrapper = document.querySelector('.page-wrapper');
     function scrolltSelbst() {
@@ -156,7 +181,8 @@
   "settings": [
     { "type": "checkbox", "id": "versand_aktiv", "label": "Fortschritt bis zum kostenlosen Versand im Warenkorb zeigen", "default": true },
     { "type": "number", "id": "versand_schwelle", "label": "Kostenloser Versand ab (in €, wie im Versandprofil)", "default": 20 },
-    { "type": "checkbox", "id": "bewertungen_leer_ausblenden", "label": "Bewertungsblock verbergen, solange es keine Bewertung gibt", "default": true }
+    { "type": "checkbox", "id": "bewertungen_leer_ausblenden", "label": "Bewertungsblock verbergen, solange es keine Bewertung gibt", "default": true },
+    { "type": "text", "id": "steuer_hinweis", "label": "Steuerhinweis im Warenkorb", "default": "Gemäß § 19 UStG wird keine Umsatzsteuer berechnet. Versand wird an der Kasse berechnet.", "info": "Ersetzt „Inkl. … Steuern“. Leer = Theme-Text bleibt." }
   ],
   "presets": [{ "name": "Azizam Global" }]
 }

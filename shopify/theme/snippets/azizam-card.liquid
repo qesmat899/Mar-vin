@@ -15,7 +15,8 @@
     assign loading = 'eager'
   endif
 -%}
-<a class="az-card" href="{{ product.url }}" data-familie="{{ m.familie.value | handleize }}">
+<a class="az-card" href="{{ product.url }}" data-familie="{{ m.familie.value | handleize }}"
+  {%- if main != blank %} style="--az-aura: url('{{ main.preview_image | image_url: width: 48 }}')"{% endif %}>
   <span class="az-card__media">
     {%- if main != blank -%}
       {{ main.preview_image | image_url: width: 900 | image_tag: class: 'az-card__img', loading: loading, widths: '360, 540, 720, 900', sizes: '(min-width: 1100px) 25vw, (min-width: 750px) 33vw, 50vw', alt: bild_alt }}

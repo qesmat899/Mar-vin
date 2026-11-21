@@ -5,25 +5,143 @@
       "settings": {
         "video_url": "https://cdn.shopify.com/s/files/1/1084/8141/3450/files/azizam-hero-desktop.mp4?v=1793753099",
         "video_alt": "Azizam Flakon im warmen Licht",
-        "poster": "shopify://shop_images/azizam-hero-start.jpg",
+        "poster": "shopify://shop_images/azizam-hero-start-1920.jpg",
         "still": "shopify://shop_images/azizam-hero-end.jpg",
         "title": "Azizam",
         "persian": "عزیزم",
         "persian_meaning": "persisch für „mein Schatz“",
         "line": "Der Duft der zweiten Generation.",
+        "fakten": "Rund 30 % Duftöl · ab [ab-preis] · Versand ab 20 € kostenlos",
+        "preis_kollektion": "drop-1",
         "cta_label": "Düfte entdecken",
-        "cta_link": "#duefte",
-        "link_label": "Nach Anlass wählen",
-        "link_target": "#anlass",
+        "cta_link": "#favoriten",
+        "link_label": "Welcher Duft passt zu mir?",
+        "link_target": "#duftberater",
         "video_url_mobile": "https://cdn.shopify.com/s/files/1/1084/8141/3450/files/azizam-hero-mobil.mp4?v=1793753099"
       }
+    },
+    "favoriten": {
+      "type": "azizam-favoriten",
+      "settings": {
+        "products": [
+          "velvet-vanilla",
+          "dolce-sole",
+          "orphea",
+          "calura",
+          "assassin"
+        ],
+        "kicker": "Drop 01 · jetzt erhältlich",
+        "heading_1": "Die ersten",
+        "heading_2": "fünf",
+        "text": "Fünf Düfte machen den Anfang. Vierzehn weitere warten noch im Dunkeln.",
+        "cta": "Duft entdecken",
+        "interval": 6
+      }
+    },
+    "probieren": {
+      "type": "azizam-probieren",
+      "settings": {
+        "heading": "Erst testen. Dann entscheiden.",
+        "text": "Online kann man nicht schnuppern. So findest du deinen Duft trotzdem – in drei kleinen Schritten.",
+        "anker": "testen"
+      },
+      "blocks": {
+        "p1": {
+          "type": "berater",
+          "settings": {
+            "titel": "Richtung finden",
+            "text": "Beantworte ein paar kurze Fragen. Der Duftberater zeigt dir, welche Düfte zu dir passen.",
+            "link_label": "Berater starten",
+            "link": ""
+          }
+        },
+        "p2": {
+          "type": "set",
+          "settings": {
+            "produkt": "discovery-set",
+            "titel": "Drei Düfte testen",
+            "zeile": "Discovery Set, 3 × 5 ml:",
+            "text": "Trag jeden Duft ein paar Tage. Die [preis] bekommst du als Gutschein für deine nächste 30- oder 50-ml-Flasche zurück.",
+            "link_label": "Set zusammenstellen",
+            "link": ""
+          }
+        },
+        "p3": {
+          "type": "groessen",
+          "settings": {
+            "produkt": "velvet-vanilla",
+            "titel": "Deine Größe wählen",
+            "text": "Je größer die Flasche, desto günstiger der Milliliter.",
+            "fuss": "Gleiche Preise für alle Düfte.",
+            "link_label": "Alle Düfte",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ]
+    },
+    "berater": {
+      "type": "azizam-berater",
+      "settings": {
+        "kicker": "Duftberater · in wenigen Fragen",
+        "heading": "Finde deinen Duft für jetzt.",
+        "discovery_url": "",
+        "api_url": "https://mar-vin.vercel.app/api/beratung"
+      }
+    },
+    "haltung": {
+      "type": "azizam-haltung",
+      "settings": {
+        "label": "Über Azizam",
+        "text": "<p>Jeder Duft ist von uns ausgewählt und auf die Haut abgestimmt.</p><p>Mit rund 30 % Duftöl statt der 12 bis 18 %, die bei Eau de Parfum üblich sind. In Deutschland abgefüllt. Deshalb bleibt er <em>nah, statt laut zu sein.</em></p>"
+      },
+      "blocks": {
+        "f1": {
+          "type": "fakt",
+          "settings": {
+            "term": "Duftöl",
+            "value": "rund 30 %"
+          }
+        },
+        "f2": {
+          "type": "fakt",
+          "settings": {
+            "term": "Größen",
+            "value": "10 ml · 30 ml · 50 ml"
+          }
+        },
+        "f3": {
+          "type": "fakt",
+          "settings": {
+            "term": "Düfte",
+            "value": "5 jetzt · 14 folgen"
+          }
+        },
+        "f4": {
+          "type": "fakt",
+          "settings": {
+            "term": "Abgefüllt",
+            "value": "in Deutschland"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ]
     },
     "anlass": {
       "type": "azizam-anlass",
       "settings": {
         "eyebrow": "Nach Anlass",
-        "heading": "Welcher Duft passt zu Deinem Abend?",
-        "collection": ""
+        "heading": "Welcher Duft passt zu deinem Abend?",
+        "collection": "drop-1"
       },
       "blocks": {
         "a1": {
@@ -86,19 +204,339 @@
         "a7"
       ]
     },
+    "kollektion": {
+      "type": "azizam-kollektion",
+      "settings": {
+        "kicker": "Noch im Dunkeln",
+        "heading": "Was als Nächstes kommt",
+        "limit": 24,
+        "collection": "drop-1",
+        "produkte_zeigen": false,
+        "discovery_zeigen": false,
+        "fog_kicker": "Bald geht es weiter",
+        "fog_text": "Neun weitere Düfte. Das Warten lohnt sich.",
+        "wl_heading": "Sag uns, worauf du wartest."
+      },
+      "blocks": {
+        "f1": {
+          "type": "filter",
+          "settings": {
+            "label": "Frisch & klar"
+          }
+        },
+        "f2": {
+          "type": "filter",
+          "settings": {
+            "label": "Süß & warm"
+          }
+        },
+        "f3": {
+          "type": "filter",
+          "settings": {
+            "label": "Dunkel & edel"
+          }
+        },
+        "d01": {
+          "type": "dunkel",
+          "settings": {
+            "hinweis": "Zitrone. Minze.",
+            "familie": "Frisch & klar",
+            "status": "Enthüllung folgt",
+            "code": "d01",
+            "intern": "Marea",
+            "darstellung": "nebel"
+          }
+        },
+        "d02": {
+          "type": "dunkel",
+          "settings": {
+            "hinweis": "Zitrusfrüchte. Schwarzer Tee.",
+            "familie": "Frisch & klar",
+            "status": "Enthüllung folgt",
+            "code": "d02",
+            "intern": "Bergamo",
+            "darstellung": "nebel"
+          }
+        },
+        "d03": {
+          "type": "dunkel",
+          "settings": {
+            "hinweis": "Birne. Orangenblüte.",
+            "familie": "Frisch & klar",
+            "status": "Enthüllung folgt",
+            "code": "d03",
+            "intern": "Borbus",
+            "darstellung": "nebel"
+          }
+        },
+        "d04": {
+          "type": "dunkel",
+          "settings": {
+            "hinweis": "Zitrone. Algen.",
+            "familie": "Frisch & klar",
+            "status": "Enthüllung folgt",
+            "code": "d04",
+            "intern": "Mare Vita",
+            "darstellung": "nebel"
+          }
+        },
+        "d05": {
+          "type": "dunkel",
+          "settings": {
+            "hinweis": "Kaffee. Rose.",
+            "familie": "Süß & warm",
+            "status": "Enthüllung folgt",
+            "code": "d05",
+            "intern": "Midnight Café",
+            "darstellung": "frage"
+          }
+        },
+        "d06": {
+          "type": "dunkel",
+          "settings": {
+            "hinweis": "Honig. Tabak.",
+            "familie": "Süß & warm",
+            "status": "Enthüllung folgt",
+            "code": "d06",
+            "intern": "Sicilia Nobile",
+            "darstellung": "nebel"
+          }
+        },
+        "d07": {
+          "type": "dunkel",
+          "settings": {
+            "hinweis": "Tonka. Safran.",
+            "familie": "Süß & warm",
+            "status": "Enthüllung folgt",
+            "code": "d07",
+            "intern": "Alpha Tonka",
+            "darstellung": "nebel"
+          }
+        },
+        "d08": {
+          "type": "dunkel",
+          "settings": {
+            "hinweis": "Rum. Trockenfrüchte.",
+            "familie": "Süß & warm",
+            "status": "Enthüllung folgt",
+            "code": "d08",
+            "intern": "Ambra Dorata",
+            "darstellung": "frage"
+          }
+        },
+        "d09": {
+          "type": "dunkel",
+          "settings": {
+            "hinweis": "Leder. Kardamom.",
+            "familie": "Dunkel & edel",
+            "status": "Enthüllung folgt",
+            "code": "d09",
+            "intern": "Sombre",
+            "darstellung": "frage"
+          }
+        },
+        "d10": {
+          "type": "dunkel",
+          "settings": {
+            "hinweis": "Bittermandel. Vanille.",
+            "familie": "Dunkel & edel",
+            "status": "Enthüllung folgt",
+            "code": "d10",
+            "intern": "Velvet Vice",
+            "darstellung": "frage"
+          }
+        },
+        "d11": {
+          "type": "dunkel",
+          "settings": {
+            "hinweis": "Oud. Himbeere.",
+            "familie": "Dunkel & edel",
+            "status": "Enthüllung folgt",
+            "code": "d11",
+            "intern": "Ombroso",
+            "darstellung": "frage"
+          }
+        },
+        "d12": {
+          "type": "dunkel",
+          "settings": {
+            "hinweis": "Rose. Oud.",
+            "familie": "Dunkel & edel",
+            "status": "Enthüllung folgt",
+            "code": "d12",
+            "intern": "Duna",
+            "darstellung": "nebel"
+          }
+        },
+        "d13": {
+          "type": "dunkel",
+          "settings": {
+            "hinweis": "Safran. Oud.",
+            "familie": "Dunkel & edel",
+            "status": "Enthüllung folgt",
+            "code": "d13",
+            "intern": "Oud Majesté",
+            "darstellung": "nebel"
+          }
+        },
+        "d14": {
+          "type": "dunkel",
+          "settings": {
+            "hinweis": "Lavendel. Sandelholz.",
+            "familie": "Dunkel & edel",
+            "status": "Enthüllung folgt",
+            "code": "d14",
+            "intern": "Royal Cedar",
+            "darstellung": "nebel"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14"
+      ]
+    },
+    "faq": {
+      "type": "azizam-faq",
+      "settings": {
+        "heading": "Gut zu wissen",
+        "text": "Kurz und ehrlich beantwortet. Fehlt deine Frage? Schreib uns.",
+        "kontakt_label": "Frage stellen",
+        "kontakt_link": "/pages/contact",
+        "erste_offen": false,
+        "anker": "faq"
+      },
+      "blocks": {
+        "q01": {
+          "type": "frage",
+          "settings": {
+            "frage": "Was ist Azizam?",
+            "antwort": "<p>Parfum mit rund 30 % Duftöl, in Deutschland abgefüllt. „Azizam“ ist persisch und heißt „mein Schatz“.</p>"
+          }
+        },
+        "q02": {
+          "type": "frage",
+          "settings": {
+            "frage": "Was bringen 30 % Duftöl?",
+            "antwort": "<p>Bei Eau de Parfum sind meist 12 bis 18 % üblich. Mit mehr Duftöl bleibt der Duft näher an der Haut und hält länger, ohne laut zu sein.</p>"
+          }
+        },
+        "q03": {
+          "type": "frage",
+          "settings": {
+            "frage": "Ich kann online nicht riechen. Wie finde ich meinen Duft?",
+            "antwort": "<p>Mach den <a href=\"#duftberater\">Duftberater</a>: ein paar kurze Fragen, dann bekommst du passende Vorschläge. Oder teste erst: Jeden Duft gibt es als 10-ml-Flasche, und im <a href=\"/products/discovery-set\">Discovery Set</a> stellst du dir drei Düfte à 5 ml zusammen. Den Preis des Sets bekommst du als Gutschein für deine nächste 30- oder 50-ml-Flasche zurück.</p>"
+          }
+        },
+        "q04": {
+          "type": "frage",
+          "settings": {
+            "frage": "Welche Größen gibt es?",
+            "antwort": "<p>10 ml zum Testen und für unterwegs, dazu 30 ml und 50 ml. Je größer die Flasche, desto günstiger der Milliliter. Den Preis pro 100 ml siehst du bei jedem Preis.</p>"
+          }
+        },
+        "q05": {
+          "type": "frage",
+          "settings": {
+            "frage": "Was kostet der Versand?",
+            "antwort": "<p>Ab 20 € Bestellwert verschicken wir kostenlos, darunter kostet der Versand 4,95 €. Wir liefern mit DHL innerhalb Deutschlands, in der Regel in 2–4 Werktagen.</p>"
+          }
+        },
+        "q06": {
+          "type": "frage",
+          "settings": {
+            "frage": "Kann ich zurückgeben?",
+            "antwort": "<p>Ja, du hast 14 Tage Widerrufsrecht. Wie es genau funktioniert, steht in der <a href=\"/policies/refund-policy\">Widerrufsbelehrung</a>.</p>"
+          }
+        },
+        "q07": {
+          "type": "frage",
+          "settings": {
+            "frage": "Wie kann ich bezahlen?",
+            "antwort": "<p>Zum Beispiel mit PayPal oder Klarna. Alle Möglichkeiten siehst du an der Kasse.</p>"
+          }
+        },
+        "q08": {
+          "type": "frage",
+          "settings": {
+            "frage": "Warum steht keine Umsatzsteuer auf der Rechnung?",
+            "antwort": "<p>Azizam ist ein Kleinunternehmen. Nach § 19 UStG berechnen wir keine Umsatzsteuer. Der Preis, den du siehst, ist der Endpreis. Unter 20 € kommt nur der Versand dazu.</p>"
+          }
+        },
+        "q09": {
+          "type": "frage",
+          "settings": {
+            "frage": "Wann kommen die anderen Düfte?",
+            "antwort": "<p>Wir bringen die Düfte nach und nach heraus. Merk dir in der <a href=\"#warteliste\">Warteliste</a> vor, was dich neugierig macht, dann erfährst du es als Erstes.</p>"
+          }
+        },
+        "q10": {
+          "type": "frage",
+          "settings": {
+            "frage": "Wie trage ich Parfum am besten auf?",
+            "antwort": "<p>Auf Hals, Handgelenke oder Nacken sprühen und nicht verreiben. Auf eingecremter Haut hält ein Duft meist länger. Weniger ist oft mehr: Zwei, drei Sprühstöße reichen.</p>"
+          }
+        },
+        "q11": {
+          "type": "frage",
+          "settings": {
+            "frage": "Wie erreiche ich euch?",
+            "antwort": "<p>Am einfachsten über das <a href=\"/pages/contact\">Kontaktformular</a>. Wir antworten in der Regel innerhalb von 1–2 Werktagen.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q01",
+        "q02",
+        "q03",
+        "q04",
+        "q05",
+        "q06",
+        "q07",
+        "q08",
+        "q09",
+        "q10",
+        "q11"
+      ]
+    },
+    "finder": {
+      "type": "azizam-finder",
+      "disabled": true,
+      "settings": {
+        "kicker": "Duft-Finder · 30 Sekunden",
+        "heading": "Drei Bilder. Dein Duft.",
+        "discovery_url": ""
+      }
+    },
     "liste": {
       "type": "azizam-liste",
+      "disabled": true,
       "settings": {
         "heading": "Als Erste wissen, wann es losgeht.",
         "text": "Eine E-Mail zum Start. Danach nur, wenn es wirklich etwas Neues gibt.",
         "button": "Eintragen",
         "note": "Mit dem Eintragen willigst Du ein, E-Mails von Azizam zu erhalten. Abmelden geht jederzeit über den Link in jeder E-Mail.",
         "success": "Danke. Du stehst auf der Liste."
-      },
-      "disabled": true
+      }
     },
     "begriffe": {
       "type": "azizam-glossar",
+      "disabled": true,
       "settings": {
         "heading": "Begriffe kurz erklärt"
       },
@@ -137,128 +575,19 @@
         "amber",
         "moschus",
         "tonka"
-      ],
-      "disabled": true
-    },
-    "kollektion": {
-      "type": "azizam-kollektion",
-      "settings": {
-        "kicker": "19 Düfte · drei Richtungen",
-        "heading": "Die Kollektion",
-        "limit": 24,
-        "collection": ""
-      },
-      "blocks": {
-        "f1": {
-          "type": "filter",
-          "settings": {
-            "label": "Frisch & klar"
-          }
-        },
-        "f2": {
-          "type": "filter",
-          "settings": {
-            "label": "Süß & warm"
-          }
-        },
-        "f3": {
-          "type": "filter",
-          "settings": {
-            "label": "Dunkel & edel"
-          }
-        }
-      },
-      "block_order": [
-        "f1",
-        "f2",
-        "f3"
       ]
-    },
-    "finder": {
-      "type": "azizam-finder",
-      "settings": {
-        "kicker": "Duft-Finder · 30 Sekunden",
-        "heading": "Drei Bilder. Dein Duft.",
-        "discovery_url": ""
-      },
-      "disabled": true
-    },
-    "berater": {
-      "type": "azizam-berater",
-      "settings": {
-        "kicker": "Duftberater · in wenigen Fragen",
-        "heading": "Finde deinen Duft für jetzt.",
-        "discovery_url": "",
-        "api_url": "https://mar-vin.vercel.app/api/beratung"
-      }
-    },
-    "favoriten": {
-      "type": "azizam-favoriten",
-      "settings": {
-        "products": [
-          "dolce-sole",
-          "calura",
-          "ombroso",
-          "velvet-vanilla",
-          "mare-vita"
-        ],
-        "kicker": "Von uns ausgewählt",
-        "heading_1": "Unsere",
-        "heading_2": "Favoriten",
-        "text": "Fünf Düfte, mit denen wir dir den Einstieg ans Herz legen.",
-        "cta": "Duft entdecken",
-        "interval": 6
-      }
-    },
-    "wort": {
-      "type": "azizam-wort",
-      "blocks": {
-        "w1": {
-          "type": "fakt",
-          "settings": {
-            "big": "rund 30 %",
-            "label": "Duftöl, statt der 12 bis 18 % bei Eau de Parfum"
-          }
-        },
-        "w2": {
-          "type": "fakt",
-          "settings": {
-            "big": "19 Düfte",
-            "label": "in drei Richtungen"
-          }
-        },
-        "w3": {
-          "type": "fakt",
-          "settings": {
-            "big": "Deutschland",
-            "label": "hier abgefüllt"
-          }
-        }
-      },
-      "block_order": [
-        "w1",
-        "w2",
-        "w3"
-      ],
-      "settings": {
-        "word": "عزیزم",
-        "word_meaning": "„mein Schatz“",
-        "kicker": "Der Duft der zweiten Generation",
-        "heading": "Für alle, die hier zu Hause sind und dort ihre Wurzeln haben.",
-        "text": "<p>Azizam ist das Wort, mit dem persische Familien die Menschen rufen, die ihnen am nächsten sind. Unsere Düfte sollen genau so wirken: vertraut, warm und nah an der Haut.</p><p>Herkunft trägt man bei uns wie eine gute Uhr, selbstverständlich und ohne Kostüm.</p>",
-        "discovery_handle": "discovery-set",
-        "cta_label": "Drei Düfte kennenlernen: Discovery Set"
-      }
     }
   },
   "order": [
     "hero",
     "favoriten",
+    "probieren",
     "berater",
-    "kollektion",
-    "finder",
-    "wort",
+    "haltung",
     "anlass",
+    "kollektion",
+    "faq",
+    "finder",
     "liste",
     "begriffe"
   ]

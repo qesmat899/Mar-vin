@@ -32,6 +32,11 @@
     endfor
   endunless
   assign dark_count = frage_count | plus: nebel_count
+  # Startseite: Produkte und Discovery-Kachel abschaltbar, damit nicht dieselben Düfte wie bei „Favoriten“ doppelt stehen.
+  assign zeige_produkte = true
+  if on_collection == false and section.settings.produkte_zeigen == false
+    assign zeige_produkte = false
+  endif
 -%}
 <section class="az az-section az-kol" id="duefte" aria-labelledby="az-kol-{{ section.id }}">
   <div class="az-wrap">
@@ -41,7 +46,7 @@
         <h2 id="az-kol-{{ section.id }}" class="az-h az-kol__title">{% if on_collection %}{{ source.title }}{% else %}{{ section.settings.heading }}{% endif %}</h2>
         {%- if on_collection and source.description != blank -%}<div class="az-kol__desc">{{ source.description }}</div>{%- endif -%}
       </div>
-      {%- unless on_collection -%}
+      {%- if on_collection == false and zeige_produkte -%}
         <div class="az-kol__filter" role="group" aria-label="Nach Duftrichtung filtern">
           <button type="button" class="az-chip" aria-pressed="true" data-filter="alle">Alle</button>
           {%- for block in section.blocks -%}
@@ -49,12 +54,12 @@
             <button type="button" class="az-chip" aria-pressed="false" data-filter="{{ block.settings.label | handleize }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</button>
           {%- endfor -%}
         </div>
-      {%- endunless -%}
+      {%- endif -%}
     </div>
     <div class="az-kol__stage">
     <div class="az-grid" data-az-grid>
       {%- assign disc = all_products['discovery-set'] -%}
-      {%- if on_collection == false and disc != blank and disc.available -%}
+      {%- if on_collection == false and section.settings.discovery_zeigen and disc != blank and disc.available -%}
         <a class="az-card az-card--disc" href="{{ disc.url }}" data-familie="alle">
           <span class="az-card__media az-disc-tile">
             <span class="az-disc-tile__kicker">Nicht sicher?</span>
@@ -76,7 +81,7 @@
             assign eager = true
           endif
         -%}
-        {%- render 'azizam-card', product: p, eager: eager -%}
+        {%- if zeige_produkte -%}{%- render 'azizam-card', product: p, eager: eager -%}{%- endif -%}
       {%- else -%}
         {%- if dark_count == 0 -%}<p class="az-empty">Bald verfügbar.</p>{%- endif -%}
       {%- endfor -%}
@@ -205,6 +210,8 @@
     { "type": "text", "id": "heading", "label": "Überschrift", "default": "Die Kollektion" },
     { "type": "collection", "id": "collection", "label": "Kollektion (leer = alle bzw. aktuelle Kollektion)" },
     { "type": "range", "id": "limit", "label": "Anzahl", "min": 4, "max": 50, "step": 1, "default": 24 },
+    { "type": "checkbox", "id": "produkte_zeigen", "label": "Produkte zeigen", "default": true, "info": "Aus = nur dunkle Karten, Nebel und Warteliste (z. B. auf der Startseite, wenn „Favoriten“ die Düfte schon zeigt). Nummern laufen trotzdem weiter. Auf Kollektionsseiten immer an." },
+    { "type": "checkbox", "id": "discovery_zeigen", "label": "Discovery-Set-Kachel zeigen", "default": true },
     { "type": "header", "content": "Dunkle Karten" },
     { "type": "text", "id": "dark_cta", "label": "Knopf auf der Karte", "default": "Vormerken" },
     { "type": "text", "id": "dark_cta_on", "label": "Knopf nach dem Vormerken", "default": "Vorgemerkt" },

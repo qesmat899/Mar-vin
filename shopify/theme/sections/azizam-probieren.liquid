@@ -1,0 +1,151 @@
+{{ 'azizam.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  „Erst testen, dann entscheiden“: drei Schritte zum eigenen Duft, gegen die größte Hürde beim Parfumkauf online
+  (man kann nicht riechen). Schritt-Blöcke:
+  - berater: Link zum Duftberater (#duftberater)
+  - set:     Probenset (Standard: Discovery Set), Preis und Grundpreis live aus Shopify; Gutschein laut D-004
+  - groessen: Größen eines Referenzdufts mit Preis und Grundpreis live aus Shopify (Preisleiter D-007)
+  Keine Preise im Text fest eintippen: sie kommen aus den Produkten.
+{%- endcomment -%}
+{%- if section.blocks.size > 0 -%}
+<section class="az az-section az-probe" id="{{ section.settings.anker | default: 'testen' | handleize }}" aria-labelledby="az-probe-{{ section.id }}">
+  <div class="az-wrap">
+    <header class="az-probe__head">
+      <h2 id="az-probe-{{ section.id }}" class="az-h az-probe__title">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<p class="az-probe__intro">{{ section.settings.text }}</p>{%- endif -%}
+    </header>
+    <ol class="az-probe__steps" role="list">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign nr = forloop.index | prepend: '0'
+          assign link = block.settings.link
+          assign p = block.settings.produkt
+          if block.type == 'set' and p == blank
+            assign p = all_products['discovery-set']
+          endif
+          if block.type == 'groessen' and p == blank
+            assign p = collections['drop-1'].products.first | default: collections.all.products.first
+          endif
+          if link == blank
+            if block.type == 'berater'
+              assign link = '#duftberater'
+            elsif block.type == 'set' and p != blank
+              assign link = p.url
+            else
+              assign link = routes.all_products_collection_url
+            endif
+          endif
+        -%}
+        <li class="az-probe__step az-probe__step--{{ block.type }}" {{ block.shopify_attributes }}>
+          <div class="az-probe__art" aria-hidden="true">
+            {%- case block.type -%}
+              {%- when 'berater' -%}
+                <svg viewBox="0 0 180 120" focusable="false">
+                  <rect class="feld" x="22" y="14" width="136" height="26" rx="3"/><rect class="taste" x="30" y="21" width="12" height="12" rx="2"/><rect class="zeile" x="50" y="24" width="64" height="5"/>
+                  <rect class="feld is-an" x="22" y="47" width="136" height="26" rx="3"/><rect class="taste is-an" x="30" y="54" width="12" height="12" rx="2"/><path class="haken" d="M33 60.5l2.6 2.6 4.6-5.2"/><rect class="zeile" x="50" y="57" width="80" height="5"/>
+                  <rect class="feld" x="22" y="80" width="136" height="26" rx="3"/><rect class="taste" x="30" y="87" width="12" height="12" rx="2"/><rect class="zeile" x="50" y="90" width="56" height="5"/>
+                </svg>
+              {%- when 'set' -%}
+                <svg viewBox="0 0 180 120" focusable="false">
+                  {%- for x in (0..2) -%}
+                    {%- assign vx = x | times: 34 | plus: 48 -%}
+                    <rect class="kappe" x="{{ vx | plus: 3 }}" y="16" width="14" height="16" rx="2"/>
+                    <rect class="glas" x="{{ vx }}" y="32" width="20" height="74" rx="6"/>
+                    <rect class="duft" x="{{ vx | plus: 3 }}" y="58" width="14" height="45" rx="4"/>
+                  {%- endfor -%}
+                </svg>
+              {%- else -%}
+                <svg viewBox="0 0 180 120" focusable="false">
+                  <rect class="kappe" x="30" y="62" width="12" height="10" rx="2"/><rect class="glas" x="25" y="72" width="22" height="34" rx="4"/>
+                  <rect class="kappe" x="76" y="38" width="16" height="13" rx="2"/><rect class="glas" x="68" y="51" width="32" height="55" rx="5"/>
+                  <rect class="kappe" x="126" y="14" width="20" height="16" rx="2"/><rect class="glas" x="116" y="30" width="40" height="76" rx="6"/>
+                  <line class="boden" x1="14" y1="106.5" x2="166" y2="106.5"/>
+                </svg>
+            {%- endcase -%}
+          </div>
+          <p class="az-probe__nr">{{ nr }}</p>
+          <h3 class="az-h az-probe__name">{{ block.settings.titel }}</h3>
+
+          {%- case block.type -%}
+            {%- when 'set' -%}
+              {%- if p != blank -%}
+                <p class="az-probe__preis">{{ block.settings.zeile }} <b>{{ p.price | money }}</b>
+                  {%- capture gp -%}{% render 'azizam-grundpreis', product: p %}{%- endcapture -%}
+                  {%- if gp != blank -%}<small class="az-gp">{{ gp }}</small>{%- endif -%}
+                </p>
+                {%- assign preis_text = p.price | money -%}
+                {%- if block.settings.text != blank -%}<p class="az-probe__text">{{ block.settings.text | replace: '[preis]', preis_text }}</p>{%- endif -%}
+              {%- endif -%}
+            {%- when 'groessen' -%}
+              {%- if block.settings.text != blank -%}<p class="az-probe__text">{{ block.settings.text }}</p>{%- endif -%}
+              {%- if p != blank -%}
+                <ul class="az-probe__leiter" role="list">
+                  {%- for v in p.variants -%}
+                    {%- capture gp -%}{% render 'azizam-grundpreis', variant: v, product: p %}{%- endcapture -%}
+                    <li><span class="az-probe__ml">{{ v.title }}</span><span class="az-probe__eur">{{ v.price | money }}{%- if gp != blank -%}<small class="az-gp">{{ gp }}</small>{%- endif -%}</span></li>
+                  {%- endfor -%}
+                </ul>
+                <p class="az-probe__fuss">{{ block.settings.fuss }}</p>
+              {%- endif -%}
+            {%- else -%}
+              {%- if block.settings.text != blank -%}<p class="az-probe__text">{{ block.settings.text }}</p>{%- endif -%}
+          {%- endcase -%}
+
+          {%- if block.settings.link_label != blank -%}
+            <a class="az-probe__cta" href="{{ link }}">{{ block.settings.link_label }}<span aria-hidden="true">→</span></a>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Azizam Erst testen",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Erst testen. Dann entscheiden." },
+    { "type": "textarea", "id": "text", "label": "Satz unter der Überschrift", "default": "Online kann man nicht schnuppern. So findest du deinen Duft trotzdem – in drei kleinen Schritten." },
+    { "type": "text", "id": "anker", "label": "Sprungmarke", "default": "testen" }
+  ],
+  "blocks": [
+    {
+      "type": "berater", "name": "Schritt: Duftberater",
+      "settings": [
+        { "type": "text", "id": "titel", "label": "Titel", "default": "Richtung finden" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Beantworte ein paar kurze Fragen. Der Duftberater zeigt dir, welche Düfte zu dir passen." },
+        { "type": "text", "id": "link_label", "label": "Link-Text", "default": "Berater starten" },
+        { "type": "url", "id": "link", "label": "Link-Ziel (leer = Duftberater auf dieser Seite)" }
+      ]
+    },
+    {
+      "type": "set", "name": "Schritt: Probenset",
+      "settings": [
+        { "type": "product", "id": "produkt", "label": "Probenset (leer = Discovery Set)" },
+        { "type": "text", "id": "titel", "label": "Titel", "default": "Drei Düfte testen" },
+        { "type": "text", "id": "zeile", "label": "Text vor dem Preis", "default": "Discovery Set, 3 × 5 ml:" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Trag jeden Duft ein paar Tage. Die [preis] bekommst du als Gutschein für deine nächste 30- oder 50-ml-Flasche zurück.", "info": "[preis] wird durch den Preis des Sets ersetzt." },
+        { "type": "text", "id": "link_label", "label": "Link-Text", "default": "Set zusammenstellen" },
+        { "type": "url", "id": "link", "label": "Link-Ziel (leer = Seite des Sets)" }
+      ]
+    },
+    {
+      "type": "groessen", "name": "Schritt: Größen",
+      "settings": [
+        { "type": "product", "id": "produkt", "label": "Duft, dessen Preise gezeigt werden (leer = erster aus Drop 1)" },
+        { "type": "text", "id": "titel", "label": "Titel", "default": "Deine Größe wählen" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Je größer die Flasche, desto günstiger der Milliliter." },
+        { "type": "text", "id": "fuss", "label": "Satz unter den Preisen", "default": "Gleiche Preise für alle Düfte." },
+        { "type": "text", "id": "link_label", "label": "Link-Text", "default": "Alle Düfte" },
+        { "type": "url", "id": "link", "label": "Link-Ziel (leer = alle Düfte)" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Azizam Erst testen",
+    "blocks": [{ "type": "berater" }, { "type": "set" }, { "type": "groessen" }]
+  }]
+}
+{% endschema %}

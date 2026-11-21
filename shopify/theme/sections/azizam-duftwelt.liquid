@@ -3,7 +3,9 @@
 {%- assign p = product -%}
 {%- assign m = p.metafields.azizam -%}
 {%- assign img = p.media[1] | default: p.media[0] -%}
-<section class="az az-welt" aria-labelledby="az-welt-{{ section.id }}">
+<section class="az az-welt" aria-labelledby="az-welt-{{ section.id }}"
+  {%- if img != blank %} style="--az-aura: url('{{ img.preview_image | image_url: width: 64 }}')"{% endif %}>
+  <span class="az-welt__aura" aria-hidden="true"></span>
   <div class="az-welt__media">
     {%- if img != blank -%}
       {{ img.preview_image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '540, 720, 1080, 1400, 1600', sizes: '(min-width: 900px) 50vw, 100vw', alt: img.alt | default: p.title }}

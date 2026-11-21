@@ -3,6 +3,24 @@
   assign poster = section.settings.poster
   assign still = section.settings.still | default: poster
   assign vid = section.settings.video
+  # Faktenzeile: [ab-preis] wird durch den günstigsten Preis der gewählten Kollektion ersetzt (live aus Shopify).
+  assign quelle = section.settings.preis_kollektion | default: collections['drop-1']
+  assign ab = 0
+  for p in quelle.products limit: 50
+    if p.type == 'Probenset' or p.price_min <= 0
+      continue
+    endif
+    if ab == 0 or p.price_min < ab
+      assign ab = p.price_min
+    endif
+  endfor
+  assign ab_text = ab | money
+  assign fakten = section.settings.fakten
+  if ab > 0
+    assign fakten = fakten | replace: '[ab-preis]', ab_text
+  else
+    assign fakten = fakten | remove: 'ab [ab-preis] ·' | remove: ' · ab [ab-preis]' | remove: '[ab-preis]'
+  endif
 -%}
 <section class="az az-hero" aria-labelledby="az-hero-{{ section.id }}">
   <div class="az-hero__media">
@@ -28,18 +46,23 @@
   </div>
 
   <div class="az-hero__copy">
-    {%- comment -%} Kein h1: Auf der Startseite setzt der Kopfbereich (Horizon) das Logo bereits als h1. {%- endcomment -%}
-    <p id="az-hero-{{ section.id }}" class="az-h az-hero__title">{{ section.settings.title }}</p>
+    <h1 id="az-hero-{{ section.id }}" class="az-h az-hero__title">{{ section.settings.title }}</h1>
     {%- if section.settings.persian != blank -%}
       <span class="az-hero__fa" lang="fa">{{ section.settings.persian }}<span lang="de">{{ section.settings.persian_meaning }}</span></span>
     {%- endif -%}
     {%- if section.settings.line != blank -%}<p class="az-hero__line">{{ section.settings.line }}</p>{%- endif -%}
+    {%- if fakten != blank -%}
+      <p class="az-hero__facts">
+        {%- assign teile = fakten | split: '·' -%}
+        {%- for t in teile -%}{%- assign tt = t | strip -%}{%- if tt != blank -%}<span>{{ tt }}</span>{%- endif -%}{%- endfor -%}
+      </p>
+    {%- endif -%}
     <div class="az-hero__ctas">
       {%- if section.settings.cta_label != blank -%}
         <a class="az-btn" href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}">{{ section.settings.cta_label }}</a>
       {%- endif -%}
       {%- if section.settings.link_label != blank -%}
-        <a class="az-link" href="{{ section.settings.link_target | default: '#anlass' }}">{{ section.settings.link_label }}</a>
+        <a class="az-link" href="{{ section.settings.link_target | default: '#duftberater' }}">{{ section.settings.link_label }}</a>
       {%- endif -%}
     </div>
   </div>
@@ -102,10 +125,12 @@
     { "type": "text", "id": "persian", "label": "Persischer Schriftzug", "default": "عزیزم" },
     { "type": "text", "id": "persian_meaning", "label": "Bedeutung", "default": "persisch für „mein Schatz“" },
     { "type": "text", "id": "line", "label": "Satz", "default": "Der Duft der zweiten Generation." },
+    { "type": "text", "id": "fakten", "label": "Faktenzeile (mit · trennen)", "default": "Rund 30 % Duftöl · ab [ab-preis] · Versand ab 20 € kostenlos", "info": "[ab-preis] = günstigster Preis der Kollektion unten, live aus Shopify. Nur Belegtes eintragen." },
+    { "type": "collection", "id": "preis_kollektion", "label": "Kollektion für den ab-Preis (leer = Drop 1)" },
     { "type": "text", "id": "cta_label", "label": "Button", "default": "Düfte entdecken" },
     { "type": "url", "id": "cta_link", "label": "Button-Link" },
-    { "type": "text", "id": "link_label", "label": "Textlink", "default": "Nach Anlass wählen" },
-    { "type": "text", "id": "link_target", "label": "Textlink-Ziel", "default": "#anlass" }
+    { "type": "text", "id": "link_label", "label": "Textlink", "default": "Welcher Duft passt zu mir?" },
+    { "type": "text", "id": "link_target", "label": "Textlink-Ziel", "default": "#duftberater" }
   ],
   "presets": [{ "name": "Azizam Hero (Video)" }]
 }

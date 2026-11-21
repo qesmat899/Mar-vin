@@ -1,0 +1,48 @@
+{{ 'azizam.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Produktseite, unter der Größenwahl: „Erst testen?“ mit der kleinsten Größe des Dufts (Link wählt sie aus)
+  und dem Discovery Set. Preise live aus Shopify, Gutschein laut D-004. Nicht beim Probenset selbst.
+{%- endcomment -%}
+{%- liquid
+  assign p = closest.product | default: product
+  assign set = block.settings.set | default: all_products['discovery-set']
+  assign klein = nil
+  for v in p.variants
+    if v.available == false
+      continue
+    endif
+    if klein == nil or v.price < klein.price
+      assign klein = v
+    endif
+  endfor
+-%}
+{%- if p != blank and p.type != 'Probenset' -%}
+  <div class="az-testen" {{ block.shopify_attributes }}>
+    <p class="az-testen__titel">{{ block.settings.titel }}</p>
+    <p class="az-testen__text">
+      {%- if klein != nil and p.variants.size > 1 -%}
+        <a href="{{ p.url }}?variant={{ klein.id }}">{{ klein.title }} für {{ klein.price | money }}</a>
+      {%- endif -%}
+      {%- if set != blank and set.available -%}
+        {%- if klein != nil and p.variants.size > 1 %} {{ block.settings.oder }} {% endif -%}
+        <a href="{{ set.url }}">{{ block.settings.set_label }}</a> ({{ block.settings.set_inhalt }}, {{ set.price | money }}).
+        {{ block.settings.gutschein }}
+      {%- endif -%}
+    </p>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Azizam Erst testen",
+  "settings": [
+    { "type": "text", "id": "titel", "label": "Titel", "default": "Erst testen?" },
+    { "type": "text", "id": "oder", "label": "Wort zwischen den Möglichkeiten", "default": "oder drei Düfte im" },
+    { "type": "product", "id": "set", "label": "Probenset (leer = Discovery Set)" },
+    { "type": "text", "id": "set_label", "label": "Name des Sets", "default": "Discovery Set" },
+    { "type": "text", "id": "set_inhalt", "label": "Inhalt des Sets", "default": "3 × 5 ml" },
+    { "type": "text", "id": "gutschein", "label": "Satz zum Gutschein", "default": "Den Set-Preis bekommst du als Gutschein für deine nächste 30- oder 50-ml-Flasche zurück." }
+  ],
+  "presets": [{ "name": "Azizam Erst testen" }]
+}
+{% endschema %}
