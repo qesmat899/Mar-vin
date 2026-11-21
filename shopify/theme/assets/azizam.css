@@ -283,3 +283,6 @@ azizam-finder, azizam-discovery { display: block; }
   .az-disc-tile__note { display: none; }
   .az-disc-tile__cta { padding: 8px 10px; font-size: .64rem; }
 }
+
+/* Grundpreis (PAngV) unter Preisangaben */
+.az-gp { display: block; margin-top: 2px; font-size: .72em; font-weight: 400; letter-spacing: 0; text-transform: none; opacity: .7; }

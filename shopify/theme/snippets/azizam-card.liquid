@@ -34,7 +34,7 @@
       {%- render 'azizam-intensitaet', product: product -%}
       <span class="az-card__price">
         {%- if product.price_min > 0 -%}
-          {%- if product.price_varies -%}ab {% endif -%}{{ product.price_min | money }}
+          {%- if product.price_varies -%}ab {% endif -%}{{ product.price_min | money }}<small class="az-gp">{% render 'azizam-grundpreis', product: product %}</small>
         {%- else -%}Bald erhältlich{%- endif -%}
       </span>
     </span>

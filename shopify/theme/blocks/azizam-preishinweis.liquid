@@ -1,17 +1,39 @@
 {%- comment -%}
   Pflichtangaben am Preis: Kleinunternehmer (§ 19 UStG) und Versandkosten mit Link.
-  Der Grundpreis (€/100 ml) kommt aus der Variante (unit_price), sobald ein Preis gesetzt ist.
+  Grundpreis (€/100 ml) über snippets/azizam-grundpreis.liquid.
 {%- endcomment -%}
 {%- assign p = closest.product | default: product -%}
 {%- assign v = p.selected_or_first_available_variant -%}
 <div class="az-preishinweis" style="font-size: .8rem; line-height: 1.6; opacity: .75;" {{ block.shopify_attributes }}>
-  {%- if v.unit_price_measurement and v.price > 0 -%}
-    <div>Grundpreis: {{ v.unit_price | money }} / {% if v.unit_price_measurement.reference_value != 1 %}{{ v.unit_price_measurement.reference_value }} {% endif %}{{ v.unit_price_measurement.reference_unit }}</div>
+  {%- if v.price > 0 -%}
+    {%- capture gp -%}{% render 'azizam-grundpreis', variant: v, product: p %}{%- endcapture -%}
+    {%- if gp != blank -%}<div>Grundpreis: <span data-az-gp>{{ gp }}</span></div>{%- endif -%}
   {%- endif -%}
   <div>{{ block.settings.text }}
     {%- if shop.shipping_policy != blank %} <a href="{{ shop.shipping_policy.url }}" style="color: inherit;">{{ block.settings.shipping_label }}</a>{% else %} {{ block.settings.shipping_label }}{% endif -%}.
   </div>
 </div>
+<script type="application/json" data-az-gp-map>{
+  {%- for vv in p.variants -%}{%- capture t -%}{% render 'azizam-grundpreis', variant: vv, product: p %}{%- endcapture -%}{{ vv.id | append: '' | json }}:{{ t | json }}{% unless forloop.last %},{% endunless %}{%- endfor -%}
+}</script>
+<script>
+  (function () {
+    var box = document.currentScript.previousElementSibling.previousElementSibling;
+    var map = JSON.parse(box.nextElementSibling.textContent);
+    var out = box.querySelector('[data-az-gp]');
+    if (!out) return;
+    var sync = function () {
+      var id = new URLSearchParams(location.search).get('variant');
+      var input = document.querySelector('form[action*="/cart/add"] input[name="id"]');
+      if (input && input.value) id = input.value;
+      if (id && map[id]) out.textContent = map[id];
+    };
+    var later = function () { setTimeout(sync, 60); setTimeout(sync, 400); };
+    document.addEventListener('change', later, true);
+    document.addEventListener('variant:update', later);
+    window.addEventListener('popstate', later);
+  })();
+</script>
 
 {% schema %}
 {
