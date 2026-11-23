@@ -76,11 +76,6 @@
   (function () {
     var root = document.querySelector('#shopify-section-{{ section.id }}');
     if (!root) return;
-    var login = root.querySelector('[data-az-pw-login]');
-    if (login) login.addEventListener('click', function () {
-      var d = document.querySelector('#password-form dialog');
-      if (d && d.showModal) { d.showModal(); var i = d.querySelector('input[type=password]'); if (i) i.focus(); }
-    });
     var v = root.querySelector('video');
     if (v && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); }
     var c = root.querySelector('[data-az-count]');
@@ -107,7 +102,7 @@
     { "type": "text", "id": "video_url", "label": "Video (MP4, Desktop)" },
     { "type": "text", "id": "video_url_mobile", "label": "Video fürs Handy (MP4)" },
     { "type": "image_picker", "id": "poster", "label": "Startbild" },
-    { "type": "text", "id": "kicker", "label": "Überzeile", "default": "" },
+    { "type": "text", "id": "kicker", "label": "Überzeile" },
     { "type": "text", "id": "wortmarke", "label": "Schriftzug", "default": "Azizam" },
     { "type": "text", "id": "persisch", "label": "Persisch", "default": "عزیزم" },
     { "type": "text", "id": "bedeutung", "label": "Bedeutung", "default": "mein Schatz" },
@@ -118,7 +113,7 @@
     { "type": "text", "id": "button", "label": "Button", "default": "Eintragen" },
     { "type": "textarea", "id": "hinweis", "label": "Einwilligungstext", "default": "Mit dem Eintragen stimmst du E-Mails von Azizam zu. Abmelden jederzeit." },
     { "type": "text", "id": "erfolg", "label": "Bestätigung", "default": "Danke! Du erfährst es als Erstes." },
-    { "type": "text", "id": "fakten", "label": "Faktenzeile (mit · trennen)", "default": "" },
+    { "type": "text", "id": "fakten", "label": "Faktenzeile (mit · trennen, optional)" },
     { "type": "checkbox", "id": "drop_zeigen", "label": "Düfte als Vorgeschmack zeigen", "default": true },
     { "type": "collection", "id": "kollektion", "label": "Kollektion (leer = Drop 1)" },
     { "type": "text", "id": "drop_titel", "label": "Titel über den Düften", "default": "Die ersten fünf" }
