@@ -9,17 +9,16 @@
 {%- assign drop = s.kollektion | default: collections['drop-1'] -%}
 <section class="az az-pw" aria-labelledby="az-pw-{{ section.id }}">
   <div class="az-pw__media" aria-hidden="true">
+    {%- if s.poster != blank -%}
+      {{ s.poster | image_url: width: 1600 | image_tag: class: 'az-pw__still', loading: 'eager', fetchpriority: 'high', widths: '600, 900, 1200, 1600', sizes: '100vw', alt: '' }}
+    {%- endif -%}
     {%- if s.video_url != blank -%}
-      <video class="az-pw__video" muted playsinline autoplay loop preload="metadata"
-        {% if s.poster != blank %}poster="{{ s.poster | image_url: width: 1600 }}"{% endif %}>
+      <video class="az-pw__video" muted playsinline webkit-playsinline loop preload="metadata" disablepictureinpicture disableremoteplayback tabindex="-1">
         {%- if s.video_url_mobile != blank -%}<source src="{{ s.video_url_mobile }}" type="video/mp4" media="(max-width: 899px)">{%- endif -%}
         <source src="{{ s.video_url }}" type="video/mp4">
       </video>
-    {%- elsif s.poster != blank -%}
-      {{ s.poster | image_url: width: 1800 | image_tag: class: 'az-pw__video', loading: 'eager', alt: '' }}
     {%- endif -%}
     <span class="az-pw__shade"></span>
-    <span class="az-pw__rays"></span>
   </div>
 
   <div class="az-pw__inner">
@@ -76,8 +75,16 @@
   (function () {
     var root = document.querySelector('#shopify-section-{{ section.id }}');
     if (!root) return;
+    // Video erst zeigen, wenn es wirklich läuft. Blockiert das Handy das Abspielen (z. B. Stromsparmodus),
+    // bleibt das Standbild stehen, ohne Play-Knopf. Ein Versuch beim Laden, einer bei der ersten Berührung.
     var v = root.querySelector('video');
-    if (v && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); }
+    if (v && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      v.muted = true;
+      v.addEventListener('playing', function () { root.classList.add('is-video'); });
+      var spielen = function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
+      spielen();
+      window.addEventListener('touchstart', spielen, { once: true, passive: true });
+    }
     var c = root.querySelector('[data-az-count]');
     if (c) {
       var ziel = new Date(c.dataset.azCount).getTime();
