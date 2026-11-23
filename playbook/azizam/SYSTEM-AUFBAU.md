@@ -11,7 +11,7 @@
 | Baustein | Stand |
 |---|---|
 | Kontext | `SYNC.md`, `CLAUDE.md`, `CLAUDE-MASTER.md` stehen. Plugin-Profil in `BUSINESS-CONTEXT.md` (von Mar bestätigt, immer geladen) |
-| Shopify | Direkter Konnektor verbunden: Shop „My Store 3“ (pbznmb-fy.myshopify.com), Plan Basic, EUR, Deutschland, laut Mar **der Shop für den Neustart**. 0 Produkte, 0 Bestellungen in den letzten 365 Tagen. Der Shopify-Zugang des Plugins selbst war nicht autorisiert, die Skills nutzen den direkten Konnektor |
+| Shopify | Direkter Konnektor verbunden: Shop „Azizam Fragrances“ (pyxp-v308b4-80.myshopify.com, Domain azizamfragrances.de), laut Mar seit 20.11.2026 **der einzige Shop**; „My Store 3“ abgelöst. Der Shopify-Zugang des Plugins selbst war nicht autorisiert, die Skills nutzen den direkten Konnektor |
 | Mail, Kalender, Drive | Konnektoren verfügbar (Gmail, Google Calendar, Google Drive) |
 | Buchhaltung | macht der Steuerberater, kein Buchhaltungs-Konnektor. Geschäftsjahr = Kalenderjahr (31.12.) |
 | Rhythmus | Wochenüberblick montags („Monday brief“) |

@@ -42,6 +42,14 @@ test('Beratung vom Shop: 200, validierte Empfehlungen, keine Geheimnisse in der 
   assert.ok(!JSON.stringify(r.body).match(/sk-ant|api[_-]?key|token/i));
 });
 
+test('Neue Shop-Domain azizamfragrances.de ist erlaubt (Shop-Wechsel 20.11.2026)', async () => {
+  for (const origin of ['https://azizamfragrances.de', 'https://www.azizamfragrances.de', 'https://pyxp-v308b4-80.myshopify.com']) {
+    const r = await aufruf(beratung, { method: 'OPTIONS', origin });
+    assert.equal(r.code, 204, origin);
+    assert.equal(r.headers['access-control-allow-origin'], origin);
+  }
+});
+
 test('Fremde Herkunft wird abgewiesen (CORS)', async () => {
   const r = await aufruf(beratung, { origin: 'https://boese.example', body: WUNSCH });
   assert.equal(r.code, 403);

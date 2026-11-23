@@ -78,7 +78,7 @@ Kontrolle: `npm run profile` (✓ bestätigt · ~ aus Noten geschätzt · ? unbe
 ## Einrichtung (einmalig)
 
 1. Theme-Kopie mit Feed-Template und Section veröffentlichen (Mar). Danach liefert
-   `https://azizamfragrances.com/collections/all?view=berater` die Produktdaten als JSON.
+   `https://azizamfragrances.de/collections/all?view=berater` die Produktdaten als JSON.
 2. Vercel-Projekt mit Root-Verzeichnis `shopify/berater` anlegen. Umgebungsvariablen laut `.env.example` setzen,
    mindestens `ANTHROPIC_API_KEY` und `ADMIN_TOKEN`.
 3. Prüfen: `GET https://<projekt>.vercel.app/api/status` muss `ki_schluessel_gesetzt: true` und

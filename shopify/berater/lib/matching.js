@@ -329,7 +329,7 @@ export function bewerte(p, a) {
       }
       for (const ab of v.abweichung) {
         const t = ab.dim === 'intensitaet' ? `${ab.art === 'staerker' ? 'kräftiger' : 'dezenter'} als gewünscht`
-          : `${ab.art === 'zu_viel' ? 'mehr' : 'weniger'} ${DIM_LABEL[ab.dim]} als gewünscht`;
+          : ab.art === 'zu_viel' ? `${KOMPARATIV[ab.dim] || `mehr ${DIM_LABEL[ab.dim]}`} als gewünscht` : `weniger ${DIM_LABEL[ab.dim]} als gewünscht`;
         konflikte.push(t);
         if (ab.deutlich) deutlich.push(t);
       }
@@ -425,6 +425,7 @@ export function bewerte(p, a) {
   };
 }
 
+const KOMPARATIV = { suesse: 'süßer', frische: 'frischer', waerme: 'wärmer', rauchig: 'rauchiger', holzig: 'holziger', wuerzig: 'würziger', blumig: 'blumiger', fruchtig: 'fruchtiger', ledrig: 'ledriger', pudrig: 'pudriger', cremig: 'cremiger', sauber: 'sauberer' };
 const ANLASS_TEXT = { Alltag: 'den Alltag', Büro: 'die Arbeit', Date: 'ein Date', Abend: 'den Abend', 'Besonderer Anlass': 'besondere Anlässe', Freizeit: 'die Freizeit' };
 
 // Gesamter deterministischer Durchlauf über alle Produkte.
@@ -450,6 +451,16 @@ export function waehleAus(kandidaten, { min = MIN_MATCH, max = MAX_EMPFEHLUNGEN 
 // Annäherung, wenn nichts das Gate besteht: die nächstbesten, zuverlässig belegten Düfte ohne harten Ausschluss.
 export function annaeherung(kandidaten, { min = MIN_ANNAEHERUNG, max = MAX_ANNAEHERUNG } = {}) {
   return kandidaten.filter((k) => k.zuverlaessig && k.match >= min).slice(0, max);
+}
+
+// Immer etwas zeigen, wenn es geht: erst die Annäherung (ab 55 %), sonst die zwei Düfte, die am nächsten kommen.
+// Grenzen: Harte Ausschlüsse (Abneigungen, Budget, Büro) gelten weiter – ein ausgeschlossener Duft wird nie gezeigt.
+// Und der Kunde muss etwas zum Duft gesagt haben (Duftart, Profil, Stimmung oder Noten), sonst gibt es nichts zu vergleichen.
+export function naechstbeste(kandidaten, { max = MAX_ANNAEHERUNG } = {}) {
+  const a = annaeherung(kandidaten, { max });
+  if (a.length) return a;
+  const mitSubstanz = (k) => k.teilwerte.profil !== undefined || k.teilwerte.charakter !== undefined || k.teilwerte.vorlieben !== undefined;
+  return kandidaten.filter(mitSubstanz).slice(0, max);
 }
 
 export function empfehlbar(k, min = MIN_MATCH) {

@@ -11,6 +11,13 @@
 <section class="az az-section az-fav" id="favoriten" aria-labelledby="az-fav-{{ section.id }}"
   data-az-fav data-interval="{{ section.settings.interval | times: 1000 }}">
   <div class="az-fav__glow" aria-hidden="true"></div>
+  {%- comment -%} Duftfarbe: unscharfe Mini-Kopie des aktiven Bilds färbt die Bühne in der Farbwelt des Dufts. {%- endcomment -%}
+  <div class="az-fav__aura" aria-hidden="true">
+    {%- for p in favs limit: 5 -%}
+      {%- assign aura_img = p.media[1] | default: p.media[0] -%}
+      {%- if aura_img != blank -%}<img src="{{ aura_img.preview_image | image_url: width: 64 }}" alt="" width="64" height="64" loading="lazy" decoding="async"{% if forloop.first %} class="is-on"{% endif %}>{%- endif -%}
+    {%- endfor -%}
+  </div>
   <div class="az-wrap">
     <header class="az-fav__head">
       <div>
@@ -58,7 +65,7 @@
               <div class="az-fav__foot">
                 {%- render 'azizam-intensitaet', product: p -%}
                 <span class="az-fav__price">
-                  {%- if p.price_min > 0 -%}{%- if p.price_varies -%}ab {% endif -%}{{ p.price_min | money }}{%- else -%}Bald erhältlich{%- endif -%}
+                  {%- if p.price_min > 0 -%}{%- if p.price_varies -%}ab {% endif -%}{{ p.price_min | money }}<small class="az-gp">{% render 'azizam-grundpreis', product: p %}</small>{%- else -%}Bald erhältlich{%- endif -%}
                 </span>
               </div>
               <a class="az-fav__cta" href="{{ p.url }}" data-az-fav-link>
@@ -87,6 +94,7 @@
     var stage = root.querySelector('[data-az-fav-stage]');
     var panels = Array.prototype.slice.call(root.querySelectorAll('[data-az-fav-panel]'));
     var dots = root.querySelectorAll('.az-fav__dot');
+    var aura = root.querySelectorAll('.az-fav__aura img');
     var current = root.querySelector('[data-az-fav-current]');
     var interval = parseInt(root.dataset.interval, 10) || 0;
     var desktop = window.matchMedia('(min-width: 900px)');
@@ -96,6 +104,7 @@
     function mark(i) {
       if (current) current.textContent = ('0' + (i + 1)).slice(-2);
       dots.forEach(function (d, k) { d.classList.toggle('is-on', k === i); });
+      aura.forEach(function (a, k) { a.classList.toggle('is-on', k === i); });
     }
     function setActive(i) {
       active = (i + panels.length) % panels.length;

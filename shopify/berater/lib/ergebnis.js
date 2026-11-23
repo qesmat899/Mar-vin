@@ -1,5 +1,5 @@
 // Aufbereitung des Ergebnisses für die Oberfläche (ohne Node-Abhängigkeiten, läuft auch im Browser).
-import { empfehlbar, annaeherung, MAX_EMPFEHLUNGEN } from './matching.js';
+import { empfehlbar, naechstbeste, MAX_EMPFEHLUNGEN } from './matching.js';
 import { stufe, warum, unterschied, probe } from './erklaerung.js';
 
 export function ohneKi(angaben, profile, vorab, grund) {
@@ -8,7 +8,7 @@ export function ohneKi(angaben, profile, vorab, grund) {
     .slice(0, MAX_EMPFEHLUNGEN)
     .map((k) => ausgabe(profile.find((p) => p.id === k.id), k, null, angaben));
   const naeherung = !empfehlungen.length;
-  if (naeherung) empfehlungen = annaeherung(vorab.kandidaten).map((k) => ausgabe(profile.find((p) => p.id === k.id), k, null, angaben));
+  if (naeherung) empfehlungen = naechstbeste(vorab.kandidaten).map((k) => ausgabe(profile.find((p) => p.id === k.id), k, null, angaben));
   empfehlungen = mitUnterschieden(empfehlungen, profile);
   return {
     quelle: 'ohne_ki',

@@ -1,0 +1,27 @@
+{%- comment -%}
+  Karte im Nebel: ein Duft ohne jeden Hinweis. Wird mit jeder Karte grauer und unschärfer (--g von 0 bis 1).
+  Parameter: block, i (laufend ab 1), total (Anzahl Nebelkarten)
+{%- endcomment -%}
+{%- liquid
+  assign g = i | times: 1.0 | divided_by: total
+  assign cls = ''
+  if i > 5
+    assign cls = cls | append: ' az-ghost--m'
+  endif
+  if i > 7
+    assign cls = cls | append: ' az-ghost--t'
+  endif
+-%}
+<div class="az-card az-card--ghost{{ cls }}" data-familie="nebel" aria-hidden="true" style="--g: {{ g }}" {{ block.shopify_attributes }}>
+  <span class="az-card__media az-ghost">
+    <svg viewBox="0 0 200 420" focusable="false">
+      <rect x="70" y="34" width="60" height="84" rx="4"/>
+      <rect x="86" y="118" width="28" height="16"/>
+      <rect x="24" y="134" width="152" height="272" rx="12"/>
+    </svg>
+  </span>
+  <span class="az-card__body">
+    <span class="az-ghost__bar"></span>
+    <span class="az-ghost__bar az-ghost__bar--s"></span>
+  </span>
+</div>

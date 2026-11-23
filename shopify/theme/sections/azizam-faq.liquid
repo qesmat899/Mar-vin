@@ -1,0 +1,72 @@
+{{ 'azizam.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Häufige Fragen (FAQ). Jede Frage ist ein Block (Frage + Antwort), im Theme-Editor änderbar.
+  Aufklappen mit <details>, ohne Skript; in neuen Browsern weich animiert (::details-content).
+  Strukturierte Daten (FAQPage) für Suchmaschinen und KI-Suchen aus denselben Blöcken.
+  Nur Belegtes eintragen: Versand (D-006), Preise/Größen (D-007), Discovery Set (D-004), Drops (D-008).
+{%- endcomment -%}
+{%- if section.blocks.size > 0 -%}
+<section class="az az-section az-faq" id="{{ section.settings.anker | default: 'faq' | handleize }}" aria-labelledby="az-faq-{{ section.id }}">
+  <div class="az-wrap az-faq__grid">
+    <div class="az-faq__head">
+      <h2 id="az-faq-{{ section.id }}" class="az-h az-faq__title">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<p class="az-faq__intro">{{ section.settings.text }}</p>{%- endif -%}
+      {%- if section.settings.kontakt_label != blank -%}
+        <a class="az-link az-faq__kontakt" href="{{ section.settings.kontakt_link | default: '/pages/contact' }}">{{ section.settings.kontakt_label }}</a>
+      {%- endif -%}
+    </div>
+    <div class="az-faq__list">
+      {%- for block in section.blocks -%}
+        <details class="az-faq__item" {{ block.shopify_attributes }}{% if forloop.first and section.settings.erste_offen %} open{% endif %}>
+          <summary class="az-faq__q">
+            <span>{{ block.settings.frage }}</span>
+            <span class="az-faq__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="az-faq__a">{{ block.settings.antwort }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {%- for block in section.blocks -%}
+        {
+          "@type": "Question",
+          "name": {{ block.settings.frage | strip_html | strip | json }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ block.settings.antwort | strip_html | strip | json }} }
+        }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  }
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Azizam Fragen & Antworten",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Gut zu wissen" },
+    { "type": "textarea", "id": "text", "label": "Satz unter der Überschrift", "default": "Kurz und ehrlich beantwortet. Fehlt deine Frage? Schreib uns." },
+    { "type": "text", "id": "kontakt_label", "label": "Link zum Kontakt", "default": "Frage stellen" },
+    { "type": "url", "id": "kontakt_link", "label": "Link-Ziel" },
+    { "type": "checkbox", "id": "erste_offen", "label": "Erste Frage aufgeklappt", "default": false },
+    { "type": "text", "id": "anker", "label": "Sprungmarke (für Links wie /#faq)", "default": "faq" }
+  ],
+  "blocks": [
+    {
+      "type": "frage",
+      "name": "Frage",
+      "settings": [
+        { "type": "text", "id": "frage", "label": "Frage" },
+        { "type": "richtext", "id": "antwort", "label": "Antwort", "info": "Nur Belegtes. Verbotsliste in playbook/azizam/brand-briefing.md beachten." }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Azizam Fragen & Antworten" }]
+}
+{% endschema %}

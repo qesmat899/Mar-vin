@@ -2,14 +2,25 @@
 @tailwind utilities;
 
 /* Kleiner Reset nur im Berater, damit Theme-Stile (Buttons, Überschriften) nicht durchschlagen. */
-.azb { background: #0b0a09; color: #efe6d6; font-family: var(--az-sans, system-ui, sans-serif); -webkit-font-smoothing: antialiased; }
+.azb { background: #0b0a09; color: #efe6d6; font-family: var(--az-sans, system-ui, sans-serif); -webkit-font-smoothing: antialiased;
+  --azb-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Antwortfelder: Creme mit einem Hauch Gold, Tinte als Schrift, feine Goldlinie */
+  --azb-papier-1: #f8f2e6;
+  --azb-papier-2: #eee2c8;
+  --azb-papier-gewaehlt-1: #f2e4c4;
+  --azb-papier-gewaehlt-2: #e7d2a6;
+  --azb-tinte: #1f1813;
+  --azb-tinte-2: #6b5a45;
+  --azb-linie: rgba(160, 122, 58, 0.42);
+  --azb-linie-stark: #8c6a2f;
+  --azb-gold-hell: #e9cf95; }
 .azb *, .azb *::before, .azb *::after { box-sizing: border-box; border: 0 solid rgba(239, 230, 214, .1); }
 .azb h2, .azb h3, .azb p { margin: 0; letter-spacing: normal; text-transform: none; }
 .azb h2, .azb h3 { font-family: var(--az-serif, Georgia, serif); font-weight: 400; color: #efe6d6; }
 .azb button { font: inherit; color: inherit; background: none; border-width: 0; padding: 0; margin: 0; cursor: pointer;
   text-transform: none; letter-spacing: normal; box-shadow: none; min-height: 0; }
 .azb a { color: inherit; text-decoration: none; }
-.azb textarea { font: inherit; color: inherit; margin: 0; box-shadow: none; }
+.azb textarea, .azb select { font: inherit; color: inherit; margin: 0; box-shadow: none; }
 .azb img { display: block; max-width: 100%; }
 .azb :focus-visible { outline: 2px solid #ecdcb6; outline-offset: 3px; }
 
@@ -18,3 +29,79 @@
   linear-gradient(180deg, #161310, #0e0c0a); }
 .azb-gold-text { background: linear-gradient(100deg, #a8895a 0%, #ecdcb6 45%, #d4bc8c 60%, #a8895a 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* ---------- Antwortfeld ---------- */
+.azb .azb-feld { position: relative; isolation: isolate; overflow: hidden; color: var(--azb-tinte);
+  background: linear-gradient(180deg, var(--azb-papier-1) 0%, var(--azb-papier-2) 100%);
+  border: 1px solid var(--azb-linie);
+  /* oben ein heller Lichtrand, unten ein Hauch Schatten: wirkt wie festes Papier */
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8), inset 0 -1px 0 rgba(140, 106, 47, .14), 0 14px 26px -20px rgba(0, 0, 0, .9);
+  transition: border-color .2s var(--azb-ease), box-shadow .2s var(--azb-ease), transform .15s var(--azb-ease); }
+/* Lichtschein unter dem Zeiger */
+.azb .azb-feld::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(240px circle at var(--mx, 50%) var(--my, -60%), rgba(255, 253, 246, .95), rgba(255, 253, 246, 0) 70%);
+  opacity: 0; transition: opacity .25s var(--azb-ease); }
+/* Goldlinie leuchtet dort, wo der Zeiger ist (nur der Rand, per Maske) */
+.azb .azb-feld::after { content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; pointer-events: none;
+  background: radial-gradient(180px circle at var(--mx, 50%) var(--my, -60%), rgba(166, 120, 40, .95), rgba(166, 120, 40, 0) 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude;
+  opacity: 0; transition: opacity .25s var(--azb-ease); }
+@media (hover: hover) {
+  .azb .azb-feld:hover::before, .azb .azb-feld:hover::after { opacity: 1; }
+  .azb .azb-feld:hover { border-color: rgba(140, 106, 47, .6); }
+}
+.azb .azb-feld:focus-visible { outline-color: #e9cf95; }
+.azb .azb-feld[data-gewaehlt="true"] { border-color: var(--azb-linie-stark);
+  background: linear-gradient(180deg, var(--azb-papier-gewaehlt-1) 0%, var(--azb-papier-gewaehlt-2) 100%);
+  box-shadow: inset 0 0 0 1px rgba(140, 106, 47, .55), inset 0 1px 0 rgba(255, 255, 255, .65), 0 14px 26px -20px rgba(0, 0, 0, .9); }
+
+.azb .azb-feld__titel { display: block; font-family: var(--az-serif, Georgia, serif); font-size: 1.32rem; font-weight: 500;
+  line-height: 1.15; letter-spacing: .005em; color: var(--azb-tinte); }
+.azb .azb-feld__sub { display: block; margin-top: 3px; font-size: .9rem; line-height: 1.35; color: var(--azb-tinte-2); }
+@media (min-width: 768px) { .azb .azb-feld__titel { font-size: 1.42rem; } }
+
+/* Kleiner Kontrast: dunkle Taste mit Buchstabe, gewählt mit Goldhaken */
+.azb .azb-taste { position: relative; flex: none; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 3px;
+  border: 1px solid rgba(31, 24, 19, .5); background: rgba(255, 255, 255, .45); color: var(--azb-tinte);
+  font-size: .72rem; font-weight: 500; letter-spacing: .06em; line-height: 1;
+  transition: background-color .2s var(--azb-ease), color .2s var(--azb-ease), border-color .2s var(--azb-ease); }
+@media (hover: hover) { .azb .azb-feld:hover .azb-taste { border-color: var(--azb-linie-stark); } }
+.azb .azb-feld[data-gewaehlt="true"] .azb-taste { background: var(--azb-tinte); border-color: var(--azb-tinte); color: var(--azb-gold-hell); }
+
+/* Goldglanz beim Wählen (einmal, wie Licht auf Goldfolie) */
+.azb .azb-glanz { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0;
+  background: linear-gradient(105deg, transparent 34%, rgba(255, 255, 255, .9) 47%, rgba(233, 207, 149, .7) 53%, transparent 66%);
+  transform: translateX(-120%); }
+@media (prefers-reduced-motion: no-preference) {
+  .azb .azb-feld[data-gewaehlt="true"] .azb-glanz { animation: azb-glanz .7s var(--azb-ease) both; }
+}
+@keyframes azb-glanz { 0% { opacity: 1; transform: translateX(-120%); } 100% { opacity: 1; transform: translateX(120%); } }
+
+/* ---------- Freitext, Auswahl, Chips, Weiter ---------- */
+.azb .azb-eingabe { color: var(--azb-tinte); background: linear-gradient(180deg, #fbf7ee, #f4ead7);
+  border: 1px solid var(--azb-linie); box-shadow: inset 0 1px 2px rgba(31, 24, 19, .08);
+  transition: border-color .2s var(--azb-ease), box-shadow .2s var(--azb-ease); }
+.azb .azb-eingabe::placeholder { color: #7a6852; opacity: 1; }
+.azb .azb-eingabe:focus { outline: none; border-color: var(--azb-linie-stark); box-shadow: inset 0 1px 2px rgba(31, 24, 19, .08), 0 0 0 3px rgba(233, 207, 149, .45); }
+
+.azb .azb-auswahl { -webkit-appearance: none; appearance: none; color: var(--azb-tinte); cursor: pointer;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%231f1813' stroke-width='1.4'/%3E%3C/svg%3E") no-repeat right 14px center,
+    linear-gradient(180deg, var(--azb-papier-1), var(--azb-papier-2));
+  border: 1px solid var(--azb-linie); }
+.azb .azb-auswahl:focus-visible { outline: 2px solid #ecdcb6; outline-offset: 3px; }
+
+.azb .azb-chip { position: relative; isolation: isolate; overflow: hidden; color: var(--azb-tinte);
+  background: linear-gradient(180deg, var(--azb-papier-1), var(--azb-papier-2)); border: 1px solid var(--azb-linie);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .75);
+  transition: border-color .2s var(--azb-ease), transform .12s var(--azb-ease); }
+.azb .azb-chip::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0;
+  background: radial-gradient(120px circle at var(--mx, 50%) var(--my, -60%), rgba(255, 253, 246, .95), rgba(255, 253, 246, 0) 70%);
+  transition: opacity .25s var(--azb-ease); }
+@media (hover: hover) { .azb .azb-chip:hover { border-color: var(--azb-linie-stark); } .azb .azb-chip:hover::before { opacity: 1; } }
+@media (prefers-reduced-motion: no-preference) { .azb .azb-chip:active { transform: scale(.97); } }
+
+.azb .azb-weiter { color: var(--azb-tinte); background: linear-gradient(180deg, #e9cf95, #d4b06a); border: 1px solid #b08a45;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .55); transition: filter .2s var(--azb-ease), transform .12s var(--azb-ease); }
+@media (hover: hover) { .azb .azb-weiter:hover { filter: brightness(1.06); } }
+@media (prefers-reduced-motion: no-preference) { .azb .azb-weiter:active { transform: scale(.97); } }

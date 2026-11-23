@@ -3,11 +3,29 @@
   assign poster = section.settings.poster
   assign still = section.settings.still | default: poster
   assign vid = section.settings.video
+  # Faktenzeile: [ab-preis] wird durch den günstigsten Preis der gewählten Kollektion ersetzt (live aus Shopify).
+  assign quelle = section.settings.preis_kollektion | default: collections['drop-1']
+  assign ab = 0
+  for p in quelle.products limit: 50
+    if p.type == 'Probenset' or p.price_min <= 0
+      continue
+    endif
+    if ab == 0 or p.price_min < ab
+      assign ab = p.price_min
+    endif
+  endfor
+  assign ab_text = ab | money
+  assign fakten = section.settings.fakten
+  if ab > 0
+    assign fakten = fakten | replace: '[ab-preis]', ab_text
+  else
+    assign fakten = fakten | remove: 'ab [ab-preis] ·' | remove: ' · ab [ab-preis]' | remove: '[ab-preis]'
+  endif
 -%}
 <section class="az az-hero" aria-labelledby="az-hero-{{ section.id }}">
   <div class="az-hero__media">
     {%- if vid != blank or section.settings.video_url != blank -%}
-      <video class="az-hero__video" autoplay muted playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback
+      <video class="az-hero__video" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback
         {% if poster != blank %}poster="{{ poster | image_url: width: 1080 }}"{% endif %}
         aria-label="{{ section.settings.video_alt | escape }}" data-az-hero-video>
         {%- if section.settings.video_url_mobile != blank -%}
@@ -23,7 +41,7 @@
       </video>
     {%- endif -%}
     {%- if still != blank -%}
-      {{ still | image_url: width: 1400 | image_tag: class: 'az-hero__still', loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 900px) 50vw, 100vw', widths: '540, 720, 1080, 1400', alt: section.settings.video_alt }}
+      {{ still | image_url: width: 1400 | image_tag: class: 'az-hero__still', loading: 'lazy', sizes: '(min-width: 900px) 50vw, 100vw', widths: '540, 720, 1080, 1400', alt: section.settings.video_alt }}
     {%- endif -%}
   </div>
 
@@ -33,12 +51,18 @@
       <span class="az-hero__fa" lang="fa">{{ section.settings.persian }}<span lang="de">{{ section.settings.persian_meaning }}</span></span>
     {%- endif -%}
     {%- if section.settings.line != blank -%}<p class="az-hero__line">{{ section.settings.line }}</p>{%- endif -%}
+    {%- if fakten != blank -%}
+      <p class="az-hero__facts">
+        {%- assign teile = fakten | split: '·' -%}
+        {%- for t in teile -%}{%- assign tt = t | strip -%}{%- if tt != blank -%}<span>{{ tt }}</span>{%- endif -%}{%- endfor -%}
+      </p>
+    {%- endif -%}
     <div class="az-hero__ctas">
       {%- if section.settings.cta_label != blank -%}
         <a class="az-btn" href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}">{{ section.settings.cta_label }}</a>
       {%- endif -%}
       {%- if section.settings.link_label != blank -%}
-        <a class="az-link" href="{{ section.settings.link_target | default: '#anlass' }}">{{ section.settings.link_label }}</a>
+        <a class="az-link" href="{{ section.settings.link_target | default: '#duftberater' }}">{{ section.settings.link_label }}</a>
       {%- endif -%}
     </div>
   </div>
@@ -47,6 +71,11 @@
 <style>
   /* Video spielt einmal und bleibt auf der Frontansicht stehen. Bei reduzierter Bewegung nur das Standbild. */
   #shopify-section-{{ section.id }} .az-hero__still { display: none; }
+  /* Kein Play-Symbol des Browsers, wenn Autoplay gesperrt ist (z. B. iPhone im Stromsparmodus): dann bleibt das erste Bild stehen. */
+  #shopify-section-{{ section.id }} .az-hero__video { pointer-events: none; }
+  #shopify-section-{{ section.id }} .az-hero__video::-webkit-media-controls,
+  #shopify-section-{{ section.id }} .az-hero__video::-webkit-media-controls-start-playback-button,
+  #shopify-section-{{ section.id }} .az-hero__video::-webkit-media-controls-overlay-play-button { display: none !important; -webkit-appearance: none; opacity: 0; }
   @media (prefers-reduced-motion: reduce) {
     #shopify-section-{{ section.id }} .az-hero__video { display: none; }
     #shopify-section-{{ section.id }} .az-hero__still { display: block; }
@@ -56,13 +85,28 @@
   (function () {
     var v = document.querySelector('#shopify-section-{{ section.id }} [data-az-hero-video]');
     if (!v) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); return; }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.pause(); return; }
     v.muted = true;
-    var tryPlay = function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
-    // Autoplay-Sperre (z. B. Stromsparmodus): Poster bleibt sichtbar, beim ersten Tippen/Scrollen erneut versuchen.
-    tryPlay();
-    v.addEventListener('loadeddata', tryPlay, { once: true });
-    ['touchstart', 'scroll', 'click'].forEach(function (e) { window.addEventListener(e, tryPlay, { once: true, passive: true }); });
+    // Genau ein Startversuch. Kein erneuter Versuch beim Scrollen/Tippen: das ließ das Video
+    // mitten im Scrollen anlaufen bzw. nach dem Ende von vorn beginnen.
+    var started = false;
+    var start = function () {
+      if (started) return;
+      started = true;
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {}); // gesperrt: erstes Bild bleibt stehen
+    };
+    // Erst starten, wenn der 5-Sekunden-Clip ganz geladen ist (sonst stockt er in der ersten
+    // Sekunde, weil die Seite parallel Bilder lädt); spätestens nach 4 s, falls der Browser
+    // nicht vorlädt (z. B. iOS im Datensparmodus).
+    var loaded = function () {
+      var b = v.buffered, d = v.duration;
+      return v.readyState >= 3 && b.length > 0 && d > 0 && b.end(b.length - 1) >= d - 0.25;
+    };
+    var check = function () { if (loaded()) start(); };
+    ['loadeddata', 'progress', 'suspend', 'canplaythrough'].forEach(function (e) { v.addEventListener(e, check); });
+    check();
+    setTimeout(start, 4000);
   })();
 </script>
 
@@ -81,10 +125,12 @@
     { "type": "text", "id": "persian", "label": "Persischer Schriftzug", "default": "عزیزم" },
     { "type": "text", "id": "persian_meaning", "label": "Bedeutung", "default": "persisch für „mein Schatz“" },
     { "type": "text", "id": "line", "label": "Satz", "default": "Der Duft der zweiten Generation." },
+    { "type": "text", "id": "fakten", "label": "Faktenzeile (mit · trennen)", "default": "Rund 30 % Duftöl · ab [ab-preis] · Versand ab 20 € kostenlos", "info": "[ab-preis] = günstigster Preis der Kollektion unten, live aus Shopify. Nur Belegtes eintragen." },
+    { "type": "collection", "id": "preis_kollektion", "label": "Kollektion für den ab-Preis (leer = Drop 1)" },
     { "type": "text", "id": "cta_label", "label": "Button", "default": "Düfte entdecken" },
     { "type": "url", "id": "cta_link", "label": "Button-Link" },
-    { "type": "text", "id": "link_label", "label": "Textlink", "default": "Nach Anlass wählen" },
-    { "type": "text", "id": "link_target", "label": "Textlink-Ziel", "default": "#anlass" }
+    { "type": "text", "id": "link_label", "label": "Textlink", "default": "Welcher Duft passt zu mir?" },
+    { "type": "text", "id": "link_target", "label": "Textlink-Ziel", "default": "#duftberater" }
   ],
   "presets": [{ "name": "Azizam Hero (Video)" }]
 }

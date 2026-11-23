@@ -87,14 +87,14 @@ Regeln aus `ARBEITSWEISE.md`: Shopify lesen frei, ändern nur mit Freigabe. E-Ma
 
 ## 4 · Modelle und Plan
 
-✅ Stand 25.09.2026 laut Anthropic-API-Dokumentation. Die Quelltexte nannten teils Vorgänger (Sonnet 5, Opus 4.8).
+✅ Stand 03.11.2026 laut Anthropic-API-Dokumentation (geprüft 11.11.2026 [Code]). Die Quelltexte nannten teils Vorgänger (Sonnet 5, Opus 4.8).
 
-| Modell | Kontext | Einordnung | Für Azizam |
-|---|---|---|---|
-| **Fable 5.1** | 1 Mio. Token | Stärkstes allgemein verfügbares Modell, teuerste Stufe | Nur für die schwersten Analysen; ob es im eigenen Abo verfügbar ist, prüfen ⚠️ |
-| **Opus 5.5** | 1 Mio. Token | Aktuelles Opus, für lange, agentische Wissensarbeit | Recht- und Compliance-Recherche, Strategie, Sortiment, große Datenanalysen, Automatisierung |
-| **Sonnet 5.5** | 1 Mio. Token | Schneller und günstiger, für klar abgegrenzte Alltagsaufgaben | Produkttexte, E-Mails, Tabellen, Zusammenfassungen |
-| **Haiku 4.5** | 200.000 Token | Schnell und günstig | Masse und Routine: sortieren, einordnen, kurze Übersetzungen |
+| Modell | Kontext | Preis je 1 Mio. Token (ein / aus) | Einordnung | Für Azizam |
+|---|---|---|---|---|
+| **Fable 5.2** | 1 Mio. | 8 $ / 40 $ | Stärkstes allgemein verfügbares Modell; denkt immer mit, einzelne Anfragen können Minuten dauern; keine Null-Speicherung (30 Tage Aufbewahrung) | Entwicklung und Prüfungen in Claude Code, einmalige Vorausberechnungen; nicht für Kundengespräche im Shop |
+| **Opus 5.5** | 1 Mio. | 4 $ / 20 $ | Aktuelles Opus, für lange, agentische Wissensarbeit | Recht- und Compliance-Recherche, Strategie, Sortiment, große Datenanalysen |
+| **Sonnet 5.5** | 1 Mio. | 2 $ / 10 $ | Schneller und günstiger, für klar abgegrenzte Alltagsaufgaben | Produkttexte, E-Mails, Tabellen; Duftberater heute |
+| **Haiku 5.5** | 1 Mio. | 0,10 $ / 0,50 $ | Schnell und sehr günstig | Masse und Routine; Kandidat für den Duftberater (mit `npm run qualitaet` prüfen) |
 
 1 Mio. Token entsprechen grob 500–750 Seiten Text (laut Text ⚠️).
 
@@ -462,8 +462,8 @@ Vor jeder Automatisierung die eine Frage: **„Welche wiederkehrende Aufgabe fri
 
 | Angabe in den Texten | Bewertung |
 |---|---|
-| „Sonnet 5 / Opus 4.8“ als aktuelle Modelle; „Haiku, sobald verfügbar“ | ✗ veraltet: aktuell Opus 5.5, Sonnet 5.5, Fable 5.1; Haiku 4.5 ist verfügbar (§4) |
-| Kontext „200k“ hier, „1 Mio.“ dort | modellabhängig: 1 Mio. bei Opus, Sonnet, Fable; 200k bei Haiku 4.5 |
+| „Sonnet 5 / Opus 4.8“ als aktuelle Modelle; „Haiku, sobald verfügbar“ | ✗ veraltet: aktuell Fable 5.2, Opus 5.5, Sonnet 5.5, Haiku 5.5 (§4) |
+| Kontext „200k“ hier, „1 Mio.“ dort | 1 Mio. bei allen aktuellen Modellen (§4); 200k galt für Haiku 4.5 |
 | Beispiel-Zielgruppe „Frauen 25–45, natürliche Düfte“; Verkauf über Etsy und lokale Märkte | ✗ nicht Azizam (Zielgruppe 17,5–25, Onlineshop geplant) |
 | Großhandel an Friseure und Boutiquen, Preise in Franken | ✗ kein Azizam-Thema; Azizam versendet nicht in die Schweiz |
 | „35–45 % weniger Betriebskosten in 90 Tagen“ | ✗ unbelegt, nicht verwenden |

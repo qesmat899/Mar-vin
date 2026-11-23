@@ -1,0 +1,81 @@
+{{ 'azizam.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Startseite: heller Abschnitt als Kontrast zur dunklen Seite. Erzählt, wofür der Name steht (Marken-Briefing:
+  „Der Duft der zweiten Generation“, Mission „wie eine gute Uhr, nicht wie ein Kostüm“) und nennt nur belegte Fakten
+  (rund 30 % Duftöl, in Deutschland abgefüllt). Keine „Made in Germany“-, Handarbeits- oder Haltbarkeitsaussagen.
+{%- endcomment -%}
+{%- liquid
+  assign disc = all_products[section.settings.discovery_handle]
+-%}
+<section class="az az-wort" aria-labelledby="az-wort-{{ section.id }}">
+  <div class="az-wrap az-wort__grid">
+    <div class="az-wort__mark" aria-hidden="true">
+      <span class="az-wort__fa" lang="fa">{{ section.settings.word }}</span>
+      <span class="az-wort__say">{{ section.settings.word_meaning }}</span>
+    </div>
+    <div class="az-wort__copy">
+      {%- if section.settings.kicker != blank -%}<p class="az-wort__kicker">{{ section.settings.kicker }}</p>{%- endif -%}
+      <h2 id="az-wort-{{ section.id }}" class="az-h az-wort__title">{{ section.settings.heading }}</h2>
+      <div class="az-wort__text">{{ section.settings.text }}</div>
+      {%- if section.blocks.size > 0 -%}
+        <ul class="az-wort__facts">
+          {%- for block in section.blocks -%}
+            <li {{ block.shopify_attributes }}><b>{{ block.settings.big }}</b><span>{{ block.settings.label }}</span></li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+      {%- if disc != blank and disc.available and section.settings.cta_label != blank -%}
+        <a class="az-wort__cta" href="{{ disc.url }}">{{ section.settings.cta_label }} · {{ disc.price | money }}<span aria-hidden="true"> →</span></a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  .az.az-wort { --w-bg: #efe6d6; --w-ink: #1b140e; --w-muted: #6b5a45; --w-gold: #8a6420; --w-line: rgba(27, 20, 14, .16);
+    background: var(--w-bg); color: var(--w-ink); padding: 88px 0; }
+  @media (min-width: 900px) { .az.az-wort { padding: 136px 0; } }
+  .az-wort__grid { display: grid; gap: 48px; align-items: center; }
+  @media (min-width: 900px) { .az-wort__grid { grid-template-columns: 5fr 7fr; gap: 96px; } }
+  .az-wort__mark { display: grid; gap: 14px; justify-items: start; }
+  .az-wort__fa { font-size: clamp(5rem, 16vw, 11rem); line-height: 1; color: var(--w-gold); font-family: 'Noto Nastaliq Urdu', 'Noto Naskh Arabic', serif; }
+  .az-wort__say { font-family: var(--az-serif); font-style: italic; font-size: 1.15rem; color: var(--w-muted); }
+  .az-wort__kicker { margin: 0 0 14px; font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--w-gold); }
+  .az-wort .az-wort__title { color: var(--w-ink); font-size: clamp(2.1rem, 5vw, 3.6rem); line-height: 1.06; text-wrap: balance; }
+  .az-wort__text { margin-top: 22px; max-width: 54ch; font-size: 1.05rem; line-height: 1.7; color: var(--w-ink); }
+  .az-wort__text p { margin: 0 0 .8em; }
+  .az-wort__facts { list-style: none; margin: 34px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--w-line); }
+  .az-wort__facts li { display: grid; gap: 4px; padding: 18px 12px 0 0; }
+  .az-wort__facts b { font-family: var(--az-serif); font-weight: 400; font-size: clamp(1.4rem, 3vw, 2rem); line-height: 1.1; }
+  .az-wort__facts span { font-size: .8rem; color: var(--w-muted); line-height: 1.4; }
+  .az-wort__cta { display: inline-block; margin-top: 34px; padding-bottom: 4px; font-size: .9rem; letter-spacing: .04em; color: var(--w-ink);
+    text-decoration: none; border-bottom: 1px solid var(--w-gold); }
+  .az-wort__cta:hover { color: var(--w-gold); }
+  .az-wort :focus-visible { outline: 2px solid var(--w-gold); outline-offset: 3px; }
+  @media (max-width: 599px) { .az-wort__facts { grid-template-columns: 1fr; } .az-wort__facts li { grid-template-columns: 7rem 1fr; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--w-line); } }
+</style>
+
+{% schema %}
+{
+  "name": "Azizam Wort (hell)",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "word", "label": "Persisches Wort", "default": "عزیزم" },
+    { "type": "text", "id": "word_meaning", "label": "Bedeutung", "default": "„mein Schatz“" },
+    { "type": "text", "id": "kicker", "label": "Überzeile", "default": "Der Duft der zweiten Generation" },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Für alle, die hier zu Hause sind und dort ihre Wurzeln haben." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Azizam ist das Wort, mit dem persische Familien die Menschen rufen, die ihnen am nächsten sind. Unsere Düfte sollen genau so wirken: vertraut, warm und nah an der Haut.</p><p>Herkunft trägt man bei uns wie eine gute Uhr, selbstverständlich und ohne Kostüm.</p>" },
+    { "type": "text", "id": "discovery_handle", "label": "Produkt für den Link (Handle)", "default": "discovery-set" },
+    { "type": "text", "id": "cta_label", "label": "Linktext", "default": "Drei Düfte kennenlernen: Discovery Set" }
+  ],
+  "blocks": [{ "type": "fakt", "name": "Fakt", "settings": [
+    { "type": "text", "id": "big", "label": "Große Angabe" },
+    { "type": "text", "id": "label", "label": "Erklärung" }
+  ] }],
+  "presets": [{ "name": "Azizam Wort (hell)", "blocks": [
+    { "type": "fakt", "settings": { "big": "rund 30 %", "label": "Duftöl, statt der 12 bis 18 % bei Eau de Parfum" } },
+    { "type": "fakt", "settings": { "big": "19 Düfte", "label": "in drei Richtungen" } },
+    { "type": "fakt", "settings": { "big": "Deutschland", "label": "hier abgefüllt" } }
+  ] }]
+}
+{% endschema %}

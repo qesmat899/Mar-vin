@@ -9,7 +9,7 @@ import { DIMENSIONEN, DIM_LABEL } from '../lib/lexikon.js';
 const quelle = process.argv[2];
 const roh = quelle
   ? JSON.parse(readFileSync(quelle, 'utf8')).produkte
-  : await fetch('https://azizamfragrances.com/collections/all?view=berater').then((r) => r.text()).then((t) => JSON.parse(t.slice(t.indexOf('{'))).produkte);
+  : await fetch('https://azizamfragrances.de/collections/all?view=berater').then((r) => r.text()).then((t) => JSON.parse(t.slice(t.indexOf('{'))).produkte);
 
 const zeichen = (d) => (d.wert === null ? '  ?' : `${d.wert}${d.quelle === 'bestaetigt' ? '✓' : '~'}`.padStart(3));
 const kopf = ['Duft'.padEnd(15), ...DIMENSIONEN.map((d) => DIM_LABEL[d].slice(0, 6).padStart(6)), 'Int.', ' Noten'];

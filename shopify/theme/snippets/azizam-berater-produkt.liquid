@@ -11,7 +11,8 @@
   "shopify_id": {{ p.id | append: '' | json }},
   "t": {{ p.title | json }},
   "u": {{ p.url | json }},
-  "p": {{ p.price_min | money | json }},
+  {%- capture gp -%}{% render 'azizam-grundpreis', product: p %}{%- endcapture %}
+  "p": {{ p.price_min | money | append: ' (' | append: gp | append: ')' | json }},
   "img": {% if bild %}{{ bild.preview_image | image_url: width: 1100 | json }}{% else %}null{% endif %},
   "img2": {% if p.media[0] %}{{ p.media[0].preview_image | image_url: width: 300 | json }}{% else %}null{% endif %},
   "verfuegbar": {{ p.available | json }},

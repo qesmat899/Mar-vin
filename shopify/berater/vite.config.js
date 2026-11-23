@@ -8,6 +8,7 @@ export default defineConfig({
   build: {
     outDir: '../theme/assets',
     emptyOutDir: false,
+    copyPublicDir: false, // public/ gehört zum Vercel-Server, nicht ins Theme
     cssCodeSplit: false,
     lib: { entry: 'src/main.jsx', name: 'AzizamBerater', formats: ['iife'], fileName: () => 'azizam-berater.js' },
     rollupOptions: { output: { assetFileNames: 'azizam-berater.[ext]' } },
