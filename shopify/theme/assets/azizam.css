@@ -532,6 +532,7 @@ azizam-finder, azizam-discovery { display: block; }
 .az-pw__err { margin: 10px 0 0; font-size: .88rem; color: #e8a08a; }
 .az-pw__facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 0; margin: 26px 0 0; font-size: .82rem; letter-spacing: .03em; color: var(--az-muted); }
 .az-pw__facts span + span::before { content: "·"; margin: 0 10px; color: var(--az-gold); }
+@media (max-width: 749px) { .az-pw__facts { flex-direction: column; gap: 4px; } .az-pw__facts span + span::before { content: none; } }
 
 .az-pw__drop { width: 100%; max-width: 1180px; margin: 0 auto; padding: 24px 20px 10px; }
 .az-pw__droplbl { margin-bottom: 14px; }

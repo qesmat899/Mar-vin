@@ -80,7 +80,6 @@
     <span>© {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
     <a href="/policies/legal-notice">Impressum</a>
     {%- if shop.privacy_policy -%}<a href="{{ shop.privacy_policy.url }}">Datenschutz</a>{%- endif -%}
-    <button type="button" class="az-pw__login" data-az-pw-login>{{ s.login_label }}</button>
   </nav>
 </section>
 
@@ -133,8 +132,7 @@
     { "type": "text", "id": "fakten", "label": "Faktenzeile (mit · trennen)", "default": "Rund 30 % Duftöl · 10, 30 & 50 ml · In Deutschland abgefüllt" },
     { "type": "checkbox", "id": "drop_zeigen", "label": "Düfte als Vorgeschmack zeigen", "default": true },
     { "type": "collection", "id": "kollektion", "label": "Kollektion (leer = Drop 1)" },
-    { "type": "text", "id": "drop_titel", "label": "Titel über den Düften", "default": "Die ersten fünf" },
-    { "type": "text", "id": "login_label", "label": "Link für den Inhaber", "default": "Mit Passwort öffnen" }
+    { "type": "text", "id": "drop_titel", "label": "Titel über den Düften", "default": "Die ersten fünf" }
   ],
   "presets": [{ "name": "Azizam Passwortseite" }]
 }
