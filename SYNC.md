@@ -43,7 +43,7 @@
 ## Aktueller Stand (überschreiben, nicht anhängen)
 
 - Bisher persönlicher Verkauf im Freundeskreis; seit 20.11. sind die fünf Drop-1-Düfte im Shop bestellbar (Kaufweg bis Warenkorb am 21.11. geprüft). Positionierung noch nicht festgelegt.
-- **Shop live auf azizamfragrances.de** (Shopify-Shop „Azizam Fragrances“, einziger aktiver Shop seit 20.11.; .com leitet weiter). 19 Düfte mit Azizam-Namen (`duefte.csv`), 10/30/50 ml, Preise nach `D-007`, Grundpreis €/100 ml an allen Preisen. Shop im Pre-Launch (Passwortschutz). Live-Theme seit 24.11.: „Azizam #05 – Passwortseite Video 24.11. (Claude)“ (von Mar veröffentlicht). Theme-Bausteine im Repo unter `shopify/theme/`; Templates und Einstellungen gelten so, wie sie im Shopify-Theme stehen.
+- **Shop live auf azizamfragrances.de** (Shopify-Shop „Azizam Fragrances“, einziger aktiver Shop seit 20.11.; .com leitet weiter). 19 Düfte mit Azizam-Namen (`duefte.csv`), 10/30/50 ml, Preise nach `D-007`, Grundpreis €/100 ml an allen Preisen. Shop im Pre-Launch (Passwortschutz). Live-Theme seit 24.11.: „Azizam #06 – Passwortseite Du bist dabei 24.11. (Claude)“ (von Mar veröffentlicht; Double-Opt-in mit eigener Mail, Bestätigung landet auf der Passwortseite mit „Du bist dabei“, getestet 24.11.). Theme-Bausteine im Repo unter `shopify/theme/`; Templates und Einstellungen gelten so, wie sie im Shopify-Theme stehen.
 - Ziel: In den nächsten 3 Monaten deutschlandweit online verkaufen, Shop komplett neu starten.
 - **Flakon und Verpackung provisorisch vorhanden** (Mar, 20.11.); endgültige Lösung weiter offen.
 - **Drop-1-Teaser live (20.11.):** Theme „Azizam – Drop 1 Teaser 20.11. (Claude)“ von Mar veröffentlicht; Nebel als WebGL-Wolke (nach Aceternity „cloud-shader“, `assets/azizam-nebel.js` nur im Theme, Lizenz) live mit Mars Go. Die 14 dunklen Düfte stehen in Shopify auf „Entwurf“ (Ausblenden aus dem Kanal ist über den Konnektor gesperrt; Mars Go 20.11.); zum Enthüllen wieder auf „Aktiv“.
@@ -97,7 +97,6 @@
 
 | Wer | Aufgabe | Status |
 |-----|---------|--------|
-| Mar | Theme „Azizam #06 – Passwortseite Du bist dabei 24.11. (Claude)“ prüfen und veröffentlichen, danach Mail-Vorlage `shopify/benachrichtigungen/marketing-bestaetigung.liquid` in „Bestätigung für Kundenmarketing“ einfügen (Reihenfolge wichtig: erst Theme, dann Mail) und mit echter Anmeldung testen | offen |
 | Mar | **Zum Launch (Passwort weg):** Button-Link der Bestätigungs-Mail auf `{{ customer.subscribe_url }}` zurückstellen, sonst bestätigt niemand mehr (Hinweis im Kopf der Mail-Vorlage) | offen |
 | Mar | Theme-Kopie „Azizam #02 – Next Level 21.11. (Claude)“ in der Vorschau prüfen und veröffentlichen; PR des Branches `claude/relaxed-galileo-s09d74` mergen (enthält auch die offenen Stände Drop 1, Grundpreis, Berater-Feinschliff und #11) | offen |
 | Mar | Vor den Pixeln klären (Todoist, Label `vor-pixel`): CPNP je Duft eingetragen? · LUCID registriert? · GPSR-Angaben auf Produktseiten · Hausnummer Impressum/Widerruf vereinheitlichen · Titel und Meta-Beschreibung der Startseite im Admin | offen |
