@@ -37,6 +37,10 @@
     {%- endif -%}
 
     <div class="az-pw__form">
+      <div class="az-pw__dabei" data-az-dabei hidden role="status" aria-live="polite">
+        <p class="az-pw__ok" data-az-dabei-text>{{ s.dabei_warten }}</p>
+        <a class="az-pw__dabei-link" data-az-dabei-link href="#" hidden>{{ s.dabei_knopf }}<span aria-hidden="true"> →</span></a>
+      </div>
       {%- form 'customer', id: 'AzizamPrelaunch', class: 'az-pw__formwrap' -%}
         <input type="hidden" name="contact[tags]" value="newsletter,warteliste,prelaunch">
         {%- if form.posted_successfully? -%}
@@ -86,6 +90,25 @@
       spielen();
       v.loop = false;
     }
+    // Klick aus der Bestätigungs-Mail: /password?bestaetigt=<customer.subscribe_url>. Shopify leitet nach dem
+    // Bestätigen sonst kommentarlos weiter. Hier läuft die Bestätigung im Hintergrund (nur Shopifys eigene
+    // Adresse /account/subscribe mit Token), danach „Du bist dabei“. Klappt es nicht: Knopf zum Bestätigen.
+    var d = root.querySelector('[data-az-dabei]');
+    var roh = new URLSearchParams(location.search).get('bestaetigt');
+    if (d && roh) {
+      var ziel = null;
+      try { var u = new URL(roh, location.origin); if (u.pathname === '/account/subscribe' && u.searchParams.get('token')) ziel = u.pathname + u.search; } catch (e) {}
+      try { history.replaceState(null, '', location.pathname); } catch (e) {}
+      if (ziel) {
+        var txt = d.querySelector('[data-az-dabei-text]'), lnk = d.querySelector('[data-az-dabei-link]');
+        var fw = root.querySelector('.az-pw__formwrap'); if (fw) fw.hidden = true;
+        d.hidden = false;
+        var fehler = function () { txt.textContent = {{ s.dabei_fehler | json }}; lnk.href = ziel; lnk.hidden = false; };
+        fetch(ziel, { credentials: 'same-origin', redirect: 'follow' })
+          .then(function (r) { if (r.ok) { txt.textContent = {{ s.dabei_ok | json }}; } else { fehler(); } })
+          .catch(fehler);
+      }
+    }
     var c = root.querySelector('[data-az-count]');
     if (c) {
       var ziel = new Date(c.dataset.azCount).getTime();
@@ -121,6 +144,10 @@
     { "type": "text", "id": "button", "label": "Button", "default": "Eintragen" },
     { "type": "textarea", "id": "hinweis", "label": "Einwilligungstext", "default": "Mit dem Eintragen stimmst du E-Mails von Azizam zu. Abmelden jederzeit." },
     { "type": "text", "id": "erfolg", "label": "Bestätigung", "default": "Danke! Du erfährst es als Erstes." },
+    { "type": "text", "id": "dabei_ok", "label": "Nach Klick in der Bestätigungs-Mail", "default": "Du bist dabei. Wir sagen dir zuerst Bescheid." },
+    { "type": "text", "id": "dabei_warten", "label": "Bestätigung läuft", "default": "Einen Moment …" },
+    { "type": "text", "id": "dabei_fehler", "label": "Bestätigung hat nicht geklappt", "default": "Fast geschafft – tipp hier, um es abzuschließen." },
+    { "type": "text", "id": "dabei_knopf", "label": "Knopf, falls es nicht geklappt hat", "default": "Jetzt bestätigen" },
     { "type": "text", "id": "fakten", "label": "Faktenzeile (mit · trennen, optional)" },
     { "type": "checkbox", "id": "drop_zeigen", "label": "Düfte als Vorgeschmack zeigen", "default": true },
     { "type": "collection", "id": "kollektion", "label": "Kollektion (leer = Drop 1)" },
