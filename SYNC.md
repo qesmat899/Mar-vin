@@ -97,6 +97,8 @@
 
 | Wer | Aufgabe | Status |
 |-----|---------|--------|
+| Mar | Theme „Azizam #06 – Passwortseite Du bist dabei 24.11. (Claude)“ prüfen und veröffentlichen, danach Mail-Vorlage `shopify/benachrichtigungen/marketing-bestaetigung.liquid` in „Bestätigung für Kundenmarketing“ einfügen (Reihenfolge wichtig: erst Theme, dann Mail) und mit echter Anmeldung testen | offen |
+| Mar | **Zum Launch (Passwort weg):** Button-Link der Bestätigungs-Mail auf `{{ customer.subscribe_url }}` zurückstellen, sonst bestätigt niemand mehr (Hinweis im Kopf der Mail-Vorlage) | offen |
 | Mar | Theme-Kopie „Azizam #02 – Next Level 21.11. (Claude)“ in der Vorschau prüfen und veröffentlichen; PR des Branches `claude/relaxed-galileo-s09d74` mergen (enthält auch die offenen Stände Drop 1, Grundpreis, Berater-Feinschliff und #11) | offen |
 | Mar | Vor den Pixeln klären (Todoist, Label `vor-pixel`): CPNP je Duft eingetragen? · LUCID registriert? · GPSR-Angaben auf Produktseiten · Hausnummer Impressum/Widerruf vereinheitlichen · Titel und Meta-Beschreibung der Startseite im Admin | offen |
 | Mar | Pixel: Shopify-Apps „Facebook & Instagram“ und „TikTok“ verbinden, Datenschutzerklärung ergänzen, Double-Opt-in an, Testkauf (Anleitung im Artifact „Azizam Release-Plan“) | offen |
