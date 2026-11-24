@@ -97,6 +97,7 @@
 
 | Wer | Aufgabe | Status |
 |-----|---------|--------|
+| Mar | Absender-Mail `info@azizamfragrances.com` in Shopify setzen und Domain authentifizieren (CNAME-Einträge aus Shopify bei IONOS eintragen; DNS und Postfächer beider Domains liegen bei IONOS, SPF IONOS, DMARC p=none – Stand 24.11.); danach prüft Claude die Einträge. Optional: Google-Konto mit derselben Adresse für das Profilbild in Gmail | offen |
 | Mar | **Zum Launch (Passwort weg):** Button-Link der Bestätigungs-Mail auf `{{ customer.subscribe_url }}` zurückstellen, sonst bestätigt niemand mehr (Hinweis im Kopf der Mail-Vorlage) | offen |
 | Mar | Theme-Kopie „Azizam #02 – Next Level 21.11. (Claude)“ in der Vorschau prüfen und veröffentlichen; PR des Branches `claude/relaxed-galileo-s09d74` mergen (enthält auch die offenen Stände Drop 1, Grundpreis, Berater-Feinschliff und #11) | offen |
 | Mar | Vor den Pixeln klären (Todoist, Label `vor-pixel`): CPNP je Duft eingetragen? · LUCID registriert? · GPSR-Angaben auf Produktseiten · Hausnummer Impressum/Widerruf vereinheitlichen · Titel und Meta-Beschreibung der Startseite im Admin | offen |
