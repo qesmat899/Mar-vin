@@ -3,14 +3,12 @@
   Einfügen in: Shopify-Admin → Einstellungen → Benachrichtigungen → Kundenbenachrichtigungen
                → „Bestätigung für Kundenmarketing“ (Customer marketing confirmation) → Code bearbeiten.
   Betreff:     Ein Klick noch – dann bist du dabei
-  Wichtig:     Der Button nutzt customer.subscribe_url (Ersatz: confirmation_url). Nicht offiziell dokumentiert:
-               Vor dem Einfügen in der Shopify-Originalvorlage nachsehen, welche Variable im href des Buttons
-               steht, und genau diese unten bei az_link eintragen. Test: echte Anmeldung auf der Passwortseite.
+  Wichtig:     Der Button nutzt {{ customer.subscribe_url }} – so steht es in Shopifys Originalvorlage
+               (von Mar am 24.11.2026 aus dem Admin kopiert). Test: echte Anmeldung auf der Passwortseite.
   Gestaltung:  Azizam-Palette: Cremeweiß #F7F5F0, Inhalt #FFFFFF, Schwarzbraun #25241F, Champagnergold #B49A6A,
                Fließtext #68665F, Linien #EEECE7. Nur Tabellen und Inline-Stile,
                damit Gmail, Outlook und Apple Mail es gleich zeigen. Keine Bilder nötig.
 {%- endcomment -%}
-{%- assign az_link = customer.subscribe_url | default: confirmation_url -%}
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -51,7 +49,7 @@
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:32px auto 0;">
                 <tr>
                   <td align="center" style="background:#25241F; border-radius:2px;">
-                    <a href="{{ az_link }}" target="_blank" style="display:inline-block; padding:16px 34px; font-family:Helvetica,Arial,sans-serif; font-size:13px; letter-spacing:2px; text-transform:uppercase; color:#F7F5F0; text-decoration:none;">E-Mail bestätigen</a>
+                    <a href="{{ customer.subscribe_url }}" target="_blank" style="display:inline-block; padding:16px 34px; font-family:Helvetica,Arial,sans-serif; font-size:13px; letter-spacing:2px; text-transform:uppercase; color:#F7F5F0; text-decoration:none;">E-Mail bestätigen</a>
                   </td>
                 </tr>
               </table>
