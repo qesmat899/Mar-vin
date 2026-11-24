@@ -1,0 +1,51 @@
+  <style>
+    /* Azizam-Stil für Shopify-Standardbenachrichtigungen (Bestellbestätigung, Versand, Konto …).
+       Ersetzt in der Originalvorlage NUR den Stilblock im Kopf der Mail. Die Liquid-Logik bleibt unberührt.
+       Achtung: In diesen Kommentar nie Tags schreiben (z. B. das schließende Style-Tag) – das beendet den Block.
+       Palette: Cremeweiß #F7F5F0 (Kopf/Fuß), Reinweiß #FFFFFF (Inhalt), Schwarzbraun #25241F (Schrift, Button),
+       Champagnergold #B49A6A (Akzente), Warmes Grau #68665F (Fließtext), Helles Greige #EEECE7 (Linien). */
+    body, .body { background-color: #FFFFFF; }
+    body, td, p, span, .button__text { font-family: Helvetica, Arial, sans-serif; }
+
+    /* Kopf: cremefarbenes Band mit Schriftzug und Bestellnummer */
+    .header { margin: 0 0 8px; }
+    .header__cell { background-color: #F7F5F0; padding: 36px 0 30px; }
+    .shop-name__text, .shop-name__text a { font-family: Georgia, 'Times New Roman', serif; font-weight: normal; font-size: 30px; letter-spacing: .5px; color: #25241F; text-decoration: none; }
+    .order-number__text, .po-number__text { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #B49A6A; }
+
+    .content__cell { padding-top: 28px; }
+
+    /* Überschriften und Text */
+    h2 { font-family: Georgia, 'Times New Roman', serif; font-weight: normal; font-size: 28px; line-height: 1.25; color: #25241F; }
+    h3 { font-family: Georgia, 'Times New Roman', serif; font-weight: normal; font-size: 20px; color: #25241F; }
+    h4, .estimated_delivery__title { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #B49A6A; }
+    p, .customer-info__item, .customer-info__item p, .order-list__estimated-delivery { color: #68665F; }
+    a, a:hover, a:active, a:visited { color: #25241F; }
+
+    /* Button: Schwarzbraun mit cremefarbener Schrift (Shop-App-Button behält Shopifys Farbe) */
+    .button__cell { background: #25241F; border-radius: 2px; }
+    .actions-buttons .button__cell--primary { background-color: #25241F; }
+    .actions-buttons .button__cell--outlined .button__text { color: #25241F; }
+    .main-action-cell .button__text, .button__cell--primary .button__text { color: #F7F5F0; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
+    .link__cell, .link__cell a { color: #68665F; }
+
+    /* Trennlinien */
+    .section, .footer { border-top-color: #EEECE7; }
+    .subtotal-table--total td { border-top-color: #EEECE7; }
+    .subtotal-table__line { border-bottom-color: #EEECE7; }
+    .order-list__delivery-method-type-separator { border-color: #EEECE7; }
+
+    /* Bestellübersicht */
+    .order-list__product-image { border-color: #EEECE7; border-radius: 2px; }
+    .order-list__item-title { font-family: Georgia, 'Times New Roman', serif; font-weight: normal; font-size: 16px; color: #25241F; }
+    .order-list__item-variant, .order-list__unit-price, .order-list__item-discount-allocation { color: #68665F; }
+    .order-list__item-price, .order-list__item-original-price { color: #25241F; }
+    .subtotal-line__title, .subtotal-line__title span { color: #68665F; }
+    .subtotal-line__value strong { color: #25241F; }
+    .subtotal-table--total .subtotal-line__value strong { font-family: Georgia, 'Times New Roman', serif; font-weight: normal; color: #25241F; }
+    .total-discount, .total-discount--amount { color: #25241F; }
+
+    /* Fuß: cremefarbenes Band */
+    .footer__cell { background-color: #F7F5F0; padding: 28px 0 36px; }
+    .disclaimer__subtext { font-size: 13px; line-height: 1.6; color: #68665F; }
+  </style>
