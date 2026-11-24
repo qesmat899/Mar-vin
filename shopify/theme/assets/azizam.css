@@ -491,7 +491,7 @@ azizam-finder, azizam-discovery { display: block; }
 .az-pw__still, .az-pw__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
 .az-pw__still { opacity: .45; }
 .az-pw__video { opacity: 0; transition: opacity 1s var(--az-ease); }
-.az-pw.is-video .az-pw__video { opacity: .45; }
+.is-video .az-pw__video { opacity: .45; }
 .az-pw__video::-webkit-media-controls, .az-pw__video::-webkit-media-controls-start-playback-button,
 .az-pw__video::-webkit-media-controls-overlay-play-button { display: none !important; -webkit-appearance: none; opacity: 0; }
 .az-pw__shade { position: absolute; inset: 0;
