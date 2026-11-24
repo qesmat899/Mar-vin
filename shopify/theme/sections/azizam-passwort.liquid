@@ -13,7 +13,7 @@
       {{ s.poster | image_url: width: 1600 | image_tag: class: 'az-pw__still', loading: 'eager', fetchpriority: 'high', widths: '600, 900, 1200, 1600', sizes: '100vw', alt: '' }}
     {%- endif -%}
     {%- if s.video_url != blank -%}
-      <video class="az-pw__video" muted playsinline webkit-playsinline loop preload="metadata" disablepictureinpicture disableremoteplayback tabindex="-1">
+      <video class="az-pw__video" muted playsinline webkit-playsinline preload="metadata" disablepictureinpicture disableremoteplayback tabindex="-1">
         {%- if s.video_url_mobile != blank -%}<source src="{{ s.video_url_mobile }}" type="video/mp4" media="(max-width: 899px)">{%- endif -%}
         <source src="{{ s.video_url }}" type="video/mp4">
       </video>
@@ -78,12 +78,13 @@
     // Video erst zeigen, wenn es wirklich läuft. Blockiert das Handy das Abspielen (z. B. Stromsparmodus),
     // bleibt das Standbild stehen, ohne Play-Knopf. Ein Versuch beim Laden, einer bei der ersten Berührung.
     var v = root.querySelector('video');
-    if (v && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Nur am Desktop und nur einmal; danach bleibt das letzte Bild stehen. Am Handy bleibt es beim Startbild.
+    if (v && window.matchMedia('(min-width: 900px)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       v.muted = true;
       v.addEventListener('playing', function () { root.classList.add('is-video'); });
       var spielen = function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
       spielen();
-      window.addEventListener('touchstart', spielen, { once: true, passive: true });
+      v.loop = false;
     }
     var c = root.querySelector('[data-az-count]');
     if (c) {
