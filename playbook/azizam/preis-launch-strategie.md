@@ -7,7 +7,7 @@ Stand: 25.11.2026 · Status: **von Mar freigegeben** · Grundlage: E-Commerce-Pl
 > **Im Repo (25.11.2026 [Code]):** Die Entscheidungen daraus stehen verbindlich im Decision Ledger
 > `playbook/azizam/commercial/entscheidungen.csv` als `D-010` bis `D-015` (ersetzen `D-004`, `D-006`, `D-007`).
 > Bei Abweichung gilt der Ledger. Stückkosten in §3/§5 enthalten Annahmen (gekennzeichnet) und sind keine Belege.
-> Shopify ist noch **nicht** umgestellt; das passiert erst nach Mars Freigabe.
+> In Shopify umgesetzt am 25.11.2026 mit Mars Go (gilt sofort; beide Proben liegen bei; Flakonpreis vorläufig 4,14 €).
 
 ---
 

@@ -52,11 +52,11 @@ ausdrücklich nicht bestätigt. Aus `UNKNOWN`-Werten wird nichts Neues abgeleite
 | Flakon | noch nicht gewählt; max. ca. 3 € je Flakon `RECORDED (Mar)` — eine **Obergrenze, keine Kostenangabe** |
 | Konzentration | **30 % Duftöl bei jedem Duft** `RECORDED (Mar)` (branchenüblich 12–18 %) |
 | Größen | **Start mit 30 ml und 50 ml**; 100 ml kommt später, wenn sich einige 30/50 ml verkauft haben `RECORDED (Mar)` 03.10.2026 |
-| Preise | **noch nicht entschieden** `RECORDED (Mar)` 03.10.2026. Alte Werte online 29,99 / 44,99 €, privat 25 / 40 € `OUTDATED`, Herkunft unbelegt, nicht bestätigt |
+| Preise | **Entschieden 25.11.2026:** Ledger `D-010`–`D-013` (`preis-launch-strategie.md`). Historisch: 03.10.2026 noch nicht entschieden. Alte Werte online 29,99 / 44,99 €, privat 25 / 40 € `OUTDATED`, Herkunft unbelegt, nicht bestätigt |
 | Warenkosten (COGS) | `UNKNOWN`. Alte Werte 30 ml 6,28 € · 50 ml 7,80 € `OUTDATED` — abgeleitet aus unbelegten Komponenten (38 €/500 ml, 3 €-Obergrenze, 1,00 € Etikett/Box `ASSUMPTION`), Verschluss fehlt |
-| Rechner | `playbook.py economics` rechnet nur mit den alten Werten aus `brand.json` — Ergebnisse sind Modellrechnungen, keine Geschäftsdaten |
+| Rechner | `playbook.py economics` rechnet seit 25.11.2026 mit den Preisen aus `D-010` und Kosten-Annahmen der Strategie (`brand.json`, Status je Wert) — Ergebnisse sind Modellrechnungen, keine Geschäftsdaten |
 | Firma | Marvin Farienfar, Einzelunternehmer, Würzburg · **Kleinunternehmer nach § 19 UStG** (Mar 03.10.2026), keine MwSt. · USt-IdNr. vorhanden |
-| Versand | alte Website: Deutschland + Österreich, 2–4 Werktage, 4,95 €, kostenlos ab 80 € `OBSERVED (alte Website)`; für den Neustart nicht entschieden. Versandkosten für Azizam `UNKNOWN` |
+| Versand | **Entschieden 25.11.2026:** Ledger `D-012` (nur Deutschland). Historisch: alte Website DE + AT, 4,95 €, frei ab 80 € `OBSERVED`. Versandkosten für Azizam `UNKNOWN` |
 | Shop & Buchhaltung | Shopify-Shop „Azizam Fragrances“, Domain azizamfragrances.de (Mar 20.11.2026; vorher „My Store 3“); Buchhaltung beim Steuerberater, Geschäftsjahr = Kalenderjahr (Mar 04.10.2026) |
 | Rückgabe | gesetzlich 14 Tage; alte Website: freiwillig 30 Tage, wenn Flakon ≥ 80 % gefüllt `OBSERVED (alte Website)`, für den Neustart nicht entschieden |
 | Sortiment | Alte Website zeigte 7 Düfte `OBSERVED`: Narcos, Midnight Café, Erba Bomb, Imaginary, Goldstaub II., Velvet Vanilla, Kings Perfume. Aktueller Duftbestand: `azizam/commercial/duefte.csv`; Les Sables Roses im Sortiment (`D-002`, Mar 16.10.2026) |

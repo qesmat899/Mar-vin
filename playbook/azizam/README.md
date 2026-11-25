@@ -4,8 +4,8 @@
 > nicht verlieren will.
 
 > **Stand 03.10.2026 (gilt vor den Kapiteln):** Kleinunternehmer (keine MwSt.) · Start mit 30 und 50 ml, 100 ml erst nach den ersten Verkäufen ·
-> Preise, Flakon und Verpackung offen · Website offline, Neustart nach Flakonwahl · aktuell kein Verkauf.
-> Konkrete Preise in den Kapiteln stehen als `[Preis offen]`. `05-offer-unit-economics.md` ist als Ganzes veraltet
+> Preise, Sortiment, Versand und Bundles seit 25.11.2026 entschieden (Ledger `D-010`–`D-015`, `preis-launch-strategie.md`);
+> Shop passwortgeschützt, Flakon-Angebot nicht bestellt. Platzhalter `[Preis …]` in den Kapiteln verweisen auf den Ledger. `05-offer-unit-economics.md` ist als Ganzes veraltet
 > (Stand 09/2026) — aktuelle Zahlen nur über `playbook.py economics`. Im Zweifel gilt `SYNC.md`.
 > Die Zuordnung der zwei Duftlinien (Heritage/Editions) ist wieder offen.
 
@@ -42,7 +42,7 @@ max. ca. 3 € (Obergrenze, keine Kostenangabe) · erste Flakonbestellung 100–
 
 **Bekannt:**
 - Produkt: fertige Düfte aus einer Parfumfabrik (alter Einkaufswert 38 € je 500 ml `UNKNOWN`, nicht bestätigt), in eigene Flakons abgefüllt. Flakon und Verpackung werden gesucht (Obergrenze ca. 3 €); danach muss das 3D-Frontend angepasst werden.
-- Größen zum Start 30 und 50 ml, 100 ml später; Preise offen (alte Werte online 29,99 / 44,99 €, privat 25 / 40 € `OUTDATED`, nicht bestätigt). Kleinunternehmer, keine MwSt.
+- Größen zum Start 30 und 50 ml, 100 ml später; Preise laut Ledger `D-010` (10 ml entfällt). Kleinunternehmer, keine MwSt.
 - Website seit ca. 25.09.2026 offline, Neustart nach Flakonwahl. Aktuell kein Verkauf.
 
 **Noch Annahme — bitte korrigieren:**

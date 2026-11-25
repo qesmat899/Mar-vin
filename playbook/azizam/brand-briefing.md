@@ -6,7 +6,7 @@
 
 ## Marke
 - **Name:** Azizam (عزیزم, persisch „mein Schatz / meine Liebe“)
-- **Kategorie:** Eau de Parfum in 30 / 50 ml zum Start (100 ml später, nach den ersten Verkäufen) — Preise offen (alte Werte 29,99 / 44,99 €, privat 25 / 40 € `OUTDATED`, Herkunft unbelegt, von Mar nicht bestätigt). Düfte aus einer Parfumfabrik, in Deutschland in eigene Flakons abgefüllt. Hero: 50 ml. Flakon und Verpackung werden gesucht. Discovery-Set 3 × 2 ml als Idee (alter Preis 9,99 € `EXAMPLE`, widerspricht 12 € in Kap. 07; Preis offen).
+- **Kategorie:** Eau de Parfum in 30 / 50 ml zum Start (100 ml später, nach den ersten Verkäufen) — Preise seit 25.11.2026 entschieden (Ledger `D-010`; Werte nur dort bzw. in `preis-launch-strategie.md`). Düfte aus einer Parfumfabrik, in Deutschland in eigene Flakons abgefüllt. Hero: 50 ml. Flakon-Angebot liegt vor, nicht bestellt (`D-015`). Einstieg: Probierset 5 × 2 ml mit Gutschein auf die erste 50 ml (`D-011`); Discovery-Set und 10 ml entfallen.
 - **Der eine Satz:** „Azizam ist der Duft der zweiten Generation.“
 - **Mission:** Damit die zweite Generation ihre Herkunft tragen kann wie eine gute Uhr — nicht wie ein Kostüm.
 - **Gegner:** das Klischee („orientalisch = laut, süß, Shisha-Bar“), die Austauschbarkeit der Designer-Düfte, Nischenhäuser, die Herkunft als exotisches Zitat für 250 € verkaufen.
@@ -61,8 +61,8 @@ Retouren und Margen sind `UNKNOWN`. Die alten Modellwerte stehen nur noch zur Na
 - COGS 30 ml 6,28 € · 50 ml 7,80 € (aus 0,076 €/ml `UNKNOWN` + 3,00 € Obergrenze + ~1 € Etikett/Box `ASSUMPTION`)
 - mit alten Preisen: Online 50 ml CM1 29,79 € · max. CAC 28,60 € · Break-even-ROAS 1,51 · 30 ml online CM1 16,61 € ·
   privat 50 ml 32,20 € Deckungsbeitrag
-- Offer-Ideen `EXAMPLE`: Duo 2 × 50 ml · Trio 2+1 · Discovery 9,99 € · Post-Purchase-Upsell 30 ml 19,99 € ·
-  kostenloser Versand ab 60 € (alte Website: ab 80 €) · kein Erstbestellrabatt
+- Offers seit 25.11.2026 entschieden (`D-011`–`D-014`): Probierset, Duo „Tag & Abend“ 2 × 50 ml, 3 × 30 ml, Dankeskarte +
+  Cross-Sell-Probe, Versand laut `D-012`. **Kein „2+1 gratis“, kein Dauerrabatt, zum Launch keine Rabatte.**
 
 Werbekosten: Bei Reverse Charge ohne Vorsteuerabzug wirken Ads effektiv mit Faktor 1,19 (Auslegung, Bedingungen im
 Skill `azizam-unit-economics` §5). `playbook.py economics` rechnet nur Modellwerte aus den alten Zahlen.

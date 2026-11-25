@@ -85,7 +85,7 @@ Identität passt zum Namen); Notenprofil noch unbestätigt, siehe `04-produkt-ma
 | Demografie | 22–29, männlich, Student/Azubi/Berufseinsteiger, 1.200–2.200 € netto, Dating-Apps aktiv |
 | **Trigger** | Zwei Dates ohne Kompliment · ein Freund bekommt ständig welche · ein Kommentar („riechst Du nach Duschgel?“) |
 | Bisherige Versuche | Drogerie · ein Designer-Duft, den alle haben · TikTok-Dupe („projiziert zwei Meter, riecht nach Zuckerwatte“) |
-| Einwände | „Hält nicht“ · „Zu teuer für einen Test“ (→ Discovery-Set) · „Wirkt bei mir sowieso nicht“ |
+| Einwände | „Hält nicht“ · „Zu teuer für einen Test“ (→ Probierset) · „Wirkt bei mir sowieso nicht“ |
 | Awareness | 3–4: Solution aware, springt zwischen Produkten |
 | Identität | Der, an den man sich erinnert, nachdem er den Raum verlassen hat. |
 

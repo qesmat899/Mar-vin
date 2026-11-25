@@ -30,7 +30,7 @@ Größenklassen: Nano (1–10 K) und Micro (10–100 K) in der Breite. 100 Nano 
 
 ## Der Barter-Deal
 
-Einsatz: COGS für 50 ml `UNKNOWN` (alter Modellwert 7,80 € `OUTDATED`; + Versand). Wahrgenommener Wert: [Preis offen]. Ein verkaufter Flakon deckt den Deal.
+Einsatz: COGS für 50 ml `UNKNOWN` (alter Modellwert 7,80 € `OUTDATED`; + Versand). Wahrgenommener Wert: [Preis laut D-010]. Ein verkaufter Flakon deckt den Deal.
 Bei bezahlten Creators: Zahlungsziel 14 Tage — Sales laufen vorher rein (negatives Working Capital;
 **Vorsicht PayPal-/Klarna-Reserven**, Auszahlungszyklen prüfen).
 
@@ -47,7 +47,7 @@ leise statt laut — nichts mit Shisha-Bar.
 
 Du erzählst Herkunft, ohne sie zum Klischee zu machen. Genau dieses Gefühl soll Azizam tragen.
 
-Ich schicke Dir den 50-ml-Flakon ([Preis offen]) — ohne Kosten, ohne Pflicht zum Lob.
+Ich schicke Dir den 50-ml-Flakon ([Preis laut D-010]) — ohne Kosten, ohne Pflicht zum Lob.
 
 Wenn er Dir gefällt: ein Video (9:16, ~30 s, z. B. „der Geruch von Zuhause“) bis {Datum},
 mit Werbekennzeichnung und Spark-Code für 30 Tage.
@@ -72,8 +72,8 @@ Länge: 30–40 s · Plattform: TikTok + IG Reels · Deadline: ______
 Persona:          zweite Generation, 22–35, zwischen zwei Welten
 Pain:             „Ich rieche nach jedem — und nach niemandem, der ich bin.“
 Angle:            Der Duft der zweiten Generation
-Unique Mechanism: 30 % Duftöl statt branchenüblich 15 % · kein Kaufhaus dazwischen (50 ml = [Preis offen]) · leise statt laut
-CTA:              „Link in Bio — Discovery-Set, 3 Düfte, [Preis offen].“
+Unique Mechanism: 30 % Duftöl statt branchenüblich 15 % · kein Kaufhaus dazwischen (50 ml = [Preis laut D-010]) · leise statt laut
+CTA:              „Link in Bio — Probierset, 5 Düfte, [Preis laut D-011].“
 
 ── AUFBAU ──
 0–3 s   HOOK   A: „Wenn Du zuhause Farsi sprichst und draußen Deutsch —“
@@ -81,9 +81,9 @@ CTA:              „Link in Bio — Discovery-Set, 3 Düfte, [Preis offen].“
                C: „Ich habe aufgehört, Designer-Düfte zu tragen.“
 3–10 s  PROBLEM  Gesagt: „Drei Leute in meiner Bahn tragen meinen Duft. Und zuhause riecht es nach Safran und Rosenwasser — das gibt’s in keinem Flakon.“
                  Gezeigt: Bahn / Elternküche / Flakonreihe im Bad
-10–25 s LÖSUNG   Kernsatz: „Azizam. Narcos — Honig, Tabak, Zimt, 30 % Duftöl — deshalb nah statt laut. 50 ml für [Preis offen], weil kein Kaufhaus dazwischen ist. Meine Mutter hat den Flakon gesehen und nur gelacht: ‚azizam‘.“
+10–25 s LÖSUNG   Kernsatz: „Azizam. Narcos — Honig, Tabak, Zimt, 30 % Duftöl — deshalb nah statt laut. 50 ml für [Preis laut D-010], weil kein Kaufhaus dazwischen ist. Meine Mutter hat den Flakon gesehen und nur gelacht: ‚azizam‘.“
                  Zu zeigen: Flakon mit Nastaliq-Schriftzug, Gedichtkarte, ein Sprüher aufs Handgelenk
-25–35 s CTA      „Für alle, die hier zu persisch und dort zu deutsch sind. Discovery-Set im Link.“
+25–35 s CTA      „Für alle, die hier zu persisch und dort zu deutsch sind. Probierset im Link.“
 
 ── FREI ──  Deine Sprache (gern gemischt: Farsi/Kurdisch/Türkisch im deutschen Satz), Dein Setting, Dein Humor.
 
@@ -117,7 +117,7 @@ Partnership-Freigabe vorab vereinbart.
 |---|---|---|---|---|
 | TOF | kalt, breit (Advantage+) | Spark Ads Problem-Story, Founder-Story A2, GRWM | 60–70 % | Hook Rate, CPM |
 | MOF | Video-Viewer 50 %+, Engager, Seitenbesucher | Mechanismus „30 % Duftöl“ + „kein Kaufhaus dazwischen“, Handgelenk-Demo, Mythen-Check, Honest Review | 20–25 % | CTR, Add-to-Cart |
-| BOF | Warenkorb-/Produktseiten-Besucher | Rezensions-Screenshots, Discovery-Set, Garantie, Drop-Verknappung | 10–15 % | ROAS, CR |
+| BOF | Warenkorb-/Produktseiten-Besucher | Rezensions-Screenshots, Probierset, Garantie, Drop-Verknappung | 10–15 % | ROAS, CR |
 
 ## Die Aufwärtsspirale — wo sie bei Azizam reißen kann
 

@@ -5,34 +5,34 @@
   "markt": "DACH · Fragrance D2C · Nischen-/Orient-Segment · Sophistication-Stufe 5",
   "status": "Flakon und Verpackung werden gesucht; Website seit ca. 25.09.2026 offline, Shop-Neustart wartet auf den Flakon (Stand 03.10.2026)",
   "economics": {
-    "preis_brutto": 44.99,
+    "preis_brutto": 39.9,
     "preis_privat": 40.0,
     "mwst": 0.0,
-    "cogs": 7.8,
+    "cogs": 8.6,
     "versand_fulfillment": 6.5,
-    "gebuehren_pct": 0.02,
+    "gebuehren_pct": 0.03,
     "cac_ziel": 15.0,
     "retouren_pct": 0.04,
     "abo_rabatt_pct": 0.15,
     "abo_monate": 4,
-    "geschenk_wert": 9.99,
+    "geschenk_wert": 9.9,
     "geschenk_cogs": 3.0,
     "kaeufe_pro_kunde": 2.2,
     "wiederkaufrate_ziel": 0.4,
-    "_herleitung": "Historisch, OUTDATED: COGS = ml × 0,076 €/ml (38 € je 500 ml fertiges Parfum, UNKNOWN, von Mar am 05.10.2026 ausdrücklich NICHT bestätigt) + 3,00 € Flakon (Obergrenze laut SYNC.md, keine Kostenangabe) + 1,00 € Etikett/Box (ASSUMPTION); Versand DHL Paket als Gefahrgut-LQ inkl. Verpackung (Schätzung, UNKNOWN) · Kleinunternehmer nach § 19 UStG → mwst 0, Bruttopreis = Erlös (RECORDED Mar) · Konzentration: 30 % Duftöl bei jedem Duft (RECORDED Mar, SYNC.md).",
-    "_preis_status": "Preise NICHT entschieden (Mar, 03.10.2026). Alle Zahlen in diesem Block sind alte Modellwerte ohne belegte Herkunft (von Mar am 05.10.2026 ausdrücklich NICHT bestätigt). Sie dienen nur als Rechengrundlage für playbook.py; Ergebnisse daraus sind Modellrechnungen, keine Geschäftsdaten. Status je Wert: _status.",
+    "_herleitung": "Stand 25.11.2026 laut Preis-, Sortiments- & Launch-Strategie, von Mar freigegeben 25.11.2026 (playbook/azizam/preis-launch-strategie.md): COGS 50 ml = Parfüm 4,00 € (40 € je 500 ml = 0,08 €/ml, Angabe Mar) + Flakon/Zinkdeckel/Klappbox inkl. Versand 4,14 € (Alibaba-Angebot, vorläufig, ASSUMPTION bis Mar den endgültigen Preis nennt) + Abfüllverlust ~0,16 € + Etikett 0,30 € (ASSUMPTION) = 8,60 €. Versandmaterial 0,80 € (ASSUMPTION) ist nicht in cogs enthalten; versand_fulfillment (Azizams Paketkosten) bleibt UNKNOWN. Kundenversand 4,90 €, frei ab 59 € (Ledger D-012) ist Erlös/Schwelle, nicht Kosten. Kleinunternehmer nach § 19 UStG → mwst 0 (RECORDED Mar). Frühere Werte (38 €/500 ml, 3 € Flakon-Obergrenze) sind ersetzt.",
+    "_preis_status": "Preise entschieden: 30 ml 29,90 €, 50 ml 39,90 € (Ledger D-010, gilt seit 25.11.2026, in Shopify umgesetzt). Kostenwerte teils ASSUMPTION (siehe _status); Ergebnisse von playbook.py bleiben Modellrechnungen.",
     "_status": {
-      "preis_brutto": "OUTDATED — alter Preis aus Claude-Commit 53ef06e (08.09.2026, Vermerk 'eigene Angaben' ohne Beleg), von Mar am 05.10.2026 ausdrücklich NICHT bestätigt",
+      "preis_brutto": "RECORDED (Mar) — Ledger D-010, 25.11.2026",
       "preis_privat": "OUTDATED — Herkunft wie preis_brutto, von Mar am 05.10.2026 ausdrücklich NICHT bestätigt",
       "mwst": "RECORDED (Mar) — Kleinunternehmer nach § 19 UStG, SYNC.md 03.10.2026",
-      "cogs": "OUTDATED / ASSUMPTION — abgeleitet aus 38 €/500 ml (UNKNOWN), 3 € Flakon-Obergrenze (keine Kostenangabe) und 1,00 € Etikett/Box (ASSUMPTION); Verschluss fehlt. Echte COGS UNKNOWN",
+      "cogs": "ASSUMPTION — aus der von Mar freigegebenen Strategie 25.11.2026; Flakon 4,14 € vorläufig (komponenten.csv), Etikett 0,30 € angenommen",
       "versand_fulfillment": "UNKNOWN — Schätzung aus Claude-Commit 53ef06e, nie gemessen, von Mar am 05.10.2026 ausdrücklich NICHT bestätigt",
-      "gebuehren_pct": "EXAMPLE — Playbook-Beispiel 'ca. 2 %'; echte Zahlungsgebühren UNKNOWN, von Mar am 05.10.2026 ausdrücklich NICHT bestätigt",
+      "gebuehren_pct": "ASSUMPTION — ca. 3 % laut Strategie 25.11.2026; echte Gebühren je Zahlart UNKNOWN",
       "cac_ziel": "UNKNOWN — ohne Quelle (Claude-Commit 53ef06e), von Mar am 05.10.2026 ausdrücklich NICHT bestätigt",
       "retouren_pct": "UNKNOWN — ohne Quelle (Claude-Commit 53ef06e), von Mar am 05.10.2026 ausdrücklich NICHT bestätigt",
       "abo_rabatt_pct": "EXAMPLE — Modellwert aus dem Grundgerüst (d92de49), kein Azizam-Angebot",
       "abo_monate": "EXAMPLE — Modellwert aus dem Grundgerüst (d92de49), kein Azizam-Angebot",
-      "geschenk_wert": "UNKNOWN — ohne Quelle (Claude-Commit 53ef06e), von Mar am 05.10.2026 ausdrücklich NICHT bestätigt",
+      "geschenk_wert": "RECORDED (Mar) — Probierset 9,90 € als Gutschein auf die erste 50 ml (Ledger D-011)",
       "geschenk_cogs": "UNKNOWN — ohne Quelle (Claude-Commit 53ef06e), von Mar am 05.10.2026 ausdrücklich NICHT bestätigt",
       "kaeufe_pro_kunde": "EXAMPLE — Modellwert aus dem Grundgerüst (d92de49), keine Kohortendaten",
       "wiederkaufrate_ziel": "EXAMPLE — Playbook-Richtwert (Culture Brand 40–60 %), keine Azizam-Zahl"
@@ -41,7 +41,7 @@
   "prompt_defaults": {
     "MARKE": "Azizam",
     "MARKT": "Parfum / Nischenduft DACH, Fokus persisch-orientalische Duftfamilie und zweite Generation der Diaspora",
-    "PRODUKT": "Azizam Eau de Parfum, 30 / 50 ml (Preise noch offen), Düfte aus einer Parfumfabrik, in Deutschland in eigene Flakons abgefüllt",
+    "PRODUKT": "Azizam Eau de Parfum, 30 / 50 ml (Preise laut Ledger D-010), Düfte aus einer Parfumfabrik, in Deutschland in eigene Flakons abgefüllt",
     "UNIQUE_MECHANISM": "30 % Duftölanteil bei jedem Duft (branchenüblich 12–18 % bei Eau de Parfum) — plus Direktvertrieb ohne Handelsmarge.",
     "TONALITAET": "warm / selbstbewusst / poetisch-knapp",
     "VERBOTEN": "keine Designer-Namen (\"riecht wie Sauvage\", \"Dupe von X\"), keine Haltbarkeits-Garantie in Stunden, keine Haut-/Gesundheitsaussagen, kein 'Made in Germany' (nur 'in Deutschland abgefüllt'), kein 'handgemacht/Manufaktur' für den Duft selbst"
@@ -49,19 +49,19 @@
   "varianten": [
     {
       "name": "30 ml",
-      "preis_brutto": 29.99,
+      "preis_brutto": 29.9,
       "preis_privat": 25.0,
-      "cogs": 6.28,
-      "rolle": "Einstieg / Probe — unter 30 € trägt kein Paid Media",
-      "_status": "OUTDATED — preis_brutto, preis_privat und cogs sind alte Modellwerte ohne belegte Herkunft, von Mar am 05.10.2026 ausdrücklich NICHT bestätigt; cogs abgeleitet aus unbelegten Komponenten"
+      "cogs": 7.0,
+      "rolle": "Einstieg & Geschenk; je ml bewusst teurer als 50 ml (Strategie 25.11.2026)",
+      "_status": "preis_brutto RECORDED (Mar, Ledger D-010); cogs ASSUMPTION (Parfüm 2,40 + Flakon/Box 4,14 vorläufig + Verlust 0,16 + Etikett 0,30); preis_privat OUTDATED"
     },
     {
       "name": "50 ml",
-      "preis_brutto": 44.99,
+      "preis_brutto": 39.9,
       "preis_privat": 40.0,
-      "cogs": 7.8,
-      "rolle": "Hero — Standard in Ads und auf der Produktseite",
-      "_status": "OUTDATED — preis_brutto, preis_privat und cogs sind alte Modellwerte ohne belegte Herkunft, von Mar am 05.10.2026 ausdrücklich NICHT bestätigt; cogs abgeleitet aus unbelegten Komponenten"
+      "cogs": 8.6,
+      "rolle": "Hauptprodukt (Strategie 25.11.2026)",
+      "_status": "preis_brutto RECORDED (Mar, Ledger D-010); cogs ASSUMPTION (Parfüm 4,00 + Flakon/Box 4,14 vorläufig + Verlust 0,16 + Etikett 0,30); preis_privat OUTDATED"
     },
     {
       "name": "100 ml",
@@ -90,7 +90,7 @@
       "Apple Pay",
       "Google Pay"
     ],
-    "versand": "OBSERVED (alte Website, 08.09.2026), für den Neustart nicht entschieden: Deutschland + Österreich, 2–4 Werktage, 4,95 € Standard, kostenlos ab 80 €",
+    "versand": "RECORDED (Mar, Ledger D-012, 25.11.2026): nur Deutschland, DHL 2–4 Werktage, 4,90 € je Bestellung, kostenlos ab 59 € Bestellwert (nach Rabatten). Alte Website (OBSERVED 08.09.2026): DE + AT, 4,95 €, frei ab 80 € — ersetzt",
     "widerruf": "gesetzlich 14 Tage (entfällt bei geöffnetem Hygienesiegel); alte Website (OBSERVED, für den Neustart nicht entschieden): freiwillig 30 Tage Rückgabe, wenn Flakon ≥ 80 % gefüllt",
     "gewaehrleistung": "gesetzlich 2 Jahre",
     "produkte_live": [

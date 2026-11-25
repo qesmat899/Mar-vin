@@ -154,7 +154,7 @@ function Ergebnis({ ergebnis, discovery, onJustieren, onNeu, onZurueck, justiert
         {ergebnis.hinweise?.length > 0 && <ul className="tw-mt-4 tw-list-none tw-p-0 tw-text-[0.95rem] tw-text-grau">{ergebnis.hinweise.map((h) => <li key={h}>{h}</li>)}</ul>}
         <div className="tw-mt-7 tw-flex tw-flex-wrap tw-gap-x-6 tw-gap-y-3">
           <button type="button" onClick={onZurueck} className="tw-inline-flex tw-min-h-[52px] tw-items-center tw-border tw-border-gold tw-px-7 tw-text-[0.95rem] tw-text-gold2 hover:tw-bg-gold hover:tw-text-nacht">Antwort ändern</button>
-          {discovery && <a href={discovery} className="tw-inline-flex tw-min-h-[52px] tw-items-center tw-text-[0.95rem] tw-underline tw-decoration-gold/60 tw-underline-offset-4">Discovery Set ansehen</a>}
+          {discovery && <a href={discovery} className="tw-inline-flex tw-min-h-[52px] tw-items-center tw-text-[0.95rem] tw-underline tw-decoration-gold/60 tw-underline-offset-4">Probierset ansehen</a>}
         </div>
       </motion.div>
     );
@@ -229,7 +229,7 @@ function Ergebnis({ ergebnis, discovery, onJustieren, onNeu, onZurueck, justiert
       </div>
       {ergebnis.hinweise?.length > 0 && <ul className="tw-mt-6 tw-list-none tw-p-0 tw-text-[0.9rem] tw-text-grau">{ergebnis.hinweise.map((h) => <li key={h}>{h}</li>)}</ul>}
       <div className="tw-mt-8 tw-flex tw-flex-wrap tw-gap-x-6 tw-gap-y-2 tw-text-[0.9rem] tw-text-grau">
-        {discovery && <a href={discovery} className="tw-underline tw-decoration-gold/50 tw-underline-offset-4 hover:tw-text-gold2">Lieber drei Düfte testen: Discovery Set</a>}
+        {discovery && <a href={discovery} className="tw-underline tw-decoration-gold/50 tw-underline-offset-4 hover:tw-text-gold2">Lieber erst fünf Düfte testen: Probierset</a>}
         <button type="button" onClick={onNeu} className="hover:tw-text-gold2">Von vorn beginnen</button>
       </div>
     </motion.div>

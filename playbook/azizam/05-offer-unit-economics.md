@@ -3,6 +3,9 @@
 > **Zahlenstatus:** Zahlen in dieser Datei sind alte, von Mar **nicht bestätigte** Werte (`OUTDATED` / `EXAMPLE` /
 > `ASSUMPTION` / `UNKNOWN`). Regel und die wenigen belegten Werte: [`README.md` → Zahlenstatus](README.md#zahlenstatus).
 
+> ✅ **Entschieden am 25.11.2026:** Preise, Probierset, Versand, Bundles und Rabattregeln stehen im Ledger `D-010`–`D-015`
+> (Referenz `preis-launch-strategie.md`). Alles unten ist historisch und gilt nicht mehr.
+
 > ⚠️ **Ganzes Kapitel veraltet (Stand 09/2026).** Seit 03.10.2026: Kleinunternehmer (keine MwSt.), Start mit 30 und 50 ml
 > (100 ml später, nach den ersten Verkäufen), Preise und Flakon offen. Die Tabellen und Offers unten sind nur noch Referenz. Aktuelle Zahlen:
 > `python3 playbook.py economics --brand azizam --all`.

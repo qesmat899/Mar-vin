@@ -14,11 +14,11 @@
 | USt-IdNr. | [nicht im Repo — steht im Impressum] — **Kleinunternehmer nach § 19 UStG** (Mar, 03.10.2026), keine MwSt. auf Rechnungen |
 | Plattform | Shopify (Shopify Payments) + Vercel-Hosting |
 | Zahlungsmethoden (live) | Shopify Payments/Kreditkarte, PayPal, Klarna, Apple Pay, Google Pay |
-| Versand (alte Website, `OBSERVED`, für den Neustart nicht entschieden) | Deutschland + **Österreich** (nicht Schweiz — Drittland, Zoll/EUSt), 2–4 Werktage, 4,95 € Standard, kostenlos ab 80 € |
+| Versand (alte Website, `OBSERVED`; **ersetzt durch Ledger `D-012`**, nur Deutschland) | Deutschland + **Österreich** (nicht Schweiz — Drittland, Zoll/EUSt), 2–4 Werktage, 4,95 € Standard, kostenlos ab 80 € |
 | Widerruf (alte Website, `OBSERVED`, für den Neustart nicht entschieden) | gesetzlich 14 Tage, entfällt bei geöffnetem Hygienesiegel; freiwillig 30 Tage, wenn Flakon ≥ 80 % gefüllt |
 
 Die alte Website zeigte andere Werte als die bisherigen Schätzungen (Versand 6,50 € `UNKNOWN`, Gratisversand ab 60 € `OUTDATED`, CH als Zielmarkt). Achtung: 4,95 € war das Versandentgelt des Kunden, nicht Azizams Versandkosten (`UNKNOWN`). Versandentgelt und
-Gratisversand-Schwelle für den Neustart sind nicht entschieden.
+Gratisversand-Schwelle sind seit 25.11.2026 entschieden (Ledger `D-012`).
 
 ## Rechtlicher Rahmen — Parfum (Kap. 5.3)
 
@@ -133,8 +133,8 @@ Privatverkauf (ob Privatverkauf zulässig ist, beurteilt der Skill `azizam-compl
 
 | Flow | Auslöser | Azizam-Inhalt |
 |---|---|---|
-| Welcome | Newsletter-Anmeldung (Double-Opt-In!) | 3 Mails: das Wort „azizam“ und die Gründergeschichte (A2) · der Mechanismus (25 %) · Discovery-Set-Angebot |
-| Warenkorbabbruch | Cart verlassen | 1 h: „Dein Duft wartet“ · 24 h: 3 Kundenzitate · 72 h: Discovery-Set als Einstieg statt Rabatt |
+| Welcome | Newsletter-Anmeldung (Double-Opt-In!) | 3 Mails: das Wort „azizam“ und die Gründergeschichte (A2) · der Mechanismus (25 %) · Probierset-Angebot (`D-011`) |
+| Warenkorbabbruch | Cart verlassen | 1 h: „Dein Duft wartet“ · 24 h: 3 Kundenzitate · 72 h: Probierset als Einstieg statt Rabatt |
 | Post-Purchase | nach Kauf | Anwendung: „zwei Sprüher, nicht sechs“ (senkt Enttäuschung, senkt Retouren) · die Gedichtkarte erklärt · Einladung in die Community |
 | Browse Abandonment | Produkt angesehen | Handgelenk-Demo-Video + Rezensionen |
 | Replenishment | Tag 100–120 nach Kauf (50 ml) | „Fast leer?“ — Nachkauf mit Vers · Wardrobe: zweiter Duft |
@@ -145,8 +145,8 @@ Privatverkauf (ob Privatverkauf zulässig ist, beurteilt der Skill `azizam-compl
 
 | Hebel | Umsetzung | Priorität |
 |---|---|---|
-| Discovery-Set → Full Size | 3 × 2 ml [Preis offen; alter Wert 12 € `EXAMPLE`, widerspricht 9,99 €], Gutschein auf 50 ml — nimmt Einwand „unbekannte Marke“ und „was, wenn es nicht passt“ | 1 |
-| Post-Purchase-Upsell | Nach Kauf 50 ml: zweiter Duft −20 % mit einem Klick; oder Reise-Zerstäuber 10 ml | 1 |
+| Probierset → Full Size | 5 × 2 ml (`D-011`), Gutschein auf die erste 50 ml — nimmt Einwand „unbekannte Marke“ und „was, wenn es nicht passt“ | 1 |
+| Post-Purchase-Upsell | Nach Kauf 50 ml: zweiter Duft fürs Duo „Tag & Abend“ (`D-013`, kein Rabatt darüber hinaus); 10 ml entfällt | 1 |
 | Wardrobe-Abo | Nicht klassisches Abo (Kap. 4.2: bei Parfum schlecht) — sondern „ein Duft pro Quartal“, jederzeit kündbar | 2 |
 | Drops als Ritual | Nowruz, Yalda — Vorverkauf nur für Newsletter/Community | 1 |
 | Beilage im Paket | Gedichtkarte + Probe des zweiten Dufts (Cross-Sell fast kostenlos) | 1 |

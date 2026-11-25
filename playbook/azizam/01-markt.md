@@ -51,7 +51,7 @@ Dupe-Regal.**
 | Status und Signal (Flakon, Marke) | identitär | hoch — Flakon muss fotografierbar sein |
 | **Erinnerung, Nostalgie, Verknüpfung mit Menschen** | biografisch | **sehr hoch — der Kern von Azizam (Persona „Darius“)** |
 | Zugehörigkeit zu einer Szene | tribal | hoch — Culture Brand |
-| Sammeln, Wardrobe | Hobby | mittel — Discovery-Set, Drops |
+| Sammeln, Wardrobe | Hobby | mittel — Probierset, Drops |
 
 Wer Parfum als Duft verkauft, konkurriert über Duftbeschreibungen. Wer Parfum als *Erinnerung an die
 Küche der Großmutter* verkauft, konkurriert überhaupt nicht mehr.

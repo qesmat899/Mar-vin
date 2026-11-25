@@ -47,13 +47,13 @@ funktioniert bei jedem Premium-Duft).
 
 | Filter | Azizam EdP 50 ml | |
 |---|---|---|
-| VK 30–120 € | Preise 30/50 ml offen — alte Werte 44,99 € (50 ml) / 29,99 € (30 ml) `OUTDATED` | ⏳ (30 ml nicht bewerben) |
+| VK 30–120 € | Preise 30/50 ml entschieden (Ledger `D-010`) | ⏳ (30 ml nicht bewerben) |
 | Marge ≥ 65–70 % | `playbook.py economics --brand azizam --all` (Kleinunternehmer, Flakon offen; alter Modellwert ca. 66 % für 50 ml online `OUTDATED`) | ⏳ |
 | Leicht & klein | 50 ml, ~250 g mit Box | ✅ |
 | Nicht zerbrechlich | **Glasflakon** — Retourenrisiko | ⚠️ Kartonage mit Einlage, Bruchquote messen |
-| Wiederkauf | 4–6 Monate; plus Wardrobe (zweiter Duft), Discovery-Set → Full Size | ✅ |
+| Wiederkauf | 4–6 Monate; plus Wardrobe (zweiter Duft), Probierset → Full Size | ✅ |
 | Visuell demonstrierbar | Flakon, Handgelenk-Test, Reaktion anderer Menschen | ✅ (Duft selbst nicht — deshalb Reaktion zeigen) |
-| In 10 s erklärbar | „Narcos: Honig, Tabak und Zimt, 30 % Duftöl, 50 ml für [Preis offen] — weil kein Kaufhaus dazwischen ist.“ | ✅ (Heritage-Linie, Narcos) |
+| In 10 s erklärbar | „Narcos: Honig, Tabak und Zimt, 30 % Duftöl, 50 ml für [Preis laut D-010] — weil kein Kaufhaus dazwischen ist.“ | ✅ (Heritage-Linie, Narcos) |
 | Kein Monopol | fragmentiert | ✅ |
 
 ## Der Unique Mechanism — bestätigt: 30 % Duftöl
@@ -64,7 +64,7 @@ jedem Duft**. Branchenüblich bei Eau de Parfum sind 12–18 %. Das ist ein echt
 | Quelle | Azizam | Ein-Satz-Test |
 |---|---|---|
 | **Formulierung** | 30 % Duftöl statt branchenüblich 12–18 % | „Warum unser Duft näher hält, nicht lauter: 30 % Duftöl statt 15 — und nicht nach zwei Stunden weg.“ ✅ |
-| **Geschäftsmodell** | Direktvertrieb ohne Handelsmarge (Preise offen) | „Kein Kaufhaus, keine Werbemillionen, kein Zwischenhändler.“ — Preisvergleich erst formulieren, wenn die Preise stehen. ⏳ |
+| **Geschäftsmodell** | Direktvertrieb ohne Handelsmarge (Preise laut `D-010`) | „Kein Kaufhaus, keine Werbemillionen, kein Zwischenhändler.“ — Preisvergleich erst formulieren, wenn die Preise stehen. ⏳ |
 | **Kuration / Herkunft der Auswahl** | Aus dem Fabriksortiment die Düfte gewählt, die zwei Geschichten tragen: Heritage (Narcos: Honig, Tabak, Zimt — warm, an Zuhause erinnernd) und Editions (generisch-premium) | „Wir haben nicht die Düfte genommen, die sich am besten verkaufen, sondern die, bei denen unsere Mütter gelächelt haben.“ ✅ (gilt für Narcos; für die anderen sechs erst nach Notenbeleg zu belegen) |
 | Ausschluss | kein Dupe-Marketing, keine Designer-Namen | ✅ (und rechtlich Pflicht) |
 

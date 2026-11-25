@@ -51,7 +51,7 @@ unbelegte Attribute, Verbotsliste, fremde Duftnamen werden verworfen).
 
 **Ergebnis** (`lib/erklaerung.js`): keine Prozentzahlen. Einstufung („Passt sehr gut zu dir“ …), „Warum wir ihn
 empfehlen“ nur aus erfüllten Wünschen und Produktdaten, bei Platz 2/3 der Unterschied („etwas süßer – mit der Note
-Vanille“), Link zur 10-ml-Variante. **Nachjustieren** („etwas weniger süß“, „wärmer“, „frischer“, „dezenter“,
+Vanille“), Link zur 10-ml-Variante (entfällt seit `D-010`, Knopf erscheint ohne 10-ml-Größe nicht; Ergebnis verlinkt das Probierset). **Nachjustieren** („etwas weniger süß“, „wärmer“, „frischer“, „dezenter“,
 „intensiver“, „andere Vorschläge“) rechnet im Browser neu, alle Antworten bleiben.
 
 Ohne Server oder KI läuft dieselbe Engine im Browser (`quelle: "ohne_ki"`).

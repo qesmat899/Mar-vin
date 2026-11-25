@@ -28,7 +28,7 @@ Fortschritt: `python3 playbook.py status --brand azizam` (zählt die Kästchen).
 ## Woche 5–6 · Aufbau
 - [ ] Shopify aufsetzen, mobil-first; 3D-Flakon-Hero aus `frontend/components/` einbinden (Drehform, nur für runde Flakons; eckig → GLB-Modell oder Foto-Hero; für den Launch reichen gute Produktfotos)
 - [ ] Produktfotos neuer Flakon: 2 × Freisteller (30/50 ml), 3 × in der Hand, 3 × Lifestyle (Bildsprache aus `04-produkt-marke.md`)
-- [ ] Preise festlegen (offen): 30 ml · 50 ml · Duo · Trio 2+1 · Discovery 3 × 2 ml (Gutschein auf 50 ml) · Versandkostenfrei-Grenze · Hinweis § 19 UStG
+- [x] Preise festlegen: entschieden 25.11.2026 (`D-010`–`D-013`: 30/50 ml, Probierset, Duo, 3 × 30 ml, Versandgrenze; kein 2+1) · Hinweis § 19 UStG im Shop
 - [ ] Produktseite nach Angle → Pain → Mechanismus → Beweis → Offer (LP-Struktur in `03-angles-hooks.md`)
 - [ ] Rechtstexte: Impressum, Datenschutz (alle Pixel/Tools), Widerruf, AGB, Cookie-Consent
 - [ ] PAngV: Grundpreis €/100 ml auf jeder Produktseite; GPSR-Angaben; INCI + Allergene auf Produktseite
@@ -37,7 +37,7 @@ Fortschritt: `python3 playbook.py status --brand azizam` (zählt die Kästchen).
 - [ ] Tracking: Meta Pixel + Conversions API, TikTok Pixel + Events API, Server-Side wenn möglich
 - [ ] Klaviyo: Welcome, Warenkorbabbruch, Post-Purchase (Inhalte in `07-recht-retention.md`), Double-Opt-In
 - [ ] 12–18 Angles final (Prompt 3 mit echten Zitaten), je 5 Hooks (Prompt 4)
-- [ ] Discovery-Set (3 × 2 ml) produziert; Gedichtkarte und Probe als Paketbeilage
+- [ ] Probierset (5 × 2 ml, `D-011`) abgefüllt; Dankeskarte + Probe desselben Dufts + Cross-Sell-Probe als Paketbeilage (`D-009`, `D-014`)
 
 ## Woche 7–8 · Testing
 - [ ] Vorab organisch (kostet nichts): 3 Videos/Woche auf Instagram + TikTok, je Video **ein** Angle (A1 · A2 · B1 · A5 aus `03-angles-hooks.md`), Aufbau Hook 0–3 s → Problem → Flakon + Mechanismus → „Link in Bio“; 3-Sekunden-Rate messen, Kommentare wörtlich in die Swipe-Datei
@@ -46,7 +46,7 @@ Fortschritt: `python3 playbook.py status --brand azizam` (zählt die Kästchen).
 - [ ] Budget 3–5 × Ziel-CPA (Ziel-CPA `UNKNOWN`; alter Wert 22 € `OUTDATED`, in einem älteren Fahrplan 15 € `UNKNOWN`) pro Creative, 5–7 Tage laufen lassen; nur 50 ml bewerben
 - [ ] Täglich Hook Rate, Hold Rate, CTR, CPA in `../templates/testing-log.csv` — nicht täglich abschalten
 - [ ] Nach 7 Tagen: Winner (CPA unter max. CAC laut `playbook.py economics`, alter Modellwert 28,60 € für 50 ml `OUTDATED`) und Verlierer analysieren — „und warum nicht?“
-- [ ] Offer-Test: Einmalkauf vs. 2+1 vs. 1 + Reisegröße + Karte (alternativ Einmalkauf vs. Duo vs. Trio 2+1), gleiches Budget
+- [ ] Offer-Test: Einmalkauf vs. Duo „Tag & Abend“ vs. 3 × 30 ml, gleiches Budget (kein 2+1, `D-013`)
 - [ ] Entscheidung Haupt-Persona bestätigen (Darius-Angles vs. Leon-Angles nach CPA)
 
 ## Woche 9–10 · Creator-Outreach
@@ -64,7 +64,7 @@ Fortschritt: `python3 playbook.py status --brand azizam` (zählt die Kästchen).
 - [ ] Funnel TOF/MOF/BOF mit korrekten Zielgruppen und Budgetsplit 65/25/10
 - [ ] Budget in 20–30-%-Schritten alle 2–3 Tage erhöhen — nur bei CM2 > 0 über 7 Tage
 - [ ] Creative-Produktion verstetigen: 10–20 neue pro Monat (Creator-Trichter läuft weiter)
-- [ ] Post-Purchase-Upsell (10 ml / zweiter Duft) und Replenishment-Flow (Tag 100–120) aktivieren
+- [ ] Post-Purchase-Upsell (zweiter Duft fürs Duo, ohne Rabatt) und Replenishment-Flow (Tag 100–120) aktivieren
 - [ ] Ersten Drop planen (Nowruz 20./21.03. oder Yalda 21.12. — je nachdem, was näher liegt): Stückzahl, Vorverkauf für Newsletter
 
 ## Ab Tag 90
