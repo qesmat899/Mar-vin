@@ -64,6 +64,7 @@ REGISTRY: list[tuple[str, str, str, str]] = [
     ("playbook/azizam/SYSTEM-AUFBAU.md", "ACTIVE", "Aufbauplan des Systems", ""),
     ("playbook/azizam/swipe-file.md", "ACTIVE", "Kundenzitate (wörtlich, mit Quelle)", ""),
     ("playbook/azizam/creator-outreach.csv", "ACTIVE", "Creator-Tracking (noch leer)", ""),
+    ("playbook/azizam/preis-launch-strategie.md", "ACTIVE", "Preis-, Sortiments- und Launch-Strategie (von Mar freigegeben 25.11.2026; Entscheidungen im Ledger D-010 bis D-015)", ""),
     ("playbook/azizam/*", "REFERENCE", "Playbook-Umsetzung (Markt, Personas, Angles, Recht …)", ""),
     ("playbook/SYSTEM.md", "REFERENCE", "Playbook auf einer Seite", ""),
     ("playbook/README.md", "REFERENCE", "Übersicht Playbook-Ordner", ""),
