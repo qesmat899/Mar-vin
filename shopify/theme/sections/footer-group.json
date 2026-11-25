@@ -196,7 +196,7 @@
       "type": "azizam-global",
       "settings": {
         "versand_aktiv": true,
-        "versand_schwelle": 20,
+        "versand_schwelle": 59,
         "bewertungen_leer_ausblenden": true,
         "steuer_hinweis": "Gemäß § 19 UStG wird keine Umsatzsteuer berechnet. Versand wird an der Kasse berechnet."
       }

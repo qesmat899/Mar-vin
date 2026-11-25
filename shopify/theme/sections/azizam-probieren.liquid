@@ -3,8 +3,8 @@
   „Erst testen, dann entscheiden“: drei Schritte zum eigenen Duft, gegen die größte Hürde beim Parfumkauf online
   (man kann nicht riechen). Schritt-Blöcke:
   - berater: Link zum Duftberater (#duftberater)
-  - set:     Probenset (Standard: Discovery Set), Preis und Grundpreis live aus Shopify; Gutschein laut D-004
-  - groessen: Größen eines Referenzdufts mit Preis und Grundpreis live aus Shopify (Preisleiter D-007)
+  - set:     Probenset (Standard: Probierset), Preis und Grundpreis live aus Shopify; Gutschein laut D-011
+  - groessen: Größen eines Referenzdufts mit Preis und Grundpreis live aus Shopify (Preise D-010)
   Keine Preise im Text fest eintippen: sie kommen aus den Produkten.
 {%- endcomment -%}
 {%- if section.blocks.size > 0 -%}
@@ -21,7 +21,7 @@
           assign link = block.settings.link
           assign p = block.settings.produkt
           if block.type == 'set' and p == blank
-            assign p = all_products['discovery-set']
+            assign p = all_products['probierset']
           endif
           if block.type == 'groessen' and p == blank
             assign p = collections['drop-1'].products.first | default: collections.all.products.first
@@ -47,8 +47,8 @@
                 </svg>
               {%- when 'set' -%}
                 <svg viewBox="0 0 180 120" focusable="false">
-                  {%- for x in (0..2) -%}
-                    {%- assign vx = x | times: 34 | plus: 48 -%}
+                  {%- for x in (0..4) -%}
+                    {%- assign vx = x | times: 26 | plus: 27 -%}
                     <rect class="kappe" x="{{ vx | plus: 3 }}" y="16" width="14" height="16" rx="2"/>
                     <rect class="glas" x="{{ vx }}" y="32" width="20" height="74" rx="6"/>
                     <rect class="duft" x="{{ vx | plus: 3 }}" y="58" width="14" height="45" rx="4"/>
@@ -123,11 +123,11 @@
     {
       "type": "set", "name": "Schritt: Probenset",
       "settings": [
-        { "type": "product", "id": "produkt", "label": "Probenset (leer = Discovery Set)" },
-        { "type": "text", "id": "titel", "label": "Titel", "default": "Drei Düfte testen" },
-        { "type": "text", "id": "zeile", "label": "Text vor dem Preis", "default": "Discovery Set, 3 × 5 ml:" },
-        { "type": "textarea", "id": "text", "label": "Text", "default": "Trag jeden Duft ein paar Tage. Die [preis] bekommst du als Gutschein für deine nächste 30- oder 50-ml-Flasche zurück.", "info": "[preis] wird durch den Preis des Sets ersetzt." },
-        { "type": "text", "id": "link_label", "label": "Link-Text", "default": "Set zusammenstellen" },
+        { "type": "product", "id": "produkt", "label": "Probenset (leer = Probierset)" },
+        { "type": "text", "id": "titel", "label": "Titel", "default": "Fünf Düfte testen" },
+        { "type": "text", "id": "zeile", "label": "Text vor dem Preis", "default": "Probierset, 5 × 2 ml:" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Teste jeden Duft auf der Haut. Die [preis] bekommst du als Gutschein für deine erste 50-ml-Flasche zurück.", "info": "[preis] wird durch den Preis des Sets ersetzt." },
+        { "type": "text", "id": "link_label", "label": "Link-Text", "default": "Zum Probierset" },
         { "type": "url", "id": "link", "label": "Link-Ziel (leer = Seite des Sets)" }
       ]
     },

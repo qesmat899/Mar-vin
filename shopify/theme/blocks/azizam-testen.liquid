@@ -1,11 +1,11 @@
 {{ 'azizam.css' | asset_url | stylesheet_tag }}
 {%- comment -%}
   Produktseite, unter der Größenwahl: „Erst testen?“ mit der kleinsten Größe des Dufts (Link wählt sie aus)
-  und dem Discovery Set. Preise live aus Shopify, Gutschein laut D-004. Nicht beim Probenset selbst.
+  und dem Probierset. Preise live aus Shopify, Gutschein laut D-011. Nicht beim Probenset selbst.
 {%- endcomment -%}
 {%- liquid
   assign p = closest.product | default: product
-  assign set = block.settings.set | default: all_products['discovery-set']
+  assign set = block.settings.set | default: all_products['probierset']
   assign klein = nil
   for v in p.variants
     if v.available == false
@@ -37,11 +37,11 @@
   "name": "Azizam Erst testen",
   "settings": [
     { "type": "text", "id": "titel", "label": "Titel", "default": "Erst testen?" },
-    { "type": "text", "id": "oder", "label": "Wort zwischen den Möglichkeiten", "default": "oder drei Düfte im" },
-    { "type": "product", "id": "set", "label": "Probenset (leer = Discovery Set)" },
-    { "type": "text", "id": "set_label", "label": "Name des Sets", "default": "Discovery Set" },
-    { "type": "text", "id": "set_inhalt", "label": "Inhalt des Sets", "default": "3 × 5 ml" },
-    { "type": "text", "id": "gutschein", "label": "Satz zum Gutschein", "default": "Den Set-Preis bekommst du als Gutschein für deine nächste 30- oder 50-ml-Flasche zurück." }
+    { "type": "text", "id": "oder", "label": "Wort zwischen den Möglichkeiten", "default": "oder fünf Düfte im" },
+    { "type": "product", "id": "set", "label": "Probenset (leer = Probierset)" },
+    { "type": "text", "id": "set_label", "label": "Name des Sets", "default": "Probierset" },
+    { "type": "text", "id": "set_inhalt", "label": "Inhalt des Sets", "default": "5 × 2 ml" },
+    { "type": "text", "id": "gutschein", "label": "Satz zum Gutschein", "default": "Den Set-Preis bekommst du als Gutschein für deine erste 50-ml-Flasche zurück." }
   ],
   "presets": [{ "name": "Azizam Erst testen" }]
 }

@@ -12,7 +12,7 @@
   data-azizam-berater
   data-kicker="{{ section.settings.kicker | escape }}"
   data-heading="{{ section.settings.heading | escape }}"
-  data-discovery="{{ section.settings.discovery_url | default: '/products/discovery-set' }}"
+  data-discovery="{{ section.settings.discovery_url | default: '/products/probierset' }}"
   data-api="{{ section.settings.api_url | escape }}"
   data-src="{{ 'azizam-berater.js' | asset_url }}">
   <div data-berater-app style="min-height: 560px">
@@ -66,7 +66,7 @@
   "settings": [
     { "type": "text", "id": "kicker", "label": "Überzeile", "default": "Duftberater · in wenigen Fragen" },
     { "type": "text", "id": "heading", "label": "Überschrift", "default": "Finde deinen Duft für jetzt." },
-    { "type": "url", "id": "discovery_url", "label": "Link Discovery-Set" },
+    { "type": "url", "id": "discovery_url", "label": "Link Probierset" },
     { "type": "text", "id": "api_url", "label": "Berater-API (KI)", "info": "Adresse des Duftberater-Servers, z. B. https://…vercel.app/api/beratung. Leer = Berater rechnet nur im Browser, ohne KI." }
   ],
   "presets": [{ "name": "Azizam Duftberater" }]

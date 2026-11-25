@@ -11,7 +11,7 @@
         "persian": "عزیزم",
         "persian_meaning": "persisch für „mein Schatz“",
         "line": "Der Duft der zweiten Generation.",
-        "fakten": "Rund 30 % Duftöl · ab [ab-preis] · Versand ab 20 € kostenlos",
+        "fakten": "Rund 30 % Duftöl · ab [ab-preis] · Versand ab 59 € kostenlos",
         "preis_kollektion": "drop-1",
         "cta_label": "Düfte entdecken",
         "cta_link": "#favoriten",
@@ -58,11 +58,11 @@
         "p2": {
           "type": "set",
           "settings": {
-            "produkt": "discovery-set",
-            "titel": "Drei Düfte testen",
-            "zeile": "Discovery Set, 3 × 5 ml:",
-            "text": "Trag jeden Duft ein paar Tage. Die [preis] bekommst du als Gutschein für deine nächste 30- oder 50-ml-Flasche zurück.",
-            "link_label": "Set zusammenstellen",
+            "produkt": "probierset",
+            "titel": "Fünf Düfte testen",
+            "zeile": "Probierset, 5 × 2 ml:",
+            "text": "Teste jeden Duft auf der Haut. Die [preis] bekommst du als Gutschein für deine erste 50-ml-Flasche zurück.",
+            "link_label": "Zum Probierset",
             "link": ""
           }
         },
@@ -111,7 +111,7 @@
           "type": "fakt",
           "settings": {
             "term": "Größen",
-            "value": "10 ml · 30 ml · 50 ml"
+            "value": "30 ml · 50 ml"
           }
         },
         "f3": {
@@ -440,21 +440,21 @@
           "type": "frage",
           "settings": {
             "frage": "Ich kann online nicht riechen. Wie finde ich meinen Duft?",
-            "antwort": "<p>Mach den <a href=\"#duftberater\">Duftberater</a>: ein paar kurze Fragen, dann bekommst du passende Vorschläge. Oder teste erst: Jeden Duft gibt es als 10-ml-Flasche, und im <a href=\"/products/discovery-set\">Discovery Set</a> stellst du dir drei Düfte à 5 ml zusammen. Den Preis des Sets bekommst du als Gutschein für deine nächste 30- oder 50-ml-Flasche zurück.</p>"
+            "antwort": "<p>Mach den <a href=\"#duftberater\">Duftberater</a>: ein paar kurze Fragen, dann bekommst du passende Vorschläge. Oder teste erst: Im <a href=\"/products/probierset\">Probierset</a> bekommst du fünf Düfte à 2 ml. Den Preis des Sets bekommst du als Gutschein für deine erste 50-ml-Flasche zurück.</p>"
           }
         },
         "q04": {
           "type": "frage",
           "settings": {
             "frage": "Welche Größen gibt es?",
-            "antwort": "<p>10 ml zum Testen und für unterwegs, dazu 30 ml und 50 ml. Je größer die Flasche, desto günstiger der Milliliter. Den Preis pro 100 ml siehst du bei jedem Preis.</p>"
+            "antwort": "<p>30 ml und 50 ml. Je größer die Flasche, desto günstiger der Milliliter. Den Preis pro 100 ml siehst du bei jedem Preis. Zwei 50-ml-Flaschen kosten zusammen 69,90 €, drei 30-ml-Flaschen 74,90 €; der Preis passt sich im Warenkorb automatisch an. Zum Testen gibt es das <a href=\"/products/probierset\">Probierset</a> mit fünf Düften à 2 ml.</p>"
           }
         },
         "q05": {
           "type": "frage",
           "settings": {
             "frage": "Was kostet der Versand?",
-            "antwort": "<p>Ab 20 € Bestellwert verschicken wir kostenlos, darunter kostet der Versand 4,95 €. Wir liefern mit DHL innerhalb Deutschlands, in der Regel in 2–4 Werktagen.</p>"
+            "antwort": "<p>Ab 59 € Bestellwert verschicken wir kostenlos, darunter kostet der Versand 4,90 €. Wir liefern mit DHL innerhalb Deutschlands, in der Regel in 2–4 Werktagen.</p>"
           }
         },
         "q06": {
@@ -475,7 +475,7 @@
           "type": "frage",
           "settings": {
             "frage": "Warum steht keine Umsatzsteuer auf der Rechnung?",
-            "antwort": "<p>Azizam ist ein Kleinunternehmen. Nach § 19 UStG berechnen wir keine Umsatzsteuer. Der Preis, den du siehst, ist der Endpreis. Unter 20 € kommt nur der Versand dazu.</p>"
+            "antwort": "<p>Azizam ist ein Kleinunternehmen. Nach § 19 UStG berechnen wir keine Umsatzsteuer. Der Preis, den du siehst, ist der Endpreis. Unter 59 € kommt nur der Versand dazu.</p>"
           }
         },
         "q09": {

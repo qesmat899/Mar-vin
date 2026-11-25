@@ -58,16 +58,16 @@
     </div>
     <div class="az-kol__stage">
     <div class="az-grid" data-az-grid>
-      {%- assign disc = all_products['discovery-set'] -%}
+      {%- assign disc = all_products['probierset'] -%}
       {%- if on_collection == false and section.settings.discovery_zeigen and disc != blank and disc.available -%}
         <a class="az-card az-card--disc" href="{{ disc.url }}" data-familie="alle">
           <span class="az-card__media az-disc-tile">
             <span class="az-disc-tile__kicker">Nicht sicher?</span>
-            <span class="az-disc-tile__title">Discovery Set</span>
-            <span class="az-disc-tile__sub">3 Düfte deiner Wahl · je 5 ml</span>
+            <span class="az-disc-tile__title">Probierset</span>
+            <span class="az-disc-tile__sub">5 Düfte · je 2 ml</span>
             <span class="az-disc-tile__price">{{ disc.price | money }}<small class="az-gp">{% render 'azizam-grundpreis', product: disc %}</small></span>
-            <span class="az-disc-tile__note">Den Betrag bekommst du als Gutschein für deine große Flasche zurück.</span>
-            <span class="az-disc-tile__cta">Set zusammenstellen</span>
+            <span class="az-disc-tile__note">Den Betrag bekommst du als Gutschein für deine erste 50-ml-Flasche zurück.</span>
+            <span class="az-disc-tile__cta">Zum Probierset</span>
           </span>
         </a>
       {%- endif -%}
@@ -211,7 +211,7 @@
     { "type": "collection", "id": "collection", "label": "Kollektion (leer = alle bzw. aktuelle Kollektion)" },
     { "type": "range", "id": "limit", "label": "Anzahl", "min": 4, "max": 50, "step": 1, "default": 24 },
     { "type": "checkbox", "id": "produkte_zeigen", "label": "Produkte zeigen", "default": true, "info": "Aus = nur dunkle Karten, Nebel und Warteliste (z. B. auf der Startseite, wenn „Favoriten“ die Düfte schon zeigt). Nummern laufen trotzdem weiter. Auf Kollektionsseiten immer an." },
-    { "type": "checkbox", "id": "discovery_zeigen", "label": "Discovery-Set-Kachel zeigen", "default": true },
+    { "type": "checkbox", "id": "discovery_zeigen", "label": "Probierset-Kachel zeigen", "default": true },
     { "type": "header", "content": "Dunkle Karten" },
     { "type": "text", "id": "dark_cta", "label": "Knopf auf der Karte", "default": "Vormerken" },
     { "type": "text", "id": "dark_cta_on", "label": "Knopf nach dem Vormerken", "default": "Vorgemerkt" },
